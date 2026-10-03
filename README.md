@@ -81,3 +81,8 @@ Entity pages contain:
 - related daily briefs
 
 External URLs are treated as evidence sources, not as the node's canonical page.
+
+
+## Entity schema v2
+
+Core entities use type-specific fields from `_data/kg/entity_schema.json`; entity pages render only fields that exist and keep evidence-backed facts separate from analysis.

@@ -1,0 +1,63 @@
+{
+  "schema_version": "2.0.0",
+  "purpose": "Type-specific content schema for first-party entity knowledge pages.",
+  "common": [
+    "summary",
+    "overview",
+    "why_it_matters",
+    "themes",
+    "maturity",
+    "first_seen",
+    "last_verified",
+    "page"
+  ],
+  "types": {
+    "Project": [
+      "definition",
+      "operating_model",
+      "key_capabilities",
+      "architecture_role",
+      "limitations",
+      "maturity_notes",
+      "engineering_takeaways",
+      "what_to_watch"
+    ],
+    "Capability": [
+      "definition",
+      "problem_it_solves",
+      "core_mechanisms",
+      "representative_implementations",
+      "engineering_considerations",
+      "failure_modes"
+    ],
+    "Research": [
+      "research_question",
+      "method",
+      "findings",
+      "limitations",
+      "engineering_implications",
+      "what_to_watch"
+    ],
+    "Standard": [
+      "purpose",
+      "core_mechanisms",
+      "ecosystem_impact",
+      "migration_notes",
+      "what_to_watch"
+    ],
+    "Pattern": [
+      "problem",
+      "mechanism",
+      "when_to_use",
+      "tradeoffs",
+      "engineering_takeaways"
+    ],
+    "Trend": [
+      "thesis",
+      "supporting_signals",
+      "counter_signals",
+      "what_to_watch",
+      "confidence_note"
+    ]
+  }
+}

@@ -6,6 +6,8 @@
   const byId=new Map(nodes.map(n=>[n.id,n]));
   const root=byId.get(id);
   const relatedEdges=edges.filter(e=>e.source===id||e.target===id);
+  const factCount=relatedEdges.filter(e=>e.kind==='fact').length;
+  const analysisCount=relatedEdges.filter(e=>e.kind==='analysis'||e.kind==='hypothesis').length;
   const otherId=e=>e.source===id?e.target:e.source;
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
   const base=document.body.dataset.baseurl||'';
@@ -39,6 +41,10 @@
   });
   if(root.type==='Source')evidenceIds.add(root.id);
   const ev=[...evidenceIds].map(x=>byId.get(x)).filter(Boolean);
+  const topStats=document.getElementById('entityTopStats');
+  if(topStats)topStats.innerHTML='<span>'+ev.length+' primary sources</span><span>'+factCount+' fact relations</span><span>'+analysisCount+' analysis relations</span>';
+  const factSummary=document.getElementById('entityFactSummary');
+  if(factSummary)factSummary.innerHTML='<div><strong>'+factCount+'</strong><span>fact relations</span></div><div><strong>'+analysisCount+'</strong><span>analysis relations</span></div><div><strong>'+ev.length+'</strong><span>sources</span></div>';
   document.getElementById('entityEvidence').innerHTML=ev.length?ev.map(s=>'<article><div><span>'+esc(s.type)+'</span><strong>'+esc(s.label)+'</strong><p>'+esc(s.summary||'')+'</p></div>'+(s.url?'<a href="'+esc(s.url)+'" target="_blank" rel="noopener">Open primary source ↗</a>':'')+'</article>').join(''):'<div class="topic-empty">当前没有独立 Source 节点。该节点可能是分类/分析节点，或证据仍需补充。</div>';
 
   const localIds=new Set([id]);

@@ -2,47 +2,126 @@
 layout: default
 ---
 {% assign entity = site.data.kg.nodes | where: "id", page.entity_id | first %}
-{% assign architecture = site.data.kg.architecture %}
-<section class="entity-hero">
+<section class="entity-hero v6">
   <div>
     <a class="entity-back" href="{{ '/entities/' | relative_url }}">← All entities</a>
     <div class="eyebrow">{{ entity.type }}</div>
     <h1>{{ entity.label }}</h1>
     <p class="entity-summary">{{ entity.summary }}</p>
     <div class="entity-badges">
-      <span>{{ entity.maturity }}</span><span>first seen {{ entity.first_seen }}</span><span>verified {{ entity.last_verified }}</span>
-    </div>
-    <div class="entity-theme-links">
+      <span>{{ entity.maturity }}</span>
       {% for theme_id in entity.themes %}
         {% assign topic = site.data.kg.topics | where: "id", theme_id | first %}
         <a href="{{ '/topics/' | append: theme_id | append: '/' | relative_url }}">{{ topic.label }}</a>
       {% endfor %}
     </div>
+    <div id="entityTopStats" class="entity-top-stats"></div>
   </div>
-  <div class="entity-hero-actions">
-    <a class="primary-action" href="{{ '/graph/' | relative_url }}?focus={{ entity.id | url_encode }}">View in Graph →</a>
+  <div class="entity-hero-actions subtle">
     {% if entity.type == "Project" or entity.type == "Research" or entity.type == "Standard" or entity.type == "Pattern" %}
     <a href="{{ '/compare/' | relative_url }}?a={{ entity.id | url_encode }}">Compare</a>
     {% endif %}
+    <a href="{{ '/graph/' | relative_url }}?focus={{ entity.id | url_encode }}">Graph</a>
+    <a href="#evidence">Evidence</a>
   </div>
 </section>
 
-<section class="entity-reading">
+<section class="entity-reading v6">
   <article class="entity-prose">
-    <div class="eyebrow">OVERVIEW</div>
-    <h2>详细介绍</h2>
-    <p>{{ entity.overview }}</p>
-    <h3>为什么值得关注</h3>
-    <p>{{ entity.why_it_matters }}</p>
+    <div class="eyebrow">KNOWLEDGE</div>
+    <h2>{% if entity.definition %}它是什么{% else %}详细介绍{% endif %}</h2>
+    <p>{{ entity.definition | default: entity.overview }}</p>
+    {% case entity.type %}
+    {% when "Project" %}
+      {% if entity.operating_model %}<h3>运行与架构模型</h3><p>{{ entity.operating_model }}</p>{% endif %}
+      {% if entity.architecture_role %}<h3>在 Agent Infra 中的位置</h3><p>{{ entity.architecture_role }}</p>{% endif %}
+    {% when "Capability" %}
+      {% if entity.problem_it_solves %}<h3>它解决什么问题</h3><p>{{ entity.problem_it_solves }}</p>{% endif %}
+    {% when "Research" %}
+      {% if entity.research_question %}<h3>研究问题</h3><p>{{ entity.research_question }}</p>{% endif %}
+      {% if entity.method %}<h3>核心方法</h3><p>{{ entity.method }}</p>{% endif %}
+    {% when "Standard" %}
+      {% if entity.purpose %}<h3>目的</h3><p>{{ entity.purpose }}</p>{% endif %}
+      {% if entity.ecosystem_impact %}<h3>生态影响</h3><p>{{ entity.ecosystem_impact }}</p>{% endif %}
+    {% when "Pattern" %}
+      {% if entity.problem %}<h3>它解决的问题</h3><p>{{ entity.problem }}</p>{% endif %}
+      {% if entity.mechanism %}<h3>机制</h3><p>{{ entity.mechanism }}</p>{% endif %}
+    {% when "Trend" %}
+      {% if entity.thesis %}<h3>趋势判断</h3><p>{{ entity.thesis }}</p>{% endif %}
+    {% else %}
+      {% if entity.overview and entity.definition %}<h3>背景</h3><p>{{ entity.overview }}</p>{% endif %}
+    {% endcase %}
+    {% if entity.why_it_matters %}<h3>为什么值得关注</h3><p>{{ entity.why_it_matters }}</p>{% endif %}
   </article>
-  <aside class="entity-facts">
-    <div><span>Canonical ID</span><code>{{ entity.id }}</code></div>
-    <div><span>Type</span><strong>{{ entity.type }}</strong></div>
-    <div><span>Maturity</span><strong>{{ entity.maturity }}</strong></div>
-    <div><span>First seen</span><strong>{{ entity.first_seen }}</strong></div>
-    <div><span>Last verified</span><strong>{{ entity.last_verified }}</strong></div>
+  <aside class="entity-keyfacts">
+    <div class="eyebrow">AT A GLANCE</div>
+    <div id="entityFactSummary"></div>
+    <details>
+      <summary>Technical metadata</summary>
+      <div class="entity-facts compact">
+        <div><span>Canonical ID</span><code>{{ entity.id }}</code></div>
+        <div><span>Type</span><strong>{{ entity.type }}</strong></div>
+        <div><span>Maturity</span><strong>{{ entity.maturity }}</strong></div>
+        <div><span>First seen</span><strong>{{ entity.first_seen }}</strong></div>
+        <div><span>Last verified</span><strong>{{ entity.last_verified }}</strong></div>
+      </div>
+    </details>
   </aside>
 </section>
+
+{% if entity.key_capabilities or entity.core_mechanisms or entity.findings or entity.supporting_signals or entity.when_to_use %}
+<section class="entity-section">
+  <div class="section-head compact"><div><div class="eyebrow">CORE CONTENT</div><h2>{% case entity.type %}{% when "Project" %}核心能力{% when "Capability" %}核心机制{% when "Research" %}主要结论{% when "Trend" %}支持信号{% when "Pattern" %}适用场景{% when "Standard" %}关键机制{% else %}关键内容{% endcase %}</h2></div></div>
+  <div class="knowledge-bullet-grid">
+    {% assign items = entity.key_capabilities %}
+    {% if entity.type == "Capability" %}{% assign items = entity.core_mechanisms %}{% endif %}
+    {% if entity.type == "Research" %}{% assign items = entity.findings %}{% endif %}
+    {% if entity.type == "Trend" %}{% assign items = entity.supporting_signals %}{% endif %}
+    {% if entity.type == "Pattern" %}{% assign items = entity.when_to_use %}{% endif %}
+    {% if entity.type == "Standard" %}{% assign items = entity.core_mechanisms %}{% endif %}
+    {% for item in items %}
+      {% assign linked = site.data.kg.nodes | where: "id", item | first %}
+      {% if linked %}
+        <a class="knowledge-bullet linked" href="{{ linked.page | relative_url }}"><span>{{ linked.type }}</span><strong>{{ linked.label }}</strong><p>{{ linked.summary }}</p></a>
+      {% else %}
+        <div class="knowledge-bullet"><strong>{{ item }}</strong></div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if entity.limitations or entity.failure_modes or entity.counter_signals or entity.tradeoffs or entity.migration_notes %}
+<section class="entity-section caveat-section">
+  <div class="section-head compact"><div><div class="eyebrow">BOUNDARIES</div><h2>边界、限制与不确定性</h2></div></div>
+  <div class="caveat-grid">
+    {% assign caveats = entity.limitations %}
+    {% if entity.type == "Capability" %}{% assign caveats = entity.failure_modes %}{% endif %}
+    {% if entity.type == "Trend" %}{% assign caveats = entity.counter_signals %}{% endif %}
+    {% if entity.type == "Pattern" %}{% assign caveats = entity.tradeoffs %}{% endif %}
+    {% if entity.type == "Standard" and entity.migration_notes %}<div class="caveat"><p>{{ entity.migration_notes }}</p></div>{% endif %}
+    {% for item in caveats %}<div class="caveat"><p>{{ item }}</p></div>{% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if entity.engineering_takeaways or entity.engineering_considerations or entity.engineering_implications %}
+<section class="entity-section">
+  <div class="section-head compact"><div><div class="eyebrow">ENGINEERING</div><h2>对工程实践的启示</h2></div></div>
+  {% assign eng = entity.engineering_takeaways %}
+  {% if entity.type == "Capability" %}{% assign eng = entity.engineering_considerations %}{% endif %}
+  {% if entity.type == "Research" %}{% assign eng = entity.engineering_implications %}{% endif %}
+  <div class="engineering-list">{% for item in eng %}<div><span>{{ forloop.index }}</span><p>{{ item }}</p></div>{% endfor %}</div>
+</section>
+{% endif %}
+
+{% if entity.what_to_watch %}
+<section class="entity-section watch-section">
+  <div class="section-head compact"><div><div class="eyebrow">WHAT TO WATCH</div><h2>接下来观察什么</h2></div></div>
+  <div class="watch-list">{% for item in entity.what_to_watch %}<span>{{ item }}</span>{% endfor %}</div>
+  {% if entity.confidence_note %}<p class="confidence-note">{{ entity.confidence_note }}</p>{% endif %}
+</section>
+{% endif %}
 
 <section class="entity-section">
   <div class="section-head compact"><div><div class="eyebrow">LOCAL GRAPH</div><h2>它在知识图谱中的位置</h2></div><span>一阶关系</span></div>
@@ -51,33 +130,22 @@ layout: default
     <aside id="entityGraphDetail"><div class="eyebrow">RELATIONSHIPS</div><p>点击局部图中的其他节点，快速查看关系；主节点始终保持高亮。</p></aside>
   </div>
 </section>
-
 <section class="entity-section">
   <div class="section-head compact"><div><div class="eyebrow">ARCHITECTURE</div><h2>架构位置</h2></div><a href="{{ '/stack/' | relative_url }}">Open stack →</a></div>
   <div id="entityArchitecture" class="entity-architecture"></div>
 </section>
-
 <section class="entity-columns">
-  <div>
-    <div class="section-head compact"><div><div class="eyebrow">FACTS</div><h2>事实关系</h2></div></div>
-    <div id="entityFacts" class="entity-relations"></div>
-  </div>
-  <div>
-    <div class="section-head compact"><div><div class="eyebrow">ANALYSIS</div><h2>分析关系</h2></div></div>
-    <div id="entityAnalysis" class="entity-relations"></div>
-  </div>
+  <div><div class="section-head compact"><div><div class="eyebrow">FACTS</div><h2>事实关系</h2></div></div><div id="entityFacts" class="entity-relations"></div></div>
+  <div><div class="section-head compact"><div><div class="eyebrow">ANALYSIS</div><h2>分析关系</h2></div></div><div id="entityAnalysis" class="entity-relations"></div></div>
 </section>
-
 <section class="entity-section">
   <div class="section-head compact"><div><div class="eyebrow">EVOLUTION</div><h2>演化与时间锚点</h2></div><a href="{{ '/evolution/' | relative_url }}">Full timeline →</a></div>
   <div id="entityTimeline" class="entity-timeline"></div>
 </section>
-
-<section class="entity-section">
+<section class="entity-section" id="evidence">
   <div class="section-head compact"><div><div class="eyebrow">EVIDENCE</div><h2>一手证据</h2></div><span>外部链接只作为证据来源</span></div>
   <div id="entityEvidence" class="entity-evidence"></div>
 </section>
-
 <section class="entity-section entity-related-reports">
   <div class="section-head compact"><div><div class="eyebrow">DAILY BRIEFS</div><h2>相关日报</h2></div><a href="{{ '/archive/' | relative_url }}">All reports →</a></div>
   <div class="entity-report-list">
@@ -91,10 +159,9 @@ layout: default
   {% if report_count == 0 %}<div class="topic-empty">当前还没有正文直接提及该节点的日报；它可能来自图谱回填或主题综合。</div>{% endif %}
   </div>
 </section>
-
 <script id="entityNodeId" type="application/json">{{ entity.id | jsonify }}</script>
 <script id="entityNodes" type="application/json">{{ site.data.kg.nodes | jsonify }}</script>
 <script id="entityEdges" type="application/json">{{ site.data.kg.edges | jsonify }}</script>
 <script id="entityArchitectureData" type="application/json">{{ site.data.kg.architecture | jsonify }}</script>
 <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.3/dist/cytoscape.min.js"></script>
-<script src="{{ '/assets/js/entity.js' | relative_url }}?v=kg-v5"></script>
+<script src="{{ '/assets/js/entity.js' | relative_url }}?v=kg-v6"></script>
