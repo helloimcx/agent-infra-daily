@@ -2721,5 +2721,702 @@
         ]
       }
     ]
+  },
+  {
+    "entity": "event:docker-kit-v3",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "before",
+        "title": "事件之前：Agent 权限主要散落在运行参数和平台配置",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "在 Kit v3 之前，Dockerfile/OCI image 能稳定描述软件本身，但 network、credential、volume、tool、context 等“外部世界”通常分散在 CLI flags、Compose、CI config 或人工操作中。",
+          "对 Agent 来说，这些配置恰恰决定它能做什么，因此缺乏统一版本化会让权限变化难以审计。"
+        ]
+      },
+      {
+        "id": "change",
+        "title": "v3 的结构性变化：回归普通 OCI Image + Authority Descriptor",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "v3 不再要求特殊 artifact media type，而是让 descriptor 进入普通 OCI image annotation，内容仍放 layers。这样 registry、buildx、scan、sign、digest 都可直接复用。",
+          "同时 workload/mixin、provides/requires、capability versioning 和 conformance 让 Kit 从产品配置向规范靠近。"
+        ]
+      },
+      {
+        "id": "impact",
+        "title": "它改变的是 Agent Definition 的边界",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "Agent Definition 不再只是“运行哪段代码”，而开始包含“希望从宿主获得哪些 authority”。",
+          "这为 Portable Agent Authority、authority diff、跨 runtime conformance 等趋势提供了具体实现锚点。"
+        ]
+      },
+      {
+        "id": "next",
+        "title": "后续验证点",
+        "paragraphs": [
+          "最关键不是 Docker 自己继续实现多少 capability，而是是否出现第三方 conforming runtime、是否进入中立治理、capability types 是否跨平台保持一致。",
+          "如果没有这些，v3 仍可能只是优秀的 Docker 内部格式，而非行业标准。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "event:openshell-platform",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "context",
+        "title": "发布背景：Agent 越来越长时间自主运行，传统 Guardrail 不够",
+        "evidence": [
+          "source:nvidia-openshell"
+        ],
+        "paragraphs": [
+          "NVIDIA 把近期 Agent escape / drift 现象归因于工具、时间、含糊目标和持续尝试的组合，而不是某个单点模型能力。",
+          "因此安全问题被重新定义为基础设施问题：不能期待 Agent 永远自我约束。"
+        ]
+      },
+      {
+        "id": "announcement",
+        "title": "公告带来的新分层：OpenShell Runtime + Sentry Hardware",
+        "evidence": [
+          "source:nvidia-openshell"
+        ],
+        "paragraphs": [
+          "OpenShell 在软件层运行 sandbox 和 policy，Sentry/BlueField 在独立硬件观察与强制部分行为。Application、Runtime、Infrastructure 三层被显式提出。",
+          "这比“给 Agent 再加一个 safety prompt”更接近零信任系统设计。"
+        ]
+      },
+      {
+        "id": "impact",
+        "title": "它强化了 Out-of-band Enforcement 这一技术方向",
+        "evidence": [
+          "source:nvidia-openshell"
+        ],
+        "paragraphs": [
+          "Policy 需要可验证、执行必须位于 Agent 触达范围之外、模型路径可作为 control point，这些原则开始形成清晰体系。",
+          "知识图谱因此把 OpenShell 同 Policy Enforcement、Sandbox 和 Security Authority 直接连接。"
+        ]
+      },
+      {
+        "id": "watch",
+        "title": "后续要看的是开放性与生产复杂度",
+        "paragraphs": [
+          "如果 policy language、identity 和 tool mapping 能跨不同 Harness 使用，影响会超过 NVIDIA 硬件生态；如果强依赖特定平台，适用范围会更窄。",
+          "生产落地还要验证 false positive、延迟、policy authoring 和 incident workflow。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "event:arex2-paper",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "contribution",
+        "title": "论文把 Self-improvement 从一次 Reflection 推到长程迭代",
+        "evidence": [
+          "source:arex2"
+        ],
+        "paragraphs": [
+          "AREX-2 的关键贡献不是再证明“反思有用”，而是把 reflection 与 long-horizon execution 分开，并明确研究性能是否随着 iteration budget 继续增长。",
+          "这给 RSI 提供了更严格的评价维度：改进曲线而不只是最终一次结果。"
+        ]
+      },
+      {
+        "id": "evidence",
+        "title": "公开结果提供了跨任务迁移的初步证据",
+        "evidence": [
+          "source:arex2"
+        ],
+        "paragraphs": [
+          "基于 Qwen3.8-27B 的系统在 MLE-bench Lite、Frontier-CS 以及 BrowseComp、HLE、GAIA、DeepSearchQA 上给出具体结果。",
+          "这些数据支持 long-horizon reflective training 可以迁移，但不能证明开放世界 RSI 已经解决。"
+        ]
+      },
+      {
+        "id": "impact",
+        "title": "对知识库的影响：新增 Long-horizon Reflection 与 Harness RSI 证据",
+        "evidence": [
+          "source:arex2"
+        ],
+        "paragraphs": [
+          "论文让“更多轮数是否持续有效”成为可追踪技术问题，也强化了 Eval、State Preservation、Rollback 的重要性。",
+          "因此它不仅属于 Research，也直接影响 RSI Runtime/Experience 基础设施判断。"
+        ]
+      },
+      {
+        "id": "next",
+        "title": "后续最关键是复现与开放世界 Verifier",
+        "paragraphs": [
+          "如果代码/模型开放后能被独立团队复现，并在目标模糊的真实任务中保持随轮数提升，证据强度会显著增加。",
+          "反之，如果效果主要依赖可验证 benchmark，这条路线应更谨慎解释。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "event:mid-harness-paper",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "problem",
+        "title": "它把 Terminal Agent 的失败定位到 Action Boundary",
+        "evidence": [
+          "source:mid-harness"
+        ],
+        "paragraphs": [
+          "论文观察到模型可能能生成正确动作，却因为 top-1 随机性先执行一个错误命令，导致环境状态被污染。",
+          "因此改进点不一定是换更大 generator，而可以在执行前增加候选和 verification。"
+        ]
+      },
+      {
+        "id": "result",
+        "title": "50.00% → 68.03% 是一个有意义的 Harness 级信号",
+        "evidence": [
+          "source:mid-harness"
+        ],
+        "paragraphs": [
+          "TMAX-9B generator 配合 GPT-5.6 Sol verifier、8 action samples，在 TerminalBench-Lite 把 Pass@1 从 50.00% 提到 68.03%。",
+          "更重要的是弱 verifier 下多采样收益小，说明 selection quality 是核心变量。"
+        ]
+      },
+      {
+        "id": "impact",
+        "title": "论文让 Verifier 成为 Harness 的显式中间层",
+        "evidence": [
+          "source:mid-harness"
+        ],
+        "paragraphs": [
+          "传统 Harness 常把模型第一个 tool call 直接执行。Mid-Harness 提供了 generator → candidates → verifier → environment 的新结构。",
+          "这对高 side-effect coding、infra Agent 特别有启发。"
+        ]
+      },
+      {
+        "id": "boundary",
+        "title": "它不等于安全授权",
+        "paragraphs": [
+          "Verifier 目标是选更可能成功的动作，不负责代表组织 policy。",
+          "因此知识库把 Action Verification 与 Out-of-band Policy Enforcement 分成不同能力。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "event:restate-series-a",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "meaning",
+        "title": "融资事件本身不是技术证据，但反映 Durable Execution 的持续投入",
+        "evidence": [
+          "source:restate-series-a"
+        ],
+        "paragraphs": [
+          "Series A 不证明 Restate 的 runtime 一定优于竞争方案，但说明公司获得了继续构建 durable execution 产品、生态和商业团队的资本。",
+          "对基础设施项目，长期维护能力和集成生态往往决定技术是否进入生产。"
+        ]
+      },
+      {
+        "id": "market",
+        "title": "它把 Durable Execution 从框架特性推向独立基础设施类别",
+        "evidence": [
+          "source:restate-series-a",
+          "source:restate-durable"
+        ],
+        "paragraphs": [
+          "Restate 的叙事不是“一个 Agent SDK”，而是让 state、retry、timer、side effect recovery 变成后端通用 primitive。",
+          "融资强化了这种 category-building 尝试。"
+        ]
+      },
+      {
+        "id": "graph",
+        "title": "在知识图谱里的作用：组织层信号，而非 Capability Fact",
+        "paragraphs": [
+          "Durable Execution 的事实证据来自技术文档；融资公告主要支撑组织活跃度、投入和市场方向。",
+          "把两类 Source 分开可以避免用商业新闻证明底层语义。"
+        ]
+      },
+      {
+        "id": "watch",
+        "title": "后续看生产采用和生态，而不是下一轮融资",
+        "paragraphs": [
+          "最有价值的信号会是主流 Harness 原生集成、真实 Agent workload、规模数据与迁移案例。",
+          "如果这些没有增长，资本信号本身不足以证明 category 成立。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "event:agent-droplets-launch",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "launch",
+        "title": "发布把 Agent Runtime 明确包装成月度 Cloud SKU",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "paragraphs": [
+          "Agent Droplets 将 Harness Runtime、Inference、Memory、Session Storage、Action Gateway 和企业安全打进 Pro/Team 套餐。",
+          "这是云厂商首次非常明确地用“Agent 需要的一整套资源”作为购买单元之一。"
+        ]
+      },
+      {
+        "id": "technical",
+        "title": "发布中最值得关注的是 microVM resume 与 credential-brokered tools",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "paragraphs": [
+          "官方披露 dedicated microVM sandbox 秒级启动、约 300ms resume（自测），并由 Action Gateway 提供 16,000+ tools，凭据位于 Agent 外部。",
+          "这些细节表明产品并非纯计费包装，背后有独立 runtime 和 governance primitive。"
+        ]
+      },
+      {
+        "id": "economic",
+        "title": "它也提出了新的 Agent FinOps 叙事",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "paragraphs": [
+          "固定订阅提供折扣与 spending control，试图把 token、compute、storage、tool 等多单位成本变得可预测。",
+          "这成为 Agent Runtime as Cloud SKU 趋势的重要商业证据。"
+        ]
+      },
+      {
+        "id": "limit",
+        "title": "Public Preview 限制必须保留在事件解释中",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "paragraphs": [
+          "DigitalOcean 明确不保证 preview 达到生产级 workload 的表现。",
+          "因此这个发布证明产品方向已经出现，不证明底层所有能力已经成熟。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "event:daily-2026-10-03",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "transition",
+        "title": "这是知识库从“日报归档”切换到“长期知识模型”的内部事件",
+        "paragraphs": [
+          "在此之前，每天的 Agent Infra 信息主要以文章形式保存，时间序列清晰但跨日实体和关系无法稳定累积。",
+          "这次重构建立 canonical node、edge、delta、topic、architecture、claim 和 entity page，使同一个技术对象可以跨日报持续更新。"
+        ]
+      },
+      {
+        "id": "semantic",
+        "title": "关键变化是事实、分析和趋势开始分层",
+        "paragraphs": [
+          "Fact edge 需要 Source；Analysis/Trend 明确不是官方事实；Event 作为时间锚点；Claim 把具体判断直接绑定证据。",
+          "这避免知识库随着自动化运行逐渐把推断写成事实。"
+        ]
+      },
+      {
+        "id": "content",
+        "title": "Entity 从 metadata 页面继续升级为 authored 技术文章",
+        "paragraphs": [
+          "后续版本又引入类型 schema、Monograph、Design Space、Evidence Scope、Falsification 等内容层。",
+          "因此这个事件也是整个站从 visualization project 走向研究系统的起点。"
+        ]
+      },
+      {
+        "id": "future",
+        "title": "未来价值取决于长期维护质量而不是初始节点数量",
+        "paragraphs": [
+          "真正目标是同一 Entity 随新证据被修订、增加 claim、记录演化，并保持可追溯。",
+          "如果自动化只不断加节点而不更新旧知识，系统会重新退化成新闻索引。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:docker-kit",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "provenance",
+        "title": "来源性质：Docker 官方工程博客 + Sandbox Kit v3 规范入口",
+        "paragraphs": [
+          "这份材料由 Docker Senior Principal Software Engineer Christian Dupuis 撰写，并直接链接开源规范仓库，发布时间为 2026-09-24。",
+          "它既包含设计动机，也给出 capability、workload/mixin、conformance 等规范细节。"
+        ]
+      },
+      {
+        "id": "supports",
+        "title": "它可以直接支撑哪些事实",
+        "paragraphs": [
+          "可支撑 Kit v3 使用普通 OCI image、descriptor annotation、workload/mixin、provides/requires、network-policy、proxy-managed credential、authority diff、runtime conformance 等描述。",
+          "也明确说明 Kit 的 capability 是请求，真正执行由 conforming runtime 决定。"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "它不能单独证明什么",
+        "paragraphs": [
+          "这是 Docker 自己的设计说明，不能证明其他厂商会采用，也不能证明规范已经成为行业标准。",
+          "性能、安全强度和第三方互操作仍需要独立实现与评测证据。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:docker-cloud",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "provenance",
+        "title": "来源性质：Docker Cloud Sandboxes 官方使用文档",
+        "paragraphs": [
+          "该文档描述 sbx --cloud 的创建、attach、run、SSH、file transfer、ports、expiration、persistent volume、MCP 和已知限制。",
+          "它比发布博客更适合用于判断具体 runtime/lifecycle 语义。"
+        ]
+      },
+      {
+        "id": "supports",
+        "title": "可确认的关键行为",
+        "paragraphs": [
+          "Cloud operation 使用独立 cloud ID/name/resources/lifecycle；默认一小时 expiration；命名 sandbox 可复用；复用时创建参数不能覆盖；不接受本地 workspace path。",
+          "这些事实支撑“cloud 与 local 状态边界不同”“sandbox identity 绑定创建配置”等判断。"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "文档没有完整回答 Task-level Durability",
+        "paragraphs": [
+          "它描述 sandbox 的 stop/resume/persistent volume，但没有证明 Agent tool steps 有 journal、side-effect dedup 或 exactly-once。",
+          "因此不能用该文档把 Cloud Sandbox 直接等同 Durable Agent Runtime。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:docker-creds",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "provenance",
+        "title": "来源性质：Docker Cloud Agent Credential 官方文档",
+        "paragraphs": [
+          "文档专门描述 cloud secret store、local/cloud secret interface 区别、API key/OAuth、account/sandbox scope 和 filesystem 风险。",
+          "它是知识库判断 Credential Isolation 的主要一手依据之一。"
+        ]
+      },
+      {
+        "id": "supports",
+        "title": "它可以证明 Secret Store 位于 Sandbox Filesystem 之外",
+        "paragraphs": [
+          "官方明确说 sbx --cloud secret 中的 credentials 保持在 cloud secret store，不存入 sandbox filesystem；account scope 与 sandbox scope 有不同覆盖关系。",
+          "这支撑“凭据管理与 workspace 状态分离”的事实。"
+        ]
+      },
+      {
+        "id": "caveat",
+        "title": "它同时明确指出 Interactive Login 可能破坏隔离",
+        "paragraphs": [
+          "Agent 内交互登录可把 credential 写进 sandbox 文件，这些文件还可能被 template/snapshot 捕获。",
+          "因此知识库不会把“支持 cloud secret store”夸大成“所有凭据永远不可被 Agent 读取”。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:do-droplets",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "provenance",
+        "title": "来源性质：DigitalOcean 2026-10-01 官方产品公告",
+        "paragraphs": [
+          "这是投资者关系渠道发布的正式公告，包含 Agent Droplets 的产品组成、价格、资源和 preview 状态。",
+          "它偏产品发布，但给出了若干可量化 runtime 细节。"
+        ]
+      },
+      {
+        "id": "supports",
+        "title": "可直接支撑的架构事实",
+        "paragraphs": [
+          "Harness Runtime 使用 dedicated microVM sandboxes；官方测试约一秒启动、约 300ms pause resume；Action Gateway 提供 16,000+ tools 且 credentials brokered outside agent。",
+          "还明确列出 memory、session storage、inference、observability 和 enterprise security。"
+        ]
+      },
+      {
+        "id": "commercial",
+        "title": "可直接支撑的商业与成熟度信息",
+        "paragraphs": [
+          "Pro/Team 月费、15%/20% 资源折扣、spending controls、unlimited agents 等来自该来源。",
+          "同时它明确说明 Managed Agents/Agent Droplets 是 public preview，不保证 production-level workload。"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "不能把厂商发布中的性能值当作独立 Benchmark",
+        "paragraphs": [
+          "1s start、300ms resume 是 DigitalOcean 自测环境数字，缺少第三方测量条件。",
+          "知识库应把它标为 vendor-reported，而不是跨平台性能结论。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:restate-durable",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "provenance",
+        "title": "来源性质：Restate 官方 Durable Execution 技术指南",
+        "paragraphs": [
+          "这份指南专门解释 journaled steps、retry/idempotency、durable timers/signals、resumability，并比较传统 workflow 和 event-driven。",
+          "它是 Restate 自己对运行语义的权威描述。"
+        ]
+      },
+      {
+        "id": "supports",
+        "title": "最重要的可验证语义",
+        "paragraphs": [
+          "每个 external interaction 在结果被应用看到前记录到 persistent log；已完成 step 恢复时 replay 结果而非重新执行；等待可以跨进程重启；任意健康 worker 可恢复 in-flight execution。",
+          "这些内容直接支撑 Durable Execution 节点定义。"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "厂商文档不能替代独立性能和故障测试",
+        "paragraphs": [
+          "文档说明设计保证，但没有在此来源中提供百万级 Agent workload 的独立 benchmark、跨区域恢复数据或与 Temporal/DBOS 等公平对比。",
+          "因此性能/规模判断仍应保守。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:restate-series-a",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "provenance",
+        "title": "来源性质：Restate 官方融资公告",
+        "paragraphs": [
+          "该来源主要用于确认融资事件、公司战略和对 durable execution category 的公开定位。",
+          "它不是 runtime 语义的首选技术证据。"
+        ]
+      },
+      {
+        "id": "use",
+        "title": "适合支撑组织与市场信号",
+        "paragraphs": [
+          "可以用于 Event 时间线、组织活跃度、资金投入和 category-building 分析。",
+          "例如判断 Restate 是否有资源继续扩展产品和生态。"
+        ]
+      },
+      {
+        "id": "not-use",
+        "title": "不应拿它证明技术优越性",
+        "paragraphs": [
+          "融资规模、投资者观点不能证明 durability、性能或可靠性。",
+          "这些结论应回到技术文档、代码和独立生产案例。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openai-dots",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "provenance",
+        "title": "来源性质：OpenAI 官方 Dots 产品帮助文档",
+        "paragraphs": [
+          "该文档持续更新，当前明确说明 always-on agent、cloud computer、task activity、local computer、Codex cloud environment、connected apps、scheduled work、memory 和 custom rules。",
+          "它是目前理解 Dots 产品语义最完整的一手公开来源之一。"
+        ]
+      },
+      {
+        "id": "supports",
+        "title": "可以直接确认的产品行为",
+        "paragraphs": [
+          "Dot 可在 conversations 之间持续推进工作；每个 Dot 有自己的 cloud computer；可以后台研究、运行 scheduled task、主动查看 connected information 并形成 memory。",
+          "本地电脑默认关闭，用户授权后可访问文件和工作；Reset 会删除 Dot、conversation、saved memory、scheduled tasks。"
+        ]
+      },
+      {
+        "id": "authority",
+        "title": "它还提供了重要的权限模型证据",
+        "paragraphs": [
+          "Custom rules 支持 without asking、pre-approved、ask before action、hand off；本地电脑可以显式 Allow/Revoke。",
+          "这些事实支撑长期 Agent 需要 action-level policy 和可撤销 device capability 的判断。"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "公开文档没有披露底层 Runtime 保证",
+        "paragraphs": [
+          "它没有说明 journal、task crash recovery、workspace snapshot、worker migration 或 side-effect idempotency。",
+          "因此任何关于 Dots 使用何种 durable architecture 的内容必须标为 analysis。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:nvidia-openshell",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "provenance",
+        "title": "来源性质：NVIDIA Open Agent Safety Platform 官方技术博客",
+        "paragraphs": [
+          "文章介绍 OpenShell、Sentry/BlueField、三层 platform architecture、五项安全原则和 drift 观察。",
+          "它是 OpenShell 架构与 NVIDIA safety thesis 的主要一手来源。"
+        ]
+      },
+      {
+        "id": "supports",
+        "title": "可直接确认的核心设计",
+        "paragraphs": [
+          "OpenShell 是 Apache 2.0 开源 secure runtime，提供 kernel-level isolation；policy 需要可验证、enforcement out-of-band；Runtime 管理 sandbox/policy；Sentry 在独立硬件监控。",
+          "还明确列出文件、网络、工具、进程和 credential 作为 policy surface。"
+        ]
+      },
+      {
+        "id": "analysis",
+        "title": "哪些部分属于我们的进一步抽象",
+        "paragraphs": [
+          "把 OpenShell 视为“Agent Safety Control Plane”、把其模式推广到所有 Cloud Agent，是知识库的架构分析，不是 NVIDIA 官方标准术语。",
+          "同样，硬件 enforcement 是否成为行业主流还没有足够证据。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:mcp-2026-sdk",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "provenance",
+        "title": "来源性质：MCP 官方 2026-07-28 RC/SDK Beta 公告",
+        "paragraphs": [
+          "文章同时讨论 protocol release candidate 与 Python/TypeScript/Go/C# SDK beta，并反复强调 SDK major version 与 wire protocol revision 是不同升级轴。",
+          "因此特别适合核对版本迁移语义。"
+        ]
+      },
+      {
+        "id": "supports",
+        "title": "可确认的协议变化",
+        "paragraphs": [
+          "Stateless core、server/discover、MRTR、Mcp-Method/Mcp-Name headers、authorization hardening、standard error codes、deprecation annotations 均在官方列表中。",
+          "文档还说明新旧 protocol revision 的 fallback/双栈行为。"
+        ]
+      },
+      {
+        "id": "operational",
+        "title": "它能支撑 Gateway 与水平扩展分析，但不是完整规范全文",
+        "paragraphs": [
+          "Header routing、任意 server instance 处理 request 明确有利于负载均衡与 gateway。",
+          "但精确字段/语义仍应在正式 spec 锁定后再以规范文本为最终依据。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:mid-harness",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "provenance",
+        "title": "来源性质：2026-09-30 arXiv v1 论文",
+        "paragraphs": [
+          "论文标题为 Mid-Harness: Scaling Actions Between Model and Harness for Terminal Agents，公开了方法、TerminalBench-Lite 等实验和具体 Pass@1 数字。",
+          "它是 Action Verification / action-level test-time scaling 的主要原始研究证据。"
+        ]
+      },
+      {
+        "id": "supports",
+        "title": "关键可量化结论",
+        "paragraphs": [
+          "TMAX-9B base Agent Pass@1 50.00%；8 sampled actions + GPT-5.6 Sol verifier 达 68.03%；弱 verifier 下多采样收益小；pairwise verification 在同模型 verifier 设置表现最好。",
+          "这些数字应保留实验设置，不能脱离 generator/verifier/benchmark 单独引用。"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "研究范围主要是 Terminal Agent",
+        "paragraphs": [
+          "虽然论文还跨模型、benchmark、harness 验证，但它仍不能直接证明 GUI、文档写作或任意 API Agent 都有同样 action-scaling 收益。",
+          "知识库的通用 Verifier Layer 是工程抽象。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:arex2",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "provenance",
+        "title": "来源性质：2026-09-29 arXiv v1 论文",
+        "paragraphs": [
+          "AREX-2 明确定义 self-improvement 为 test-time iterative refinement，并拆解 reflection 与 long-horizon execution。",
+          "论文使用 Qwen3.8-27B 并提供多个 benchmark 结果。"
+        ]
+      },
+      {
+        "id": "supports",
+        "title": "关键报告结果",
+        "paragraphs": [
+          "MLE-bench Lite 81.8、Frontier-CS 70.7、BrowseComp 84.0、HLE 52.6、GAIA 92.2、DeepSearchQA 93.8，作者还报告性能随 rounds budget 增长继续提升。",
+          "这些值是论文作者报告，应按对应模型和实验设置理解。"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "它不能证明通用 Recursive Self-improvement 已解决",
+        "paragraphs": [
+          "训练数据来自具有可验证反馈的 ML 和算法任务；向开放任务迁移虽有结果，但 evaluator reliability、长期安全和真实生产成本仍未解决。",
+          "知识库因此把其视为 RSI 重要研究信号，而非成熟工程能力。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:sift",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "provenance",
+        "title": "来源性质：2026-09-17 arXiv v1 论文",
+        "paragraphs": [
+          "SIFT 聚焦 coding Agent 的 recursive self-modification 与评测成本，核心是 pairwise LLM judge、regularized Bradley-Terry 和 disaggregated tree search。",
+          "它主要提供 selective evaluation / eval scheduling 方向的原始证据。"
+        ]
+      },
+      {
+        "id": "supports",
+        "title": "论文直接支持的结论",
+        "paragraphs": [
+          "作者识别 candidate evaluation 为主要 runtime bottleneck；cheap judge signal 用于指导搜索；昂贵 downstream task evaluation 只给最有希望节点；在 Polyglot benchmark 上优于已有 tree-search self-evolution framework 且资源消耗更低。",
+          "这些结论适用于论文设置，不代表所有 RSI workload。"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "Judge Bias 与 Benchmark Overfitting 仍是开放问题",
+        "paragraphs": [
+          "论文证明了资源效率路径，但 LLM judge 是否和真实生产目标一致、是否存在 reward hacking，需要额外 holdout 和独立评测。",
+          "因此知识库把 Eval Scheduler 视为基础设施机会，而不把 judge 视为最终真值。"
+        ]
+      }
+    ]
   }
 ]
