@@ -215,7 +215,29 @@
     ],
     "intro": "Durable Execution 是长时间运行 Agent 的“可靠执行底座”：任务可以经历进程崩溃、机器替换、部署重启或长时间等待，而不必从头再来。它关注的不是保存一份对话，而是让整个执行历史、已完成结果和外部副作用都具备可恢复语义。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "design_space": [
+      {
+        "approach": "Long-lived worker",
+        "strength": "实现最简单，状态天然在进程内",
+        "tradeoff": "进程故障即丢失执行上下文，扩缩容与迁移困难"
+      },
+      {
+        "approach": "Checkpoint / snapshot",
+        "strength": "可以恢复粗粒度状态",
+        "tradeoff": "恢复后可能重复模型调用或外部副作用"
+      },
+      {
+        "approach": "Workflow step retry",
+        "strength": "步骤级重试成熟，适合显式工作流",
+        "tradeoff": "开发者仍要处理幂等与复杂 side effect"
+      },
+      {
+        "approach": "Execution journal / durable functions",
+        "strength": "细粒度恢复并复用已完成结果",
+        "tradeoff": "需要接受 replay / journal 语义与更强 runtime 约束"
+      }
+    ]
   },
   {
     "id": "cap:persistent-workspace",
@@ -257,7 +279,29 @@
     ],
     "intro": "Persistent Workspace 是 Agent 的长期工作目录与环境，而不是某个 worker 的临时磁盘。代码、文件、依赖、缓存和任务中间产物可以跨会话保留，让 Agent 能在几小时甚至几天后继续处理同一项工作。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "design_space": [
+      {
+        "approach": "Ephemeral sandbox",
+        "strength": "干净、便宜、容易回收",
+        "tradeoff": "每次任务都要重新准备环境，无法积累工作现场"
+      },
+      {
+        "approach": "Persistent volume",
+        "strength": "文件可以跨任务保留",
+        "tradeoff": "进程、依赖与环境状态未必可复现"
+      },
+      {
+        "approach": "Snapshot / restore workspace",
+        "strength": "可在持久与弹性之间折中",
+        "tradeoff": "snapshot 一致性、版本兼容和恢复时间需要治理"
+      },
+      {
+        "approach": "Long-lived cloud computer",
+        "strength": "最接近连续工作的个人电脑体验",
+        "tradeoff": "资源成本、安全边界和环境漂移最大"
+      }
+    ]
   },
   {
     "id": "cap:cloud-computer",
@@ -295,7 +339,24 @@
     ],
     "intro": "Cloud Computer 把一台可操作的远程计算环境直接交给 Agent 使用，使它不局限于调用 API，而可以浏览网页、处理文件、运行应用并持续完成多步骤任务。它更像 Agent 的“远程办公电脑”，而不是一次性的函数执行器。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "design_space": [
+      {
+        "approach": "Remote browser",
+        "strength": "适合网页任务，安全面较小",
+        "tradeoff": "无法覆盖本地应用、任意代码和完整文件工作流"
+      },
+      {
+        "approach": "Ephemeral full sandbox",
+        "strength": "可执行任意工具，隔离清晰",
+        "tradeoff": "任务结束后环境消失，持续职责体验较弱"
+      },
+      {
+        "approach": "Persistent cloud computer",
+        "strength": "支持跨会话持续工作与应用状态",
+        "tradeoff": "权限、成本、清理和恢复语义更复杂"
+      }
+    ]
   },
   {
     "id": "cap:agent-artifact",
@@ -335,7 +396,24 @@
     ],
     "intro": "Portable Agent Artifact 试图把一个 Agent 的可部署定义封装成可版本化、可分发的制品：不仅包含代码和依赖，还描述工具、挂载、网络、凭据以及其他运行需求。它让 Agent 从“某个平台里的配置”向“可以被不同 runtime 接收的制品”演进。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "design_space": [
+      {
+        "approach": "Platform-specific config",
+        "strength": "实现快，可充分利用平台特性",
+        "tradeoff": "迁移成本高，难以跨 runtime 审计与复现"
+      },
+      {
+        "approach": "Container image only",
+        "strength": "代码和依赖可移植",
+        "tradeoff": "工具、权限、mount、credential 仍在外部配置"
+      },
+      {
+        "approach": "Agent artifact + capability declaration",
+        "strength": "把 workload 与运行需求一起版本化",
+        "tradeoff": "需要 runtime 共同理解并安全解释权限语义"
+      }
+    ]
   },
   {
     "id": "cap:network-policy",
@@ -373,7 +451,24 @@
     ],
     "intro": "Network Policy 是 Agent 执行环境的出站网络边界，用来精确控制它能访问哪些域名、IP、端口或服务。相比“允许联网/禁止联网”这种二元开关，它把网络访问变成可声明、可审计的 capability。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "design_space": [
+      {
+        "approach": "Unrestricted egress",
+        "strength": "兼容性最好",
+        "tradeoff": "数据外泄和供应链风险最大"
+      },
+      {
+        "approach": "Proxy / domain allowlist",
+        "strength": "容易落地并集中审计",
+        "tradeoff": "重定向、DNS、动态 API 与非 HTTP 流量会增加复杂度"
+      },
+      {
+        "approach": "Runtime-enforced capability policy",
+        "strength": "策略靠近真实执行边界，可按 Agent/Task 强制",
+        "tradeoff": "需要更完整的身份、策略和网络控制面"
+      }
+    ]
   },
   {
     "id": "cap:credential-isolation",
@@ -414,7 +509,29 @@
     ],
     "intro": "Credential Isolation 的核心目标是让 Agent 可以完成需要身份凭据的操作，却不必直接接触原始 secret。平台通过短期 token、代理签名或 credential broker 将“使用权限”和“读取凭据”拆成两件事。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "design_space": [
+      {
+        "approach": "Environment variables",
+        "strength": "工具兼容性最好",
+        "tradeoff": "Agent 和进程通常可以直接读取原始 secret"
+      },
+      {
+        "approach": "Mounted secret files",
+        "strength": "便于轮换和权限控制",
+        "tradeoff": "仍可能被 Agent 读取、复制进日志或 workspace"
+      },
+      {
+        "approach": "Short-lived injection",
+        "strength": "降低长期泄露窗口",
+        "tradeoff": "需要身份与 token lifecycle 基础设施"
+      },
+      {
+        "approach": "Credential broker / proxy",
+        "strength": "Agent 可用权限但不必看到 secret",
+        "tradeoff": "引入高价值中间层和额外网络依赖"
+      }
+    ]
   },
   {
     "id": "cap:policy-enforcement",
@@ -452,7 +569,24 @@
     ],
     "intro": "Out-of-band Policy Enforcement 把安全控制放在 Agent 自身控制范围之外。Agent 可以提出动作请求，但是否允许访问网络、文件、凭据或执行高风险操作，由独立 enforcement 层最终决定。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "design_space": [
+      {
+        "approach": "System prompt rule",
+        "strength": "零基础设施成本",
+        "tradeoff": "不是安全边界，容易受 prompt injection 和模型错误影响"
+      },
+      {
+        "approach": "Harness hook / tool middleware",
+        "strength": "实现灵活，容易与业务逻辑结合",
+        "tradeoff": "若 Harness 可被 Agent 修改或绕过，约束仍不可靠"
+      },
+      {
+        "approach": "Out-of-band runtime enforcement",
+        "strength": "Agent 无法自行关闭，最接近真正安全边界",
+        "tradeoff": "需要统一 capability model 和独立 policy control plane"
+      }
+    ]
   },
   {
     "id": "cap:action-verification",
@@ -492,7 +626,29 @@
     ],
     "intro": "Action Verification 在“模型给出动作”和“环境真正被改变”之间增加一道判断。它可以比较多个候选命令、检查风险和前置条件，必要时把高风险操作升级给更强 verifier 或人工确认。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "design_space": [
+      {
+        "approach": "Execute first action",
+        "strength": "最低延迟和成本",
+        "tradeoff": "错误动作直接污染环境"
+      },
+      {
+        "approach": "Single verifier pass",
+        "strength": "成本适中，可拦截明显错误",
+        "tradeoff": "主模型与 verifier 可能共享盲点"
+      },
+      {
+        "approach": "Multi-candidate + verifier",
+        "strength": "利用 test-time compute 提高动作质量",
+        "tradeoff": "token 与延迟明显增加"
+      },
+      {
+        "approach": "Verifier + HITL for high risk",
+        "strength": "适合不可逆或高权限操作",
+        "tradeoff": "降低自治程度并引入等待"
+      }
+    ]
   },
   {
     "id": "cap:eval-scheduling",
@@ -531,7 +687,29 @@
     ],
     "intro": "Selective Eval Scheduling 是 Agent 自我改进系统里的“评测调度器”：大量候选修改先经过便宜的筛选，只有最值得验证的少数方案才运行昂贵 benchmark。它把评价预算本身当成需要优化的资源。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "design_space": [
+      {
+        "approach": "Full benchmark for every candidate",
+        "strength": "结果最直接",
+        "tradeoff": "计算、API 和 wall-clock 成本随搜索迅速爆炸"
+      },
+      {
+        "approach": "Heuristic prefilter",
+        "strength": "便宜且透明",
+        "tradeoff": "容易错过非显然但高价值候选"
+      },
+      {
+        "approach": "LLM judge / pairwise ranking",
+        "strength": "能处理复杂质量差异",
+        "tradeoff": "judge 偏差可能把搜索引向错误方向"
+      },
+      {
+        "approach": "Staged scheduler",
+        "strength": "cheap eval → selective expensive eval，成本可控",
+        "tradeoff": "调度策略本身需要校准和回归评估"
+      }
+    ]
   },
   {
     "id": "cap:long-horizon-reflection",
@@ -568,7 +746,24 @@
     ],
     "intro": "Long-horizon Reflection 不是让 Agent 简单地“再想一次”，而是让它在多轮改进中保留有效成果、识别剩余缺陷并继续优化。关键问题是如何让更多 iteration budget 真正转化为更好的结果，而不是循环、漂移或退化。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "design_space": [
+      {
+        "approach": "One-shot critique",
+        "strength": "简单且成本低",
+        "tradeoff": "只能修正显眼错误，无法持续优化复杂方案"
+      },
+      {
+        "approach": "Fixed N-round revision",
+        "strength": "容易实现多轮改进",
+        "tradeoff": "可能循环、漂移或在后期退化"
+      },
+      {
+        "approach": "Verifier-driven long horizon",
+        "strength": "根据外部评价决定改进方向与停止条件",
+        "tradeoff": "高度依赖 verifier / reward 的质量"
+      }
+    ]
   },
   {
     "id": "cap:execution-trace",
@@ -608,7 +803,29 @@
     ],
     "intro": "Execution Trace & Replay 把 Agent 的每一步模型调用、工具执行、状态变化、错误和重试保存成结构化轨迹。它不仅告诉开发者“发生了什么”，还要支持重建“为什么会走到这里”以及同一任务能否重新验证。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "design_space": [
+      {
+        "approach": "Plain application logs",
+        "strength": "接入成本低",
+        "tradeoff": "缺少任务、工具和状态之间的结构化关联"
+      },
+      {
+        "approach": "Distributed tracing spans",
+        "strength": "适合性能和跨服务调用分析",
+        "tradeoff": "通常不能完整表达 Agent 决策与 workspace 状态"
+      },
+      {
+        "approach": "Structured Agent trajectory",
+        "strength": "可支持 eval、debug、skill mining",
+        "tradeoff": "数据量大，隐私与 schema 演进复杂"
+      },
+      {
+        "approach": "Replayable execution journal",
+        "strength": "同时服务观测与故障恢复",
+        "tradeoff": "对 side effect 和确定性语义要求最高"
+      }
+    ]
   },
   {
     "id": "cap:stateless-tool-protocol",
@@ -645,7 +862,24 @@
     ],
     "intro": "Stateless Tool Protocol 把工具协议从依赖长期会话的连接模型，改造成每个请求都尽量携带完成路由和处理所需的信息。业务任务可以有状态，但协议层不再强迫基础设施维持 sticky session。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "design_space": [
+      {
+        "approach": "Sticky session",
+        "strength": "实现直观，服务端可保留丰富会话状态",
+        "tradeoff": "扩容、故障迁移和负载均衡复杂"
+      },
+      {
+        "approach": "Shared session store",
+        "strength": "减少单实例粘性",
+        "tradeoff": "增加一致性、延迟和共享状态基础设施"
+      },
+      {
+        "approach": "Stateless protocol core",
+        "strength": "更适合普通 LB、缓存和水平扩展",
+        "tradeoff": "业务状态、认证和长任务 correlation 必须显式外置"
+      }
+    ]
   },
   {
     "id": "project:docker-sandbox-kit",
@@ -690,7 +924,15 @@
     ],
     "intro": "Docker Sandbox Kit 是 Docker 面向 Agent 执行环境提出的可分发规范：用 OCI artifact 描述 workload、工具、挂载、网络、credential 与 capability 等运行需求。它想解决的不只是“怎样启动一个 sandbox”，而是“怎样把 Agent 的执行需求打成一个可版本化制品”。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "architecture_flow": [
+      "OCI Agent Artifact",
+      "Runtime 解析 Kit",
+      "解析 workload / grants",
+      "创建 Sandbox",
+      "注入网络与凭据策略",
+      "执行并产出 artifacts"
+    ]
   },
   {
     "id": "project:docker-cloud-sandboxes",
@@ -734,7 +976,15 @@
     ],
     "intro": "Docker Cloud Sandboxes 是 Docker 托管的远程 Agent 执行环境，使用与本地 sandbox 相近的操作入口，但计算、生命周期、网络和云凭据由云端管理。它适合把本地 coding-agent 工作流迁移到持续可用的远程执行面。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "architecture_flow": [
+      "sbx / Agent 请求",
+      "Docker Cloud Control Plane",
+      "远程 Sandbox",
+      "Cloud Network / Credentials",
+      "Workspace 与任务执行",
+      "Expiration / Resume"
+    ]
   },
   {
     "id": "project:digitalocean-agent-droplets",
@@ -775,7 +1025,15 @@
     ],
     "intro": "DigitalOcean Agent Droplets 把 Agent 运行需要的计算、推理、工具、memory 和 storage 作为一个云产品打包交付。它代表云厂商开始把 Agent Runtime 当成独立资源形态，而不是普通 VM 上的一套应用代码。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "architecture_flow": [
+      "Agent 配置",
+      "Managed Agent Runtime",
+      "Inference + Tools",
+      "Memory + Storage",
+      "持续任务执行",
+      "按 Agent workload 计量"
+    ]
   },
   {
     "id": "project:restate",
@@ -817,7 +1075,16 @@
     ],
     "intro": "Restate 是以 durable execution 为核心的运行时基础设施，通过持久执行日志让服务和 Agent 在 worker 重启后继续从已完成的位置运行。它把幂等、状态、长等待和恢复机制整合进普通服务调用模型。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "architecture_flow": [
+      "Agent / Harness",
+      "Durable Function",
+      "Execution Journal",
+      "LLM / Tool / Wait",
+      "故障或重启",
+      "新 Worker Replay",
+      "从已完成位置继续"
+    ]
   },
   {
     "id": "project:openai-dots",
@@ -861,7 +1128,15 @@
     ],
     "intro": "OpenAI Dots 是一种面向持续职责的 always-on Agent 产品形态。每个 Dot 拥有自己的 cloud computer，并可以在用户离开后继续推进任务、连接应用和维护长期工作上下文。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "architecture_flow": [
+      "触发 / 定时任务",
+      "Dot 身份与长期上下文",
+      "Cloud Computer",
+      "Apps / Browser / 可选本地电脑",
+      "任务结果与记忆",
+      "后续会话继续"
+    ]
   },
   {
     "id": "project:nvidia-openshell",
@@ -902,7 +1177,15 @@
     ],
     "intro": "NVIDIA OpenShell 是 Open Agent Safety Platform 中的安全运行边界，强调把 Agent 的权限与 policy enforcement 放在 Harness 之外。它不是单纯的 sandbox，而是在执行环境之外再建立一个 Agent 无法自行关闭的控制面。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "architecture_flow": [
+      "Agent / Harness 动作请求",
+      "OpenShell Policy Boundary",
+      "Capability / Policy Check",
+      "允许的执行与网络访问",
+      "结果返回 Agent",
+      "审计与策略记录"
+    ]
   },
   {
     "id": "standard:mcp",
@@ -1012,7 +1295,12 @@
     ],
     "intro": "Mid-Harness 研究的是 Agent 动作真正落地前的 test-time scaling：不是让模型只生成一个 shell 动作立即执行，而是产生多个候选，再由 verifier 选择更合适的动作进入环境。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "evidence_scope": {
+      "evaluated_on": "论文聚焦 terminal / coding 类环境中的 action-level decision，而不是所有 Agent 任务。",
+      "shows": "多候选 action + 强 verifier 可以在真实动作落地前提高选择质量，且 verifier strength 是关键变量。",
+      "does_not_show": "不能据此推断所有工具调用都应该多采样，也不能证明额外 test-time compute 在所有成本约束下都划算。"
+    }
   },
   {
     "id": "research:arex-2",
@@ -1052,7 +1340,12 @@
     ],
     "intro": "AREX-2 聚焦长程 self-improvement：让 Agent 在多轮迭代里持续反思、修正并保留有效成果，而不是只执行一次 critique-and-retry。研究试图让更大的 iteration budget 能稳定换来更高任务表现。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "evidence_scope": {
+      "evaluated_on": "研究主要在具有明确 verifier / reward 的算法、机器学习和可评估任务上观察长程改进。",
+      "shows": "Agent 可以学习跨多轮保留有效进展，并让更大的 iteration budget 继续转化为任务性能提升。",
+      "does_not_show": "这并不等于开放世界通用 RSI 已解决；缺乏可靠评价信号的真实任务仍是主要难点。"
+    }
   },
   {
     "id": "research:sift",
@@ -1093,7 +1386,12 @@
     ],
     "intro": "SIFT 研究如何降低 Agent 自我修改时最昂贵的部分——评估候选方案。它利用便宜的 pairwise judge 为大量候选排序，再只对最有希望的修改执行昂贵 downstream benchmark。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "evidence_scope": {
+      "evaluated_on": "研究围绕 coding-agent 自我修改搜索与候选评测成本展开。",
+      "shows": "pairwise judge、Bradley-Terry 聚合与 selective expensive evaluation 可以降低搜索过程中的评测开销。",
+      "does_not_show": "不能证明 judge 分数天然等价于真实生产质量，也不能排除对特定 benchmark 的过拟合。"
+    }
   },
   {
     "id": "org:docker",
@@ -1343,7 +1641,12 @@
     "confidence_note": "当前属于中等置信度趋势判断：产品与规范信号明确，但距离行业标准仍有较大不确定性。",
     "intro": "Portable Agent Authority 是一个正在形成的架构趋势：Agent 的可部署定义不再只描述代码和依赖，而开始同时声明它希望获得的网络、凭据、挂载和其他 capability。定义变得更完整，但真正授权仍应由 runtime 决定。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "falsification_conditions": [
+      "主流 Agent runtime 长期坚持完全私有的权限模型，跨 runtime artifact 没有采用",
+      "OCI 只被用作代码分发，network / credential / capability 声明没有形成共同语义",
+      "最终授权仍普遍与 Agent artifact 强绑定，无法实现 Definition 与 Runtime policy 分离"
+    ]
   },
   {
     "id": "trend:agent-runtime-cloud-sku",
@@ -1377,7 +1680,12 @@
     "confidence_note": "属于较强产业信号，但产品形态仍处于早期分化期。",
     "intro": "Agent Runtime as Cloud SKU 描述的是一种产品化趋势：云厂商开始把执行环境、模型推理、工具、memory 和 storage 组合成专门面向 Agent 的托管资源，而不是要求用户自己在 VM 或容器上搭建完整栈。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "falsification_conditions": [
+      "Agent 专用云 SKU 长期采用率低，用户仍主要用普通 VM / container / serverless 自行组装",
+      "agent-hour 等专用计费无法建立稳定经济模型",
+      "托管 Agent runtime 无法兼容第三方 Harness，最终退化成少数封闭应用功能"
+    ]
   },
   {
     "id": "trend:harness-rsi",
@@ -1413,7 +1721,12 @@
     "confidence_note": "这是工程可行性很强的趋势判断，但需要严格 eval 和回滚才能进入生产。",
     "intro": "Harness-level RSI 指把 Agent 的自我改进重点放在可观察、可验证的控制层：自动调整 prompt、工具策略、skills、subagent 拓扑、搜索方法和 eval 策略，而不是直接让系统修改模型权重。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "falsification_conditions": [
+      "Harness 自动优化的收益无法在独立 holdout 任务上复现",
+      "回归、安全和评测成本长期高于自动改进收益",
+      "主要能力提升持续来自模型升级，而 Harness 自改只产生边际收益"
+    ]
   },
   {
     "id": "trend:persistent-agent-runtime",
@@ -1448,7 +1761,12 @@
     "confidence_note": "当前属于高价值、较高置信度的架构方向，但具体实现仍明显分化。",
     "intro": "Persistent Agent Runtime 是从短生命周期任务向长期 Agent 服务演进的架构方向：Agent 身份和工作状态长期存在，但实际执行 worker 可以按需创建、替换和销毁。Workspace、durable state 与 memory 被逐渐拆成独立资源。",
     "content_mode": "authored",
-    "content_version": "v7"
+    "content_version": "v7",
+    "falsification_conditions": [
+      "长期 Agent 最终仍主要依赖长时间存活的单进程/单 sandbox，而不是可替换 worker",
+      "Workspace、Task State 与 Memory 无法形成清晰独立资源边界",
+      "跨 worker resume、迁移和恢复在真实产品中没有明显价值"
+    ]
   },
   {
     "id": "event:docker-kit-v3",

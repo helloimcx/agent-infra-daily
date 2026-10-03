@@ -58,6 +58,35 @@ layout: default
       {% endcase %}
     </section>
 
+    {% if entity.architecture_flow %}
+    <section id="flow" class="article-section">
+      <div class="article-label">03 · EXECUTION FLOW</div>
+      <h2>运行链路</h2>
+      <div class="architecture-flow">{% for step in entity.architecture_flow %}<div><span>{{ forloop.index }}</span><strong>{{ step }}</strong></div>{% endfor %}</div>
+    </section>
+    {% endif %}
+    {% if entity.design_space %}
+    <section id="design-space" class="article-section">
+      <div class="article-label">03 · DESIGN SPACE</div>
+      <h2>设计空间与取舍</h2>
+      <div class="design-space-table">
+        {% for option in entity.design_space %}
+        <div class="design-space-row"><strong>{{ option.approach }}</strong><p>{{ option.strength }}</p><p>{{ option.tradeoff }}</p></div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+    {% if entity.evidence_scope %}
+    <section id="evidence-scope" class="article-section">
+      <div class="article-label">03 · EVIDENCE SCOPE</div>
+      <h2>这项研究真正证明了什么</h2>
+      <div class="evidence-scope-grid">
+        <div><span>Evaluated on</span><p>{{ entity.evidence_scope.evaluated_on }}</p></div>
+        <div><span>What it shows</span><p>{{ entity.evidence_scope.shows }}</p></div>
+        <div><span>What it does not show</span><p>{{ entity.evidence_scope.does_not_show }}</p></div>
+      </div>
+    </section>
+    {% endif %}
     {% if entity.key_capabilities or entity.core_mechanisms or entity.findings or entity.supporting_signals or entity.when_to_use %}
     <section id="core" class="article-section">
       <div class="article-label">03 · CORE</div>
@@ -148,6 +177,9 @@ layout: default
       <h2>接下来观察什么</h2>
       <ul>{% for item in entity.what_to_watch %}<li>{{ item }}</li>{% endfor %}</ul>
       {% if entity.confidence_note %}<p class="confidence-note">{{ entity.confidence_note }}</p>{% endif %}
+      {% if entity.falsification_conditions %}
+      <div class="falsification-box"><strong>什么情况会推翻这个判断？</strong><ul>{% for item in entity.falsification_conditions %}<li>{{ item }}</li>{% endfor %}</ul></div>
+      {% endif %}
     </section>
     {% endif %}
 
@@ -180,6 +212,9 @@ layout: default
       <div class="toc-title">ON THIS PAGE</div>
       <a href="#overview">Overview</a>
       <a href="#technical">Technical model</a>
+      {% if entity.architecture_flow %}<a href="#flow">Execution flow</a>{% endif %}
+      {% if entity.design_space %}<a href="#design-space">Design space</a>{% endif %}
+      {% if entity.evidence_scope %}<a href="#evidence-scope">Evidence scope</a>{% endif %}
       {% if entity.key_capabilities or entity.core_mechanisms or entity.findings or entity.supporting_signals or entity.when_to_use %}<a href="#core">Core</a>{% endif %}
       {% if entity_claims.size > 0 %}<a href="#claims">Claims</a>{% endif %}
       {% if entity.limitations or entity.failure_modes or entity.counter_signals or entity.tradeoffs or entity.migration_notes %}<a href="#boundaries">Boundaries</a>{% endif %}

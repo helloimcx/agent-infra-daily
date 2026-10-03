@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.1.0",
+  "schema_version": "2.2.0",
   "purpose": "Type-specific content schema for first-party entity knowledge pages.",
   "common": [
     "summary",
@@ -22,7 +22,8 @@
       "limitations",
       "maturity_notes",
       "engineering_takeaways",
-      "what_to_watch"
+      "what_to_watch",
+      "architecture_flow"
     ],
     "Capability": [
       "definition",
@@ -30,7 +31,8 @@
       "core_mechanisms",
       "representative_implementations",
       "engineering_considerations",
-      "failure_modes"
+      "failure_modes",
+      "design_space"
     ],
     "Research": [
       "research_question",
@@ -38,7 +40,8 @@
       "findings",
       "limitations",
       "engineering_implications",
-      "what_to_watch"
+      "what_to_watch",
+      "evidence_scope"
     ],
     "Standard": [
       "purpose",
@@ -59,7 +62,8 @@
       "supporting_signals",
       "counter_signals",
       "what_to_watch",
-      "confidence_note"
+      "confidence_note",
+      "falsification_conditions"
     ]
   },
   "authoring_rules": [
