@@ -1,0 +1,8 @@
+title: Agent Infra Daily
+description: Daily intelligence on AI Agent infrastructure, harnesses, sandboxes, cloud agents and self-improving agents.
+url: "https://helloimcx.github.io"
+baseurl: "/agent-infra-daily"
+markdown: kramdown
+permalink: /reports/:year/:month/:day/
+future: true
+plugins: []
