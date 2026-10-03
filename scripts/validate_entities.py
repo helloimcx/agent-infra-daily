@@ -76,6 +76,13 @@ for node in nodes:
         if isinstance(value, list):
             if not value:
                 fail(node_id, f"required list field is empty: {field_name}")
+        elif isinstance(value, dict):
+            if not value:
+                fail(node_id, f"required object field is empty: {field_name}")
+            else:
+                for subkey, subvalue in value.items():
+                    if not substantial(subvalue, 10):
+                        fail(node_id, f"required object field {field_name}.{subkey} is missing/too thin")
         elif not substantial(value, 10):
             fail(node_id, f"missing/too-thin required field: {field_name}")
 
