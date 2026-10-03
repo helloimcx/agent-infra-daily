@@ -1,0 +1,27 @@
+---
+layout: default
+title: Architecture Stack
+description: An analytical projection of the Agent Infrastructure knowledge graph into architecture layers.
+permalink: /stack/
+---
+<section class="stack-head">
+  <div><div class="eyebrow">ARCHITECTURE STACK</div><h1>从经验闭环到<br><span>持久化 Cloud Agent。</span></h1><p>这是基于现有知识图谱的分析投影，不是行业标准。节点仍可跨层出现，因为很多项目本身就是跨层系统。</p></div>
+  <div class="stack-note"><strong>Analysis view</strong><span>Layer membership ≠ factual ontology edge</span></div>
+</section>
+<section class="stack-controls">
+  <label><span>Show</span><select id="stackType"><option value="">All core types</option><option>Capability</option><option>Project</option><option>Research</option><option>Pattern</option><option>Trend</option><option>Standard</option></select></label>
+  <label><span>Evidence</span><select id="stackEvidence"><option value="">All</option><option value="fact">Has fact-backed relation</option><option value="analysis">Has analysis relation</option></select></label>
+  <button id="stackReset" type="button">Reset</button>
+</section>
+<section class="stack-layout">
+  <div id="stackLayers" class="stack-layers"></div>
+  <aside id="stackDetail" class="stack-detail"><div class="eyebrow">SELECT AN ENTITY</div><h2>Architecture projection</h2><p>点击任意实体查看它出现在这些层的原因、图谱关系、证据密度以及进入 Compare / Graph 的入口。</p></aside>
+</section>
+<section class="stack-coverage">
+  <div class="section-head compact"><div><div class="eyebrow">CROSS-LAYER SYSTEMS</div><h2>跨层项目覆盖</h2></div><span>只表示当前分析投影中的层覆盖，不是成熟度评分</span></div>
+  <div id="stackCoverage"></div>
+</section>
+<script id="stackNodes" type="application/json">{{ site.data.kg.nodes | jsonify }}</script>
+<script id="stackEdges" type="application/json">{{ site.data.kg.edges | jsonify }}</script>
+<script id="stackArchitecture" type="application/json">{{ site.data.kg.architecture | jsonify }}</script>
+<script src="{{ '/assets/js/stack.js' | relative_url }}?v=kg-v4"></script>

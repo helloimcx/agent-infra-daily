@@ -54,3 +54,13 @@ The site maintains a living knowledge graph:
 - `/knowledge.json` — machine-readable endpoint
 
 See `docs/knowledge-graph-schema.md` for modeling rules.
+
+
+## Analysis layer
+
+- `/analysis/` — analysis hub
+- `/compare/` — evidence-linked capability coverage comparison
+- `/stack/` — analytical architecture stack projection
+- `_data/kg/architecture.json` — curated architecture-layer projection; this is analysis, not factual ontology
+
+Comparison and architecture views derive from the same knowledge graph and preserve the distinction between fact-backed and analytical relationships.

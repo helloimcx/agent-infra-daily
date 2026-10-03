@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "analysis",
+  "note": "Architecture layers are an analytical projection over the evidence graph. Membership is curated from existing nodes and must not be treated as a factual ontology edge.",
+  "layers": [
+    {
+      "id": "experience",
+      "order": 1,
+      "label": "Experience & Learning",
+      "description": "Trace, replay, verification, evaluation and self-improvement loops.",
+      "members": [
+        "cap:execution-trace",
+        "cap:action-verification",
+        "cap:eval-scheduling",
+        "cap:long-horizon-reflection",
+        "research:mid-harness",
+        "research:arex-2",
+        "research:sift",
+        "trend:harness-rsi"
+      ]
+    },
+    {
+      "id": "harness",
+      "order": 2,
+      "label": "Agent Harness",
+      "description": "The control loop between model, tools, candidate actions and environment.",
+      "members": [
+        "theme:harness",
+        "cap:action-verification",
+        "pattern:action-verifier-layer",
+        "research:mid-harness",
+        "standard:mcp"
+      ]
+    },
+    {
+      "id": "runtime",
+      "order": 3,
+      "label": "Durable Runtime",
+      "description": "State, recovery and long-running execution independent of a single worker process.",
+      "members": [
+        "cap:durable-execution",
+        "project:restate",
+        "cap:stateless-tool-protocol",
+        "trend:persistent-agent-runtime"
+      ]
+    },
+    {
+      "id": "definition",
+      "order": 4,
+      "label": "Agent Definition & Protocol",
+      "description": "Portable declarations for workload, tools, protocol and requested authority.",
+      "members": [
+        "cap:agent-artifact",
+        "project:docker-sandbox-kit",
+        "standard:oci",
+        "standard:mcp",
+        "pattern:agent-definition-instance",
+        "trend:portable-agent-authority"
+      ]
+    },
+    {
+      "id": "policy",
+      "order": 5,
+      "label": "Policy & Credentials",
+      "description": "Out-of-band authority, network policy and secret isolation.",
+      "members": [
+        "cap:network-policy",
+        "cap:credential-isolation",
+        "cap:policy-enforcement",
+        "pattern:credential-broker",
+        "project:nvidia-openshell",
+        "project:docker-sandbox-kit"
+      ]
+    },
+    {
+      "id": "sandbox",
+      "order": 6,
+      "label": "Sandbox & Execution",
+      "description": "Isolation boundary and remote execution environment in which agent actions run.",
+      "members": [
+        "project:docker-cloud-sandboxes",
+        "project:nvidia-openshell",
+        "cap:cloud-computer",
+        "theme:sandbox"
+      ]
+    },
+    {
+      "id": "workspace",
+      "order": 7,
+      "label": "Persistent Workspace & Cloud",
+      "description": "Long-lived workspace, cloud computer and managed agent runtime.",
+      "members": [
+        "cap:persistent-workspace",
+        "cap:cloud-computer",
+        "project:openai-dots",
+        "project:digitalocean-agent-droplets",
+        "project:docker-cloud-sandboxes",
+        "trend:agent-runtime-cloud-sku",
+        "trend:persistent-agent-runtime"
+      ]
+    }
+  ]
+}

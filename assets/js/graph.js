@@ -60,6 +60,7 @@
     panel.innerHTML='<div class="eyebrow">'+esc(n.type)+'</div><h2>'+esc(n.label)+'</h2><p>'+esc(n.summary||'')+'</p>'+
       '<div class="kg-meta"><span>'+esc(n.maturity||'n/a')+'</span><span>first seen '+esc(n.first_seen||'—')+'</span><span>verified '+esc(n.last_verified||'—')+'</span></div>'+
       (n.url?'<a href="'+esc(n.url)+'" target="_blank" rel="noopener">Primary link ↗</a>':'')+
+      (['Project','Research','Standard','Pattern'].includes(n.type)?'<a class="kg-compare-link" href="../compare/?a='+encodeURIComponent(n.id)+'">Compare →</a>':'')+
       (rels?'<h3>Relationships</h3><div class="kg-rel-list">'+rels+'</div>':'')+
       (evidence?'<h3>Evidence</h3><div class="kg-sources">'+evidence+'</div>':'');
     panel.querySelectorAll('[data-node]').forEach(btn=>btn.addEventListener('click',()=>selectNode(btn.dataset.node)));

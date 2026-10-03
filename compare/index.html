@@ -1,0 +1,33 @@
+---
+layout: default
+title: Compare
+description: Compare Agent infrastructure entities using evidence-linked capability coverage.
+permalink: /compare/
+---
+<section class="compare-head">
+  <div><div class="eyebrow">CAPABILITY COVERAGE</div><h1>Compare entities</h1><p>对比的是知识图谱中已经被证据连接的能力，不是营销功能清单，也不产生“赢家”。</p></div>
+  <a href="{{ '/analysis/' | relative_url }}">← Analysis</a>
+</section>
+<section class="compare-picker">
+  <label><span>Entity A</span><select id="compareA"></select></label>
+  <div class="compare-vs">VS</div>
+  <label><span>Entity B</span><select id="compareB"></select></label>
+  <button id="swapCompare" type="button">Swap</button>
+</section>
+<section class="compare-summary" id="compareSummary"></section>
+<section class="compare-section">
+  <div class="section-head compact"><div><div class="eyebrow">CAPABILITY MATRIX</div><h2>直接能力覆盖</h2></div><span>● fact · ◐ analysis · — no explicit relation</span></div>
+  <div class="compare-table-wrap"><table class="compare-table" id="compareTable"></table></div>
+</section>
+<section class="compare-columns">
+  <div><div class="section-head compact"><div><div class="eyebrow">COMMON</div><h2>共同能力</h2></div></div><div id="commonCaps" class="compare-list"></div></div>
+  <div><div class="section-head compact"><div><div class="eyebrow">DISTINCT</div><h2>各自显式能力</h2></div></div><div id="distinctCaps" class="compare-list"></div></div>
+</section>
+<section class="compare-evidence">
+  <div class="section-head compact"><div><div class="eyebrow">EVIDENCE</div><h2>关系与一手来源</h2></div></div>
+  <div id="compareEvidence"></div>
+</section>
+<script id="compareNodes" type="application/json">{{ site.data.kg.nodes | jsonify }}</script>
+<script id="compareEdges" type="application/json">{{ site.data.kg.edges | jsonify }}</script>
+<script id="compareTopics" type="application/json">{{ site.data.kg.topics | jsonify }}</script>
+<script src="{{ '/assets/js/compare.js' | relative_url }}?v=kg-v4"></script>
