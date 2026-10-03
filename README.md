@@ -103,3 +103,15 @@ Entity prose is first-party knowledge content, not a rendering of graph metadata
 ## Claim evidence model
 
 V7 adds `_data/kg/claims.json`. Claims are authored statements attached to one entity and explicitly marked as `fact`, `analysis`, or `hypothesis`, with confidence and one or more Source nodes as evidence. Entity pages render these claims near the technical article instead of forcing readers to infer provenance from a source list at the bottom.
+
+
+## Technical monographs
+
+Every entity now has a standalone authored research entry in `_data/kg/monographs.json`.
+
+The monograph is deliberately separate from `nodes.json`:
+- `nodes.json` models identity, metadata and graph-facing structured knowledge.
+- `monographs.json` stores the long-form technical research: mechanisms, state/lifecycle, failure semantics, security boundaries, tradeoffs, evidence scope, operations and open questions.
+- The text must be written for the individual entity. It must never be produced by concatenating graph fields.
+
+CI enforces type-specific minimum section counts and content depth. Core Project/Capability/Research entries require substantially deeper monographs than supporting Event/Source nodes.

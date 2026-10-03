@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.2.0",
+  "schema_version": "3.0.0",
   "purpose": "Type-specific content schema for first-party entity knowledge pages.",
   "common": [
     "summary",
@@ -71,6 +71,56 @@
     "Do not generate prose by concatenating type, theme, relationship, maturity or architecture fields.",
     "Graph relationships may support factual checking and UI, but must not be used as a prose template.",
     "Core entity types must use their type-specific structured fields.",
-    "External URLs are evidence, never substitutes for first-party entity content."
-  ]
+    "External URLs are evidence, never substitutes for first-party entity content.",
+    "Every entity must have a standalone entry in monographs.json with entity-specific research sections.",
+    "Technical monographs must address mechanisms, boundaries, tradeoffs, evidence or operational implications appropriate to that entity type.",
+    "A monograph may use graph relationships as research context, but its paragraphs must be individually authored rather than generated from graph metadata."
+  ],
+  "monograph": {
+    "file": "_data/kg/monographs.json",
+    "required_for_every_entity": true,
+    "model": "authored technical monograph; never generated from graph fields",
+    "minimums": {
+      "Project": {
+        "sections": 5,
+        "characters": 850
+      },
+      "Capability": {
+        "sections": 5,
+        "characters": 850
+      },
+      "Research": {
+        "sections": 5,
+        "characters": 850
+      },
+      "Standard": {
+        "sections": 5,
+        "characters": 700
+      },
+      "Pattern": {
+        "sections": 5,
+        "characters": 650
+      },
+      "Trend": {
+        "sections": 5,
+        "characters": 650
+      },
+      "Theme": {
+        "sections": 5,
+        "characters": 600
+      },
+      "Organization": {
+        "sections": 4,
+        "characters": 400
+      },
+      "Event": {
+        "sections": 4,
+        "characters": 350
+      },
+      "Source": {
+        "sections": 3,
+        "characters": 280
+      }
+    }
+  }
 }
