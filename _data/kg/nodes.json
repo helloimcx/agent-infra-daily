@@ -171,7 +171,29 @@
     ],
     "page": "/entities/capability--durable-execution/",
     "overview": "Durable Execution 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Resume work after crashes without repeating completed side effects. 主要归入 Runtime & Orchestration、Cloud Agent。 当前图谱中与它直接相关的项目包括 Restate。 在架构分析中，它位于 Durable Runtime 等层。",
-    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。Durable Execution 当前已经由 Restate 等项目提供、实现或依赖。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。"
+    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。Durable Execution 当前已经由 Restate 等项目提供、实现或依赖。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。",
+    "definition": "Durable Execution 指把长流程的关键执行结果、状态和外部副作用记录到持久化日志中，使执行进程可以崩溃、迁移或重启，而流程本身仍能从已完成的位置继续。",
+    "problem_it_solves": "长任务 Agent 会经历模型调用超时、工具失败、进程重启、人工审批等待和部署切换。如果只依赖内存状态或粗粒度 checkpoint，恢复时容易重复调用模型、重复发送请求，甚至重复产生不可逆副作用。",
+    "core_mechanisms": [
+      "持久化 execution journal：记录已完成步骤及结果",
+      "replay / result recovery：恢复时复用已经完成的结果",
+      "幂等与副作用控制：避免重试造成重复写入、支付、部署等",
+      "durable timer / promise：支持等待分钟、小时甚至数天后继续",
+      "状态与执行解耦：worker 可以是可替换的"
+    ],
+    "representative_implementations": [
+      "project:restate"
+    ],
+    "engineering_considerations": [
+      "不要把“可恢复线程”与真正的 durable execution 混为一谈",
+      "所有会产生外部副作用的 tool call 都要进入一致的执行语义",
+      "恢复机制必须能跨部署版本、网络故障和进程生命周期工作"
+    ],
+    "failure_modes": [
+      "只保存对话/Agent state，但没有记录外部副作用",
+      "从 checkpoint 重新执行时重复调用昂贵模型或重复执行工具",
+      "需要人工审批时让 worker 长时间占用资源"
+    ]
   },
   {
     "id": "cap:persistent-workspace",
@@ -188,7 +210,30 @@
     ],
     "page": "/entities/capability--persistent-workspace/",
     "overview": "Persistent Workspace 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。A long-lived workspace that survives task and worker lifecycles. 主要归入 Runtime & Orchestration、Cloud Agent、Memory & Experience。 当前图谱中与它直接相关的项目包括 Docker Cloud Sandboxes、DigitalOcean Agent Droplets、OpenAI Dots。 在架构分析中，它位于 Persistent Workspace & Cloud 等层。",
-    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。Persistent Workspace 当前已经由 Docker Cloud Sandboxes、DigitalOcean Agent Droplets、OpenAI Dots 等项目提供、实现或依赖。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。"
+    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。Persistent Workspace 当前已经由 Docker Cloud Sandboxes、DigitalOcean Agent Droplets、OpenAI Dots 等项目提供、实现或依赖。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。",
+    "definition": "Persistent Workspace 是跨任务、跨会话甚至跨 worker 生命周期保留的工作环境，用来承载文件、依赖、缓存、项目状态和 Agent 长期工作的中间产物。",
+    "problem_it_solves": "短生命周期 sandbox 每次重新创建都会丢失安装依赖、生成文件、浏览器状态和项目上下文，长任务因此不断重复准备环境，也很难在多次任务之间积累工作成果。",
+    "core_mechanisms": [
+      "稳定 workspace identity，与单次 task / worker identity 解耦",
+      "文件系统或 workspace volume 持久化",
+      "环境依赖、生成物和项目配置跨任务复用",
+      "必要时支持 snapshot / resume / migration"
+    ],
+    "representative_implementations": [
+      "project:openai-dots",
+      "project:docker-cloud-sandboxes",
+      "project:digitalocean-agent-droplets"
+    ],
+    "engineering_considerations": [
+      "workspace 与用户身份、Agent 身份、Task 身份最好分别建模",
+      "长期 workspace 需要配额、生命周期、清理和版本治理",
+      "持久化环境会扩大 secret、缓存和历史文件的安全边界"
+    ],
+    "failure_modes": [
+      "把一个长期存活的进程误当作 persistent workspace",
+      "没有版本/清理策略导致环境逐渐不可复现",
+      "不同用户或任务错误共享 workspace"
+    ]
   },
   {
     "id": "cap:cloud-computer",
@@ -204,7 +249,27 @@
     ],
     "page": "/entities/capability--cloud-computer/",
     "overview": "Cloud Computer 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。A dedicated remote computer environment available to an agent over time. 主要归入 Cloud Agent、Sandbox & Execution。 当前图谱中与它直接相关的项目包括 OpenAI Dots。 在架构分析中，它位于 Sandbox & Execution、Persistent Workspace & Cloud 等层。",
-    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。Cloud Computer 当前已经由 OpenAI Dots 等项目提供、实现或依赖。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。"
+    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。Cloud Computer 当前已经由 OpenAI Dots 等项目提供、实现或依赖。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。",
+    "definition": "Cloud Computer 指 Agent 拥有一台可远程操作、长期可用的云端计算环境，通常包含浏览器、文件系统和应用执行能力。",
+    "problem_it_solves": "很多办公和研究任务不是一次 API 调用能完成的：Agent 需要打开网页、处理文件、运行应用，并在用户离线后继续工作。",
+    "core_mechanisms": [
+      "独立远程计算环境",
+      "浏览器与文件访问",
+      "可持续任务执行",
+      "与 Agent 身份和权限绑定"
+    ],
+    "representative_implementations": [
+      "project:openai-dots"
+    ],
+    "engineering_considerations": [
+      "Cloud Computer 不应自动等同于无限期持久化 workspace",
+      "需要明确网络、应用、凭据和本地设备访问边界",
+      "交互式控制与后台执行要有一致的状态模型"
+    ],
+    "failure_modes": [
+      "把浏览器自动化当作完整 cloud computer",
+      "Agent 可直接读取全部凭据而没有 broker/policy 层"
+    ]
   },
   {
     "id": "cap:agent-artifact",
@@ -221,7 +286,28 @@
     ],
     "page": "/entities/capability--agent-artifact/",
     "overview": "Portable Agent Artifact 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Deployable unit packaging workload, environment, tools and authority requirements. 主要归入 Protocols & Standards、Runtime & Orchestration、Security & Authority。 当前图谱中与它直接相关的项目包括 Docker Sandbox Kit。 在架构分析中，它位于 Agent Definition & Protocol 等层。",
-    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。Portable Agent Artifact 当前已经由 Docker Sandbox Kit 等项目提供、实现或依赖。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。"
+    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。Portable Agent Artifact 当前已经由 Docker Sandbox Kit 等项目提供、实现或依赖。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。",
+    "definition": "Portable Agent Artifact 是把 Agent workload、工具、运行环境和权限需求作为一个可分发单元描述的抽象，目标是让 Agent 定义可以跨兼容 runtime 迁移。",
+    "problem_it_solves": "不同 Agent Harness 和 Sandbox 往往分别配置镜像、工具、挂载、网络、secret 与启动参数，导致 Agent 很难复现、审计或迁移。",
+    "core_mechanisms": [
+      "声明 workload / entrypoint",
+      "声明工具、挂载和生命周期",
+      "声明 network / credential / capability requirements",
+      "使用可分发 artifact 格式承载定义"
+    ],
+    "representative_implementations": [
+      "project:docker-sandbox-kit",
+      "standard:oci"
+    ],
+    "engineering_considerations": [
+      "artifact 描述的是“请求什么权限”，runtime 仍必须独立决定是否批准",
+      "定义需要可版本化、可签名、可审计",
+      "不要把 portable artifact 与具体 sandbox 实现绑死"
+    ],
+    "failure_modes": [
+      "artifact 自己既声明权限又拥有最终授权权",
+      "把 secret 直接烘焙进 artifact"
+    ]
   },
   {
     "id": "cap:network-policy",
@@ -237,7 +323,27 @@
     ],
     "page": "/entities/capability--network-policy/",
     "overview": "Network Policy 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Explicit controls over destinations and network access. 主要归入 Sandbox & Execution、Security & Authority。 当前图谱中与它直接相关的项目包括 Docker Sandbox Kit。 在架构分析中，它位于 Policy & Credentials 等层。",
-    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。Network Policy 当前已经由 Docker Sandbox Kit 等项目提供、实现或依赖。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。"
+    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。Network Policy 当前已经由 Docker Sandbox Kit 等项目提供、实现或依赖。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。",
+    "definition": "Network Policy 用来约束 Agent 或 sandbox 可以访问哪些网络目标、端口或服务，是把“能联网”细化为可审计 capability 的基础能力。",
+    "problem_it_solves": "Agent 具备代码执行和浏览器能力后，默认开放网络会同时放大数据外泄、供应链攻击和越权访问风险。",
+    "core_mechanisms": [
+      "allow / deny 目标规则",
+      "域名、IP、端口或服务级控制",
+      "出站 egress 审计",
+      "按 Agent / workspace / task 绑定策略"
+    ],
+    "representative_implementations": [
+      "project:docker-sandbox-kit"
+    ],
+    "engineering_considerations": [
+      "策略应在 Harness 外部强制执行",
+      "DNS、代理和重定向都要纳入真实 egress 判断",
+      "默认最小权限比事后审计更重要"
+    ],
+    "failure_modes": [
+      "只控制入站，不控制 Agent 出站",
+      "仅在 prompt 中要求不要访问某些域名"
+    ]
   },
   {
     "id": "cap:credential-isolation",
@@ -253,7 +359,30 @@
     ],
     "page": "/entities/capability--credential-isolation/",
     "overview": "Credential Isolation 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Keep secrets outside agent-visible workspace and broker them under policy. 主要归入 Security & Authority、Sandbox & Execution。 当前图谱中与它直接相关的项目包括 Docker Sandbox Kit、Docker Cloud Sandboxes。 在架构分析中，它位于 Policy & Credentials 等层。",
-    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。Credential Isolation 当前已经由 Docker Sandbox Kit、Docker Cloud Sandboxes 等项目提供、实现或依赖。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。"
+    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。Credential Isolation 当前已经由 Docker Sandbox Kit、Docker Cloud Sandboxes 等项目提供、实现或依赖。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。",
+    "definition": "Credential Isolation 的目标是让 Agent 能使用某项权限，但不必直接看到或持久化原始 secret。典型做法是用 credential broker、代理签名或请求时注入。",
+    "problem_it_solves": "把 API key、云凭据或 OAuth token 放进环境变量、文件或上下文后，Agent、工具输出、截图、日志和 git 操作都可能意外泄露凭据。",
+    "core_mechanisms": [
+      "logical credential reference",
+      "credential broker / proxy",
+      "按请求注入或签名",
+      "权限范围与任务上下文绑定",
+      "审计每次凭据使用"
+    ],
+    "representative_implementations": [
+      "project:docker-cloud-sandboxes",
+      "project:docker-sandbox-kit",
+      "pattern:credential-broker"
+    ],
+    "engineering_considerations": [
+      "secret 的生命周期应短于 workspace 生命周期",
+      "Agent 能用 credential 不等于 Agent 应该能读取 credential",
+      "需要把第三方 OAuth scope 与内部 capability policy 对齐"
+    ],
+    "failure_modes": [
+      "把 secret 存入 workspace 文件",
+      "让 Agent 输出原始 token 供工具使用"
+    ]
   },
   {
     "id": "cap:policy-enforcement",
@@ -269,7 +398,27 @@
     ],
     "page": "/entities/capability--policy-enforcement/",
     "overview": "Out-of-band Policy Enforcement 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Enforce safety outside the harness so the agent cannot control its own guardrail. 主要归入 Security & Authority、Sandbox & Execution。 当前图谱中与它直接相关的项目包括 NVIDIA OpenShell。 在架构分析中，它位于 Policy & Credentials 等层。",
-    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。Out-of-band Policy Enforcement 当前已经由 NVIDIA OpenShell 等项目提供、实现或依赖。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。"
+    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。Out-of-band Policy Enforcement 当前已经由 NVIDIA OpenShell 等项目提供、实现或依赖。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。",
+    "definition": "Out-of-band Policy Enforcement 指把安全策略放在 Agent Harness 之外执行，使 Agent 本身不能修改、绕过或关闭约束它的 policy。",
+    "problem_it_solves": "如果 Agent 自己负责判断“我是否允许执行这个动作”，那么被 prompt injection、工具链污染或代码修改后，guardrail 本身也可能失效。",
+    "core_mechanisms": [
+      "独立 policy decision / enforcement point",
+      "对文件、网络、凭据、系统调用和 side effect 做强制检查",
+      "Harness 只能请求 capability，不能自行授予",
+      "集中审计和策略版本管理"
+    ],
+    "representative_implementations": [
+      "project:nvidia-openshell"
+    ],
+    "engineering_considerations": [
+      "policy enforcement 应尽可能靠近真实执行边界",
+      "不同 tool action 需要映射到统一 capability model",
+      "要支持 fail-closed 与明确的人类审批路径"
+    ],
+    "failure_modes": [
+      "策略仅存在 system prompt",
+      "安全 hook 与 Agent 运行在同一可修改进程"
+    ]
   },
   {
     "id": "cap:action-verification",
@@ -286,7 +435,28 @@
     ],
     "page": "/entities/capability--action-verification/",
     "overview": "Action Verification 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Verify candidate actions before they mutate the environment. 主要归入 Agent Harness、Observability & Eval、Security & Authority。 在架构分析中，它位于 Experience & Learning、Agent Harness 等层。",
-    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。"
+    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。",
+    "definition": "Action Verification 在模型生成动作与真实环境执行之间增加验证层，对候选 shell command、tool call 或修改操作进行检查、比较或重排序。",
+    "problem_it_solves": "Agent 一旦执行错误动作，后续环境可能被永久污染。尤其在 terminal / coding 场景里，一个错误安装、删除或配置修改会改变整个 trajectory。",
+    "core_mechanisms": [
+      "生成多个候选 action",
+      "verifier / judge 比较候选",
+      "结合风险、正确性、成本与可逆性筛选",
+      "高风险动作可升级到 HITL"
+    ],
+    "representative_implementations": [
+      "research:mid-harness",
+      "pattern:action-verifier-layer"
+    ],
+    "engineering_considerations": [
+      "低风险 read-only action 不一定值得额外推理成本",
+      "verifier 质量决定 test-time scaling 是否真正有效",
+      "验证结果应与 policy enforcement 分层，而不是混成同一个模型判断"
+    ],
+    "failure_modes": [
+      "只增加采样数量但 verifier 很弱",
+      "所有动作都走重验证导致延迟和成本失控"
+    ]
   },
   {
     "id": "cap:eval-scheduling",
@@ -302,7 +472,28 @@
     ],
     "page": "/entities/capability--eval-scheduling/",
     "overview": "Selective Eval Scheduling 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Use cheap ranking signals before expensive self-improvement evaluation. 主要归入 Observability & Eval、Agent RSI。 在架构分析中，它位于 Experience & Learning 等层。",
-    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。"
+    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。",
+    "definition": "Selective Eval Scheduling 是在自我改进或候选 Agent 搜索中，用便宜的中间信号筛选候选，只对最有希望的修改运行昂贵 benchmark。",
+    "problem_it_solves": "Recursive self-improvement 常常不是生成 patch 贵，而是每个 patch 都要完整跑任务集进行验证，导致 CPU、wall-clock 和 API 成本快速爆炸。",
+    "core_mechanisms": [
+      "candidate pool",
+      "便宜 judge / pairwise ranking",
+      "strength aggregation",
+      "selective expensive benchmark",
+      "regression / promotion"
+    ],
+    "representative_implementations": [
+      "research:sift"
+    ],
+    "engineering_considerations": [
+      "cheap evaluator 需要和真实目标保持足够相关",
+      "最终 promotion 仍要经过真实 benchmark",
+      "需要控制 judge 偏差和 overfitting"
+    ],
+    "failure_modes": [
+      "只优化 judge 分数而不回到真实任务评估",
+      "候选搜索空间过早收缩"
+    ]
   },
   {
     "id": "cap:long-horizon-reflection",
@@ -317,7 +508,27 @@
     ],
     "page": "/entities/capability--long-horizon-reflection/",
     "overview": "Long-horizon Reflection 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Improve solutions over many rounds while preserving useful progress. 主要归入 Agent RSI。 在架构分析中，它位于 Experience & Learning 等层。",
-    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。"
+    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。",
+    "definition": "Long-horizon Reflection 指 Agent 在多轮迭代中持续识别当前方案不足、生成改进并保留有效进展，而不是只做一次 critique-and-retry。",
+    "problem_it_solves": "很多复杂任务的最佳结果无法通过一次推理获得；但简单重复 reflection 又容易陷入循环、退化或忘记前面有效的改进。",
+    "core_mechanisms": [
+      "显式 evaluation signal",
+      "跨轮次保留 solution state",
+      "每轮针对具体缺陷改进",
+      "长程预算下性能随迭代继续提升"
+    ],
+    "representative_implementations": [
+      "research:arex-2"
+    ],
+    "engineering_considerations": [
+      "需要可靠 verifier / reward，而不仅是自我评价",
+      "要监控性能是否随 iteration budget 真正上升",
+      "必须有停止条件和回滚机制"
+    ],
+    "failure_modes": [
+      "无限 reflection 但没有外部评价",
+      "每轮重写全部方案导致有效进展丢失"
+    ]
   },
   {
     "id": "cap:execution-trace",
@@ -334,7 +545,28 @@
     ],
     "page": "/entities/capability--execution-trace/",
     "overview": "Execution Trace & Replay 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Structured action history for observability, replay, eval, skill mining and RSI. 主要归入 Memory & Experience、Observability & Eval、Agent RSI。 在架构分析中，它位于 Experience & Learning 等层。",
-    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。"
+    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。",
+    "definition": "Execution Trace & Replay 是把 Agent 的模型调用、tool call、状态变化、错误、重试和外部副作用记录成可查询、可重放的结构化轨迹。",
+    "problem_it_solves": "Agent 行为是动态决策出来的，传统日志很难回答“为什么走到这一步”“哪次工具调用污染了状态”或“新 Harness 是否真的改善了同一任务”。",
+    "core_mechanisms": [
+      "结构化 step / span",
+      "tool input-output 与状态版本",
+      "跨 worker correlation",
+      "replay / deterministic reconstruction",
+      "与 eval dataset 对接"
+    ],
+    "representative_implementations": [
+      "project:restate"
+    ],
+    "engineering_considerations": [
+      "trace 不只是 observability 数据，也是未来 eval、skill mining 和 RSI 的训练原料",
+      "敏感内容必须分级存储与脱敏",
+      "要区分 replay-safe 与不可重复 side effect"
+    ],
+    "failure_modes": [
+      "只记录 LLM token 和 latency，不记录工具与状态",
+      "trace 不能与具体 workspace / task / artifact 对齐"
+    ]
   },
   {
     "id": "cap:stateless-tool-protocol",
@@ -350,7 +582,26 @@
     ],
     "page": "/entities/capability--stateless-tool-protocol/",
     "overview": "Stateless Tool Protocol 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Tool protocol semantics that scale without sticky protocol sessions. 主要归入 Protocols & Standards、Runtime & Orchestration。 在架构分析中，它位于 Durable Runtime 等层。",
-    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。"
+    "why_it_matters": "能力节点是比较不同 Agent 基础设施方案的共同坐标。它能帮助判断多个产品是在竞争同一能力层，还是处于完全不同的架构位置。",
+    "definition": "Stateless Tool Protocol 指协议核心不依赖长期 sticky session，而把每个请求路由和交互所需的信息显式化，从而更容易水平扩展服务端。",
+    "problem_it_solves": "有状态工具协议会迫使负载均衡器维持 sticky session，或者在服务端共享 session state，增加扩容、故障恢复和多租户复杂度。",
+    "core_mechanisms": [
+      "request/response stateless core",
+      "header-based routing",
+      "可缓存 list 结果",
+      "多轮交互通过显式请求机制表达"
+    ],
+    "representative_implementations": [
+      "standard:mcp"
+    ],
+    "engineering_considerations": [
+      "stateless 不代表业务本身无状态",
+      "认证、授权和长任务 correlation 仍需独立设计",
+      "升级协议时要考虑新旧客户端共存"
+    ],
+    "failure_modes": [
+      "把协议 session 去掉后却把隐式状态塞进网关内存"
+    ]
   },
   {
     "id": "project:docker-sandbox-kit",
