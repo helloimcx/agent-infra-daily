@@ -1988,5 +1988,738 @@
         ]
       }
     ]
+  },
+  {
+    "entity": "theme:agent-infrastructure",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "scope",
+        "title": "这个领域真正研究什么",
+        "paragraphs": [
+          "Agent Infrastructure 不是把所有 AI 工具都装进一个篮子，而是专门研究“一个模型如何变成可长期运行的软件执行主体”。它关注执行可靠性、环境隔离、状态持久化、权限、工具协议、记忆、评测和演化机制。",
+          "它和模型基础设施的分界也很明确：训练、推理内核、GPU 调度可以影响 Agent，但除非直接改变 Agent 的运行语义，否则不是本知识库的核心对象。"
+        ]
+      },
+      {
+        "id": "stack",
+        "title": "可以把整套系统拆成七个相互独立但耦合的层",
+        "paragraphs": [
+          "从下往上可以理解为 Sandbox/Compute、Policy/Credentials、Definition/Protocol、Durable Runtime、Harness、Experience/Eval、Persistent Cloud Workspace。不同厂商产品往往跨层，但这不代表层本身应被合并。",
+          "真正成熟的 Agent 平台通常会把这些层做成可替换组件：例如 Harness 可以换模型，Runtime 可以换 durable engine，Sandbox 可以换 execution provider。"
+        ]
+      },
+      {
+        "id": "tensions",
+        "title": "整个领域的核心矛盾是“自治”与“可控”同时增长",
+        "paragraphs": [
+          "Agent 越能自主决定下一步，越不能依赖静态工作流；但自主性越高，系统越需要独立 policy、trace、replay 和 verification。能力增长和治理强度不是替代关系，而是一起增长。",
+          "另一组矛盾是持续性与弹性：用户希望 Agent 长期记住并继续工作，云平台却希望计算资源随时销毁。Persistent identity/state 与 disposable compute 的分离正由此产生。"
+        ]
+      },
+      {
+        "id": "metrics",
+        "title": "评价 Agent Infra 不能只看任务成功率",
+        "paragraphs": [
+          "还要看 cost-per-success、恢复成功率、平均人工接管次数、tool retry、policy block、workspace resume latency、side-effect duplication、trace completeness 等指标。",
+          "如果一个 Agent benchmark 很强但每次失败都需要人工清理环境，它仍然不是生产级 Agent 系统。"
+        ]
+      },
+      {
+        "id": "frontier",
+        "title": "当前最值得追踪的前沿",
+        "paragraphs": [
+          "一是 durable runtime 与 persistent workspace 是否形成标准分层；二是 authority 是否进入 artifact/protocol；三是 MCP/Gateway 是否成为 capability control plane；四是 Harness-level RSI 是否从论文进入持续工程循环。",
+          "这些方向共同决定 Agent 基础设施是否会像云原生一样形成稳定分层，而不是长期依赖每家公司内部定制。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "theme:runtime",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "job",
+        "title": "Runtime 的任务不是“跑起来”，而是“确保任务最终正确完成”",
+        "paragraphs": [
+          "普通进程管理只关心 worker 是否存活；Agent Runtime 还必须处理模型调用、tool side effect、等待用户、定时任务、重试、取消、迁移和恢复。",
+          "因此核心对象应是 durable execution/task，而不是 process。"
+        ]
+      },
+      {
+        "id": "state",
+        "title": "Runtime 最重要的是状态机和所有权",
+        "paragraphs": [
+          "每个 Task 需要清楚知道当前状态、下一步触发条件、哪个 worker 持有执行 lease，以及失败后谁能接管。没有 fencing/lease 的多 worker 恢复很容易重复执行。",
+          "状态还必须跨代码版本演进，否则长任务会在部署后无法继续。"
+        ]
+      },
+      {
+        "id": "orchestration",
+        "title": "Orchestration 不等于预定义 DAG",
+        "paragraphs": [
+          "Agent 路径由模型动态决定，静态 DAG 很难覆盖。更合适的 runtime 提供 durable primitive，让 Harness 仍用普通代码表达动态控制流。",
+          "队列、workflow engine、actor、durable function 都是可选实现，但必须明确谁负责 retry、state、timer 和 idempotency。"
+        ]
+      },
+      {
+        "id": "scale",
+        "title": "规模化瓶颈往往在长尾等待状态而不是 CPU",
+        "paragraphs": [
+          "百万用户会产生大量 scheduled、waiting、paused task。它们几乎不需要计算，却需要可靠存储、timer、event subscription 和索引。",
+          "所以 runtime capacity 不能只用并发 worker 数衡量。"
+        ]
+      },
+      {
+        "id": "design",
+        "title": "推荐设计原则",
+        "paragraphs": [
+          "Agent/Task/Workspace/Worker ID 分离；side-effect step 显式 durable；等待不占 worker；恢复有 fencing；版本升级有 compatibility 策略。",
+          "这些原则比选某个 workflow 框架更重要。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "theme:harness",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "role",
+        "title": "Harness 是模型能力被“工程化”的地方",
+        "paragraphs": [
+          "它负责 context assembly、planning、tool selection、subagent、verification、termination、memory read/write。相同模型放进不同 Harness，任务表现和成本可以差很多。",
+          "因此 Harness 不应被看成 SDK glue，而是一层有独立算法与评测方法的软件系统。"
+        ]
+      },
+      {
+        "id": "loop",
+        "title": "一个成熟 Harness 至少有决策环、执行环和反馈环",
+        "paragraphs": [
+          "决策环生成候选 action；执行环通过 runtime/sandbox 真正做事；反馈环把 tool result、policy decision、tests 和 evaluator 重新送回决策。",
+          "很多简单 Agent 只实现“模型→工具→模型”，缺少风险分层和状态治理。"
+        ]
+      },
+      {
+        "id": "subagents",
+        "title": "Subagent 的价值在于隔离上下文和并行探索，而不是单纯增加模型调用",
+        "paragraphs": [
+          "复杂任务可以让研究、验证、实现分别在不同上下文进行，减少主 Agent context 污染。并行候选还能提升搜索多样性。",
+          "但 subagent 越多，协调、去重、共享 workspace 冲突和总成本越高，需要 scheduler。"
+        ]
+      },
+      {
+        "id": "evaluation",
+        "title": "Harness 必须独立评测",
+        "paragraphs": [
+          "不能只用最终模型 benchmark 推断 Harness 质量。应固定模型和任务集，对比 tool policy、prompt、verification、memory strategy 的影响。",
+          "这也是 Harness-level RSI 的前提：只有 Harness 改动能被隔离测量，自动优化才可信。"
+        ]
+      },
+      {
+        "id": "future",
+        "title": "Harness 正逐渐成为可自优化的控制软件",
+        "paragraphs": [
+          "Execution trace、verifier、selective eval 和 skill extraction 让 Harness 可以基于历史经验改进自身。",
+          "但任何自动修改都必须走版本化、回归和安全 promotion，而不是线上即时覆盖。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "theme:sandbox",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "boundary",
+        "title": "Sandbox 的本质是把不确定 Agent 行为限制在可恢复边界",
+        "paragraphs": [
+          "Agent 会执行模型生成的代码、安装未知依赖、访问网络和修改文件，因此隔离要求通常高于普通固定 workload。",
+          "容器、microVM、VM、browser sandbox 各有不同攻击面，不能只用“有 sandbox”描述安全程度。"
+        ]
+      },
+      {
+        "id": "layers",
+        "title": "隔离要同时覆盖 Kernel、Filesystem、Network、Credential 与 Resource",
+        "paragraphs": [
+          "只做进程隔离但 unrestricted egress，仍可泄露数据；只限制网络但 secret 写进文件，仍可被模型读取。",
+          "真正安全的 execution environment 是多层 capability boundary。"
+        ]
+      },
+      {
+        "id": "workspace",
+        "title": "Sandbox 与 Workspace 不应是同一个生命周期",
+        "paragraphs": [
+          "Sandbox 可以销毁，Workspace 仍然存在；或者同一 Workspace 在多个 Sandbox/worker 之间迁移。",
+          "这个拆分让 Cloud Agent 能在不永久占用机器的情况下持续工作。"
+        ]
+      },
+      {
+        "id": "rollback",
+        "title": "Snapshot/Rollback 会改变 Agent 策略",
+        "paragraphs": [
+          "如果环境可以便宜回滚，Agent 可以更大胆探索；不可逆环境则需要更强 pre-action verification。",
+          "因此 execution substrate 会直接影响 Harness 的搜索策略。"
+        ]
+      },
+      {
+        "id": "economics",
+        "title": "大规模 Sandbox 的关键是冷启动、暂停、密度和缓存",
+        "paragraphs": [
+          "安全隔离越强通常启动越慢、密度越低。microVM、warm pool、layer cache 和 pause/resume 都是在安全与成本之间做折中。",
+          "百万用户 Cloud Agent 中，空闲资源管理往往比峰值性能更重要。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "theme:cloud-agent",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "definition",
+        "title": "Cloud Agent 的核心不是“部署在云上”，而是持续职责",
+        "paragraphs": [
+          "真正的 Cloud Agent 在用户不在线时仍可以继续任务、响应 schedule、维护 workspace/memory，并通过通知或消息渠道返回结果。",
+          "这要求身份、任务和状态都脱离单次请求生命周期。"
+        ]
+      },
+      {
+        "id": "control-plane",
+        "title": "Control Plane 比 Agent Loop 更决定产品成熟度",
+        "paragraphs": [
+          "用户需要看到 In progress、Scheduled、Completed，能够 pause/cancel、管理规则、连接应用和设备、查看 activity。",
+          "这些能力依赖长期 control plane，而不是在聊天线程里塞更多消息。"
+        ]
+      },
+      {
+        "id": "state",
+        "title": "Cloud Agent 通常由多个持久状态系统共同组成",
+        "paragraphs": [
+          "Memory、Workspace、Task State、Conversation、Credential Grant 都应独立。把它们全部放入一个数据库 JSON 会在权限、并发和删除语义上迅速失控。",
+          "长期连续体验是这些状态共同投影出来的，而不是一台永远开着的 VM。"
+        ]
+      },
+      {
+        "id": "economics",
+        "title": "可持续商业模型要求 Idle Compute 接近零",
+        "paragraphs": [
+          "用户希望 Agent 24/7 可用，但大部分时间没有 active compute。平台需要 pause/resume、snapshot、scheduled wakeup、warm pool。",
+          "否则“always-on”会变成每用户永久资源预留，成本无法扩展。"
+        ]
+      },
+      {
+        "id": "authority",
+        "title": "越长期的 Agent，越需要可撤销、可过期 Authority",
+        "paragraphs": [
+          "一个持续几个月的 Agent 不应永久保留用户某次临时授权。credential、local computer、app access、purchase/deploy 权限都需要 scope/expiry。",
+          "长期自治和长期无限权限必须严格区分。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "theme:security",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "model",
+        "title": "Agent Security 应采用 Zero-trust Actor 模型",
+        "paragraphs": [
+          "不要假设 Agent 会遵守 prompt，也不要假设错误一定来自攻击。正常模型在含糊目标、工具缺失、长时间运行后也可能 drift。",
+          "因此安全边界必须独立于模型意图。"
+        ]
+      },
+      {
+        "id": "authority",
+        "title": "安全问题最终可以归结为 Authority：谁能对什么做什么",
+        "paragraphs": [
+          "Network、filesystem、credential、tool、device、purchase 都是不同 authority。统一 capability/policy model 能避免每种工具各写一套权限。",
+          "Agent Artifact 负责声明需求，Policy 负责批准，Runtime 负责强制，是一种清晰分工。"
+        ]
+      },
+      {
+        "id": "credentials",
+        "title": "Credential 是最敏感的跨层资产",
+        "paragraphs": [
+          "Secret 一旦进入 prompt、workspace 或日志，就很难保证删除。Credential Broker、短期 token、proxy injection 能显著降低暴露面。",
+          "长期 Agent 应默认采用 delegated identity，而不是共享 API key。"
+        ]
+      },
+      {
+        "id": "human",
+        "title": "Human-in-the-loop 应作为 Policy Outcome 而不是 UI Patch",
+        "paragraphs": [
+          "“需要确认”应由 policy/risk engine产生，并携带动作、资源、有效期和 scope。",
+          "用户批准后最好产生一次性/短期 grant，而不是永久解锁。"
+        ]
+      },
+      {
+        "id": "monitoring",
+        "title": "Security 与 Observability 最终会汇合",
+        "paragraphs": [
+          "Policy decision、tool call、network、credential use、workspace mutation 都需要进入统一 trace，才能发现 drift 和调查事故。",
+          "只有 deny/allow 规则而没有可回放记录，不足以支撑生产治理。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "theme:memory",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "types",
+        "title": "Memory 至少应区分事实、偏好、经验与工作状态",
+        "paragraphs": [
+          "用户事实/偏好适合长期 profile；任务工作状态属于 workspace/task；执行经验属于 trace/skill；文档知识属于 knowledge base。",
+          "把所有东西都 embedding 后塞向量库，会让更新、冲突和删除难以治理。"
+        ]
+      },
+      {
+        "id": "write",
+        "title": "Memory Write 比 Retrieval 更难",
+        "paragraphs": [
+          "系统要判断什么值得记、是否可信、是否已存在、何时过期、与旧记忆冲突时怎么办。",
+          "自动写 memory 如果没有质量门槛，会快速积累错误事实。"
+        ]
+      },
+      {
+        "id": "retrieval",
+        "title": "检索需要任务相关性和权限同时成立",
+        "paragraphs": [
+          "最相关的 memory 不一定有权在当前任务使用，例如跨项目、跨组织或敏感个人信息。",
+          "因此 retrieval ranking 之外还需要 scope filtering。"
+        ]
+      },
+      {
+        "id": "experience",
+        "title": "Execution Experience 可以转化为 Skill，但需要验证",
+        "paragraphs": [
+          "成功 trajectory 能抽取 reusable plan/tool sequence；失败轨迹可形成 guardrail。",
+          "未经 eval 的经验不应直接提升为长期 skill，否则错误模式会固化。"
+        ]
+      },
+      {
+        "id": "deletion",
+        "title": "长期 Memory 必须有完整删除传播",
+        "paragraphs": [
+          "用户删除 app connection 或 Agent 时，derived summary、embedding、cache、training/eval copy 是否同步删除，是长期产品的重要合规问题。",
+          "Memory architecture 从一开始就需要 provenance。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "theme:protocol",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "layers",
+        "title": "协议层至少有 Tool、Artifact、Identity 三类问题",
+        "paragraphs": [
+          "MCP 解决 Agent 与 capability 的调用接口；OCI 提供 artifact 分发；identity/delegation 解决谁在代表谁。",
+          "把这些需求混成一个协议会导致边界膨胀。"
+        ]
+      },
+      {
+        "id": "portability",
+        "title": "真正可移植需要 Syntax 与 Semantics 同时一致",
+        "paragraphs": [
+          "两个 runtime 都能解析同一 JSON，并不代表 network policy、credential 或 tool result 语义完全相同。",
+          "Conformance test 比 schema 文档更能证明互操作。"
+        ]
+      },
+      {
+        "id": "gateway",
+        "title": "企业落地会推动 Gateway 层出现",
+        "paragraphs": [
+          "当成百上千 MCP/tool server 出现后，需要统一 discovery、auth、rate limit、policy、audit 和 credential mediation。",
+          "这和 API Gateway 的演化路径高度相似。"
+        ]
+      },
+      {
+        "id": "versioning",
+        "title": "协议升级必须长期兼容异构客户端",
+        "paragraphs": [
+          "Agent 桌面端、CLI、服务器更新速度不同，协议需要 negotiation、fallback 和 deprecation window。",
+          "MCP 新 revision 同时兼容旧 initialize 是重要实践。"
+        ]
+      },
+      {
+        "id": "governance",
+        "title": "开放治理决定标准能否成为基础设施层",
+        "paragraphs": [
+          "如果核心语义长期由单一 vendor 控制，其他 runtime 会犹豫投入兼容。",
+          "OCI 的长期价值很大程度来自中立规范与多实现生态。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "theme:observability",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "trace",
+        "title": "Agent Observability 的最小单位是 Trajectory，而不是 Request",
+        "paragraphs": [
+          "一次用户任务可能跨几十次模型调用、工具、等待和 worker，因此单请求 latency 无法解释成功/失败。",
+          "需要 stable task ID 把整条执行链关联起来。"
+        ]
+      },
+      {
+        "id": "quality",
+        "title": "质量指标必须和执行成本绑定",
+        "paragraphs": [
+          "Pass rate 提高 5% 如果 token/latency 增长十倍未必有价值。应关注 cost-per-success、steps-to-success、human takeover。",
+          "Agent Eval 天然是多目标优化。"
+        ]
+      },
+      {
+        "id": "replay",
+        "title": "Replay 是 Debug、Regression 和 RSI 的共同基础",
+        "paragraphs": [
+          "失败 trajectory 如果能重放，就可以比较新 Harness、模型或 verifier 是否修复问题。",
+          "不可重复 side effect 则需要 mock、snapshot 或 journal。"
+        ]
+      },
+      {
+        "id": "production-eval",
+        "title": "真实生产 Trace 应逐步形成 Eval Dataset",
+        "paragraphs": [
+          "手工 benchmark 很难覆盖真实长尾。对 trace 做脱敏、聚类、难例采样，可以构造更贴近用户分布的 eval。",
+          "但必须避免把同一用户数据同时用于优化和评价造成泄漏。"
+        ]
+      },
+      {
+        "id": "causality",
+        "title": "最难的是从相关性走向 Root Cause",
+        "paragraphs": [
+          "失败可能来自模型、prompt、tool schema、network、workspace、policy。仅看最终错误文本很难定位。",
+          "结构化事件和状态版本是因果分析的基础。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "theme:rsi",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "definition",
+        "title": "工程意义上的 RSI 是可测量的持续改进循环",
+        "paragraphs": [
+          "本知识库不把 RSI 等同于模型无限自我增强，而关注 Agent 是否能自动修改 Harness、skill、search/eval 策略，并通过独立评测证明改进。",
+          "关键是 version、eval、promotion，而不是“自我”这个词。"
+        ]
+      },
+      {
+        "id": "substrates",
+        "title": "可自改对象有不同风险等级",
+        "paragraphs": [
+          "Prompt/skill 风险较低；tool policy、subagent topology 中等；security policy、production code 高；模型权重最高。",
+          "越接近控制面和权限边界，自动修改越需要隔离和人工审批。"
+        ]
+      },
+      {
+        "id": "eval",
+        "title": "RSI 的瓶颈常常是评测而不是生成候选",
+        "paragraphs": [
+          "SIFT 显示大量候选的真实 benchmark 很昂贵；AREX-2 则依赖 verifier 驱动长期迭代。",
+          "没有高质量 evaluator，自我改进只会加速 Goodhart。"
+        ]
+      },
+      {
+        "id": "memory",
+        "title": "长期 RSI 需要 Experience Store 与 Artifact Registry",
+        "paragraphs": [
+          "系统要保存候选版本、父子关系、实验结果、失败原因和 best-so-far，不应只保留最终版本。",
+          "这和 ML experiment tracking / CI artifact management 很像。"
+        ]
+      },
+      {
+        "id": "safety",
+        "title": "Production RSI 应默认离线 Promotion，而不是在线自改",
+        "paragraphs": [
+          "让在线 Agent 直接修改 system prompt 或 policy 会破坏审计边界。",
+          "更稳路线是在隔离环境生成候选，回归、安全验证后发布新版本。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "org:docker",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "thesis",
+        "title": "Docker 的 Agent Infra 路线是“把现有开发者供应链延伸到 Agent”",
+        "evidence": [
+          "source:docker-kit",
+          "source:docker-cloud"
+        ],
+        "paragraphs": [
+          "Docker 没有从零发明 Agent runtime，而是复用 OCI、registry、buildx、image signing，再在其上加入 microVM sandbox、Kit capability 和 cloud execution。",
+          "这条路线的优势是开发者已有心智和供应链工具。"
+        ]
+      },
+      {
+        "id": "stack",
+        "title": "产品组合正在形成 Definition + Execution + Governance 三层",
+        "evidence": [
+          "source:docker-kit",
+          "source:docker-cloud",
+          "source:docker-creds"
+        ],
+        "paragraphs": [
+          "Kit 定义 workload/authority；Sandboxes 执行；Cloud Sandboxes 提供托管 capacity；credential/network policy 开始形成 governance。",
+          "如果这些层能共享同一 Kit 语义，Docker 会拥有很完整的 Agent execution stack。"
+        ]
+      },
+      {
+        "id": "risk",
+        "title": "最大的战略风险是 Vendor-neutral Conformance 是否成立",
+        "paragraphs": [
+          "如果 Kit 只有 Docker runtime 真正实现，它更像产品格式；如果进入中立治理并出现其他 runtime，价值会显著提升。",
+          "因此应持续观察 CNCF/OCI 方向和第三方实现。"
+        ]
+      },
+      {
+        "id": "position",
+        "title": "Docker 更接近执行基础设施，而不是端用户 Agent 产品",
+        "paragraphs": [
+          "它擅长 sandbox、artifact、network/credential boundary，不负责长期 persona、memory、用户通知等上层体验。",
+          "与 Dots 等产品是上下游关系多于直接竞争。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "org:digitalocean",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "strategy",
+        "title": "DigitalOcean 正尝试把 Agent Runtime 产品化成易理解 Cloud SKU",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "paragraphs": [
+          "Managed Agents + Agent Droplets 将 microVM、inference、memory、storage、tool gateway 组合，强调简单定价和低运维门槛。",
+          "这延续了 DigitalOcean 一贯面向中小开发团队的产品思路。"
+        ]
+      },
+      {
+        "id": "architecture",
+        "title": "它选择的是集成平台，而非单点 Agent SDK",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "paragraphs": [
+          "Harness Runtime、Action Gateway、Serverless Inference、persistent memory 都是独立 primitive。",
+          "这说明 DigitalOcean 看到的是基础设施栈，而不是只做“聊天 Agent builder”。"
+        ]
+      },
+      {
+        "id": "economics",
+        "title": "可预测成本是其差异化重点",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "paragraphs": [
+          "Agent workload 的多计费单位复杂，Droplet bundle 用固定月费+折扣+spending cap 简化预算。",
+          "是否真的更便宜需要真实 workload 数据，但 FinOps 体验本身有价值。"
+        ]
+      },
+      {
+        "id": "watch",
+        "title": "判断路线成功要看生产客户和第三方兼容",
+        "paragraphs": [
+          "Public preview 阶段最重要的是 SLA、runtime reliability、tool governance 和外部 Harness 能否无锁定接入。",
+          "否则 SKU 可能只是一层商业包装。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "org:restate",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "focus",
+        "title": "Restate 的核心赌注是 Durable Execution 会成为通用后端原语",
+        "evidence": [
+          "source:restate-durable"
+        ],
+        "paragraphs": [
+          "它不仅针对 Agent，也覆盖 workflow、microservice orchestration、async task。Agent 是最能暴露长等待和副作用问题的新场景。",
+          "如果 durable primitive 普及，很多队列+状态表+定时器拼装代码可以下沉。"
+        ]
+      },
+      {
+        "id": "agent-fit",
+        "title": "Agent 场景让 Restate 的价值更容易被看见",
+        "evidence": [
+          "source:restate-durable"
+        ],
+        "paragraphs": [
+          "模型调用贵、工具有副作用、任务路径动态、人类审批时间长，都非常适合 journal/timer/signal。",
+          "这比传统短请求服务更依赖 resumability。"
+        ]
+      },
+      {
+        "id": "ecosystem",
+        "title": "真正增长点是与 Harness/Sandbox 生态的组合",
+        "paragraphs": [
+          "Restate 不做完整 Agent 平台，因此需要 LangGraph/OpenAI SDK/自研 Harness 等集成。",
+          "如果接入成本低，它可以成为隐藏在上层框架下面的通用 runtime。"
+        ]
+      },
+      {
+        "id": "risk",
+        "title": "风险在于 Durable Engine 市场本身竞争激烈",
+        "paragraphs": [
+          "Temporal、DBOS、云 workflow 等都覆盖部分需求。Restate 需要证明编程模型、性能和运维更适合现代 Agent/backend。",
+          "因此应看真实生产 workload 和迁移成本，而不仅是概念优势。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "org:openai",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "product",
+        "title": "OpenAI 的 Agent Infra 信号主要来自产品形态而非公开底层架构",
+        "evidence": [
+          "source:openai-dots"
+        ],
+        "paragraphs": [
+          "Dots 展示 always-on identity、cloud computer、scheduled work、memory、connected apps、local computer 等用户可见能力。",
+          "但内部 runtime、durability、workspace implementation 大多未公开，因此知识库必须严格区分 product fact 与 architecture inference。"
+        ]
+      },
+      {
+        "id": "vertical",
+        "title": "OpenAI 正从模型 API 向完整 Agent Execution 产品栈延伸",
+        "evidence": [
+          "source:openai-dots"
+        ],
+        "paragraphs": [
+          "Cloud computer、Codex cloud environments、Work/Computer use 等能力说明执行环境正在成为模型之外的重要产品层。",
+          "这会与传统云厂商、sandbox provider 和 coding agent 平台形成更多重叠。"
+        ]
+      },
+      {
+        "id": "control",
+        "title": "Dots 的控制规则透露长期 Agent 权限模型",
+        "evidence": [
+          "source:openai-dots"
+        ],
+        "paragraphs": [
+          "without asking / pre-approved / ask / hand off 是比简单 tool permission 更接近动作级 policy 的产品表达。",
+          "长期看，用户可理解的规则如何映射到底层 capability enforcement 值得持续观察。"
+        ]
+      },
+      {
+        "id": "unknown",
+        "title": "最值得追踪的是未公开的 Runtime 语义",
+        "paragraphs": [
+          "任务崩溃恢复、并发、workspace persistence、side-effect idempotency、cost scheduling 等仍不清楚。",
+          "这些答案会决定 Dots 是上层产品创新还是同时包含新的基础设施抽象。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "org:nvidia",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "thesis",
+        "title": "NVIDIA 的路线是把 Agent Safety 下沉到 Runtime 甚至硬件",
+        "evidence": [
+          "source:nvidia-openshell"
+        ],
+        "paragraphs": [
+          "OpenShell 负责 sandbox/policy，Sentry/BlueField 提供独立硬件监控，DOCA 关联身份和行为。",
+          "这比纯软件 prompt guardrail 更接近传统零信任和云安全思路。"
+        ]
+      },
+      {
+        "id": "hardware",
+        "title": "硬件独立监控是 NVIDIA 独有的战略优势",
+        "evidence": [
+          "source:nvidia-openshell"
+        ],
+        "paragraphs": [
+          "GPU/CPU/DPU 组合让它可以在 workload 之外观察网络、身份和执行活动。",
+          "对高价值数据中心 Agent，这种 out-of-band control 可能有吸引力。"
+        ]
+      },
+      {
+        "id": "open",
+        "title": "能否形成开放 Policy 生态比硬件本身更关键",
+        "paragraphs": [
+          "如果 policy language 只能在 NVIDIA stack 使用，行业影响会受限；如果 OpenShell 能跨模型、Harness、云环境，价值更大。",
+          "官方强调开放 runtime/policy，后续要看实际 interoperability。"
+        ]
+      },
+      {
+        "id": "risk",
+        "title": "成本和复杂度可能限制其默认适用范围",
+        "paragraphs": [
+          "独立硬件 enforcement 很强，但并非每个消费级/中小 Agent 系统都需要。",
+          "更可能先在企业、高权限、长期自治 workload 中落地。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "org:baai",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "focus",
+        "title": "BAAI 当前在知识库中的价值主要是 Self-improvement 研究信号",
+        "evidence": [
+          "source:arex2"
+        ],
+        "paragraphs": [
+          "AREX-2 通过可验证任务训练 long-horizon reflection，并测试向 research/QA 等任务迁移。",
+          "这比单轮 reflection 更接近长期 RSI 机制。"
+        ]
+      },
+      {
+        "id": "method",
+        "title": "研究路线强调“先在可监督领域学会改进”",
+        "evidence": [
+          "source:arex2"
+        ],
+        "paragraphs": [
+          "机器学习和算法编程提供明确 reward，可以构造长轨迹，再验证通用改进能力是否迁移。",
+          "这种路线的关键假设是 self-improvement skill 存在跨领域共性。"
+        ]
+      },
+      {
+        "id": "importance",
+        "title": "真正意义在于把 RSI 变成可测实验问题",
+        "paragraphs": [
+          "iteration budget、performance curve、transfer benchmark 都是可量化对象，避免 RSI 只停留在哲学讨论。",
+          "后续是否开源模型/代码、是否被独立复现会决定影响力。"
+        ]
+      },
+      {
+        "id": "watch",
+        "title": "应观察开放世界任务与 Verifier 偏差",
+        "paragraphs": [
+          "可验证任务容易优化，真实办公/研究目标更模糊。更多迭代是否仍可靠，是下一阶段关键。",
+          "如果 evaluator 不稳，长程优化也会放大偏差。"
+        ]
+      }
+    ]
   }
 ]
