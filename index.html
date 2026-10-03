@@ -44,6 +44,31 @@ layout: default
   </div>
 </section>
 
+
+<section class="delta-home">
+  <div class="delta-home-head">
+    <div>
+      <div class="eyebrow">TODAY IN THE GRAPH</div>
+      <h2>今天，知识图发生了什么变化？</h2>
+    </div>
+    <div class="delta-date" id="deltaDate">—</div>
+  </div>
+  <div class="delta-summary" id="deltaSummary">
+    <div><strong>—</strong><span>new entities</span></div>
+    <div><strong>—</strong><span>updated entities</span></div>
+    <div><strong>—</strong><span>new relations</span></div>
+  </div>
+  <div class="delta-cards" id="deltaCards"><p class="delta-loading">正在读取最新知识增量…</p></div>
+  <div class="delta-actions">
+    <a class="primary-action" href="{{ '/graph/' | relative_url }}?today=1">在图谱中查看今天 →</a>
+    <a href="{{ '/evolution/' | relative_url }}">查看完整演化时间线</a>
+  </div>
+</section>
+<script id="homeNodes" type="application/json">{{ site.data.kg.nodes | jsonify }}</script>
+<script id="homeEdges" type="application/json">{{ site.data.kg.edges | jsonify }}</script>
+<script id="homeDeltas" type="application/json">{{ site.data.kg.deltas | jsonify }}</script>
+<script src="{{ '/assets/js/home-delta.js' | relative_url }}?v=kg-v2"></script>
+
 <section class="section-head"><h2>最近简报</h2><a href="{{ '/archive/' | relative_url }}">全部归档</a></section>
 <section class="report-grid">
 {% for post in site.posts limit:9 %}

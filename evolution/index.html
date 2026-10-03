@@ -1,0 +1,46 @@
+---
+layout: default
+title: Evolution
+description: Follow how AI Agent infrastructure topics, projects and capabilities evolve over time.
+permalink: /evolution/
+---
+<section class="evo-head">
+  <div class="eyebrow">EVOLUTION TIMELINE</div>
+  <h1>看技术如何<br><span>一步步长出来。</span></h1>
+  <p>时间线由知识图谱中的 Event、first_seen 与每日 graph delta 自动生成。它不是新闻归档，而是“技术结构发生变化”的时间视图。</p>
+</section>
+
+<section class="evo-dashboard">
+  <div class="evo-kpi"><strong id="evoDates">—</strong><span>active dates</span></div>
+  <div class="evo-kpi"><strong id="evoEvents">—</strong><span>events</span></div>
+  <div class="evo-kpi"><strong id="evoEntities">—</strong><span>core entities</span></div>
+  <div class="evo-kpi"><strong id="evoRelations">—</strong><span>relations</span></div>
+</section>
+
+<section class="evo-controls">
+  <label><span>Theme</span><select id="evoTheme"><option value="">All themes</option>{% for topic in site.data.kg.topics %}<option value="{{ topic.id }}">{{ topic.label }}</option>{% endfor %}</select></label>
+  <label><span>Entity type</span><select id="evoType"><option value="">All core types</option><option>Project</option><option>Capability</option><option>Research</option><option>Trend</option><option>Pattern</option><option>Standard</option></select></label>
+  <label class="evo-range"><span>View</span><select id="evoView"><option value="events">Events + milestones</option><option value="growth">Knowledge growth</option></select></label>
+  <button id="evoReset" type="button">Reset</button>
+</section>
+
+<section id="evoEventView">
+  <div class="evo-axis" id="evoAxis"></div>
+  <div class="evo-timeline" id="evoTimeline"></div>
+</section>
+
+<section id="evoGrowthView" hidden>
+  <div class="evo-growth-head"><div><div class="eyebrow">KNOWLEDGE GROWTH</div><h2>每天进入知识库的核心实体</h2></div><p>按 first_seen 聚合；Source / Event / Organization 不计入核心实体。</p></div>
+  <div class="evo-growth" id="evoGrowth"></div>
+</section>
+
+<section class="evo-explain">
+  <div><div class="eyebrow">HOW TO READ</div><h2>事件只是证据，演化才是主线。</h2></div>
+  <p>同一天可以出现多个发布，但只有当它们改变了能力、架构模式或趋势判断时，才会在知识图谱中形成新的结构关系。点击时间线条目可跳到 Graph Explorer 的对应节点。</p>
+</section>
+
+<script id="evoNodes" type="application/json">{{ site.data.kg.nodes | jsonify }}</script>
+<script id="evoEdges" type="application/json">{{ site.data.kg.edges | jsonify }}</script>
+<script id="evoTopics" type="application/json">{{ site.data.kg.topics | jsonify }}</script>
+<script id="evoDeltas" type="application/json">{{ site.data.kg.deltas | jsonify }}</script>
+<script src="{{ '/assets/js/evolution.js' | relative_url }}?v=kg-v2"></script>

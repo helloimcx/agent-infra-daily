@@ -23,6 +23,8 @@ permalink: /graph/
   <label><span>Type</span><select id="typeFilter"><option value="">All types</option>{% for pair in site.data.kg.ontology.node_types %}<option value="{{ pair[0] }}">{{ pair[0] }}</option>{% endfor %}</select></label>
   <label><span>Relation</span><select id="relationFilter"><option value="">All relations</option>{% for relation in site.data.kg.ontology.edge_types %}<option value="{{ relation }}">{{ relation }}</option>{% endfor %}</select></label>
   <label><span>Detail</span><select id="detailFilter"><option value="core">Core graph</option><option value="all">Include sources & events</option></select></label>
+  <button id="showToday" type="button">Today</button>
+  <button id="playDelta" type="button">Play delta</button>
   <button id="fitGraph" type="button">Fit</button>
   <button id="resetGraph" type="button">Reset</button>
 </section>
@@ -37,6 +39,7 @@ permalink: /graph/
       <span><i class="dot trend"></i>Trend</span>
       <span><i class="dot pattern"></i>Pattern</span>
     </div>
+    <div class="kg-delta-badge" id="kgDeltaBadge" hidden></div>
     <div id="kgCanvas" aria-label="Agent infrastructure knowledge graph"></div>
   </div>
   <aside id="kgDetail" class="kg-detail">
@@ -55,5 +58,6 @@ permalink: /graph/
 <script id="kgNodes" type="application/json">{{ site.data.kg.nodes | jsonify }}</script>
 <script id="kgEdges" type="application/json">{{ site.data.kg.edges | jsonify }}</script>
 <script id="kgTopics" type="application/json">{{ site.data.kg.topics | jsonify }}</script>
+<script id="kgDeltas" type="application/json">{{ site.data.kg.deltas | jsonify }}</script>
 <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.3/dist/cytoscape.min.js"></script>
-<script src="{{ '/assets/js/graph.js' | relative_url }}?v=kg-v1"></script>
+<script src="{{ '/assets/js/graph.js' | relative_url }}?v=kg-v2"></script>
