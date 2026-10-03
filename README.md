@@ -86,3 +86,15 @@ External URLs are treated as evidence sources, not as the node's canonical page.
 ## Entity schema v2
 
 Core entities use type-specific fields from `_data/kg/entity_schema.json`; entity pages render only fields that exist and keep evidence-backed facts separate from analysis.
+
+
+## Authored entity content guardrail
+
+Entity prose is first-party knowledge content, not a rendering of graph metadata.
+
+- Every node must set `content_mode: authored` and `content_version: v7`.
+- Every node must have a unique, explicitly written `intro` and `why_it_matters`.
+- Core types must satisfy their type-specific schema in `_data/kg/entity_schema.json`.
+- The legacy generated `overview` field is forbidden.
+- Graph relations may be displayed and used for fact checking, but they are not prose templates.
+- `.github/workflows/validate-knowledge.yml` runs `scripts/validate_entities.py` and blocks missing/thin/templated entity content.

@@ -1,15 +1,17 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "purpose": "Type-specific content schema for first-party entity knowledge pages.",
   "common": [
     "summary",
-    "overview",
+    "intro",
     "why_it_matters",
     "themes",
     "maturity",
     "first_seen",
     "last_verified",
-    "page"
+    "page",
+    "content_mode",
+    "content_version"
   ],
   "types": {
     "Project": [
@@ -59,5 +61,12 @@
       "what_to_watch",
       "confidence_note"
     ]
-  }
+  },
+  "authoring_rules": [
+    "intro and why_it_matters must be explicitly authored for the individual entity.",
+    "Do not generate prose by concatenating type, theme, relationship, maturity or architecture fields.",
+    "Graph relationships may support factual checking and UI, but must not be used as a prose template.",
+    "Core entity types must use their type-specific structured fields.",
+    "External URLs are evidence, never substitutes for first-party entity content."
+  ]
 }

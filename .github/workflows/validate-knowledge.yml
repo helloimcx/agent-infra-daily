@@ -1,0 +1,28 @@
+name: Validate Knowledge Content
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "_data/kg/**"
+      - "entities/**"
+      - "_layouts/entity.html"
+      - "scripts/validate_entities.py"
+      - ".github/workflows/validate-knowledge.yml"
+  pull_request:
+    paths:
+      - "_data/kg/**"
+      - "entities/**"
+      - "_layouts/entity.html"
+      - "scripts/validate_entities.py"
+
+jobs:
+  validate-entities:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate first-party entity content
+        run: python scripts/validate_entities.py

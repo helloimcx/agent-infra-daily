@@ -19,7 +19,6 @@
       "rsi"
     ],
     "page": "/entities/theme--agent-infrastructure/",
-    "overview": "Agent Infrastructure 是本知识库的主题节点，用来组织同一技术域中的能力、项目、研究、架构模式与趋势。The infrastructure stack beneath autonomous and long-running AI agents. 当前该主题下的知识会随着每日情报持续增量更新，而不是作为一次性分类。",
     "why_it_matters": "随着 Agent 从 demo 进入生产，决定系统上限的越来越不是单次模型回答，而是运行时是否可靠、工具是否可控、环境是否可恢复、权限是否可治理。这个主题用于把分散在云计算、容器、安全、工作流和 AI 工程里的变化组织成一张共同地图。",
     "intro": "Agent Infrastructure 是这个知识库的总主题，关注 Agent 真正运行起来以后所依赖的整套工程底座：执行、隔离、状态、权限、工具协议、记忆、可观测性和自我改进。它刻意把注意力从“模型本身有多聪明”移到“怎样让模型长期、可靠、安全地完成真实工作”。",
     "content_mode": "authored",
@@ -37,7 +36,6 @@
       "runtime"
     ],
     "page": "/entities/theme--runtime/",
-    "overview": "Runtime & Orchestration 是本知识库的主题节点，用来组织同一技术域中的能力、项目、研究、架构模式与趋势。Execution state, scheduling, retry, recovery and orchestration. 当前该主题下的知识会随着每日情报持续增量更新，而不是作为一次性分类。",
     "why_it_matters": "长任务 Agent 不可能假设某个进程永远存活。Runtime 决定一个任务在故障、扩缩容和版本升级中是否还能继续，因此是 Cloud Agent 从交互式 demo 走向可靠服务的核心层。",
     "intro": "Runtime & Orchestration 关注 Agent 如何被启动、调度、挂起、恢复和持续执行。它涵盖 durable execution、任务状态、重试、计时器、worker 生命周期以及多步骤工作流之间的协调。",
     "content_mode": "authored",
@@ -55,7 +53,6 @@
       "harness"
     ],
     "page": "/entities/theme--harness/",
-    "overview": "Agent Harness 是本知识库的主题节点，用来组织同一技术域中的能力、项目、研究、架构模式与趋势。The control loop between models, tools, environment and verification. 当前该主题下的知识会随着每日情报持续增量更新，而不是作为一次性分类。",
     "why_it_matters": "模型能力越来越接近时，Harness 成为工程团队最能直接改进的部分。它既决定 Agent 的执行质量，也逐渐成为 eval、action verification 和 harness-level RSI 的主要载体。",
     "intro": "Agent Harness 是模型和真实世界之间的控制层：它决定何时调用模型、怎样组织上下文、如何选择工具、是否启用 subagent、怎样验证动作以及何时结束任务。不同 Harness 往往在同一模型上产生显著不同的可靠性和成本。",
     "content_mode": "authored",
@@ -73,7 +70,6 @@
       "sandbox"
     ],
     "page": "/entities/theme--sandbox/",
-    "overview": "Sandbox & Execution 是本知识库的主题节点，用来组织同一技术域中的能力、项目、研究、架构模式与趋势。Isolation boundaries and execution environments for agent actions. 当前该主题下的知识会随着每日情报持续增量更新，而不是作为一次性分类。",
     "why_it_matters": "Agent 一旦获得 shell、浏览器和文件能力，就不再只是“生成文本”的系统。Sandbox 是把模型的不确定行为限制在可控边界内的第一道工程防线，也是远程 Coding Agent 与 Cloud Agent 的基础资源。",
     "intro": "Sandbox & Execution 关注 Agent 代码和工具究竟在哪里运行，以及这个环境如何隔离文件、进程、网络和资源。这个主题覆盖本地容器、远程 sandbox、microVM、cloud computer 以及更上层的 execution target 管理。",
     "content_mode": "authored",
@@ -91,7 +87,6 @@
       "cloud-agent"
     ],
     "page": "/entities/theme--cloud-agent/",
-    "overview": "Cloud Agent 是本知识库的主题节点，用来组织同一技术域中的能力、项目、研究、架构模式与趋势。Persistent and managed agents that continue working in cloud environments. 当前该主题下的知识会随着每日情报持续增量更新，而不是作为一次性分类。",
     "why_it_matters": "Cloud Agent 改变了 Agent 的生命周期假设：任务不再必须在一次会话里完成。这个变化会反过来推动 Runtime、Sandbox、Memory、权限和成本模型全部重新设计。",
     "intro": "Cloud Agent 关注长期存在、可在后台继续工作的 Agent 产品与基础设施。它不仅需要远程计算，还涉及持久 workspace、任务调度、身份、memory、异步执行以及用户离线后的持续工作。",
     "content_mode": "authored",
@@ -109,7 +104,6 @@
       "security"
     ],
     "page": "/entities/theme--security/",
-    "overview": "Security & Authority 是本知识库的主题节点，用来组织同一技术域中的能力、项目、研究、架构模式与趋势。Agent permissions, credentials, policy and side-effect control. 当前该主题下的知识会随着每日情报持续增量更新，而不是作为一次性分类。",
     "why_it_matters": "Agent 的危险不只来自恶意模型，更来自正常模型在错误上下文里做出错误动作。随着 Agent 权限扩大，安全必须从 prompt 约束升级成独立的基础设施控制面。",
     "intro": "Security & Authority 研究 Agent 在真实系统中能做什么、不能做什么，以及谁拥有最终授权权。范围包括 credential isolation、network policy、out-of-band enforcement、人工确认和高风险 side effect 控制。",
     "content_mode": "authored",
@@ -127,7 +121,6 @@
       "memory"
     ],
     "page": "/entities/theme--memory/",
-    "overview": "Memory & Experience 是本知识库的主题节点，用来组织同一技术域中的能力、项目、研究、架构模式与趋势。Persistent context, traces, replayable experience and learned skills. 当前该主题下的知识会随着每日情报持续增量更新，而不是作为一次性分类。",
     "why_it_matters": "没有记忆，长期 Agent 每次都像第一次工作；没有治理的记忆，则会迅速累积噪声、隐私风险和错误经验。Memory 是个性化 Agent 与自我改进系统共同依赖的数据层。",
     "intro": "Memory & Experience 关注 Agent 如何把过去的对话、任务轨迹、用户偏好、文件状态和执行经验保存下来，并在未来任务中有选择地复用。它既包含长期记忆，也包含更工程化的 trace、replay 和 skill consolidation。",
     "content_mode": "authored",
@@ -145,7 +138,6 @@
       "protocol"
     ],
     "page": "/entities/theme--protocol/",
-    "overview": "Protocols & Standards 是本知识库的主题节点，用来组织同一技术域中的能力、项目、研究、架构模式与趋势。Interoperability and portable definitions for agent capabilities. 当前该主题下的知识会随着每日情报持续增量更新，而不是作为一次性分类。",
     "why_it_matters": "如果每个平台都用自己的工具描述、权限模型和运行格式，Agent 生态会高度碎片化。协议和标准决定能力能否跨平台组合，也决定未来是否会形成真正可移植的 Agent 基础设施。",
     "intro": "Protocols & Standards 关注 Agent、Harness、Tool、Sandbox 和 Cloud Runtime 之间如何建立稳定接口。这里既包括 MCP 这样的工具协议，也包括 OCI 这类被重新用于 Agent artifact 分发的成熟基础标准。",
     "content_mode": "authored",
@@ -163,7 +155,6 @@
       "observability"
     ],
     "page": "/entities/theme--observability/",
-    "overview": "Observability & Eval 是本知识库的主题节点，用来组织同一技术域中的能力、项目、研究、架构模式与趋势。Tracing, replay, evaluation, verification and quality measurement. 当前该主题下的知识会随着每日情报持续增量更新，而不是作为一次性分类。",
     "why_it_matters": "Agent 的行为由模型、工具和环境共同决定，普通应用监控无法解释完整 trajectory。没有可观测性就无法稳定调试，没有可靠 eval 就无法安全地优化 Harness 或开展 RSI。",
     "intro": "Observability & Eval 关注如何知道 Agent 实际做了什么、为什么失败，以及某次改动是否真的让系统变好。它覆盖结构化 trace、replay、benchmark、verifier、回归测试和 selective evaluation。",
     "content_mode": "authored",
@@ -181,7 +172,6 @@
       "rsi"
     ],
     "page": "/entities/theme--rsi/",
-    "overview": "Agent RSI 是本知识库的主题节点，用来组织同一技术域中的能力、项目、研究、架构模式与趋势。Recursive and iterative self-improvement of agents and harnesses. 当前该主题下的知识会随着每日情报持续增量更新，而不是作为一次性分类。",
     "why_it_matters": "如果 Agent 能把真实执行经验转化为可验证的系统改进，软件能力就可能从人工版本迭代转向持续机器优化。RSI 同时也是高风险方向，因此 eval、回滚、权限和独立验证比“能不能自改”本身更重要。",
     "intro": "Agent RSI 关注 Agent 或其周边系统如何持续改进自身，包括 long-horizon reflection、自动 Harness 修改、候选搜索、skill 学习和评测驱动的自我优化。这里更关注可工程化的自改循环，而不是抽象的“递归智能爆炸”。",
     "content_mode": "authored",
@@ -200,7 +190,6 @@
       "cloud-agent"
     ],
     "page": "/entities/capability--durable-execution/",
-    "overview": "Durable Execution 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Resume work after crashes without repeating completed side effects. 主要归入 Runtime & Orchestration、Cloud Agent。 当前图谱中与它直接相关的项目包括 Restate。 在架构分析中，它位于 Durable Runtime 等层。",
     "why_it_matters": "当 Agent 从分钟级聊天走向小时级、天级工作时，失败恢复会从边缘问题变成核心基础设施问题。没有 durable execution，所谓 Cloud Agent 很容易退化成“希望这个进程一直别死”；一旦涉及支付、部署、发邮件等不可逆操作，重复执行还会直接造成业务事故。",
     "definition": "Durable Execution 指把长流程的关键执行结果、状态和外部副作用记录到持久化日志中，使执行进程可以崩溃、迁移或重启，而流程本身仍能从已完成的位置继续。",
     "problem_it_solves": "长任务 Agent 会经历模型调用超时、工具失败、进程重启、人工审批等待和部署切换。如果只依赖内存状态或粗粒度 checkpoint，恢复时容易重复调用模型、重复发送请求，甚至重复产生不可逆副作用。",
@@ -242,7 +231,6 @@
       "memory"
     ],
     "page": "/entities/capability--persistent-workspace/",
-    "overview": "Persistent Workspace 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。A long-lived workspace that survives task and worker lifecycles. 主要归入 Runtime & Orchestration、Cloud Agent、Memory & Experience。 当前图谱中与它直接相关的项目包括 Docker Cloud Sandboxes、DigitalOcean Agent Droplets、OpenAI Dots。 在架构分析中，它位于 Persistent Workspace & Cloud 等层。",
     "why_it_matters": "长期任务真正需要保留的往往不只是聊天历史，而是一个不断变化的工作现场。把 workspace 生命周期从 worker 生命周期里拆出来，是 Cloud Agent、远程 Coding Agent 和个人 AI 工作台能够持续工作的前提。",
     "definition": "Persistent Workspace 是跨任务、跨会话甚至跨 worker 生命周期保留的工作环境，用来承载文件、依赖、缓存、项目状态和 Agent 长期工作的中间产物。",
     "problem_it_solves": "短生命周期 sandbox 每次重新创建都会丢失安装依赖、生成文件、浏览器状态和项目上下文，长任务因此不断重复准备环境，也很难在多次任务之间积累工作成果。",
@@ -284,7 +272,6 @@
       "sandbox"
     ],
     "page": "/entities/capability--cloud-computer/",
-    "overview": "Cloud Computer 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。A dedicated remote computer environment available to an agent over time. 主要归入 Cloud Agent、Sandbox & Execution。 当前图谱中与它直接相关的项目包括 OpenAI Dots。 在架构分析中，它位于 Sandbox & Execution、Persistent Workspace & Cloud 等层。",
     "why_it_matters": "很多真实办公流程仍然围绕 GUI、浏览器、本地文件和传统应用展开。Cloud Computer 让 Agent 获得覆盖这些长尾工作流的执行面，但同时也把设备权限、凭据和数据访问问题提升到基础设施层。",
     "definition": "Cloud Computer 指 Agent 拥有一台可远程操作、长期可用的云端计算环境，通常包含浏览器、文件系统和应用执行能力。",
     "problem_it_solves": "很多办公和研究任务不是一次 API 调用能完成的：Agent 需要打开网页、处理文件、运行应用，并在用户离线后继续工作。",
@@ -324,7 +311,6 @@
       "security"
     ],
     "page": "/entities/capability--agent-artifact/",
-    "overview": "Portable Agent Artifact 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Deployable unit packaging workload, environment, tools and authority requirements. 主要归入 Protocols & Standards、Runtime & Orchestration、Security & Authority。 当前图谱中与它直接相关的项目包括 Docker Sandbox Kit。 在架构分析中，它位于 Agent Definition & Protocol 等层。",
     "why_it_matters": "如果 Agent Definition 无法被稳定打包和迁移，Harness、Sandbox 与 Cloud Runtime 就会形成强平台锁定。可移植 Agent Artifact 的价值在于建立一个更清晰的边界：Agent 声明自己需要什么，Runtime 决定最终允许什么。",
     "definition": "Portable Agent Artifact 是把 Agent workload、工具、运行环境和权限需求作为一个可分发单元描述的抽象，目标是让 Agent 定义可以跨兼容 runtime 迁移。",
     "problem_it_solves": "不同 Agent Harness 和 Sandbox 往往分别配置镜像、工具、挂载、网络、secret 与启动参数，导致 Agent 很难复现、审计或迁移。",
@@ -364,7 +350,6 @@
       "security"
     ],
     "page": "/entities/capability--network-policy/",
-    "overview": "Network Policy 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Explicit controls over destinations and network access. 主要归入 Sandbox & Execution、Security & Authority。 当前图谱中与它直接相关的项目包括 Docker Sandbox Kit。 在架构分析中，它位于 Policy & Credentials 等层。",
     "why_it_matters": "拥有代码执行能力的 Agent 一旦默认获得无限制网络，就同时拥有了数据外泄和供应链攻击的巨大通道。网络策略只有在 Agent Harness 之外被强制执行，才可能成为真正可靠的安全边界。",
     "definition": "Network Policy 用来约束 Agent 或 sandbox 可以访问哪些网络目标、端口或服务，是把“能联网”细化为可审计 capability 的基础能力。",
     "problem_it_solves": "Agent 具备代码执行和浏览器能力后，默认开放网络会同时放大数据外泄、供应链攻击和越权访问风险。",
@@ -403,7 +388,6 @@
       "sandbox"
     ],
     "page": "/entities/capability--credential-isolation/",
-    "overview": "Credential Isolation 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Keep secrets outside agent-visible workspace and broker them under policy. 主要归入 Security & Authority、Sandbox & Execution。 当前图谱中与它直接相关的项目包括 Docker Sandbox Kit、Docker Cloud Sandboxes。 在架构分析中，它位于 Policy & Credentials 等层。",
     "why_it_matters": "长期 Agent 会积累日志、文件、截图、工具输出和第三方内容，直接暴露 secret 的风险会随着运行时间急剧放大。凭据隔离因此不是附加安全功能，而是多租户 Cloud Agent 能否安全连接真实业务系统的基本条件。",
     "definition": "Credential Isolation 的目标是让 Agent 能使用某项权限，但不必直接看到或持久化原始 secret。典型做法是用 credential broker、代理签名或请求时注入。",
     "problem_it_solves": "把 API key、云凭据或 OAuth token 放进环境变量、文件或上下文后，Agent、工具输出、截图、日志和 git 操作都可能意外泄露凭据。",
@@ -445,7 +429,6 @@
       "sandbox"
     ],
     "page": "/entities/capability--policy-enforcement/",
-    "overview": "Out-of-band Policy Enforcement 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Enforce safety outside the harness so the agent cannot control its own guardrail. 主要归入 Security & Authority、Sandbox & Execution。 当前图谱中与它直接相关的项目包括 NVIDIA OpenShell。 在架构分析中，它位于 Policy & Credentials 等层。",
     "why_it_matters": "让 Agent 自己执行同时又自己判断“我能不能执行”，等于把钥匙和门锁都交给同一个可能被 prompt injection 影响的主体。随着 Agent 权限扩大，独立 policy enforcement 会成为比 prompt guardrail 更可靠的控制面。",
     "definition": "Out-of-band Policy Enforcement 指把安全策略放在 Agent Harness 之外执行，使 Agent 本身不能修改、绕过或关闭约束它的 policy。",
     "problem_it_solves": "如果 Agent 自己负责判断“我是否允许执行这个动作”，那么被 prompt injection、工具链污染或代码修改后，guardrail 本身也可能失效。",
@@ -485,7 +468,6 @@
       "security"
     ],
     "page": "/entities/capability--action-verification/",
-    "overview": "Action Verification 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Verify candidate actions before they mutate the environment. 主要归入 Agent Harness、Observability & Eval、Security & Authority。 在架构分析中，它位于 Experience & Learning、Agent Harness 等层。",
     "why_it_matters": "Agent 的很多失败并不是最终答案写错，而是中间某一步错误动作污染了环境。尤其在 coding、shell 和基础设施场景，提前验证一个动作往往比事后恢复整个工作区更便宜。",
     "definition": "Action Verification 在模型生成动作与真实环境执行之间增加验证层，对候选 shell command、tool call 或修改操作进行检查、比较或重排序。",
     "problem_it_solves": "Agent 一旦执行错误动作，后续环境可能被永久污染。尤其在 terminal / coding 场景里，一个错误安装、删除或配置修改会改变整个 trajectory。",
@@ -525,7 +507,6 @@
       "rsi"
     ],
     "page": "/entities/capability--eval-scheduling/",
-    "overview": "Selective Eval Scheduling 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Use cheap ranking signals before expensive self-improvement evaluation. 主要归入 Observability & Eval、Agent RSI。 在架构分析中，它位于 Experience & Learning 等层。",
     "why_it_matters": "在 RSI 或自动 Harness 优化中，真正昂贵的往往不是生成新方案，而是反复验证所有方案。如果没有分层评测，计算成本会随着搜索树迅速爆炸，自我改进很难从论文实验走向持续运行的工程系统。",
     "definition": "Selective Eval Scheduling 是在自我改进或候选 Agent 搜索中，用便宜的中间信号筛选候选，只对最有希望的修改运行昂贵 benchmark。",
     "problem_it_solves": "Recursive self-improvement 常常不是生成 patch 贵，而是每个 patch 都要完整跑任务集进行验证，导致 CPU、wall-clock 和 API 成本快速爆炸。",
@@ -564,7 +545,6 @@
       "rsi"
     ],
     "page": "/entities/capability--long-horizon-reflection/",
-    "overview": "Long-horizon Reflection 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Improve solutions over many rounds while preserving useful progress. 主要归入 Agent RSI。 在架构分析中，它位于 Experience & Learning 等层。",
     "why_it_matters": "如果 Agent 能稳定利用更长的测试时预算，它就可以把一次性推理变成持续优化过程。这是自动研究、复杂 coding 和 Harness-level RSI 能否继续扩展能力上限的重要机制。",
     "definition": "Long-horizon Reflection 指 Agent 在多轮迭代中持续识别当前方案不足、生成改进并保留有效进展，而不是只做一次 critique-and-retry。",
     "problem_it_solves": "很多复杂任务的最佳结果无法通过一次推理获得；但简单重复 reflection 又容易陷入循环、退化或忘记前面有效的改进。",
@@ -604,7 +584,6 @@
       "rsi"
     ],
     "page": "/entities/capability--execution-trace/",
-    "overview": "Execution Trace & Replay 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Structured action history for observability, replay, eval, skill mining and RSI. 主要归入 Memory & Experience、Observability & Eval、Agent RSI。 在架构分析中，它位于 Experience & Learning 等层。",
     "why_it_matters": "Agent 系统的质量问题通常跨越模型、工具、环境和状态，传统应用日志很难还原完整因果链。高质量 trace 同时是 observability、回放、评测、数据飞轮和未来自我改进的共同基础。",
     "definition": "Execution Trace & Replay 是把 Agent 的模型调用、tool call、状态变化、错误、重试和外部副作用记录成可查询、可重放的结构化轨迹。",
     "problem_it_solves": "Agent 行为是动态决策出来的，传统日志很难回答“为什么走到这一步”“哪次工具调用污染了状态”或“新 Harness 是否真的改善了同一任务”。",
@@ -644,7 +623,6 @@
       "runtime"
     ],
     "page": "/entities/capability--stateless-tool-protocol/",
-    "overview": "Stateless Tool Protocol 是一个 Capability 节点，描述 Agent 基础设施中的可复用技术能力。Tool protocol semantics that scale without sticky protocol sessions. 主要归入 Protocols & Standards、Runtime & Orchestration。 在架构分析中，它位于 Durable Runtime 等层。",
     "why_it_matters": "工具服务一旦成为百万级 Agent 共享的基础设施，协议层的隐式 session 会显著增加扩容与故障恢复成本。无状态协议能更自然地复用成熟的负载均衡、缓存和网关能力。",
     "definition": "Stateless Tool Protocol 指协议核心不依赖长期 sticky session，而把每个请求路由和交互所需的信息显式化，从而更容易水平扩展服务端。",
     "problem_it_solves": "有状态工具协议会迫使负载均衡器维持 sticky session，或者在服务端共享 session state，增加扩容、故障恢复和多租户复杂度。",
@@ -685,7 +663,6 @@
     ],
     "url": "https://www.docker.com/blog/docker-sandbox-kit-spec/",
     "page": "/entities/project--docker-sandbox-kit/",
-    "overview": "Docker Sandbox Kit 在本知识库中作为 early-access 的 Project 跟踪。OCI-based packaging model for agent workload, tooling, policy and environment. 主要归入 Sandbox & Execution、Security & Authority、Protocols & Standards、Runtime & Orchestration。 当前已有一手证据或显式分析关系把它连接到 Portable Agent Artifact、Network Policy、Credential Isolation 等能力。 在 Architecture Stack 中，它覆盖 Agent Definition & Protocol、Policy & Credentials。",
     "why_it_matters": "Sandbox Kit 把 Agent 的 workload 和 authority requirements 放进同一个可交付边界，是 Agent Definition 标准化的重要信号。如果这种模型获得更多 runtime 支持，未来 Agent 可以更像容器镜像一样被构建、审计和迁移。",
     "definition": "Docker Sandbox Kit 是一种把 Agent workload、工具、环境与权限需求打包进 OCI artifact 的规范。它试图让“一个 Agent 需要什么、可以接触什么”像容器镜像一样被版本化和分发。",
     "operating_model": "Kit 使用普通 OCI image 作为承载格式，但语义不只是代码和依赖。规范把 workload、mixin、mount、network、credential、lifecycle 与 capability 等内容组合进可复用定义，使同一个 Agent 定义可以交给不同兼容 runtime 解释和执行。",
@@ -730,7 +707,6 @@
     ],
     "url": "https://docs.docker.com/ai/sandboxes/cloud/usage/",
     "page": "/entities/project--docker-cloud-sandboxes/",
-    "overview": "Docker Cloud Sandboxes 在本知识库中作为 early 的 Project 跟踪。Managed cloud sandbox environments for agents and persistent named environments. 主要归入 Sandbox & Execution、Cloud Agent、Security & Authority。 当前已有一手证据或显式分析关系把它连接到 Persistent Workspace、Credential Isolation 等能力。 在 Architecture Stack 中，它覆盖 Sandbox & Execution、Persistent Workspace & Cloud。",
     "why_it_matters": "它体现了 Sandbox 正从本地隔离工具变成 Cloud Agent 的基础资源。真正值得关注的不是“云上也能开容器”，而是 workspace 生命周期、credential policy 和 execution target 开始被统一进 Agent runtime 体验。",
     "definition": "Docker Cloud Sandboxes 是 Docker 托管的远程 Agent sandbox。它使用与本地 sandbox 相同的 sbx CLI，但计算、生命周期、network policy、ports 和 cloud credentials 由云端服务管理。",
     "operating_model": "Cloud sandbox 在 Docker-managed infrastructure 上运行。它与本地 sandbox 分离状态，不能直接挂载本机 workspace 或使用本机硬件；命名 sandbox 可以复用，支持 expiration / resume 等生命周期配置。Cloud credential 也与本地 secret 分开管理。",
@@ -775,7 +751,6 @@
     ],
     "url": "https://investors.digitalocean.com/news/news-details/2026/DigitalOcean-Introduces-Agent-Droplets-Everything-an-AI-Agent-Needs-One-Simple-Monthly-Price/default.aspx",
     "page": "/entities/project--digitalocean-agent-droplets/",
-    "overview": "DigitalOcean Agent Droplets 在本知识库中作为 public-preview 的 Project 跟踪。Managed agent runtime combining compute, inference, tools, memory and storage. 主要归入 Cloud Agent、Runtime & Orchestration、Memory & Experience。 当前已有一手证据或显式分析关系把它连接到 Persistent Workspace 等能力。 在 Architecture Stack 中，它覆盖 Persistent Workspace & Cloud。",
     "why_it_matters": "当 Agent Runtime 进入标准云产品目录，计费、扩缩容、治理和 SLA 都会逐渐围绕 Agent workload 重构。这可能推动“agent-hour”“tool call budget”“persistent workspace”等新资源抽象形成。",
     "definition": "DigitalOcean Agent Droplets 把 Agent Runtime 作为独立云产品打包，目标是将 compute、inference、tools、memory 和 storage 统一交付，而不是让用户自己拼装多个基础设施组件。",
     "operating_model": "从当前公开信息看，它建立在 DigitalOcean Managed Agents 之上，将托管执行环境、工具治理、Serverless Inference、持久 memory / storage 与固定资源套餐组合成 Agent 运行单元。",
@@ -816,7 +791,6 @@
     ],
     "url": "https://restate.dev/what-is-durable-execution",
     "page": "/entities/project--restate/",
-    "overview": "Restate 在本知识库中作为 production 的 Project 跟踪。Durable execution infrastructure for resilient stateful backend and agent workflows. 主要归入 Runtime & Orchestration、Cloud Agent。 当前已有一手证据或显式分析关系把它连接到 Durable Execution 等能力。 在 Architecture Stack 中，它覆盖 Durable Runtime。",
     "why_it_matters": "Restate 展示了一条不同于“让 Agent sandbox 永远活着”的长任务路线：状态可以持久，但 worker 可以随时替换。对于百万用户 Cloud Agent，这种解耦直接影响可靠性、成本和资源利用率。",
     "definition": "Restate 是面向长期、异步和有副作用流程的 durable execution runtime。它试图把 durability、state、communication 与 coordination 变成普通后端编程原语，而不是只在少数 workflow 中使用的额外系统。",
     "operating_model": "Restate 通过持久化执行日志记录函数/服务已经完成的步骤。进程失败后，新的 worker 可以 replay execution journal、复用已完成结果并继续执行。对于 Agent，它还可以持久化等待人工审批、恢复模型/工具流程，并提供执行时间线用于调试。",
@@ -860,7 +834,6 @@
     ],
     "url": "https://help.openai.com/en/articles/20001530-getting-started-with-your-dot",
     "page": "/entities/project--openai-dots/",
-    "overview": "OpenAI Dots 在本知识库中作为 product 的 Project 跟踪。Always-on agents with their own cloud computer, app access and ongoing responsibility. 主要归入 Cloud Agent、Runtime & Orchestration、Memory & Experience。 当前已有一手证据或显式分析关系把它连接到 Cloud Computer、Persistent Workspace 等能力。 在 Architecture Stack 中，它覆盖 Persistent Workspace & Cloud。",
     "why_it_matters": "Dots 把 Agent 从“打开聊天窗口时临时工作”推向“长期存在、持续承担职责”的产品形态。它是观察 Cloud Agent 如何组合身份、任务调度、云端计算、memory 和权限边界的一个重要真实产品样本。",
     "definition": "OpenAI Dots 是 ChatGPT 中的 always-on Agent 形态。一个 Dot 可以承担持续职责，在多次对话之间继续推进工作，并拥有自己的 cloud computer。",
     "operating_model": "从 OpenAI 公开说明看，Dot 不是一次会话里的临时 Agent。它有独立的 cloud computer，可查看 In progress / Scheduled / Completed 任务，支持定时任务、后台研究、连接应用并形成记忆；可选地还可以通过桌面端访问用户本地电脑。Dot 也能创建 Codex cloud environment 任务。这个运行模型更接近“长期 Agent 身份 + 云端计算环境 + 持久上下文 + 任务调度”。",
@@ -904,7 +877,6 @@
     ],
     "url": "https://developer.nvidia.com/blog/nvidia-open-agent-safety-platform-a-reference-for-continuous-in-silicon-agent-monitoring",
     "page": "/entities/project--nvidia-openshell/",
-    "overview": "NVIDIA OpenShell 在本知识库中作为 emerging 的 Project 跟踪。Secure runtime for autonomous agents with sandboxing and external policy enforcement. 主要归入 Sandbox & Execution、Security & Authority。 当前已有一手证据或显式分析关系把它连接到 Out-of-band Policy Enforcement 等能力。 在 Architecture Stack 中，它覆盖 Policy & Credentials、Sandbox & Execution。",
     "why_it_matters": "随着 Agent 获得更强工具和系统权限，仅靠 system prompt 或 Harness hook 很难构成可靠防线。OpenShell 代表了一种更接近云安全基础设施的 Agent Safety 架构：执行可以自治，授权必须外置。",
     "definition": "NVIDIA OpenShell 是 Open Agent Safety Platform 中的 Agent runtime / security boundary，核心思想是把安全强制执行放在 Agent Harness 之外。",
     "operating_model": "OpenShell 作为独立执行边界承载 Agent 运行，并对网络、文件、工具或其他 capability 进行 policy enforcement。这样即使 Agent 本身被提示注入、代码修改或工具链污染，也不能自行关闭约束自己的规则。",
@@ -946,7 +918,6 @@
     ],
     "url": "https://blog.modelcontextprotocol.io/posts/sdk-betas-2026-07-28/",
     "page": "/entities/standard--mcp/",
-    "overview": "Model Context Protocol 是协议或标准节点。Protocol connecting AI applications and agents to tools and contextual capabilities. 主要归入 Protocols & Standards、Agent Harness。 在当前图谱中，它与 Stateless Tool Protocol 等能力存在直接关系。这类节点重点关注跨 Harness、Runtime 与工具生态之间的互操作性。",
     "why_it_matters": "MCP 的真正影响不只在于减少不同工具的适配代码，而在于它可能成为 Agent Harness 与外部 capability infrastructure 之间的公共边界。协议一旦普及，身份、授权、网关、策略和可观测性都会围绕它形成新的基础设施层。",
     "purpose": "Model Context Protocol 为 AI 应用与工具、数据源和服务之间提供统一连接协议。2026-07-28 版本进一步把协议核心改造成 stateless request/response 模式，以降低服务端水平扩展和 session 管理复杂度。",
     "core_mechanisms": [
@@ -982,7 +953,6 @@
       "runtime"
     ],
     "page": "/entities/standard--oci/",
-    "overview": "OCI Artifact 是协议或标准节点。Open container artifact packaging model reused by agent kit proposals. 主要归入 Protocols & Standards、Runtime & Orchestration。这类节点重点关注跨 Harness、Runtime 与工具生态之间的互操作性。",
     "why_it_matters": "OCI 带来的价值是成熟的 registry、缓存、签名和供应链生态。如果 Agent 定义能够建立在 OCI 之上，未来跨 runtime 的可移植性会更容易实现；但权限语义仍需要额外标准化。",
     "purpose": "OCI Artifact 提供开放的镜像/制品分发格式和 registry 生态。Agent 基础设施正在尝试复用它承载 Agent definition、tooling 与 authority metadata。",
     "core_mechanisms": [
@@ -1017,7 +987,6 @@
     ],
     "url": "https://arxiv.org/abs/2609.39982",
     "page": "/entities/research--mid-harness/",
-    "overview": "Mid-Harness 是 Research 节点，用来记录对 Agent 系统能力或机制具有实质影响的论文/研究系统。Samples and verifies candidate terminal actions before execution. 主要归入 Agent Harness、Observability & Eval、Security & Authority。 它当前直接关联 Action Verification 等能力。",
     "why_it_matters": "它把“多想几次”的计算预算放到了最容易污染状态的 action boundary 上，为 coding agent 提供了一个很实用的中间层设计方向。它也说明 Harness 本身可以成为推理能力扩展的一部分，而不只是简单转发模型输出。",
     "research_question": "Terminal / coding Agent 在真正修改环境之前，能否通过在 Model 与 Harness 之间增加 action-level search 和 verification，提高成功率并降低错误动作造成的不可逆状态污染？",
     "method": "Mid-Harness 不立即执行模型生成的第一个动作，而是采样多个候选 action，再由 verifier 选择更合适的动作后交给真实 Harness 执行。研究重点是 candidate count、verifier strength 与最终任务成功率之间的关系。",
@@ -1058,7 +1027,6 @@
     ],
     "url": "https://arxiv.org/abs/2609.38288",
     "page": "/entities/research--arex-2/",
-    "overview": "AREX-2 是 Research 节点，用来记录对 Agent 系统能力或机制具有实质影响的论文/研究系统。Self-improving agent trained for reflection and sustained long-horizon refinement. 主要归入 Agent RSI。 它当前直接关联 Long-horizon Reflection 等能力。 其结果也被用于观察 Harness-level RSI 等趋势。",
     "why_it_matters": "如果长程 reflection 能跨任务稳定成立，Agent 的能力上限就不再完全受单次模型调用限制。它为自动研究、复杂 coding 和 RSI 提供了一条通过执行循环而非直接改模型权重进行提升的路线。",
     "research_question": "如何训练 Agent 在 test time 进行持续多轮自我改进，使增加 iteration budget 时性能仍能继续提升，而不是只做一次 reflection？",
     "method": "AREX-2 把 self-improvement 分解为 reflection 与 long-horizon execution，并在具有明确 verifier/reward 的机器学习与算法编程任务中构造长程改进轨迹，用这些轨迹训练 Agent 学会反复评估和改进当前方案。",
@@ -1100,7 +1068,6 @@
     ],
     "url": "https://arxiv.org/abs/2609.19526",
     "page": "/entities/research--sift/",
-    "overview": "SIFT 是 Research 节点，用来记录对 Agent 系统能力或机制具有实质影响的论文/研究系统。Self-improvement via fast tree search and selective expensive evaluation. 主要归入 Agent RSI、Observability & Eval。 它当前直接关联 Selective Eval Scheduling 等能力。 其结果也被用于观察 Harness-level RSI 等趋势。",
     "why_it_matters": "RSI 系统如果每产生一个候选都跑完整任务集，很快就会被评测成本拖垮。SIFT 的价值在于把 eval scheduling 明确提升为一等基础设施问题，为持续自优化 Agent 提供更现实的计算预算模型。",
     "research_question": "Coding Agent 可以修改自己的实现，但如何在有限预算下判断大量候选修改中哪些值得进行昂贵 benchmark，从而让 recursive self-improvement 变得更可承受？",
     "method": "SIFT 用 LLM-as-a-judge 对 candidate patches 做 pairwise comparison，再用 regularized Bradley-Terry 模型聚合强度分数，并用这些中间信号指导轻量 tree search。只有最有希望的节点才运行昂贵 downstream task evaluation。",
@@ -1141,7 +1108,6 @@
       "protocol"
     ],
     "page": "/entities/organization--docker/",
-    "overview": "Docker 是 Organization 节点，用来承载项目、研究与发布主体之间的关系。Container and agent execution infrastructure vendor. 主要归入 Sandbox & Execution、Protocols & Standards。 当前关联项目包括 Docker Sandbox Kit、Docker Cloud Sandboxes。",
     "why_it_matters": "Docker 拥有成熟的开发者工作流、镜像分发和容器运行生态。如果它能把这些基础设施自然延伸到 Agent runtime，Agent 的打包、隔离和本地到云端迁移可能会快速获得统一入口。",
     "intro": "Docker 在这个知识库中被跟踪的重点不是传统容器业务，而是它正在把容器、OCI、Sandbox 和 Agent Definition 重新组合成 Agent execution 基础设施。Sandbox Kit 与 Cloud Sandboxes 是目前最直接的两个信号。",
     "content_mode": "authored",
@@ -1159,7 +1125,6 @@
       "cloud-agent"
     ],
     "page": "/entities/organization--digitalocean/",
-    "overview": "DigitalOcean 是 Organization 节点，用来承载项目、研究与发布主体之间的关系。Cloud provider offering managed agent runtime products. 主要归入 Cloud Agent。 当前关联项目包括 DigitalOcean Agent Droplets。",
     "why_it_matters": "DigitalOcean 的价值在于验证中型云厂商是否会把 Agent 视为独立 workload 类别。如果这类产品获得真实使用，Agent Runtime 可能逐渐像 VM、Kubernetes、Serverless 一样形成清晰的云产品层。",
     "intro": "DigitalOcean 在本知识库中主要作为“Agent Runtime 产品化”案例观察。Agent Droplets 把传统云资源和 Agent 所需的 inference、tools、memory、storage 组合成一个更接近成品的运行单元。",
     "content_mode": "authored",
@@ -1177,7 +1142,6 @@
       "runtime"
     ],
     "page": "/entities/organization--restate/",
-    "overview": "Restate 是 Organization 节点，用来承载项目、研究与发布主体之间的关系。Company developing durable execution infrastructure. 主要归入 Runtime & Orchestration。 当前关联项目包括 Restate。",
     "why_it_matters": "Durable execution 是否成为 Agent 基础设施的一层，很大程度取决于生态、集成和长期维护，而不仅是一个开源库的设计。组织节点帮助持续观察项目背后的商业投入和生态扩张。",
     "intro": "这里的 Restate Organization 节点代表维护 Restate durable execution runtime 的团队与公司主体。知识库单独保留组织节点，是为了把“谁在推动这项技术”与“技术和项目本身是什么”分开。",
     "content_mode": "authored",
@@ -1195,7 +1159,6 @@
       "cloud-agent"
     ],
     "page": "/entities/organization--openai/",
-    "overview": "OpenAI 是 Organization 节点，用来承载项目、研究与发布主体之间的关系。AI research and product company. 主要归入 Cloud Agent。 当前关联项目包括 OpenAI Dots。",
     "why_it_matters": "头部模型公司如何定义 Agent 产品，会反向影响基础设施抽象。OpenAI 的产品选择可以用来观察哪些 runtime、workspace、permission 和 task semantics 正在从内部实现走向用户可见能力。",
     "intro": "OpenAI 在这个知识库中的关注点是其 Cloud Agent 和托管执行产品，而不是模型发布本身。Dots 展现了 always-on Agent、cloud computer、memory 和后台任务如何被组合成面向终端用户的长期 Agent 体验。",
     "content_mode": "authored",
@@ -1214,7 +1177,6 @@
       "security"
     ],
     "page": "/entities/organization--nvidia/",
-    "overview": "NVIDIA 是 Organization 节点，用来承载项目、研究与发布主体之间的关系。Computing company developing agent runtime and safety infrastructure. 主要归入 Sandbox & Execution、Security & Authority。 当前关联项目包括 NVIDIA OpenShell。",
     "why_it_matters": "NVIDIA 能把 Agent 安全与其计算、系统和企业基础设施结合，而不只停留在 SDK 层。它是否推动出通用 capability / policy 模型，会影响 Agent sandbox 安全栈的标准化方向。",
     "intro": "NVIDIA 在 Agent Infra 方向的关注点主要是安全执行与策略基础设施。Open Agent Safety Platform 和 OpenShell 体现了它希望把 Agent policy enforcement 放到 Harness 之外、靠近真实执行边界。",
     "content_mode": "authored",
@@ -1232,7 +1194,6 @@
       "rsi"
     ],
     "page": "/entities/organization--baai/",
-    "overview": "BAAI 是 Organization 节点，用来承载项目、研究与发布主体之间的关系。Beijing Academy of Artificial Intelligence. 主要归入 Agent RSI。",
     "why_it_matters": "RSI 研究需要持续的实验体系和开放结果，而不只是概念讨论。BAAI 的相关工作为“更长迭代预算是否真的能换来持续性能提升”提供了可以追踪的研究样本。",
     "intro": "BAAI（北京智源人工智能研究院）在当前图谱中主要通过 AREX-2 等 Agent self-improvement 研究出现。这里关注的是其在长程反思、自我改进和 Agent 训练机制上的研究输出。",
     "content_mode": "authored",
@@ -1252,7 +1213,6 @@
       "security"
     ],
     "page": "/entities/pattern--agent-definition-instance/",
-    "overview": "Agent Definition / Instance Split 是本知识库抽取出的 Architecture Pattern，属于分析层而不是外部厂商声明。Separate static requirements from per-user workspace, state and task execution. 主要归入 Runtime & Orchestration、Cloud Agent、Security & Authority。 它用于解释 Portable Agent Artifact 等能力如何被组合进实际系统。相关判断应结合下方 analysis 关系与证据阅读。",
     "why_it_matters": "一旦 Agent 服务规模扩大到大量用户，Agent、进程、任务和 workspace 如果仍被视为同一个对象，扩缩容和状态恢复会非常混乱。这个拆分是设计可持久 Cloud Agent 控制面的基础。",
     "problem": "很多 Agent 平台把 Agent 配置、用户状态、workspace 和单次 task 混在一个进程或对象里，导致生命周期、迁移、扩缩容和权限治理都很难。",
     "mechanism": "把静态 Agent Definition 与运行时 Agent Instance 分开：Definition 描述 Harness、模型策略、工具、网络/凭据需求与资源限制；Instance 承载 user/workspace/task、执行日志、memory 和 artifacts。",
@@ -1289,7 +1249,6 @@
       "sandbox"
     ],
     "page": "/entities/pattern--credential-broker/",
-    "overview": "Credential Broker 是本知识库抽取出的 Architecture Pattern，属于分析层而不是外部厂商声明。Resolve logical credentials under policy without exposing raw secrets to context. 主要归入 Security & Authority、Sandbox & Execution。 它用于解释 Credential Isolation 等能力如何被组合进实际系统。相关判断应结合下方 analysis 关系与证据阅读。",
     "why_it_matters": "长期 Agent 同时接触用户文件、网页内容和外部工具，直接把长期 token 暴露给 Agent 的风险很高。Credential Broker 让身份治理可以独立于具体 Harness 演进，是多租户 Agent 平台的重要安全边界。",
     "problem": "Agent 需要访问外部 API 或云服务，但直接把 secret 暴露在环境变量、文件或上下文中会扩大泄露面。",
     "mechanism": "Agent 只引用逻辑 credential；Credential Broker 根据 identity、task、policy 和 target service 决定是否代为签名、交换 token 或注入短期凭据。",
@@ -1327,7 +1286,6 @@
       "observability"
     ],
     "page": "/entities/pattern--action-verifier-layer/",
-    "overview": "Action Verifier Layer 是本知识库抽取出的 Architecture Pattern，属于分析层而不是外部厂商声明。Insert verification between candidate actions and the mutable environment. 主要归入 Agent Harness、Security & Authority、Observability & Eval。 它用于解释 Action Verification 等能力如何被组合进实际系统。相关判断应结合下方 analysis 关系与证据阅读。",
     "why_it_matters": "Agent 的中间动作往往比最终回答更危险，因为它们会真实改变代码、数据和基础设施。把 verifier 变成独立 Harness 层，可以让不同模型共享同一套 action quality 与风险策略。",
     "problem": "Agent 生成的错误动作一旦进入真实环境，会改变后续状态，使整个 trajectory 被污染，尤其是 shell、部署、git 和数据修改操作。",
     "mechanism": "在 Model 与 Harness/Environment 之间插入 verifier：根据风险生成多个候选、检查前置条件、比较正确性和可逆性，再决定执行、降级或请求人工确认。",
@@ -1365,7 +1323,6 @@
       "runtime"
     ],
     "page": "/entities/trend--portable-agent-authority/",
-    "overview": "Portable Agent Authority 是 Trend 节点，表示基于多个事实节点和来源形成的持续观察，而不是单一事实。Agent definition is emerging as a portable artifact containing workload and requested authority. 主要归入 Protocols & Standards、Security & Authority、Runtime & Orchestration。 当前支持这一趋势的项目信号包括 Docker Sandbox Kit。其置信度应随着后续证据动态调整。",
     "why_it_matters": "如果这一趋势成立，Agent artifact 会成为新的安全与部署边界，类似容器镜像之于应用。它也迫使行业回答一个关键问题：如何让 authority 可移植，同时又不让制品自己拥有授予权限的权力。",
     "thesis": "Agent 的可部署单元正在从“代码 + 依赖”扩展成“workload + tools + requested authority”。如果这个方向继续发展，Agent Definition 会像 OCI image 一样可分发，同时携带需要的网络、secret、mount 和 capability 声明。",
     "supporting_signals": [
@@ -1401,7 +1358,6 @@
       "runtime"
     ],
     "page": "/entities/trend--agent-runtime-cloud-sku/",
-    "overview": "Agent Runtime as Cloud SKU 是 Trend 节点，表示基于多个事实节点和来源形成的持续观察，而不是单一事实。Cloud providers are packaging runtime, tools, memory and inference as a distinct product. 主要归入 Cloud Agent、Runtime & Orchestration。 当前支持这一趋势的项目信号包括 DigitalOcean Agent Droplets。其置信度应随着后续证据动态调整。",
     "why_it_matters": "一旦 Agent Runtime 成为标准云资源，行业会出现新的成本模型、容量规划和平台边界。对基础设施团队而言，这意味着未来要比较的可能不再只是 VM 或 serverless，而是不同平台的 Agent runtime semantics。",
     "thesis": "Agent Runtime 正从应用内部组件变成云厂商可独立销售和计量的基础设施 SKU，把 compute、inference、tools、memory、storage 与 governance 打包交付。",
     "supporting_signals": [
@@ -1437,7 +1393,6 @@
       "observability"
     ],
     "page": "/entities/trend--harness-rsi/",
-    "overview": "Harness-level RSI 是 Trend 节点，表示基于多个事实节点和来源形成的持续观察，而不是单一事实。Near-term self-improvement is focusing on harness behavior and evaluation rather than weight changes. 主要归入 Agent RSI、Agent Harness、Observability & Eval。其置信度应随着后续证据动态调整。",
     "why_it_matters": "Harness 是当前最容易版本化、回滚和独立评测的 Agent 组成部分，因此它可能成为 RSI 最先工程化的落点。真正的挑战不是“能不能改自己”，而是怎样证明修改没有过拟合、没有破坏安全性。",
     "thesis": "短中期可落地的 Agent RSI 更可能发生在 Harness 层：自动修改 prompt、tool policy、search strategy、skills、subagent topology 和 eval 策略，而不是直接让 Agent 修改模型权重。",
     "supporting_signals": [
@@ -1474,7 +1429,6 @@
       "memory"
     ],
     "page": "/entities/trend--persistent-agent-runtime/",
-    "overview": "Persistent Agent Runtime 是 Trend 节点，表示基于多个事实节点和来源形成的持续观察，而不是单一事实。Agents are shifting from short-lived processes to durable state plus persistent workspace. 主要归入 Runtime & Orchestration、Cloud Agent、Memory & Experience。 当前支持这一趋势的项目信号包括 OpenAI Dots、Restate。其置信度应随着后续证据动态调整。",
     "why_it_matters": "这种架构决定了 Cloud Agent 能否同时获得长期连续性和云原生弹性。它直接影响百万用户场景下的成本、故障恢复、隔离和调度，也是当前 Agent 基础设施最值得持续跟踪的主线之一。",
     "thesis": "Agent 正从“一个短生命周期进程执行一个任务”转向“持久 Agent 身份 + durable state + persistent workspace + disposable worker”的运行模型。",
     "supporting_signals": [
@@ -1509,7 +1463,6 @@
       "protocol"
     ],
     "page": "/entities/event--docker-kit-v3/",
-    "overview": "Sandbox Kit Specification v3 是时间事件节点，发生/首次确认于 2026-09-24。Docker published Sandbox Kit Specification v3. 它的作用不是重复新闻，而是把某次发布、论文或架构变化挂接到长期知识图谱，使 Evolution Timeline 可以追踪技术结构的变化。",
     "why_it_matters": "版本化规范意味着 Docker 正在尝试把 Agent 的执行需求变成稳定接口，而不是某个产品里的私有配置。后续是否出现第三方 runtime 兼容，将决定它能否成为更广泛的生态标准。",
     "intro": "Sandbox Kit Specification v3 是 Docker 对 Agent Kit 规范的一次重要版本推进，进一步明确了如何用 OCI artifact 表达 workload、工具和权限相关配置。这个事件把“Agent Definition 可分发”从概念推进到了更具体的规范层。",
     "content_mode": "authored",
@@ -1528,7 +1481,6 @@
       "security"
     ],
     "page": "/entities/event--openshell-platform/",
-    "overview": "Open Agent Safety Platform announcement 是时间事件节点，发生/首次确认于 2026-09-28。NVIDIA published its Open Agent Safety Platform architecture. 它的作用不是重复新闻，而是把某次发布、论文或架构变化挂接到长期知识图谱，使 Evolution Timeline 可以追踪技术结构的变化。",
     "why_it_matters": "这个发布强化了一个重要方向：Agent 的安全边界不应只存在于模型或 Harness 内部。它为后续跟踪 policy runtime、独立 enforcement 和安全审计能力提供了清晰起点。",
     "intro": "Open Agent Safety Platform announcement 是 NVIDIA 正式公开 OpenShell 安全运行架构的时间锚点。它把 out-of-band policy enforcement、sandbox 和 Agent 安全控制放到了一个统一平台叙事中。",
     "content_mode": "authored",
@@ -1546,7 +1498,6 @@
       "rsi"
     ],
     "page": "/entities/event--arex2-paper/",
-    "overview": "AREX-2 paper 是时间事件节点，发生/首次确认于 2026-09-29。AREX-2 submitted to arXiv. 它的作用不是重复新闻，而是把某次发布、论文或架构变化挂接到长期知识图谱，使 Evolution Timeline 可以追踪技术结构的变化。",
     "why_it_matters": "它让 Agent RSI 的讨论从抽象愿景落到可测量的 iteration budget、reward 和长期改进轨迹上。后续复现和扩展都可以围绕这一公开研究基线展开。",
     "intro": "AREX-2 paper 事件记录了 AREX-2 研究进入公开论文渠道的时间点。论文把 long-horizon self-improvement 作为独立训练与评测问题，而不是一次简单的 reflection 技巧。",
     "content_mode": "authored",
@@ -1565,7 +1516,6 @@
       "observability"
     ],
     "page": "/entities/event--mid-harness-paper/",
-    "overview": "Mid-Harness paper 是时间事件节点，发生/首次确认于 2026-09-30。Mid-Harness submitted to arXiv. 它的作用不是重复新闻，而是把某次发布、论文或架构变化挂接到长期知识图谱，使 Evolution Timeline 可以追踪技术结构的变化。",
     "why_it_matters": "这个事件值得单独保留，是因为它代表 Harness 架构出现了一个清晰的新分层：模型负责提出候选，Verifier 负责筛选，Harness 才负责真正执行。",
     "intro": "Mid-Harness paper 事件标记了 action-level verification 研究公开发布的时间点。论文把验证层插在模型输出和真实 Harness 执行之间，直接针对错误动作污染环境的问题。",
     "content_mode": "authored",
@@ -1583,7 +1533,6 @@
       "runtime"
     ],
     "page": "/entities/event--restate-series-a/",
-    "overview": "Restate Series A 是时间事件节点，发生/首次确认于 2026-09-30。Restate announced a $20M Series A and durable execution thesis. 它的作用不是重复新闻，而是把某次发布、论文或架构变化挂接到长期知识图谱，使 Evolution Timeline 可以追踪技术结构的变化。",
     "why_it_matters": "基础设施技术要进入生产生态，需要长期开发、集成和商业支持。这个事件为判断 Restate 及 durable runtime 方向是否具有持续投入能力提供了组织层证据。",
     "intro": "Restate Series A 事件记录了 Restate 在 durable execution 方向获得新一轮商业资金支持的节点。融资本身不是技术突破，但它反映出 durable execution 正被作为独立基础设施类别持续投入。",
     "content_mode": "authored",
@@ -1601,7 +1550,6 @@
       "cloud-agent"
     ],
     "page": "/entities/event--agent-droplets-launch/",
-    "overview": "Agent Droplets launch 是时间事件节点，发生/首次确认于 2026-10-01。DigitalOcean launched Agent Droplets. 它的作用不是重复新闻，而是把某次发布、论文或架构变化挂接到长期知识图谱，使 Evolution Timeline 可以追踪技术结构的变化。",
     "why_it_matters": "这个发布说明“Agent Runtime as Cloud SKU”已经不只是架构设想，而开始出现在真实云产品中。后续价格、用户采用和开放接口会决定这种产品形态是否可持续。",
     "intro": "Agent Droplets launch 是 DigitalOcean 正式推出 Agent 专用托管运行产品的时间锚点。它把 compute、inference、tools、memory 和 storage 组合成更接近 Agent-native 的云资源。",
     "content_mode": "authored",
@@ -1623,7 +1571,6 @@
     ],
     "url": "/agent-infra-daily/reports/2026/10/03/",
     "page": "/entities/event--daily-2026-10-03/",
-    "overview": "Agent Infra Daily 2026-10-03 是时间事件节点，发生/首次确认于 2026-10-03。Daily synthesis and graph bootstrap for 2026-10-03. 它的作用不是重复新闻，而是把某次发布、论文或架构变化挂接到长期知识图谱，使 Evolution Timeline 可以追踪技术结构的变化。",
     "why_it_matters": "这个事件的意义不是某项外部技术发布，而是知识库自身从“新闻归档”切换到“持续维护的技术知识模型”。后续所有每日 delta 都以这一初始图谱为基础继续演化。",
     "intro": "Agent Infra Daily 2026-10-03 是这个知识库首次大规模把日报内容转换成长期知识图谱结构的事件节点。它同时建立了第一批主题、能力、项目、研究、趋势和证据关系。",
     "content_mode": "authored",
@@ -1643,7 +1590,6 @@
     ],
     "url": "https://www.docker.com/blog/docker-sandbox-kit-spec/",
     "page": "/entities/source--docker-kit/",
-    "overview": "Docker — Sandbox Kit Specification 是 Source 节点，用于保存知识图谱事实关系的一手证据。Primary Docker source. 它本身不是技术结论，而是支撑项目、能力、事件或研究关系可验证性的证据入口。",
     "why_it_matters": "Docker Sandbox Kit 相关事实如果脱离官方规范，很容易被二手文章简化成“一个 Agent 镜像格式”。保留原始来源可以让每条能力关系回到规范文本重新验证。",
     "intro": "这是一手来源：Docker 官方发布的 Sandbox Kit Specification 说明与规范材料。它用于核验 Kit 的 OCI packaging、workload、mount、network、credential 和 capability 等定义，而不是作为知识库自己的分析结论。",
     "content_mode": "authored",
@@ -1663,7 +1609,6 @@
     ],
     "url": "https://docs.docker.com/ai/sandboxes/cloud/usage/",
     "page": "/entities/source--docker-cloud/",
-    "overview": "Docker Docs — Cloud Sandboxes 是 Source 节点，用于保存知识图谱事实关系的一手证据。Primary Docker cloud sandbox docs. 它本身不是技术结论，而是支撑项目、能力、事件或研究关系可验证性的证据入口。",
     "why_it_matters": "Cloud Sandbox 的状态持久性、挂载能力和实验性状态都属于容易被营销表述模糊的细节。官方文档是判断真实 runtime semantics 的主要依据。",
     "intro": "这是一手来源：Docker 官方 Cloud Sandboxes 文档。它描述 cloud sandbox 的创建、生命周期、与本地 sandbox 的差异以及云端执行环境的使用方式。",
     "content_mode": "authored",
@@ -1682,7 +1627,6 @@
     ],
     "url": "https://docs.docker.com/ai/sandboxes/cloud/credentials/",
     "page": "/entities/source--docker-creds/",
-    "overview": "Docker Docs — Cloud Credentials 是 Source 节点，用于保存知识图谱事实关系的一手证据。Primary Docker credential docs. 它本身不是技术结论，而是支撑项目、能力、事件或研究关系可验证性的证据入口。",
     "why_it_matters": "Credential Isolation 是安全设计里最容易被“支持 secrets”这种模糊表述掩盖的能力。单独保留凭据文档有助于区分凭据管理、注入和真正的隔离语义。",
     "intro": "这是一手来源：Docker Cloud Sandboxes 的 cloud credentials 文档，重点描述远程 sandbox 如何管理和使用云端凭据，以及它与本地 secret 的边界。",
     "content_mode": "authored",
@@ -1701,7 +1645,6 @@
     ],
     "url": "https://investors.digitalocean.com/news/news-details/2026/DigitalOcean-Introduces-Agent-Droplets-Everything-an-AI-Agent-Needs-One-Simple-Monthly-Price/default.aspx",
     "page": "/entities/source--do-droplets/",
-    "overview": "DigitalOcean — Agent Droplets 是 Source 节点，用于保存知识图谱事实关系的一手证据。Primary DigitalOcean announcement. 它本身不是技术结论，而是支撑项目、能力、事件或研究关系可验证性的证据入口。",
     "why_it_matters": "Agent Droplets 是“Agent Runtime 变成云 SKU”这一趋势的重要产业信号，因此需要以官方产品发布为事实基线，避免把市场解读误写成已实现的底层能力。",
     "intro": "这是一手来源：DigitalOcean 对 Agent Droplets 的官方发布材料。它用于确认产品定位、打包的资源范围以及 DigitalOcean 对 managed Agent runtime 的正式产品表述。",
     "content_mode": "authored",
@@ -1720,7 +1663,6 @@
     ],
     "url": "https://restate.dev/what-is-durable-execution",
     "page": "/entities/source--restate-durable/",
-    "overview": "Restate — Durable Execution Guide 是 Source 节点，用于保存知识图谱事实关系的一手证据。Primary Restate explanation. 它本身不是技术结论，而是支撑项目、能力、事件或研究关系可验证性的证据入口。",
     "why_it_matters": "Durable Execution 容易被简单等同于 checkpoint 或 workflow retry。官方技术材料提供了更严格的语义边界，可用于判断某个系统是否真正实现了同类能力。",
     "intro": "这是一手来源：Restate 对 Durable Execution 的官方技术说明。它解释 execution journal、replay、恢复和副作用语义，是知识库定义 Durable Execution 与 Restate 项目能力的核心依据。",
     "content_mode": "authored",
@@ -1739,7 +1681,6 @@
     ],
     "url": "https://restate.dev/blog/announcing-series-a",
     "page": "/entities/source--restate-series-a/",
-    "overview": "Restate — Series A announcement 是 Source 节点，用于保存知识图谱事实关系的一手证据。Restate September 30 announcement. 它本身不是技术结论，而是支撑项目、能力、事件或研究关系可验证性的证据入口。",
     "why_it_matters": "这类来源主要支撑组织与生态层事实，而不是具体 runtime 机制。把它与技术文档分开，可以避免用融资公告去证明技术能力。",
     "intro": "这是一手来源：Restate 官方的 Series A 公告。它记录融资规模、团队对 durable execution 市场的判断以及公司在该基础设施方向继续投入的公开承诺。",
     "content_mode": "authored",
@@ -1758,7 +1699,6 @@
     ],
     "url": "https://help.openai.com/en/articles/20001530-getting-started-with-your-dot",
     "page": "/entities/source--openai-dots/",
-    "overview": "OpenAI — Getting started with your dot 是 Source 节点，用于保存知识图谱事实关系的一手证据。OpenAI help documentation for Dots. 它本身不是技术结论，而是支撑项目、能力、事件或研究关系可验证性的证据入口。",
     "why_it_matters": "OpenAI Dots 的很多底层实现并未公开，因此知识库只能把官方明确描述的产品行为作为事实，其余架构归纳必须标为分析。这个来源是划分两者边界的核心依据。",
     "intro": "这是一手来源：OpenAI 官方关于 Dots 的产品帮助文档。它描述 Dot 的 always-on 工作方式、cloud computer、任务状态、scheduled work、connected apps、memory 和相关使用边界。",
     "content_mode": "authored",
@@ -1778,7 +1718,6 @@
     ],
     "url": "https://developer.nvidia.com/blog/nvidia-open-agent-safety-platform-a-reference-for-continuous-in-silicon-agent-monitoring",
     "page": "/entities/source--nvidia-openshell/",
-    "overview": "NVIDIA — Open Agent Safety Platform 是 Source 节点，用于保存知识图谱事实关系的一手证据。Primary NVIDIA OpenShell source. 它本身不是技术结论，而是支撑项目、能力、事件或研究关系可验证性的证据入口。",
     "why_it_matters": "OpenShell 的价值主要在架构安全边界，而不是某个单独 API。保留官方技术博客可以避免把知识库对 policy architecture 的进一步抽象误认为 NVIDIA 的原话。",
     "intro": "这是一手来源：NVIDIA 官方对 Open Agent Safety Platform 与 OpenShell 的技术介绍。它用于确认 out-of-band enforcement、安全运行边界和平台设计目标。",
     "content_mode": "authored",
@@ -1797,7 +1736,6 @@
     ],
     "url": "https://blog.modelcontextprotocol.io/posts/sdk-betas-2026-07-28/",
     "page": "/entities/source--mcp-2026-sdk/",
-    "overview": "MCP — 2026 SDK beta announcement 是 Source 节点，用于保存知识图谱事实关系的一手证据。Primary MCP protocol revision source. 它本身不是技术结论，而是支撑项目、能力、事件或研究关系可验证性的证据入口。",
     "why_it_matters": "MCP 同时存在协议 revision、SDK 版本和实现生态，最容易出现版本概念混淆。保留官方发布源可以明确“协议发生了什么变化”与“某个 SDK 如何实现”之间的区别。",
     "intro": "这是一手来源：MCP 官方关于 2026 SDK beta 与协议修订的发布说明。它记录 stateless core、MRTR、routing、cacheable lists 和授权相关变化。",
     "content_mode": "authored",
@@ -1817,7 +1755,6 @@
     ],
     "url": "https://arxiv.org/abs/2609.39982",
     "page": "/entities/source--mid-harness/",
-    "overview": "arXiv — Mid-Harness 是 Source 节点，用于保存知识图谱事实关系的一手证据。Primary paper source. 它本身不是技术结论，而是支撑项目、能力、事件或研究关系可验证性的证据入口。",
     "why_it_matters": "研究节点必须把作者报告的实验结果与知识库自己的工程解读分开。论文原文是判断哪些结论属于证据、哪些属于推论的最终参考。",
     "intro": "这是一手来源：Mid-Harness 的 arXiv 论文页面与论文内容。它支撑对 action candidate、verifier 和实验结果的描述。",
     "content_mode": "authored",
@@ -1836,7 +1773,6 @@
     ],
     "url": "https://arxiv.org/abs/2609.38288",
     "page": "/entities/source--arex2/",
-    "overview": "arXiv — AREX-2 是 Source 节点，用于保存知识图谱事实关系的一手证据。Primary paper source. 它本身不是技术结论，而是支撑项目、能力、事件或研究关系可验证性的证据入口。",
     "why_it_matters": "RSI 相关话题容易被过度外推。直接保留论文来源可以约束知识库只在作者实验范围内描述成果，并把更广泛的 Agent 自改判断明确标为趋势分析。",
     "intro": "这是一手来源：AREX-2 的 arXiv 论文页面与论文内容。它记录研究的 long-horizon self-improvement 方法、训练设置与实验结果。",
     "content_mode": "authored",
@@ -1856,7 +1792,6 @@
     ],
     "url": "https://arxiv.org/abs/2609.19526",
     "page": "/entities/source--sift/",
-    "overview": "arXiv — SIFT 是 Source 节点，用于保存知识图谱事实关系的一手证据。Primary paper source. 它本身不是技术结论，而是支撑项目、能力、事件或研究关系可验证性的证据入口。",
     "why_it_matters": "SIFT 的工程价值高度依赖其评测成本与搜索设定。保存论文原始来源有助于后续比较复现结果，并防止把单一 benchmark 上的结果泛化成通用 RSI 结论。",
     "intro": "这是一手来源：SIFT 的 arXiv 论文页面与论文内容。它详细描述 pairwise judging、Bradley-Terry 聚合、tree search 和 selective expensive evaluation。",
     "content_mode": "authored",

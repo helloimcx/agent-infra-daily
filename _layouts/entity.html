@@ -29,13 +29,15 @@ layout: default
 <section class="entity-reading v6">
   <article class="entity-prose">
     <div class="eyebrow">KNOWLEDGE</div>
-    <h2>{% if entity.definition %}它是什么{% else %}详细介绍{% endif %}</h2>
-    <p>{{ entity.definition | default: entity.overview }}</p>
+    <h2>概览</h2>
+    <p>{{ entity.intro }}</p>
     {% case entity.type %}
     {% when "Project" %}
+      {% if entity.definition %}<h3>它是什么</h3><p>{{ entity.definition }}</p>{% endif %}
       {% if entity.operating_model %}<h3>运行与架构模型</h3><p>{{ entity.operating_model }}</p>{% endif %}
       {% if entity.architecture_role %}<h3>在 Agent Infra 中的位置</h3><p>{{ entity.architecture_role }}</p>{% endif %}
     {% when "Capability" %}
+      {% if entity.definition %}<h3>定义</h3><p>{{ entity.definition }}</p>{% endif %}
       {% if entity.problem_it_solves %}<h3>它解决什么问题</h3><p>{{ entity.problem_it_solves }}</p>{% endif %}
     {% when "Research" %}
       {% if entity.research_question %}<h3>研究问题</h3><p>{{ entity.research_question }}</p>{% endif %}
@@ -48,10 +50,9 @@ layout: default
       {% if entity.mechanism %}<h3>机制</h3><p>{{ entity.mechanism }}</p>{% endif %}
     {% when "Trend" %}
       {% if entity.thesis %}<h3>趋势判断</h3><p>{{ entity.thesis }}</p>{% endif %}
-    {% else %}
-      {% if entity.overview and entity.definition %}<h3>背景</h3><p>{{ entity.overview }}</p>{% endif %}
     {% endcase %}
-    {% if entity.why_it_matters %}<h3>为什么值得关注</h3><p>{{ entity.why_it_matters }}</p>{% endif %}
+    <h3>为什么值得关注</h3>
+    <p>{{ entity.why_it_matters }}</p>
   </article>
   <aside class="entity-keyfacts">
     <div class="eyebrow">AT A GLANCE</div>
