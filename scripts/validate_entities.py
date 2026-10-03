@@ -7,9 +7,11 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 NODES_PATH = ROOT / "_data" / "kg" / "nodes.json"
 SCHEMA_PATH = ROOT / "_data" / "kg" / "entity_schema.json"
+CLAIMS_PATH = ROOT / "_data" / "kg" / "claims.json"
 
 nodes = json.loads(NODES_PATH.read_text(encoding="utf-8"))
 schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
+claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8"))
 
 errors = []
 ids = set()
@@ -88,6 +90,31 @@ for field_name in ("intro", "why_it_matters"):
             fail(node["id"], f"{field_name} duplicates {seen[text]}")
         else:
             seen[text] = node["id"]
+
+claim_ids = set()
+node_by_id = {n["id"]: n for n in nodes}
+for claim in claims:
+    cid = claim.get("id", "<missing-claim-id>")
+    if cid in claim_ids:
+        errors.append(f"{cid}: duplicate claim id")
+    claim_ids.add(cid)
+    entity = claim.get("entity")
+    if entity not in node_by_id:
+        errors.append(f"{cid}: unknown entity {entity}")
+    if claim.get("kind") not in ("fact", "analysis", "hypothesis"):
+        errors.append(f"{cid}: invalid kind")
+    text = claim.get("text")
+    if not substantial(text, 20):
+        errors.append(f"{cid}: claim text missing or too thin")
+    evidence = claim.get("evidence") or []
+    if not evidence:
+        errors.append(f"{cid}: claim must have evidence")
+    for source_id in evidence:
+        source = node_by_id.get(source_id)
+        if not source:
+            errors.append(f"{cid}: unknown evidence {source_id}")
+        elif source.get("type") != "Source":
+            errors.append(f"{cid}: evidence must reference Source nodes: {source_id}")
 
 if errors:
     print("Entity content validation FAILED")

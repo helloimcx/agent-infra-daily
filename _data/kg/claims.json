@@ -1,0 +1,306 @@
+[
+  {
+    "id": "claim:dots-cloud-computer",
+    "entity": "project:openai-dots",
+    "text": "每个 Dot 拥有自己的 cloud computer，可在云端执行持续工作。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:openai-dots"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:dots-background-work",
+    "entity": "project:openai-dots",
+    "text": "Dots 支持 scheduled work 与用户离线后的后台任务推进。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:openai-dots"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:dots-workspace-analysis",
+    "entity": "project:openai-dots",
+    "text": "从产品行为看，Dots 已具备 persistent workspace 的关键特征，但公开资料没有披露其底层 workspace 持久化实现。",
+    "kind": "analysis",
+    "confidence": 0.75,
+    "evidence": [
+      "source:openai-dots"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:dots-runtime-signal",
+    "entity": "project:openai-dots",
+    "text": "Dots 是 Persistent Agent Runtime 从基础设施抽象走向终端产品形态的重要信号。",
+    "kind": "analysis",
+    "confidence": 0.85,
+    "evidence": [
+      "source:openai-dots"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:restate-journal",
+    "entity": "project:restate",
+    "text": "Restate 通过持久化 execution journal 记录已完成步骤，并在 worker 失败后恢复执行。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:restate-durable"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:restate-side-effects",
+    "entity": "project:restate",
+    "text": "Restate 的 durable execution 语义覆盖长时间等待与外部副作用恢复，而不只是保存普通 checkpoint。",
+    "kind": "fact",
+    "confidence": 0.95,
+    "evidence": [
+      "source:restate-durable"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:restate-runtime-layer",
+    "entity": "project:restate",
+    "text": "在 Agent Infra 架构中，Restate 更适合作为独立 Durable Runtime，而不是替代 Harness 或 Sandbox。",
+    "kind": "analysis",
+    "confidence": 0.9,
+    "evidence": [
+      "source:restate-durable"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:kit-oci",
+    "entity": "project:docker-sandbox-kit",
+    "text": "Docker Sandbox Kit 使用 OCI artifact 承载 Agent workload 与运行需求。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:docker-kit"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:kit-authority",
+    "entity": "project:docker-sandbox-kit",
+    "text": "Kit 规范把 network、credential、mount 等 authority requirements 纳入 Agent Definition。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:docker-kit"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:kit-portability",
+    "entity": "project:docker-sandbox-kit",
+    "text": "Sandbox Kit 是 Portable Agent Authority 趋势的重要早期实现，但尚不能视为跨厂商标准。",
+    "kind": "analysis",
+    "confidence": 0.8,
+    "evidence": [
+      "source:docker-kit"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:cloud-managed",
+    "entity": "project:docker-cloud-sandboxes",
+    "text": "Docker Cloud Sandboxes 在 Docker 托管基础设施上提供远程 Agent sandbox，并由云端管理其生命周期。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:docker-cloud"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:cloud-local-gap",
+    "entity": "project:docker-cloud-sandboxes",
+    "text": "Cloud sandbox 与本地 sandbox 的状态和能力并非完全对称，不能假设二者可以无损互换。",
+    "kind": "fact",
+    "confidence": 0.95,
+    "evidence": [
+      "source:docker-cloud"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:cloud-cred",
+    "entity": "project:docker-cloud-sandboxes",
+    "text": "Cloud credentials 与本地 secret 分开管理，降低远程执行环境直接持有长期凭据的风险。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:docker-creds"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:openshell-oob",
+    "entity": "project:nvidia-openshell",
+    "text": "OpenShell 的核心安全思路是把 policy enforcement 放在 Agent Harness 控制范围之外。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:nvidia-openshell"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:openshell-boundary",
+    "entity": "project:nvidia-openshell",
+    "text": "OpenShell 代表 Agent Safety 从 prompt/hook 约束向独立执行边界迁移的架构方向。",
+    "kind": "analysis",
+    "confidence": 0.9,
+    "evidence": [
+      "source:nvidia-openshell"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:mcp-stateless",
+    "entity": "standard:mcp",
+    "text": "2026 版 MCP 协议演进把核心请求模型进一步推向 stateless，并增强多轮请求、路由和缓存能力。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:mcp-2026-sdk"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:mcp-infra",
+    "entity": "standard:mcp",
+    "text": "MCP 正从工具接入协议演进为 Agent Harness 与 capability infrastructure 之间的公共连接层。",
+    "kind": "analysis",
+    "confidence": 0.85,
+    "evidence": [
+      "source:mcp-2026-sdk"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:midharness-candidates",
+    "entity": "research:mid-harness",
+    "text": "Mid-Harness 在动作真正执行前采样多个候选 action，并由 verifier 选择要提交给环境的动作。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:mid-harness"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:midharness-verifier",
+    "entity": "research:mid-harness",
+    "text": "研究结果表明，增加候选数量本身不足以保证收益，verifier 质量是 action-level scaling 的关键变量。",
+    "kind": "fact",
+    "confidence": 0.95,
+    "evidence": [
+      "source:mid-harness"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:arex-long",
+    "entity": "research:arex-2",
+    "text": "AREX-2 将 long-horizon self-improvement 作为独立训练问题，目标是让更高 iteration budget 持续转化为性能提升。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:arex2"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:arex-rsi",
+    "entity": "research:arex-2",
+    "text": "AREX-2 支持了通过执行循环而非直接改模型权重推进 Agent RSI 的工程路线。",
+    "kind": "analysis",
+    "confidence": 0.78,
+    "evidence": [
+      "source:arex2"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:sift-eval",
+    "entity": "research:sift",
+    "text": "SIFT 使用 pairwise LLM judge 与 Bradley-Terry 强度估计筛选候选修改，只对更有希望的候选运行昂贵评测。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:sift"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:sift-scheduler",
+    "entity": "research:sift",
+    "text": "SIFT 表明 Eval Scheduler 可能成为 Harness-level RSI 的独立基础设施组件。",
+    "kind": "analysis",
+    "confidence": 0.88,
+    "evidence": [
+      "source:sift"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:trend-persistent",
+    "entity": "trend:persistent-agent-runtime",
+    "text": "多个近期产品与 runtime 信号共同指向“持久 Agent 身份 + 持久状态/Workspace + 可替换 worker”的运行模型。",
+    "kind": "analysis",
+    "confidence": 0.88,
+    "evidence": [
+      "source:openai-dots",
+      "source:restate-durable",
+      "source:docker-cloud"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:trend-rsi",
+    "entity": "trend:harness-rsi",
+    "text": "当前更可工程化的 RSI 路径集中在 Harness、评测和执行策略层，而不是模型权重自修改。",
+    "kind": "analysis",
+    "confidence": 0.82,
+    "evidence": [
+      "source:arex2",
+      "source:sift",
+      "source:mid-harness"
+    ],
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03"
+  }
+]

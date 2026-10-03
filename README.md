@@ -98,3 +98,8 @@ Entity prose is first-party knowledge content, not a rendering of graph metadata
 - The legacy generated `overview` field is forbidden.
 - Graph relations may be displayed and used for fact checking, but they are not prose templates.
 - `.github/workflows/validate-knowledge.yml` runs `scripts/validate_entities.py` and blocks missing/thin/templated entity content.
+
+
+## Claim evidence model
+
+V7 adds `_data/kg/claims.json`. Claims are authored statements attached to one entity and explicitly marked as `fact`, `analysis`, or `hypothesis`, with confidence and one or more Source nodes as evidence. Entity pages render these claims near the technical article instead of forcing readers to infer provenance from a source list at the bottom.

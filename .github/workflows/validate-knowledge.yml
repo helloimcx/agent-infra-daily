@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "_data/kg/**"
+      - "_data/kg/claims.json"
       - "entities/**"
       - "_layouts/entity.html"
       - "scripts/validate_entities.py"
