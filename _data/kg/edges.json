@@ -1,0 +1,954 @@
+[
+  {
+    "id": "tax:runtime",
+    "source": "theme:runtime",
+    "target": "theme:agent-infrastructure",
+    "type": "SUBTOPIC_OF",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:harness",
+    "source": "theme:harness",
+    "target": "theme:agent-infrastructure",
+    "type": "SUBTOPIC_OF",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:sandbox",
+    "source": "theme:sandbox",
+    "target": "theme:agent-infrastructure",
+    "type": "SUBTOPIC_OF",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:cloud",
+    "source": "theme:cloud-agent",
+    "target": "theme:agent-infrastructure",
+    "type": "SUBTOPIC_OF",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:security",
+    "source": "theme:security",
+    "target": "theme:agent-infrastructure",
+    "type": "SUBTOPIC_OF",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:memory",
+    "source": "theme:memory",
+    "target": "theme:agent-infrastructure",
+    "type": "SUBTOPIC_OF",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:protocol",
+    "source": "theme:protocol",
+    "target": "theme:agent-infrastructure",
+    "type": "SUBTOPIC_OF",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:observability",
+    "source": "theme:observability",
+    "target": "theme:agent-infrastructure",
+    "type": "SUBTOPIC_OF",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:rsi",
+    "source": "theme:rsi",
+    "target": "theme:agent-infrastructure",
+    "type": "SUBTOPIC_OF",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:cap:0",
+    "source": "cap:durable-execution",
+    "target": "theme:runtime",
+    "type": "BELONGS_TO",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:cap:1",
+    "source": "cap:persistent-workspace",
+    "target": "theme:cloud-agent",
+    "type": "BELONGS_TO",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:cap:2",
+    "source": "cap:cloud-computer",
+    "target": "theme:cloud-agent",
+    "type": "BELONGS_TO",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:cap:3",
+    "source": "cap:agent-artifact",
+    "target": "theme:protocol",
+    "type": "BELONGS_TO",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:cap:4",
+    "source": "cap:network-policy",
+    "target": "theme:security",
+    "type": "BELONGS_TO",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:cap:5",
+    "source": "cap:credential-isolation",
+    "target": "theme:security",
+    "type": "BELONGS_TO",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:cap:6",
+    "source": "cap:policy-enforcement",
+    "target": "theme:security",
+    "type": "BELONGS_TO",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:cap:7",
+    "source": "cap:action-verification",
+    "target": "theme:harness",
+    "type": "BELONGS_TO",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:cap:8",
+    "source": "cap:eval-scheduling",
+    "target": "theme:observability",
+    "type": "BELONGS_TO",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:cap:9",
+    "source": "cap:long-horizon-reflection",
+    "target": "theme:rsi",
+    "type": "BELONGS_TO",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:cap:10",
+    "source": "cap:execution-trace",
+    "target": "theme:memory",
+    "type": "BELONGS_TO",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "tax:cap:11",
+    "source": "cap:stateless-tool-protocol",
+    "target": "theme:protocol",
+    "type": "BELONGS_TO",
+    "kind": "taxonomy",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [],
+    "note": ""
+  },
+  {
+    "id": "e:docker-kit-published",
+    "source": "project:docker-sandbox-kit",
+    "target": "org:docker",
+    "type": "PUBLISHED_BY",
+    "kind": "fact",
+    "first_seen": "2026-09-24",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:docker-kit"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:docker-kit-artifact",
+    "source": "project:docker-sandbox-kit",
+    "target": "cap:agent-artifact",
+    "type": "IMPLEMENTS",
+    "kind": "fact",
+    "first_seen": "2026-09-24",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:docker-kit"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:docker-kit-oci",
+    "source": "project:docker-sandbox-kit",
+    "target": "standard:oci",
+    "type": "PACKAGED_AS",
+    "kind": "fact",
+    "first_seen": "2026-09-24",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:docker-kit"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:docker-kit-network",
+    "source": "project:docker-sandbox-kit",
+    "target": "cap:network-policy",
+    "type": "PROVIDES",
+    "kind": "fact",
+    "first_seen": "2026-09-24",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:docker-kit"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:docker-kit-creds",
+    "source": "project:docker-sandbox-kit",
+    "target": "cap:credential-isolation",
+    "type": "PROVIDES",
+    "kind": "fact",
+    "first_seen": "2026-09-24",
+    "last_verified": "2026-10-03",
+    "confidence": 0.95,
+    "evidence": [
+      "source:docker-kit"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:docker-cloud-published",
+    "source": "project:docker-cloud-sandboxes",
+    "target": "org:docker",
+    "type": "PUBLISHED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:docker-cloud"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:docker-cloud-workspace",
+    "source": "project:docker-cloud-sandboxes",
+    "target": "cap:persistent-workspace",
+    "type": "IMPLEMENTS",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 0.95,
+    "evidence": [
+      "source:docker-cloud"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:docker-cloud-creds",
+    "source": "project:docker-cloud-sandboxes",
+    "target": "cap:credential-isolation",
+    "type": "IMPLEMENTS",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:docker-creds"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:event-docker-kit",
+    "source": "event:docker-kit-v3",
+    "target": "project:docker-sandbox-kit",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-09-24",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:docker-kit"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:do-published",
+    "source": "project:digitalocean-agent-droplets",
+    "target": "org:digitalocean",
+    "type": "PUBLISHED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:do-droplets"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:do-workspace",
+    "source": "project:digitalocean-agent-droplets",
+    "target": "cap:persistent-workspace",
+    "type": "PROVIDES",
+    "kind": "fact",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 0.9,
+    "evidence": [
+      "source:do-droplets"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:do-event",
+    "source": "event:agent-droplets-launch",
+    "target": "project:digitalocean-agent-droplets",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:do-droplets"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:restate-published",
+    "source": "project:restate",
+    "target": "org:restate",
+    "type": "PUBLISHED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:restate-durable"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:restate-durable",
+    "source": "project:restate",
+    "target": "cap:durable-execution",
+    "type": "IMPLEMENTS",
+    "kind": "fact",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:restate-durable"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:restate-event",
+    "source": "event:restate-series-a",
+    "target": "project:restate",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-09-30",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:restate-series-a"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:dots-published",
+    "source": "project:openai-dots",
+    "target": "org:openai",
+    "type": "PUBLISHED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:openai-dots"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:dots-computer",
+    "source": "project:openai-dots",
+    "target": "cap:cloud-computer",
+    "type": "IMPLEMENTS",
+    "kind": "fact",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:openai-dots"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:dots-workspace",
+    "source": "project:openai-dots",
+    "target": "cap:persistent-workspace",
+    "type": "PROVIDES",
+    "kind": "analysis",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 0.75,
+    "evidence": [
+      "source:openai-dots"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:openshell-published",
+    "source": "project:nvidia-openshell",
+    "target": "org:nvidia",
+    "type": "PUBLISHED_BY",
+    "kind": "fact",
+    "first_seen": "2026-09-28",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:nvidia-openshell"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:openshell-policy",
+    "source": "project:nvidia-openshell",
+    "target": "cap:policy-enforcement",
+    "type": "IMPLEMENTS",
+    "kind": "fact",
+    "first_seen": "2026-09-28",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:nvidia-openshell"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:openshell-event",
+    "source": "event:openshell-platform",
+    "target": "project:nvidia-openshell",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-09-28",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:nvidia-openshell"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:mcp-stateless",
+    "source": "standard:mcp",
+    "target": "cap:stateless-tool-protocol",
+    "type": "IMPLEMENTS",
+    "kind": "fact",
+    "first_seen": "2026-06-29",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:mcp-2026-sdk"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:midharness-actionverify",
+    "source": "research:mid-harness",
+    "target": "cap:action-verification",
+    "type": "IMPLEMENTS",
+    "kind": "fact",
+    "first_seen": "2026-09-30",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:mid-harness"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:midharness-event",
+    "source": "event:mid-harness-paper",
+    "target": "research:mid-harness",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-09-30",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:mid-harness"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:arex-reflection",
+    "source": "research:arex-2",
+    "target": "cap:long-horizon-reflection",
+    "type": "IMPLEMENTS",
+    "kind": "fact",
+    "first_seen": "2026-09-29",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:arex2"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:arex-published",
+    "source": "research:arex-2",
+    "target": "org:baai",
+    "type": "PUBLISHED_BY",
+    "kind": "fact",
+    "first_seen": "2026-09-29",
+    "last_verified": "2026-10-03",
+    "confidence": 0.9,
+    "evidence": [
+      "source:arex2"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:arex-event",
+    "source": "event:arex2-paper",
+    "target": "research:arex-2",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-09-29",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:arex2"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:sift-eval",
+    "source": "research:sift",
+    "target": "cap:eval-scheduling",
+    "type": "IMPLEMENTS",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:sift"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:pattern-cred-cap",
+    "source": "pattern:credential-broker",
+    "target": "cap:credential-isolation",
+    "type": "IMPLEMENTS",
+    "kind": "analysis",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 0.85,
+    "evidence": [
+      "source:docker-creds"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:pattern-def-artifact",
+    "source": "pattern:agent-definition-instance",
+    "target": "cap:agent-artifact",
+    "type": "USES",
+    "kind": "analysis",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 0.8,
+    "evidence": [
+      "source:docker-kit"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:pattern-verifier-cap",
+    "source": "pattern:action-verifier-layer",
+    "target": "cap:action-verification",
+    "type": "IMPLEMENTS",
+    "kind": "analysis",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "confidence": 0.95,
+    "evidence": [
+      "source:mid-harness"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:trend-portable-kit",
+    "source": "project:docker-sandbox-kit",
+    "target": "trend:portable-agent-authority",
+    "type": "SUPPORTS",
+    "kind": "analysis",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 0.8,
+    "evidence": [
+      "source:docker-kit"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:trend-cloudsku-do",
+    "source": "project:digitalocean-agent-droplets",
+    "target": "trend:agent-runtime-cloud-sku",
+    "type": "SUPPORTS",
+    "kind": "analysis",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 0.9,
+    "evidence": [
+      "source:do-droplets"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:trend-persistent-dots",
+    "source": "project:openai-dots",
+    "target": "trend:persistent-agent-runtime",
+    "type": "SUPPORTS",
+    "kind": "analysis",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 0.85,
+    "evidence": [
+      "source:openai-dots"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:trend-persistent-restate",
+    "source": "project:restate",
+    "target": "trend:persistent-agent-runtime",
+    "type": "SUPPORTS",
+    "kind": "analysis",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "confidence": 0.8,
+    "evidence": [
+      "source:restate-durable"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:trend-rsi-arex",
+    "source": "research:arex-2",
+    "target": "trend:harness-rsi",
+    "type": "SUPPORTS",
+    "kind": "analysis",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "confidence": 0.75,
+    "evidence": [
+      "source:arex2"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:trend-rsi-sift",
+    "source": "research:sift",
+    "target": "trend:harness-rsi",
+    "type": "SUPPORTS",
+    "kind": "analysis",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 0.9,
+    "evidence": [
+      "source:sift"
+    ],
+    "note": ""
+  },
+  {
+    "id": "e:trace-rsi",
+    "source": "cap:execution-trace",
+    "target": "trend:harness-rsi",
+    "type": "ENABLES",
+    "kind": "analysis",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 0.7,
+    "evidence": [
+      "event:daily-2026-10-03"
+    ],
+    "note": ""
+  },
+  {
+    "id": "ev:src:0",
+    "source": "project:docker-sandbox-kit",
+    "target": "source:docker-kit",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:docker-kit"
+    ],
+    "note": ""
+  },
+  {
+    "id": "ev:src:1",
+    "source": "project:docker-cloud-sandboxes",
+    "target": "source:docker-cloud",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:docker-cloud"
+    ],
+    "note": ""
+  },
+  {
+    "id": "ev:src:2",
+    "source": "cap:credential-isolation",
+    "target": "source:docker-creds",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:docker-creds"
+    ],
+    "note": ""
+  },
+  {
+    "id": "ev:src:3",
+    "source": "project:digitalocean-agent-droplets",
+    "target": "source:do-droplets",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:do-droplets"
+    ],
+    "note": ""
+  },
+  {
+    "id": "ev:src:4",
+    "source": "project:restate",
+    "target": "source:restate-durable",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:restate-durable"
+    ],
+    "note": ""
+  },
+  {
+    "id": "ev:src:5",
+    "source": "event:restate-series-a",
+    "target": "source:restate-series-a",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:restate-series-a"
+    ],
+    "note": ""
+  },
+  {
+    "id": "ev:src:6",
+    "source": "project:openai-dots",
+    "target": "source:openai-dots",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:openai-dots"
+    ],
+    "note": ""
+  },
+  {
+    "id": "ev:src:7",
+    "source": "project:nvidia-openshell",
+    "target": "source:nvidia-openshell",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:nvidia-openshell"
+    ],
+    "note": ""
+  },
+  {
+    "id": "ev:src:8",
+    "source": "standard:mcp",
+    "target": "source:mcp-2026-sdk",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:mcp-2026-sdk"
+    ],
+    "note": ""
+  },
+  {
+    "id": "ev:src:9",
+    "source": "research:mid-harness",
+    "target": "source:mid-harness",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:mid-harness"
+    ],
+    "note": ""
+  },
+  {
+    "id": "ev:src:10",
+    "source": "research:arex-2",
+    "target": "source:arex2",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:arex2"
+    ],
+    "note": ""
+  },
+  {
+    "id": "ev:src:11",
+    "source": "research:sift",
+    "target": "source:sift",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "confidence": 1,
+    "evidence": [
+      "source:sift"
+    ],
+    "note": ""
+  }
+]

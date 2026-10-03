@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "principles": [
+    "Daily briefs are evidence streams, not the canonical knowledge model.",
+    "Facts, evidence, analysis and hypotheses must remain distinguishable.",
+    "Relations carry provenance, time and confidence.",
+    "Entity resolution prefers stable canonical IDs and aliases.",
+    "Knowledge changes are recorded as daily deltas."
+  ],
+  "node_types": {
+    "Theme": "Domain taxonomy node",
+    "Capability": "Reusable technical capability",
+    "Project": "Software project or product",
+    "Organization": "Company, lab or organization",
+    "Standard": "Protocol, specification or packaging standard",
+    "Pattern": "Reusable architecture pattern",
+    "Research": "Paper or research system",
+    "Event": "Time-bound release or publication",
+    "Trend": "Evidence-backed synthesis or hypothesis",
+    "Source": "Primary evidence URL"
+  },
+  "edge_types": [
+    "SUBTOPIC_OF",
+    "BELONGS_TO",
+    "IMPLEMENTS",
+    "PROVIDES",
+    "USES",
+    "DEPENDS_ON",
+    "ENABLES",
+    "COMPETES_WITH",
+    "ALTERNATIVE_TO",
+    "COMPLEMENTS",
+    "INTEGRATES_WITH",
+    "EVOLVED_FROM",
+    "REPLACES",
+    "EXTENDS",
+    "DEPRECATES",
+    "PACKAGED_AS",
+    "PUBLISHED_BY",
+    "EVIDENCED_BY",
+    "SUPPORTS",
+    "CONTRADICTS"
+  ],
+  "edge_kinds": {
+    "taxonomy": "Structural classification",
+    "fact": "Directly supported by evidence",
+    "analysis": "Interpretation from evidence",
+    "hypothesis": "Forward-looking thesis"
+  },
+  "required_edge_fields": [
+    "id",
+    "source",
+    "target",
+    "type",
+    "kind",
+    "first_seen",
+    "last_verified",
+    "confidence"
+  ]
+}

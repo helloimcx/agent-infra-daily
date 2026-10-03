@@ -1,0 +1,18 @@
+{
+  "docker kit": "project:docker-sandbox-kit",
+  "sandbox kit": "project:docker-sandbox-kit",
+  "docker cloud sandbox": "project:docker-cloud-sandboxes",
+  "agent droplets": "project:digitalocean-agent-droplets",
+  "dots": "project:openai-dots",
+  "openai dots": "project:openai-dots",
+  "openshell": "project:nvidia-openshell",
+  "open shell": "project:nvidia-openshell",
+  "mcp": "standard:mcp",
+  "mid harness": "research:mid-harness",
+  "mid-harness": "research:mid-harness",
+  "arex2": "research:arex-2",
+  "arex-2": "research:arex-2",
+  "sift": "research:sift",
+  "durable execution": "cap:durable-execution",
+  "persistent workspace": "cap:persistent-workspace"
+}

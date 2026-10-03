@@ -1,0 +1,56 @@
+[
+  {
+    "id": "runtime",
+    "label": "Runtime & Orchestration",
+    "description": "Durable execution, scheduling, state, recovery and long-running processes.",
+    "order": 1
+  },
+  {
+    "id": "harness",
+    "label": "Agent Harness",
+    "description": "Agent loop, action selection, subagents and verification.",
+    "order": 2
+  },
+  {
+    "id": "sandbox",
+    "label": "Sandbox & Execution",
+    "description": "Isolation, microVMs, filesystem, network and remote execution.",
+    "order": 3
+  },
+  {
+    "id": "cloud-agent",
+    "label": "Cloud Agent",
+    "description": "Always-on agents, persistent workspaces and managed runtimes.",
+    "order": 4
+  },
+  {
+    "id": "security",
+    "label": "Security & Authority",
+    "description": "Credentials, policy enforcement, egress and permissions.",
+    "order": 5
+  },
+  {
+    "id": "memory",
+    "label": "Memory & Experience",
+    "description": "Persistent context, traces, replay, skills and consolidation.",
+    "order": 6
+  },
+  {
+    "id": "protocol",
+    "label": "Protocols & Standards",
+    "description": "MCP, OCI and portable agent definitions.",
+    "order": 7
+  },
+  {
+    "id": "observability",
+    "label": "Observability & Eval",
+    "description": "Tracing, replay, benchmarks, verification and evaluation.",
+    "order": 8
+  },
+  {
+    "id": "rsi",
+    "label": "Agent RSI",
+    "description": "Self-improvement, reflection and harness optimization.",
+    "order": 9
+  }
+]

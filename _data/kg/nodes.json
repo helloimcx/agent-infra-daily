@@ -1,0 +1,869 @@
+[
+  {
+    "id": "theme:agent-infrastructure",
+    "label": "Agent Infrastructure",
+    "type": "Theme",
+    "summary": "The infrastructure stack beneath autonomous and long-running AI agents.",
+    "maturity": "domain",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "runtime",
+      "harness",
+      "sandbox",
+      "cloud-agent",
+      "security",
+      "memory",
+      "protocol",
+      "observability",
+      "rsi"
+    ]
+  },
+  {
+    "id": "theme:runtime",
+    "label": "Runtime & Orchestration",
+    "type": "Theme",
+    "summary": "Execution state, scheduling, retry, recovery and orchestration.",
+    "maturity": "domain",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "runtime"
+    ]
+  },
+  {
+    "id": "theme:harness",
+    "label": "Agent Harness",
+    "type": "Theme",
+    "summary": "The control loop between models, tools, environment and verification.",
+    "maturity": "domain",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "harness"
+    ]
+  },
+  {
+    "id": "theme:sandbox",
+    "label": "Sandbox & Execution",
+    "type": "Theme",
+    "summary": "Isolation boundaries and execution environments for agent actions.",
+    "maturity": "domain",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "sandbox"
+    ]
+  },
+  {
+    "id": "theme:cloud-agent",
+    "label": "Cloud Agent",
+    "type": "Theme",
+    "summary": "Persistent and managed agents that continue working in cloud environments.",
+    "maturity": "domain",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "cloud-agent"
+    ]
+  },
+  {
+    "id": "theme:security",
+    "label": "Security & Authority",
+    "type": "Theme",
+    "summary": "Agent permissions, credentials, policy and side-effect control.",
+    "maturity": "domain",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "security"
+    ]
+  },
+  {
+    "id": "theme:memory",
+    "label": "Memory & Experience",
+    "type": "Theme",
+    "summary": "Persistent context, traces, replayable experience and learned skills.",
+    "maturity": "domain",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "memory"
+    ]
+  },
+  {
+    "id": "theme:protocol",
+    "label": "Protocols & Standards",
+    "type": "Theme",
+    "summary": "Interoperability and portable definitions for agent capabilities.",
+    "maturity": "domain",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "protocol"
+    ]
+  },
+  {
+    "id": "theme:observability",
+    "label": "Observability & Eval",
+    "type": "Theme",
+    "summary": "Tracing, replay, evaluation, verification and quality measurement.",
+    "maturity": "domain",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "observability"
+    ]
+  },
+  {
+    "id": "theme:rsi",
+    "label": "Agent RSI",
+    "type": "Theme",
+    "summary": "Recursive and iterative self-improvement of agents and harnesses.",
+    "maturity": "domain",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "rsi"
+    ]
+  },
+  {
+    "id": "cap:durable-execution",
+    "label": "Durable Execution",
+    "type": "Capability",
+    "summary": "Resume work after crashes without repeating completed side effects.",
+    "maturity": "production",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "runtime",
+      "cloud-agent"
+    ]
+  },
+  {
+    "id": "cap:persistent-workspace",
+    "label": "Persistent Workspace",
+    "type": "Capability",
+    "summary": "A long-lived workspace that survives task and worker lifecycles.",
+    "maturity": "emerging",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "runtime",
+      "cloud-agent",
+      "memory"
+    ]
+  },
+  {
+    "id": "cap:cloud-computer",
+    "label": "Cloud Computer",
+    "type": "Capability",
+    "summary": "A dedicated remote computer environment available to an agent over time.",
+    "maturity": "emerging",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "cloud-agent",
+      "sandbox"
+    ]
+  },
+  {
+    "id": "cap:agent-artifact",
+    "label": "Portable Agent Artifact",
+    "type": "Capability",
+    "summary": "Deployable unit packaging workload, environment, tools and authority requirements.",
+    "maturity": "experimental",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "protocol",
+      "runtime",
+      "security"
+    ]
+  },
+  {
+    "id": "cap:network-policy",
+    "label": "Network Policy",
+    "type": "Capability",
+    "summary": "Explicit controls over destinations and network access.",
+    "maturity": "production",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "sandbox",
+      "security"
+    ]
+  },
+  {
+    "id": "cap:credential-isolation",
+    "label": "Credential Isolation",
+    "type": "Capability",
+    "summary": "Keep secrets outside agent-visible workspace and broker them under policy.",
+    "maturity": "emerging",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "security",
+      "sandbox"
+    ]
+  },
+  {
+    "id": "cap:policy-enforcement",
+    "label": "Out-of-band Policy Enforcement",
+    "type": "Capability",
+    "summary": "Enforce safety outside the harness so the agent cannot control its own guardrail.",
+    "maturity": "emerging",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "security",
+      "sandbox"
+    ]
+  },
+  {
+    "id": "cap:action-verification",
+    "label": "Action Verification",
+    "type": "Capability",
+    "summary": "Verify candidate actions before they mutate the environment.",
+    "maturity": "research",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "harness",
+      "observability",
+      "security"
+    ]
+  },
+  {
+    "id": "cap:eval-scheduling",
+    "label": "Selective Eval Scheduling",
+    "type": "Capability",
+    "summary": "Use cheap ranking signals before expensive self-improvement evaluation.",
+    "maturity": "research",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "observability",
+      "rsi"
+    ]
+  },
+  {
+    "id": "cap:long-horizon-reflection",
+    "label": "Long-horizon Reflection",
+    "type": "Capability",
+    "summary": "Improve solutions over many rounds while preserving useful progress.",
+    "maturity": "research",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "rsi"
+    ]
+  },
+  {
+    "id": "cap:execution-trace",
+    "label": "Execution Trace & Replay",
+    "type": "Capability",
+    "summary": "Structured action history for observability, replay, eval, skill mining and RSI.",
+    "maturity": "emerging",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "memory",
+      "observability",
+      "rsi"
+    ]
+  },
+  {
+    "id": "cap:stateless-tool-protocol",
+    "label": "Stateless Tool Protocol",
+    "type": "Capability",
+    "summary": "Tool protocol semantics that scale without sticky protocol sessions.",
+    "maturity": "emerging",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "protocol",
+      "runtime"
+    ]
+  },
+  {
+    "id": "project:docker-sandbox-kit",
+    "label": "Docker Sandbox Kit",
+    "type": "Project",
+    "summary": "OCI-based packaging model for agent workload, tooling, policy and environment.",
+    "maturity": "early-access",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "sandbox",
+      "security",
+      "protocol",
+      "runtime"
+    ],
+    "url": "https://www.docker.com/blog/docker-sandbox-kit-spec/"
+  },
+  {
+    "id": "project:docker-cloud-sandboxes",
+    "label": "Docker Cloud Sandboxes",
+    "type": "Project",
+    "summary": "Managed cloud sandbox environments for agents and persistent named environments.",
+    "maturity": "early",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "sandbox",
+      "cloud-agent",
+      "security"
+    ],
+    "url": "https://docs.docker.com/ai/sandboxes/cloud/usage/"
+  },
+  {
+    "id": "project:digitalocean-agent-droplets",
+    "label": "DigitalOcean Agent Droplets",
+    "type": "Project",
+    "summary": "Managed agent runtime combining compute, inference, tools, memory and storage.",
+    "maturity": "public-preview",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "cloud-agent",
+      "runtime",
+      "memory"
+    ],
+    "url": "https://investors.digitalocean.com/news/news-details/2026/DigitalOcean-Introduces-Agent-Droplets-Everything-an-AI-Agent-Needs-One-Simple-Monthly-Price/default.aspx"
+  },
+  {
+    "id": "project:restate",
+    "label": "Restate",
+    "type": "Project",
+    "summary": "Durable execution infrastructure for resilient stateful backend and agent workflows.",
+    "maturity": "production",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "runtime",
+      "cloud-agent"
+    ],
+    "url": "https://restate.dev/what-is-durable-execution"
+  },
+  {
+    "id": "project:openai-dots",
+    "label": "OpenAI Dots",
+    "type": "Project",
+    "summary": "Always-on agents with their own cloud computer, app access and ongoing responsibility.",
+    "maturity": "product",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "cloud-agent",
+      "runtime",
+      "memory"
+    ],
+    "url": "https://help.openai.com/en/articles/20001530-getting-started-with-your-dot"
+  },
+  {
+    "id": "project:nvidia-openshell",
+    "label": "NVIDIA OpenShell",
+    "type": "Project",
+    "summary": "Secure runtime for autonomous agents with sandboxing and external policy enforcement.",
+    "maturity": "emerging",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "sandbox",
+      "security"
+    ],
+    "url": "https://developer.nvidia.com/blog/nvidia-open-agent-safety-platform-a-reference-for-continuous-in-silicon-agent-monitoring"
+  },
+  {
+    "id": "standard:mcp",
+    "label": "Model Context Protocol",
+    "type": "Standard",
+    "summary": "Protocol connecting AI applications and agents to tools and contextual capabilities.",
+    "maturity": "standardizing",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "protocol",
+      "harness"
+    ],
+    "url": "https://blog.modelcontextprotocol.io/posts/sdk-betas-2026-07-28/"
+  },
+  {
+    "id": "standard:oci",
+    "label": "OCI Artifact",
+    "type": "Standard",
+    "summary": "Open container artifact packaging model reused by agent kit proposals.",
+    "maturity": "standard",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "protocol",
+      "runtime"
+    ]
+  },
+  {
+    "id": "research:mid-harness",
+    "label": "Mid-Harness",
+    "type": "Research",
+    "summary": "Samples and verifies candidate terminal actions before execution.",
+    "maturity": "research",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "harness",
+      "observability",
+      "security"
+    ],
+    "url": "https://arxiv.org/abs/2609.39982"
+  },
+  {
+    "id": "research:arex-2",
+    "label": "AREX-2",
+    "type": "Research",
+    "summary": "Self-improving agent trained for reflection and sustained long-horizon refinement.",
+    "maturity": "research",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "rsi"
+    ],
+    "url": "https://arxiv.org/abs/2609.38288"
+  },
+  {
+    "id": "research:sift",
+    "label": "SIFT",
+    "type": "Research",
+    "summary": "Self-improvement via fast tree search and selective expensive evaluation.",
+    "maturity": "research",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "rsi",
+      "observability"
+    ],
+    "url": "https://arxiv.org/abs/2609.19526"
+  },
+  {
+    "id": "org:docker",
+    "label": "Docker",
+    "type": "Organization",
+    "summary": "Container and agent execution infrastructure vendor.",
+    "maturity": "organization",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "sandbox",
+      "protocol"
+    ]
+  },
+  {
+    "id": "org:digitalocean",
+    "label": "DigitalOcean",
+    "type": "Organization",
+    "summary": "Cloud provider offering managed agent runtime products.",
+    "maturity": "organization",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "cloud-agent"
+    ]
+  },
+  {
+    "id": "org:restate",
+    "label": "Restate",
+    "type": "Organization",
+    "summary": "Company developing durable execution infrastructure.",
+    "maturity": "organization",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "runtime"
+    ]
+  },
+  {
+    "id": "org:openai",
+    "label": "OpenAI",
+    "type": "Organization",
+    "summary": "AI research and product company.",
+    "maturity": "organization",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "cloud-agent"
+    ]
+  },
+  {
+    "id": "org:nvidia",
+    "label": "NVIDIA",
+    "type": "Organization",
+    "summary": "Computing company developing agent runtime and safety infrastructure.",
+    "maturity": "organization",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "sandbox",
+      "security"
+    ]
+  },
+  {
+    "id": "org:baai",
+    "label": "BAAI",
+    "type": "Organization",
+    "summary": "Beijing Academy of Artificial Intelligence.",
+    "maturity": "organization",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "rsi"
+    ]
+  },
+  {
+    "id": "pattern:agent-definition-instance",
+    "label": "Agent Definition / Instance Split",
+    "type": "Pattern",
+    "summary": "Separate static requirements from per-user workspace, state and task execution.",
+    "maturity": "analysis",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "runtime",
+      "cloud-agent",
+      "security"
+    ]
+  },
+  {
+    "id": "pattern:credential-broker",
+    "label": "Credential Broker",
+    "type": "Pattern",
+    "summary": "Resolve logical credentials under policy without exposing raw secrets to context.",
+    "maturity": "analysis",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "security",
+      "sandbox"
+    ]
+  },
+  {
+    "id": "pattern:action-verifier-layer",
+    "label": "Action Verifier Layer",
+    "type": "Pattern",
+    "summary": "Insert verification between candidate actions and the mutable environment.",
+    "maturity": "analysis",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "harness",
+      "security",
+      "observability"
+    ]
+  },
+  {
+    "id": "trend:portable-agent-authority",
+    "label": "Portable Agent Authority",
+    "type": "Trend",
+    "summary": "Agent definition is emerging as a portable artifact containing workload and requested authority.",
+    "maturity": "hypothesis",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "protocol",
+      "security",
+      "runtime"
+    ]
+  },
+  {
+    "id": "trend:agent-runtime-cloud-sku",
+    "label": "Agent Runtime as Cloud SKU",
+    "type": "Trend",
+    "summary": "Cloud providers are packaging runtime, tools, memory and inference as a distinct product.",
+    "maturity": "emerging",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "cloud-agent",
+      "runtime"
+    ]
+  },
+  {
+    "id": "trend:harness-rsi",
+    "label": "Harness-level RSI",
+    "type": "Trend",
+    "summary": "Near-term self-improvement is focusing on harness behavior and evaluation rather than weight changes.",
+    "maturity": "hypothesis",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "rsi",
+      "harness",
+      "observability"
+    ]
+  },
+  {
+    "id": "trend:persistent-agent-runtime",
+    "label": "Persistent Agent Runtime",
+    "type": "Trend",
+    "summary": "Agents are shifting from short-lived processes to durable state plus persistent workspace.",
+    "maturity": "emerging",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "runtime",
+      "cloud-agent",
+      "memory"
+    ]
+  },
+  {
+    "id": "event:docker-kit-v3",
+    "label": "Sandbox Kit Specification v3",
+    "type": "Event",
+    "summary": "Docker published Sandbox Kit Specification v3.",
+    "maturity": "event",
+    "first_seen": "2026-09-24",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "sandbox",
+      "protocol"
+    ]
+  },
+  {
+    "id": "event:openshell-platform",
+    "label": "Open Agent Safety Platform announcement",
+    "type": "Event",
+    "summary": "NVIDIA published its Open Agent Safety Platform architecture.",
+    "maturity": "event",
+    "first_seen": "2026-09-28",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "sandbox",
+      "security"
+    ]
+  },
+  {
+    "id": "event:arex2-paper",
+    "label": "AREX-2 paper",
+    "type": "Event",
+    "summary": "AREX-2 submitted to arXiv.",
+    "maturity": "event",
+    "first_seen": "2026-09-29",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "rsi"
+    ]
+  },
+  {
+    "id": "event:mid-harness-paper",
+    "label": "Mid-Harness paper",
+    "type": "Event",
+    "summary": "Mid-Harness submitted to arXiv.",
+    "maturity": "event",
+    "first_seen": "2026-09-30",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "harness",
+      "observability"
+    ]
+  },
+  {
+    "id": "event:restate-series-a",
+    "label": "Restate Series A",
+    "type": "Event",
+    "summary": "Restate announced a $20M Series A and durable execution thesis.",
+    "maturity": "event",
+    "first_seen": "2026-09-30",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "runtime"
+    ]
+  },
+  {
+    "id": "event:agent-droplets-launch",
+    "label": "Agent Droplets launch",
+    "type": "Event",
+    "summary": "DigitalOcean launched Agent Droplets.",
+    "maturity": "event",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "cloud-agent"
+    ]
+  },
+  {
+    "id": "event:daily-2026-10-03",
+    "label": "Agent Infra Daily 2026-10-03",
+    "type": "Event",
+    "summary": "Daily synthesis and graph bootstrap for 2026-10-03.",
+    "maturity": "event",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "runtime",
+      "sandbox",
+      "cloud-agent",
+      "rsi"
+    ],
+    "url": "/agent-infra-daily/reports/2026/10/03/"
+  },
+  {
+    "id": "source:docker-kit",
+    "label": "Docker — Sandbox Kit Specification",
+    "type": "Source",
+    "summary": "Primary Docker source.",
+    "maturity": "source",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "sandbox",
+      "protocol"
+    ],
+    "url": "https://www.docker.com/blog/docker-sandbox-kit-spec/"
+  },
+  {
+    "id": "source:docker-cloud",
+    "label": "Docker Docs — Cloud Sandboxes",
+    "type": "Source",
+    "summary": "Primary Docker cloud sandbox docs.",
+    "maturity": "source",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "sandbox",
+      "cloud-agent"
+    ],
+    "url": "https://docs.docker.com/ai/sandboxes/cloud/usage/"
+  },
+  {
+    "id": "source:docker-creds",
+    "label": "Docker Docs — Cloud Credentials",
+    "type": "Source",
+    "summary": "Primary Docker credential docs.",
+    "maturity": "source",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "security"
+    ],
+    "url": "https://docs.docker.com/ai/sandboxes/cloud/credentials/"
+  },
+  {
+    "id": "source:do-droplets",
+    "label": "DigitalOcean — Agent Droplets",
+    "type": "Source",
+    "summary": "Primary DigitalOcean announcement.",
+    "maturity": "source",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "cloud-agent"
+    ],
+    "url": "https://investors.digitalocean.com/news/news-details/2026/DigitalOcean-Introduces-Agent-Droplets-Everything-an-AI-Agent-Needs-One-Simple-Monthly-Price/default.aspx"
+  },
+  {
+    "id": "source:restate-durable",
+    "label": "Restate — Durable Execution Guide",
+    "type": "Source",
+    "summary": "Primary Restate explanation.",
+    "maturity": "source",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "runtime"
+    ],
+    "url": "https://restate.dev/what-is-durable-execution"
+  },
+  {
+    "id": "source:restate-series-a",
+    "label": "Restate — Series A announcement",
+    "type": "Source",
+    "summary": "Restate September 30 announcement.",
+    "maturity": "source",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "runtime"
+    ],
+    "url": "https://restate.dev/blog/announcing-series-a"
+  },
+  {
+    "id": "source:openai-dots",
+    "label": "OpenAI — Getting started with your dot",
+    "type": "Source",
+    "summary": "OpenAI help documentation for Dots.",
+    "maturity": "source",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "cloud-agent"
+    ],
+    "url": "https://help.openai.com/en/articles/20001530-getting-started-with-your-dot"
+  },
+  {
+    "id": "source:nvidia-openshell",
+    "label": "NVIDIA — Open Agent Safety Platform",
+    "type": "Source",
+    "summary": "Primary NVIDIA OpenShell source.",
+    "maturity": "source",
+    "first_seen": "2026-10-01",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "sandbox",
+      "security"
+    ],
+    "url": "https://developer.nvidia.com/blog/nvidia-open-agent-safety-platform-a-reference-for-continuous-in-silicon-agent-monitoring"
+  },
+  {
+    "id": "source:mcp-2026-sdk",
+    "label": "MCP — 2026 SDK beta announcement",
+    "type": "Source",
+    "summary": "Primary MCP protocol revision source.",
+    "maturity": "source",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "protocol"
+    ],
+    "url": "https://blog.modelcontextprotocol.io/posts/sdk-betas-2026-07-28/"
+  },
+  {
+    "id": "source:mid-harness",
+    "label": "arXiv — Mid-Harness",
+    "type": "Source",
+    "summary": "Primary paper source.",
+    "maturity": "source",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "harness",
+      "observability"
+    ],
+    "url": "https://arxiv.org/abs/2609.39982"
+  },
+  {
+    "id": "source:arex2",
+    "label": "arXiv — AREX-2",
+    "type": "Source",
+    "summary": "Primary paper source.",
+    "maturity": "source",
+    "first_seen": "2026-10-02",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "rsi"
+    ],
+    "url": "https://arxiv.org/abs/2609.38288"
+  },
+  {
+    "id": "source:sift",
+    "label": "arXiv — SIFT",
+    "type": "Source",
+    "summary": "Primary paper source.",
+    "maturity": "source",
+    "first_seen": "2026-10-03",
+    "last_verified": "2026-10-03",
+    "themes": [
+      "rsi",
+      "observability"
+    ],
+    "url": "https://arxiv.org/abs/2609.19526"
+  }
+]
