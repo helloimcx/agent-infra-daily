@@ -4,6 +4,7 @@ layout: default
 {% assign entity = site.data.kg.nodes | where: "id", page.entity_id | first %}
 {% assign entity_claims = site.data.kg.claims | where: "entity", page.entity_id %}
 {% assign monograph = site.data.kg.monographs | where: "entity", page.entity_id | first %}
+{% assign technical_asset_set = site.data.kg.technical_assets | where: "entity", page.entity_id | first %}
 <section class="entity-hero-v7">
   <a class="entity-back" href="{{ '/entities/' | relative_url }}">← Entity Directory</a>
   <div class="entity-kicker">{{ entity.type }}{% if entity.maturity %} · {{ entity.maturity }}{% endif %}</div>
@@ -93,6 +94,52 @@ layout: default
             {% endif %}
           </div>
         </section>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if technical_asset_set and technical_asset_set.assets %}
+    <section id="technical-assets" class="article-section technical-assets-section">
+      <div class="article-label">04 · SYSTEMS LAB</div>
+      <h2>技术资产</h2>
+      <p class="section-intro">把机制、状态、失败窗口与实验结果变成可检查的图和表。Fact/Mixed 资产绑定一手来源；Analysis 明确表示本站架构抽象。</p>
+      <div class="technical-assets-list">
+        {% for asset in technical_asset_set.assets %}
+        <article class="technical-asset-card asset-{{ asset.type }}">
+          <div class="technical-asset-head">
+            <div>
+              <span class="asset-kind {{ asset.kind }}">{{ asset.kind }}</span>
+              <span class="asset-type">{{ asset.type }}</span>
+            </div>
+            <span class="asset-index">{{ forloop.index | prepend: "0" | slice: -2, 2 }}</span>
+          </div>
+          <h3>{{ asset.title }}</h3>
+          <p class="asset-summary">{{ asset.summary }}</p>
+          {% if asset.type == "diagram" %}
+            <div class="mermaid-shell"><pre class="mermaid">{{ asset.mermaid }}</pre></div>
+          {% else %}
+            <div class="technical-table-wrap">
+              <table class="technical-table">
+                <thead><tr>{% for column in asset.columns %}<th>{{ column }}</th>{% endfor %}</tr></thead>
+                <tbody>
+                  {% for row in asset.rows %}
+                  <tr>{% for cell in row %}<td>{{ cell }}</td>{% endfor %}</tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% endif %}
+          {% if asset.evidence %}
+          <div class="technical-asset-evidence">
+            <span>Evidence</span>
+            {% for source_id in asset.evidence %}
+              {% assign source = site.data.kg.nodes | where: "id", source_id | first %}
+              {% if source %}<a href="{{ source.page | relative_url }}">{{ source.label }}</a>{% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </article>
         {% endfor %}
       </div>
     </section>
@@ -277,6 +324,7 @@ layout: default
       <a href="#overview">Overview</a>
       <a href="#technical">Technical model</a>
       {% if monograph and monograph.sections %}<a href="#monograph">Deep dive</a>{% endif %}
+      {% if technical_asset_set and technical_asset_set.assets %}<a href="#technical-assets">Systems lab</a>{% endif %}
       {% if entity.architecture_flow %}<a href="#flow">Execution flow</a>{% endif %}
       {% if entity.design_space %}<a href="#design-space">Design space</a>{% endif %}
       {% if entity.evidence_scope %}<a href="#evidence-scope">Evidence scope</a>{% endif %}
@@ -298,4 +346,26 @@ layout: default
 <script id="entityEdges" type="application/json">{{ site.data.kg.edges | jsonify }}</script>
 <script id="entityArchitectureData" type="application/json">{{ site.data.kg.architecture | jsonify }}</script>
 <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.3/dist/cytoscape.min.js"></script>
-<script src="{{ '/assets/js/entity.js' | relative_url }}?v=kg-v9"></script>
+<script src="{{ '/assets/js/entity.js' | relative_url }}?v=kg-v10"></script>
+{% if technical_asset_set and technical_asset_set.assets %}
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: "base",
+    securityLevel: "strict",
+    themeVariables: {
+      fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+      primaryColor: "#f2f7f4",
+      primaryTextColor: "#16211c",
+      primaryBorderColor: "#cbd9d1",
+      lineColor: "#8da098",
+      secondaryColor: "#f5f7fb",
+      tertiaryColor: "#fffaf5"
+    },
+    flowchart: { curve: "basis", htmlLabels: true },
+    sequence: { useMaxWidth: true }
+  });
+  await mermaid.run({querySelector: ".mermaid"});
+</script>
+{% endif %}

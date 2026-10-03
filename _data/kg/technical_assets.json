@@ -1,0 +1,1755 @@
+[
+  {
+    "entity": "cap:durable-execution",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "execution-state-machine",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Durable Execution 状态机",
+        "summary": "把任务生命周期与 worker 生命周期拆开：WAITING 不占 worker，RUNNING 只是短期执行租约，恢复围绕持久 execution state 展开。",
+        "evidence": [
+          "source:restate-durable"
+        ],
+        "mermaid": "stateDiagram-v2\n  [*] --> RUNNABLE\n  RUNNABLE --> RUNNING: worker lease\n  RUNNING --> WAITING: timer / signal / approval\n  WAITING --> RUNNABLE: event arrives\n  RUNNING --> RUNNABLE: retryable failure\n  RUNNING --> COMPLETED: durable result\n  RUNNING --> CANCELLED: cancellation\n  RUNNING --> FAILED: terminal failure\n  RUNNING --> RUNNABLE: worker crash / lease expires\n  COMPLETED --> [*]\n  CANCELLED --> [*]\n  FAILED --> [*]"
+      },
+      {
+        "id": "crash-window-matrix",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Crash Window / Side-effect Failure Matrix",
+        "summary": "真正困难的不是“进程死了”，而是外部世界和本地 journal 在不同时间点看到的状态不一致。",
+        "evidence": [
+          "source:restate-durable"
+        ],
+        "columns": [
+          "故障窗口",
+          "外部副作用",
+          "Runtime 已持久化",
+          "主要风险",
+          "需要的机制"
+        ],
+        "rows": [
+          [
+            "调用前 crash",
+            "未发生",
+            "否",
+            "安全重试",
+            "普通 retry"
+          ],
+          [
+            "外部已执行，本地未确认",
+            "可能已发生",
+            "否",
+            "重复支付/发信/部署",
+            "idempotency key / reconcile"
+          ],
+          [
+            "结果已 journal，worker crash",
+            "已发生",
+            "是",
+            "重复执行已完成 step",
+            "replay 已记录结果"
+          ],
+          [
+            "等待期间 worker 消失",
+            "无新增副作用",
+            "等待条件已记录",
+            "占资源或丢等待",
+            "durable timer / signal"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:persistent-workspace",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "workspace-object-model",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Workspace 与 Agent / Task / Worker 的对象关系",
+        "summary": "Workspace 是长期工作现场；Task 引用它，Worker 临时 attach。这样计算资源才可以销毁和替换。",
+        "evidence": [
+          "source:docker-cloud",
+          "source:openai-dots"
+        ],
+        "mermaid": "flowchart LR\n  A[Agent Instance] -->|owns / selects| W[Persistent Workspace]\n  A --> T1[Task A]\n  A --> T2[Task B]\n  T1 -->|uses| W\n  T2 -->|uses| W\n  R1[Worker 1] -. lease / attach .-> T1\n  R2[Worker 2] -. resume / attach .-> T2\n  W --> F[Files / repo]\n  W --> E[Environment state]\n  W --> B[Browser / app profile]\n  W -. not necessarily .-> P[Live processes]"
+      },
+      {
+        "id": "workspace-state-matrix",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Workspace 状态分层",
+        "summary": "“持久化工作区”不是一个布尔值，不同状态需要不同保存与恢复策略。",
+        "evidence": [
+          "source:docker-cloud",
+          "source:docker-creds"
+        ],
+        "columns": [
+          "状态层",
+          "典型内容",
+          "适合的持久机制",
+          "主要风险"
+        ],
+        "rows": [
+          [
+            "Filesystem",
+            "repo、文档、生成物",
+            "persistent volume / object snapshot",
+            "跨任务写冲突"
+          ],
+          [
+            "Environment",
+            "包、runtime、系统配置",
+            "image + cache / snapshot",
+            "环境漂移"
+          ],
+          [
+            "Application",
+            "浏览器 profile、登录态",
+            "profile snapshot / managed state",
+            "secret 被固化"
+          ],
+          [
+            "Process",
+            "进程、socket、PTY",
+            "通常不持久或 CRIU 类机制",
+            "恢复复杂且脆弱"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:cloud-computer",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "cloud-computer-stack",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Cloud Computer 的执行面分层",
+        "summary": "一台 Agent cloud computer 同时包含交互界面、文件/应用状态、网络能力与底层隔离，不应简单等同于 VM。",
+        "evidence": [
+          "source:openai-dots"
+        ],
+        "mermaid": "flowchart TB\n  U[User / Human takeover]\n  H[Agent Harness]\n  C[Computer Control API]\n  B[Browser / GUI Apps]\n  F[Filesystem / Workspace]\n  N[Network / SaaS]\n  S[Sandbox / VM / microVM]\n  P[Policy + Credential boundary]\n  U --> C\n  H --> C\n  C --> B\n  C --> F\n  C --> N\n  B --> S\n  F --> S\n  N --> P\n  S --> P"
+      },
+      {
+        "id": "execution-surface-matrix",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "执行 Surface 选型",
+        "summary": "能用结构化 API 就不应默认退化成完整远程电脑。",
+        "columns": [
+          "Surface",
+          "优势",
+          "限制",
+          "适合任务"
+        ],
+        "rows": [
+          [
+            "API / MCP Tool",
+            "结构化、稳定、便宜",
+            "覆盖范围有限",
+            "业务系统操作"
+          ],
+          [
+            "Remote Browser",
+            "网页兼容性强",
+            "DOM/页面易漂移",
+            "网站流程"
+          ],
+          [
+            "Ephemeral Sandbox",
+            "任意代码、隔离清晰",
+            "连续性弱",
+            "构建/测试/临时代码"
+          ],
+          [
+            "Persistent Cloud Computer",
+            "连续状态、GUI/文件齐全",
+            "成本与权限面最大",
+            "长期办公/遗留软件"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:agent-artifact",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "artifact-authority-flow",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Agent Artifact → Runtime Grant → Instance",
+        "summary": "Artifact 只能声明 capability requirements；真正授权应由部署环境的 runtime / policy 决定。",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "mermaid": "flowchart LR\n  A[Signed Agent Artifact] --> D[Definition]\n  D --> R[Runtime resolves requirements]\n  P[Org / User Policy] --> R\n  R -->|grant subset| I[Agent Instance]\n  R -->|required capability denied| X[Fail deployment]\n  I --> S[Sandbox + tools]\n  I --> C[Credential / network grants]"
+      },
+      {
+        "id": "artifact-review-matrix",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Agent Supply-chain Review 面",
+        "summary": "Agent artifact 的风险审查需要同时看软件内容与 authority 变化。",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "columns": [
+          "审查面",
+          "传统镜像",
+          "Agent Artifact 额外关注"
+        ],
+        "rows": [
+          [
+            "代码/依赖",
+            "SBOM、漏洞、签名",
+            "相同"
+          ],
+          [
+            "网络",
+            "通常外部部署配置",
+            "请求哪些 host/path/method"
+          ],
+          [
+            "Credential",
+            "secret 注入配置",
+            "需要哪些 credential capability"
+          ],
+          [
+            "文件/设备",
+            "mount/device flags",
+            "读写哪些 workspace/device"
+          ],
+          [
+            "升级 Diff",
+            "代码/依赖变化",
+            "authority 是否扩大"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:network-policy",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "network-policy-layers",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Agent Egress Policy 分层",
+        "summary": "越靠应用语义层控制越细，但实现与性能成本也越高。",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "mermaid": "flowchart TB\n  A[Agent action] --> DNS[DNS / domain rules]\n  DNS --> L4[IP + port]\n  L4 --> HTTP[HTTP method + path]\n  HTTP --> ID[Identity / credential binding]\n  ID --> EXT[External service]\n  HTTP -->|deny DELETE / sensitive path| X[Blocked]\n  L4 -->|deny private / unknown egress| X"
+      },
+      {
+        "id": "egress-threat-matrix",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Egress Failure / Threat Matrix",
+        "summary": "网络策略需要覆盖 shell、browser、MCP 等所有出站通道。",
+        "columns": [
+          "风险",
+          "仅 IP/Port 是否足够",
+          "推荐控制"
+        ],
+        "rows": [
+          [
+            "向任意网站上传用户文件",
+            "否",
+            "domain allowlist + identity-aware proxy"
+          ],
+          [
+            "允许 GitHub 读但禁止删库",
+            "否",
+            "HTTP method/path policy"
+          ],
+          [
+            "访问云 metadata / 内网",
+            "部分",
+            "private range deny + sandbox routing"
+          ],
+          [
+            "通过 Browser/MCP 绕过 shell egress",
+            "否",
+            "统一 capability / gateway policy"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:credential-isolation",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "credential-broker-sequence",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Credential Broker 调用时序",
+        "summary": "Agent 使用能力，但原始 secret 不进入 prompt、workspace 或进程环境。",
+        "evidence": [
+          "source:docker-creds",
+          "source:docker-kit",
+          "source:do-droplets"
+        ],
+        "mermaid": "sequenceDiagram\n  participant A as Agent / Tool\n  participant G as Policy Gateway\n  participant B as Credential Broker\n  participant S as External Service\n  A->>G: action + target + task identity\n  G->>G: authorize capability\n  G->>B: approved grant + target\n  B->>B: obtain short-lived credential\n  B->>S: signed / injected request\n  S-->>B: response\n  B-->>G: sanitized response\n  G-->>A: result (no raw secret)"
+      },
+      {
+        "id": "credential-failure-matrix",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Credential Isolation Failure Matrix",
+        "summary": "平台 secret store 安全并不代表 credential 不会通过其他路径落入 workspace。",
+        "evidence": [
+          "source:docker-creds"
+        ],
+        "columns": [
+          "场景",
+          "Secret 是否可能被 Agent 读取",
+          "风险",
+          "更稳策略"
+        ],
+        "rows": [
+          [
+            "环境变量注入",
+            "是",
+            "日志/子进程/恶意依赖读取",
+            "broker/proxy"
+          ],
+          [
+            "外部 secret store + request proxy",
+            "通常否",
+            "broker 成为高价值资产",
+            "短期 token + audit"
+          ],
+          [
+            "Browser interactive login",
+            "可能",
+            "cookie/profile 被 snapshot",
+            "隔离 browser profile"
+          ],
+          [
+            "CLI interactive login",
+            "可能",
+            "~/.config 写盘",
+            "ephemeral credential home"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:policy-enforcement",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "policy-enforcement-path",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Out-of-band Enforcement 路径",
+        "summary": "Harness 可以提出动作，但最终 allow / deny / approval 应由 Agent 无法修改的控制面决定。",
+        "evidence": [
+          "source:nvidia-openshell"
+        ],
+        "mermaid": "flowchart LR\n  M[Model / Harness] --> Q[Action request]\n  Q --> PE[Policy Engine]\n  I[Identity + grants] --> PE\n  C[Context / risk] --> PE\n  PE -->|allow| EX[Sandbox / Tool execution]\n  PE -->|deny| D[Blocked + reason]\n  PE -->|approval| H[Human approval]\n  H -->|scoped grant| PE\n  EX --> T[Trace / audit]"
+      },
+      {
+        "id": "enforcement-placement",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Policy 放在哪里，可信度完全不同",
+        "summary": "“有 policy”不是二元属性，关键是 Agent 能否修改或绕过 enforcement point。",
+        "evidence": [
+          "source:nvidia-openshell"
+        ],
+        "columns": [
+          "位置",
+          "优点",
+          "主要弱点",
+          "适合作用"
+        ],
+        "rows": [
+          [
+            "System Prompt",
+            "低成本、语义丰富",
+            "模型可违背/被注入影响",
+            "行为指导"
+          ],
+          [
+            "Harness Middleware",
+            "易接工具上下文",
+            "Agent/代码旁路风险",
+            "应用级风险检查"
+          ],
+          [
+            "Runtime / Sandbox",
+            "不可由模型直接修改",
+            "语义理解较弱",
+            "真正权限强制"
+          ],
+          [
+            "独立硬件/网络控制面",
+            "隔离最强",
+            "成本/复杂度高",
+            "高价值企业 Agent"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:action-verification",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "risk-aware-verifier",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Risk-aware Action Verification",
+        "summary": "不是每一步都多采样；验证预算应随动作可逆性和副作用风险增加。",
+        "evidence": [
+          "source:mid-harness"
+        ],
+        "mermaid": "flowchart LR\n  A[Candidate action] --> R{Risk / reversibility}\n  R -->|low| E[Execute directly]\n  R -->|medium| V1[Single verifier / rule]\n  R -->|high| C[Sample candidates]\n  C --> V2[Strong verifier / tests]\n  V2 --> S[Sandbox snapshot / dry-run]\n  S -->|pass| E\n  R -->|critical| H[Human approval]\n  H -->|approved| E"
+      },
+      {
+        "id": "verification-budget",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "动作风险与验证预算",
+        "summary": "Verifier 应作为 test-time compute scheduler 的一部分。",
+        "evidence": [
+          "source:mid-harness"
+        ],
+        "columns": [
+          "动作类型",
+          "可逆性",
+          "建议验证",
+          "失败后措施"
+        ],
+        "rows": [
+          [
+            "读取文件/GET",
+            "高",
+            "零或轻量规则",
+            "普通 retry"
+          ],
+          [
+            "安装依赖/修改文件",
+            "中",
+            "模型/测试 verifier",
+            "snapshot rollback"
+          ],
+          [
+            "部署/merge/删除资源",
+            "低",
+            "多候选 + 强 verifier",
+            "审批/补偿"
+          ],
+          [
+            "支付/对外发送不可撤回内容",
+            "极低",
+            "强 verifier + HITL",
+            "默认 fail closed"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:eval-scheduling",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "eval-scheduler-pipeline",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Selective Eval Scheduler Pipeline",
+        "summary": "候选生成与昂贵 benchmark 解耦，先用廉价信号筛选，再把预算投向高信息增益节点。",
+        "evidence": [
+          "source:sift"
+        ],
+        "mermaid": "flowchart LR\n  G[Generate candidates] --> C[Cheap checks / judge]\n  C --> S[Scheduler]\n  S -->|promising / uncertain| M[Medium eval]\n  M --> S\n  S -->|top candidates| E[Expensive benchmark]\n  E --> P{Promotion gate}\n  P -->|pass| R[Version registry]\n  P -->|fail| X[Reject / archive]\n  S -->|budget exhausted| X"
+      },
+      {
+        "id": "eval-tier-matrix",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Eval 分层与成本",
+        "summary": "把每个候选都跑完整 benchmark 会使 RSI 很快失去经济性。",
+        "evidence": [
+          "source:sift"
+        ],
+        "columns": [
+          "层级",
+          "例子",
+          "目标",
+          "典型成本"
+        ],
+        "rows": [
+          [
+            "Cheap",
+            "lint、静态规则、LLM pairwise judge",
+            "快速淘汰明显差候选",
+            "低"
+          ],
+          [
+            "Medium",
+            "小样本任务、单元/集成测试",
+            "估计真实收益",
+            "中"
+          ],
+          [
+            "Expensive",
+            "完整 benchmark、真实 sandbox、人工审查",
+            "Promotion 决策",
+            "高"
+          ],
+          [
+            "Holdout",
+            "独立未用于搜索的数据",
+            "检测 Goodhart / overfit",
+            "稀疏但必须"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:long-horizon-reflection",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "reflection-control-loop",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Long-horizon Reflection 控制环",
+        "summary": "可靠的长程改进不是无限追加聊天，而是版本化 candidate、独立 evaluate、保留 best state。",
+        "evidence": [
+          "source:arex2"
+        ],
+        "mermaid": "flowchart LR\n  B[Best-so-far solution] --> G[Generate improvement]\n  G --> E[Evaluate]\n  E --> S{Better?}\n  S -->|yes| B2[Promote new best]\n  B2 --> C[Consolidate state]\n  C --> B\n  S -->|no| R[Reject / branch / restart]\n  R --> G\n  E --> STOP{Stopping rule}\n  STOP -->|budget / plateau| END[Return best]"
+      },
+      {
+        "id": "reflection-failure-matrix",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "长程改进 Failure Modes",
+        "summary": "轮数增加本身不是能力，错误 evaluator 和状态管理会把更多计算变成更严重偏差。",
+        "evidence": [
+          "source:arex2"
+        ],
+        "columns": [
+          "失败模式",
+          "症状",
+          "根因",
+          "工程缓解"
+        ],
+        "rows": [
+          [
+            "上下文膨胀",
+            "后期忘记当前最好方案",
+            "把所有历史塞入 context",
+            "best-state + cold trace"
+          ],
+          [
+            "局部最优",
+            "反复小修补",
+            "探索多样性不足",
+            "branch / restart"
+          ],
+          [
+            "Reward hack",
+            "指标持续升、真实质量降",
+            "evaluator 偏差",
+            "holdout + 多指标"
+          ],
+          [
+            "无穷反思",
+            "成本持续增长",
+            "没有 stopping rule",
+            "边际收益/预算停止"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:execution-trace",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "trace-dataflow",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Agent Trace 数据流",
+        "summary": "一次 Task 的 model、tool、policy、workspace 与 environment 事件需要用同一 execution identity 关联。",
+        "evidence": [
+          "source:restate-durable",
+          "source:nvidia-openshell"
+        ],
+        "mermaid": "flowchart LR\n  M[Model calls] --> E[Execution Event Stream]\n  T[Tool calls] --> E\n  P[Policy decisions] --> E\n  W[Workspace diffs] --> E\n  N[Network / credential use] --> E\n  E --> J[Durable journal subset]\n  E --> O[Observability store]\n  O --> R[Replay / debugging]\n  O --> V[Eval dataset]\n  O --> S[Security incident analysis]"
+      },
+      {
+        "id": "replay-levels",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Replay 的三个层级",
+        "summary": "“可回放”需要说明到底复用历史结果、重调工具，还是还原完整环境。",
+        "columns": [
+          "层级",
+          "做法",
+          "优点",
+          "限制"
+        ],
+        "rows": [
+          [
+            "Logical replay",
+            "复用记录的 step result",
+            "快、确定性高",
+            "不能发现外部服务变化"
+          ],
+          [
+            "Tool replay",
+            "重新调用工具/API",
+            "验证当前行为",
+            "可能产生副作用/成本"
+          ],
+          [
+            "Environment replay",
+            "还原 workspace/browser 后重走 trajectory",
+            "最接近真实事故复现",
+            "昂贵且状态恢复困难"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:stateless-tool-protocol",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "stateless-mrtr",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Stateless Tool Protocol + MRTR",
+        "summary": "多轮工具交互可以通过显式请求序列完成，而不是把状态绑定到某一 server process。",
+        "evidence": [
+          "source:mcp-2026-sdk"
+        ],
+        "mermaid": "sequenceDiagram\n  participant C as Agent Client\n  participant G as Gateway\n  participant S1 as Server Instance A\n  participant S2 as Server Instance B\n  C->>G: tool request + identity\n  G->>S1: route request\n  S1-->>C: InputRequired + continuation data\n  Note over C: wait for user / workflow\n  C->>G: follow-up request + correlation\n  G->>S2: any healthy instance\n  S2-->>C: result"
+      },
+      {
+        "id": "stateless-boundaries",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "无状态协议解决什么 / 不解决什么",
+        "summary": "协议无状态不意味着业务、任务或外部副作用无状态。",
+        "evidence": [
+          "source:mcp-2026-sdk"
+        ],
+        "columns": [
+          "问题",
+          "Stateless Protocol 能否解决",
+          "更合适的层"
+        ],
+        "rows": [
+          [
+            "负载均衡 / rolling deploy",
+            "是",
+            "Protocol/Gateway"
+          ],
+          [
+            "Human input 跨长时间等待",
+            "部分",
+            "Protocol + Durable Runtime"
+          ],
+          [
+            "工具副作用 exactly-once",
+            "否",
+            "Runtime + idempotency"
+          ],
+          [
+            "Sandbox isolation",
+            "否",
+            "Execution layer"
+          ],
+          [
+            "Long-term memory",
+            "否",
+            "Memory service"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "project:restate",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "restate-crash-replay",
+        "type": "diagram",
+        "kind": "mixed",
+        "title": "Restate Crash → Replay → Continue",
+        "summary": "关键点是 worker 替换后复用 journal 中已完成结果，而不是从头重新执行。",
+        "evidence": [
+          "source:restate-durable"
+        ],
+        "mermaid": "sequenceDiagram\n  participant H as Agent / Harness\n  participant R as Restate Runtime\n  participant W1 as Worker A\n  participant X as External Tool\n  participant W2 as Worker B\n  H->>R: invoke durable function\n  R->>W1: execute\n  W1->>X: tool call / side effect\n  X-->>W1: result\n  W1->>R: journal result\n  Note over W1: crash\n  R->>W2: replay execution\n  R-->>W2: recorded tool result\n  W2->>W2: skip completed step\n  W2->>R: continue next step"
+      },
+      {
+        "id": "restate-boundary",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Restate 在 Agent Stack 中解决与不解决的问题",
+        "summary": "把 Restate 当完整 Agent 平台会模糊边界；它更像 Durable Runtime primitive。",
+        "evidence": [
+          "source:restate-durable"
+        ],
+        "columns": [
+          "能力",
+          "Restate 角色",
+          "还需要"
+        ],
+        "rows": [
+          [
+            "任务恢复 / retry / timer",
+            "核心能力",
+            "—"
+          ],
+          [
+            "Tool side-effect 记录",
+            "Runtime 语义的一部分",
+            "外部 API 幂等/补偿"
+          ],
+          [
+            "Sandbox isolation",
+            "不负责",
+            "Docker/E2B/VM 等"
+          ],
+          [
+            "模型/Harness 策略",
+            "不负责",
+            "Agent framework"
+          ],
+          [
+            "权限/credential policy",
+            "不负责",
+            "Policy/Broker"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "project:openai-dots",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "dots-object-model",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "OpenAI Dots 的产品对象模型",
+        "summary": "公开产品行为更像长期 Agent Identity 组合 Task、Cloud Computer、Memory 与可撤销 capability，而不是一个 session。",
+        "evidence": [
+          "source:openai-dots"
+        ],
+        "mermaid": "flowchart TB\n  D[Dot identity]\n  D --> C[Conversations]\n  D --> T[Scheduled / In-progress Tasks]\n  D --> M[Saved Memory]\n  D --> CC[Cloud Computer]\n  D --> A[Connected Apps]\n  D --> L[Optional Local Computer]\n  T --> CC\n  A --> M\n  L -. revocable capability .-> D\n  CC --> X[Browser / files / apps]"
+      },
+      {
+        "id": "dots-known-unknown",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "已公开能力 vs 底层未知语义",
+        "summary": "产品连续体验不能直接推出底层一定使用 long-lived VM 或 durable journal。",
+        "evidence": [
+          "source:openai-dots"
+        ],
+        "columns": [
+          "问题",
+          "公开资料状态",
+          "知识库处理"
+        ],
+        "rows": [
+          [
+            "每个 Dot 有 cloud computer",
+            "已确认",
+            "Fact"
+          ],
+          [
+            "跨对话 memory / scheduled tasks",
+            "已确认",
+            "Fact"
+          ],
+          [
+            "本地电脑可显式授权/撤销",
+            "已确认",
+            "Fact"
+          ],
+          [
+            "Worker crash 后 step-level resume",
+            "未公开",
+            "Unknown"
+          ],
+          [
+            "Workspace snapshot / migration 机制",
+            "未公开",
+            "Unknown"
+          ],
+          [
+            "外部 side-effect 去重语义",
+            "未公开",
+            "Unknown"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "project:docker-sandbox-kit",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "kit-resolution",
+        "type": "diagram",
+        "kind": "mixed",
+        "title": "Docker Sandbox Kit 解析与授权链",
+        "summary": "OCI artifact 提供声明，runtime 解析 workload/mixin 和 capability request，再由 policy 决定 grant。",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "mermaid": "flowchart LR\n  O[OCI Kit Artifact] --> P[Parse descriptor]\n  P --> D[Resolve provides / requires]\n  D --> C[Capability requests]\n  C --> G{Runtime / Policy grant}\n  G -->|allowed| S[Create Sandbox]\n  G -->|required denied| F[Fail]\n  S --> W[Run workload]\n  S --> M[Apply mixins]\n  S --> N[Network / credential / volume policy]"
+      },
+      {
+        "id": "kit-conformance",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Distribution Conformance vs Runtime Conformance",
+        "summary": "能 pull 同一个 OCI artifact，不代表不同 runtime 对 authority 有相同实现。",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "columns": [
+          "层",
+          "解决的问题",
+          "不足"
+        ],
+        "rows": [
+          [
+            "OCI distribution",
+            "内容寻址、registry、签名、缓存",
+            "不了解 Agent capability 语义"
+          ],
+          [
+            "Kit artifact conformance",
+            "descriptor / composition 正确",
+            "不保证运行时真正 enforce"
+          ],
+          [
+            "Runtime conformance",
+            "capability/grant 行为一致",
+            "需要多个实现共同验证"
+          ],
+          [
+            "Org policy",
+            "决定最终允许的权限",
+            "平台特定"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "project:docker-cloud-sandboxes",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "cloud-sandbox-lifecycle",
+        "type": "diagram",
+        "kind": "mixed",
+        "title": "Cloud Sandbox 生命周期",
+        "summary": "Sandbox identity 和部分状态可持续，但 compute residency 可以随 TTL/stop/resume 变化。",
+        "evidence": [
+          "source:docker-cloud"
+        ],
+        "mermaid": "stateDiagram-v2\n  [*] --> Creating\n  Creating --> Running\n  Running --> Stopped: expiration / stop\n  Stopped --> Running: resume\n  Running --> Deleted: delete / non-resumable expiry\n  Stopped --> Deleted: lifecycle cleanup\n  Deleted --> [*]"
+      },
+      {
+        "id": "cloud-sandbox-state",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Cloud Sandbox 的连续性边界",
+        "summary": "需要区分 sandbox identity、persistent volume、process state 和 task durability。",
+        "evidence": [
+          "source:docker-cloud",
+          "source:docker-creds"
+        ],
+        "columns": [
+          "状态",
+          "可否长期保留",
+          "备注"
+        ],
+        "rows": [
+          [
+            "Sandbox identity / config",
+            "可复用",
+            "命名实例配置在创建后稳定"
+          ],
+          [
+            "Persistent volume",
+            "可",
+            "适合文件工作区"
+          ],
+          [
+            "Secret store",
+            "独立于 filesystem",
+            "仍需防 interactive login 写盘"
+          ],
+          [
+            "Live process/socket",
+            "不应默认假设",
+            "stop/resume 语义需具体核验"
+          ],
+          [
+            "Agent task journal",
+            "不是该产品核心保证",
+            "需上层 Durable Runtime"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "project:digitalocean-agent-droplets",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "droplets-stack",
+        "type": "diagram",
+        "kind": "mixed",
+        "title": "Agent Droplets 资源栈",
+        "summary": "产品把 Agent execution、tool gateway、memory/storage 与 inference 组合成一个可计费运行单元。",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "mermaid": "flowchart TB\n  A[Agent / Harness]\n  R[Harness Runtime / microVM]\n  G[Action Gateway]\n  I[Serverless Inference]\n  M[Persistent Memory]\n  S[Session Storage]\n  O[Observability / Security]\n  A --> R\n  R --> G\n  R --> I\n  R --> M\n  R --> S\n  G --> T[External Tools]\n  G --> C[Credential Broker]\n  R --> O"
+      },
+      {
+        "id": "agent-cost-dimensions",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Agent Runtime 成本维度",
+        "summary": "真正的单位经济性应看 cost-per-success，而不是只看 token price。",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "columns": [
+          "资源",
+          "典型计量",
+          "优化手段"
+        ],
+        "rows": [
+          [
+            "Inference",
+            "tokens / requests",
+            "model routing / caching"
+          ],
+          [
+            "Sandbox compute",
+            "agent-hours / CPU-memory time",
+            "pause/resume / warm pool"
+          ],
+          [
+            "Persistent state",
+            "GB / retention",
+            "tiering / cleanup"
+          ],
+          [
+            "Tools / browser",
+            "calls / runtime",
+            "API-first / selective computer use"
+          ],
+          [
+            "Eval / observability",
+            "trace bytes / benchmark compute",
+            "sampling / selective eval"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "project:nvidia-openshell",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "openshell-layered-security",
+        "type": "diagram",
+        "kind": "mixed",
+        "title": "OpenShell 三层安全架构",
+        "summary": "Application 提出动作，Runtime 负责 sandbox/policy，Infrastructure 可进一步提供独立硬件监控。",
+        "evidence": [
+          "source:nvidia-openshell"
+        ],
+        "mermaid": "flowchart TB\n  subgraph APP[Application]\n    M[Model] --> H[Harness / Tools]\n  end\n  subgraph RT[Runtime]\n    H --> O[OpenShell]\n    O --> P[Policy Enforcement]\n    O --> S[Kernel-isolated Sandbox]\n  end\n  subgraph INF[Infrastructure]\n    P --> N[Network / File / Compute]\n    S --> N\n    X[Sentry / BlueField] -. out-of-band monitor .-> N\n  end"
+      },
+      {
+        "id": "openshell-control-points",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "OpenShell 关键 Control Points",
+        "summary": "安全价值来自控制点位于 Agent 难以修改的位置，而不是 policy 文本本身。",
+        "evidence": [
+          "source:nvidia-openshell"
+        ],
+        "columns": [
+          "控制点",
+          "观察/强制内容",
+          "价值"
+        ],
+        "rows": [
+          [
+            "Runtime sandbox",
+            "进程、文件、网络",
+            "限制 blast radius"
+          ],
+          [
+            "Policy engine",
+            "capability allow/deny",
+            "执行 operator intent"
+          ],
+          [
+            "Model path",
+            "持续推理循环",
+            "观察 drift / kill switch"
+          ],
+          [
+            "独立 DPU/Sentry",
+            "网络/identity/activity",
+            "out-of-band resilience"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "standard:mcp",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "mcp-stateless-flow",
+        "type": "diagram",
+        "kind": "mixed",
+        "title": "MCP Stateless Core 与 Gateway",
+        "summary": "请求 self-describing 后，Gateway 可基于 method/name/identity 路由，任意健康实例都能服务。",
+        "evidence": [
+          "source:mcp-2026-sdk"
+        ],
+        "mermaid": "flowchart LR\n  C[MCP Client] --> G[Gateway]\n  G -->|method / name headers| S1[Server A]\n  G --> S2[Server B]\n  G --> P[Auth / Policy / Rate limit]\n  S1 --> T[Tool / Resource]\n  S2 --> T\n  T --> C"
+      },
+      {
+        "id": "mcp-layer-boundary",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "MCP 与其他 Agent Infra 层的边界",
+        "summary": "让协议保持窄边界，反而更容易和 Runtime、Gateway、Sandbox 组合。",
+        "evidence": [
+          "source:mcp-2026-sdk"
+        ],
+        "columns": [
+          "关注点",
+          "MCP",
+          "其他层"
+        ],
+        "rows": [
+          [
+            "Capability discovery / call",
+            "核心",
+            "—"
+          ],
+          [
+            "身份与授权",
+            "协议增强中",
+            "Gateway / IdP"
+          ],
+          [
+            "长任务恢复",
+            "非核心",
+            "Durable Runtime"
+          ],
+          [
+            "Sandbox isolation",
+            "非核心",
+            "Execution layer"
+          ],
+          [
+            "Credential 原值保护",
+            "非核心",
+            "Broker / proxy"
+          ],
+          [
+            "长期 memory",
+            "非核心",
+            "Memory service"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "standard:oci",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "oci-agent-envelope",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "OCI 作为 Agent Artifact Envelope",
+        "summary": "OCI 提供内容寻址与分发外壳；Agent-specific capability semantics 需要上层规范定义。",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "mermaid": "flowchart TB\n  M[OCI Manifest / digest]\n  M --> L1[Base runtime layers]\n  M --> L2[Agent / tool / skill layers]\n  M --> A[Annotations / descriptors]\n  A --> K[Agent-specific spec]\n  M --> R[Registry / signing / scan]\n  K --> X[Runtime conformance]\n  R --> X"
+      },
+      {
+        "id": "oci-responsibility",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "OCI 能提供与不能提供的能力",
+        "summary": "分发可移植不等于 Agent authority 语义可移植。",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "columns": [
+          "能力",
+          "OCI 原生",
+          "需要 Agent 层"
+        ],
+        "rows": [
+          [
+            "Digest / content addressing",
+            "是",
+            "—"
+          ],
+          [
+            "Registry distribution",
+            "是",
+            "—"
+          ],
+          [
+            "Layer cache",
+            "是",
+            "—"
+          ],
+          [
+            "Agent capability request",
+            "否",
+            "Kit/其他 spec"
+          ],
+          [
+            "Network/Credential enforcement",
+            "否",
+            "Runtime/Policy"
+          ],
+          [
+            "Agent state / memory",
+            "否",
+            "Runtime/Services"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "research:mid-harness",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "mid-harness-flow",
+        "type": "diagram",
+        "kind": "fact",
+        "title": "Mid-Harness Action Scaling",
+        "summary": "模型先生成多个 terminal action，Verifier 在真实环境被改变之前选择一个动作执行。",
+        "evidence": [
+          "source:mid-harness"
+        ],
+        "mermaid": "flowchart LR\n  S[Current terminal state] --> G[Generator]\n  G --> C1[Action 1]\n  G --> C2[Action 2]\n  G --> Cn[Action N]\n  C1 --> V[Verifier]\n  C2 --> V\n  Cn --> V\n  V --> E[Selected action]\n  E --> ENV[Terminal environment]\n  ENV --> S2[Next state]"
+      },
+      {
+        "id": "mid-harness-benchmark",
+        "type": "benchmark",
+        "kind": "fact",
+        "title": "论文关键 TerminalBench-Lite 结果",
+        "summary": "关键不是 8 个候选本身，而是强 verifier 能否把候选多样性转化为更高成功率。",
+        "evidence": [
+          "source:mid-harness"
+        ],
+        "columns": [
+          "Generator",
+          "Action samples",
+          "Verifier",
+          "Pass@1",
+          "解释"
+        ],
+        "rows": [
+          [
+            "TMAX-9B",
+            "1",
+            "原 Agent",
+            "50.00%",
+            "基础 Agent"
+          ],
+          [
+            "TMAX-9B",
+            "8",
+            "GPT-5.6 Sol",
+            "68.03%",
+            "论文报告的强 verifier 设置"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "research:arex-2",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "arex-loop",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "AREX-2 式 Long-horizon Improvement Loop",
+        "summary": "把 reflection 和 long-horizon execution 看成两个能力：不仅要提出更好的修改，还要让更多轮数继续带来收益。",
+        "evidence": [
+          "source:arex2"
+        ],
+        "mermaid": "flowchart LR\n  X[Current solution] --> R[Reflection / modification]\n  R --> V[Verifier / reward]\n  V -->|improved| B[Best-so-far]\n  B --> X\n  V -->|not improved| X\n  B --> T[Preserve progress across rounds]\n  T --> R"
+      },
+      {
+        "id": "arex-benchmarks",
+        "type": "benchmark",
+        "kind": "fact",
+        "title": "论文报告的代表性 Benchmark",
+        "summary": "这些数字必须和 Qwen3.8-27B、作者实验设置一起理解，不代表通用开放世界 RSI 已解决。",
+        "evidence": [
+          "source:arex2"
+        ],
+        "columns": [
+          "Benchmark",
+          "Reported score",
+          "知识库解读"
+        ],
+        "rows": [
+          [
+            "MLE-bench Lite",
+            "81.8",
+            "可验证 ML task"
+          ],
+          [
+            "Frontier-CS",
+            "70.7",
+            "算法/编程类任务"
+          ],
+          [
+            "BrowseComp",
+            "84.0",
+            "跨域迁移信号"
+          ],
+          [
+            "HLE",
+            "52.6",
+            "跨域迁移信号"
+          ],
+          [
+            "GAIA",
+            "92.2",
+            "Agent 综合任务"
+          ],
+          [
+            "DeepSearchQA",
+            "93.8",
+            "研究/搜索任务"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "research:sift",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "sift-search-loop",
+        "type": "diagram",
+        "kind": "fact",
+        "title": "SIFT 的 Search / Eval 解耦",
+        "summary": "Pairwise judge 与 Bradley-Terry 为大量候选提供廉价中间信号，昂贵 downstream eval 只给更有希望节点。",
+        "evidence": [
+          "source:sift"
+        ],
+        "mermaid": "flowchart LR\n  P[Parent implementation] --> G[Generate patches]\n  G --> J[Pairwise LLM judge]\n  J --> BT[Bradley-Terry strength]\n  BT --> S[Tree-search scheduler]\n  S -->|promising| E[Expensive downstream eval]\n  E --> R[Result / candidate registry]\n  R --> S\n  S --> P2[Next parent]"
+      },
+      {
+        "id": "sift-components",
+        "type": "matrix",
+        "kind": "fact",
+        "title": "SIFT 中不同评测组件的职责",
+        "summary": "Cheap judge 是 search signal，不是最终真值；真实 benchmark 仍负责校准与 Promotion。",
+        "evidence": [
+          "source:sift"
+        ],
+        "columns": [
+          "组件",
+          "职责",
+          "主要风险"
+        ],
+        "rows": [
+          [
+            "Pairwise LLM Judge",
+            "高吞吐候选比较",
+            "系统性偏好"
+          ],
+          [
+            "Bradley-Terry",
+            "聚合 pairwise 强度",
+            "依赖比较质量"
+          ],
+          [
+            "Tree Search",
+            "分配探索预算",
+            "过早收敛"
+          ],
+          [
+            "Expensive Eval",
+            "真实 downstream 校准",
+            "CPU/API 成本高"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "pattern:agent-definition-instance",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "definition-instance-model",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Definition / Instance / Task / Workspace 分离",
+        "summary": "四种对象拥有不同生命周期，Worker 只是短期执行租约。",
+        "mermaid": "flowchart TB\n  D[Agent Definition vN] --> I1[Instance: user A]\n  D --> I2[Instance: user B]\n  I1 --> T1[Task 1]\n  I1 --> T2[Task 2]\n  I1 --> W[Workspace]\n  T1 --> W\n  T2 --> W\n  X1[Worker] -. lease .-> T1\n  X2[Worker] -. lease .-> T2"
+      },
+      {
+        "id": "lifecycle-ownership",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "对象生命周期与所有权",
+        "summary": "如果一个 session ID 同时代表所有对象，恢复、并发和升级都会迅速失控。",
+        "columns": [
+          "对象",
+          "典型生命周期",
+          "主要内容",
+          "是否可替换"
+        ],
+        "rows": [
+          [
+            "Definition",
+            "发布版本",
+            "模型/Harness/tools/policy request",
+            "通过发布新版本替换"
+          ],
+          [
+            "Instance",
+            "月/年",
+            "用户 Agent identity、memory scope",
+            "长期"
+          ],
+          [
+            "Task",
+            "秒到天",
+            "一次目标与 execution state",
+            "完成后归档"
+          ],
+          [
+            "Workspace",
+            "任务间持续",
+            "文件/环境/应用状态",
+            "可 snapshot/migrate"
+          ],
+          [
+            "Worker",
+            "秒到小时",
+            "当前计算租约",
+            "应可随时替换"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "pattern:credential-broker",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "broker-trust-boundary",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Credential Broker Trust Boundary",
+        "summary": "Broker 把“拥有 secret”与“允许某个 Agent 使用某个 scope”分开。",
+        "evidence": [
+          "source:docker-kit",
+          "source:do-droplets"
+        ],
+        "mermaid": "flowchart LR\n  A[Agent / Sandbox] --> G[Policy Gateway]\n  G -->|grant id| B[Credential Broker]\n  I[IdP / Secret Store] --> B\n  B -->|short-lived signed request| S[SaaS / API]\n  S --> B\n  B --> G\n  G --> A\n  A -. cannot read raw secret .- B"
+      },
+      {
+        "id": "broker-failure-contract",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Credential Broker Failure Contract",
+        "summary": "401/403 不应该全部返回“工具失败”，否则 Agent 会盲目重试或绕路。",
+        "columns": [
+          "结果",
+          "含义",
+          "Harness 应做什么"
+        ],
+        "rows": [
+          [
+            "TOKEN_EXPIRED",
+            "短期 token 失效",
+            "刷新并重试有限次数"
+          ],
+          [
+            "SCOPE_INSUFFICIENT",
+            "权限不足",
+            "请求 scope elevation"
+          ],
+          [
+            "USER_REVOKED",
+            "用户撤销授权",
+            "停止并提示重新授权"
+          ],
+          [
+            "POLICY_DENIED",
+            "组织规则拒绝",
+            "不要重试，解释原因"
+          ],
+          [
+            "PROVIDER_UNAVAILABLE",
+            "外部服务故障",
+            "backoff / queue"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "pattern:action-verifier-layer",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "verifier-layer-contract",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Action Verifier Layer 的三态 Contract",
+        "summary": "Verifier 自己不可用时应返回 UNKNOWN，而不是把基础设施故障当作“安全通过”。",
+        "evidence": [
+          "source:mid-harness"
+        ],
+        "mermaid": "flowchart LR\n  M[Model candidates] --> V[Verifier Layer]\n  V -->|VERIFIED| P[Policy Engine]\n  V -->|REJECTED| R[Regenerate / stop]\n  V -->|UNKNOWN| K{Risk class}\n  K -->|low| P\n  K -->|high| H[Human / fail closed]\n  P --> E[Execute]"
+      },
+      {
+        "id": "verifier-telemetry",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Verifier 需要独立观测的字段",
+        "summary": "没有这些 telemetry，就无法判断 verifier 是否真的在提高质量。",
+        "columns": [
+          "字段",
+          "为什么需要"
+        ],
+        "rows": [
+          [
+            "Candidate set",
+            "判断好动作是否曾经出现"
+          ],
+          [
+            "Selected action + confidence",
+            "测 selection calibration"
+          ],
+          [
+            "Risk class",
+            "解释为什么使用不同预算"
+          ],
+          [
+            "Actual execution result",
+            "连接选择与真实后果"
+          ],
+          [
+            "Rollback / human override",
+            "发现 false positive"
+          ],
+          [
+            "Verifier latency/cost",
+            "衡量单位收益"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "trend:portable-agent-authority",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "portable-authority-model",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Portable Agent Authority 假设模型",
+        "summary": "趋势成立的关键不是 artifact 能搬运，而是 capability request 与 runtime grant 能跨平台保留可理解语义。",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "mermaid": "flowchart LR\n  A[Portable Artifact] --> C[Capability Requests]\n  C --> R1[Runtime A]\n  C --> R2[Runtime B]\n  P1[Policy A] --> R1\n  P2[Policy B] --> R2\n  R1 --> G1[Granted Authority]\n  R2 --> G2[Granted Authority]\n  G1 -. conformance .- G2"
+      },
+      {
+        "id": "trend-signals",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "趋势增强 / 削弱信号",
+        "summary": "真正要追踪的是跨 Runtime 语义收敛，而不是厂商是否使用“portable”这个词。",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "columns": [
+          "信号",
+          "对趋势的影响"
+        ],
+        "rows": [
+          [
+            "出现多个独立 conforming runtime",
+            "显著增强"
+          ],
+          [
+            "capability vocabulary 进入中立治理",
+            "增强"
+          ],
+          [
+            "authority diff 进入 CI/CD",
+            "增强"
+          ],
+          [
+            "各厂商大量私有 capability 扩展",
+            "削弱"
+          ],
+          [
+            "权限继续完全放在平台外部配置",
+            "显著削弱"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "trend:agent-runtime-cloud-sku",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "cloud-sku-decomposition",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Agent Runtime as Cloud SKU 的资源组成",
+        "summary": "新的 SKU 如果成立，应统一 control plane 和成本模型，而不是仅把 VM、token、storage 打包营销。",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "mermaid": "flowchart TB\n  SKU[Agent Runtime SKU]\n  SKU --> C[Ephemeral Compute]\n  SKU --> W[Persistent Workspace / Session]\n  SKU --> M[Memory]\n  SKU --> T[Tool Gateway]\n  SKU --> I[Inference]\n  SKU --> O[Observability / Policy]\n  C --> B[Pause / Resume / Warm pool]\n  T --> K[Credential Broker]"
+      },
+      {
+        "id": "sku-maturity-signals",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "从“套餐”到“基础设施类别”的成熟信号",
+        "summary": "Cloud SKU 是否成立，需要看控制面、SLA 和可移植性，而不是名字。",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "columns": [
+          "维度",
+          "早期包装",
+          "成熟基础设施"
+        ],
+        "rows": [
+          [
+            "Control plane",
+            "多个产品拼接",
+            "统一 Agent/Task/Workspace"
+          ],
+          [
+            "计费",
+            "token + VM + storage 分散",
+            "cost-per-agent/task 可预测"
+          ],
+          [
+            "可靠性",
+            "Preview / best effort",
+            "明确 SLA / recovery"
+          ],
+          [
+            "生态",
+            "绑定自家 Agent builder",
+            "第三方 Harness 可接入"
+          ],
+          [
+            "权限",
+            "API key 注入",
+            "Broker + policy + audit"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "trend:harness-rsi",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "harness-rsi-promotion",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Harness-level RSI Promotion Pipeline",
+        "summary": "生产可接受的 RSI 更像自动化 CI/CD：候选在隔离环境生成，独立评测后才有资格进入生产。",
+        "evidence": [
+          "source:sift",
+          "source:arex2",
+          "source:mid-harness"
+        ],
+        "mermaid": "flowchart LR\n  P[Production Harness vN] --> C[Generate candidate changes]\n  C --> E1[Cheap eval]\n  E1 --> E2[Expensive / holdout eval]\n  E2 --> S[Security + cost regression]\n  S --> G{Promotion gate}\n  G -->|pass| R[Version registry vN+1]\n  G -->|fail| A[Archive / learn]\n  R --> P2[Controlled rollout]\n  P2 --> T[Production traces]\n  T --> C"
+      },
+      {
+        "id": "rsi-surface-matrix",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "不同自改表面的风险等级",
+        "summary": "越接近生产权限与控制面，自动修改越需要更严格 Promotion。",
+        "columns": [
+          "可修改对象",
+          "收益潜力",
+          "主要风险",
+          "推荐治理"
+        ],
+        "rows": [
+          [
+            "Prompt / context policy",
+            "中",
+            "benchmark overfit",
+            "自动 eval + rollback"
+          ],
+          [
+            "Skills / tool routing",
+            "高",
+            "错误工具使用",
+            "sandbox + regression"
+          ],
+          [
+            "Verifier / search policy",
+            "高",
+            "自我强化偏差",
+            "独立 holdout"
+          ],
+          [
+            "Security / authority policy",
+            "极高",
+            "突破控制边界",
+            "默认人工审批"
+          ],
+          [
+            "Model weights",
+            "极高",
+            "行为全局变化",
+            "独立训练/安全发布"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "trend:persistent-agent-runtime",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "persistent-runtime-reference",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Persistent Agent Runtime 参考架构",
+        "summary": "长期存在的是 identity/state/control plane；compute worker 应尽量可替换、按需唤醒。",
+        "evidence": [
+          "source:openai-dots",
+          "source:restate-durable",
+          "source:docker-cloud"
+        ],
+        "mermaid": "flowchart TB\n  CP[Agent Control Plane]\n  CP --> A[Persistent Agent Identity]\n  CP --> TS[Task State / Scheduler]\n  CP --> WS[Persistent Workspace]\n  CP --> MM[Memory]\n  CP --> AU[Authority / Grants]\n  TS --> DR[Durable Runtime]\n  DR --> W1[Disposable Worker / Sandbox]\n  DR --> W2[Disposable Worker / Sandbox]\n  W1 --> WS\n  W2 --> WS\n  W1 --> AU\n  W2 --> AU"
+      },
+      {
+        "id": "runtime-operational-metrics",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "验证趋势是否成立的 Operational Metrics",
+        "summary": "如果状态与计算解耦没有在可靠性和成本上产生真实收益，这条架构趋势就应该降低置信度。",
+        "columns": [
+          "指标",
+          "希望看到的方向",
+          "为什么重要"
+        ],
+        "rows": [
+          [
+            "Workspace resume P95",
+            "下降",
+            "连续体验"
+          ],
+          [
+            "Cross-worker recovery success",
+            "上升",
+            "证明 worker 可替换"
+          ],
+          [
+            "Idle compute ratio",
+            "下降",
+            "证明经济性"
+          ],
+          [
+            "Duplicate side-effect incidents",
+            "接近 0",
+            "证明 durability 不是表面恢复"
+          ],
+          [
+            "Long-tail task completion rate",
+            "上升",
+            "证明持续任务价值"
+          ],
+          [
+            "Durable state cost / active user",
+            "可控",
+            "证明规模化可行"
+          ]
+        ]
+      }
+    ]
+  }
+]

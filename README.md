@@ -115,3 +115,15 @@ The monograph is deliberately separate from `nodes.json`:
 - The text must be written for the individual entity. It must never be produced by concatenating graph fields.
 
 CI enforces type-specific minimum section counts and content depth. Core Project/Capability/Research entries require substantially deeper monographs than supporting Event/Source nodes.
+
+
+## Technical assets
+
+Core technical entities now also maintain `_data/kg/technical_assets.json`.
+
+These are authored research artifacts, not decorative diagrams:
+- Mermaid system/state/sequence diagrams expose architecture and lifecycle semantics.
+- Failure/decision matrices make edge cases and tradeoffs explicit.
+- Benchmark tables preserve verified experimental numbers with evidence.
+- Fact/Mixed assets must bind Source nodes; Analysis assets are visibly labeled as our architectural synthesis.
+- Project, Capability, Research, Standard, Pattern and Trend entities must have at least one technical asset and CI enforces this requirement.

@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.0.0",
+  "schema_version": "3.1.0",
   "purpose": "Type-specific content schema for first-party entity knowledge pages.",
   "common": [
     "summary",
@@ -74,7 +74,8 @@
     "External URLs are evidence, never substitutes for first-party entity content.",
     "Every entity must have a standalone entry in monographs.json with entity-specific research sections.",
     "Technical monographs must address mechanisms, boundaries, tradeoffs, evidence or operational implications appropriate to that entity type.",
-    "A monograph may use graph relationships as research context, but its paragraphs must be individually authored rather than generated from graph metadata."
+    "A monograph may use graph relationships as research context, but its paragraphs must be individually authored rather than generated from graph metadata.",
+    "Core technical entities must have authored technical assets that expose mechanisms, state, failure modes, decisions or benchmark evidence visually."
   ],
   "monograph": {
     "file": "_data/kg/monographs.json",
@@ -122,5 +123,29 @@
         "characters": 280
       }
     }
+  },
+  "technical_assets": {
+    "file": "_data/kg/technical_assets.json",
+    "required_types": [
+      "Project",
+      "Capability",
+      "Research",
+      "Standard",
+      "Pattern",
+      "Trend"
+    ],
+    "minimum_assets_per_entity": 1,
+    "allowed_asset_types": [
+      "diagram",
+      "matrix",
+      "benchmark"
+    ],
+    "allowed_kinds": [
+      "fact",
+      "mixed",
+      "analysis"
+    ],
+    "evidence_rule": "fact and mixed assets must reference at least one Source node",
+    "authoring_rule": "assets must be entity-specific system models, failure/decision matrices or evidence tables; never auto-derived from graph edges"
   }
 }
