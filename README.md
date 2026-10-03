@@ -40,3 +40,17 @@ Enable **Settings → Pages → Deploy from a branch → `main` / `(root)`**.
 Site URL:
 
 https://helloimcx.github.io/agent-infra-daily/
+
+
+## Knowledge graph
+
+The site maintains a living knowledge graph:
+
+- `_data/kg/nodes.json` — canonical entities
+- `_data/kg/edges.json` — typed, evidence-linked relationships
+- `_data/kg/deltas/` — daily graph changes
+- `/graph/` — interactive Cytoscape.js explorer
+- `/topics/` — topic-oriented browse view
+- `/knowledge.json` — machine-readable endpoint
+
+See `docs/knowledge-graph-schema.md` for modeling rules.

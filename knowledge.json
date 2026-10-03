@@ -1,0 +1,5 @@
+---
+layout: null
+permalink: /knowledge.json
+---
+{"schema_version":"{{ site.data.kg.ontology.schema_version }}","generated_from":"GitHub Pages / Jekyll","nodes":{{ site.data.kg.nodes | jsonify }},"edges":{{ site.data.kg.edges | jsonify }},"topics":{{ site.data.kg.topics | jsonify }}}

@@ -26,6 +26,24 @@ layout: default
 <section class="empty-card"><div class="eyebrow">READY</div><h2>站点已经准备好。</h2><p>第一份每日简报写入 <code>_posts/</code> 后会自动出现在这里。</p></section>
 {% endif %}
 
+
+<section class="knowledge-home">
+  <div>
+    <div class="eyebrow">LIVING KNOWLEDGE BASE</div>
+    <h2>从日报，长成一张技术演化图。</h2>
+    <p>实体、能力、项目、论文和趋势按关系连接；每条重要关系保留时间、置信度和证据。</p>
+  </div>
+  <div class="knowledge-home-stats">
+    <div><strong>{{ site.data.kg.nodes | size }}</strong><span>entities</span></div>
+    <div><strong>{{ site.data.kg.edges | size }}</strong><span>relations</span></div>
+    <div><strong>{{ site.data.kg.topics | size }}</strong><span>themes</span></div>
+  </div>
+  <div class="knowledge-home-actions">
+    <a class="primary-action" href="{{ '/graph/' | relative_url }}">Explore Knowledge Graph →</a>
+    <a href="{{ '/topics/' | relative_url }}">Browse by topic</a>
+  </div>
+</section>
+
 <section class="section-head"><h2>最近简报</h2><a href="{{ '/archive/' | relative_url }}">全部归档</a></section>
 <section class="report-grid">
 {% for post in site.posts limit:9 %}

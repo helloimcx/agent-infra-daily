@@ -1,0 +1,59 @@
+---
+layout: default
+title: Knowledge Graph
+description: Explore the evolving AI Agent infrastructure knowledge graph.
+permalink: /graph/
+---
+<section class="kg-head">
+  <div>
+    <div class="eyebrow">KNOWLEDGE GRAPH</div>
+    <h1>Agent Infra Map</h1>
+    <p>不是新闻列表，而是技术主题、能力、项目、研究与趋势之间的可追踪关系。默认隐藏 Source / Event，先看技术结构。</p>
+  </div>
+  <div class="kg-stats">
+    <div><strong id="nodeCount">{{ site.data.kg.nodes | size }}</strong><span>entities</span></div>
+    <div><strong id="edgeCount">{{ site.data.kg.edges | size }}</strong><span>relations</span></div>
+    <div><strong>{{ site.data.kg.topics | size }}</strong><span>themes</span></div>
+  </div>
+</section>
+
+<section class="kg-toolbar">
+  <label class="kg-search"><span>Search</span><input id="kgSearch" type="search" placeholder="Docker, durable execution, RSI..."></label>
+  <label><span>Theme</span><select id="themeFilter"><option value="">All themes</option>{% for topic in site.data.kg.topics %}<option value="{{ topic.id }}">{{ topic.label }}</option>{% endfor %}</select></label>
+  <label><span>Type</span><select id="typeFilter"><option value="">All types</option>{% for pair in site.data.kg.ontology.node_types %}<option value="{{ pair[0] }}">{{ pair[0] }}</option>{% endfor %}</select></label>
+  <label><span>Relation</span><select id="relationFilter"><option value="">All relations</option>{% for relation in site.data.kg.ontology.edge_types %}<option value="{{ relation }}">{{ relation }}</option>{% endfor %}</select></label>
+  <label><span>Detail</span><select id="detailFilter"><option value="core">Core graph</option><option value="all">Include sources & events</option></select></label>
+  <button id="fitGraph" type="button">Fit</button>
+  <button id="resetGraph" type="button">Reset</button>
+</section>
+
+<section class="kg-workbench">
+  <div class="kg-canvas-wrap">
+    <div class="kg-legend">
+      <span><i class="dot theme"></i>Theme</span>
+      <span><i class="dot capability"></i>Capability</span>
+      <span><i class="dot project"></i>Project</span>
+      <span><i class="dot research"></i>Research</span>
+      <span><i class="dot trend"></i>Trend</span>
+      <span><i class="dot pattern"></i>Pattern</span>
+    </div>
+    <div id="kgCanvas" aria-label="Agent infrastructure knowledge graph"></div>
+  </div>
+  <aside id="kgDetail" class="kg-detail">
+    <div class="eyebrow">SELECT A NODE</div>
+    <h2>从关系开始阅读</h2>
+    <p>点击图中的节点查看摘要、成熟度、时间、邻接关系和一手来源。双击节点可聚焦局部邻域。</p>
+  </aside>
+</section>
+
+<section class="kg-note">
+  <div><div class="eyebrow">DATA MODEL</div><h2>事实和判断分开保存。</h2></div>
+  <p>每条关系都带有 kind、first_seen、last_verified、confidence 和 evidence。趋势判断不会伪装成事实。</p>
+  <a href="{{ '/knowledge.json' | relative_url }}">查看机器可读 JSON →</a>
+</section>
+
+<script id="kgNodes" type="application/json">{{ site.data.kg.nodes | jsonify }}</script>
+<script id="kgEdges" type="application/json">{{ site.data.kg.edges | jsonify }}</script>
+<script id="kgTopics" type="application/json">{{ site.data.kg.topics | jsonify }}</script>
+<script src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.3/dist/cytoscape.min.js"></script>
+<script src="{{ '/assets/js/graph.js' | relative_url }}?v=kg-v1"></script>

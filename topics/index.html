@@ -1,0 +1,26 @@
+---
+layout: default
+title: Topics
+description: Browse AI Agent infrastructure knowledge by topic.
+permalink: /topics/
+---
+<section class="archive-head topic-head">
+  <div class="eyebrow">TOPIC MAP</div>
+  <h1>按技术主题组织知识。</h1>
+  <p>日报是时间视图；这里是知识结构视图。每个主题都会持续吸收新的项目、能力、研究和趋势。</p>
+</section>
+<section class="topic-grid">
+{% assign ordered_topics = site.data.kg.topics | sort: "order" %}
+{% for topic in ordered_topics %}
+  {% assign count = 0 %}
+  {% for node in site.data.kg.nodes %}
+    {% if node.themes contains topic.id %}{% assign count = count | plus: 1 %}{% endif %}
+  {% endfor %}
+  <a class="topic-card" href="{{ '/graph/' | relative_url }}?theme={{ topic.id }}">
+    <div class="topic-card-top"><span>0{{ forloop.index }}</span><b>{{ count }} entities</b></div>
+    <h2>{{ topic.label }}</h2>
+    <p>{{ topic.description }}</p>
+    <span class="topic-open">Explore graph →</span>
+  </a>
+{% endfor %}
+</section>
