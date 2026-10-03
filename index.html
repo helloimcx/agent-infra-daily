@@ -1,0 +1,41 @@
+---
+layout: default
+---
+{% assign latest = site.posts.first %}
+<section class="hero">
+  <div>
+    <div class="eyebrow">AI AGENT ENGINEERING INTELLIGENCE</div>
+    <h1>追踪 Agent 基础设施<br><span>真正发生的变化。</span></h1>
+    <p>聚焦 runtime、harness、sandbox、cloud agent、memory、observability、security 与 agent RSI。只收录有工程增量的一手进展。</p>
+  </div>
+  <div class="status-card">
+    <span class="status-dot"></span>
+    <div><strong>Daily</strong><br><small>北京时间每天更新</small></div>
+  </div>
+</section>
+
+{% if latest %}
+<section class="latest-card">
+  <div class="latest-top"><span>最新一期</span><time>{{ latest.date | date: "%Y-%m-%d" }}</time></div>
+  <h2><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h2>
+  {% if latest.summary %}<p>{{ latest.summary }}</p>{% endif %}
+  <div class="meta-row">{% for tag in latest.tags limit:5 %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
+  <a class="read-more" href="{{ latest.url | relative_url }}">阅读完整简报 →</a>
+</section>
+{% else %}
+<section class="empty-card"><div class="eyebrow">READY</div><h2>站点已经准备好。</h2><p>第一份每日简报写入 <code>_posts/</code> 后会自动出现在这里。</p></section>
+{% endif %}
+
+<section class="section-head"><h2>最近简报</h2><a href="{{ '/archive/' | relative_url }}">全部归档</a></section>
+<section class="report-grid">
+{% for post in site.posts limit:9 %}
+  <a class="report-card" href="{{ post.url | relative_url }}">
+    <time>{{ post.date | date: "%m.%d" }}</time>
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.summary | default: post.excerpt | strip_html | truncate: 120 }}</p>
+    <div class="card-tags">{% for tag in post.tags limit:3 %}<span>{{ tag }}</span>{% endfor %}</div>
+  </a>
+{% endfor %}
+</section>
+
+<section class="focus-strip"><span>Runtime</span><span>Harness</span><span>Sandbox</span><span>Cloud Agent</span><span>Memory</span><span>Security</span><span>RSI</span></section>
