@@ -1,0 +1,18 @@
+---
+layout: default
+permalink: /archive/
+---
+<section class="archive-head">
+  <div class="eyebrow">ARCHIVE</div>
+  <h1>全部简报</h1>
+  <p>按时间倒序保存所有 Agent Infra Daily 记录。</p>
+</section>
+<section class="archive-list">
+{% for post in site.posts %}
+  <a href="{{ post.url | relative_url }}">
+    <time>{{ post.date | date: "%Y-%m-%d" }}</time>
+    <div><strong>{{ post.title }}</strong><span>{{ post.summary }}</span></div>
+    <b>↗</b>
+  </a>
+{% endfor %}
+</section>
