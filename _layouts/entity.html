@@ -22,6 +22,16 @@ layout: default
     <a href="{{ '/graph/' | relative_url }}?focus={{ entity.id | url_encode }}">Graph</a>
     <a href="#evidence">Evidence</a>
   </div>
+  <div class="hero-bento">
+    <div class="hero-bento-main">
+      <span>Knowledge status</span>
+      <strong>{{ entity.maturity }}</strong>
+      <p>该页面内容由一手证据、独立 authored 分析与知识图谱关系共同维护。</p>
+    </div>
+    <div class="hero-bento-stat"><span>First seen</span><strong>{{ entity.first_seen }}</strong></div>
+    <div class="hero-bento-stat"><span>Last verified</span><strong>{{ entity.last_verified }}</strong></div>
+    <div class="hero-bento-stat live-stats" id="heroLiveStats"><span>Evidence</span><strong>—</strong></div>
+  </div>
 </section>
 
 <div class="entity-article-layout">
@@ -162,13 +172,37 @@ layout: default
       <div class="article-label">07 · CONTEXT</div>
       <h2>放回整个 Agent Infra 看</h2>
       <div id="entityContext" class="entity-context"></div>
-      <details class="local-graph-details" id="localGraphDetails">
-        <summary>打开局部关系图 <span>一阶关系 · 需要时再展开</span></summary>
-        <div class="entity-graph-shell-v7">
-          <div id="entityGraph"></div>
-          <aside id="entityGraphDetail"><p>点击节点查看关系与站内详情。</p></aside>
+      <div class="local-graph-card">
+        <div class="local-graph-head">
+          <div>
+            <div class="graph-kicker">LOCAL KNOWLEDGE GRAPH</div>
+            <h3>局部关系图</h3>
+            <p>保留一阶关系，区分事实与分析。点击节点可继续沿知识网络探索。</p>
+          </div>
+          <div class="graph-actions">
+            <button type="button" id="graphFitBtn">Fit graph</button>
+            <a href="{{ '/graph/' | relative_url }}?focus={{ entity.id | url_encode }}">Open full graph ↗</a>
+          </div>
         </div>
-      </details>
+        <div class="graph-legend">
+          <span><i class="legend-node current"></i>Current</span>
+          <span><i class="legend-node capability"></i>Capability</span>
+          <span><i class="legend-node project"></i>Project</span>
+          <span><i class="legend-node research"></i>Research</span>
+          <span><i class="legend-line fact"></i>Fact</span>
+          <span><i class="legend-line analysis"></i>Analysis</span>
+        </div>
+        <div class="entity-graph-shell-v8">
+          <div id="entityGraph"></div>
+          <aside id="entityGraphDetail" class="graph-detail-panel">
+            <div class="graph-detail-empty">
+              <span>Explore</span>
+              <strong>{{ entity.label }}</strong>
+              <p>点击图中的节点查看它与当前实体之间的关系，并直接进入站内详情页。</p>
+            </div>
+          </aside>
+        </div>
+      </div>
     </section>
 
     {% if entity.what_to_watch %}
@@ -233,4 +267,4 @@ layout: default
 <script id="entityEdges" type="application/json">{{ site.data.kg.edges | jsonify }}</script>
 <script id="entityArchitectureData" type="application/json">{{ site.data.kg.architecture | jsonify }}</script>
 <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.3/dist/cytoscape.min.js"></script>
-<script src="{{ '/assets/js/entity.js' | relative_url }}?v=kg-v7"></script>
+<script src="{{ '/assets/js/entity.js' | relative_url }}?v=kg-v8"></script>

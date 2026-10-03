@@ -20,6 +20,8 @@
   const evidence=[...evidenceIds].map(x=>byId.get(x)).filter(Boolean);
   const topStats=document.getElementById('entityTopStats');
   if(topStats)topStats.innerHTML='<span>'+evidence.length+' sources</span><span>'+factCount+' facts</span><span>'+analysisCount+' analyses</span>';
+  const heroLiveStats=document.getElementById('heroLiveStats');
+  if(heroLiveStats)heroLiveStats.innerHTML='<span>Evidence</span><strong>'+evidence.length+' sources</strong>';
 
   const layers=architecture.layers.filter(l=>l.members.includes(id));
   const related=relatedEdges.map(e=>({edge:e,node:byId.get(otherId(e))})).filter(x=>x.node&& !['Source','Event'].includes(x.node.type));
@@ -70,6 +72,18 @@
     });
     cy.fit(cy.elements(),32);
   }
-  const details=document.getElementById('localGraphDetails');
-  if(details)details.addEventListener('toggle',()=>{if(details.open)setTimeout(initGraph,20);});
+  initGraph();
+  const fitBtn=document.getElementById('graphFitBtn');
+  if(fitBtn)fitBtn.addEventListener('click',()=>{if(cy)cy.fit(cy.elements(),34);});
+
+  const tocLinks=[...document.querySelectorAll('.toc-inner>a[href^="#"]')];
+  const sections=tocLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if('IntersectionObserver' in window && sections.length){
+    const observer=new IntersectionObserver(entries=>{
+      const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      if(!visible)return;
+      tocLinks.forEach(a=>a.classList.toggle('is-active',a.getAttribute('href')==='#'+visible.target.id));
+    },{rootMargin:'-16% 0px -68% 0px',threshold:[0,.1,.3,.6]});
+    sections.forEach(s=>observer.observe(s));
+  }
 })();
