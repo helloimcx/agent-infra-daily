@@ -1,0 +1,136 @@
+---
+layout: default
+---
+{% assign topic = site.data.kg.topics | where: "id", page.topic_id | first %}
+{% assign all_nodes = site.data.kg.nodes %}
+
+<section class="topic-hero">
+  <div>
+    <a class="topic-back" href="{{ '/landscape/' | relative_url }}">← Technology Landscape</a>
+    <div class="eyebrow">THEME LANDSCAPE</div>
+    <h1>{{ topic.label }}</h1>
+    <p>{{ topic.description }}</p>
+  </div>
+  <div class="topic-hero-actions">
+    <a class="primary-action" href="{{ '/graph/' | relative_url }}?theme={{ topic.id }}">Open in Graph →</a>
+    <a href="{{ '/evolution/' | relative_url }}?theme={{ topic.id }}">Evolution</a>
+  </div>
+</section>
+
+{% assign capabilities = "" | split: "," %}
+{% assign projects = "" | split: "," %}
+{% assign research = "" | split: "," %}
+{% assign patterns = "" | split: "," %}
+{% assign trends = "" | split: "," %}
+{% assign standards = "" | split: "," %}
+{% assign events = "" | split: "," %}
+{% for node in all_nodes %}
+  {% if node.themes contains topic.id %}
+    {% case node.type %}
+      {% when "Capability" %}{% assign capabilities = capabilities | push: node %}
+      {% when "Project" %}{% assign projects = projects | push: node %}
+      {% when "Research" %}{% assign research = research | push: node %}
+      {% when "Pattern" %}{% assign patterns = patterns | push: node %}
+      {% when "Trend" %}{% assign trends = trends | push: node %}
+      {% when "Standard" %}{% assign standards = standards | push: node %}
+      {% when "Event" %}{% assign events = events | push: node %}
+    {% endcase %}
+  {% endif %}
+{% endfor %}
+
+<section class="topic-metrics">
+  <div><strong>{{ capabilities | size }}</strong><span>capabilities</span></div>
+  <div><strong>{{ projects | size }}</strong><span>projects</span></div>
+  <div><strong>{{ research | size }}</strong><span>research</span></div>
+  <div><strong>{{ trends | size }}</strong><span>trends</span></div>
+</section>
+
+<section class="topic-map-section">
+  <div class="section-head compact"><div><div class="eyebrow">LOCAL MAP</div><h2>这个主题内部是怎么连接的</h2></div><span>只显示当前主题核心实体</span></div>
+  <div class="topic-map-shell">
+    <div id="topicMap"></div>
+    <aside id="topicMapDetail">
+      <div class="eyebrow">THEME CORE</div>
+      <h3>{{ topic.label }}</h3>
+      <p>{{ topic.description }}</p>
+      <p class="topic-map-hint">点击节点查看它与当前主题中其他能力、项目、研究和趋势的关系。</p>
+    </aside>
+  </div>
+</section>
+
+<section class="landscape-block">
+  <div class="section-head compact"><div><div class="eyebrow">CAPABILITIES</div><h2>核心能力</h2></div><span>{{ capabilities | size }} items</span></div>
+  <div class="entity-grid">
+  {% for node in capabilities %}
+    <a class="entity-card capability-card" href="{{ '/graph/' | relative_url }}?focus={{ node.id | url_encode }}">
+      <div class="entity-card-top"><span>{{ node.maturity }}</span><time>{{ node.first_seen }}</time></div>
+      <h3>{{ node.label }}</h3><p>{{ node.summary }}</p>
+    </a>
+  {% endfor %}
+  {% if capabilities.size == 0 %}<div class="topic-empty">当前还没有沉淀出独立 Capability 节点。</div>{% endif %}
+  </div>
+</section>
+
+<section class="landscape-block">
+  <div class="section-head compact"><div><div class="eyebrow">IMPLEMENTATIONS</div><h2>项目与标准</h2></div><span>{{ projects | size | plus: standards.size }} items</span></div>
+  <div class="entity-grid">
+  {% assign impls = projects | concat: standards %}
+  {% for node in impls %}
+    <a class="entity-card project-card" href="{{ '/graph/' | relative_url }}?focus={{ node.id | url_encode }}">
+      <div class="entity-card-top"><span>{{ node.type }}</span><em>{{ node.maturity }}</em></div>
+      <h3>{{ node.label }}</h3><p>{{ node.summary }}</p>
+    </a>
+  {% endfor %}
+  {% if impls.size == 0 %}<div class="topic-empty">当前还没有项目或标准节点。</div>{% endif %}
+  </div>
+</section>
+
+<section class="topic-columns">
+  <div class="landscape-block">
+    <div class="section-head compact"><div><div class="eyebrow">RESEARCH</div><h2>研究前沿</h2></div></div>
+    <div class="entity-list">
+    {% for node in research %}
+      <a href="{{ '/graph/' | relative_url }}?focus={{ node.id | url_encode }}"><div><span>{{ node.first_seen }}</span><strong>{{ node.label }}</strong><p>{{ node.summary }}</p></div><b>↗</b></a>
+    {% endfor %}
+    {% if research.size == 0 %}<div class="topic-empty">当前没有独立 Research 节点。</div>{% endif %}
+    </div>
+  </div>
+  <div class="landscape-block">
+    <div class="section-head compact"><div><div class="eyebrow">ARCHITECTURE</div><h2>架构模式</h2></div></div>
+    <div class="entity-list">
+    {% for node in patterns %}
+      <a href="{{ '/graph/' | relative_url }}?focus={{ node.id | url_encode }}"><div><span>{{ node.maturity }}</span><strong>{{ node.label }}</strong><p>{{ node.summary }}</p></div><b>↗</b></a>
+    {% endfor %}
+    {% if patterns.size == 0 %}<div class="topic-empty">当前还没有形成独立 Architecture Pattern。</div>{% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="trend-panel">
+  <div class="trend-panel-head"><div><div class="eyebrow">SIGNALS & THESIS</div><h2>正在形成的趋势</h2></div><p>Trend 是证据支持的综合判断，不等同于事实节点。</p></div>
+  <div class="trend-grid">
+  {% for node in trends %}
+    <a href="{{ '/graph/' | relative_url }}?focus={{ node.id | url_encode }}">
+      <span>{{ node.maturity }}</span><h3>{{ node.label }}</h3><p>{{ node.summary }}</p>
+    </a>
+  {% endfor %}
+  {% if trends.size == 0 %}<div class="topic-empty">目前还没有足够证据形成独立趋势节点。</div>{% endif %}
+  </div>
+</section>
+
+<section class="topic-evolution">
+  <div class="section-head compact"><div><div class="eyebrow">RECENT EVOLUTION</div><h2>最近的关键变化</h2></div><a href="{{ '/evolution/' | relative_url }}?theme={{ topic.id }}">完整时间线 →</a></div>
+  {% assign sorted_events = events | sort: "first_seen" | reverse %}
+  <div class="topic-event-list">
+  {% for node in sorted_events limit: 8 %}
+    <a href="{{ '/graph/' | relative_url }}?focus={{ node.id | url_encode }}"><time>{{ node.first_seen }}</time><div><strong>{{ node.label }}</strong><span>{{ node.summary }}</span></div><b>↗</b></a>
+  {% endfor %}
+  {% if events.size == 0 %}<div class="topic-empty">当前还没有关键 Event。</div>{% endif %}
+  </div>
+</section>
+
+<script id="topicNodes" type="application/json">{{ site.data.kg.nodes | jsonify }}</script>
+<script id="topicEdges" type="application/json">{{ site.data.kg.edges | jsonify }}</script>
+<script id="topicId" type="application/json">{{ page.topic_id | jsonify }}</script>
+<script src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.3/dist/cytoscape.min.js"></script>
+<script src="{{ '/assets/js/topic.js' | relative_url }}?v=kg-v3"></script>

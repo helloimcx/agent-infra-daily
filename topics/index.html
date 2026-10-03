@@ -5,22 +5,17 @@ description: Browse AI Agent infrastructure knowledge by topic.
 permalink: /topics/
 ---
 <section class="archive-head topic-head">
-  <div class="eyebrow">TOPIC MAP</div>
-  <h1>按技术主题组织知识。</h1>
-  <p>日报是时间视图；这里是知识结构视图。每个主题都会持续吸收新的项目、能力、研究和趋势。</p>
+  <div class="eyebrow">TOPICS</div>
+  <h1>主题已经升级为<br>Technology Landscape。</h1>
+  <p>从主题进入后，可以直接看到能力、项目、研究、架构模式、趋势和演化，不再只是跳到全局图谱过滤器。</p>
+  <p><a class="primary-action inline-action" href="{{ '/landscape/' | relative_url }}">打开 Technology Landscape →</a></p>
 </section>
 <section class="topic-grid">
 {% assign ordered_topics = site.data.kg.topics | sort: "order" %}
 {% for topic in ordered_topics %}
-  {% assign count = 0 %}
-  {% for node in site.data.kg.nodes %}
-    {% if node.themes contains topic.id %}{% assign count = count | plus: 1 %}{% endif %}
-  {% endfor %}
-  <a class="topic-card" href="{{ '/graph/' | relative_url }}?theme={{ topic.id }}">
-    <div class="topic-card-top"><span>0{{ forloop.index }}</span><b>{{ count }} entities</b></div>
-    <h2>{{ topic.label }}</h2>
-    <p>{{ topic.description }}</p>
-    <span class="topic-open">Explore graph →</span>
+  <a class="topic-card" href="{{ '/topics/' | append: topic.id | append: '/' | relative_url }}">
+    <div class="topic-card-top"><span>0{{ forloop.index }}</span><b>Theme</b></div>
+    <h2>{{ topic.label }}</h2><p>{{ topic.description }}</p><span class="topic-open">Open landscape →</span>
   </a>
 {% endfor %}
 </section>

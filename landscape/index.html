@@ -1,0 +1,52 @@
+---
+layout: default
+title: Technology Landscape
+description: A structured landscape of AI Agent infrastructure themes, capabilities, projects, research and trends.
+permalink: /landscape/
+---
+<section class="landscape-hero">
+  <div>
+    <div class="eyebrow">TECHNOLOGY LANDSCAPE</div>
+    <h1>不是一张蜘蛛网，<br><span>而是一套可读的技术版图。</span></h1>
+    <p>从九个主题进入 Agent 基础设施：每个主题自动汇总核心能力、实现项目、研究、架构模式、趋势和关键事件。</p>
+  </div>
+  <div class="landscape-summary">
+    <div><strong>{{ site.data.kg.topics | size }}</strong><span>themes</span></div>
+    <div><strong>{{ site.data.kg.nodes | size }}</strong><span>entities</span></div>
+    <div><strong>{{ site.data.kg.edges | size }}</strong><span>relations</span></div>
+  </div>
+</section>
+
+<section class="landscape-grid">
+{% assign ordered_topics = site.data.kg.topics | sort: "order" %}
+{% for topic in ordered_topics %}
+  {% assign cap = 0 %}{% assign proj = 0 %}{% assign res = 0 %}{% assign trend = 0 %}
+  {% assign latest_date = "" %}
+  {% for node in site.data.kg.nodes %}
+    {% if node.themes contains topic.id %}
+      {% case node.type %}
+        {% when "Capability" %}{% assign cap = cap | plus: 1 %}
+        {% when "Project" %}{% assign proj = proj | plus: 1 %}
+        {% when "Research" %}{% assign res = res | plus: 1 %}
+        {% when "Trend" %}{% assign trend = trend | plus: 1 %}
+      {% endcase %}
+      {% if node.first_seen > latest_date %}{% assign latest_date = node.first_seen %}{% endif %}
+    {% endif %}
+  {% endfor %}
+  <a class="landscape-topic" href="{{ '/topics/' | append: topic.id | append: '/' | relative_url }}">
+    <div class="landscape-topic-num">0{{ forloop.index }}</div>
+    <div class="landscape-topic-main"><h2>{{ topic.label }}</h2><p>{{ topic.description }}</p></div>
+    <div class="landscape-topic-stats"><span><b>{{ cap }}</b> capabilities</span><span><b>{{ proj }}</b> projects</span><span><b>{{ res }}</b> research</span><span><b>{{ trend }}</b> trends</span></div>
+    <div class="landscape-topic-foot"><time>{{ latest_date }}</time><span>Open landscape →</span></div>
+  </a>
+{% endfor %}
+</section>
+
+<section class="landscape-footer">
+  <div><div class="eyebrow">THREE WAYS TO READ</div><h2>结构、时间、证据。</h2></div>
+  <div class="landscape-read-modes">
+    <a href="{{ '/graph/' | relative_url }}"><strong>Graph</strong><span>探索实体与关系</span></a>
+    <a href="{{ '/evolution/' | relative_url }}"><strong>Evolution</strong><span>追踪技术演化</span></a>
+    <a href="{{ '/archive/' | relative_url }}"><strong>Daily</strong><span>阅读每日证据流</span></a>
+  </div>
+</section>
