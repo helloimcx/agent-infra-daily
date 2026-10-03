@@ -3,6 +3,7 @@ layout: default
 ---
 {% assign entity = site.data.kg.nodes | where: "id", page.entity_id | first %}
 {% assign entity_claims = site.data.kg.claims | where: "entity", page.entity_id %}
+{% assign monograph = site.data.kg.monographs | where: "entity", page.entity_id | first %}
 <section class="entity-hero-v7">
   <a class="entity-back" href="{{ '/entities/' | relative_url }}">← Entity Directory</a>
   <div class="entity-kicker">{{ entity.type }}{% if entity.maturity %} · {{ entity.maturity }}{% endif %}</div>
@@ -67,6 +68,35 @@ layout: default
         <h2>核心内容</h2><p>{{ entity.summary }}</p>
       {% endcase %}
     </section>
+
+    {% if monograph and monograph.sections %}
+    <section id="monograph" class="article-section monograph-section">
+      <div class="article-label">03 · DEEP DIVE</div>
+      <h2>技术深挖</h2>
+      <p class="section-intro">这一部分按系统设计问题展开，不是字段摘要。每节都针对该 Entity 单独撰写。</p>
+      <div class="monograph-list">
+        {% for section in monograph.sections %}
+        <section class="monograph-block" id="mono-{{ section.id }}">
+          <div class="monograph-index">{{ forloop.index | prepend: "0" | slice: -2, 2 }}</div>
+          <div class="monograph-body">
+            <h3>{{ section.title }}</h3>
+            {% for paragraph in section.paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
+            {% if section.bullets %}<ul>{% for item in section.bullets %}<li>{{ item }}</li>{% endfor %}</ul>{% endif %}
+            {% if section.evidence %}
+            <div class="monograph-evidence">
+              <span>Evidence</span>
+              {% for source_id in section.evidence %}
+                {% assign source = site.data.kg.nodes | where: "id", source_id | first %}
+                {% if source %}<a href="{{ source.page | relative_url }}">{{ source.label }}</a>{% endif %}
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </section>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
 
     {% if entity.architecture_flow %}
     <section id="flow" class="article-section">
@@ -246,6 +276,7 @@ layout: default
       <div class="toc-title">ON THIS PAGE</div>
       <a href="#overview">Overview</a>
       <a href="#technical">Technical model</a>
+      {% if monograph and monograph.sections %}<a href="#monograph">Deep dive</a>{% endif %}
       {% if entity.architecture_flow %}<a href="#flow">Execution flow</a>{% endif %}
       {% if entity.design_space %}<a href="#design-space">Design space</a>{% endif %}
       {% if entity.evidence_scope %}<a href="#evidence-scope">Evidence scope</a>{% endif %}
@@ -267,4 +298,4 @@ layout: default
 <script id="entityEdges" type="application/json">{{ site.data.kg.edges | jsonify }}</script>
 <script id="entityArchitectureData" type="application/json">{{ site.data.kg.architecture | jsonify }}</script>
 <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.3/dist/cytoscape.min.js"></script>
-<script src="{{ '/assets/js/entity.js' | relative_url }}?v=kg-v8"></script>
+<script src="{{ '/assets/js/entity.js' | relative_url }}?v=kg-v9"></script>
