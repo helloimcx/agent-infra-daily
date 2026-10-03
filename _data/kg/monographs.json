@@ -718,5 +718,1275 @@
         ]
       }
     ]
+  },
+  {
+    "entity": "cap:durable-execution",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "semantic-model",
+        "title": "Durability 的对象不是进程，而是执行语义",
+        "evidence": [
+          "source:restate-durable"
+        ],
+        "paragraphs": [
+          "Durable Execution 的核心思想是把“程序已经做过什么”提升为持久事实，而不是把某个 worker 的内存保存得更久。只要已完成 step 的结果已经进入 durable log，执行权就可以从一个进程迁移到另一个进程，而不需要原 worker 继续存在。",
+          "这意味着设计重点从 process liveness 转向 execution identity：每次长任务需要稳定 execution ID，外部调用需要可恢复 step identity，runtime 必须能区分“从未执行”“正在执行但结果未知”“已经完成可直接 replay”三类状态。"
+        ]
+      },
+      {
+        "id": "crash-windows",
+        "title": "真正困难的是 Crash Window 与外部副作用",
+        "evidence": [
+          "source:restate-durable"
+        ],
+        "paragraphs": [
+          "最危险的故障窗口发生在外部系统已经接受请求、本地 runtime 还没确认结果时。简单 checkpoint 无法知道邮件是否已经发送、支付是否已经发生、PR 是否已经创建；盲目 retry 可能重复副作用。",
+          "因此 durable runtime 需要把 idempotency key、结果记录、重试策略和补偿语义一起设计。对于不支持幂等的第三方 API，系统仍需要查询确认或 compensation；“durable”不能被误解成天然 exactly-once。"
+        ]
+      },
+      {
+        "id": "state-machine",
+        "title": "建议的执行状态机",
+        "evidence": [
+          "source:restate-durable"
+        ],
+        "paragraphs": [
+          "一个实用模型至少包含 RUNNABLE、WAITING、RUNNING、COMPLETED、FAILED/RETRYABLE、CANCELLED 等状态。WAITING 不应占用 worker，它可能等待 timer、webhook、human approval 或外部资源；RUNNING 只代表当前有计算租约，不代表任务生命周期本身。",
+          "长时间 Agent 还需要 step-level attempt、lease/heartbeat 和 fencing，防止旧 worker 恢复后与新 worker 同时继续执行。真正的容错不是“多起一个进程”，而是保证同一 execution 的写权限在任一时刻可被严格控制。"
+        ]
+      },
+      {
+        "id": "versioning",
+        "title": "代码版本与 Replay Compatibility",
+        "evidence": [
+          "source:restate-durable"
+        ],
+        "paragraphs": [
+          "Durable execution 会把过去的执行历史带到未来部署。一个任务在旧版本代码里挂起三天后，由新版本 worker 恢复时，控制流、序列化结构和工具协议可能已经变化。这是普通无状态服务较少面对的版本兼容问题。",
+          "工程上应避免随意改变已运行 execution 所依赖的 step ordering/serialization；更稳的方式是 workflow version、schema migration、旧 worker pool 或显式 cutover。没有版本策略的 durable runtime 很容易在升级时把“可恢复”变成“无法 replay”。"
+        ]
+      },
+      {
+        "id": "scale-model",
+        "title": "规模化时应关注 Journal 热点、长尾状态与成本",
+        "evidence": [
+          "source:restate-durable"
+        ],
+        "paragraphs": [
+          "百万用户系统会积累大量处于 WAITING 的 execution，它们不耗 CPU，却会占据持久状态、索引、timer 和事件订阅。真正成本可能来自状态存储、journal retention、timer fan-out、热 key 和恢复 IO，而不是 worker 数量。",
+          "因此容量规划应分别度量 active compute、durable state、event throughput、replay bytes 和 long-tail retention。把这些指标混成“Agent 并发数”会掩盖瓶颈。"
+        ]
+      },
+      {
+        "id": "decision",
+        "title": "什么时候不需要 Durable Execution",
+        "paragraphs": [
+          "如果任务完全可重做、没有昂贵模型调用、没有外部副作用、失败后从头开始成本很低，那么普通 queue + retry 可能已经足够。引入 durable runtime 会带来新的语义和运维复杂度。",
+          "它最适合那些执行时间长、单步成本高、需要人工等待或包含不可逆 side effect 的任务。对 Agent 平台，通常从“模型调用很贵且任务要跨进程”开始就会逐渐体现价值。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:persistent-workspace",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "identity",
+        "title": "Workspace Identity 必须独立于 Worker 与 Task",
+        "evidence": [
+          "source:docker-cloud",
+          "source:openai-dots"
+        ],
+        "paragraphs": [
+          "Persistent Workspace 的第一原则不是“磁盘永久保存”，而是 workspace 有稳定 identity。一个 Agent 可以先由 worker A 修改文件，暂停后由 worker B 恢复；多个 Task 也可能在同一 workspace 上继续工作。只要 workspace 仍绑定在进程上，就无法获得真正弹性。",
+          "因此数据模型最好明确 Agent ID、Workspace ID、Task ID、Worker ID 四者关系。Task 可以引用 workspace，worker 只临时 mount/attach；这样计算和状态才可独立伸缩。"
+        ]
+      },
+      {
+        "id": "state-layers",
+        "title": "Workspace 里其实有四类不同状态",
+        "evidence": [
+          "source:docker-cloud"
+        ],
+        "paragraphs": [
+          "文件和 Git 工作树属于 durable filesystem state；安装依赖和系统包属于 environment state；浏览器 cookie、登录态、GUI session 属于 application state；正在运行进程、socket、PTY 则属于 volatile process state。它们的持久策略并不相同。",
+          "简单 persistent volume 只能解决第一类。若用户期待“暂停后像原电脑一样继续”，就需要 snapshot/restore 更完整环境；若只要求文件连续，没必要为所有进程保活。产品语义必须明确，否则“持久 workspace”很容易被过度承诺。"
+        ]
+      },
+      {
+        "id": "concurrency",
+        "title": "并发访问是 Persistent Workspace 的隐藏难题",
+        "paragraphs": [
+          "一旦同一 Agent 同时跑多个后台任务，两个 worker 可能修改同一个 repo、文件或浏览器 profile。传统单用户桌面默认没有为这种并发设计，容易产生 Git 冲突、锁竞争、半写文件和不可预测环境漂移。",
+          "可选方案包括 workspace-level exclusive lease、branch/worktree isolation、copy-on-write task snapshot，或把不同类型状态拆到独立 service。哪种策略合适取决于是否允许并发写和合并。"
+        ]
+      },
+      {
+        "id": "snapshot",
+        "title": "Snapshot 是恢复机制，也是版本与安全边界",
+        "evidence": [
+          "source:docker-cloud",
+          "source:docker-creds"
+        ],
+        "paragraphs": [
+          "Snapshot 能显著降低环境重建成本，但同时会冻结 secret、缓存、恶意依赖和历史数据。Docker 文档专门提醒 interactive sign-in 产生的 credential 文件可能进入 snapshot，这说明 snapshot pipeline 必须有 secret scanning 和 policy。",
+          "高质量实现还需要增量 snapshot、版本 lineage、restore compatibility 和 garbage collection。否则长期 workspace 会变成难以清理、难以复现的个人服务器。"
+        ]
+      },
+      {
+        "id": "lifecycle",
+        "title": "生命周期治理：创建、休眠、归档、销毁",
+        "paragraphs": [
+          "Persistent 不等于 forever。平台应区分 hot、paused、archived、deleted 等阶段，并定义何时保留计算、何时只保留磁盘、何时压缩成 snapshot。资源治理直接决定单位经济性。",
+          "删除语义同样重要：用户删除 Agent 后，workspace、snapshot、memory、backup 和审计日志是否同步清理，需要清晰的数据保留政策。"
+        ]
+      },
+      {
+        "id": "decision",
+        "title": "设计取舍：连续体验与可复现环境通常互相拉扯",
+        "paragraphs": [
+          "越像真实个人电脑的长期 workspace，用户体验越连续，但环境漂移越严重；越强调 immutable image + clean rebuild，可复现性越强，但 Agent 每次恢复需要重新安装和配置。",
+          "实用架构通常把 base image 固定、项目文件持久、可缓存依赖分层，并允许高价值 session 做 snapshot，而不是所有状态一股脑永久保存。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:cloud-computer",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "abstraction",
+        "title": "Cloud Computer 是交互式 Execution Surface，不只是 VM",
+        "evidence": [
+          "source:openai-dots"
+        ],
+        "paragraphs": [
+          "对 Agent 而言，一台“电脑”意味着浏览器、文件、应用、网络和用户可接管的交互界面组合，而不是单纯 CPU/RAM。它需要同时支持程序化控制和人在必要时打开界面查看或接管。",
+          "因此 Cloud Computer 的关键抽象是稳定 computer/workspace identity + attach/control protocol。底层可以是 VM、microVM、容器甚至分层远程应用，但用户和 Agent 看到的应是一个连续工作环境。"
+        ]
+      },
+      {
+        "id": "control",
+        "title": "Agent 控制与 Human Takeover 要共享同一状态",
+        "evidence": [
+          "source:openai-dots"
+        ],
+        "paragraphs": [
+          "OpenAI Dots 允许用户打开 Dot 的 computer 查看并交互。只要人和 Agent 都能操作，系统就必须处理 input arbitration：谁拥有鼠标/键盘控制、Agent 是否应暂停、用户改动如何同步进 Agent context。",
+          "如果 Agent 与用户看到不同浏览器状态或文件系统，接管会失去意义。因此 Cloud Computer 更像协作式远程桌面，而不是后台 headless browser。"
+        ]
+      },
+      {
+        "id": "isolation",
+        "title": "隔离边界应至少覆盖文件、进程、网络和设备能力",
+        "paragraphs": [
+          "Cloud Computer 往往比普通 browser sandbox 权限更大，可能安装软件、运行 shell、访问下载文件甚至连接本地电脑。底层隔离应能承受 Agent 获得 root/管理员权限后的行为，而不是依赖进程内 policy。",
+          "同时需要网络 egress、clipboard、file upload/download、USB/本地设备代理等细粒度能力控制。越接近真实电脑，权限模型越不能只用“是否允许工具”表达。"
+        ]
+      },
+      {
+        "id": "persistence",
+        "title": "Computer Continuity 与 Process Continuity 应分离",
+        "evidence": [
+          "source:openai-dots"
+        ],
+        "paragraphs": [
+          "用户可以感知同一 cloud computer 持续存在，但实现不必让同一 VM 永远开机。文件、浏览器 profile、应用配置可以持久，而计算节点在空闲时销毁；恢复时重新挂载状态。",
+          "这种 serverless-like computer 模型更适合大规模用户，但挑战在于恢复速度和状态完整性。浏览器 tab、登录态、后台进程是否恢复，会决定产品连续性。"
+        ]
+      },
+      {
+        "id": "observability",
+        "title": "Computer-level Trace 需要超越普通 Tool Trace",
+        "paragraphs": [
+          "当 Agent 在 GUI 中操作，只有记录 tool call 还不够。为了回放和审计，系统可能需要窗口/页面状态、截图关键帧、文件 diff、shell history、网络访问和权限决策。",
+          "但全量屏幕录制成本和隐私风险很高，实际应采用事件驱动采样与敏感区域脱敏。"
+        ]
+      },
+      {
+        "id": "fit",
+        "title": "Cloud Computer 适合覆盖 API 无法覆盖的长尾工作",
+        "paragraphs": [
+          "它最大的价值是兼容遗留 Web/GUI 软件、文件处理和复杂办公流程，而不是替代所有 API tool。API 更结构化、稳定且便宜；能用 API 的操作优先 API，GUI/电脑作为 fallback 会更可靠。",
+          "因此优秀 Agent 平台应该有 capability routing：结构化 tool 优先，browser 次之，完整 computer 最后，而不是让所有任务都在远程桌面里完成。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:agent-artifact",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "definition-boundary",
+        "title": "Artifact 应描述“运行需求”，但不拥有“授权权力”",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "Portable Agent Artifact 的理想边界是把 workload、tools、skills、mount、network 和 credential requirements 版本化，但最终是否授予由 runtime/policy control plane 决定。这样 artifact 可以被复制，而 authority 仍由部署环境掌控。",
+          "如果 artifact 本身携带真实 secret 或自带不可覆盖的权限，所谓可移植性就会变成权限扩散。Definition 与 Authorization 分离是设计底线。"
+        ]
+      },
+      {
+        "id": "supply-chain",
+        "title": "Agent Artifact 比普通镜像多了一层 Authority Supply Chain",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "普通软件供应链关注二进制、依赖、签名和漏洞；Agent artifact 还要审计它声明访问哪些数据、API、端口、设备和 credentials。版本升级可能没有改一行业务代码，却扩大了外部权限。",
+          "因此 SBOM 之外还需要 capability manifest / authority diff。Code review 应能清楚看到“新版本多请求了什么”。"
+        ]
+      },
+      {
+        "id": "composition",
+        "title": "可组合性必须是确定性的",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "Agent 经常由 base harness、provider CLI、browser tool、MCP server、skills 等多个组件组合。若组合结果受安装顺序或隐式环境变量影响，artifact 很难复现。",
+          "理想格式需要显式 provides/requires、冲突规则、版本约束和 deterministic merge。Docker Kit 的 workload/mixin 模型就是一个值得观察的具体方向。"
+        ]
+      },
+      {
+        "id": "portability",
+        "title": "Distribution Portability 不等于 Semantic Portability",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "OCI 可以让 artifact 在不同 registry 和工具链中流通，但 runtime 是否以同样方式解释 network-policy@2、credential injection 或 lifecycle hook，才决定真正可移植性。",
+          "因此任何 Agent artifact 规范都需要 conformance suite。否则不同平台都声称“支持格式”，实际权限语义却不同，会形成危险的伪兼容。"
+        ]
+      },
+      {
+        "id": "identity",
+        "title": "Artifact、Definition、Instance 应是三种对象",
+        "paragraphs": [
+          "Artifact 是不可变分发制品；Agent Definition 是选择某个 artifact 后叠加模型、组织 policy、默认配置得到的部署定义；Agent Instance 才是某用户的运行实体和状态。",
+          "把三者拆开后，升级、回滚、审计和多租户治理会清晰很多。"
+        ]
+      },
+      {
+        "id": "open",
+        "title": "真正开放问题是 Capability Vocabulary 能否收敛",
+        "paragraphs": [
+          "network、credential、volume 比较容易标准化，但 SaaS permission、browser action、enterprise data scope、GPU/device、human approval 等能力更复杂。",
+          "如果 capability type 各厂商大量私有扩展，artifact 仍会锁定 runtime。长期价值取决于公共 vocabulary 是否形成。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:network-policy",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "threat-model",
+        "title": "Agent 的 Egress 是数据外泄和供应链攻击的主通道",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "能执行代码的 Agent 通常会下载包、调用 API、访问网页。若默认 unrestricted egress，被 prompt injection 控制后可以上传文件、发送 token、下载恶意 payload，甚至连接内部地址。",
+          "因此 network policy 不只是“企业合规”，而是 Agent sandbox 的核心安全边界之一。"
+        ]
+      },
+      {
+        "id": "layers",
+        "title": "策略可以在 DNS、L3/L4、HTTP 和应用层实施",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "IP/port allowlist 简单但无法很好处理 CDN 与 SaaS；域名规则更易读却面临 DNS rebinding；HTTP method/path 级规则最细，但需要 proxy 解密/理解协议。实际系统往往多层组合。",
+          "Docker Kit 示例甚至把 GitHub API 的 DELETE /repos 路径单独 deny，说明 Agent policy 正向应用语义层扩展。"
+        ]
+      },
+      {
+        "id": "default",
+        "title": "Default-deny 比动态黑名单更适合高权限 Agent",
+        "paragraphs": [
+          "Agent 的网络访问范围通常可以从任务/工具声明中推导。与其尝试阻止所有危险站点，更稳的是默认 deny，只允许任务所需 host/service。",
+          "但太严格会导致 Agent 不断失败和绕路，因此平台需要透明 policy feedback，让 Harness 知道是“权限阻止”而不是“网络故障”。"
+        ]
+      },
+      {
+        "id": "identity",
+        "title": "Network Policy 应绑定到 Agent/Task Identity，而不是机器",
+        "paragraphs": [
+          "共享 worker、NAT 或 proxy 环境下，仅按 IP 很难知道请求来自哪个 Agent。需要把 execution identity 传播到 egress gateway，才能按用户、任务、tool 做不同规则和审计。",
+          "这也是为什么 network policy 最终会与 credential broker、MCP gateway 和 workload identity 汇合。"
+        ]
+      },
+      {
+        "id": "observability",
+        "title": "策略决策本身应进入 Trace",
+        "paragraphs": [
+          "每次 allow/deny 需要记录 rule、target、identity 和上下文，便于判断 Agent 是否因 policy block 发生 drift。",
+          "高频重复 deny 也是重要质量信号：可能说明 tool description 错误、权限配置过窄或 Agent 正尝试越权。"
+        ]
+      },
+      {
+        "id": "pitfalls",
+        "title": "常见误区：只限制 Sandbox，不限制代理与浏览器",
+        "paragraphs": [
+          "如果 shell egress 被限制，但 Browser-as-a-Service、MCP server 或企业 proxy 可访问任意互联网，Agent 仍能通过其他 capability 外泄。",
+          "Network policy 必须覆盖所有执行通道，或者在更上层建立统一 authority model。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:credential-isolation",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "principle",
+        "title": "最小目标：Agent 可以使用 Credential，但不能读取 Credential",
+        "evidence": [
+          "source:docker-creds",
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "传统环境变量把 secret 直接交给进程，任何 shell、日志或恶意依赖都可能读取。Agent 更危险，因为它主动执行未知代码和处理不可信内容。",
+          "Credential isolation 的理想语义是 capability-based use：Agent 请求“以 GitHub 身份发这个 API”，Broker/Proxy 完成签名或注入，但模型和 workspace 永远看不到原值。"
+        ]
+      },
+      {
+        "id": "scope",
+        "title": "Scope 至少要覆盖 User、Agent、Workspace、Task 与 Target",
+        "evidence": [
+          "source:docker-creds"
+        ],
+        "paragraphs": [
+          "Docker Cloud secret 支持 account scope 和 sandbox scope，但更复杂平台还需要区分用户授权、某个 Agent 的长期权限、一次 Task 的临时提升，以及某个 API endpoint 的目标范围。",
+          "Scope 越靠近具体任务，泄露后的 blast radius 越小；但授权体验和 token 获取成本会提高。"
+        ]
+      },
+      {
+        "id": "broker",
+        "title": "Credential Broker 是高价值控制点",
+        "evidence": [
+          "source:do-droplets",
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "Broker 可以集中做 OAuth token exchange、短期凭据、request signing、domain binding、audit 和 revoke。它也能阻止 Agent 把 secret 写进输出。",
+          "但 Broker 自身成为高价值资产，需要强身份认证、隔离、高可用和审计。若被攻破，所有 Agent 权限可能同时暴露。"
+        ]
+      },
+      {
+        "id": "snapshot",
+        "title": "Secret 与 Workspace/Snapshot 的边界必须明确",
+        "evidence": [
+          "source:docker-creds"
+        ],
+        "paragraphs": [
+          "平台 secret store 安全并不代表 workspace 没有 credential。用户或 Agent 的 interactive login 可能写入 ~/.config、browser profile、git credential store。",
+          "Snapshot 前应扫描高风险路径，或者采用 ephemeral home/credential mount；否则 snapshot 会把短期授权永久固化。"
+        ]
+      },
+      {
+        "id": "delegation",
+        "title": "长期方向是 Delegated Identity，而不是越来越多 API Key",
+        "paragraphs": [
+          "企业 Agent 最终需要代表用户执行动作，理想方式是可审计 delegated identity + scoped token，而不是每个工具复制一份长期 key。",
+          "这会把 Agent identity、OAuth delegation、MCP authorization 和 policy engine 连在一起。"
+        ]
+      },
+      {
+        "id": "failure",
+        "title": "失败语义要区分“无权限”“凭据过期”“服务失败”",
+        "paragraphs": [
+          "如果 Agent 把所有 401/403 都当成工具坏了，会不断重试或寻找绕过路径。Broker 应返回结构化错误，让 Harness 决定请求提升权限、刷新 token 或停止。",
+          "这是安全与 Agent 质量之间常被忽略的接口。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:policy-enforcement",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "boundary",
+        "title": "Policy Enforcement 的可信度取决于它离 Agent 有多远",
+        "evidence": [
+          "source:nvidia-openshell"
+        ],
+        "paragraphs": [
+          "System prompt 最容易被模型行为绕过；Harness middleware 更强，但若 Agent 能修改 Harness、调用旁路工具仍可能失效；独立 runtime/hardware enforcement 才真正接近安全边界。",
+          "因此“有 policy”不是二元属性，必须问 policy decision point 和 enforcement point 位于哪里、Agent 是否可修改或绕过。"
+        ]
+      },
+      {
+        "id": "model",
+        "title": "统一 Policy Model 要把不同 Action 映射成 Capability",
+        "evidence": [
+          "source:nvidia-openshell"
+        ],
+        "paragraphs": [
+          "Shell command、HTTP request、MCP tool、filesystem write、browser action 表面形式不同，但安全控制最终都需要回答 identity 对 resource/action 是否允许。",
+          "没有统一模型时，各工具自己写 hook，会产生 inconsistent policy 和旁路。"
+        ]
+      },
+      {
+        "id": "pre-run",
+        "title": "Pre-run Verification 与 Runtime Enforcement 是两道门",
+        "evidence": [
+          "source:nvidia-openshell"
+        ],
+        "paragraphs": [
+          "OpenShell 强调 policy 在执行前可验证，同时运行中持续 enforcement。前者检查配置本身是否符合 operator intent，后者处理实际行为。",
+          "这类似 infrastructure-as-code plan + runtime guardrail：只有一层都会留下盲点。"
+        ]
+      },
+      {
+        "id": "hitl",
+        "title": "Human Approval 应是 Policy 的显式结果，而不是异常流程",
+        "paragraphs": [
+          "复杂 Agent 不可能预先 allow/deny 所有动作。Policy Engine 需要第三种结果：require approval，并把 action、理由、scope、expiration 交给用户。",
+          "审批通过最好产生短期 scoped grant，而不是永久放宽规则。"
+        ]
+      },
+      {
+        "id": "observability",
+        "title": "每次 Policy Decision 都应可回放",
+        "evidence": [
+          "source:nvidia-openshell"
+        ],
+        "paragraphs": [
+          "审计需要知道当时 policy version、identity、请求 action 和最终 decision。否则事件发生后无法解释为什么允许。",
+          "这使 policy log 成为 Agent trace 的重要一层，并可用于发现 drift。"
+        ]
+      },
+      {
+        "id": "tradeoff",
+        "title": "越强的 Enforcement 越可能影响兼容性与延迟",
+        "paragraphs": [
+          "HTTP proxy、syscall filter、filesystem mediation、model gateway 都会增加性能和复杂度。不同任务需要不同 enforcement depth。",
+          "合理架构应按风险分层，而不是所有 Agent 都强制同样昂贵的安全路径。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:action-verification",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "uncertainty",
+        "title": "Verification 解决的是“模型会生成多个合理动作”的不确定性",
+        "evidence": [
+          "source:mid-harness"
+        ],
+        "paragraphs": [
+          "一个模型通常能采样出好动作，但 top-1 不一定最好。执行后环境改变，错误机会就消失了。因此在 action boundary 做候选比较比事后反思更有价值。",
+          "这尤其适合 shell、代码 patch、云操作等高 side-effect 场景。"
+        ]
+      },
+      {
+        "id": "verifier",
+        "title": "Verifier 可以是模型、规则、模拟器或测试",
+        "evidence": [
+          "source:mid-harness"
+        ],
+        "paragraphs": [
+          "LLM verifier 能理解复杂语义，但成本和偏差高；规则适合权限/语法；sandbox dry-run/test 可以直接验证行为。成熟系统应组合多种 verifier。",
+          "例如命令先过静态风险规则，再在 snapshot 环境执行测试，最后才由模型比较结果。"
+        ]
+      },
+      {
+        "id": "risk",
+        "title": "按风险动态分配 Verification Budget",
+        "paragraphs": [
+          "GET/read-only 操作几乎不值得多采样；rm、deploy、purchase、merge 等动作则应提高候选数甚至 HITL。",
+          "Risk score 可以综合可逆性、影响范围、权限级别、历史失败率和 verifier confidence。"
+        ]
+      },
+      {
+        "id": "rollback",
+        "title": "Verification 与 Snapshot/Rollback 是互补关系",
+        "paragraphs": [
+          "再强 verifier 也会错。若环境支持 cheap snapshot，系统可以容忍更多探索；如果动作不可逆，就必须更严格 pre-check。",
+          "因此最优策略取决于 rollback cost，而不是单独看模型准确率。"
+        ]
+      },
+      {
+        "id": "metrics",
+        "title": "评估 Verifier 不应只看任务成功率",
+        "paragraphs": [
+          "还应测 false reject、false accept、额外 token、延迟、危险动作拦截率，以及对不同 action class 的 calibration。",
+          "一个让成功率略升但把延迟翻十倍的 verifier 未必适合生产。"
+        ]
+      },
+      {
+        "id": "separation",
+        "title": "Quality Verification 与 Authorization 必须分离",
+        "evidence": [
+          "source:mid-harness",
+          "source:nvidia-openshell"
+        ],
+        "paragraphs": [
+          "Verifier 判断“这个动作是否好”，Policy Engine 判断“这个动作是否允许”。前者可以偏向完成任务，后者代表组织安全边界。",
+          "把两者合成一个 LLM judge，会把安全授权交给概率模型。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:eval-scheduling",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "economics",
+        "title": "Eval Scheduling 本质是一个资源分配问题",
+        "evidence": [
+          "source:sift"
+        ],
+        "paragraphs": [
+          "自改系统每轮可能产生大量 candidate，但 expensive benchmark 数量有限。Scheduler 要决定哪个候选值得更多评测、何时停止探索、何时淘汰。",
+          "这和超参数优化、CI test selection、multi-armed bandit 都有相似结构。"
+        ]
+      },
+      {
+        "id": "tiers",
+        "title": "建议至少分 Cheap / Medium / Expensive 三层",
+        "evidence": [
+          "source:sift"
+        ],
+        "paragraphs": [
+          "Cheap 可以是静态检查、LLM judge、单元测试；Medium 跑小样本任务；Expensive 才跑完整 benchmark、真实沙箱或人工审核。",
+          "候选只有通过前层才进入后层，使预算集中到高潜力方向。"
+        ]
+      },
+      {
+        "id": "uncertainty",
+        "title": "Scheduler 应同时考虑平均分和不确定性",
+        "paragraphs": [
+          "只选当前最高分会过早收敛，judge 噪声又可能把错误候选放大。可以保留 exploration quota、置信区间或 novelty bonus。",
+          "特别是 RSI 搜索树中，某个看似普通的 parent 可能通向更强后代。"
+        ]
+      },
+      {
+        "id": "regression",
+        "title": "Promotion 不能只看目标 Benchmark",
+        "paragraphs": [
+          "候选可能提升 coding benchmark，却破坏安全、延迟或其他任务。Scheduler 最终要触发 regression suite 和 holdout。",
+          "这使 eval 不只是“评分”，而是发布门禁。"
+        ]
+      },
+      {
+        "id": "cache",
+        "title": "评测结果也需要内容寻址与缓存",
+        "paragraphs": [
+          "同一 candidate、相同环境、相同 benchmark 版本不应重复昂贵运行。Artifact digest、dataset version、model version 都应进入 cache key。",
+          "否则 RSI 会浪费大量计算在重复实验。"
+        ]
+      },
+      {
+        "id": "observability",
+        "title": "要记录每个候选为什么被评/没被评",
+        "paragraphs": [
+          "Scheduler 的决策直接影响搜索偏差，必须保存 priority、budget、judge score、cost 和 selection reason。",
+          "否则最终版本很难解释，也无法优化调度策略本身。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:long-horizon-reflection",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "state",
+        "title": "长程反思的核心是保留“最好状态”，不是保留所有聊天",
+        "evidence": [
+          "source:arex2"
+        ],
+        "paragraphs": [
+          "几十轮迭代如果只不断追加上下文，会让失败尝试、旧方案和当前状态混在一起。系统应显式保存 best solution、evaluation、remaining issues 和 rejected directions。",
+          "这更像版本化实验而不是聊天记录。"
+        ]
+      },
+      {
+        "id": "loop",
+        "title": "有效循环需要 Generate → Evaluate → Select → Consolidate",
+        "evidence": [
+          "source:arex2"
+        ],
+        "paragraphs": [
+          "Reflection 只负责提出改进，外部 evaluator 决定是否真的更好，selector 保留优胜版本，consolidation 压缩历史。",
+          "缺任何一步都容易退化成自我肯定或无限重写。"
+        ]
+      },
+      {
+        "id": "stopping",
+        "title": "停止条件是系统设计的一部分",
+        "paragraphs": [
+          "可以基于预算、连续 N 轮无提升、confidence、目标阈值或 evaluator disagreement 停止。无限循环既昂贵又可能后期退化。",
+          "真正应优化的是边际收益/成本，而不是轮数本身。"
+        ]
+      },
+      {
+        "id": "diversity",
+        "title": "长期改进需要探索多样性，否则陷入局部最优",
+        "paragraphs": [
+          "单一 reflection prompt 往往围绕当前方案做局部修补。可以引入不同 subagent、mutation operator、alternative plan 或 restart。",
+          "但探索越广，eval 成本越高，因此与 selective scheduling 紧密相连。"
+        ]
+      },
+      {
+        "id": "goodhart",
+        "title": "更多轮数会放大 Reward Hack",
+        "evidence": [
+          "source:arex2"
+        ],
+        "paragraphs": [
+          "如果 evaluator 可被投机，长程 Agent 有更多机会找到漏洞。短期看分数可能持续上升，真实质量却下降。",
+          "因此必须有 independent holdout、人工抽检和多指标约束。"
+        ]
+      },
+      {
+        "id": "memory",
+        "title": "最终它会和 Experience Memory / Skill Learning 汇合",
+        "paragraphs": [
+          "单任务多轮改进产生的成功策略，如果能抽取成 skill，在未来任务复用，就从 test-time reflection 变成长期 learning。",
+          "但 consolidation 必须过滤任务特异 hack，否则错误经验也会被永久化。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:execution-trace",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "schema",
+        "title": "Agent Trace 至少要跨越 Model、Tool、State、Environment 四层",
+        "evidence": [
+          "source:restate-durable",
+          "source:nvidia-openshell"
+        ],
+        "paragraphs": [
+          "只记录 prompt/response 无法解释工具副作用；只记录 distributed span 又不知道模型为什么选择这个工具。需要统一 task/step ID 把 model call、tool input/output、workspace change、policy decision 关联起来。",
+          "每个 step 还应记录 model/version、prompt hash、tool version、environment snapshot reference 和 latency/cost。"
+        ]
+      },
+      {
+        "id": "event-sourcing",
+        "title": "Trace 与 Execution Journal 可以共享事件，但职责不同",
+        "evidence": [
+          "source:restate-durable"
+        ],
+        "paragraphs": [
+          "Journal 是 correctness path，必须精确支撑恢复；Trace 可采样、脱敏、聚合用于分析。把两者完全合并会让观测需求影响关键路径，完全分离又会重复数据。",
+          "常见做法是 journal 作为权威执行事件，再异步投影到 observability store。"
+        ]
+      },
+      {
+        "id": "replay",
+        "title": "Replay 有三种层级：逻辑、工具、完整环境",
+        "paragraphs": [
+          "逻辑 replay 复用已记录结果；tool replay 重新调用工具验证；environment replay 还原 workspace/browser 再重走 trajectory。三者成本和确定性完全不同。",
+          "调试和 eval 通常不需要每次完整环境 replay，应按目的选择。"
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "Trace 是高敏感数据集",
+        "paragraphs": [
+          "它可能包含用户文件、secret 片段、页面内容、模型推理、命令输出。长期保存虽然利于改进，但隐私风险比普通应用日志高得多。",
+          "需要字段级分类、脱敏、访问控制、retention 和删除传播。"
+        ]
+      },
+      {
+        "id": "eval",
+        "title": "Trace 是构建真实 Eval Dataset 的最好原料",
+        "paragraphs": [
+          "失败 trajectory 可以按 root cause 分类，成功轨迹可抽取 skill/plan。相比人工 benchmark，生产 trace 更接近真实任务分布。",
+          "但直接训练/评测容易引入用户数据与时间泄漏，应建立清洗和采样管线。"
+        ]
+      },
+      {
+        "id": "metrics",
+        "title": "从 Trace 可以得到比 Token/Latency 更重要的指标",
+        "paragraphs": [
+          "例如 tool retry rate、policy block rate、human takeover rate、steps-to-success、rollback count、state divergence、cost-per-success。",
+          "这些指标才真正反映 Agent Harness 与 Runtime 质量。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "cap:stateless-tool-protocol",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "meaning",
+        "title": "Stateless 指的是协议路由，不是 Tool 业务没有状态",
+        "evidence": [
+          "source:mcp-2026-sdk"
+        ],
+        "paragraphs": [
+          "每个 request self-describing、任意 server instance 可处理，是为了消除基础设施对 sticky session 的依赖。数据库事务、长任务、用户上下文本身仍然可以有状态。",
+          "把这两层混淆会导致把所有 state 塞进请求，或者反过来让协议 server 依赖本地内存。"
+        ]
+      },
+      {
+        "id": "routing",
+        "title": "无状态后，普通网关能力重新可用",
+        "evidence": [
+          "source:mcp-2026-sdk"
+        ],
+        "paragraphs": [
+          "Load balancing、retry、rolling deployment、caching、rate limit 更容易实现，因为请求不依赖特定 instance。",
+          "Mcp-Method/Mcp-Name 等 header 还让 gateway 不解析 body 就能做路由和 policy。"
+        ]
+      },
+      {
+        "id": "interaction",
+        "title": "多轮交互通过显式状态转移，而非保持连接",
+        "evidence": [
+          "source:mcp-2026-sdk"
+        ],
+        "paragraphs": [
+          "MRTR 让 tool 请求用户输入后由 client 再发 request。等待状态可以持久化到更合适的 runtime，而不是占住 server connection。",
+          "这更适合长等待、人机协作和故障恢复。"
+        ]
+      },
+      {
+        "id": "identity",
+        "title": "Stateless 放大了 Workload Identity 的重要性",
+        "paragraphs": [
+          "当任意 instance 都能服务请求，身份和 authorization context 必须随请求可验证传播，不能藏在某台机器的 session memory。",
+          "这会推动 token binding、delegated identity 和 gateway enforcement。"
+        ]
+      },
+      {
+        "id": "idempotency",
+        "title": "Retry-safe 仍需要 Tool 自己定义幂等语义",
+        "paragraphs": [
+          "HTTP 层可以重试不代表 side-effecting tool 可以安全重试。协议应支持 request ID/idempotency key 或上层 durable runtime 记录调用结果。",
+          "否则无状态基础设施反而可能扩大重复操作风险。"
+        ]
+      },
+      {
+        "id": "boundary",
+        "title": "协议应保持窄边界，不承担 Runtime 所有职责",
+        "paragraphs": [
+          "Task scheduling、sandbox isolation、workspace persistence、long-term memory 都不应为了方便塞进 tool protocol。",
+          "MCP 越保持清晰 capability boundary，越容易与其他基础设施组合。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "standard:oci",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "role",
+        "title": "OCI 的价值是稳定分发边界，而不是 Agent 语义",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "OCI Image Format 定义 manifest、layers、config 等可内容寻址结构，Distribution 生态提供 registry push/pull。它成功的原因是把软件制品与特定 runtime/vendor 解耦。",
+          "Agent 基础设施借用 OCI，主要是复用 digest、registry、cache、signing、scan 和 multi-platform 工具，而不是 OCI 本身已经理解 Agent。"
+        ]
+      },
+      {
+        "id": "content-addressing",
+        "title": "Content Addressing 让 Agent Definition 可以被精确 Pin",
+        "paragraphs": [
+          "Tag 会变化，digest 对具体内容稳定。对 Agent 来说，模型配置、工具版本、skills 和 authority declaration 如果一起绑定 digest，就能实现真正可追踪部署。",
+          "这对事故复现和评测尤其重要：必须知道当时到底运行了哪个 artifact。"
+        ]
+      },
+      {
+        "id": "layering",
+        "title": "Layer 机制天然适合复用，但也可能泄漏 Secret",
+        "paragraphs": [
+          "Agent 环境通常包含大 base image、语言依赖、浏览器和少量 skills，分层可显著提高缓存效率。",
+          "但任何写进 layer 的 secret 即使后续删除也可能留在历史 blob，必须从设计上禁止 credential baked-in。"
+        ]
+      },
+      {
+        "id": "extensions",
+        "title": "Annotation/Artifact 扩展比修改核心 Image Spec 更现实",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "Docker Kit v3 选择普通 OCI image + annotation，而不是自定义 registry media type，降低生态门槛。",
+          "这种策略适合早期 Agent 规范：先复用 OCI 作为 envelope，Agent-specific grammar 独立演进。"
+        ]
+      },
+      {
+        "id": "security",
+        "title": "签名只证明“谁发布了它”，不证明“它应该有这些权限”",
+        "paragraphs": [
+          "Supply-chain signature 能验证 artifact provenance，却不能判断 network/credential grant 是否合理。",
+          "因此 Agent artifact 需要 provenance + authority review 两条安全链。"
+        ]
+      },
+      {
+        "id": "limit",
+        "title": "真正标准化难点在 Runtime Conformance",
+        "paragraphs": [
+          "所有平台都能 pull 同一 OCI image，并不代表对 Agent capability 有相同行为。",
+          "行业最终需要的是 Agent layer 的 conformance，而 OCI 只提供下面稳定的运输层。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "pattern:agent-definition-instance",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "objects",
+        "title": "至少拆成 Definition、Instance、Task、Workspace 四个对象",
+        "paragraphs": [
+          "Definition 是版本化配置：模型策略、Harness、工具、资源与 authority requirements；Instance 是某用户/租户下长期存在的 Agent 身份；Task 是一次具体目标；Workspace 是可复用工作现场。",
+          "四者生命周期不同，只有显式拆分才能正确处理升级、并发、暂停和删除。"
+        ]
+      },
+      {
+        "id": "deployment",
+        "title": "Definition 应不可变，Instance 通过引用版本升级",
+        "paragraphs": [
+          "直接在运行 Instance 上原地修改配置会让审计和回滚困难。更稳的是发布 Definition v2，让 Instance 在安全点切换版本。",
+          "长任务还需要明确继续用旧版本还是迁移。"
+        ]
+      },
+      {
+        "id": "scale",
+        "title": "Worker 不应成为任何长期对象的身份",
+        "paragraphs": [
+          "Worker 只是执行租约，可以随时销毁和替换。Task/Workspace/Instance ID 必须由控制面持久管理。",
+          "这是百万用户场景下从“单机 agent process”走向云原生 runtime 的关键。"
+        ]
+      },
+      {
+        "id": "multi-task",
+        "title": "一个 Instance 可以并发多个 Task，但 Workspace 写冲突需治理",
+        "paragraphs": [
+          "长期 Agent 往往同时做定时任务、用户即时任务和后台研究。Task 独立后可分别调度和取消。",
+          "若共享 workspace，则需要 lease/worktree/snapshot 等隔离策略。"
+        ]
+      },
+      {
+        "id": "memory",
+        "title": "Memory 应绑定 Instance/User，而不是 Definition",
+        "paragraphs": [
+          "Definition 被多个用户共享，不应携带个人长期记忆；Instance memory 则应与用户授权、删除语义绑定。",
+          "这能避免部署版本升级时误复制用户数据。"
+        ]
+      },
+      {
+        "id": "failure",
+        "title": "反模式：一个 Session ID 同时代表一切",
+        "paragraphs": [
+          "若 session 同时表示 Agent、task、workspace、conversation，系统很快会在恢复、并发和权限上失去清晰边界。",
+          "拆对象会增加模型复杂度，但能显著降低长期运维复杂度。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "pattern:credential-broker",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "flow",
+        "title": "典型流程：Agent 请求 Capability，Broker 持有 Secret",
+        "evidence": [
+          "source:docker-kit",
+          "source:do-droplets"
+        ],
+        "paragraphs": [
+          "Agent 只知道逻辑 service/credential name；执行请求到 proxy/broker 后，Broker 根据 workload identity、task、target 和 policy 获取或注入短期 credential。",
+          "Agent 进程、prompt 和 workspace 从始至终不需要看到原始 token。"
+        ]
+      },
+      {
+        "id": "token",
+        "title": "最好使用短期 Token，而不是长期 API Key",
+        "paragraphs": [
+          "如果服务支持 OAuth/OIDC/STSv2，Broker 应交换分钟级 token，并最小化 scope。",
+          "即使单个 token 被日志泄露，blast radius 也更有限。"
+        ]
+      },
+      {
+        "id": "binding",
+        "title": "Credential 应绑定 Target，避免被拿去别处使用",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "Proxy-managed injection 可以只在访问指定 domain/path 时加入 Authorization header。",
+          "比把 token 放环境变量强得多，因为恶意代码无法直接拿 token 发到任意地址。"
+        ]
+      },
+      {
+        "id": "audit",
+        "title": "Broker 是天然的权限审计点",
+        "paragraphs": [
+          "每次 credential use 都能记录谁、何时、哪个 task、访问哪个 target 和 scope。",
+          "这些日志可以进入 risk scoring 和 incident response。"
+        ]
+      },
+      {
+        "id": "availability",
+        "title": "Broker 也会成为高可用依赖",
+        "paragraphs": [
+          "所有外部服务调用都经过 Broker 后，故障会导致大面积 Agent 失败。需要 cache、regional redundancy 和 graceful degradation。",
+          "同时不能为了可用性把长期 secret fallback 回 sandbox。"
+        ]
+      },
+      {
+        "id": "boundary",
+        "title": "Broker 不替代业务授权",
+        "paragraphs": [
+          "有 GitHub token 不代表可以删除仓库；credential 只回答身份，policy 还要决定具体 action。",
+          "因此 Broker 与 Policy Engine 应协作但职责分离。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "pattern:action-verifier-layer",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "placement",
+        "title": "Verifier 放在 Model 与 Environment 之间，而不是任务结束后",
+        "evidence": [
+          "source:mid-harness"
+        ],
+        "paragraphs": [
+          "这个位置让系统在 side effect 发生前消化不确定性。它既可以接收多个候选，也可以单独检查一个动作。",
+          "与 final-answer critic 相比，它对环境轨迹影响更直接。"
+        ]
+      },
+      {
+        "id": "interfaces",
+        "title": "Verifier 输入应包含 Environment Context 与 Risk Metadata",
+        "paragraphs": [
+          "只看命令文本可能不知道 cwd、当前 git 状态、权限、上一动作结果。Verifier 需要最小但充分的环境摘要。",
+          "同时 risk class、可逆性和 policy status 能帮助决定验证强度。"
+        ]
+      },
+      {
+        "id": "types",
+        "title": "规则、模型、执行式验证可以组合",
+        "paragraphs": [
+          "语法/危险命令适合规则；语义正确性适合 LLM；代码 patch 可运行 test；基础设施变更可先 plan/dry-run。",
+          "多层 verifier 通常比单一大模型更可靠。"
+        ]
+      },
+      {
+        "id": "budget",
+        "title": "验证预算应与失败代价挂钩",
+        "paragraphs": [
+          "低风险动作无需昂贵多候选，高风险动作可以扩大采样、强 verifier 和人工审批。",
+          "这将 verifier 变成 test-time compute scheduler 的一部分。"
+        ]
+      },
+      {
+        "id": "learning",
+        "title": "历史 Action Trace 可以训练更便宜 Verifier",
+        "evidence": [
+          "source:mid-harness"
+        ],
+        "paragraphs": [
+          "强模型 verifier 的选择结果可作为 distillation data，逐步把昂贵判断迁移到小模型。",
+          "同时真实失败/回滚可以形成 hard negatives。"
+        ]
+      },
+      {
+        "id": "separation",
+        "title": "Verifier 永远不应成为最终 Policy Authority",
+        "evidence": [
+          "source:nvidia-openshell"
+        ],
+        "paragraphs": [
+          "即使 verifier 认为动作能完成任务，组织 policy 仍可能禁止。",
+          "安全授权必须由独立、可验证 enforcement 决定。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "trend:portable-agent-authority",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "thesis",
+        "title": "趋势核心：软件制品开始携带“它希望获得什么权力”",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "传统 image 主要描述软件本身；Agent artifact 开始把 network、credential、volume、tool 等 authority requirements 版本化。",
+          "这让权限变化进入 CI/CD review，而不再散落在 dashboard、shell history 和人工记忆中。"
+        ]
+      },
+      {
+        "id": "drivers",
+        "title": "为什么 Agent 比普通应用更推动这件事",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "Agent 会动态决定下一步并主动安装、联网、调用工具，静态部署配置很难完全预先预测。",
+          "因此需要把“允许的探索边界”声明成可审计 contract。"
+        ]
+      },
+      {
+        "id": "architecture",
+        "title": "最合理结构是 Definition 请求、Runtime 决策、Policy 强制",
+        "paragraphs": [
+          "Artifact 不能自我授予。Runtime 根据组织 policy、用户授权和环境能力决定最终 grant。",
+          "这样同一 artifact 在开发/生产可获得不同权限，同时保持定义可移植。"
+        ]
+      },
+      {
+        "id": "standardization",
+        "title": "真正难点是跨厂商 Capability Semantics",
+        "paragraphs": [
+          "网络和 volume 容易标准化，SaaS delegated authority、browser action、device capability 更复杂。",
+          "若每家 runtime 都定义自己的 capability type，趋势会停留在 vendor-specific packaging。"
+        ]
+      },
+      {
+        "id": "security",
+        "title": "Authority Diff 可能成为 Agent 时代的高价值 Review 信号",
+        "evidence": [
+          "source:docker-kit"
+        ],
+        "paragraphs": [
+          "升级前对比 capability set，权限扩大必须重新批准，是比单纯 image digest 更直接的风险控制。",
+          "未来可能和 SBOM、provenance、policy-as-code 一起进入 Agent supply chain。"
+        ]
+      },
+      {
+        "id": "falsify",
+        "title": "什么会让这条趋势失败",
+        "paragraphs": [
+          "如果主流平台最终仍把权限全部放在平台外部配置、artifact 只承载代码，或者跨 runtime 语义长期不兼容，那么 Portable Agent Authority 就难形成行业层标准。",
+          "因此应关注第三方 runtime adoption，而不是只看规范本身。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "trend:agent-runtime-cloud-sku",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "shift",
+        "title": "从 VM/Serverless 到 Agent Runtime 作为一级资源",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "paragraphs": [
+          "DigitalOcean 等开始把 microVM sandbox、memory、storage、tool gateway、inference 和 observability 打包卖给 Agent workload。",
+          "这说明云产品边界从“提供计算”向“提供 Agent 执行语义”上移。"
+        ]
+      },
+      {
+        "id": "economics",
+        "title": "新的单位经济模型不再只看 CPU 或 Token",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "paragraphs": [
+          "Agent 成本同时来自模型 token、sandbox runtime、browser/tool calls、persistent storage、memory retrieval、network。",
+          "Cloud SKU 试图用 bundle 和 spending cap 把这些异构单位变成更可预测预算。"
+        ]
+      },
+      {
+        "id": "control-plane",
+        "title": "真正 SKU 化需要统一 Control Plane",
+        "paragraphs": [
+          "用户需要看到 agent/task/workspace、预算、权限、trace，而不是分别管理十个云产品。",
+          "否则只是营销层 bundle，并没有形成新的基础设施抽象。"
+        ]
+      },
+      {
+        "id": "portability",
+        "title": "开放 Harness 与模型选择决定是否形成平台层",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "paragraphs": [
+          "如果 runtime 只服务自家 Agent framework，它更像 SaaS 功能；若第三方 Harness 能部署、模型可替换，才更像 Kubernetes/Serverless 级基础设施。",
+          "DigitalOcean 对 frontier model 仍允许外部计费，是值得观察的解耦信号。"
+        ]
+      },
+      {
+        "id": "sla",
+        "title": "Production SLA 会是从 Preview 到成熟 SKU 的分水岭",
+        "evidence": [
+          "source:do-droplets"
+        ],
+        "paragraphs": [
+          "Agent 长任务要求 workspace durability、region recovery、security isolation 和 cost predictability。",
+          "只有这些能力有明确 SLA 和生产客户，趋势才算真正成熟。"
+        ]
+      },
+      {
+        "id": "falsify",
+        "title": "趋势失败的可能路径",
+        "paragraphs": [
+          "如果用户继续偏好普通 VM/容器自己组装，或 Agent-specific bundle 成本更高、锁定更强，SKU 可能只停留在包装层。",
+          "因此采用率和跨 framework 可移植性比产品命名更重要。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "trend:harness-rsi",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "why-harness",
+        "title": "Harness 是当前最可控、可版本化的自我改进表面",
+        "evidence": [
+          "source:sift",
+          "source:arex2",
+          "source:mid-harness"
+        ],
+        "paragraphs": [
+          "Prompt、tool policy、search strategy、verifier、skills、subagent topology 都能在不改模型权重的情况下显著改变 Agent 行为。",
+          "这些组件容易 diff、benchmark、rollback，天然适合自动优化。"
+        ]
+      },
+      {
+        "id": "loop",
+        "title": "完整 RSI Loop 更像 CI/CD，而不是递归聊天",
+        "evidence": [
+          "source:sift"
+        ],
+        "paragraphs": [
+          "系统生成 candidate modification，运行 cheap eval，选择少量 candidate 做 expensive benchmark，经过安全/回归后 promote。",
+          "Production agent 只加载已批准版本，避免线上实例直接覆盖自身。"
+        ]
+      },
+      {
+        "id": "data",
+        "title": "Execution Trace 是 RSI 的经验数据源",
+        "paragraphs": [
+          "真实失败可以自动聚类成 skill gap、tool issue、prompt issue、policy issue，成功轨迹可生成候选 skill。",
+          "但生产数据需要去隐私、避免泄漏和独立 holdout。"
+        ]
+      },
+      {
+        "id": "goodhart",
+        "title": "最大风险是 Benchmark/Harness Overfitting",
+        "evidence": [
+          "source:sift",
+          "source:arex2"
+        ],
+        "paragraphs": [
+          "自动系统会快速找到 evaluator 的漏洞。如果只优化单一 benchmark，Harness 可能变得更会考试而不是更好用。",
+          "必须有多任务 holdout、人工审计和跨模型验证。"
+        ]
+      },
+      {
+        "id": "governance",
+        "title": "自改权限必须比普通任务权限更严格",
+        "paragraphs": [
+          "能修改 tool policy、system prompt 或 verifier 的 Agent 等于能改变未来自己的行为边界。",
+          "候选修改应在隔离环境完成，不能直接修改生产控制面。"
+        ]
+      },
+      {
+        "id": "falsify",
+        "title": "如果收益长期小于 Eval 成本，这条路线会降温",
+        "paragraphs": [
+          "Harness RSI 只有在改进可跨任务泛化且评测成本可控时才值得持续运行。",
+          "模型本身快速升级也可能让自动调 Harness 的收益被模型更新吞没。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "trend:persistent-agent-runtime",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "model",
+        "title": "目标模型：Persistent Identity + Durable State + Disposable Compute",
+        "evidence": [
+          "source:openai-dots",
+          "source:restate-durable",
+          "source:docker-cloud"
+        ],
+        "paragraphs": [
+          "长期 Agent 不应该等价于一个永远运行的进程。身份、任务、workspace、memory 长期存在，而 worker/microVM 根据负载创建、暂停、替换。",
+          "这和云原生服务把 state 从 pod 中移出的演进非常相似。"
+        ]
+      },
+      {
+        "id": "state-planes",
+        "title": "至少需要拆开四种状态平面",
+        "paragraphs": [
+          "Task execution state 决定流程恢复；Workspace state 保存文件/环境；Memory 保存长期知识；Conversation/history 保存交互上下文。",
+          "它们更新频率、权限和删除语义都不同，不能都塞进一个 session blob。"
+        ]
+      },
+      {
+        "id": "scheduler",
+        "title": "Control Plane 将成为长期 Agent 的核心",
+        "evidence": [
+          "source:openai-dots"
+        ],
+        "paragraphs": [
+          "Scheduled tasks、pause/resume、activity list、human approval、device/app connection 都需要独立 control plane。",
+          "Agent loop 只是 data plane 中的一部分。"
+        ]
+      },
+      {
+        "id": "cost",
+        "title": "经济性来自“状态常驻、计算按需”",
+        "evidence": [
+          "source:docker-cloud",
+          "source:do-droplets"
+        ],
+        "paragraphs": [
+          "如果每个用户永久占一台 VM，百万用户不可承受。更可行是 workspace/memory 持久，compute idle 时暂停。",
+          "快速 resume、snapshot 和 warm pool 因而会成为关键指标。"
+        ]
+      },
+      {
+        "id": "failure",
+        "title": "真正成熟需要跨 Worker 恢复与 Side-effect Safety",
+        "evidence": [
+          "source:restate-durable"
+        ],
+        "paragraphs": [
+          "只恢复文件不够，任务还要知道哪些 tool call 已完成、是否重复。Persistent workspace 与 durable execution 应组合。",
+          "这决定“持续 Agent”是否只是长寿命服务器。"
+        ]
+      },
+      {
+        "id": "falsify",
+        "title": "如果长期 Agent 最终依赖常驻机器，这个架构判断会被削弱",
+        "paragraphs": [
+          "若主流产品证明常驻 VM 足够便宜可靠、跨 worker resume 没有显著价值，Persistent Runtime 分层可能不会成为主流。",
+          "当前多个产品信号仍更倾向解耦状态与计算。"
+        ]
+      }
+    ]
   }
 ]
