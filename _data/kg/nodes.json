@@ -928,7 +928,29 @@
     "url": "https://arxiv.org/abs/2609.39982",
     "page": "/entities/research--mid-harness/",
     "overview": "Mid-Harness 是 Research 节点，用来记录对 Agent 系统能力或机制具有实质影响的论文/研究系统。Samples and verifies candidate terminal actions before execution. 主要归入 Agent Harness、Observability & Eval、Security & Authority。 它当前直接关联 Action Verification 等能力。",
-    "why_it_matters": "研究节点的重要性不只在论文指标，而在于它是否提出可复用的机制并进入工程系统。当前可复用机制主要落在 Action Verification。后续应观察是否出现开源实现、跨模型复现和生产级采用。"
+    "why_it_matters": "研究节点的重要性不只在论文指标，而在于它是否提出可复用的机制并进入工程系统。当前可复用机制主要落在 Action Verification。后续应观察是否出现开源实现、跨模型复现和生产级采用。",
+    "research_question": "Terminal / coding Agent 在真正修改环境之前，能否通过在 Model 与 Harness 之间增加 action-level search 和 verification，提高成功率并降低错误动作造成的不可逆状态污染？",
+    "method": "Mid-Harness 不立即执行模型生成的第一个动作，而是采样多个候选 action，再由 verifier 选择更合适的动作后交给真实 Harness 执行。研究重点是 candidate count、verifier strength 与最终任务成功率之间的关系。",
+    "findings": [
+      "增加候选 action 本身并不保证提升；强 verifier 是关键",
+      "把 test-time scaling 下沉到单步 action，可以在环境真正变化前消化一部分模型不确定性",
+      "action verification 对具有状态副作用的 terminal 环境尤其有价值"
+    ],
+    "limitations": [
+      "增加候选与验证会提高 token、延迟和推理成本",
+      "verifier 可能引入系统性偏差",
+      "研究结果不能直接推出所有工具场景都适合多候选执行"
+    ],
+    "engineering_implications": [
+      "把 action verifier 作为 Harness 的可选层，并按风险动态启用",
+      "read-only / reversible action 可以轻验证，高风险动作再使用强 verifier / HITL",
+      "verification 与 policy enforcement 要分层：一个判断动作是否好，一个决定动作是否被允许"
+    ],
+    "what_to_watch": [
+      "更小、更便宜 verifier 的效果",
+      "与 sandbox snapshot / rollback 的组合",
+      "在真实 coding agent 上的长期 cost-benefit"
+    ]
   },
   {
     "id": "research:arex-2",
@@ -944,7 +966,29 @@
     "url": "https://arxiv.org/abs/2609.38288",
     "page": "/entities/research--arex-2/",
     "overview": "AREX-2 是 Research 节点，用来记录对 Agent 系统能力或机制具有实质影响的论文/研究系统。Self-improving agent trained for reflection and sustained long-horizon refinement. 主要归入 Agent RSI。 它当前直接关联 Long-horizon Reflection 等能力。 其结果也被用于观察 Harness-level RSI 等趋势。",
-    "why_it_matters": "研究节点的重要性不只在论文指标，而在于它是否提出可复用的机制并进入工程系统。当前可复用机制主要落在 Long-horizon Reflection。后续应观察是否出现开源实现、跨模型复现和生产级采用。"
+    "why_it_matters": "研究节点的重要性不只在论文指标，而在于它是否提出可复用的机制并进入工程系统。当前可复用机制主要落在 Long-horizon Reflection。后续应观察是否出现开源实现、跨模型复现和生产级采用。",
+    "research_question": "如何训练 Agent 在 test time 进行持续多轮自我改进，使增加 iteration budget 时性能仍能继续提升，而不是只做一次 reflection？",
+    "method": "AREX-2 把 self-improvement 分解为 reflection 与 long-horizon execution，并在具有明确 verifier/reward 的机器学习与算法编程任务中构造长程改进轨迹，用这些轨迹训练 Agent 学会反复评估和改进当前方案。",
+    "findings": [
+      "self-improvement 能力不仅是发现错误，还包括跨很多轮保留并继续改进有效方案",
+      "随着允许迭代轮数增加，性能曲线可以继续上升",
+      "长程改进能力可以迁移到浏览、搜索和复杂 QA 等任务"
+    ],
+    "limitations": [
+      "训练依赖较明确的评价信号，开放世界任务中的 verifier 更难设计",
+      "持续迭代会增加推理预算和错误累积风险",
+      "论文结果不能等同于通用 recursive self-improvement 已经解决"
+    ],
+    "engineering_implications": [
+      "衡量 RSI 时关注 performance vs iteration budget 曲线",
+      "把 evaluation、state preservation、rollback 纳入 Agent loop",
+      "优先优化 Harness、skill、search policy 等可观测组件，而不是直接追求模型自改权重"
+    ],
+    "what_to_watch": [
+      "开放世界 verifier",
+      "跨任务的 self-improvement transfer",
+      "与 execution trace / skill memory 的结合"
+    ]
   },
   {
     "id": "research:sift",
@@ -961,7 +1005,29 @@
     "url": "https://arxiv.org/abs/2609.19526",
     "page": "/entities/research--sift/",
     "overview": "SIFT 是 Research 节点，用来记录对 Agent 系统能力或机制具有实质影响的论文/研究系统。Self-improvement via fast tree search and selective expensive evaluation. 主要归入 Agent RSI、Observability & Eval。 它当前直接关联 Selective Eval Scheduling 等能力。 其结果也被用于观察 Harness-level RSI 等趋势。",
-    "why_it_matters": "研究节点的重要性不只在论文指标，而在于它是否提出可复用的机制并进入工程系统。当前可复用机制主要落在 Selective Eval Scheduling。后续应观察是否出现开源实现、跨模型复现和生产级采用。"
+    "why_it_matters": "研究节点的重要性不只在论文指标，而在于它是否提出可复用的机制并进入工程系统。当前可复用机制主要落在 Selective Eval Scheduling。后续应观察是否出现开源实现、跨模型复现和生产级采用。",
+    "research_question": "Coding Agent 可以修改自己的实现，但如何在有限预算下判断大量候选修改中哪些值得进行昂贵 benchmark，从而让 recursive self-improvement 变得更可承受？",
+    "method": "SIFT 用 LLM-as-a-judge 对 candidate patches 做 pairwise comparison，再用 regularized Bradley-Terry 模型聚合强度分数，并用这些中间信号指导轻量 tree search。只有最有希望的节点才运行昂贵 downstream task evaluation。",
+    "findings": [
+      "候选修改的评估是 RSI 的主要运行时瓶颈之一",
+      "便宜的 pairwise judge 可以作为 search 的中间信号",
+      "选择性 expensive eval 能在更低 CPU、wall-clock 和 API 成本下保持较强搜索效果"
+    ],
+    "limitations": [
+      "judge 的偏差可能把搜索引向错误方向",
+      "最终结果仍依赖真实 benchmark 的有效性",
+      "在单一 benchmark 上优化可能产生 Harness overfitting"
+    ],
+    "engineering_implications": [
+      "RSI 基础设施需要 Eval Scheduler，而不只是 patch generator",
+      "把 cheap eval / expensive eval / regression suite 分层",
+      "所有 Agent 自优化都应保留可回滚版本和独立 holdout eval"
+    ],
+    "what_to_watch": [
+      "judge 与真实任务目标的相关性",
+      "跨 benchmark 泛化",
+      "在线生产 Agent 的安全 promotion 流程"
+    ]
   },
   {
     "id": "org:docker",
@@ -1070,7 +1136,25 @@
     ],
     "page": "/entities/pattern--agent-definition-instance/",
     "overview": "Agent Definition / Instance Split 是本知识库抽取出的 Architecture Pattern，属于分析层而不是外部厂商声明。Separate static requirements from per-user workspace, state and task execution. 主要归入 Runtime & Orchestration、Cloud Agent、Security & Authority。 它用于解释 Portable Agent Artifact 等能力如何被组合进实际系统。相关判断应结合下方 analysis 关系与证据阅读。",
-    "why_it_matters": "架构模式用于把单个项目里的做法抽象成可复用设计。它适合直接用于系统设计讨论，但必须与下方事实证据分开阅读，避免把分析判断误当成行业标准。"
+    "why_it_matters": "架构模式用于把单个项目里的做法抽象成可复用设计。它适合直接用于系统设计讨论，但必须与下方事实证据分开阅读，避免把分析判断误当成行业标准。",
+    "problem": "很多 Agent 平台把 Agent 配置、用户状态、workspace 和单次 task 混在一个进程或对象里，导致生命周期、迁移、扩缩容和权限治理都很难。",
+    "mechanism": "把静态 Agent Definition 与运行时 Agent Instance 分开：Definition 描述 Harness、模型策略、工具、网络/凭据需求与资源限制；Instance 承载 user/workspace/task、执行日志、memory 和 artifacts。",
+    "when_to_use": [
+      "Cloud Agent 平台",
+      "需要同一 Agent Definition 服务大量用户",
+      "worker 会频繁创建、销毁或迁移",
+      "需要独立版本化 Agent 配置"
+    ],
+    "tradeoffs": [
+      "需要更多显式 ID 与生命周期管理",
+      "Definition/Instance schema 演进要保持兼容",
+      "跨实例共享 memory 或 workspace 需要额外边界"
+    ],
+    "engineering_takeaways": [
+      "Agent ≠ process",
+      "Workspace ≠ task",
+      "Definition 负责可部署性，Instance 负责用户与运行状态"
+    ]
   },
   {
     "id": "pattern:credential-broker",
@@ -1086,7 +1170,25 @@
     ],
     "page": "/entities/pattern--credential-broker/",
     "overview": "Credential Broker 是本知识库抽取出的 Architecture Pattern，属于分析层而不是外部厂商声明。Resolve logical credentials under policy without exposing raw secrets to context. 主要归入 Security & Authority、Sandbox & Execution。 它用于解释 Credential Isolation 等能力如何被组合进实际系统。相关判断应结合下方 analysis 关系与证据阅读。",
-    "why_it_matters": "架构模式用于把单个项目里的做法抽象成可复用设计。它适合直接用于系统设计讨论，但必须与下方事实证据分开阅读，避免把分析判断误当成行业标准。"
+    "why_it_matters": "架构模式用于把单个项目里的做法抽象成可复用设计。它适合直接用于系统设计讨论，但必须与下方事实证据分开阅读，避免把分析判断误当成行业标准。",
+    "problem": "Agent 需要访问外部 API 或云服务，但直接把 secret 暴露在环境变量、文件或上下文中会扩大泄露面。",
+    "mechanism": "Agent 只引用逻辑 credential；Credential Broker 根据 identity、task、policy 和 target service 决定是否代为签名、交换 token 或注入短期凭据。",
+    "when_to_use": [
+      "长期 Cloud Agent",
+      "多租户 Agent 平台",
+      "高价值 SaaS / cloud API",
+      "需要细粒度审计与撤销"
+    ],
+    "tradeoffs": [
+      "引入额外网络跳转和高可用组件",
+      "需要映射外部 OAuth scope 与内部 capability",
+      "broker 本身成为高价值安全边界"
+    ],
+    "engineering_takeaways": [
+      "能使用凭据不等于能读取凭据",
+      "默认使用短期、最小权限 token",
+      "所有 credential use 都应可审计"
+    ]
   },
   {
     "id": "pattern:action-verifier-layer",
@@ -1103,7 +1205,25 @@
     ],
     "page": "/entities/pattern--action-verifier-layer/",
     "overview": "Action Verifier Layer 是本知识库抽取出的 Architecture Pattern，属于分析层而不是外部厂商声明。Insert verification between candidate actions and the mutable environment. 主要归入 Agent Harness、Security & Authority、Observability & Eval。 它用于解释 Action Verification 等能力如何被组合进实际系统。相关判断应结合下方 analysis 关系与证据阅读。",
-    "why_it_matters": "架构模式用于把单个项目里的做法抽象成可复用设计。它适合直接用于系统设计讨论，但必须与下方事实证据分开阅读，避免把分析判断误当成行业标准。"
+    "why_it_matters": "架构模式用于把单个项目里的做法抽象成可复用设计。它适合直接用于系统设计讨论，但必须与下方事实证据分开阅读，避免把分析判断误当成行业标准。",
+    "problem": "Agent 生成的错误动作一旦进入真实环境，会改变后续状态，使整个 trajectory 被污染，尤其是 shell、部署、git 和数据修改操作。",
+    "mechanism": "在 Model 与 Harness/Environment 之间插入 verifier：根据风险生成多个候选、检查前置条件、比较正确性和可逆性，再决定执行、降级或请求人工确认。",
+    "when_to_use": [
+      "coding / terminal Agent",
+      "基础设施自动化",
+      "具有外部副作用的 tool call",
+      "高风险写操作"
+    ],
+    "tradeoffs": [
+      "额外模型成本和延迟",
+      "verifier 可能与主模型共享盲点",
+      "需要为不同 action type 设计不同风险策略"
+    ],
+    "engineering_takeaways": [
+      "按风险分层验证，不要所有动作一刀切",
+      "verification 与 authorization 分离",
+      "对不可逆动作优先结合 snapshot / rollback / HITL"
+    ]
   },
   {
     "id": "trend:portable-agent-authority",
@@ -1120,7 +1240,24 @@
     ],
     "page": "/entities/trend--portable-agent-authority/",
     "overview": "Portable Agent Authority 是 Trend 节点，表示基于多个事实节点和来源形成的持续观察，而不是单一事实。Agent definition is emerging as a portable artifact containing workload and requested authority. 主要归入 Protocols & Standards、Security & Authority、Runtime & Orchestration。 当前支持这一趋势的项目信号包括 Docker Sandbox Kit。其置信度应随着后续证据动态调整。",
-    "why_it_matters": "趋势节点用于把分散事件压缩为可验证的技术方向。它不会被当作事实；只有当更多 Project、Research、Capability 与 Source 持续支持时，判断才会增强。"
+    "why_it_matters": "趋势节点用于把分散事件压缩为可验证的技术方向。它不会被当作事实；只有当更多 Project、Research、Capability 与 Source 持续支持时，判断才会增强。",
+    "thesis": "Agent 的可部署单元正在从“代码 + 依赖”扩展成“workload + tools + requested authority”。如果这个方向继续发展，Agent Definition 会像 OCI image 一样可分发，同时携带需要的网络、secret、mount 和 capability 声明。",
+    "supporting_signals": [
+      "Docker Sandbox Kit v3 明确把 Agent workload 与 authority grants 一起描述",
+      "OCI artifact 被复用为分发载体",
+      "Cloud Sandbox / policy 系统开始把 network 与 credential 作为独立 capability"
+    ],
+    "counter_signals": [
+      "当前跨厂商 runtime 兼容仍很弱",
+      "不同平台对 permission、credential、network 的语义尚未收敛",
+      "过早把 authority 打包进 artifact 可能导致 runtime policy 被弱化"
+    ],
+    "what_to_watch": [
+      "是否出现非 Docker runtime 采用同类规范",
+      "CNCF/OCI 是否形成正式治理",
+      "capability schema 与 identity / authorization 是否统一"
+    ],
+    "confidence_note": "当前属于中等置信度趋势判断：产品与规范信号明确，但距离行业标准仍有较大不确定性。"
   },
   {
     "id": "trend:agent-runtime-cloud-sku",
@@ -1136,7 +1273,23 @@
     ],
     "page": "/entities/trend--agent-runtime-cloud-sku/",
     "overview": "Agent Runtime as Cloud SKU 是 Trend 节点，表示基于多个事实节点和来源形成的持续观察，而不是单一事实。Cloud providers are packaging runtime, tools, memory and inference as a distinct product. 主要归入 Cloud Agent、Runtime & Orchestration。 当前支持这一趋势的项目信号包括 DigitalOcean Agent Droplets。其置信度应随着后续证据动态调整。",
-    "why_it_matters": "趋势节点用于把分散事件压缩为可验证的技术方向。它不会被当作事实；只有当更多 Project、Research、Capability 与 Source 持续支持时，判断才会增强。"
+    "why_it_matters": "趋势节点用于把分散事件压缩为可验证的技术方向。它不会被当作事实；只有当更多 Project、Research、Capability 与 Source 持续支持时，判断才会增强。",
+    "thesis": "Agent Runtime 正从应用内部组件变成云厂商可独立销售和计量的基础设施 SKU，把 compute、inference、tools、memory、storage 与 governance 打包交付。",
+    "supporting_signals": [
+      "DigitalOcean Agent Droplets 将多项 Agent 运行资源打包成单独产品",
+      "越来越多平台提供 managed sandbox / persistent workspace / tool governance",
+      "计费对象开始从 VM/container 转向 agent workload"
+    ],
+    "counter_signals": [
+      "不同云厂商对“Agent Runtime”边界定义差异很大",
+      "模型 tokens 仍可能占成本主体，runtime SKU 是否形成稳定经济模型尚不确定"
+    ],
+    "what_to_watch": [
+      "agent-hour / sandbox-hour 等计费单位",
+      "第三方 Harness 可移植性",
+      "runtime 与 model provider 是否进一步解耦"
+    ],
+    "confidence_note": "属于较强产业信号，但产品形态仍处于早期分化期。"
   },
   {
     "id": "trend:harness-rsi",
@@ -1153,7 +1306,24 @@
     ],
     "page": "/entities/trend--harness-rsi/",
     "overview": "Harness-level RSI 是 Trend 节点，表示基于多个事实节点和来源形成的持续观察，而不是单一事实。Near-term self-improvement is focusing on harness behavior and evaluation rather than weight changes. 主要归入 Agent RSI、Agent Harness、Observability & Eval。其置信度应随着后续证据动态调整。",
-    "why_it_matters": "趋势节点用于把分散事件压缩为可验证的技术方向。它不会被当作事实；只有当更多 Project、Research、Capability 与 Source 持续支持时，判断才会增强。"
+    "why_it_matters": "趋势节点用于把分散事件压缩为可验证的技术方向。它不会被当作事实；只有当更多 Project、Research、Capability 与 Source 持续支持时，判断才会增强。",
+    "thesis": "短中期可落地的 Agent RSI 更可能发生在 Harness 层：自动修改 prompt、tool policy、search strategy、skills、subagent topology 和 eval 策略，而不是直接让 Agent 修改模型权重。",
+    "supporting_signals": [
+      "AREX-2 强调长程 self-improvement",
+      "SIFT 把候选 Harness/Agent 修改和评估搜索结合",
+      "execution trace、eval scheduler、skill memory 正逐渐成为独立基础设施"
+    ],
+    "counter_signals": [
+      "Harness 优化容易过拟合 benchmark",
+      "自动修改控制逻辑会引入新的安全和回归风险",
+      "缺少可靠 verifier 时 self-improvement 可能只是自我强化错误"
+    ],
+    "what_to_watch": [
+      "独立 holdout eval 与安全 promotion",
+      "跨任务、跨模型迁移",
+      "生产 trace 是否真正转化为 skill / harness improvement"
+    ],
+    "confidence_note": "这是工程可行性很强的趋势判断，但需要严格 eval 和回滚才能进入生产。"
   },
   {
     "id": "trend:persistent-agent-runtime",
@@ -1170,7 +1340,23 @@
     ],
     "page": "/entities/trend--persistent-agent-runtime/",
     "overview": "Persistent Agent Runtime 是 Trend 节点，表示基于多个事实节点和来源形成的持续观察，而不是单一事实。Agents are shifting from short-lived processes to durable state plus persistent workspace. 主要归入 Runtime & Orchestration、Cloud Agent、Memory & Experience。 当前支持这一趋势的项目信号包括 OpenAI Dots、Restate。其置信度应随着后续证据动态调整。",
-    "why_it_matters": "趋势节点用于把分散事件压缩为可验证的技术方向。它不会被当作事实；只有当更多 Project、Research、Capability 与 Source 持续支持时，判断才会增强。"
+    "why_it_matters": "趋势节点用于把分散事件压缩为可验证的技术方向。它不会被当作事实；只有当更多 Project、Research、Capability 与 Source 持续支持时，判断才会增强。",
+    "thesis": "Agent 正从“一个短生命周期进程执行一个任务”转向“持久 Agent 身份 + durable state + persistent workspace + disposable worker”的运行模型。",
+    "supporting_signals": [
+      "OpenAI Dots 提供 always-on Agent 与 cloud computer",
+      "Restate 把 durable execution 用于 Agent/workflow",
+      "Docker Cloud Sandboxes 等产品把远程 workspace 生命周期独立出来"
+    ],
+    "counter_signals": [
+      "很多平台仍主要依赖长时间存活的 sandbox 或进程",
+      "persistent workspace、durable task state 与 memory 的边界尚未形成统一抽象"
+    ],
+    "what_to_watch": [
+      "workspace snapshot / migration 标准",
+      "Agent / Workspace / Task 三层 identity",
+      "跨 worker resume 与版本升级兼容"
+    ],
+    "confidence_note": "当前属于高价值、较高置信度的架构方向，但具体实现仍明显分化。"
   },
   {
     "id": "event:docker-kit-v3",
