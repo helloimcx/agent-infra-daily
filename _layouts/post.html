@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="post">
+  <div class="eyebrow">DAILY BRIEF · {{ page.date | date: "%Y-%m-%d" }}</div>
+  <h1>{{ page.title }}</h1>
+  {% if page.summary %}<p class="lede">{{ page.summary }}</p>{% endif %}
+  <div class="meta-row">
+    {% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+  </div>
+  <div class="prose">{{ content }}</div>
+  <div class="post-nav">
+    <a href="{{ '/' | relative_url }}">← 返回最新简报</a>
+    <a href="{{ '/archive/' | relative_url }}">查看全部归档 →</a>
+  </div>
+</article>
