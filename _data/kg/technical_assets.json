@@ -144,7 +144,7 @@
         "type": "matrix",
         "kind": "analysis",
         "title": "执行 Surface 选型",
-        "summary": "能用结构化 API 就不应默认退化成完整远程电脑。",
+        "summary": "不同 execution surface 的结构化程度、连续性、权限面和单位成本差异很大；能用 API/MCP 完成的动作不应默认升级到完整远程电脑。",
         "columns": [
           "Surface",
           "优势",
@@ -248,7 +248,7 @@
         "type": "diagram",
         "kind": "analysis",
         "title": "Agent Egress Policy 分层",
-        "summary": "越靠应用语义层控制越细，但实现与性能成本也越高。",
+        "summary": "Agent egress policy 可以从域名/IP逐层深入到 HTTP method/path 与 workload identity；控制越细，实施复杂度和代理成本也越高。",
         "evidence": [
           "source:docker-kit"
         ],
@@ -658,7 +658,7 @@
         "type": "matrix",
         "kind": "analysis",
         "title": "无状态协议解决什么 / 不解决什么",
-        "summary": "协议无状态不意味着业务、任务或外部副作用无状态。",
+        "summary": "Stateless protocol 主要解决路由、扩缩容和多轮请求的连接语义，并不会自动解决长任务恢复、side-effect 幂等、Sandbox 或长期 Memory。",
         "evidence": [
           "source:mcp-2026-sdk"
         ],
