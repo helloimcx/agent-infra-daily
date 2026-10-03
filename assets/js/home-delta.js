@@ -2,6 +2,8 @@
   const parse=id=>JSON.parse(document.getElementById(id).textContent);
   const nodes=parse('homeNodes'), edges=parse('homeEdges'), deltas=parse('homeDeltas');
   const byId=new Map(nodes.map(n=>[n.id,n]));
+  const base=document.body.dataset.baseurl||'';
+  const entityHref=n=>base+(n?.page||('/graph/?focus='+encodeURIComponent(n?.id||'')));
   const keys=Object.keys(deltas||{}).sort();
   if(!keys.length)return;
   const date=keys[keys.length-1], delta=deltas[date];
@@ -27,7 +29,7 @@
     return;
   }
   cards.innerHTML=visibleAdded.slice(0,8).map(n=>
-    '<a class="delta-card" href="graph/?focus='+encodeURIComponent(n.id)+'">'+
+    '<a class="delta-card" href="'+entityHref(n)+'">'+
       '<div><span>'+n.type+'</span><b>'+escapeHtml(n.label)+'</b></div>'+
       '<p>'+escapeHtml(n.summary||'')+'</p>'+
       '<em>'+escapeHtml(n.maturity||'')+'</em>'+

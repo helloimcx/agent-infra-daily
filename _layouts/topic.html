@@ -58,7 +58,7 @@ layout: default
   <div class="entity-grid">
   {% for node in all_nodes %}
     {% if node.type == "Capability" and node.themes contains topic.id %}
-    <a class="entity-card capability-card" href="{{ '/graph/' | relative_url }}?focus={{ node.id | url_encode }}">
+    <a class="entity-card capability-card" href="{{ node.page | relative_url }}">
       <div class="entity-card-top"><span>{{ node.maturity }}</span><time>{{ node.first_seen }}</time></div>
       <h3>{{ node.label }}</h3><p>{{ node.summary }}</p>
     </a>
@@ -74,7 +74,7 @@ layout: default
   {% for node in all_nodes %}
     {% if node.themes contains topic.id %}
       {% if node.type == "Project" or node.type == "Standard" %}
-      <a class="entity-card project-card" href="{{ '/graph/' | relative_url }}?focus={{ node.id | url_encode }}">
+      <a class="entity-card project-card" href="{{ node.page | relative_url }}">
         <div class="entity-card-top"><span>{{ node.type }}</span><em>{{ node.maturity }}</em></div>
         <h3>{{ node.label }}</h3><p>{{ node.summary }}</p>
       </a>
@@ -92,7 +92,7 @@ layout: default
     <div class="entity-list">
     {% for node in all_nodes %}
       {% if node.type == "Research" and node.themes contains topic.id %}
-      <a href="{{ '/graph/' | relative_url }}?focus={{ node.id | url_encode }}"><div><span>{{ node.first_seen }}</span><strong>{{ node.label }}</strong><p>{{ node.summary }}</p></div><b>↗</b></a>
+      <a href="{{ node.page | relative_url }}"><div><span>{{ node.first_seen }}</span><strong>{{ node.label }}</strong><p>{{ node.summary }}</p></div><b>↗</b></a>
       {% endif %}
     {% endfor %}
     {% if research_count == 0 %}<div class="topic-empty">当前没有独立 Research 节点。</div>{% endif %}
@@ -105,7 +105,7 @@ layout: default
     {% for node in all_nodes %}
       {% if node.type == "Pattern" and node.themes contains topic.id %}
         {% assign pattern_count = pattern_count | plus: 1 %}
-        <a href="{{ '/graph/' | relative_url }}?focus={{ node.id | url_encode }}"><div><span>{{ node.maturity }}</span><strong>{{ node.label }}</strong><p>{{ node.summary }}</p></div><b>↗</b></a>
+        <a href="{{ node.page | relative_url }}"><div><span>{{ node.maturity }}</span><strong>{{ node.label }}</strong><p>{{ node.summary }}</p></div><b>↗</b></a>
       {% endif %}
     {% endfor %}
     {% if pattern_count == 0 %}<div class="topic-empty">当前还没有形成独立 Architecture Pattern。</div>{% endif %}
@@ -118,7 +118,7 @@ layout: default
   <div class="trend-grid">
   {% for node in all_nodes %}
     {% if node.type == "Trend" and node.themes contains topic.id %}
-    <a href="{{ '/graph/' | relative_url }}?focus={{ node.id | url_encode }}">
+    <a href="{{ node.page | relative_url }}">
       <span>{{ node.maturity }}</span><h3>{{ node.label }}</h3><p>{{ node.summary }}</p>
     </a>
     {% endif %}
@@ -135,7 +135,7 @@ layout: default
   {% for node in sorted_nodes %}
     {% if node.type == "Event" and node.themes contains topic.id and shown_events < 8 %}
       {% assign shown_events = shown_events | plus: 1 %}
-      <a href="{{ '/graph/' | relative_url }}?focus={{ node.id | url_encode }}"><time>{{ node.first_seen }}</time><div><strong>{{ node.label }}</strong><span>{{ node.summary }}</span></div><b>↗</b></a>
+      <a href="{{ node.page | relative_url }}"><time>{{ node.first_seen }}</time><div><strong>{{ node.label }}</strong><span>{{ node.summary }}</span></div><b>↗</b></a>
     {% endif %}
   {% endfor %}
   {% if shown_events == 0 %}<div class="topic-empty">当前还没有关键 Event。</div>{% endif %}

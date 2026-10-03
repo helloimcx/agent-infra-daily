@@ -64,3 +64,20 @@ See `docs/knowledge-graph-schema.md` for modeling rules.
 - `_data/kg/architecture.json` — curated architecture-layer projection; this is analysis, not factual ontology
 
 Comparison and architecture views derive from the same knowledge graph and preserve the distinction between fact-backed and analytical relationships.
+
+
+## Entity pages
+
+Every knowledge-graph node has a first-party detail page under `/entities/<type>--<slug>/`.
+
+Entity pages contain:
+- detailed overview and why-it-matters text
+- theme and maturity metadata
+- local relationship graph
+- fact vs analysis relationships
+- architecture-layer projection
+- evolution anchors
+- primary evidence
+- related daily briefs
+
+External URLs are treated as evidence sources, not as the node's canonical page.

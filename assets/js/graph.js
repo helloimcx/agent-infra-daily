@@ -4,6 +4,8 @@
   const edges = parse('kgEdges');
   const deltas = parse('kgDeltas');
   const byId = new Map(nodes.map(n => [n.id, n]));
+  const base=document.body.dataset.baseurl||'';
+  const entityHref=n=>base+(n?.page||('/graph/?focus='+encodeURIComponent(n?.id||'')));
   const colors = {Theme:'#17211d',Capability:'#2f8f68',Project:'#3273a8',Research:'#7b5bb5',Trend:'#c1742a',Pattern:'#b24e72',Organization:'#67736d',Standard:'#3c8f8a',Event:'#a5ada9',Source:'#c0c7c3'};
   const elements = [
     ...nodes.map(n => ({data:{...n,label:n.label}})),
@@ -59,7 +61,7 @@
     const evidence=evidenceIds.map(x=>byId.get(x)).filter(x=>x&&x.url).map(s=>'<a class="kg-source" href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.label)+' ↗</a>').join('');
     panel.innerHTML='<div class="eyebrow">'+esc(n.type)+'</div><h2>'+esc(n.label)+'</h2><p>'+esc(n.summary||'')+'</p>'+
       '<div class="kg-meta"><span>'+esc(n.maturity||'n/a')+'</span><span>first seen '+esc(n.first_seen||'—')+'</span><span>verified '+esc(n.last_verified||'—')+'</span></div>'+
-      (n.url?'<a href="'+esc(n.url)+'" target="_blank" rel="noopener">Primary link ↗</a>':'')+
+      '<a class="kg-detail-link" href="'+entityHref(n)+'">Open detail page →</a>'+
       (['Project','Research','Standard','Pattern'].includes(n.type)?'<a class="kg-compare-link" href="../compare/?a='+encodeURIComponent(n.id)+'">Compare →</a>':'')+
       (rels?'<h3>Relationships</h3><div class="kg-rel-list">'+rels+'</div>':'')+
       (evidence?'<h3>Evidence</h3><div class="kg-sources">'+evidence+'</div>':'');

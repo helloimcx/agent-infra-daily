@@ -3,6 +3,8 @@
   const nodes=parse('evoNodes'), edges=parse('evoEdges'), topics=parse('evoTopics'), deltas=parse('evoDeltas');
   const coreTypes=new Set(['Project','Capability','Research','Trend','Pattern','Standard']);
   const byId=new Map(nodes.map(n=>[n.id,n]));
+  const base=document.body.dataset.baseurl||'';
+  const entityHref=n=>base+(n?.page||('/graph/?focus='+encodeURIComponent(n?.id||'')));
   const theme=document.getElementById('evoTheme'), type=document.getElementById('evoType'), view=document.getElementById('evoView');
   const timeline=document.getElementById('evoTimeline'), axis=document.getElementById('evoAxis'), growth=document.getElementById('evoGrowth');
   const eventView=document.getElementById('evoEventView'), growthView=document.getElementById('evoGrowthView');
@@ -35,7 +37,7 @@
         const linked=relatedCoreForEvent(ev);
         const target=linked[0]||ev;
         const chips=linked.slice(0,3).map(n=>'<span>'+esc(n.label)+'</span>').join('');
-        return '<a class="evo-event" href="../graph/?focus='+encodeURIComponent(target.id)+'">'+
+        return '<a class="evo-event" href="'+entityHref(target)+'">'+
           '<div class="evo-event-type">'+esc((ev.themes||[])[0]||'event')+'</div>'+
           '<h3>'+esc(ev.label)+'</h3><p>'+esc(ev.summary||'')+'</p>'+
           (chips?'<div class="evo-chips">'+chips+'</div>':'')+

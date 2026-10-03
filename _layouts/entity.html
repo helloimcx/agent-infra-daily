@@ -1,0 +1,100 @@
+---
+layout: default
+---
+{% assign entity = site.data.kg.nodes | where: "id", page.entity_id | first %}
+{% assign architecture = site.data.kg.architecture %}
+<section class="entity-hero">
+  <div>
+    <a class="entity-back" href="{{ '/entities/' | relative_url }}">← All entities</a>
+    <div class="eyebrow">{{ entity.type }}</div>
+    <h1>{{ entity.label }}</h1>
+    <p class="entity-summary">{{ entity.summary }}</p>
+    <div class="entity-badges">
+      <span>{{ entity.maturity }}</span><span>first seen {{ entity.first_seen }}</span><span>verified {{ entity.last_verified }}</span>
+    </div>
+    <div class="entity-theme-links">
+      {% for theme_id in entity.themes %}
+        {% assign topic = site.data.kg.topics | where: "id", theme_id | first %}
+        <a href="{{ '/topics/' | append: theme_id | append: '/' | relative_url }}">{{ topic.label }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="entity-hero-actions">
+    <a class="primary-action" href="{{ '/graph/' | relative_url }}?focus={{ entity.id | url_encode }}">View in Graph →</a>
+    {% if entity.type == "Project" or entity.type == "Research" or entity.type == "Standard" or entity.type == "Pattern" %}
+    <a href="{{ '/compare/' | relative_url }}?a={{ entity.id | url_encode }}">Compare</a>
+    {% endif %}
+  </div>
+</section>
+
+<section class="entity-reading">
+  <article class="entity-prose">
+    <div class="eyebrow">OVERVIEW</div>
+    <h2>详细介绍</h2>
+    <p>{{ entity.overview }}</p>
+    <h3>为什么值得关注</h3>
+    <p>{{ entity.why_it_matters }}</p>
+  </article>
+  <aside class="entity-facts">
+    <div><span>Canonical ID</span><code>{{ entity.id }}</code></div>
+    <div><span>Type</span><strong>{{ entity.type }}</strong></div>
+    <div><span>Maturity</span><strong>{{ entity.maturity }}</strong></div>
+    <div><span>First seen</span><strong>{{ entity.first_seen }}</strong></div>
+    <div><span>Last verified</span><strong>{{ entity.last_verified }}</strong></div>
+  </aside>
+</section>
+
+<section class="entity-section">
+  <div class="section-head compact"><div><div class="eyebrow">LOCAL GRAPH</div><h2>它在知识图谱中的位置</h2></div><span>一阶关系</span></div>
+  <div class="entity-graph-shell">
+    <div id="entityGraph"></div>
+    <aside id="entityGraphDetail"><div class="eyebrow">RELATIONSHIPS</div><p>点击局部图中的其他节点，快速查看关系；主节点始终保持高亮。</p></aside>
+  </div>
+</section>
+
+<section class="entity-section">
+  <div class="section-head compact"><div><div class="eyebrow">ARCHITECTURE</div><h2>架构位置</h2></div><a href="{{ '/stack/' | relative_url }}">Open stack →</a></div>
+  <div id="entityArchitecture" class="entity-architecture"></div>
+</section>
+
+<section class="entity-columns">
+  <div>
+    <div class="section-head compact"><div><div class="eyebrow">FACTS</div><h2>事实关系</h2></div></div>
+    <div id="entityFacts" class="entity-relations"></div>
+  </div>
+  <div>
+    <div class="section-head compact"><div><div class="eyebrow">ANALYSIS</div><h2>分析关系</h2></div></div>
+    <div id="entityAnalysis" class="entity-relations"></div>
+  </div>
+</section>
+
+<section class="entity-section">
+  <div class="section-head compact"><div><div class="eyebrow">EVOLUTION</div><h2>演化与时间锚点</h2></div><a href="{{ '/evolution/' | relative_url }}">Full timeline →</a></div>
+  <div id="entityTimeline" class="entity-timeline"></div>
+</section>
+
+<section class="entity-section">
+  <div class="section-head compact"><div><div class="eyebrow">EVIDENCE</div><h2>一手证据</h2></div><span>外部链接只作为证据来源</span></div>
+  <div id="entityEvidence" class="entity-evidence"></div>
+</section>
+
+<section class="entity-section entity-related-reports">
+  <div class="section-head compact"><div><div class="eyebrow">DAILY BRIEFS</div><h2>相关日报</h2></div><a href="{{ '/archive/' | relative_url }}">All reports →</a></div>
+  <div class="entity-report-list">
+  {% assign report_count = 0 %}
+  {% for post in site.posts %}
+    {% if post.content contains entity.label or post.title contains entity.label %}
+      {% assign report_count = report_count | plus: 1 %}
+      <a href="{{ post.url | relative_url }}"><time>{{ post.date | date: "%Y-%m-%d" }}</time><div><strong>{{ post.title }}</strong><span>{{ post.summary }}</span></div><b>↗</b></a>
+    {% endif %}
+  {% endfor %}
+  {% if report_count == 0 %}<div class="topic-empty">当前还没有正文直接提及该节点的日报；它可能来自图谱回填或主题综合。</div>{% endif %}
+  </div>
+</section>
+
+<script id="entityNodeId" type="application/json">{{ entity.id | jsonify }}</script>
+<script id="entityNodes" type="application/json">{{ site.data.kg.nodes | jsonify }}</script>
+<script id="entityEdges" type="application/json">{{ site.data.kg.edges | jsonify }}</script>
+<script id="entityArchitectureData" type="application/json">{{ site.data.kg.architecture | jsonify }}</script>
+<script src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.3/dist/cytoscape.min.js"></script>
+<script src="{{ '/assets/js/entity.js' | relative_url }}?v=kg-v5"></script>

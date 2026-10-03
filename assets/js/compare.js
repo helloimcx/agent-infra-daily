@@ -4,6 +4,8 @@
   const topics=JSON.parse(document.getElementById('compareTopics').textContent);
   const byId=new Map(nodes.map(n=>[n.id,n]));
   const topicById=new Map(topics.map(t=>[t.id,t]));
+  const base=document.body.dataset.baseurl||'';
+  const entityHref=n=>base+(n?.page||('/graph/?focus='+encodeURIComponent(n?.id||'')));
   const comparable=nodes.filter(n=>['Project','Research','Standard','Pattern'].includes(n.type)).sort((a,b)=>a.label.localeCompare(b.label));
   const aSel=document.getElementById('compareA'),bSel=document.getElementById('compareB');
   const capTypes=new Set(['IMPLEMENTS','PROVIDES','USES','DEPENDS_ON','ENABLES']);
@@ -35,7 +37,7 @@
     return '<article><div class="eyebrow">'+esc(n.type)+'</div><h2>'+esc(n.label)+'</h2><p>'+esc(n.summary||'')+'</p>'+
       '<div class="compare-meta"><span>'+esc(n.maturity||'n/a')+'</span><span>'+esc(n.first_seen||'—')+'</span><span>'+map.size+' capability links</span><span>'+fact+' fact / '+analysis+' analysis</span></div>'+
       '<div class="compare-themes">'+themeNames.map(x=>'<span>'+esc(x)+'</span>').join('')+'</div>'+
-      '<a href="../graph/?focus='+encodeURIComponent(n.id)+'">Open in graph →</a></article>';
+      '<a href="'+entityHref(n)+'">Open detail page →</a></article>';
   }
   function mark(item){
     if(!item)return '<span class="matrix-none">—</span>';

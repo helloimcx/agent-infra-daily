@@ -8,6 +8,8 @@
   const rels=edges.filter(e=>ids.has(e.source)&&ids.has(e.target)&&!['PUBLISHED_BY','EVIDENCED_BY'].includes(e.type));
   const colors={Theme:'#17211d',Capability:'#2f8f68',Project:'#3273a8',Research:'#7b5bb5',Trend:'#c1742a',Pattern:'#b24e72',Standard:'#3c8f8a'};
   const byId=new Map(subset.map(n=>[n.id,n]));
+  const base=document.body.dataset.baseurl||'';
+  const entityHref=n=>base+(n?.page||('/graph/?focus='+encodeURIComponent(n?.id||'')));
   const panel=document.getElementById('topicMapDetail');
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
 
@@ -38,12 +40,12 @@
     const relationHtml=connected.slice(0,10).map(e=>{
       const other=byId.get(e.source===n.id?e.target:e.source);
       if(!other)return '';
-      return '<a href="../../graph/?focus='+encodeURIComponent(other.id)+'"><span>'+esc(e.type)+'</span><strong>'+esc(other.label)+'</strong></a>';
+      return '<a href="'+entityHref(other)+'"><span>'+esc(e.type)+'</span><strong>'+esc(other.label)+'</strong></a>';
     }).join('');
     panel.innerHTML='<div class="eyebrow">'+esc(n.type)+'</div><h3>'+esc(n.label)+'</h3><p>'+esc(n.summary||'')+'</p>'+
       '<div class="topic-map-meta"><span>'+esc(n.maturity||'')+'</span><span>'+esc(n.first_seen||'')+'</span></div>'+
       (relationHtml?'<h4>Connected in this theme</h4><div class="topic-map-links">'+relationHtml+'</div>':'')+
-      '<a class="topic-map-open" href="../../graph/?focus='+encodeURIComponent(n.id)+'">Open full graph →</a>';
+      '<a class="topic-map-open" href="'+entityHref(n)+'">Open detail page →</a>';
   });
 
   if(cy.elements().length)cy.fit(cy.elements(),38);

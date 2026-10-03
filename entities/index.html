@@ -1,0 +1,26 @@
+---
+layout: default
+title: Entities
+description: Browse every node in the Agent Infra knowledge graph.
+permalink: /entities/
+---
+<section class="archive-head entity-index-head">
+  <div class="eyebrow">ENTITY DIRECTORY</div>
+  <h1>每个节点，都是一页知识。</h1>
+  <p>这里收录知识图谱中的 Theme、Capability、Project、Research、Standard、Pattern、Trend、Event、Organization 与 Source。第三方链接只作为证据，不再承担节点详情页的职责。</p>
+</section>
+<section class="entity-index-tools">
+  <input id="entitySearch" type="search" placeholder="搜索 Docker、Durable、RSI、MCP...">
+  <select id="entityType"><option value="">All types</option>{% for pair in site.data.kg.ontology.node_types %}<option value="{{ pair[0] }}">{{ pair[0] }}</option>{% endfor %}</select>
+</section>
+<section class="entity-directory" id="entityDirectory">
+{% assign sorted_nodes = site.data.kg.nodes | sort: "label" %}
+{% for node in sorted_nodes %}
+  <a class="entity-directory-card" data-type="{{ node.type }}" data-search="{{ node.label | downcase }} {{ node.summary | downcase }} {{ node.id | downcase }}" href="{{ node.page | relative_url }}">
+    <div><span>{{ node.type }}</span><em>{{ node.maturity }}</em></div>
+    <h2>{{ node.label }}</h2><p>{{ node.summary }}</p>
+    <b>Open detail →</b>
+  </a>
+{% endfor %}
+</section>
+<script src="{{ '/assets/js/entities.js' | relative_url }}?v=kg-v5"></script>
