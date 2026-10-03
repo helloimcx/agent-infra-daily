@@ -65,5 +65,8 @@
     eventView.hidden=isGrowth;growthView.hidden=!isGrowth;
   });
   document.getElementById('evoReset').addEventListener('click',()=>{theme.value='';type.value='';view.value='events';eventView.hidden=false;growthView.hidden=true;render();});
+  const params=new URLSearchParams(location.search);
+  if(params.get('theme'))theme.value=params.get('theme');
+  if(params.get('type'))type.value=params.get('type');
   render();
 })();
