@@ -302,5 +302,17 @@
     ],
     "first_seen": "2026-10-03",
     "last_verified": "2026-10-03"
+  },
+  {
+    "id": "claim:openshell-provisioning-operation",
+    "entity": "project:nvidia-openshell",
+    "text": "OpenShell 已开始把 sandbox create/start provisioning 建模为跨调用方取消与 gateway 重启仍保留 ownership 的持久操作，并为 image preparation 与 admission 使用独立 deadline，同时对 late driver result 做 fencing。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:openshell-provisioning-4038"
+    ],
+    "first_seen": "2026-10-04",
+    "last_verified": "2026-10-04"
   }
 ]

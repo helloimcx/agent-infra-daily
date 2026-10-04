@@ -1044,6 +1044,17 @@
             "out-of-band resilience"
           ]
         ]
+      },
+      {
+        "id": "openshell-provisioning-state",
+        "type": "diagram",
+        "kind": "mixed",
+        "title": "OpenShell Sandbox Provisioning Control Plane",
+        "summary": "2026-10-03 的实现把 image preparation、admission 和 driver provisioning 分成可持久化阶段，并用 operation ownership 与 fencing 处理 caller cancellation、gateway restart 和 late result。",
+        "evidence": [
+          "source:openshell-provisioning-4038"
+        ],
+        "mermaid": "stateDiagram-v2\n  [*] --> Preparing: create/start accepted\n  Preparing --> Admission: image ready / preparation state persisted\n  Preparing --> Failed: preparation deadline\n  Admission --> Provisioning: ownership persisted before dispatch\n  Admission --> Failed: admission deadline\n  Provisioning --> Ready: current driver result\n  Provisioning --> Cleanup: timeout / failed create after driver settles\n  Provisioning --> Provisioning: caller cancelled / gateway restart\n  Provisioning --> Fenced: stale late result after newer operation\n  Cleanup --> Failed: compensation complete\n  Ready --> [*]\n  Failed --> [*]\n  Fenced --> [*]"
       }
     ]
   },

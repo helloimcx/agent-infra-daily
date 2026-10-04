@@ -1145,7 +1145,7 @@
     "summary": "Secure runtime for autonomous agents with sandboxing and external policy enforcement.",
     "maturity": "emerging",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-03",
+    "last_verified": "2026-10-04",
     "themes": [
       "sandbox",
       "security"
@@ -1162,22 +1162,27 @@
     "limitations": [
       "平台仍在快速演进，生产规模下的 policy authoring、兼容性和运维模型需要更多验证",
       "强制执行层不能替代应用级审批和业务规则",
-      "不同 Agent 工具需要被映射到统一 capability / policy 语义"
+      "不同 Agent 工具需要被映射到统一 capability / policy 语义",
+      "当前关于 provisioning durability 的证据来自快速迭代中的 gateway 实现与回归测试，不能外推为完整的跨区域 HA 或严格 exactly-once 保证"
     ],
-    "maturity_notes": "属于新兴开源/平台能力，架构方向明确，但生态成熟度仍低于传统容器/云安全基础设施。",
+    "maturity_notes": "OpenShell 仍属快速演进的新兴运行时，但 2026-10-03 的 gateway 改动已经开始处理多副本 provisioning ownership、跨重启 deadline、late result fencing 与 failed-start recovery。这说明项目正在从“安全 sandbox/policy 概念”进入分布式控制面可靠性细化阶段；尚不能据此推断大规模生产成熟。",
     "engineering_takeaways": [
       "Harness 与安全 enforcement 分离",
       "policy 尽可能靠近真实执行边界",
-      "安全决策需要覆盖 action trajectory，而不是只做单次 tool whitelist"
+      "安全决策需要覆盖 action trajectory，而不是只做单次 tool whitelist",
+      "Sandbox create/start 本身也应建模成可持久化 operation：准备、准入、driver 调用和 cleanup 需要独立 deadline、ownership 与 fencing",
+      "调用方取消不应自动等价于底层 provisioning 取消；否则容易留下孤儿 VM、错误补偿或多副本竞态"
     ],
     "what_to_watch": [
       "policy language 和 capability model",
       "与 MCP / sandbox / browser tool 的统一控制",
-      "审计、回放和 incident response 能力"
+      "审计、回放和 incident response 能力",
+      "0.1.5 之后 preparation/admission deadline、pending operation ownership 与多 replica fencing 是否稳定进入正式 release",
+      "sandbox create/start/delete 在 gateway crash、driver late result 和 caller cancellation 下的恢复语义"
     ],
     "intro": "NVIDIA OpenShell 是 Open Agent Safety Platform 中的安全运行边界，强调把 Agent 的权限与 policy enforcement 放在 Harness 之外。它不是单纯的 sandbox，而是在执行环境之外再建立一个 Agent 无法自行关闭的控制面。",
     "content_mode": "authored",
-    "content_version": "v9",
+    "content_version": "v10",
     "architecture_flow": [
       "Agent / Harness 动作请求",
       "OpenShell Policy Boundary",
@@ -2114,5 +2119,25 @@
     "intro": "这是一手来源：SIFT 的 arXiv 论文页面与论文内容。它详细描述 pairwise judging、Bradley-Terry 聚合、tree search 和 selective expensive evaluation。",
     "content_mode": "authored",
     "content_version": "v9"
+  },
+  {
+    "id": "source:openshell-provisioning-4038",
+    "label": "OpenShell PR #4038 — provisioning deadlines and ownership",
+    "type": "Source",
+    "summary": "Primary OpenShell change that separates image-preparation and admission deadlines and persists provisioning ownership across gateway restarts.",
+    "maturity": "source",
+    "first_seen": "2026-10-04",
+    "last_verified": "2026-10-04",
+    "themes": [
+      "runtime",
+      "sandbox",
+      "security"
+    ],
+    "url": "https://github.com/NVIDIA/OpenShell/commit/8983642e280e7b0f2ed423edbffd705ef259e7c0",
+    "page": "/entities/source--openshell-provisioning-4038/",
+    "why_it_matters": "这次提交把 Sandbox provisioning 从一次同步 RPC 细化成有独立阶段、deadline、持久 ownership 和 late-result fencing 的控制面操作，是观察 Agent Sandbox 从“隔离容器”走向可靠分布式 Runtime 的直接一手证据。",
+    "intro": "这是 NVIDIA OpenShell 2026-10-03 合入的 gateway/provisioning 变更。提交为 image preparation 与 admission 设置独立 deadline，并让 create/start 请求在调用方取消、gateway restart 和 driver 延迟返回时仍保留可恢复的 operation ownership，同时增加多副本竞态回归测试。",
+    "content_mode": "authored",
+    "content_version": "v1"
   }
 ]

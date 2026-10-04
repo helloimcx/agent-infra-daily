@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-04",
+  "mode": "daily",
+  "note": "Focused update: OpenShell durable sandbox provisioning control-plane semantics.",
+  "nodes_added": [
+    "source:openshell-provisioning-4038"
+  ],
+  "nodes_updated": [
+    "project:nvidia-openshell"
+  ],
+  "edges_added": [
+    "e:openshell-provisioning-source"
+  ],
+  "edges_updated": []
+}

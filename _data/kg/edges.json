@@ -950,5 +950,19 @@
       "source:sift"
     ],
     "note": ""
+  },
+  {
+    "id": "e:openshell-provisioning-source",
+    "source": "project:nvidia-openshell",
+    "target": "source:openshell-provisioning-4038",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-04",
+    "last_verified": "2026-10-04",
+    "confidence": 1,
+    "evidence": [
+      "source:openshell-provisioning-4038"
+    ],
+    "note": "Evidence for durable provisioning ownership, phase deadlines and late-result fencing."
   }
 ]

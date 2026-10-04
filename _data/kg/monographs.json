@@ -356,6 +356,18 @@
           "OpenShell 是否重要，不取决于“又一个 sandbox runtime”，而取决于其 policy language、identity model 和 tool/network/filesystem capability 是否能跨不同 Agent Harness 使用。NVIDIA 自己强调 runtime 和 policy language 应开放，让不同 provider 能接入。",
           "后续应重点看 MCP、浏览器工具、云 credential、容器/VM 等异构执行面能否映射到统一 policy，是否有清晰审计/回放工具，以及生产环境如何处理 policy update、exception、human approval 和 false positive。"
         ]
+      },
+      {
+        "id": "provisioning-control-plane",
+        "title": "Provisioning 也需要 Durable Control Plane，而不只是 Sandbox 内部安全",
+        "evidence": [
+          "source:openshell-provisioning-4038"
+        ],
+        "paragraphs": [
+          "2026-10-03 的 gateway 改动暴露了一个很容易被 Agent Sandbox 设计忽略的层：create/start 本身也是长时间、可失败的分布式操作。OpenShell 将 image preparation 与 admission 拆成两个 deadline，并把阶段状态跨 gateway restart 持久化；这避免镜像准备时间吞掉 admission 预算，也让超时诊断能够明确指出失败发生在哪个阶段。",
+          "更关键的是 operation ownership。调用方取消、监控失败或 preparation timeout 后，已经提交给 compute driver 的请求不会被简单遗忘；gateway 在 dispatch 前持久化 ownership，等待 driver settle 后再决定 cleanup，并用 fencing 防止旧请求的 late result 覆盖更新的 operation。对于多 replica control plane，这比单纯给 RPC 加 retry 更接近正确的资源生命周期语义。",
+          "这对通用 Cloud Agent Runtime 有直接启示：任务 durability 与 sandbox provisioning durability 是两条不同但相互依赖的状态机。上层 Durable Execution 即使能恢复 Agent step，如果底层 create/start 在超时后留下 orphan compute、错误 DELETE 或旧结果回写，仍会破坏恢复语义。因此 Task Runtime、Sandbox Control Plane 与资源补偿应通过稳定 operation identity、ownership、deadline 和 fencing 对齐。"
+        ]
       }
     ]
   },
@@ -3623,6 +3635,36 @@
         "paragraphs": [
           "论文证明了资源效率路径，但 LLM judge 是否和真实生产目标一致、是否存在 reward hacking，需要额外 holdout 和独立评测。",
           "因此知识库把 Eval Scheduler 视为基础设施机会，而不把 judge 视为最终真值。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openshell-provisioning-4038",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "proves",
+        "title": "这条一手证据能证明什么",
+        "paragraphs": [
+          "该提交明确实现了 image preparation 与 admission 的独立 deadline，并把相关阶段状态跨 gateway restart 持久化。它还说明 create/start 请求在 caller cancellation、monitor failure 或 preparation timeout 后继续保留 pending provisioning ownership，而不是把客户端连接生命周期直接当成底层资源生命周期。",
+          "提交同时描述了 failed-create cleanup、late driver result fencing、multi-replica ordered regression、failed-start recovery 和 detached provisioning worker tracing，因此可以直接支持“OpenShell 正在强化分布式 provisioning 控制面语义”这一事实判断。"
+        ]
+      },
+      {
+        "id": "does-not-prove",
+        "title": "它不能证明什么",
+        "paragraphs": [
+          "单个合入提交不能证明 OpenShell 已经具备成熟的跨区域高可用，也不能证明所有 create/start/delete 路径都达到 exactly-once。这里看到的是具体故障窗口的实现修复与回归覆盖，不应外推成完整生产 SLA。",
+          "提交主要覆盖 gateway 与 compute driver 协调，不等于 Agent task journal、模型调用和外部 tool side effect 也获得相同 durability；这些仍属于更上层 Runtime/Harness 的职责。"
+        ]
+      },
+      {
+        "id": "engineering-reading",
+        "title": "为什么值得进入长期知识库",
+        "paragraphs": [
+          "多数 Sandbox 对比只讨论 container、microVM、启动速度和隔离强度，但真正服务百万级 Cloud Agent 时，控制面的 create/start/stop 本身就是分布式系统。这个提交提供了少见而具体的工程样本：deadline 要按阶段建模，ownership 要先于 dispatch 持久化，caller cancellation 与 resource cancellation 要解耦，late result 需要 fencing。",
+          "这些机制可以迁移为通用 Sandbox Runtime 评审清单，因此它的价值高于一次普通 bugfix。"
         ]
       }
     ]
