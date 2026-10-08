@@ -1182,7 +1182,7 @@
     ],
     "intro": "NVIDIA OpenShell 是 Open Agent Safety Platform 中的安全运行边界，强调把 Agent 的权限与 policy enforcement 放在 Harness 之外。它不是单纯的 sandbox，而是在执行环境之外再建立一个 Agent 无法自行关闭的控制面。",
     "content_mode": "authored",
-    "content_version": "v10",
+    "content_version": "v9",
     "architecture_flow": [
       "Agent / Harness 动作请求",
       "OpenShell Policy Boundary",
@@ -2138,6 +2138,6 @@
     "why_it_matters": "这次提交把 Sandbox provisioning 从一次同步 RPC 细化成有独立阶段、deadline、持久 ownership 和 late-result fencing 的控制面操作，是观察 Agent Sandbox 从“隔离容器”走向可靠分布式 Runtime 的直接一手证据。",
     "intro": "这是 NVIDIA OpenShell 2026-10-03 合入的 gateway/provisioning 变更。提交为 image preparation 与 admission 设置独立 deadline，并让 create/start 请求在调用方取消、gateway restart 和 driver 延迟返回时仍保留可恢复的 operation ownership，同时增加多副本竞态回归测试。",
     "content_mode": "authored",
-    "content_version": "v1"
+    "content_version": "v9"
   }
 ]
