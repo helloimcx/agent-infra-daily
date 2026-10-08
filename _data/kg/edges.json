@@ -779,7 +779,7 @@
     "last_verified": "2026-10-03",
     "confidence": 0.7,
     "evidence": [
-      "event:daily-2026-10-03"
+      "source:mid-harness"
     ],
     "note": ""
   },
@@ -964,5 +964,103 @@
       "source:openshell-provisioning-4038"
     ],
     "note": "Evidence for durable provisioning ownership, phase deadlines and late-result fencing."
+  },
+  {
+    "id": "e:srt-path-evidence",
+    "source": "project:anthropic-sandbox-runtime",
+    "target": "source:srt-path-20261005",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:srt-path-20261005"
+    ],
+    "first_seen": "2026-10-05",
+    "last_verified": "2026-10-05",
+    "note": "First-party merged source evidence."
+  },
+  {
+    "id": "e:srt-implements-policy",
+    "source": "project:anthropic-sandbox-runtime",
+    "target": "cap:policy-enforcement",
+    "type": "IMPLEMENTS",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:srt-path-20261005"
+    ],
+    "first_seen": "2026-10-05",
+    "last_verified": "2026-10-05",
+    "note": "First-party merged source evidence."
+  },
+  {
+    "id": "e:openshell-otlp",
+    "source": "project:nvidia-openshell",
+    "target": "source:openshell-otlp-20261006",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:openshell-otlp-20261006"
+    ],
+    "first_seen": "2026-10-06",
+    "last_verified": "2026-10-06",
+    "note": "First-party merged source evidence."
+  },
+  {
+    "id": "e:durable-delta",
+    "source": "cap:durable-execution",
+    "target": "source:langgraph-delta-20261007",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:langgraph-delta-20261007"
+    ],
+    "first_seen": "2026-10-07",
+    "last_verified": "2026-10-07",
+    "note": "First-party merged source evidence."
+  },
+  {
+    "id": "e:srt-proxy-evidence",
+    "source": "project:anthropic-sandbox-runtime",
+    "target": "source:srt-proxy-20261008",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:srt-proxy-20261008"
+    ],
+    "first_seen": "2026-10-08",
+    "last_verified": "2026-10-08",
+    "note": "First-party merged source evidence."
+  },
+  {
+    "id": "e:srt-network-policy",
+    "source": "project:anthropic-sandbox-runtime",
+    "target": "cap:network-policy",
+    "type": "IMPLEMENTS",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:srt-proxy-20261008"
+    ],
+    "first_seen": "2026-10-08",
+    "last_verified": "2026-10-08",
+    "note": "First-party merged source evidence."
+  },
+  {
+    "id": "e:openshell-ha",
+    "source": "project:nvidia-openshell",
+    "target": "source:openshell-ha-20261008",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:openshell-ha-20261008"
+    ],
+    "first_seen": "2026-10-08",
+    "last_verified": "2026-10-08",
+    "note": "First-party merged source evidence."
   }
 ]

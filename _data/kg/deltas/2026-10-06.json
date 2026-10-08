@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-06",
+  "mode": "backfill",
+  "note": "OpenShell Supervisor OTLP trace evidence and related Project monograph/asset.",
+  "nodes_added": [
+    "source:openshell-otlp-20261006"
+  ],
+  "nodes_updated": [
+    "project:nvidia-openshell"
+  ],
+  "edges_added": [
+    "e:openshell-otlp"
+  ],
+  "edges_updated": []
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "kind": "analysis",
-  "note": "Architecture layers are an analytical projection over the evidence graph. Membership is curated from existing nodes and must not be treated as a factual ontology edge.",
+  "note": "Architecture layers are curated analysis projections over the evidence graph, never ontology facts. The October 2026 backfill adds Anthropic sandbox-runtime across Policy and Sandbox boundaries based on authored technical analysis.",
   "layers": [
     {
       "id": "experience",
@@ -69,7 +69,8 @@
         "cap:policy-enforcement",
         "pattern:credential-broker",
         "project:nvidia-openshell",
-        "project:docker-sandbox-kit"
+        "project:docker-sandbox-kit",
+        "project:anthropic-sandbox-runtime"
       ]
     },
     {
@@ -81,7 +82,8 @@
         "project:docker-cloud-sandboxes",
         "project:nvidia-openshell",
         "cap:cloud-computer",
-        "theme:sandbox"
+        "theme:sandbox",
+        "project:anthropic-sandbox-runtime"
       ]
     },
     {

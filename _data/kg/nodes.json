@@ -184,7 +184,7 @@
     "summary": "Resume work after crashes without repeating completed side effects.",
     "maturity": "production",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-03",
+    "last_verified": "2026-10-07",
     "themes": [
       "runtime",
       "cloud-agent"
@@ -206,12 +206,14 @@
     "engineering_considerations": [
       "不要把“可恢复线程”与真正的 durable execution 混为一谈",
       "所有会产生外部副作用的 tool call 都要进入一致的执行语义",
-      "恢复机制必须能跨部署版本、网络故障和进程生命周期工作"
+      "恢复机制必须能跨部署版本、网络故障和进程生命周期工作",
+      "恢复后比较 channel 写入顺序与无中断 baseline，验证 task ID、checkpoint fork 和因果重播保持一致"
     ],
     "failure_modes": [
       "只保存对话/Agent state，但没有记录外部副作用",
       "从 checkpoint 重新执行时重复调用昂贵模型或重复执行工具",
-      "需要人工审批时让 worker 长时间占用资源"
+      "需要人工审批时让 worker 长时间占用资源",
+      "恢复并行 exit-durability checkpoint 时 DeltaChannel writes 重复或错序，导致状态与 live 执行不等价"
     ],
     "intro": "Durable Execution 是长时间运行 Agent 的“可靠执行底座”：任务可以经历进程崩溃、机器替换、部署重启或长时间等待，而不必从头再来。它关注的不是保存一份对话，而是让整个执行历史、已完成结果和外部副作用都具备可恢复语义。",
     "content_mode": "authored",
@@ -1145,7 +1147,7 @@
     "summary": "Secure runtime for autonomous agents with sandboxing and external policy enforcement.",
     "maturity": "emerging",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-04",
+    "last_verified": "2026-10-08",
     "themes": [
       "sandbox",
       "security"
@@ -1171,7 +1173,9 @@
       "policy 尽可能靠近真实执行边界",
       "安全决策需要覆盖 action trajectory，而不是只做单次 tool whitelist",
       "Sandbox create/start 本身也应建模成可持久化 operation：准备、准入、driver 调用和 cleanup 需要独立 deadline、ownership 与 fencing",
-      "调用方取消不应自动等价于底层 provisioning 取消；否则容易留下孤儿 VM、错误补偿或多副本竞态"
+      "调用方取消不应自动等价于底层 provisioning 取消；否则容易留下孤儿 VM、错误补偿或多副本竞态",
+      "Supervisor OTLP 与 Gateway traceparent 对齐，以区分 policy attach、agent start 与 egress authorize/resolve/dial 的耗时",
+      "Gateway pod roll 中应等待 replacement supervisor session 交接并重置 reconnect backoff，避免短暂错误标记 Not Ready"
     ],
     "what_to_watch": [
       "policy language 和 capability model",
@@ -2137,6 +2141,173 @@
     "page": "/entities/source--openshell-provisioning-4038/",
     "why_it_matters": "这次提交把 Sandbox provisioning 从一次同步 RPC 细化成有独立阶段、deadline、持久 ownership 和 late-result fencing 的控制面操作，是观察 Agent Sandbox 从“隔离容器”走向可靠分布式 Runtime 的直接一手证据。",
     "intro": "这是 NVIDIA OpenShell 2026-10-03 合入的 gateway/provisioning 变更。提交为 image preparation 与 admission 设置独立 deadline，并让 create/start 请求在调用方取消、gateway restart 和 driver 延迟返回时仍保留可恢复的 operation ownership，同时增加多副本竞态回归测试。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:srt-path-20261005",
+    "label": "Anthropic SRT literal filesystem paths",
+    "type": "Source",
+    "summary": "Merged literal-path marker and filesystem path entry parsing changes across operating-system backends.",
+    "maturity": "source",
+    "first_seen": "2026-10-05",
+    "last_verified": "2026-10-05",
+    "themes": [
+      "sandbox",
+      "security"
+    ],
+    "url": "https://github.com/anthropics/sandbox-runtime/commit/80a235195af5",
+    "page": "/entities/source--srt-path-20261005/",
+    "intro": "Anthropic 于北京时间 2026-10-05 合入 Sandbox Runtime 字面路径支持。变更跨越 path entries、glob read deny 和 Linux、macOS、Windows 相关后端，避免把真实文件路径中的 glob 元字符自动解释成通配规则。",
+    "why_it_matters": "权限语言的词法解释最终会影响真实文件访问。如果真实文件名被错误展开为 pattern，deny rule 就可能失效；它是运行时安全语义的一部分，而不只是路径工具函数。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openshell-otlp-20261006",
+    "label": "OpenShell Supervisor OTLP traces",
+    "type": "Source",
+    "summary": "Enables Supervisor tracing through driver-propagated OTLP endpoint and W3C traceparent.",
+    "maturity": "source",
+    "first_seen": "2026-10-06",
+    "last_verified": "2026-10-06",
+    "themes": [
+      "runtime",
+      "observability",
+      "sandbox"
+    ],
+    "url": "https://github.com/NVIDIA/OpenShell/commit/d1e8f44a062a",
+    "page": "/entities/source--openshell-otlp-20261006/",
+    "intro": "2026-10-06 OpenShell 合入 Supervisor OTLP 支持。Gateway 通过 Kubernetes、Docker、Podman 与 VM driver 传递 endpoint 和 W3C TRACEPARENT，将 policy discovery、attach、agent start 及 egress 子阶段串进 tracing。",
+    "why_it_matters": "Agent 任务的故障常在 API 之外：Driver、Supervisor 和网络策略花费的时间难以从 Gateway 单个请求辨别。跨组件 Trace 能把启动失败与网络授权阶段的真实延迟归因到具体工作环节。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:langgraph-delta-20261007",
+    "label": "LangGraph DeltaChannel exit replay fix",
+    "type": "Source",
+    "summary": "Fixes duplicated and out-of-order checkpoint DeltaChannel writes when resuming exit-durability runs.",
+    "maturity": "source",
+    "first_seen": "2026-10-07",
+    "last_verified": "2026-10-07",
+    "themes": [
+      "runtime",
+      "memory"
+    ],
+    "url": "https://github.com/langchain-ai/langgraph/commit/3a1796ecf072",
+    "page": "/entities/source--langgraph-delta-20261007/",
+    "intro": "2026-10-07 合入的 LangGraph 修复针对并行 interrupt 后从 exit-durability checkpoint 恢复时，DeltaChannel 写入被重复存储、又因 task ID 排序而可能错序回放的具体故障。",
+    "why_it_matters": "恢复的正确性不只是 worker 能重新调度。如果恢复后的状态累计了旧分支不应出现的事件或重复增量，Agent 后续决策与显示的历史都可能错误，即便作业最终返回成功。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:srt-proxy-20261008",
+    "label": "Anthropic standalone srt-proxy external decider",
+    "type": "Source",
+    "summary": "Adds a standalone HTTP proxy mode with external decider protocol, request-scoped verdicts and fail-closed behavior.",
+    "maturity": "source",
+    "first_seen": "2026-10-08",
+    "last_verified": "2026-10-08",
+    "themes": [
+      "security",
+      "sandbox"
+    ],
+    "url": "https://github.com/anthropics/sandbox-runtime/commit/c6d5baa6867e",
+    "page": "/entities/source--srt-proxy-20261008/",
+    "intro": "Anthropic 于北京时间 10 月 8 日推出独立 srt-proxy 模式。HTTP Proxy 可在不运行受限子进程的主机上运行，通过独立进程的长度前缀 JSON 协议获取 allow、deny 或 body-first 判定。",
+    "why_it_matters": "这使远端 Agent 不必与安全决策逻辑共处一个受控进程。外部 decider 可以成为 Policy Decision Plane，Proxy 负责 Network Enforcement，但其失效模式、边界校验和凭据注入必须明确说明。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openshell-ha-20261008",
+    "label": "OpenShell gateway pod roll readiness fix",
+    "type": "Source",
+    "summary": "Resets Supervisor reconnect backoff and delays readiness demotion during redirected gateway session handoff.",
+    "maturity": "source",
+    "first_seen": "2026-10-08",
+    "last_verified": "2026-10-08",
+    "themes": [
+      "runtime",
+      "sandbox"
+    ],
+    "url": "https://github.com/NVIDIA/OpenShell/commit/9b5bcdd7a291",
+    "page": "/entities/source--openshell-ha-20261008/",
+    "intro": "北京时间 10 月 8 日 OpenShell 修复 Gateway Pod 滚动升级期间的 Ready 状态短暂失效：Supervisor 已建立成功会话却未重置重连退避，旧 Replica redirect 后又过早降低 Sandbox 状态。",
+    "why_it_matters": "多副本路由和 redirect 只是会话迁移的前提，不保证任务不中断。最终用户依赖 Sandbox Ready 这个可用性承诺，控制面状态更新竞态会让已存在的资源瞬间不可操作。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openswe-workers-20261008",
+    "label": "Open SWE asynchronous task coordinator workers",
+    "type": "Source",
+    "summary": "Introduces opt-in task coordinator and asynchronous workers with transcript attribution and cancellation-aware wakeups.",
+    "maturity": "source",
+    "first_seen": "2026-10-08",
+    "last_verified": "2026-10-08",
+    "themes": [
+      "harness",
+      "cloud-agent"
+    ],
+    "url": "https://github.com/langchain-ai/open-swe/commit/1483d1e8cd6f",
+    "page": "/entities/source--openswe-workers-20261008/",
+    "intro": "2026-10-08 Open SWE 合入 task coordinator 与异步 Worker。功能默认由关闭的偏好开关控制，合入说明涉及 worker follow-ups、任务事件归属、取消后的唤醒抑制和将不可信子任务输出隔离展示。",
+    "why_it_matters": "异步多 Agent 基础设施的主要风险是子任务上下文归属、取消与迟到 completion。如果后台结果错误地唤醒主线程，或从工具输出中注入新的高优先级指令，会损害整个工程工作流。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "project:anthropic-sandbox-runtime",
+    "label": "Anthropic sandbox-runtime",
+    "type": "Project",
+    "summary": "OS-level filesystem and network sandbox with typed path policy and standalone external-decider HTTP proxy.",
+    "maturity": "active-development",
+    "first_seen": "2026-10-05",
+    "last_verified": "2026-10-08",
+    "themes": [
+      "sandbox",
+      "security"
+    ],
+    "url": "https://github.com/anthropics/sandbox-runtime",
+    "page": "/entities/project--anthropic-sandbox-runtime/",
+    "intro": "Anthropic sandbox-runtime 为任意进程提供无需完整容器的操作系统级文件和网络访问限制，并以独立的代理执行 HTTP 请求级权限策略。2026 年 10 月的变更表明，其设计重点正在从“配置允许名单”深入到路径语义、跨平台执行和外部权限决策。",
+    "why_it_matters": "Agent 一旦可以执行不受信任的代码、shell 与 HTTP 请求，Harness 里声明的工具白名单就不再足够。独立 enforcement 能否真正执行 operator intent，取决于路径、网络、凭据与平台差异是否被清晰表达和审计。",
+    "definition": "anthropics/sandbox-runtime 是把文件读写与网络请求限制下沉到 OS 级执行边界的轻量沙盒工具，可在不启动完整容器的场景为任意进程添加权限约束。",
+    "operating_model": "调用方将可访问文件与网络目标声明为沙盒配置，runtime 通过不同操作系统 backend 执行限制，网络经受控 HTTP proxy 判定。srt-proxy 模式将请求转交独立 external decider，以每次请求的 verdict 处理允许、拒绝与 body inspection。",
+    "key_capabilities": [
+      "cap:network-policy",
+      "cap:policy-enforcement"
+    ],
+    "architecture_role": "属于 Sandbox & Execution 与 Policy & Credentials 两层的交界，不负责模型推理、Agent task journaling 或工作区持久化；它负责把用户权限意图映射到真实系统调用和受控网络路径。",
+    "architecture_flow": [
+      "Policy 声明 Path Literal/Pattern 和网络目标",
+      "解析并验证 backend 可表达的类型化文件权限",
+      "OS backend 限制工作负载的文件/进程访问",
+      "HTTP proxy 对出站请求询问本机 filter 或外部 decider",
+      "按 scoped verdict 允许请求或拒绝，并保留审计原因"
+    ],
+    "limitations": [
+      "Linux、macOS、Windows 的底层隔离原语不同，必须运行相同的 policy-conformance 测试验证等价性",
+      "HTTP Proxy 无法天然拦截一切网络协议，Host/SNI、opaque tunnel 和地址解析需要单独建模",
+      "外部 decider 可能带来延迟与单点可用性风险，fail-closed 应与高可用部署配合",
+      "当前合入功能并不证明完整生产 SLA、形式化安全性或不存在绕行路径"
+    ],
+    "maturity_notes": "2026-10-05 开始明确 literal path marker 并修改相关平台实现，10 月 8 日增加外部 decider 独立代理并扩展 per-request policy 选项；仍处于快速演进的安全基础设施路线。",
+    "engineering_takeaways": [
+      "将真实路径与通配模式作为不同类型直至后端 enforcement",
+      "Policy 解析不确定时拒绝，而不是把无匹配的 deny 当作允许",
+      "为 Host/SNI/解析后的目标 IP、请求 header 与凭据 scope 定义一致性检查",
+      "外部 decider 必须具备失联拒绝、超时、可观察拒绝原因及独立高可用"
+    ],
+    "what_to_watch": [
+      "跨操作系统的 literal/glob conformance regression",
+      "外部 decider 协议兼容性、请求授权缓存及多租户隔离",
+      "TLS CONNECT、opaque tunnel 与私有地址防护是否全部受配置约束",
+      "高频网络判定下的延迟、授权审计与运营成本"
+    ],
     "content_mode": "authored",
     "content_version": "v9"
   }

@@ -314,5 +314,65 @@
     ],
     "first_seen": "2026-10-04",
     "last_verified": "2026-10-04"
+  },
+  {
+    "id": "claim:srt-literal-path",
+    "entity": "project:anthropic-sandbox-runtime",
+    "text": "Anthropic Sandbox Runtime 合入 literal path marker，使 filesystem policy 能显式区分真实路径与 glob 模式，并调整各平台相关 enforcement 代码。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:srt-path-20261005"
+    ],
+    "first_seen": "2026-10-05",
+    "last_verified": "2026-10-05"
+  },
+  {
+    "id": "claim:openshell-otlp",
+    "entity": "project:nvidia-openshell",
+    "text": "OpenShell 通过 compute driver 传播 Gateway OTLP endpoint 和 W3C traceparent，关联 Supervisor 的 sandbox startup 和 egress 授权阶段。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:openshell-otlp-20261006"
+    ],
+    "first_seen": "2026-10-06",
+    "last_verified": "2026-10-06"
+  },
+  {
+    "id": "claim:replay-causal-consistency",
+    "entity": "trend:persistent-agent-runtime",
+    "text": "持久 Agent 的恢复正确性包含 checkpoint writes 的顺序与归属，而非仅在 worker crash 后可重新运行；LangGraph 的 DeltaChannel 修复揭示了这一实现风险。",
+    "kind": "analysis",
+    "confidence": 0.93,
+    "evidence": [
+      "source:langgraph-delta-20261007"
+    ],
+    "first_seen": "2026-10-07",
+    "last_verified": "2026-10-07"
+  },
+  {
+    "id": "claim:srt-proxy-decider",
+    "entity": "project:anthropic-sandbox-runtime",
+    "text": "Anthropic srt-proxy 支持独立外部 decider 对 HTTP 请求给出 allow、deny 或 body-first verdict，并在失联、超时或协议错误时拒绝请求。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:srt-proxy-20261008"
+    ],
+    "first_seen": "2026-10-08",
+    "last_verified": "2026-10-08"
+  },
+  {
+    "id": "claim:openshell-roll-readiness",
+    "entity": "project:nvidia-openshell",
+    "text": "OpenShell 修复滚动升级时 Supervisor 成功连接后退避未复位及旧 Gateway 在 replacement session 接管前提前把 Sandbox 降为 Provisioning 的问题。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:openshell-ha-20261008"
+    ],
+    "first_seen": "2026-10-08",
+    "last_verified": "2026-10-08"
   }
 ]

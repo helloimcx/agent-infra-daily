@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-07",
+  "mode": "backfill",
+  "note": "LangGraph DeltaChannel replay correctness evidence and Durable Execution updates.",
+  "nodes_added": [
+    "source:langgraph-delta-20261007"
+  ],
+  "nodes_updated": [
+    "cap:durable-execution",
+    "trend:persistent-agent-runtime"
+  ],
+  "edges_added": [
+    "e:durable-delta"
+  ],
+  "edges_updated": []
+}

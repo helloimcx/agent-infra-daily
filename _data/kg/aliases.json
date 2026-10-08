@@ -14,5 +14,8 @@
   "arex-2": "research:arex-2",
   "sift": "research:sift",
   "durable execution": "cap:durable-execution",
-  "persistent workspace": "cap:persistent-workspace"
+  "persistent workspace": "cap:persistent-workspace",
+  "anthropic sandbox runtime": "project:anthropic-sandbox-runtime",
+  "sandbox-runtime": "project:anthropic-sandbox-runtime",
+  "srt-proxy": "project:anthropic-sandbox-runtime"
 }

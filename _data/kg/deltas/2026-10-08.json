@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-08",
+  "mode": "backfill",
+  "note": "Independent srt-proxy, OpenShell HA readiness and Open SWE async workers evidence.",
+  "nodes_added": [
+    "source:srt-proxy-20261008",
+    "source:openshell-ha-20261008",
+    "source:openswe-workers-20261008"
+  ],
+  "nodes_updated": [
+    "project:anthropic-sandbox-runtime",
+    "project:nvidia-openshell",
+    "trend:persistent-agent-runtime"
+  ],
+  "edges_added": [
+    "e:srt-proxy-evidence",
+    "e:srt-network-policy",
+    "e:openshell-ha"
+  ],
+  "edges_updated": []
+}

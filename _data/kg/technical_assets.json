@@ -60,6 +60,43 @@
             "durable timer / signal"
           ]
         ]
+      },
+      {
+        "id": "delta-replay-matrix",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Durable Replay Order / Branch Non-interference Matrix",
+        "summary": "本站基于 LangGraph 具体错误设计的验证矩阵，要求中断与不中断路径在语义结果上等价。",
+        "evidence": [
+          "source:langgraph-delta-20261007"
+        ],
+        "columns": [
+          "重放场景",
+          "潜在错误",
+          "验证不变量"
+        ],
+        "rows": [
+          [
+            "并行 interrupt/resume",
+            "旧 write 被再度记录",
+            "每个逻辑 write 归属一次"
+          ],
+          [
+            "Exit-mode DeltaChannel",
+            "Task ID 排序改变 live 次序",
+            "恢复顺序和 live 相同"
+          ],
+          [
+            "旧 checkpoint fork",
+            "写入渗入其他分支",
+            "Branch non-interference"
+          ],
+          [
+            "外部工具已执行但无本地确认",
+            "重新执行产生重复副作用",
+            "幂等键和核对机制"
+          ]
+        ]
       }
     ]
   },
@@ -1055,6 +1092,53 @@
           "source:openshell-provisioning-4038"
         ],
         "mermaid": "stateDiagram-v2\n  [*] --> Preparing: create/start accepted\n  Preparing --> Admission: image ready / preparation state persisted\n  Preparing --> Failed: preparation deadline\n  Admission --> Provisioning: ownership persisted before dispatch\n  Admission --> Failed: admission deadline\n  Provisioning --> Ready: current driver result\n  Provisioning --> Cleanup: timeout / failed create after driver settles\n  Provisioning --> Provisioning: caller cancelled / gateway restart\n  Provisioning --> Fenced: stale late result after newer operation\n  Cleanup --> Failed: compensation complete\n  Ready --> [*]\n  Failed --> [*]\n  Fenced --> [*]"
+      },
+      {
+        "id": "supervisor-ha-windows",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "OpenShell Supervisor Handoff Failure Windows",
+        "summary": "以已修复的重连退避和状态降级窗口对照负载可用性风险，而不把实现等待参数写成服务承诺。",
+        "evidence": [
+          "source:openshell-ha-20261008"
+        ],
+        "columns": [
+          "故障窗口",
+          "之前的错误",
+          "修复措施",
+          "运营验证"
+        ],
+        "rows": [
+          [
+            "Gateway 多次滚动",
+            "backoff 累积至 30s",
+            "accepted session 重置",
+            "多轮连续 pod roll"
+          ],
+          [
+            "Redirect 到 replacement",
+            "接管前误降 Sandbox Ready",
+            "等待 replacement 最多 5s",
+            "客户端可见失败率"
+          ],
+          [
+            "无重定向时断线",
+            "误进入迁移等待",
+            "仅 redirect 已发出才等待",
+            "单 Replica 场景"
+          ]
+        ]
+      },
+      {
+        "id": "supervisor-otlp-trace",
+        "type": "diagram",
+        "kind": "mixed",
+        "title": "OpenShell Cross-Boundary Startup / Egress Traces",
+        "summary": "按 Supervisor 真实 OTLP 改动的可追踪范围绘制，而非由图谱自动连接。",
+        "evidence": [
+          "source:openshell-otlp-20261006"
+        ],
+        "mermaid": "sequenceDiagram\n  participant G as Gateway\n  participant D as Compute Driver\n  participant S as Sandbox Supervisor\n  G->>D: launch + OTLP endpoint + TRACEPARENT\n  D->>S: forward startup context\n  S->>S: policy load / boundary attach / agent start\n  S->>G: supervisor RPC with trace context\n  S->>S: egress authorize / resolve / dial"
       }
     ]
   },
@@ -1758,6 +1842,73 @@
             "Durable state cost / active user",
             "可控",
             "证明规模化可行"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "project:anthropic-sandbox-runtime",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "external-decider-flow",
+        "type": "diagram",
+        "kind": "mixed",
+        "title": "SRT Policy / External Decider Execution Flow",
+        "summary": "独立 authored 的路径政策与 HTTP proxy 判定流程，分离文件系统 enforcement 和外部网络授权。",
+        "evidence": [
+          "source:srt-path-20261005",
+          "source:srt-proxy-20261008"
+        ],
+        "mermaid": "flowchart TB\n  User[Operator Policy] --> Path[LiteralPath or GlobPattern]\n  Path --> OS[OS Backend Enforcement]\n  Workload[Agent workload local or remote] --> Proxy[srt-proxy HTTP]\n  Proxy --> Decide[External Decider]\n  Decide -->|allow| Outbound[Filtered Internet Request]\n  Decide -->|deny or timeout| Reject[Fail Closed]\n  Decide -->|body-first| Inspect[Inspect Request Body]\n  Inspect --> Decide"
+      },
+      {
+        "id": "policy-failure-boundaries",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Filesystem / HTTP Authority Failure Matrix",
+        "summary": "列出多 OS 字面路径、远端判定、TLS Host/SNI 与协议盲区的独立失效方式及防护边界。",
+        "evidence": [
+          "source:srt-path-20261005",
+          "source:srt-proxy-20261008"
+        ],
+        "columns": [
+          "边界",
+          "风险",
+          "实现控制",
+          "需要额外验证"
+        ],
+        "rows": [
+          [
+            "Literal vs Glob",
+            "误展开导致 deny 缺失",
+            "显式区分声明类型",
+            "跨 OS 路径 conformance"
+          ],
+          [
+            "External Decider",
+            "失联误放行",
+            "超时拒绝",
+            "HA 与超时 SLO"
+          ],
+          [
+            "TLS CONNECT",
+            "Host/SNI 目标漂移",
+            "目标与 server name 校验",
+            "绕行与配置选项"
+          ],
+          [
+            "Opaque Tunnel",
+            "策略不可见",
+            "拒绝不可检查隧道的选项",
+            "非 HTTP 流量覆盖"
+          ],
+          [
+            "单请求 Credential",
+            "权限扩散",
+            "Scoped verdict 与 header 约束",
+            "日志脱敏与授权有效期"
           ]
         ]
       }

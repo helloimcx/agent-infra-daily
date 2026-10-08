@@ -368,6 +368,28 @@
           "更关键的是 operation ownership。调用方取消、监控失败或 preparation timeout 后，已经提交给 compute driver 的请求不会被简单遗忘；gateway 在 dispatch 前持久化 ownership，等待 driver settle 后再决定 cleanup，并用 fencing 防止旧请求的 late result 覆盖更新的 operation。对于多 replica control plane，这比单纯给 RPC 加 retry 更接近正确的资源生命周期语义。",
           "这对通用 Cloud Agent Runtime 有直接启示：任务 durability 与 sandbox provisioning durability 是两条不同但相互依赖的状态机。上层 Durable Execution 即使能恢复 Agent step，如果底层 create/start 在超时后留下 orphan compute、错误 DELETE 或旧结果回写，仍会破坏恢复语义。因此 Task Runtime、Sandbox Control Plane 与资源补偿应通过稳定 operation identity、ownership、deadline 和 fencing 对齐。"
         ]
+      },
+      {
+        "id": "distributed-tracing",
+        "title": "Supervisor OTLP：Gateway、Driver 与网络阶段的跨边界追踪",
+        "evidence": [
+          "source:openshell-otlp-20261006"
+        ],
+        "paragraphs": [
+          "OpenShell 在 10 月 6 日的 Supervisor tracing 变更中通过 Driver 传播 OTLP endpoint 和 W3C TRACEPARENT，将启动阶段和出站授权纳入相同因果链。Gateway 的 create/start 延迟由此可以被拆到 policy discovery、boundary attach、agent startup，以及每次 egress 的 authorize、resolve 和 dial。",
+          "这不代表 Trace 数据一定无损，也不意味着请求的外部副作用被持久化。架构上应继续分离 sampled trace、policy audit 与低基数容量指标，并在 Agent、Sandbox 和 Operation 身份之间保留可恢复的 correlation。"
+        ]
+      },
+      {
+        "id": "ha-roll-readiness",
+        "title": "多副本 Gateway 滚动升级期间的 Ready 状态竞态",
+        "evidence": [
+          "source:openshell-ha-20261008"
+        ],
+        "paragraphs": [
+          "10 月 8 日修复表明，一致性哈希和 SessionRedirect 并不能自动保证 Sandbox 在 pod roll 中保持 Ready。Supervisor 曾在 accepted session 后保留不断累积的 reconnect backoff，连续重启可把重连等待推向 30 秒的实现上限。",
+          "旧 Gateway 发出 redirect 后立即降级 Sandbox，又会在 replacement session 尚未发布时制造对用户可见的 Provisioning 窗口。修复改为在符合条件时最多等待 5 秒接管；这两个数字只属于具体实现的退避和等待预算，不是可靠性 SLA。"
+        ]
       }
     ]
   },
@@ -796,6 +818,17 @@
         "paragraphs": [
           "如果任务完全可重做、没有昂贵模型调用、没有外部副作用、失败后从头开始成本很低，那么普通 queue + retry 可能已经足够。引入 durable runtime 会带来新的语义和运维复杂度。",
           "它最适合那些执行时间长、单步成本高、需要人工等待或包含不可逆 side effect 的任务。对 Agent 平台，通常从“模型调用很贵且任务要跨进程”开始就会逐渐体现价值。"
+        ]
+      },
+      {
+        "id": "delta-channel-replay",
+        "title": "DeltaChannel 恢复排序：结果可重启仍可能在逻辑上错误",
+        "evidence": [
+          "source:langgraph-delta-20261007"
+        ],
+        "paragraphs": [
+          "LangGraph 的 exit-durability 修复演示了一个常被忽视的持久化错误：checkpoint 内已有的 task writes 在 resume 时被新的 ID 重复记录，导致原本 in1、p、r 的 live 顺序在恢复后多出一个 p。即使简单去重，还可能改变 superstep 顺序。",
+          "真正可靠的 Durable Execution 必须规定每条 write 的归属、task ID、checkpoint branch 与 replay order，而不仅是“进程能重启”。对 Agent 要特别比较恢复前后长期记忆、会话消息及外部工具 trace 的因果等价性。"
         ]
       }
     ]
@@ -2085,6 +2118,18 @@
         "paragraphs": [
           "应持续观察 workspace resume P95、跨 worker task recovery rate、idle compute ratio、long-tail task duration、duplicate side-effect incident 和 durable state cost 等指标。",
           "只有这些数据在真实大规模负载下显示“状态与计算解耦”比长寿命机器更可靠、更便宜，Persistent Agent Runtime 才能从架构叙事成长为稳定基础设施类别。"
+        ]
+      },
+      {
+        "id": "replay-and-worker-provenance",
+        "title": "持久线程与异步子任务需要稳定的事件归属",
+        "evidence": [
+          "source:langgraph-delta-20261007",
+          "source:openswe-workers-20261008"
+        ],
+        "paragraphs": [
+          "LangGraph 重播错误与 Open SWE 异步 worker 功能共同暴露了持久 Agent 的新边界：事件必须带有稳定执行或任务身份，并能说明是哪个 branch、哪个 worker generation、哪次恢复所产生。只保留一次用户对话的文本顺序不足以复现系统真正发生过的操作。",
+          "对百万用户 Cloud Agent，应该把 parent thread、child task、workspace 和 sandbox session 分层持久化。异步 worker 结果必须携带 provenance，不可信输出不能重写上层权限；而 Durable Replay 则要验证同一工作流在中断和不中断时仍收敛到等价状态。"
         ]
       }
     ]
@@ -3665,6 +3710,266 @@
         "paragraphs": [
           "多数 Sandbox 对比只讨论 container、microVM、启动速度和隔离强度，但真正服务百万级 Cloud Agent 时，控制面的 create/start/stop 本身就是分布式系统。这个提交提供了少见而具体的工程样本：deadline 要按阶段建模，ownership 要先于 dispatch 持久化，caller cancellation 与 resource cancellation 要解耦，late result 需要 fencing。",
           "这些机制可以迁移为通用 Sandbox Runtime 评审清单，因此它的价值高于一次普通 bugfix。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:srt-path-20261005",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "proof",
+        "title": "可核验的实现范围",
+        "paragraphs": [
+          "合并提交 #621 跨越路径解析器、sandbox 配置和三个平台的相关 enforcement 代码，直接表明项目把字面路径与匹配模式视为不同的规则表达。它支持“policy 编译与后端解释必须保持一致”这一工程问题的识别。",
+          "提交中的修改还覆盖 README 和测试侧，使 literal-path 不是一个仅供内部调用的隐藏开关。权限规则需要明确语法，而不能从字符串是否包含某个符号来猜测用户意图。"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "limits",
+        "title": "来源尚不能证明的安全性质",
+        "paragraphs": [
+          "这一提交不能证明所有 symlink race、未创建路径、Unicode 规范化以及各种文件系统上的行为已经完全等价，也没有给出形式化的跨后端语义证明。",
+          "文件系统规则的正确解释不能自动证明 HTTP proxy 对 Host/SNI、内网 IP 或 opaque tunnel 具有同样防护；这些属于独立网络权限控制，必须提供另外的实现证据。"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "reading",
+        "title": "可用于架构验收的检验问题",
+        "paragraphs": [
+          "建议建立专门的 policy conformance corpus：将包含星号、方括号的真实文件名与真正的 glob 模式成对测试，并覆盖 symlink、路径不存在、deny/allow 同时命中等情况。",
+          "在生产配置加载阶段，应记录 typed policy、路径归一化和最终 backend 支持的控制能力。遇到无法安全执行的规则时，拒绝启动优于静默弱化 deny 限制。"
+        ],
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "entity": "source:openshell-otlp-20261006",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "proof",
+        "title": "跨边界上下文传播的具体实现",
+        "paragraphs": [
+          "提交说明多个 compute driver 从 Gateway 获取 OTLP endpoint 并传给 supervisor，而不是允许驱动 TOML 任意覆盖。Supervisor 以 openshell-supervisor 为 service 名，附加 sandbox ID，并在退出前尝试 flush。",
+          "启动 span 覆盖 image policy discovery、policy load、boundary attach、agent 与 access startup；对出站连接继续分解 authorize、resolve 和 dial。这里的细分可以直接用于查明连接失败属于权限拒绝还是网络路径。"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "limits",
+        "title": "Trace 不等于完整审计或执行保证",
+        "paragraphs": [
+          "合并代码不能证明所有生产部署都开启 exporter，更不能证明每个 span 都不会丢失。最后 flush 只是生命周期处理，不应被描述成具备持久事务日志的强保证。",
+          "OTLP trace 连接了因果视图，但不会自动带来外部工具的幂等、credential 保密或容错恢复。对高频 egress 持续全量采样也可能产生明显存储和网络成本。"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "reading",
+        "title": "运维观测与安全追踪的切分方法",
+        "paragraphs": [
+          "应让 Gateway operation、driver launch、Supervisor startup 及 egress spans 共用一条可关联 Trace ID，并独立保留 sandbox ID、operation generation 以定位换机与重试。",
+          "同时维持低基数 Prometheus 指标和可审计的 policy decision log，将采样 trace 用于性能剖析，把不可丢的授权事件交给专门的事件管道。"
+        ],
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "entity": "source:langgraph-delta-20261007",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "proof",
+        "title": "从提交例子推导的重复回放错误",
+        "paragraphs": [
+          "维护者给出明确对照：不中断 live 结果为 in1、p、r，恢复后错误结果可为 in1、p、r、p。已加载的写入在新的 step-prefixed task ID 下又被存入 checkpoint，导致重复。",
+          "单纯跳过看起来重复的写入仍有排序问题，原因是原任务 ID 与新生成 ID 的排序约定不同。该变更连同回归测试强调了 replay 需要同时维护 exactly-once logical application 与稳定 superstep 顺序。"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "limits",
+        "title": "不能外推为所有事务和外部副作用都幂等",
+        "paragraphs": [
+          "这组测试范围明确指向 exit-durability、DeltaChannel 和 checkpoint 写入归属，不证明所有第三方 checkpointer、跨版本迁移以及任意负载下不存在并发回放竞态。",
+          "测试中的几个字符串是正确性例子，不是延迟、QPS 或资源消耗 benchmark。更不能把恢复后 channel 状态正确直接解读成外部支付、部署、邮件等副作用自动具有 exactly-once。"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "reading",
+        "title": "真正需要验证的 Replay 不变量",
+        "paragraphs": [
+          "对同一 Agent workflow 保存无中断运行的 event/channel baseline，然后在 interrupt、worker crash、retry、fork 与 resume 等位置注入故障。比较的不应只有最后的 COMPLETED 状态，还要比较每个 channel 的序列与分支身份。",
+          "为 durable journal 定义 task ID、superstep、checkpoint parent 与 fork ownership 的可回放排序规则，避免同一事件因重建 ID 不同而两次进入归约。"
+        ],
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "entity": "source:srt-proxy-20261008",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "proof",
+        "title": "提交明确披露的请求判定流程",
+        "paragraphs": [
+          "源码提交描述外部 decider 逐请求返回 verdict，可修改受保护约束下的 header、提供单请求 credential 或拒绝。失去 decider、超时和违反通信协议均拒绝请求，代理本身跟随 decider 生命周期退出。",
+          "同一提交对 CONNECT 使用进程内 TLS termination，校验 Host 与 server name，并在目标 DNS 结果中过滤 loopback、private 与 metadata 地址。此处是具体实现方案，而非通用的网络防护证明。"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "limits",
+        "title": "仍需单独研究的网络旁路与高可用",
+        "paragraphs": [
+          "单个代理模式不等于对所有 TCP/UDP 流量强制执行，也不能覆盖所有 HTTP/TLS 变体。部分请求过滤防护是配置选项，需要核对具体启用状态。",
+          "Fail-closed 保证无授权时拒绝，而不是保证服务持续可用；decider 高可用、授权缓存、跨代理回放、证书轮换与多租户隔离都需要额外方案与独立测试。"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "reading",
+        "title": "如何用于百万用户 Cloud Agent",
+        "paragraphs": [
+          "安全控制面应为每次请求写入稳定 decision ID、credential scope、policy version 与 reason，并限制不同 sandbox 的 verdict 混用或从缓存中越权复用。",
+          "压测要同时覆盖普通请求、body-first、TLS tunnel、目标地址变化与 decider 故障，分别度量 SLO/可用性和安全拒绝正确性，不能只测平均 proxy latency。"
+        ],
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "entity": "source:openshell-ha-20261008",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "proof",
+        "title": "两个导致 Not Ready 的明确失败窗口",
+        "paragraphs": [
+          "维护者描述 supervisor 接受连接后未重置指数退避，重复 Gateway 重启会将等待推向最大 30 秒。修复使 accepted session 成为重置 backoff 的时点。",
+          "旧 gateway 发出 SessionRedirect 后，replacement session 尚未发布就将 Sandbox 降为 Provisioning。修复在实际排队了 redirect 的情形等待最多 5 秒接管，再决定是否降级。"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "limits",
+        "title": "等待预算不能当成稳定性保证",
+        "paragraphs": [
+          "30 秒和 5 秒只描述具体实现的退避上限、交接等待预算，不是行业性的恢复 SLO，更不意味着经过这次修复就能承诺任何部署绝不出现客户端失败。",
+          "原始问题来自特定 HA E2E 回归场景；跨区域网络分割、大规模拓扑变化、同时部署多个不同 Supervisor 版本的行为仍需要独立验收。"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "reading",
+        "title": "以状态所有权检验 Rolling Upgrade",
+        "paragraphs": [
+          "应针对 redirect queued、replacement session accepted、old owner disconnected、Ready projection 分别记录事件及 generation，防止旧副本在新 owner 接管后回写陈旧状态。",
+          "回归测试必须包含连续多轮 pod roll、不同时间点终止 old owner、重复 reconnect，以及客户端 file sync、SSH 和网络动作在迁移中的错误率。"
+        ],
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "entity": "source:openswe-workers-20261008",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "proof",
+        "title": "协调器和异步任务所包含的控制细节",
+        "paragraphs": [
+          "一手合并提交列举了任务首次 delegation 时创建、worker follow-up 保存、completion 路由到启动线程、取消后禁止自动唤醒等修正。它们说明实现关心长期任务的身份与因果归属。",
+          "功能默认关闭，并限制一些不适合 delegation 的一次性 CLI bridge。这些边界非常重要：合入实现不能等同于所有用户工作流已默认支持异步多 Agent。"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "limits",
+        "title": "没有证据可宣称生产规模或速度倍数",
+        "paragraphs": [
+          "提交未给出统一的 agent workload、实验重复次数与成本统计，不能据此得出总体成功率或吞吐优于其它 Harness 的结论。",
+          "该提交不保证异步 Worker 的数据存储具备 exactly-once、不丢消息或跨供应商迁移能力；相关性质需要针对工作流/持久化数据库的专门实现和测试来核验。"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "reading",
+        "title": "如何验证真正可靠的多 Agent 调度",
+        "paragraphs": [
+          "父线程和子任务应具备独立 ID、attempt 与取消 generation。Worker 返回给 Coordinator 的自然语言与日志应作为不可信证据，不能凭其内容直接授予新的工具权限。",
+          "强制故障测试应覆盖 coordinator 重启、worker 迟到、同一 follow-up 重放、取消后完成及多名协作者同时审批，记录是否存在重复唤醒或跨线程写入。"
+        ],
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "entity": "project:anthropic-sandbox-runtime",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "types",
+        "title": "权限语言：字面路径与通配路径的不同语义",
+        "evidence": [
+          "source:srt-path-20261005"
+        ],
+        "paragraphs": [
+          "OS-level 沙盒的安全并不只由底层隔离原语决定。用户输入的路径可以是确切文件名，也可以是待展开的 glob；文件名本身还可能包含通配符。若把二者混为字符串约定，允许和拒绝会依赖解析顺序，造成误放行或误拒绝。",
+          "10 月 5 日合并的 literal path marker 为此提供显式表达方式。工程上应将解析得到的 typed policy 传给各个 backend，保留原始声明、最终匹配策略和错误处理结果，避免 Linux 与 macOS 在同一文本上的权限含义悄悄分叉。"
+        ]
+      },
+      {
+        "id": "proxy",
+        "title": "从本机沙盒到独立 HTTP Policy Decider",
+        "evidence": [
+          "source:srt-proxy-20261008"
+        ],
+        "paragraphs": [
+          "10 月 8 日的新 srt-proxy 不必拥有被隔离的子进程，也能作为远端工作负载的网络控制点运行。Proxy 与 decider 通过继承的描述符和 length-prefixed JSON 协议通信；每个请求可获得 allow、deny 或 body-first 判定，并在限定范围内修改 header 或注入一次性凭据。",
+          "将 Policy Decision 与 Network Enforcement 分开后，Agent 即使修改自身 Harness 代码，也不能直接改变网络授权的最终裁决。但这个性质依赖所有应受保护的流量确实经过代理；不受代理约束的协议和透明隧道仍必须由外层网络隔离策略管理。"
+        ]
+      },
+      {
+        "id": "failures",
+        "title": "网络故障和旁路窗口：Fail Closed 也有运营成本",
+        "evidence": [
+          "source:srt-proxy-20261008"
+        ],
+        "paragraphs": [
+          "代理对 decider 失联、超时、协议异常执行拒绝，这是重要的安全不变量，否则攻击者可以通过阻断决策面来获取默认放行。对 TLS CONNECT 请求，还需要确保 SNI、Host 和解析地址与本次授权一致，禁止私网、loopback 和 metadata endpoint 的意外访问。",
+          "然而 Fail Closed 意味着 decider 可用性直接成为应用出站可用性的组成部分。百万用户场景需要独立扩容、鉴权和超时预算，监控分开统计策略拒绝与基础设施超时，否则所有失败都会被误判成策略过严。"
+        ]
+      },
+      {
+        "id": "portability",
+        "title": "跨平台执行：Policy Compiler 的 Conformance 责任",
+        "evidence": [
+          "source:srt-path-20261005"
+        ],
+        "paragraphs": [
+          "轻量 OS-level sandbox 不等价于统一的 VM 安全模型，不同平台的权限原语和目录解析方式差异明显。若 API 提供统一的 allow/deny 配置，平台就必须定义不能表达某项规则时如何失败，而不是悄悄把不支持的约束忽略。",
+          "最有价值的 CI 套件应包含同名文件、带通配符的真实路径、symlink、尚未创建的目录及 deny 与 allow 冲突，并验证不同 backend 产生相同的可观察访问结果。对高危工具应在启动前做 capability check，避免运行后才发现隔离失效。"
+        ]
+      },
+      {
+        "id": "tradeoffs",
+        "title": "性能、安全边界与替代方案",
+        "evidence": [
+          "source:srt-path-20261005",
+          "source:srt-proxy-20261008"
+        ],
+        "paragraphs": [
+          "与完整容器或 microVM 相比，轻量进程沙盒可以降低接入复杂度，但安全边界主要取决于操作系统和代理实际能强制执行的权限。面对恶意任意代码、内核漏洞风险或协议层未覆盖的工具，仍可能需要独立 VM/容器网络策略或专用微虚拟机。",
+          "尚没有在本次一手来源中发现完整的启动耗时、吞吐或零绕行实验，因此不能编造相对性能倍数。需要持续追踪代理版本化、credential 生命周期、policy hot reload 后老连接如何处理、跨 OS 一致性和多租户 verdict 是否可隔离。"
         ]
       }
     ]

@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-05",
+  "mode": "backfill",
+  "note": "Authored Anthropic sandbox-runtime and literal-path first-party evidence.",
+  "nodes_added": [
+    "project:anthropic-sandbox-runtime",
+    "source:srt-path-20261005"
+  ],
+  "nodes_updated": [],
+  "edges_added": [
+    "e:srt-path-evidence",
+    "e:srt-implements-policy"
+  ],
+  "edges_updated": []
+}
