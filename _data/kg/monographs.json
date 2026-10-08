@@ -3653,7 +3653,7 @@
       },
       {
         "id": "does-not-prove",
-        "title": "它不能证明什么",
+        "title": "证据边界：这一提交尚不能证明什么",
         "paragraphs": [
           "单个合入提交不能证明 OpenShell 已经具备成熟的跨区域高可用，也不能证明所有 create/start/delete 路径都达到 exactly-once。这里看到的是具体故障窗口的实现修复与回归覆盖，不应外推成完整生产 SLA。",
           "提交主要覆盖 gateway 与 compute driver 协调，不等于 Agent task journal、模型调用和外部 tool side effect 也获得相同 durability；这些仍属于更上层 Runtime/Harness 的职责。"
