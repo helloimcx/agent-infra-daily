@@ -98,7 +98,8 @@
         "project:digitalocean-agent-droplets",
         "project:docker-cloud-sandboxes",
         "trend:agent-runtime-cloud-sku",
-        "trend:persistent-agent-runtime"
+        "trend:persistent-agent-runtime",
+        "project:google-gemini-agent"
       ]
     }
   ]

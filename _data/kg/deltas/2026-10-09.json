@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-09",
+  "mode": "daily",
+  "note": "Google Gemini agent launch; OpenShell endpoint matcher and audit; LangGraph invalid resume; Open SWE user-state migration. All added Sources have authored monographs.",
+  "nodes_added": [
+    "project:google-gemini-agent",
+    "source:google-gemini-20261009",
+    "source:openshell-path-20261009",
+    "source:openshell-audit-20261009",
+    "source:langgraph-resume-20261009",
+    "source:openswe-store-20261009"
+  ],
+  "nodes_updated": [
+    "project:nvidia-openshell",
+    "cap:policy-enforcement",
+    "cap:durable-execution",
+    "trend:persistent-agent-runtime"
+  ],
+  "edges_added": [
+    "e:gemini-primary",
+    "e:gemini-policy",
+    "e:gemini-persistent",
+    "e:openshell-path-parity",
+    "e:openshell-audit-coverage",
+    "e:durable-invalid-resume",
+    "e:trend-store-migration"
+  ],
+  "edges_updated": []
+}

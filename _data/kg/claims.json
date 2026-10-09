@@ -284,10 +284,11 @@
     "evidence": [
       "source:openai-dots",
       "source:restate-durable",
-      "source:docker-cloud"
+      "source:docker-cloud",
+      "source:google-gemini-20261009"
     ],
     "first_seen": "2026-10-03",
-    "last_verified": "2026-10-03"
+    "last_verified": "2026-10-09"
   },
   {
     "id": "claim:trend-rsi",
@@ -374,5 +375,77 @@
     ],
     "first_seen": "2026-10-08",
     "last_verified": "2026-10-08"
+  },
+  {
+    "id": "claim:gemini-agent-identity",
+    "entity": "project:google-gemini-agent",
+    "text": "Google Cloud 宣布的 Gemini agent 支持跨端持久上下文、长任务和临时子 Agent，并为长期 coworker 提供独立 Workspace 账号、邮箱与存储。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:google-gemini-20261009"
+    ],
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09"
+  },
+  {
+    "id": "claim:gemini-agent-governance",
+    "entity": "project:google-gemini-agent",
+    "text": "Google Cloud 官方描述了 Agent identity 归因、OAuth 授权传播、Agent Sandbox 网络边界、Agent Gateway 与项目预算触发暂停的控制链；这是厂商公开架构声明。",
+    "kind": "fact",
+    "confidence": 0.95,
+    "evidence": [
+      "source:google-gemini-20261009"
+    ],
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09"
+  },
+  {
+    "id": "claim:openshell-endpoint-parity",
+    "entity": "project:nvidia-openshell",
+    "text": "OpenShell #4336 将 Rego endpoint selector 对齐 Rust matcher，并调整 Prover 模型和反例重放测试；REST rule 路径匹配仍保持独立语义。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:openshell-path-20261009"
+    ],
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09"
+  },
+  {
+    "id": "claim:openshell-audit-endpoints",
+    "entity": "project:nvidia-openshell",
+    "text": "OpenShell #4313 修复 Policy Proposal 审计只展示首个 endpoint/allow 的缺陷，现枚举所有 endpoint 和 allow 规则。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:openshell-audit-20261009"
+    ],
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09"
+  },
+  {
+    "id": "claim:langgraph-invalid-resume",
+    "entity": "cap:durable-execution",
+    "text": "LangGraph #9232 修复非法 interrupt resume 在 ToolNode 中被当普通工具参数错误吞掉的问题，并确保 wrapper 中的 GraphInterrupt 正确传播。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:langgraph-resume-20261009"
+    ],
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09"
+  },
+  {
+    "id": "claim:openswe-store-rollout",
+    "entity": "trend:persistent-agent-runtime",
+    "text": "Open SWE 将用户设置和凭据迁往 PostgreSQL 时使用数据库导入进度、行锁及延迟结束策略，处理滚动升级中旧副本继续写入 Store 的窗口。",
+    "kind": "fact",
+    "confidence": 1,
+    "evidence": [
+      "source:openswe-store-20261009"
+    ],
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09"
   }
 ]

@@ -390,6 +390,18 @@
           "10 月 8 日修复表明，一致性哈希和 SessionRedirect 并不能自动保证 Sandbox 在 pod roll 中保持 Ready。Supervisor 曾在 accepted session 后保留不断累积的 reconnect backoff，连续重启可把重连等待推向 30 秒的实现上限。",
           "旧 Gateway 发出 redirect 后立即降级 Sandbox，又会在 replacement session 尚未发布时制造对用户可见的 Provisioning 窗口。修复改为在符合条件时最多等待 5 秒接管；这两个数字只属于具体实现的退避和等待预算，不是可靠性 SLA。"
         ]
+      },
+      {
+        "id": "endpoint-parity",
+        "title": "Endpoint Selector 的路由、执行与证明必须共用语义",
+        "evidence": [
+          "source:openshell-path-20261009",
+          "source:openshell-audit-20261009"
+        ],
+        "paragraphs": [
+          "2026-10-09 合入的 #4336 不是简单重构。Rust 的 endpoint route selection、Rego 的 endpoint selector 和 Z3 Prover 曾经用不同 glob 规则解释同一个 path；在单星号是否跨斜杠、子树模式是否包含前缀时，验证器可能认为某条请求不被允许，运行时却选择了更宽的 endpoint。修复让 Rego 调用 Rust 注册的 matcher，并将 Prover 的 endpoint selector 模型对齐；REST rule 的 path matcher 仍独立，不能误合并。",
+          "另一提交 #4313 将审计摘要从首个 endpoint 扩展到全部 endpoint 与 allow。它没有改变授权判定，却修正了审批者可见范围。平台应把 route selection、policy evaluation、formal containment、proposal presentation 当成四个需要同输入回归的接口；任意一个缺失都可能形成策略证明正确而操作员授权错误的窗口。"
+        ]
       }
     ]
   },
@@ -830,6 +842,17 @@
           "LangGraph 的 exit-durability 修复演示了一个常被忽视的持久化错误：checkpoint 内已有的 task writes 在 resume 时被新的 ID 重复记录，导致原本 in1、p、r 的 live 顺序在恢复后多出一个 p。即使简单去重，还可能改变 superstep 顺序。",
           "真正可靠的 Durable Execution 必须规定每条 write 的归属、task ID、checkpoint branch 与 replay order，而不仅是“进程能重启”。对 Agent 要特别比较恢复前后长期记忆、会话消息及外部工具 trace 的因果等价性。"
         ]
+      },
+      {
+        "id": "invalid-resume-control-flow",
+        "title": "HITL 恢复必须把非法输入与普通 Tool Error 分开",
+        "evidence": [
+          "source:langgraph-resume-20261009"
+        ],
+        "paragraphs": [
+          "LangGraph #9232 暴露了一个比 checkpoint 落盘更隐蔽的恢复错误：interrupt 的 response_schema 验证失败后，ToolNode 曾把 ValidationError 当作工具参数错误回给模型。这样人类审批尚未通过，模型却可能继续，原本应保留的 pending interrupt 消失。修复用错误标记区分非法 resume 与普通工具校验失败，并保证 GraphInterrupt 穿透 wrapper。",
+          "这意味着 Durable Execution 的正确性不只在 worker crash 后能重试，也包括无效外部事件不能改变工作流控制状态。回归用例应覆盖嵌套子图工具、同步/异步 ToolNode、wrap_tool_call、不同 handle_tool_errors 配置，以及合法输入重答后 checkpoint 的一次性推进。"
+        ]
       }
     ]
   },
@@ -1225,6 +1248,18 @@
         "paragraphs": [
           "当每一个网络请求、tool call 或 filesystem action 都需要 policy decision 时，控制面会进入 Agent 执行关键路径。策略缓存、预编译和局部 enforcement 可以降低延迟，但缓存必须绑定 policy version 和 identity，避免撤权后旧规则继续生效。",
           "高可用设计同样不能简单 fail open。对于读取类低风险 capability 可以设计受限降级，但 credential、外部写操作和高权限工具在 policy service 不可用时通常更应该 fail closed 或转人工。"
+        ]
+      },
+      {
+        "id": "policy-semantic-parity",
+        "title": "Out-of-band Policy 的有效性取决于语义一致与审计完整",
+        "evidence": [
+          "source:openshell-path-20261009",
+          "source:openshell-audit-20261009"
+        ],
+        "paragraphs": [
+          "独立 Policy Engine 只能解决 Agent 不能自己关闭 guardrail 的问题，不能自动保证 Policy 本身被一致解释。OpenShell 的 endpoint selector 案例显示，路由器、Rego 与形式化 Prover 对 glob 的不同处理会使授权集合出现偏差。必须明确区分 endpoint 选择规则与 HTTP REST allow rule 的路径语法，并用 differential test 比较每一层的决定。",
+          "人类批准网络例外时看到的摘要也是授权控制链的一环。如果多个 endpoint 只显示第一项，审计记录虽然存在，却不能完整表达批准范围。建议把完整 rule diff、归一化目标集合、规则版本和实际命中结果关联到同一 approval ID；这属于本站工程抽象，不是 NVIDIA 已实现的全部能力。"
         ]
       }
     ]
@@ -2130,6 +2165,17 @@
         "paragraphs": [
           "LangGraph 重播错误与 Open SWE 异步 worker 功能共同暴露了持久 Agent 的新边界：事件必须带有稳定执行或任务身份，并能说明是哪个 branch、哪个 worker generation、哪次恢复所产生。只保留一次用户对话的文本顺序不足以复现系统真正发生过的操作。",
           "对百万用户 Cloud Agent，应该把 parent thread、child task、workspace 和 sandbox session 分层持久化。异步 worker 结果必须携带 provenance，不可信输出不能重写上层权限；而 Durable Replay 则要验证同一工作流在中断和不中断时仍收敛到等价状态。"
+        ]
+      },
+      {
+        "id": "enterprise-agent-identity",
+        "title": "长期 Agent 的身份、预算与执行资源进一步解耦",
+        "evidence": [
+          "source:google-gemini-20261009"
+        ],
+        "paragraphs": [
+          "Google 10 月 8 日公告把跨设备共享记忆、长时间后台任务、临时子 Agent 和独立 coworker 账号放在同一产品描述中，说明长期 Agent 的可识别主体正在从聊天 session 延伸到组织内身份。专属邮箱、日历和持久存储强调的是责任与权限归属，不意味着任务必须绑定一台永久运行的 VM。",
+          "官方同时提出每个 Agent 的审计归因、网络 Gateway 和项目预算触发暂停。对于可扩缩的 runtime，预算暂停、等待审批与恢复执行应是持久任务状态，而非持续占用 worker；但公告未披露 checkpoint、跨节点恢复或租约算法，因此不能将这种架构抽象误写成已被 Google 实现的具体机制。"
         ]
       }
     ]
@@ -3970,6 +4016,228 @@
         "paragraphs": [
           "与完整容器或 microVM 相比，轻量进程沙盒可以降低接入复杂度，但安全边界主要取决于操作系统和代理实际能强制执行的权限。面对恶意任意代码、内核漏洞风险或协议层未覆盖的工具，仍可能需要独立 VM/容器网络策略或专用微虚拟机。",
           "尚没有在本次一手来源中发现完整的启动耗时、吞吐或零绕行实验，因此不能编造相对性能倍数。需要持续追踪代理版本化、credential 生命周期、policy hot reload 后老连接如何处理、跨 OS 一致性和多租户 verdict 是否可隔离。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "project:google-gemini-agent",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "identity",
+        "title": "长期身份与短期任务：Coworker 不是共享登录",
+        "evidence": [
+          "source:google-gemini-20261009"
+        ],
+        "paragraphs": [
+          "Google 将个人助手、临时子 Agent 与长期 coworker 描述为不同的主体。临时子 Agent 围绕具体工作动态建立并拥有身份；coworker 则有自己的 Workspace 账号、邮箱、日历与持久存储，能够以自己的名字参与文档和协作。关键不是多开几个模型进程，而是把责任主体从用户会话中分离。",
+          "官方强调 coworker 只能访问团队主动分享给它的上下文。这暗示成员资格、共享权限与 Agent 身份之间需要持续授权检查；但没有披露群组变更、撤销权限、历史副本与连接器缓存如何同步失效，不能据此推断完整 RBAC 语义。"
+        ]
+      },
+      {
+        "id": "lifecycle",
+        "title": "跨端持久执行与未公开的恢复窗口",
+        "evidence": [
+          "source:google-gemini-20261009"
+        ],
+        "paragraphs": [
+          "官方声称任务可持续数小时或数天，并在用户关闭设备后继续；跨 Web、桌面、移动端和 headless channel 复用一套记忆与上下文。这至少意味着任务生命周期不依赖某个客户端连接，用户在不同入口应看到相同的任务主体和结果归属。",
+          "但持久体验不等于已公开的 durable execution 算法。尚不清楚 worker 是常驻 VM、可替换 sandbox 还是按需恢复进程，也不知道 side effect 完成而 checkpoint 未落盘时如何 reconcile。工程上应独立测量断连、升级、重复事件与暂停后的恢复正确性。"
+        ]
+      },
+      {
+        "id": "security",
+        "title": "Agent Identity、OAuth、Gateway 与 Sandbox 的授权链",
+        "evidence": [
+          "source:google-gemini-20261009"
+        ],
+        "paragraphs": [
+          "Google 公开描述 Agent identity 被记录到日志与运行代码的 VM，外部系统权限经 OAuth 等机制传播；Agent Sandbox 有网络边界，跨 Agent 和外部流量经过 Agent Gateway。与仅在提示词写权限要求不同，这里把网络和身份检查放到 Agent 之外的控制面。",
+          "厂商声明并未给出完整的 gateway policy schema、连接器令牌轮换或 egress bypass 测试。多 Agent 场景尤其要问：父 Agent 能否扩大子 Agent 权限、子 Agent 结果如何标记不可信、临时凭据何时销毁，以及外部系统按用户还是按 Agent 记录审计。"
+        ]
+      },
+      {
+        "id": "orchestration",
+        "title": "子 Agent 调度、上下文边界与并发成本",
+        "evidence": [
+          "source:google-gemini-20261009"
+        ],
+        "paragraphs": [
+          "临时子 Agent 可并行或串行完成工作，长期 coworker 可接受多次委派。合理的运行模型需要独立的 task_id、subagent_id、parent scope 和结果归属，避免一个子任务的工具输出污染其他任务的上下文。公告确认产品支持这些工作形态，却未公开调度算法。",
+          "并发规模、取消传播、子 Agent 失败重试、工具执行幂等以及多个 coworker 访问同一文档时的冲突处理仍是未知。对平台团队而言，应将多 Agent 协调的成功率与资源占用按任务链测量，而不是仅统计模型调用数量。"
+        ]
+      },
+      {
+        "id": "economics",
+        "title": "模型路由与预算暂停的状态机含义",
+        "evidence": [
+          "source:google-gemini-20261009"
+        ],
+        "paragraphs": [
+          "Gemini agent 的模型选择与长期身份分离，官方介绍了按任务匹配模型的 Smart Routing 和项目级 spend cap。预算耗尽时 Agent 暂停，管理员可以在控制台恢复。这里的成本边界覆盖 token 和 sandbox 消耗，不应把预算限制简化为每次 LLM 调用前的计数器。",
+          "真正困难的窗口是预算触发时外部工具正在执行：暂停应该等待提交、取消还是补偿？官方没有给出精确语义。建议将 PAUSED_BUDGET 建成可恢复状态，记录最后可确认的 side effect 和授权快照，并用 idle compute、resume P95 与单位完成任务成本验证收益。"
+        ]
+      },
+      {
+        "id": "alternatives",
+        "title": "与常驻会话、单体 Harness 的取舍和证据边界",
+        "evidence": [
+          "source:google-gemini-20261009"
+        ],
+        "paragraphs": [
+          "相比把所有工作放在一个常驻聊天进程，长期身份加独立执行面的模式更容易承载跨设备和团队角色；相比仅使用短生命周期任务队列，它又必须管理共享记忆、持续授权、预算和并发委派。Google 的公开材料证明了产品目标与控制面宣称，而非这些权衡已经得到量化验证。",
+          "与 OpenAI Dots、Restate 或自建云端 Agent 的比较，应分别按身份持久性、任务恢复、网络治理、权限撤销和资源成本评估，不能把一个产品的 UI 特性当作另一个 runtime 的机制证据。缺少公开的故障注入、长期任务 benchmark 与 SDK 行为契约时，成熟度保持谨慎。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:google-gemini-20261009",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "source-scope",
+        "title": "公告所证实的产品范围",
+        "evidence": [],
+        "paragraphs": [
+          "Google Cloud CEO 在 2026-10-08 的 Gemini at Work 主题公告中，明确描述统一 Agent、跨设备持续上下文、小时至天级后台任务、临时子 Agent 和拥有独立 Workspace 账号的 coworker。它是厂商产品定义的一手来源，适合记录公开承诺与术语。"
+        ]
+      },
+      {
+        "id": "governance-claims",
+        "title": "身份与治理的厂商架构声明",
+        "evidence": [],
+        "paragraphs": [
+          "文章还说明 Agent 身份会进入日志与运行代码的 VM，外部系统通过 OAuth 等方式授权，Sandbox 与 Gateway 负责网络边界，项目预算可触发任务暂停。这些是可引用的官方声明，但并非独立渗透测试或完整的实现规范。"
+        ]
+      },
+      {
+        "id": "evidence-limits",
+        "title": "不能由发布公告推出的结论",
+        "evidence": [],
+        "paragraphs": [
+          "该公告没有公布 checkpoint schema、worker lease、跨区恢复、重复副作用去重、连接器撤权传播时延或端到端基准。文章中提及的客户指标具有特定业务语境，不能直接作为通用 Cloud Agent 性能数字，也不能据此认定全部功能 GA。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openshell-path-20261009",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "change",
+        "title": "实际修复对象是 Endpoint Selector",
+        "evidence": [],
+        "paragraphs": [
+          "NVIDIA/OpenShell 的 #4336 修改 Rego endpoint path 匹配，改为调用 Rust 注册的 endpoint matcher，同时调整形式化 Prover 对路径模式的符号建模。它修复的是不同层对同一 selector 的解释不一致，不是新增一套网络访问控制产品。"
+        ]
+      },
+      {
+        "id": "regression",
+        "title": "差分测试和反例重放的证据价值",
+        "evidence": [],
+        "paragraphs": [
+          "提交加入不同 glob 模式和请求路径的 parity 用例，并要求 Prover 找到的扩权反例能在真实运行时规则上复放。单星号是否跨斜杠、末尾子树是否匹配前缀等边界被明确测试，适合支撑策略语义一致性的工程判断。"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "不能混淆 Endpoint 与 REST Rule 的匹配语法",
+        "evidence": [],
+        "paragraphs": [
+          "修复注释特意区分 endpoint selector 与 REST allow rule 的路径匹配：前者对齐 Rust glob，后者保留另一套规则语义。提交不证明所有网络路径都被拦截，也不能单凭这些单元测试断言跨平台、跨协议的完整隔离安全性。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openshell-audit-20261009",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "change",
+        "title": "提案审计从首项摘要变为完整授权列表",
+        "evidence": [],
+        "paragraphs": [
+          "OpenShell #4313 修改 policy_local.rs 中的审计格式化逻辑。此前摘要只展示候选规则的第一个 endpoint 和第一条 allow；现在逐个遍历所有 endpoint，列出其 host、port 及各条 allow 的 method/path。变更集中在审计文本，而非实际网络授权规则。"
+        ]
+      },
+      {
+        "id": "operational",
+        "title": "为何这影响审批的真实安全边界",
+        "evidence": [],
+        "paragraphs": [
+          "多 endpoint proposal 可能包含权限范围不同的目标；若摘要只展示第一项，操作员很难从日志发现附加授权。新增测试包含多个 endpoint 与多条允许路径，验证摘要不再遗漏。建议将审计呈现视为 Policy 控制链的受测接口，而非无关紧要的日志装饰。"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "代码提交无法证明全部审计链完整",
+        "evidence": [],
+        "paragraphs": [
+          "该提交证明了特定 summary 函数及其测试的行为改变，但没有证明 UI 所有入口、持久化日志、跨服务传输与检索系统都保留完整规则。审计覆盖的正确性仍应通过端到端审批事件和实际生效策略之间的关联检查验证。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:langgraph-resume-20261009",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "failure",
+        "title": "非法 Resume 被误认为模型的工具参数错误",
+        "evidence": [],
+        "paragraphs": [
+          "LangGraph #9232 描述了 interrupt 的 response_schema 验证失败后，ValidationError 在 ToolNode 内被普通工具错误处理的路径。此时模型收到修复参数的提示，原本等待人类重答的中断可能消失。问题也影响将子图作为工具调用的工作流。"
+        ]
+      },
+      {
+        "id": "fix",
+        "title": "标记恢复错误并保证中断穿透包装器",
+        "evidence": [],
+        "paragraphs": [
+          "提交新增 is_invalid_resume 标记，ToolNode 无论 handle_tool_errors 配置如何均传播这类异常；wrap_tool_call 抛出的 GraphInterrupt 也不再转成 ToolMessage。回归测试覆盖非法值、随后合法重答、同步异步及包装器场景，适合支撑恢复控制流正确性判断。"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "修复不等于整个工作流 Exactly Once",
+        "evidence": [],
+        "paragraphs": [
+          "这份代码只针对特定非法人工回复和中断传播路径，不能证明外部工具的副作用具有幂等性，也没有给出任意 worker crash 下的完整恢复保证。它改变部分 wrapper 的实际暂停行为，集成方需要按版本验证兼容性。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openswe-store-20261009",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "migration",
+        "title": "用户设置和凭据的数据库归属迁移",
+        "evidence": [],
+        "paragraphs": [
+          "Open SWE #3792 将用户配置和凭据从 LangGraph Store 移入 PostgreSQL，并使这些记录依附用户身份。未知用户不再被悄悄写入设置，接口会给出对应冲突响应。它证明项目在重新划定长期状态与账号身份的归属，而非只替换数据库驱动。"
+        ]
+      },
+      {
+        "id": "rollout",
+        "title": "多副本导入需要处理旧写入者",
+        "evidence": [],
+        "paragraphs": [
+          "提交引入 store_import 进度行及行锁，避免两个副本同时导入；当某轮仍搬迁数据时继续扫描，并延迟结束导入，以容忍滚动升级期间旧版本副本仍写 Store。这个窗口反映了真实的混合版本部署风险，值得迁移工具复用。"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "不能从单次合并推断零丢失生产迁移",
+        "evidence": [],
+        "paragraphs": [
+          "此来源只覆盖用户设置和凭据的迁移实现；Skills 与 thread blobs 属于另一提交，不能在该 Source 下冒充同一代码证据。数据校验率、跨区一致性、回滚流程及线上是否已切换均未由本提交独立证明。"
         ]
       }
     ]

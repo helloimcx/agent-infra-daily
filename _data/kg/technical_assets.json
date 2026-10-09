@@ -97,6 +97,48 @@
             "幂等键和核对机制"
           ]
         ]
+      },
+      {
+        "id": "hitl-resume-failure-matrix",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Human-in-the-loop Resume 控制流失败窗口",
+        "summary": "结合 LangGraph #9232 的已修复路径与本站工程恢复设计，区分非法人工输入、工具错误、中断和合法重答。",
+        "evidence": [
+          "source:langgraph-resume-20261009"
+        ],
+        "columns": [
+          "事件",
+          "错误行为",
+          "正确控制流",
+          "验证用例"
+        ],
+        "rows": [
+          [
+            "非法 resume schema",
+            "ToolNode 吞错并让 LLM 继续",
+            "不保存进度，仍可重答",
+            "子图工具 + schema"
+          ],
+          [
+            "普通工具参数错误",
+            "误当成审批恢复错误",
+            "遵循 handle_tool_errors",
+            "两类 ValidationError 对照"
+          ],
+          [
+            "wrap_tool_call 中断",
+            "GraphInterrupt 被转 ToolMessage",
+            "向外传播并暂停",
+            "非默认 handler"
+          ],
+          [
+            "随后合法重答",
+            "旧中断丢失或重复推进",
+            "一次性恢复并更新 checkpoint",
+            "同步/异步与重复提交"
+          ]
+        ]
       }
     ]
   },
@@ -442,6 +484,49 @@
             "隔离最强",
             "成本/复杂度高",
             "高价值企业 Agent"
+          ]
+        ]
+      },
+      {
+        "id": "policy-interpretation-differential-gate",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Policy Enforcement 多解释器差分测试门禁",
+        "summary": "本站架构抽象：安全边界要覆盖策略编译、形式化验证、运行时路由和操作员审计，而非只对 allow/deny 逻辑做单元测试。",
+        "evidence": [
+          "source:openshell-path-20261009",
+          "source:openshell-audit-20261009"
+        ],
+        "columns": [
+          "输入族",
+          "需要比较的输出",
+          "典型风险",
+          "阻断条件"
+        ],
+        "rows": [
+          [
+            "路径 glob / 通配符",
+            "Prover 与 runtime 选中 endpoint",
+            "扩权反例无法重放",
+            "任意匹配集合不一致"
+          ],
+          [
+            "重叠 endpoint",
+            "路由优先级与授权判定",
+            "落到较宽泛的默认规则",
+            "不同实现选择不同 endpoint"
+          ],
+          [
+            "多 endpoint proposal",
+            "完整策略与审批摘要",
+            "审批者只看到首项",
+            "授权对象遗漏"
+          ],
+          [
+            "策略版本滚动",
+            "生效版本、审计版本、验证版本",
+            "旧策略与新规则混用",
+            "无法确定实际生效版本"
           ]
         ]
       }
@@ -1139,6 +1224,49 @@
           "source:openshell-otlp-20261006"
         ],
         "mermaid": "sequenceDiagram\n  participant G as Gateway\n  participant D as Compute Driver\n  participant S as Sandbox Supervisor\n  G->>D: launch + OTLP endpoint + TRACEPARENT\n  D->>S: forward startup context\n  S->>S: policy load / boundary attach / agent start\n  S->>G: supervisor RPC with trace context\n  S->>S: egress authorize / resolve / dial"
+      },
+      {
+        "id": "endpoint-selector-parity-matrix",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "OpenShell Endpoint Selector 语义一致性与审计失败矩阵",
+        "summary": "根据 #4336 和 #4313 的具体修复区分 route selection、Rego enforcement、Prover 和审计呈现；它们不是可以互换的规则解释器。",
+        "evidence": [
+          "source:openshell-path-20261009",
+          "source:openshell-audit-20261009"
+        ],
+        "columns": [
+          "控制点",
+          "已确认的失配窗口",
+          "修复或验证方法",
+          "剩余边界"
+        ],
+        "rows": [
+          [
+            "Rust route selection",
+            "selector glob 的路径语义与其他层不同",
+            "将 Rust matcher 作为 endpoint 语义基准",
+            "不代表 REST rule 使用相同语法"
+          ],
+          [
+            "Rego endpoint selector",
+            "原先用通用 path matcher 解释 endpoint",
+            "注册同一 Rust endpoint matcher",
+            "策略引擎初始化需加载扩展"
+          ],
+          [
+            "Z3 Prover",
+            "形式化 containment 可能与运行时不符",
+            "按 runtime 规则建模并回放反例",
+            "证明依赖模型与真实规则同步"
+          ],
+          [
+            "Proposal audit",
+            "仅首个 endpoint / allow 可见",
+            "遍历全部 endpoint 和 allow",
+            "仍需端到端核对审批 UI 与日志"
+          ]
+        ]
       }
     ]
   },
@@ -1909,6 +2037,70 @@
             "权限扩散",
             "Scoped verdict 与 header 约束",
             "日志脱敏与授权有效期"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "project:google-gemini-agent",
+    "version": "v1",
+    "assets": [
+      {
+        "id": "gemini-agent-identity-control-model",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Gemini agent：长期身份与任务执行分层参考模型",
+        "summary": "本站架构抽象，依据 Google 公开产品行为划分身份、任务、临时子 Agent、授权与执行资源；箭头不代表厂商已公开的内部服务拓扑。",
+        "evidence": [
+          "source:google-gemini-20261009"
+        ],
+        "mermaid": "flowchart TB\n  U[User / Team / Event] --> ID[Persistent Agent Identity]\n  ID --> CTX[Memory + Shared Context]\n  ID --> TASK[Task Registry / Scheduler]\n  TASK --> SUB[Ephemeral Sub-agent Identity]\n  TASK --> EXE[Sandbox Execution Lease]\n  SUB --> EXE\n  EXE --> GW[Agent Gateway / Policy Boundary]\n  GW --> EXT[Tools / MCP / External Systems]\n  ID --> AUTH[Scoped Grants + Audit Identity]\n  AUTH --> GW\n  TASK --> BUD[Budget Gate / Pause State]\n  BUD -. resume .-> TASK"
+      },
+      {
+        "id": "gemini-agent-evidence-boundary-matrix",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Gemini agent 产品承诺与未公开 Runtime 机制边界",
+        "summary": "把 Google 公告中的事实性产品声明与尚未公开的可靠性细节分开，避免将长期运行体验直接解释成某种 durable runtime 实现。",
+        "evidence": [
+          "source:google-gemini-20261009"
+        ],
+        "columns": [
+          "维度",
+          "官方明确声明",
+          "仍需验证的工程边界"
+        ],
+        "rows": [
+          [
+            "Agent identity",
+            "临时 sub-agent 独立身份；coworker 有 Workspace 账号",
+            "撤权传播、账号生命周期、委派审计"
+          ],
+          [
+            "持久执行",
+            "跨端上下文；任务离线运行小时至天级",
+            "checkpoint、worker 替换、重复事件处理"
+          ],
+          [
+            "网络安全",
+            "Sandbox 网络边界与 Agent Gateway 策略",
+            "绕行路径、policy schema、故障时默认动作"
+          ],
+          [
+            "外部权限",
+            "OAuth 等授权传播及按 Agent 归因",
+            "token scope、轮换、跨租户隔离"
+          ],
+          [
+            "成本治理",
+            "项目级 spend cap 触发暂停",
+            "暂停中的外部副作用、恢复一致性"
+          ],
+          [
+            "模型选择",
+            "多模型按任务选择与 Smart Routing",
+            "路由目标、稳定性和可复现 benchmark"
           ]
         ]
       }

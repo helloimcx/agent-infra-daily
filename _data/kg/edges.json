@@ -1062,5 +1062,103 @@
     "first_seen": "2026-10-08",
     "last_verified": "2026-10-08",
     "note": "First-party merged source evidence."
+  },
+  {
+    "id": "e:gemini-primary",
+    "source": "project:google-gemini-agent",
+    "target": "source:google-gemini-20261009",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:google-gemini-20261009"
+    ],
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09",
+    "note": "Primary source verified on 2026-10-09."
+  },
+  {
+    "id": "e:gemini-policy",
+    "source": "project:google-gemini-agent",
+    "target": "cap:policy-enforcement",
+    "type": "IMPLEMENTS",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:google-gemini-20261009"
+    ],
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09",
+    "note": "Primary source verified on 2026-10-09."
+  },
+  {
+    "id": "e:gemini-persistent",
+    "source": "project:google-gemini-agent",
+    "target": "trend:persistent-agent-runtime",
+    "type": "SUPPORTS",
+    "kind": "analysis",
+    "confidence": 0.85,
+    "evidence": [
+      "source:google-gemini-20261009"
+    ],
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09",
+    "note": "Primary source verified on 2026-10-09."
+  },
+  {
+    "id": "e:openshell-path-parity",
+    "source": "project:nvidia-openshell",
+    "target": "source:openshell-path-20261009",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openshell-path-20261009"
+    ],
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09",
+    "note": "Primary source verified on 2026-10-09."
+  },
+  {
+    "id": "e:openshell-audit-coverage",
+    "source": "project:nvidia-openshell",
+    "target": "source:openshell-audit-20261009",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openshell-audit-20261009"
+    ],
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09",
+    "note": "Primary source verified on 2026-10-09."
+  },
+  {
+    "id": "e:durable-invalid-resume",
+    "source": "cap:durable-execution",
+    "target": "source:langgraph-resume-20261009",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:langgraph-resume-20261009"
+    ],
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09",
+    "note": "Primary source verified on 2026-10-09."
+  },
+  {
+    "id": "e:trend-store-migration",
+    "source": "trend:persistent-agent-runtime",
+    "target": "source:openswe-store-20261009",
+    "type": "EVIDENCED_BY",
+    "kind": "analysis",
+    "confidence": 0.85,
+    "evidence": [
+      "source:openswe-store-20261009"
+    ],
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09",
+    "note": "Primary source verified on 2026-10-09."
   }
 ]

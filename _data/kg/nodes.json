@@ -184,7 +184,7 @@
     "summary": "Resume work after crashes without repeating completed side effects.",
     "maturity": "production",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-07",
+    "last_verified": "2026-10-09",
     "themes": [
       "runtime",
       "cloud-agent"
@@ -213,7 +213,8 @@
       "只保存对话/Agent state，但没有记录外部副作用",
       "从 checkpoint 重新执行时重复调用昂贵模型或重复执行工具",
       "需要人工审批时让 worker 长时间占用资源",
-      "恢复并行 exit-durability checkpoint 时 DeltaChannel writes 重复或错序，导致状态与 live 执行不等价"
+      "恢复并行 exit-durability checkpoint 时 DeltaChannel writes 重复或错序，导致状态与 live 执行不等价",
+      "人工 resume 的 schema ValidationError 被 ToolNode 当普通工具错误吞掉，使中断丢失而不是保持可重答"
     ],
     "intro": "Durable Execution 是长时间运行 Agent 的“可靠执行底座”：任务可以经历进程崩溃、机器替换、部署重启或长时间等待，而不必从头再来。它关注的不是保存一份对话，而是让整个执行历史、已完成结果和外部副作用都具备可恢复语义。",
     "content_mode": "authored",
@@ -542,7 +543,7 @@
     "summary": "Enforce safety outside the harness so the agent cannot control its own guardrail.",
     "maturity": "emerging",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-03",
+    "last_verified": "2026-10-09",
     "themes": [
       "security",
       "sandbox"
@@ -567,7 +568,9 @@
     ],
     "failure_modes": [
       "策略仅存在 system prompt",
-      "安全 hook 与 Agent 运行在同一可修改进程"
+      "安全 hook 与 Agent 运行在同一可修改进程",
+      "同一 endpoint glob 在路由器、Rego 与形式化 Prover 中解释不同，静态验证无法覆盖实际授权范围",
+      "多 endpoint proposal 的审计摘要只显示首项，使操作员误判批准的权限"
     ],
     "intro": "Out-of-band Policy Enforcement 把安全控制放在 Agent 自身控制范围之外。Agent 可以提出动作请求，但是否允许访问网络、文件、凭据或执行高风险操作，由独立 enforcement 层最终决定。",
     "content_mode": "authored",
@@ -1147,7 +1150,7 @@
     "summary": "Secure runtime for autonomous agents with sandboxing and external policy enforcement.",
     "maturity": "emerging",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-08",
+    "last_verified": "2026-10-09",
     "themes": [
       "sandbox",
       "security"
@@ -1175,14 +1178,17 @@
       "Sandbox create/start 本身也应建模成可持久化 operation：准备、准入、driver 调用和 cleanup 需要独立 deadline、ownership 与 fencing",
       "调用方取消不应自动等价于底层 provisioning 取消；否则容易留下孤儿 VM、错误补偿或多副本竞态",
       "Supervisor OTLP 与 Gateway traceparent 对齐，以区分 policy attach、agent start 与 egress authorize/resolve/dial 的耗时",
-      "Gateway pod roll 中应等待 replacement supervisor session 交接并重置 reconnect backoff，避免短暂错误标记 Not Ready"
+      "Gateway pod roll 中应等待 replacement supervisor session 交接并重置 reconnect backoff，避免短暂错误标记 Not Ready",
+      "Endpoint selector 的 Rust 路由、Rego enforcement 与形式化 Prover 必须做同输入 parity 测试，REST allow rule 的匹配语义需独立标注",
+      "Policy Proposal 审计必须枚举所有 endpoint 和 allow，而不能仅显示首项，避免审批范围被低估"
     ],
     "what_to_watch": [
       "policy language 和 capability model",
       "与 MCP / sandbox / browser tool 的统一控制",
       "审计、回放和 incident response 能力",
       "0.1.5 之后 preparation/admission deadline、pending operation ownership 与多 replica fencing 是否稳定进入正式 release",
-      "sandbox create/start/delete 在 gateway crash、driver late result 和 caller cancellation 下的恢复语义"
+      "sandbox create/start/delete 在 gateway crash、driver late result 和 caller cancellation 下的恢复语义",
+      "Endpoint path matcher 的多解释器回归测试与审计展示是否成为 release gate"
     ],
     "intro": "NVIDIA OpenShell 是 Open Agent Safety Platform 中的安全运行边界，强调把 Agent 的权限与 policy enforcement 放在 Harness 之外。它不是单纯的 sandbox，而是在执行环境之外再建立一个 Agent 无法自行关闭的控制面。",
     "content_mode": "authored",
@@ -1744,7 +1750,7 @@
     "summary": "Agents are shifting from short-lived processes to durable state plus persistent workspace.",
     "maturity": "emerging",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-03",
+    "last_verified": "2026-10-09",
     "themes": [
       "runtime",
       "cloud-agent",
@@ -1756,7 +1762,8 @@
     "supporting_signals": [
       "OpenAI Dots 提供 always-on Agent 与 cloud computer",
       "Restate 把 durable execution 用于 Agent/workflow",
-      "Docker Cloud Sandboxes 等产品把远程 workspace 生命周期独立出来"
+      "Docker Cloud Sandboxes 等产品把远程 workspace 生命周期独立出来",
+      "Google 2026-10-08 Gemini agent 公告明确跨设备持续上下文、独立 coworker 身份和长期云端执行，但未公开底层恢复机制"
     ],
     "counter_signals": [
       "很多平台仍主要依赖长时间存活的 sandbox 或进程",
@@ -1765,7 +1772,8 @@
     "what_to_watch": [
       "workspace snapshot / migration 标准",
       "Agent / Workspace / Task 三层 identity",
-      "跨 worker resume 与版本升级兼容"
+      "跨 worker resume 与版本升级兼容",
+      "预算暂停、长期 Agent 身份与临时子 Agent 授权是否有统一的可审计生命周期"
     ],
     "confidence_note": "当前属于高价值、较高置信度的架构方向，但具体实现仍明显分化。",
     "intro": "Persistent Agent Runtime 是从短生命周期任务向长期 Agent 服务演进的架构方向：Agent 身份和工作状态长期存在，但实际执行 worker 可以按需创建、替换和销毁。Workspace、durable state 与 memory 被逐渐拆成独立资源。",
@@ -2308,6 +2316,151 @@
       "TLS CONNECT、opaque tunnel 与私有地址防护是否全部受配置约束",
       "高频网络判定下的延迟、授权审计与运营成本"
     ],
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "project:google-gemini-agent",
+    "label": "Google Gemini agent (work)",
+    "type": "Project",
+    "summary": "Google Cloud 于 2026-10-08 宣布的企业通用 Agent，强调跨端持久上下文、独立 Agent 身份、长任务、子 Agent 与统一治理。",
+    "maturity": "announced",
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09",
+    "themes": [
+      "cloud-agent",
+      "runtime",
+      "security",
+      "memory"
+    ],
+    "url": "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026",
+    "page": "/entities/project--google-gemini-agent/",
+    "content_mode": "authored",
+    "content_version": "v9",
+    "intro": "Gemini agent 是 Google Cloud 面向企业工作流发布的通用 Agent 入口。它将聊天、知识工作、编码、计划任务和事件触发纳入一个可跨设备调用的长期主体；其中临时子 Agent 与长期 coworker Agent 的身份和权限边界被明确区分。",
+    "why_it_matters": "这是将 Agent identity、持久上下文、独立 Workspace 账号、网络策略和成本预算放在同一产品契约中的公开样本。对构建百万用户云端 Agent 的团队，重要的不是 UI 统一，而是任务、身份、授权和计算能否被独立治理。",
+    "definition": "Google Cloud 在 Gemini at Work 2026 宣布的工作型 Gemini agent；与底层 Gemini 模型和此前 Gemini Enterprise Agent Platform 不应混为同一对象。",
+    "operating_model": "用户从网页、桌面、移动端或 headless channel 委派任务；Agent 使用共享记忆与上下文，调用 Skills、工具和 MCP，按需创建有独立身份的临时子 Agent。长期 coworker 有自己的 Workspace 账号、邮箱和持久存储，任务可在用户离线后继续。厂商声明模型可按任务路由，并通过 Agent Sandbox、Gateway、OAuth 授权与预算暂停控制执行。",
+    "key_capabilities": [
+      "cap:persistent-workspace",
+      "cap:policy-enforcement"
+    ],
+    "architecture_role": "作为 Cloud Agent 产品层样本，展示长期 Agent 身份如何绑定可审计的授权主体与成本控制；不能据此反推出具体底层 durable runtime 实现。",
+    "limitations": [
+      "公开资料未给出 checkpoint、worker lease、失败恢复、幂等和跨区迁移的协议与 SLA",
+      "关于所有流量经过 Gateway 和 VM 身份传播的说明是官方架构宣称，缺少可独立复现的测试",
+      "产品公告不等于所有企业租户或所有功能均已正式开放",
+      "跨连接器权限映射、凭据轮换与子 Agent 撤权细节尚未公开"
+    ],
+    "maturity_notes": "2026-10-08 已正式宣布，但可用性与稳定性需要按具体租户和功能单独核实；本知识库不把公告日期当作 GA 或生产成熟度证据。",
+    "engineering_takeaways": [
+      "把 Agent、Task、Worker、Workspace、Grant 和 Budget 建成不同生命周期对象",
+      "每个子 Agent 具有显式 owner、scope、expiry 与审计身份",
+      "预算触发暂停应保留任务恢复点但释放可计费执行资源",
+      "把厂商宣称与已验证的 failure/recovery 行为分层记录"
+    ],
+    "what_to_watch": [
+      "公开的 Agent Gateway policy schema 与验证方法",
+      "跨设备 resume 与 worker 替换的具体故障语义",
+      "coworker 账号的 OAuth scope、委派、撤销与审计边界",
+      "预算暂停时 checkpoint、工具调用和外部副作用如何处理"
+    ],
+    "architecture_flow": [
+      "用户/事件触发目标",
+      "长期 Agent identity 与共享上下文",
+      "任务规划和临时 sub-agent",
+      "Skills/MCP/工具调用",
+      "Agent Sandbox + Gateway + 审计",
+      "预算/审批暂停与结果回流"
+    ]
+  },
+  {
+    "id": "source:google-gemini-20261009",
+    "label": "Google Cloud Gemini agent announcement",
+    "type": "Source",
+    "summary": "Google Cloud 官方 2026-10-08 发布 Gemini agent，披露跨端上下文、子 Agent 身份、coworker 账号、Gateway、审计与预算控制。",
+    "maturity": "source",
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09",
+    "themes": [
+      "cloud-agent"
+    ],
+    "url": "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026",
+    "page": "/entities/source--google-gemini-20261009/",
+    "intro": "Google Cloud 官方 2026-10-08 发布 Gemini agent，披露跨端上下文、子 Agent 身份、coworker 账号、Gateway、审计与预算控制。",
+    "why_it_matters": "这是产品级一手声明，适合证明其公开的身份和治理契约；不提供 checkpoint、恢复算法、性能基准或具体开放范围的独立验证。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openshell-path-20261009",
+    "label": "OpenShell endpoint path parity fix",
+    "type": "Source",
+    "summary": "OpenShell #4336 统一 endpoint selector 的 Rust、Rego 和形式化 Prover 路径匹配语义，并加入 runtime parity 与反例回放测试。",
+    "maturity": "source",
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09",
+    "themes": [
+      "security"
+    ],
+    "url": "https://github.com/NVIDIA/OpenShell/commit/b959bb68179504bd517ad2d23866b391620c68ff",
+    "page": "/entities/source--openshell-path-20261009/",
+    "intro": "OpenShell #4336 统一 endpoint selector 的 Rust、Rego 和形式化 Prover 路径匹配语义，并加入 runtime parity 与反例回放测试。",
+    "why_it_matters": "同一条授权规则在多个执行与验证层若语义不一致，形式化检查可能证明了另一套规则；这份提交给出了可复查的代码级修复。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openshell-audit-20261009",
+    "label": "OpenShell policy proposal audit coverage",
+    "type": "Source",
+    "summary": "OpenShell #4313 改写 Policy Proposal 审计摘要，将原先只列首个 endpoint 和首条 allow 的展示扩展为所有 endpoint 及允许规则。",
+    "maturity": "source",
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09",
+    "themes": [
+      "security"
+    ],
+    "url": "https://github.com/NVIDIA/OpenShell/commit/fe2dd3e9d0476ee6d529fd991195ec7606a0561e",
+    "page": "/entities/source--openshell-audit-20261009/",
+    "intro": "OpenShell #4313 改写 Policy Proposal 审计摘要，将原先只列首个 endpoint 和首条 allow 的展示扩展为所有 endpoint 及允许规则。",
+    "why_it_matters": "审计摘要是操作员理解授权变更的重要界面；若展示范围小于实际规则，审批和事后排查都可能失去正确的上下文。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:langgraph-resume-20261009",
+    "label": "LangGraph invalid interrupt resume propagation",
+    "type": "Source",
+    "summary": "LangGraph #9232 为非法 resume 的 ValidationError 增加标记，让 ToolNode 与 wrapper 保留人工中断控制流，而非转换成模型可见的工具错误。",
+    "maturity": "source",
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09",
+    "themes": [
+      "runtime"
+    ],
+    "url": "https://github.com/langchain-ai/langgraph/commit/5965d72ff7d1733342eea78cf565d93f7320b779",
+    "page": "/entities/source--langgraph-resume-20261009/",
+    "intro": "LangGraph #9232 为非法 resume 的 ValidationError 增加标记，让 ToolNode 与 wrapper 保留人工中断控制流，而非转换成模型可见的工具错误。",
+    "why_it_matters": "人工审批被当作普通工具异常吞掉时，工作流会丢失待恢复状态；该修复提供明确的失败窗口与回归测试依据。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openswe-store-20261009",
+    "label": "Open SWE PostgreSQL user-state migration",
+    "type": "Source",
+    "summary": "Open SWE #3792 将用户设置和凭据从 LangGraph Store 迁到 PostgreSQL，使用导入记录、行锁及延迟结束导入应对滚动升级。",
+    "maturity": "source",
+    "first_seen": "2026-10-09",
+    "last_verified": "2026-10-09",
+    "themes": [
+      "cloud-agent"
+    ],
+    "url": "https://github.com/langchain-ai/open-swe/commit/880a8ca74b02",
+    "page": "/entities/source--openswe-store-20261009/",
+    "intro": "Open SWE #3792 将用户设置和凭据从 LangGraph Store 迁到 PostgreSQL，使用导入记录、行锁及延迟结束导入应对滚动升级。",
+    "why_it_matters": "混合版本部署会让旧副本继续写旧存储；该提交揭示多副本导入幂等、数据权属和清理时机的真实工程问题。",
     "content_mode": "authored",
     "content_version": "v9"
   }

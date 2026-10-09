@@ -17,5 +17,8 @@
   "persistent workspace": "cap:persistent-workspace",
   "anthropic sandbox runtime": "project:anthropic-sandbox-runtime",
   "sandbox-runtime": "project:anthropic-sandbox-runtime",
-  "srt-proxy": "project:anthropic-sandbox-runtime"
+  "srt-proxy": "project:anthropic-sandbox-runtime",
+  "google gemini agent": "project:google-gemini-agent",
+  "gemini work agent": "project:google-gemini-agent",
+  "gemini at work agent": "project:google-gemini-agent"
 }
