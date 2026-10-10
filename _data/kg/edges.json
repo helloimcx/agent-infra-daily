@@ -1160,5 +1160,75 @@
     "first_seen": "2026-10-09",
     "last_verified": "2026-10-09",
     "note": "Primary source verified on 2026-10-09."
+  },
+  {
+    "id": "e:delta-checkpoint-1010",
+    "source": "cap:durable-execution",
+    "target": "source:langgraph-delta-20261010",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:langgraph-delta-20261010"
+    ],
+    "first_seen": "2026-10-10",
+    "last_verified": "2026-10-10",
+    "note": "Primary code evidence verified on 2026-10-10."
+  },
+  {
+    "id": "e:openshell-alias-1010",
+    "source": "project:nvidia-openshell",
+    "target": "source:openshell-alias-20261010",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openshell-alias-20261010"
+    ],
+    "first_seen": "2026-10-10",
+    "last_verified": "2026-10-10",
+    "note": "Primary code evidence verified on 2026-10-10."
+  },
+  {
+    "id": "e:credential-openshell-1010",
+    "source": "cap:credential-isolation",
+    "target": "source:openshell-alias-20261010",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openshell-alias-20261010"
+    ],
+    "first_seen": "2026-10-10",
+    "last_verified": "2026-10-10",
+    "note": "Primary code evidence verified on 2026-10-10."
+  },
+  {
+    "id": "e:credential-codex-1010",
+    "source": "cap:credential-isolation",
+    "target": "source:codex-broker-mitm-20261010",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:codex-broker-mitm-20261010"
+    ],
+    "first_seen": "2026-10-10",
+    "last_verified": "2026-10-10",
+    "note": "Primary code evidence verified on 2026-10-10."
+  },
+  {
+    "id": "e:remote-mcp-1010",
+    "source": "cap:stateless-tool-protocol",
+    "target": "source:openswe-remote-mcp-20261010",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openswe-remote-mcp-20261010"
+    ],
+    "first_seen": "2026-10-10",
+    "last_verified": "2026-10-10",
+    "note": "Primary code evidence verified on 2026-10-10."
   }
 ]

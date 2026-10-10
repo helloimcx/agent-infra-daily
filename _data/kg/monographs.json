@@ -402,6 +402,17 @@
           "2026-10-09 合入的 #4336 不是简单重构。Rust 的 endpoint route selection、Rego 的 endpoint selector 和 Z3 Prover 曾经用不同 glob 规则解释同一个 path；在单星号是否跨斜杠、子树模式是否包含前缀时，验证器可能认为某条请求不被允许，运行时却选择了更宽的 endpoint。修复让 Rego 调用 Rust 注册的 matcher，并将 Prover 的 endpoint selector 模型对齐；REST rule 的 path matcher 仍独立，不能误合并。",
           "另一提交 #4313 将审计摘要从首个 endpoint 扩展到全部 endpoint 与 allow。它没有改变授权判定，却修正了审批者可见范围。平台应把 route selection、policy evaluation、formal containment、proposal presentation 当成四个需要同输入回归的接口；任意一个缺失都可能形成策略证明正确而操作员授权错误的窗口。"
         ]
+      },
+      {
+        "id": "jwt-alias-lifecycle-1010",
+        "title": "JWT 兼容包装与凭据撤权生命周期",
+        "evidence": [
+          "source:openshell-alias-20261010"
+        ],
+        "paragraphs": [
+          "OpenShell 在 provider credentials 与 secrets 代码中实现 JWT-shaped alias，要求 signature 保留 workload 原始签发的 placeholder suffix；claims 仅用于客户端本地元数据。代理解析时仍应遵守 endpoint、expiry 与 authorization epoch 检查。",
+          "新增测试覆盖 access token 过期、稳定 handle 合法刷新、旧授权 epoch 撤权与畸形 alias 拒绝。这说明凭据生命周期语义被纳入回归门禁，但不等于所有外部代理、跨租户部署或网络绕行路径已被穷尽证明。"
+        ]
       }
     ]
   },
@@ -853,6 +864,17 @@
           "LangGraph #9232 暴露了一个比 checkpoint 落盘更隐蔽的恢复错误：interrupt 的 response_schema 验证失败后，ToolNode 曾把 ValidationError 当作工具参数错误回给模型。这样人类审批尚未通过，模型却可能继续，原本应保留的 pending interrupt 消失。修复用错误标记区分非法 resume 与普通工具校验失败，并保证 GraphInterrupt 穿透 wrapper。",
           "这意味着 Durable Execution 的正确性不只在 worker crash 后能重试，也包括无效外部事件不能改变工作流控制状态。回归用例应覆盖嵌套子图工具、同步/异步 ToolNode、wrap_tool_call、不同 handle_tool_errors 配置，以及合法输入重答后 checkpoint 的一次性推进。"
         ]
+      },
+      {
+        "id": "delta-barrier-1010",
+        "title": "Checkpoint 与增量日志的因果栅栏",
+        "evidence": [
+          "source:langgraph-delta-20261010"
+        ],
+        "paragraphs": [
+          "LangGraph #9235 在 checkpoint 保存任务启动前捕获属于本次 DeltaChannel 的 write futures，并让后台保存先等待写入和前一次 checkpoint 成功。这个改动不仅规定持久化顺序，也规定增量日志与 checkpoint 的归属关系，避免共享可变列表带来竞态。",
+          "失败写入之后仍保存后继 checkpoint 会使恢复时沿父链重放的历史永久缺失。本站建议把 Journal Append、Step Commit、Checkpoint Publish 设计成单向栅栏，但这是跨平台架构抽象，不代表 LangGraph 已实现所有后端的 exactly-once。"
+        ]
       }
     ]
   },
@@ -1174,6 +1196,18 @@
         "paragraphs": [
           "如果 Agent 把所有 401/403 都当成工具坏了，会不断重试或寻找绕过路径。Broker 应返回结构化错误，让 Harness 决定请求提升权限、刷新 token 或停止。",
           "这是安全与 Agent 质量之间常被忽略的接口。这样 Harness 才能区分应该刷新凭据、请求权限提升、等待用户重新授权，还是直接停止任务，避免无意义的认证重试循环。"
+        ]
+      },
+      {
+        "id": "issued-alias-mitm-1010",
+        "title": "已签发凭据身份与代理策略的双重约束",
+        "evidence": [
+          "source:openshell-alias-20261010",
+          "source:codex-broker-mitm-20261010"
+        ],
+        "paragraphs": [
+          "OpenShell #4390 允许 JWT-shaped alias 供客户端解析，但要求完整 issued placeholder suffix 保留在 signature 中，claims 不授予注入权限；旧 epoch、过期和伪造句柄仍必须拒绝。凭据轮换不应让旧 Agent 只凭同名环境变量取得新权限。",
+          "Codex #52661 修复 brokered alias 绕过 MITM hooks 的路径。平台应在同一请求上下文关联 issuer、workload、authorization epoch、目标 endpoint 和最终转发地址，注入前后都校验网络策略；这一跨产品组合模型属于本站设计抽象。"
         ]
       }
     ]
@@ -1603,6 +1637,17 @@
         "paragraphs": [
           "任意 server instance 可以处理请求并不意味着后端资源无限。Browser、GPU、外部 API 和数据库仍可能被昂贵 tool call 压垮，因此 Gateway 需要按 tenant、Agent、tool 和 risk class 限制并发与速率。",
           "对于真正长时间运行的工具，协议更适合承担 submit/interact/result retrieval，而把执行队列、durable state 和 worker scheduling 交给专门 runtime，避免 server 再次积累隐式 session state。"
+        ]
+      },
+      {
+        "id": "remote-mcp-upload-1010",
+        "title": "Remote MCP 与本地会话迁移的状态边界",
+        "evidence": [
+          "source:openswe-remote-mcp-20261010"
+        ],
+        "paragraphs": [
+          "Open SWE #3855 将 private-thread 工具暴露为后端 remote MCP，upload_session 创建 thread 并签发一次性 code，再由本地 CLI 上传 JSONL transcript。这把外部 harness 的工具可达性、远程任务身份和本地文件读取拆成不同职责。",
+          "远程 HTTP 工具入口不意味着内部业务线程、上传任务和身份授权都无状态。生产验证必须覆盖上传码单次消费、owner 校验、部分文件失败、重复请求去重和跨副本恢复；这些要求不能被误写成 Open SWE 已完整实现的功能。"
         ]
       }
     ]
@@ -4238,6 +4283,150 @@
         "evidence": [],
         "paragraphs": [
           "此来源只覆盖用户设置和凭据的迁移实现；Skills 与 thread blobs 属于另一提交，不能在该 Source 下冒充同一代码证据。数据校验率、跨区一致性、回滚流程及线上是否已切换均未由本提交独立证明。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:langgraph-delta-20261010",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "mechanism",
+        "title": "增量写入归属与后台保存机制",
+        "evidence": [
+          "source:langgraph-delta-20261010"
+        ],
+        "paragraphs": [
+          "修复在创建 checkpoint 时就捕获当前 DeltaChannel write futures，而不是由异步保存任务稍后读取仍会变化的共享列表。每份 checkpoint 因此等待属于自己的写入，避免后续 step 的数据误归属。"
+        ]
+      },
+      {
+        "id": "failure-window",
+        "title": "失败窗口与不可完整回放问题",
+        "evidence": [
+          "source:langgraph-delta-20261010"
+        ],
+        "paragraphs": [
+          "保存任务等待前一次 checkpoint 成功，也等待本次增量写入成功。如果增量失败却继续发布后继 checkpoint，恢复时沿父链读取会永久缺少那一段数据；修复将该失败传播为 checkpoint 保存失败。"
+        ]
+      },
+      {
+        "id": "evidence-limits",
+        "title": "一手证据范围与尚待验证边界",
+        "evidence": [
+          "source:langgraph-delta-20261010"
+        ],
+        "paragraphs": [
+          "提交的代码与专门失败测试覆盖了相关写入排序，但不能证明所有存储后端的事务级 exactly-once。生产验证还应覆盖网络分区、存储超时、分叉、Overwrite 和 worker 重启后的语义等价性。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openshell-alias-20261010",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "mechanism",
+        "title": "JWT 包装与真正签发身份的分离",
+        "evidence": [
+          "source:openshell-alias-20261010"
+        ],
+        "paragraphs": [
+          "提交文档明确 JWT envelope 可供客户端解析，但真正的注入权限来自 signature 段中的 issued placeholder identity。Claims 不决定授权，客户端不能伪造 handle，也不能用裸环境变量名替代。"
+        ]
+      },
+      {
+        "id": "failure-window",
+        "title": "凭据轮换撤权与过期的失败语义",
+        "evidence": [
+          "source:openshell-alias-20261010"
+        ],
+        "paragraphs": [
+          "测试覆盖 access token 过期时拒绝解析、稳定 handle 合法刷新后映射新值、旧授权 epoch 撤销后不可复活，以及 identityless 或 malformed alias 必须 fail closed。授权状态比 JWT 外观更重要。"
+        ]
+      },
+      {
+        "id": "evidence-limits",
+        "title": "可复用设计原则与证据边界",
+        "evidence": [
+          "source:openshell-alias-20261010"
+        ],
+        "paragraphs": [
+          "Credential broker 应把签发身份、endpoint、expiry 与 authorization epoch 联合校验。提交证明了 OpenShell 对应实现和测试，不代表所有外部代理、客户端 JWT 解析库及跨租户部署都已经得到穷尽验证。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:codex-broker-mitm-20261010",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "mechanism",
+        "title": "代理注入与请求授权的真实接合点",
+        "evidence": [
+          "source:codex-broker-mitm-20261010"
+        ],
+        "paragraphs": [
+          "补丁跨 credential broker、destination、registry、HTTP proxy 和 MITM 模块修复旁路。代理不能因为识别到可注入的 alias，就忽略原有的 host、path 或请求动作策略；注入前后都应保持同一安全边界。"
+        ]
+      },
+      {
+        "id": "failure-window",
+        "title": "回归测试覆盖的具体请求场景",
+        "evidence": [
+          "source:codex-broker-mitm-20261010"
+        ],
+        "paragraphs": [
+          "新增 network approval 集成测试构造 agent 启动的代理、provider alias、受约束的 localhost 目标，并补充代理及 MITM 组合测试。此类测试防止以后增加 credential provider 时无意改变请求检查路径。"
+        ]
+      },
+      {
+        "id": "evidence-limits",
+        "title": "证据边界与生产运维的未知问题",
+        "evidence": [
+          "source:codex-broker-mitm-20261010"
+        ],
+        "paragraphs": [
+          "代码级修复不证明所有上游代理、DNS 变化、重定向、TLS 终止和操作系统网络栈都不可绕行。部署仍需对原始目标与最终转发目标做差分审计，并覆盖代理重试和跨域请求。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openswe-remote-mcp-20261010",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "mechanism",
+        "title": "从本地桥接转向后端远程工具接口",
+        "evidence": [
+          "source:openswe-remote-mcp-20261010"
+        ],
+        "paragraphs": [
+          "提交移除了 CLI 的本地 stdio MCP 路径及部分直接工具命令，文档引导外部 Agent 使用后端 remote MCP 的 private-thread tools。它改变的是工具接入边界，不证明线程、worker 或认证状态本身无状态。"
+        ]
+      },
+      {
+        "id": "failure-window",
+        "title": "会话上传采用两阶段控制协议",
+        "evidence": [
+          "source:openswe-remote-mcp-20261010"
+        ],
+        "paragraphs": [
+          "upload_session 创建目标 thread 并返回一次性上传 code；本地 CLI 读取 JSONL transcript，再向后端提交文件。这样外部 Agent 不需要直接读取用户机器的文件路径，本地读取和远程任务身份被分开处理。"
+        ]
+      },
+      {
+        "id": "evidence-limits",
+        "title": "幂等性认证与故障恢复的证据限制",
+        "evidence": [
+          "source:openswe-remote-mcp-20261010"
+        ],
+        "paragraphs": [
+          "该提交能证明 remote MCP 和两阶段上传接口的代码演进，但不能据此声称 code 过期时长、重复上传、部分失败恢复和跨副本一致性都已解决。平台必须分别测试 owner 校验、单次消费和重试去重。"
         ]
       }
     ]

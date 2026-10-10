@@ -139,6 +139,17 @@
             "同步/异步与重复提交"
           ]
         ]
+      },
+      {
+        "id": "delta-write-checkpoint-1010",
+        "type": "diagram",
+        "kind": "mixed",
+        "title": "DeltaChannel 写入与 Checkpoint 保存因果栅栏",
+        "summary": "结合 LangGraph #9235 的真实改动和本站故障模型，展示写入失败必须阻断后继 checkpoint，而非仅依赖进程重启。",
+        "evidence": [
+          "source:langgraph-delta-20261010"
+        ],
+        "mermaid": "sequenceDiagram\n participant W as Workflow Step\n participant D as Delta Write Store\n participant C as Checkpoint Saver\n W->>D: append delta writes\n W->>C: save checkpoint with captured futures\n C->>C: await previous checkpoint\n C->>D: await captured writes\n alt success\n D-->>C: persisted\n C->>C: publish checkpoint\n else failed\n D--xC: write failure\n C--xW: checkpoint rejected\n end"
       }
     ]
   },
@@ -425,6 +436,44 @@
             "可能",
             "~/.config 写盘",
             "ephemeral credential home"
+          ]
+        ]
+      },
+      {
+        "id": "credential-alias-boundary-1010",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Credential Alias 的签发身份与网络策略失败矩阵",
+        "summary": "对比 OpenShell issued JWT handle 和 Codex MITM hook 修复；跨产品关联是本站安全架构分析而非厂商联合实现。",
+        "evidence": [
+          "source:openshell-alias-20261010",
+          "source:codex-broker-mitm-20261010"
+        ],
+        "columns": [
+          "失败窗口",
+          "核验证据",
+          "工程检查点"
+        ],
+        "rows": [
+          [
+            "JWT claims 冒充授权",
+            "OpenShell #4390 claims 不授予注入权限",
+            "保留完整 issued identity"
+          ],
+          [
+            "旧授权 epoch 复活",
+            "OpenShell 旧 alias 撤权测试",
+            "轮换和撤权并发回归"
+          ],
+          [
+            "Alias 绕过网络 hook",
+            "Codex #52661 MITM bypass 修复",
+            "解析前后目标策略一致"
+          ],
+          [
+            "最终转发目标变化",
+            "Codex destination/proxy 测试",
+            "重定向与上游代理独立验证"
           ]
         ]
       }
@@ -816,6 +865,17 @@
             "Memory service"
           ]
         ]
+      },
+      {
+        "id": "remote-mcp-upload-1010",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Remote MCP 私有线程与本地会话两阶段上传",
+        "summary": "本站依据 Open SWE #3855 的接口设计上传控制流程；图中 owner 和单次消费检查属于工程建议，不冒充已公开的全部实现。",
+        "evidence": [
+          "source:openswe-remote-mcp-20261010"
+        ],
+        "mermaid": "sequenceDiagram\n participant A as External Agent\n participant M as Remote MCP\n participant T as Thread Control\n participant L as Local CLI\n participant S as Transcript Store\n A->>M: upload_session\n M->>T: create private thread\n T-->>A: thread + one-time code\n L->>S: upload code + JSONL\n S->>T: validate owner and code\n T-->>S: accept or reject\n S-->>L: result\n Note over T,S: Retries need dedupe and partial recovery"
       }
     ]
   },
@@ -1265,6 +1325,48 @@
             "仅首个 endpoint / allow 可见",
             "遍历全部 endpoint 和 allow",
             "仍需端到端核对审批 UI 与日志"
+          ]
+        ]
+      },
+      {
+        "id": "openshell-jwt-alias-lifecycle-1010",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "OpenShell JWT-shaped Credential Alias 生命周期",
+        "summary": "基于 #4390 的代码和测试区分签发、轮换、过期、撤权和伪造句柄，不把 JWT 外形误当授权依据。",
+        "evidence": [
+          "source:openshell-alias-20261010"
+        ],
+        "columns": [
+          "状态",
+          "预期行为",
+          "证据"
+        ],
+        "rows": [
+          [
+            "已签发有效 handle",
+            "按当前授权解析",
+            "issued suffix"
+          ],
+          [
+            "Access token 过期",
+            "拒绝",
+            "expiry 测试"
+          ],
+          [
+            "旧授权 epoch 已撤销",
+            "拒绝旧 alias",
+            "revocation 测试"
+          ],
+          [
+            "稳定 handle 合法刷新",
+            "映射新授权值",
+            "refresh 测试"
+          ],
+          [
+            "无签发身份或畸形 revision",
+            "fail closed",
+            "malformed 测试"
           ]
         ]
       }

@@ -184,7 +184,7 @@
     "summary": "Resume work after crashes without repeating completed side effects.",
     "maturity": "production",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-09",
+    "last_verified": "2026-10-10",
     "themes": [
       "runtime",
       "cloud-agent"
@@ -207,14 +207,16 @@
       "不要把“可恢复线程”与真正的 durable execution 混为一谈",
       "所有会产生外部副作用的 tool call 都要进入一致的执行语义",
       "恢复机制必须能跨部署版本、网络故障和进程生命周期工作",
-      "恢复后比较 channel 写入顺序与无中断 baseline，验证 task ID、checkpoint fork 和因果重播保持一致"
+      "恢复后比较 channel 写入顺序与无中断 baseline，验证 task ID、checkpoint fork 和因果重播保持一致",
+      "DeltaChannel 写入必须先于依赖它的 checkpoint 保存；后台任务需要捕获每份 checkpoint 独有的 write futures。"
     ],
     "failure_modes": [
       "只保存对话/Agent state，但没有记录外部副作用",
       "从 checkpoint 重新执行时重复调用昂贵模型或重复执行工具",
       "需要人工审批时让 worker 长时间占用资源",
       "恢复并行 exit-durability checkpoint 时 DeltaChannel writes 重复或错序，导致状态与 live 执行不等价",
-      "人工 resume 的 schema ValidationError 被 ToolNode 当普通工具错误吞掉，使中断丢失而不是保持可重答"
+      "人工 resume 的 schema ValidationError 被 ToolNode 当普通工具错误吞掉，使中断丢失而不是保持可重答",
+      "增量写入失败后仍发布后继 checkpoint，会导致祖先链 replay 永久缺失状态。"
     ],
     "intro": "Durable Execution 是长时间运行 Agent 的“可靠执行底座”：任务可以经历进程崩溃、机器替换、部署重启或长时间等待，而不必从头再来。它关注的不是保存一份对话，而是让整个执行历史、已完成结果和外部副作用都具备可恢复语义。",
     "content_mode": "authored",
@@ -480,7 +482,7 @@
     "summary": "Keep secrets outside agent-visible workspace and broker them under policy.",
     "maturity": "emerging",
     "first_seen": "2026-10-03",
-    "last_verified": "2026-10-03",
+    "last_verified": "2026-10-10",
     "themes": [
       "security",
       "sandbox"
@@ -494,7 +496,8 @@
       "credential broker / proxy",
       "按请求注入或签名",
       "权限范围与任务上下文绑定",
-      "审计每次凭据使用"
+      "审计每次凭据使用",
+      "JWT-shaped credential alias 保留 issued placeholder identity，代理联合检查 endpoint、expiry 和 authorization epoch。"
     ],
     "representative_implementations": [
       "project:docker-cloud-sandboxes",
@@ -508,7 +511,8 @@
     ],
     "failure_modes": [
       "把 secret 存入 workspace 文件",
-      "让 Agent 输出原始 token 供工具使用"
+      "让 Agent 输出原始 token 供工具使用",
+      "凭据别名丢失签发身份或绕过 MITM hook，导致旧进程权限复活或请求目标策略被旁路。"
     ],
     "intro": "Credential Isolation 的核心目标是让 Agent 可以完成需要身份凭据的操作，却不必直接接触原始 secret。平台通过短期 token、代理签名或 credential broker 将“使用权限”和“读取凭据”拆成两件事。",
     "content_mode": "authored",
@@ -839,7 +843,7 @@
     "summary": "Tool protocol semantics that scale without sticky protocol sessions.",
     "maturity": "emerging",
     "first_seen": "2026-10-02",
-    "last_verified": "2026-10-03",
+    "last_verified": "2026-10-10",
     "themes": [
       "protocol",
       "runtime"
@@ -860,7 +864,8 @@
     "engineering_considerations": [
       "stateless 不代表业务本身无状态",
       "认证、授权和长任务 correlation 仍需独立设计",
-      "升级协议时要考虑新旧客户端共存"
+      "升级协议时要考虑新旧客户端共存",
+      "远程 MCP 工具入口不等于 private-thread 无状态；上传码、线程所有权和部分上传需要独立持久化与幂等。"
     ],
     "failure_modes": [
       "把协议 session 去掉后却把隐式状态塞进网关内存"
@@ -1150,7 +1155,7 @@
     "summary": "Secure runtime for autonomous agents with sandboxing and external policy enforcement.",
     "maturity": "emerging",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-09",
+    "last_verified": "2026-10-10",
     "themes": [
       "sandbox",
       "security"
@@ -1180,7 +1185,8 @@
       "Supervisor OTLP 与 Gateway traceparent 对齐，以区分 policy attach、agent start 与 egress authorize/resolve/dial 的耗时",
       "Gateway pod roll 中应等待 replacement supervisor session 交接并重置 reconnect backoff，避免短暂错误标记 Not Ready",
       "Endpoint selector 的 Rust 路由、Rego enforcement 与形式化 Prover 必须做同输入 parity 测试，REST allow rule 的匹配语义需独立标注",
-      "Policy Proposal 审计必须枚举所有 endpoint 和 allow，而不能仅显示首项，避免审批范围被低估"
+      "Policy Proposal 审计必须枚举所有 endpoint 和 allow，而不能仅显示首项，避免审批范围被低估",
+      "JWT 兼容凭据别名必须保留 workload 已签发 handle，过期、撤权、畸形 alias 均应 fail closed。"
     ],
     "what_to_watch": [
       "policy language 和 capability model",
@@ -2461,6 +2467,82 @@
     "page": "/entities/source--openswe-store-20261009/",
     "intro": "Open SWE #3792 将用户设置和凭据从 LangGraph Store 迁到 PostgreSQL，使用导入记录、行锁及延迟结束导入应对滚动升级。",
     "why_it_matters": "混合版本部署会让旧副本继续写旧存储；该提交揭示多副本导入幂等、数据权属和清理时机的真实工程问题。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:langgraph-delta-20261010",
+    "label": "LangGraph DeltaChannel checkpoint write barrier",
+    "type": "Source",
+    "summary": "LangGraph #9235 将 DeltaChannel 写入与 checkpoint 异步保存的因果关系显式化，阻止失败写入后的后继 checkpoint。",
+    "maturity": "source",
+    "first_seen": "2026-10-10",
+    "last_verified": "2026-10-10",
+    "themes": [
+      "runtime",
+      "memory"
+    ],
+    "url": "https://github.com/langchain-ai/langgraph/commit/cba111d8d600a027324eba1120a22e82b7f07432",
+    "page": "/entities/source--langgraph-delta-20261010/",
+    "intro": "LangGraph #9235 修复 PregelLoop 的 DeltaChannel 写入竞态：调度 checkpoint 保存时捕获该步 write futures，后台保存等待本次写入和前一次 checkpoint 完成。",
+    "why_it_matters": "长任务恢复的 checkpoint 即使已经持久化，也可能因缺少祖先增量而无法正确重放。失败写入不能被后续成功保存掩盖，否则状态历史会出现永久缺口。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openshell-alias-20261010",
+    "label": "OpenShell issued identity in JWT credential aliases",
+    "type": "Source",
+    "summary": "OpenShell #4390 使 JWT-shaped alias 保留已签发 placeholder identity，并测试过期、撤权、轮换与畸形别名。",
+    "maturity": "source",
+    "first_seen": "2026-10-10",
+    "last_verified": "2026-10-10",
+    "themes": [
+      "security",
+      "sandbox"
+    ],
+    "url": "https://github.com/NVIDIA/OpenShell/commit/0ccc6b9a053fdaf47700e91c1b8ed858f2afed4f",
+    "page": "/entities/source--openshell-alias-20261010/",
+    "intro": "OpenShell #4390 允许客户端使用可解析的 JWT-shaped credential alias，但要求 signature 段保留 workload 实际收到的完整 issued placeholder suffix。",
+    "why_it_matters": "只保留环境变量名会让旧进程在凭据轮换后误拿到新身份的 secret。JWT claims 只能提供本地元数据，不能成为 broker 授予凭据注入权限的依据。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:codex-broker-mitm-20261010",
+    "label": "Codex credential broker MITM hook parity fix",
+    "type": "Source",
+    "summary": "Codex #52661 修复 brokered credential aliases 绕过 MITM hooks 的路径，并加入网络审批和代理回归测试。",
+    "maturity": "source",
+    "first_seen": "2026-10-10",
+    "last_verified": "2026-10-10",
+    "themes": [
+      "security",
+      "harness"
+    ],
+    "url": "https://github.com/openai/codex/commit/65b82cdf96f9d305494bc8c6c8d2404d37709030",
+    "page": "/entities/source--codex-broker-mitm-20261010/",
+    "intro": "Codex #52661 修改 network proxy 的 credential broker、destination、MITM hook 和请求转发逻辑，确保使用 brokered credential alias 时仍经过网络策略检查。",
+    "why_it_matters": "凭据不直接暴露给 Agent 并不等于请求安全。如果 broker 的别名解析跳过 MITM hook，Agent 可能借原本合法的 secret 注入路径绕过目标域名和请求策略。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openswe-remote-mcp-20261010",
+    "label": "Open SWE remote MCP private-thread tools",
+    "type": "Source",
+    "summary": "Open SWE #3855 将 private-thread 工具提供给外部 Agent 的后端 remote MCP，并用一次性 code 转移本地 coding session。",
+    "maturity": "source",
+    "first_seen": "2026-10-10",
+    "last_verified": "2026-10-10",
+    "themes": [
+      "protocol",
+      "cloud-agent"
+    ],
+    "url": "https://github.com/langchain-ai/open-swe/commit/6a5071bcefbb851dbb563388334ac84ddbbffe70",
+    "page": "/entities/source--openswe-remote-mcp-20261010/",
+    "intro": "Open SWE #3855 把外部 Agent 的工具接入调整为后端 `/oswe/mcp`，同时让 upload_session 创建远端 thread、返回一次性 code，再由本地 CLI 上传 transcript。",
+    "why_it_matters": "长期 coding agent 需要跨设备和跨 harness 访问工具，但工具入口、线程身份与本地文件上传不是同一权限边界。远程协议可达性不能代替业务会话状态管理。",
     "content_mode": "authored",
     "content_version": "v9"
   }

@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-10",
+  "mode": "daily",
+  "note": "Four primary-source authored entities; substantive durability, credential, OpenShell, and remote MCP research updates.",
+  "nodes_added": [
+    "source:langgraph-delta-20261010",
+    "source:openshell-alias-20261010",
+    "source:codex-broker-mitm-20261010",
+    "source:openswe-remote-mcp-20261010"
+  ],
+  "nodes_updated": [
+    "cap:durable-execution",
+    "cap:credential-isolation",
+    "project:nvidia-openshell",
+    "cap:stateless-tool-protocol"
+  ],
+  "edges_added": [
+    "e:delta-checkpoint-1010",
+    "e:openshell-alias-1010",
+    "e:credential-openshell-1010",
+    "e:credential-codex-1010",
+    "e:remote-mcp-1010"
+  ],
+  "edges_updated": []
+}

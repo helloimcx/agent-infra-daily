@@ -447,5 +447,53 @@
     ],
     "first_seen": "2026-10-09",
     "last_verified": "2026-10-09"
+  },
+  {
+    "id": "claim:delta-checkpoint-1010",
+    "entity": "cap:durable-execution",
+    "text": "LangGraph #9235 要求 checkpoint 保存等待本次 DeltaChannel 增量写入及前序 checkpoint 成功，避免失败写入后持久化不可完整回放的状态。",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:langgraph-delta-20261010"
+    ],
+    "first_seen": "2026-10-10",
+    "last_verified": "2026-10-10"
+  },
+  {
+    "id": "claim:openshell-jwt-1010",
+    "entity": "project:nvidia-openshell",
+    "text": "OpenShell #4390 允许 JWT-shaped alias，但注入权限仍依赖完整已签发 placeholder identity，并保留 endpoint、expiry 和授权 epoch 检查。",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openshell-alias-20261010"
+    ],
+    "first_seen": "2026-10-10",
+    "last_verified": "2026-10-10"
+  },
+  {
+    "id": "claim:codex-mitm-1010",
+    "entity": "cap:credential-isolation",
+    "text": "Codex #52661 修复 brokered credential alias 绕过 MITM hooks 的路径，并增加 network approval 与代理回归测试。",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:codex-broker-mitm-20261010"
+    ],
+    "first_seen": "2026-10-10",
+    "last_verified": "2026-10-10"
+  },
+  {
+    "id": "claim:openswe-mcp-1010",
+    "entity": "cap:stateless-tool-protocol",
+    "text": "Open SWE #3855 将 private-thread 工具提供为后端 remote MCP，并通过一次性上传码和本地 CLI 转移 coding transcript；不能据此推断业务状态无状态。",
+    "kind": "analysis",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openswe-remote-mcp-20261010"
+    ],
+    "first_seen": "2026-10-10",
+    "last_verified": "2026-10-10"
   }
 ]
