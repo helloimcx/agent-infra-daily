@@ -495,5 +495,53 @@
     ],
     "first_seen": "2026-10-10",
     "last_verified": "2026-10-10"
+  },
+  {
+    "id": "claim:langgraph-input-ancestor-1011",
+    "entity": "cap:durable-execution",
+    "text": "LangGraph #9258 将 DeltaChannel 输入 update_state 写入归属到被更新 checkpoint 的祖先；对旧 checkpoint fork 改用 snapshot，并为手动更新的消息分配稳定 ID。",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:langgraph-update-state-20261011"
+    ],
+    "first_seen": "2026-10-11",
+    "last_verified": "2026-10-11"
+  },
+  {
+    "id": "claim:adk-parallel-hitl-drain-1011",
+    "entity": "cap:durable-execution",
+    "text": "Google ADK ParallelWorker 遇到 NodeInterruptedError 后停止调度新 item，等待已启动 sibling worker 完成，再进入 WAITING；不再把人工中断等同于 fatal cancel。",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:adk-parallel-hitl-20261011"
+    ],
+    "first_seen": "2026-10-11",
+    "last_verified": "2026-10-11"
+  },
+  {
+    "id": "claim:srt-vsock-block-1011",
+    "entity": "project:anthropic-sandbox-runtime",
+    "text": "Anthropic sandbox-runtime #691 在 Linux seccomp 阻断 socket(AF_VSOCK)，因为 network namespace 不能隔离 VM sockets；allowAllUnixSockets 例外会重新允许此 family。",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:srt-vsock-20261011"
+    ],
+    "first_seen": "2026-10-11",
+    "last_verified": "2026-10-11"
+  },
+  {
+    "id": "claim:openhands-readiness-1011",
+    "entity": "trend:persistent-agent-runtime",
+    "text": "OpenHands #5700 将 deferred-init readiness 门禁前置于认证并覆盖多类 API/WebSocket 入口；这支持 Agent Server 生命周期独立治理的分析，但不证明跨 worker durable recovery。",
+    "kind": "analysis",
+    "confidence": 0.92,
+    "evidence": [
+      "source:openhands-ingress-20261011"
+    ],
+    "first_seen": "2026-10-11",
+    "last_verified": "2026-10-11"
   }
 ]

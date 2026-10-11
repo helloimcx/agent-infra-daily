@@ -875,6 +875,28 @@
           "LangGraph #9235 在 checkpoint 保存任务启动前捕获属于本次 DeltaChannel 的 write futures，并让后台保存先等待写入和前一次 checkpoint 成功。这个改动不仅规定持久化顺序，也规定增量日志与 checkpoint 的归属关系，避免共享可变列表带来竞态。",
           "失败写入之后仍保存后继 checkpoint 会使恢复时沿父链重放的历史永久缺失。本站建议把 Journal Append、Step Commit、Checkpoint Publish 设计成单向栅栏，但这是跨平台架构抽象，不代表 LangGraph 已实现所有后端的 exactly-once。"
         ]
+      },
+      {
+        "id": "input-checkpoint-lineage-1011",
+        "title": "手动输入更新的增量归属是 Replay 不变量",
+        "evidence": [
+          "source:langgraph-update-state-20261011"
+        ],
+        "paragraphs": [
+          "LangGraph #9258 暴露了 DeltaChannel 的一个隐蔽前提：恢复只读取 checkpoint 祖先的写入。若手动 update_state 把输入增量记在它刚创建的 checkpoint 上，读取该 checkpoint 时就会遗漏这段输入；之后发生 snapshot 时缺失还可能固化。修复把输入写入移动到更新所基于的祖先，历史 fork 则用独立 snapshot 隔离。",
+          "对 Cloud Agent 的人工修正、重放与回滚，必须定义“写入属于哪个状态版本”。测试不仅比较最新状态，还要比较同一 checkpoint 的直接读取、后继执行、旧分支 fork 以及消息 ID 的稳定性。不能把 checkpoint 的存在误当成写入因果关系正确。"
+        ]
+      },
+      {
+        "id": "parallel-approval-drain-1011",
+        "title": "并行 HITL 的暂停必须等待在途任务归档",
+        "evidence": [
+          "source:adk-parallel-hitl-20261011"
+        ],
+        "paragraphs": [
+          "Google ADK 的 ParallelWorker 过去在某个分支抛出 NodeInterruptedError 时取消其他在途 worker，导致已经开始的兄弟任务无法完成，甚至造成等待测试挂起。新策略把中断作为特殊控制流：停止调度新 item，但等待 pending tasks settle，再抛出中断并形成 WAITING checkpoint。",
+          "在分布式 Agent 中应把 WAITING 转换拆成 DRAINING 和 WAITING 两阶段，并对每个已启动子任务记录稳定 task ID、租约、结果提交状态与副作用幂等键。此处 drain 的一致性并不保证外部工具天然 exactly-once，超时和旧 worker fencing 仍需另行设计。"
+        ]
       }
     ]
   },
@@ -2221,6 +2243,28 @@
         "paragraphs": [
           "Google 10 月 8 日公告把跨设备共享记忆、长时间后台任务、临时子 Agent 和独立 coworker 账号放在同一产品描述中，说明长期 Agent 的可识别主体正在从聊天 session 延伸到组织内身份。专属邮箱、日历和持久存储强调的是责任与权限归属，不意味着任务必须绑定一台永久运行的 VM。",
           "官方同时提出每个 Agent 的审计归因、网络 Gateway 和项目预算触发暂停。对于可扩缩的 runtime，预算暂停、等待审批与恢复执行应是持久任务状态，而非持续占用 worker；但公告未披露 checkpoint、跨节点恢复或租约算法，因此不能将这种架构抽象误写成已被 Google 实现的具体机制。"
+        ]
+      },
+      {
+        "id": "agent-server-readiness-1011",
+        "title": "持久 Agent 的执行入口必须区分活着与就绪",
+        "evidence": [
+          "source:openhands-ingress-20261011"
+        ],
+        "paragraphs": [
+          "OpenHands Agent Server #5700 把 require_initialized 前置于会话密钥检查，并将未初始化拒绝覆盖到 workspace、bridge 与 WebSocket 等入口。这反映托管 Agent 的初始化状态不能由监听端口或认证中间件隐式代替：服务可以存活但仍不具备接收工具执行请求的条件。",
+          "从架构上可把 PROVISIONING、INITIALIZING、READY、DRAINING 和 FAILED 映射到执行入口门禁，只有 READY 接收新任务；但这些状态名称是本站抽象，不能写成 OpenHands 已公开实现的分布式控制面状态机。"
+        ]
+      },
+      {
+        "id": "readiness-evidence-boundary-1011",
+        "title": "Readiness 修复不等于跨 Worker Durable Runtime",
+        "evidence": [
+          "source:openhands-ingress-20261011"
+        ],
+        "paragraphs": [
+          "OpenHands 的改动给出了多路由门禁顺序、并发初始化与真实 WebSocket 测试证据，却没有展示跨机器迁移、task journal 或 workspace snapshot。它支持“Agent Server 生命周期需要独立治理”的局部判断，不足以单独证明整个 Persistent Agent Runtime 趋势已经成熟。",
+          "对于百万用户 Cloud Agent，应另外测量 deferred-init P95、错误恢复、未就绪误接流量、旧连接 drain 和冷启动成本。只有再结合可替换 worker、持久 workspace 与 side-effect-safe task replay 的数据，才能对趋势置信度作更强判断。"
         ]
       }
     ]
@@ -4062,6 +4106,28 @@
           "与完整容器或 microVM 相比，轻量进程沙盒可以降低接入复杂度，但安全边界主要取决于操作系统和代理实际能强制执行的权限。面对恶意任意代码、内核漏洞风险或协议层未覆盖的工具，仍可能需要独立 VM/容器网络策略或专用微虚拟机。",
           "尚没有在本次一手来源中发现完整的启动耗时、吞吐或零绕行实验，因此不能编造相对性能倍数。需要持续追踪代理版本化、credential 生命周期、policy hot reload 后老连接如何处理、跨 OS 一致性和多租户 verdict 是否可隔离。"
         ]
+      },
+      {
+        "id": "vsock-network-namespace-gap-1011",
+        "title": "AF_VSOCK 是绕过 Network Namespace 的独立通信面",
+        "evidence": [
+          "source:srt-vsock-20261011"
+        ],
+        "paragraphs": [
+          "2026-10-11 合并的 #691 将 AF_VSOCK 添加到 Linux seccomp 拒绝规则。提交明确说明 VM socket 不受 network namespace 约束，可能越过代理访问宿主环境；因此单靠隔离网络命名空间与 HTTP allowlist 不能构成完整的出站安全边界。",
+          "规则对 socket(AF_VSOCK, ...) 返回 EPERM，测试使用不同 socket 类型验证 errno，同时保留 AF_INET 的预期行为。由于 seccomp 在内核判断是否支持 VSOCK transport 之前生效，测试不依赖宿主是否有可用的 VM socket 驱动。"
+        ]
+      },
+      {
+        "id": "vsock-configuration-exceptions-1011",
+        "title": "配置放行与继承描述符仍是未封闭窗口",
+        "evidence": [
+          "source:srt-vsock-20261011"
+        ],
+        "paragraphs": [
+          "NetworkConfigSchema 明确 allowAllUnixSockets=true 在 Linux 也会解除 AF_VSOCK 的阻断，因而这不是无条件的系统安全属性。对需要 Unix socket 的工作负载，应尽量用具体 FD 或更窄的授权机制，而不是扩大整个 socket family 的访问权限。",
+          "源代码同时提示 inherited socket FD 与 SCM_RIGHTS 传递等不在该 socket() 创建规则的覆盖范围。部署时还要联合验证 io_uring、容器自身 seccomp 和运行时代理配置，避免把单一系统调用过滤当成完整的出站网络证明。"
+        ]
       }
     ]
   },
@@ -4427,6 +4493,162 @@
         ],
         "paragraphs": [
           "该提交能证明 remote MCP 和两阶段上传接口的代码演进，但不能据此声称 code 过期时长、重复上传、部分失败恢复和跨副本一致性都已解决。平台必须分别测试 owner 校验、单次消费和重试去重。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:langgraph-update-state-20261011",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "checkpoint-ancestry",
+        "title": "输入写入属于被更新 checkpoint 的祖先",
+        "evidence": [
+          "source:langgraph-update-state-20261011"
+        ],
+        "paragraphs": [
+          "DeltaChannel 从 checkpoint 的祖先节点收集增量，而不读取当前 checkpoint 自己的写入。原先 update_state(as_node='__input__') 把写入记录在新保存的 checkpoint 上，导致恢复读取不到输入，后续快照还可能永久丢失这段历史。",
+          "修复通过统一 helper 将输入写入记录到它所依赖的 checkpoint，与普通节点更新的规则对齐。此处应区分 input channel 的 DeltaChannel 与 StateGraph 使用的 start channel，不能宣称所有图都受到同一缺陷影响。"
+        ]
+      },
+      {
+        "id": "fork-and-message",
+        "title": "旧分支与消息 ID 的修复范围",
+        "evidence": [
+          "source:langgraph-update-state-20261011"
+        ],
+        "paragraphs": [
+          "当用户更新的是已被线程前进越过的旧 checkpoint，写入不应污染已经发展的分支。补丁在这种 fork 情形下改为对被写 DeltaChannel 创建自己的快照，从而隔离不同历史分支的后继状态。",
+          "另一个相关修复为通过 update_state 保存的消息分配稳定 ID，避免同一消息经普通节点和手动更新进入日志时出现不同的标识语义。测试同时覆盖同步与异步、不同 snapshot_frequency 及旧 checkpoint 更新。"
+        ]
+      },
+      {
+        "id": "evidence-boundary",
+        "title": "代码证据与未证明的可靠性性质",
+        "evidence": [
+          "source:langgraph-update-state-20261011"
+        ],
+        "paragraphs": [
+          "一手证据是 Pregel 实现 diff 与新增测试，能够支持 checkpoint lineage、消息 ID 和分支行为已被针对性修复的结论。它不构成跨存储后端事务隔离、端到端 exactly-once 或任意插件 reducer 正确性的证明。",
+          "部署验证还应组合并行节点、历史分叉、人工修改状态、存储失败和 worker 重启。尤其需要在重放结果、写入集与外部副作用之间分别校验，不应仅凭 get_state 返回成功判定整个任务已恢复。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:adk-parallel-hitl-20261011",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "parallel-barrier",
+        "title": "人工中断触发停止派发而非立即取消",
+        "evidence": [
+          "source:adk-parallel-hitl-20261011"
+        ],
+        "paragraphs": [
+          "原实现把 NodeInterruptedError 视为失败并取消所有 pending worker，导致运行中的兄弟任务无法自然完成。新逻辑保留单独的 interrupted 状态：首次观察到人工输入请求后停止调度尚未开始的 item。",
+          "主循环仍等待已在执行的 sibling tasks settle，随后才向上层抛出 NodeInterruptedError，使工作流进入等待人类输入的状态。这与真正的 fatal exception 路径不同，不能把两类错误合并为统一 cancel。"
+        ]
+      },
+      {
+        "id": "checkpoint-visibility",
+        "title": "在途结果与 WAITING checkpoint 的边界",
+        "evidence": [
+          "source:adk-parallel-hitl-20261011"
+        ],
+        "paragraphs": [
+          "新增测试让一个 worker 被 gate 阻塞，另一个 worker 发起 RequestInput；测试断言第一个 worker 的结果保留在第一轮执行，并且整个 ParallelWorker 最终 checkpoint 为 WAITING。",
+          "这为 HITL 提供了最小一致性屏障：暂停发生前已开始的工作应能以可见结果结束。但它并不自动保证工具调用的外部副作用 exactly-once，未开始 item 与已启动 item 的归属仍须显式记录。"
+        ]
+      },
+      {
+        "id": "scope-and-unknowns",
+        "title": "实现范围与大规模调度的未解问题",
+        "evidence": [
+          "source:adk-parallel-hitl-20261011"
+        ],
+        "paragraphs": [
+          "提交针对 Google ADK Python workflow 的 _ParallelWorker 以及相关单元测试。不能直接外推到所有多 Agent 编排器、跨进程队列或分布式调度器，也没有提供百万级工作负载下的 drain 延迟指标。",
+          "工程实践需额外测试长尾 worker 永不结束、审批请求并发到达、审批撤销、强制取消和进程重启。等待在途任务的策略应搭配超时、fencing 和租约，防止一个挂死分支无限拖住人工审批状态转换。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:srt-vsock-20261011",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "vsock-gap",
+        "title": "网络命名空间不覆盖 VM socket",
+        "evidence": [
+          "source:srt-vsock-20261011"
+        ],
+        "paragraphs": [
+          "提交说明 Linux network namespace 无法约束 AF_VSOCK，带有 VM socket transport 的宿主机上可能通过该 socket family 直接到达沙盒外部，而不经过预期的 HTTP proxy。",
+          "补丁在 vendor/seccomp-src/seccomp-unix-block.c 中增加 socket(AF_VSOCK, ...) 的 EPERM 规则，与既有 AF_UNIX 阻断并列。此处控制的是创建 socket 的系统调用，不是对 HTTP 目的域名的应用层授权。"
+        ]
+      },
+      {
+        "id": "config-and-tests",
+        "title": "配置开关与内核返回值测试",
+        "evidence": [
+          "source:srt-vsock-20261011"
+        ],
+        "paragraphs": [
+          "NetworkConfigSchema 说明 allowAllUnixSockets=true 在 Linux 同时会放开 AF_VSOCK；这是一个需要审计的安全配置例外，而不是无条件的全局封堵。",
+          "新增测试覆盖多种 AF_VSOCK socket 类型，验证 seccomp 拒绝返回 EPERM；即使宿主机没有 VSOCK transport，测试仍能通过 errno 证明过滤器先于内核家族支持检查生效。AF_INET 则保留正常创建行为。"
+        ]
+      },
+      {
+        "id": "remaining-boundaries",
+        "title": "继承描述符与其他系统调用边界",
+        "evidence": [
+          "source:srt-vsock-20261011"
+        ],
+        "paragraphs": [
+          "源代码注释明确指出该规则不能阻止对已继承 Unix socket FD 的 bind、connect 或 sendto，也不自动解决通过 SCM_RIGHTS 传递描述符的问题。该补丁不能证明不存在其他非 HTTP 旁路。",
+          "实际部署还应验证容器 seccomp、宿主机能力、io_uring、继承 FD 和 runtime 配置覆盖顺序。尤其不要把单一 syscall family 拦截等同于完整虚拟机级隔离或对所有 egress 的形式化证明。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openhands-ingress-20261011",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "readiness-before-auth",
+        "title": "初始化屏障的依赖执行顺序",
+        "evidence": [
+          "source:openhands-ingress-20261011"
+        ],
+        "paragraphs": [
+          "提交调整 FastAPI route dependencies 的顺序，使 require_initialized 在 check_session_api_key 或 check_openai_api_key 之前执行。未完成初始化的实例先返回 503 或拒绝 WebSocket，而非以尚未加载的凭据配置做认证判断。",
+          "该修复把状态门禁覆盖到 workspace 静态文件、app backend bridge 等原先易遗漏的入口。服务初始化成功后仍需正常认证，因此 readiness 并不替代鉴权或授权检查。"
+        ]
+      },
+      {
+        "id": "concurrent-bootstrap",
+        "title": "并发初始化与真实网络连接的测试",
+        "evidence": [
+          "source:openhands-ingress-20261011"
+        ],
+        "paragraphs": [
+          "新增单元测试通过 ThreadPoolExecutor 和 Event 构造并发初始化窗口，并覆盖不同路径的未就绪行为；跨组件测试用真实 uvicorn 与 WebSocket 连接验证 deferred-init 的连接拒绝。",
+          "这比只测试 POST /api/init 返回值更接近生产风险：一个路由在配置尚未原子切换时被访问，可能读到不一致状态。代码的具体依赖顺序与跨入口覆盖是本次能够直接核验的增量。"
+        ]
+      },
+      {
+        "id": "deployment-boundary",
+        "title": "就绪性与大规模 Cloud Agent 运行边界",
+        "evidence": [
+          "source:openhands-ingress-20261011"
+        ],
+        "paragraphs": [
+          "本次证据证明 OpenHands Agent Server 的入口门禁和测试得到加强，不证明所有部署平台已经实现零停机滚动升级，也不能推导其 checkpoint、workspace snapshot 或跨 worker 恢复能力。",
+          "架构上应将 Liveness、Readiness、Initialization、CredentialAvailability 分离：健康探针可以表明进程活着，只有就绪门禁允许业务请求。还需关注启动失败后的重试、旧连接 drain 与配置轮换期间的授权一致性。"
         ]
       }
     ]

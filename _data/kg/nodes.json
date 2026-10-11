@@ -184,7 +184,7 @@
     "summary": "Resume work after crashes without repeating completed side effects.",
     "maturity": "production",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-10",
+    "last_verified": "2026-10-11",
     "themes": [
       "runtime",
       "cloud-agent"
@@ -198,7 +198,8 @@
       "replay / result recovery：恢复时复用已经完成的结果",
       "幂等与副作用控制：避免重试造成重复写入、支付、部署等",
       "durable timer / promise：支持等待分钟、小时甚至数天后继续",
-      "状态与执行解耦：worker 可以是可替换的"
+      "状态与执行解耦：worker 可以是可替换的",
+      "Checkpoint ancestry 与 DeltaChannel 写入归属：输入写入存放于被更新 checkpoint 的祖先；历史 fork 单独 snapshot，避免重播缺失或分支污染。"
     ],
     "representative_implementations": [
       "project:restate"
@@ -208,7 +209,8 @@
       "所有会产生外部副作用的 tool call 都要进入一致的执行语义",
       "恢复机制必须能跨部署版本、网络故障和进程生命周期工作",
       "恢复后比较 channel 写入顺序与无中断 baseline，验证 task ID、checkpoint fork 和因果重播保持一致",
-      "DeltaChannel 写入必须先于依赖它的 checkpoint 保存；后台任务需要捕获每份 checkpoint 独有的 write futures。"
+      "DeltaChannel 写入必须先于依赖它的 checkpoint 保存；后台任务需要捕获每份 checkpoint 独有的 write futures。",
+      "Parallel HITL 将 NodeInterruptedError 与 fatal failure 分开；停止新派发、等待在途 sibling settle，再发布 WAITING checkpoint。"
     ],
     "failure_modes": [
       "只保存对话/Agent state，但没有记录外部副作用",
@@ -216,7 +218,9 @@
       "需要人工审批时让 worker 长时间占用资源",
       "恢复并行 exit-durability checkpoint 时 DeltaChannel writes 重复或错序，导致状态与 live 执行不等价",
       "人工 resume 的 schema ValidationError 被 ToolNode 当普通工具错误吞掉，使中断丢失而不是保持可重答",
-      "增量写入失败后仍发布后继 checkpoint，会导致祖先链 replay 永久缺失状态。"
+      "增量写入失败后仍发布后继 checkpoint，会导致祖先链 replay 永久缺失状态。",
+      "update_state(as_node='__input__') 把增量写入当前 checkpoint 而非祖先，导致 DeltaChannel 恢复读不到输入；旧分支更新还可能污染新分支。",
+      "ParallelWorker 把人工输入中断当作致命异常，取消已启动的兄弟任务，丢失本轮输出并使审批等待不一致。"
     ],
     "intro": "Durable Execution 是长时间运行 Agent 的“可靠执行底座”：任务可以经历进程崩溃、机器替换、部署重启或长时间等待，而不必从头再来。它关注的不是保存一份对话，而是让整个执行历史、已完成结果和外部副作用都具备可恢复语义。",
     "content_mode": "authored",
@@ -1756,7 +1760,7 @@
     "summary": "Agents are shifting from short-lived processes to durable state plus persistent workspace.",
     "maturity": "emerging",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-09",
+    "last_verified": "2026-10-11",
     "themes": [
       "runtime",
       "cloud-agent",
@@ -1769,17 +1773,20 @@
       "OpenAI Dots 提供 always-on Agent 与 cloud computer",
       "Restate 把 durable execution 用于 Agent/workflow",
       "Docker Cloud Sandboxes 等产品把远程 workspace 生命周期独立出来",
-      "Google 2026-10-08 Gemini agent 公告明确跨设备持续上下文、独立 coworker 身份和长期云端执行，但未公开底层恢复机制"
+      "Google 2026-10-08 Gemini agent 公告明确跨设备持续上下文、独立 coworker 身份和长期云端执行，但未公开底层恢复机制",
+      "OpenHands 2026-10-11 修复 deferred-init 时 API、WebSocket 与 bridge 的 readiness 门禁，显示 Agent Server 的执行入口生命周期需要独立于进程存活管理。"
     ],
     "counter_signals": [
       "很多平台仍主要依赖长时间存活的 sandbox 或进程",
-      "persistent workspace、durable task state 与 memory 的边界尚未形成统一抽象"
+      "persistent workspace、durable task state 与 memory 的边界尚未形成统一抽象",
+      "Agent Server 的 readiness gate 只是入口初始化正确性证据，并不证明任务状态、workspace 或 worker 已经真正解耦。"
     ],
     "what_to_watch": [
       "workspace snapshot / migration 标准",
       "Agent / Workspace / Task 三层 identity",
       "跨 worker resume 与版本升级兼容",
-      "预算暂停、长期 Agent 身份与临时子 Agent 授权是否有统一的可审计生命周期"
+      "预算暂停、长期 Agent 身份与临时子 Agent 授权是否有统一的可审计生命周期",
+      "Agent Server deferred init、credential provisioning、WebSocket 握手、task resume 与调度器 lease 的跨层 readiness 状态机"
     ],
     "confidence_note": "当前属于高价值、较高置信度的架构方向，但具体实现仍明显分化。",
     "intro": "Persistent Agent Runtime 是从短生命周期任务向长期 Agent 服务演进的架构方向：Agent 身份和工作状态长期存在，但实际执行 worker 可以按需创建、替换和销毁。Workspace、durable state 与 memory 被逐渐拆成独立资源。",
@@ -2280,7 +2287,7 @@
     "summary": "OS-level filesystem and network sandbox with typed path policy and standalone external-decider HTTP proxy.",
     "maturity": "active-development",
     "first_seen": "2026-10-05",
-    "last_verified": "2026-10-08",
+    "last_verified": "2026-10-11",
     "themes": [
       "sandbox",
       "security"
@@ -2290,7 +2297,7 @@
     "intro": "Anthropic sandbox-runtime 为任意进程提供无需完整容器的操作系统级文件和网络访问限制，并以独立的代理执行 HTTP 请求级权限策略。2026 年 10 月的变更表明，其设计重点正在从“配置允许名单”深入到路径语义、跨平台执行和外部权限决策。",
     "why_it_matters": "Agent 一旦可以执行不受信任的代码、shell 与 HTTP 请求，Harness 里声明的工具白名单就不再足够。独立 enforcement 能否真正执行 operator intent，取决于路径、网络、凭据与平台差异是否被清晰表达和审计。",
     "definition": "anthropics/sandbox-runtime 是把文件读写与网络请求限制下沉到 OS 级执行边界的轻量沙盒工具，可在不启动完整容器的场景为任意进程添加权限约束。",
-    "operating_model": "调用方将可访问文件与网络目标声明为沙盒配置，runtime 通过不同操作系统 backend 执行限制，网络经受控 HTTP proxy 判定。srt-proxy 模式将请求转交独立 external decider，以每次请求的 verdict 处理允许、拒绝与 body inspection。",
+    "operating_model": "调用方将可访问文件与网络目标声明为沙盒配置，runtime 通过不同操作系统 backend 执行限制，网络经受控 HTTP proxy 判定。srt-proxy 模式将请求转交独立 external decider，以每次请求的 verdict 处理允许、拒绝与 body inspection。 Linux 后端同时使用 seccomp 限制 socket family；2026-10-11 起 AF_VSOCK 与 AF_UNIX 同列默认禁止创建，除非显式配置放开。",
     "key_capabilities": [
       "cap:network-policy",
       "cap:policy-enforcement"
@@ -2301,26 +2308,30 @@
       "解析并验证 backend 可表达的类型化文件权限",
       "OS backend 限制工作负载的文件/进程访问",
       "HTTP proxy 对出站请求询问本机 filter 或外部 decider",
-      "按 scoped verdict 允许请求或拒绝，并保留审计原因"
+      "按 scoped verdict 允许请求或拒绝，并保留审计原因",
+      "Linux seccomp 在创建 socket 时拦截 AF_VSOCK，封堵 network namespace 不覆盖的 VM socket 通道"
     ],
     "limitations": [
       "Linux、macOS、Windows 的底层隔离原语不同，必须运行相同的 policy-conformance 测试验证等价性",
       "HTTP Proxy 无法天然拦截一切网络协议，Host/SNI、opaque tunnel 和地址解析需要单独建模",
       "外部 decider 可能带来延迟与单点可用性风险，fail-closed 应与高可用部署配合",
-      "当前合入功能并不证明完整生产 SLA、形式化安全性或不存在绕行路径"
+      "当前合入功能并不证明完整生产 SLA、形式化安全性或不存在绕行路径",
+      "Linux network namespace 不能隔离 AF_VSOCK；显式 allowAllUnixSockets 会同时放开 VM socket，已继承 FD 与其他协议仍需额外防护"
     ],
     "maturity_notes": "2026-10-05 开始明确 literal path marker 并修改相关平台实现，10 月 8 日增加外部 decider 独立代理并扩展 per-request policy 选项；仍处于快速演进的安全基础设施路线。",
     "engineering_takeaways": [
       "将真实路径与通配模式作为不同类型直至后端 enforcement",
       "Policy 解析不确定时拒绝，而不是把无匹配的 deny 当作允许",
       "为 Host/SNI/解析后的目标 IP、请求 header 与凭据 scope 定义一致性检查",
-      "外部 decider 必须具备失联拒绝、超时、可观察拒绝原因及独立高可用"
+      "外部 decider 必须具备失联拒绝、超时、可观察拒绝原因及独立高可用",
+      "对 AF_UNIX、AF_VSOCK、io_uring 与 inherited FD 建立 syscall-family 边界测试；配置例外必须进入审计和回归"
     ],
     "what_to_watch": [
       "跨操作系统的 literal/glob conformance regression",
       "外部 decider 协议兼容性、请求授权缓存及多租户隔离",
       "TLS CONNECT、opaque tunnel 与私有地址防护是否全部受配置约束",
-      "高频网络判定下的延迟、授权审计与运营成本"
+      "高频网络判定下的延迟、授权审计与运营成本",
+      "AF_VSOCK 规则在 rootless、嵌套容器及允许 Unix socket 的特殊配置中的生效与回退"
     ],
     "content_mode": "authored",
     "content_version": "v9"
@@ -2543,6 +2554,83 @@
     "page": "/entities/source--openswe-remote-mcp-20261010/",
     "intro": "Open SWE #3855 把外部 Agent 的工具接入调整为后端 `/oswe/mcp`，同时让 upload_session 创建远端 thread、返回一次性 code，再由本地 CLI 上传 transcript。",
     "why_it_matters": "长期 coding agent 需要跨设备和跨 harness 访问工具，但工具入口、线程身份与本地文件上传不是同一权限边界。远程协议可达性不能代替业务会话状态管理。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:langgraph-update-state-20261011",
+    "label": "LangGraph DeltaChannel input update checkpoint ancestry fix",
+    "type": "Source",
+    "summary": "LangGraph #9258 将 update_state(as_node='__input__') 的增量写入归于被更新 checkpoint 的祖先，并修复旧分支更新及消息 ID。",
+    "maturity": "source",
+    "first_seen": "2026-10-11",
+    "last_verified": "2026-10-11",
+    "themes": [
+      "runtime",
+      "memory"
+    ],
+    "url": "https://github.com/langchain-ai/langgraph/commit/b4991f1ba36a2449ab59c38ab71828ee865bff84",
+    "page": "/entities/source--langgraph-update-state-20261011/",
+    "intro": "LangGraph 在 2026 年 10 月 10 日修复了一个隐藏在 DeltaChannel checkpoint 祖先关系中的数据丢失问题。直接 Pregel 图以 DeltaChannel 作为输入时，update_state 写入自身 checkpoint 不能被该 checkpoint 的祖先重放逻辑读取。",
+    "why_it_matters": "这不是普通 UI 或序列化缺陷：增量归属错误可能在之后生成快照时永久消失。对于可恢复 Agent，状态写入的位置必须与 checkpoint ancestry、分支和 replay 算法一致。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:adk-parallel-hitl-20261011",
+    "label": "Google ADK ParallelWorker HITL in-flight barrier",
+    "type": "Source",
+    "summary": "Google ADK 2026-10-11 修复 ParallelWorker 遇到人工输入中断时取消并行兄弟任务的问题，改为停止派发并等待在途任务完成。",
+    "maturity": "source",
+    "first_seen": "2026-10-11",
+    "last_verified": "2026-10-11",
+    "themes": [
+      "runtime",
+      "harness"
+    ],
+    "url": "https://github.com/google/adk-python/commit/531a86a194c910ec5bfdfc9f7de09be80c5aaada",
+    "page": "/entities/source--adk-parallel-hitl-20261011/",
+    "intro": "Google ADK 的 ParallelWorker 在并行任务中遇到 NodeInterruptedError 时，原先按致命异常处理，直接取消尚在执行的兄弟 worker。2026 年 10 月 11 日的修复将人工审批中断从致命失败中分离出来。",
+    "why_it_matters": "并行 Agent 的审批屏障不只是暂停按钮。若一个分支请求人类输入就取消其他已启动分支，已经完成的工作可能丢失、状态不一致，恢复后还可能重复产生副作用。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:srt-vsock-20261011",
+    "label": "Anthropic sandbox-runtime Linux AF_VSOCK seccomp closure",
+    "type": "Source",
+    "summary": "Anthropic sandbox-runtime #691 在 Linux seccomp 阻断 AF_VSOCK，修复网络 namespace 不能隔离 VM sockets 而可能绕过代理的边界。",
+    "maturity": "source",
+    "first_seen": "2026-10-11",
+    "last_verified": "2026-10-11",
+    "themes": [
+      "sandbox",
+      "security"
+    ],
+    "url": "https://github.com/anthropics/sandbox-runtime/commit/5507fb0e639c00f845554336ece62e27af5b1bb7",
+    "page": "/entities/source--srt-vsock-20261011/",
+    "intro": "Anthropic sandbox-runtime 在 2026 年 10 月 11 日的 Linux 安全补丁中，将 AF_VSOCK 纳入 seccomp 拒绝的 socket family。VM sockets 不受普通 network namespace 的约束，可能绕过基于代理的网络授权路径。",
+    "why_it_matters": "在 Cloud Agent 沙盒中，“进程处于独立网络命名空间”并不等于所有通信通道都被隔离。AF_VSOCK 可跨虚拟机边界通信，是典型的代理外隐式出站能力，必须单独审计。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openhands-ingress-20261011",
+    "label": "OpenHands deferred initialization ingress and readiness gate",
+    "type": "Source",
+    "summary": "OpenHands agent-server #5700 将 deferred-init readiness 检查前置于鉴权，并扩展 API、WebSocket 和 bridge 的未初始化拒绝测试。",
+    "maturity": "source",
+    "first_seen": "2026-10-11",
+    "last_verified": "2026-10-11",
+    "themes": [
+      "cloud-agent",
+      "runtime",
+      "security"
+    ],
+    "url": "https://github.com/OpenHands/software-agent-sdk/commit/f824a949af7f8045cc6691d7945ce7b31bfe9606",
+    "page": "/entities/source--openhands-ingress-20261011/",
+    "intro": "OpenHands Agent Server 2026 年 10 月 11 日修复 deferred initialization 阶段的请求入口门禁。初始化尚未完成时，API、模型端点、workspace、bridge 与 WebSocket 不应作为正常 Agent 执行入口对外服务。",
+    "why_it_matters": "托管 Agent 的服务端口已经监听，并不意味着 workspace、凭据、会话注册表与执行环境已经准备好。若先做认证再检查 readiness，旧配置可能让未初始化实例暴露不一致的错误或入口。",
     "content_mode": "authored",
     "content_version": "v9"
   }

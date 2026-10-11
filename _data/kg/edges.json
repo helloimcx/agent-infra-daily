@@ -1230,5 +1230,61 @@
     "first_seen": "2026-10-10",
     "last_verified": "2026-10-10",
     "note": "Primary code evidence verified on 2026-10-10."
+  },
+  {
+    "id": "e:langgraph-input-1011",
+    "source": "cap:durable-execution",
+    "target": "source:langgraph-update-state-20261011",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-11",
+    "last_verified": "2026-10-11",
+    "confidence": 0.99,
+    "evidence": [
+      "source:langgraph-update-state-20261011"
+    ],
+    "note": "Primary merged commit inspected on 2026-10-11; claims and scope are authored."
+  },
+  {
+    "id": "e:adk-hitl-1011",
+    "source": "cap:durable-execution",
+    "target": "source:adk-parallel-hitl-20261011",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-11",
+    "last_verified": "2026-10-11",
+    "confidence": 0.99,
+    "evidence": [
+      "source:adk-parallel-hitl-20261011"
+    ],
+    "note": "Primary merged commit inspected on 2026-10-11; claims and scope are authored."
+  },
+  {
+    "id": "e:srt-vsock-1011",
+    "source": "project:anthropic-sandbox-runtime",
+    "target": "source:srt-vsock-20261011",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "first_seen": "2026-10-11",
+    "last_verified": "2026-10-11",
+    "confidence": 0.99,
+    "evidence": [
+      "source:srt-vsock-20261011"
+    ],
+    "note": "Primary merged commit inspected on 2026-10-11; claims and scope are authored."
+  },
+  {
+    "id": "e:openhands-readiness-1011",
+    "source": "trend:persistent-agent-runtime",
+    "target": "source:openhands-ingress-20261011",
+    "type": "EVIDENCED_BY",
+    "kind": "analysis",
+    "first_seen": "2026-10-11",
+    "last_verified": "2026-10-11",
+    "confidence": 0.99,
+    "evidence": [
+      "source:openhands-ingress-20261011"
+    ],
+    "note": "Primary merged commit inspected on 2026-10-11; claims and scope are authored."
   }
 ]

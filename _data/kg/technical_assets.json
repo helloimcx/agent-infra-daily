@@ -150,6 +150,49 @@
           "source:langgraph-delta-20261010"
         ],
         "mermaid": "sequenceDiagram\n participant W as Workflow Step\n participant D as Delta Write Store\n participant C as Checkpoint Saver\n W->>D: append delta writes\n W->>C: save checkpoint with captured futures\n C->>C: await previous checkpoint\n C->>D: await captured writes\n alt success\n D-->>C: persisted\n C->>C: publish checkpoint\n else failed\n D--xC: write failure\n C--xW: checkpoint rejected\n end"
+      },
+      {
+        "id": "checkpoint-hitl-consistency-matrix-1011",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Checkpoint Lineage 与 Parallel HITL 的一致性故障矩阵",
+        "summary": "把增量写入归属、旧分支 fork、人工中断与在途任务 drain 统一为恢复不变量；厂商提交是事实来源，跨产品的控制建议属于本站分析。",
+        "evidence": [
+          "source:langgraph-update-state-20261011",
+          "source:adk-parallel-hitl-20261011"
+        ],
+        "columns": [
+          "失效窗口",
+          "一手代码确认的机制",
+          "Cloud Agent 设计约束",
+          "应测断言"
+        ],
+        "rows": [
+          [
+            "Delta input update",
+            "LangGraph 将输入写入存于被更新 checkpoint 祖先",
+            "写入集与 checkpoint ancestry 绑定",
+            "当前及后继状态均包含输入"
+          ],
+          [
+            "历史分支 fork",
+            "旧 checkpoint 更新采用独立 DeltaChannel snapshot",
+            "禁止分支之间隐式传播增量",
+            "旧分支更新不污染新分支"
+          ],
+          [
+            "Parallel HITL",
+            "ADK 中断后停止新派发，等待在途 sibling",
+            "暂停采用 DRAINING→WAITING 两阶段",
+            "在途结果保留且未开始任务不启动"
+          ],
+          [
+            "Worker 长尾或崩溃",
+            "本次提交没有分布式租约证明",
+            "配置 drain timeout、fencing 与幂等",
+            "重试无重复外部副作用"
+          ]
+        ]
       }
     ]
   },
@@ -2074,6 +2117,17 @@
             "证明规模化可行"
           ]
         ]
+      },
+      {
+        "id": "agent-server-readiness-lifecycle-1011",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Cloud Agent Server 启动就绪与入口控制参考状态机",
+        "summary": "本站依据 OpenHands deferred-init 修复提炼的控制面状态机；状态命名和调度约束为架构建议，不代表 OpenHands 内部已采用此完整模型。",
+        "evidence": [
+          "source:openhands-ingress-20261011"
+        ],
+        "mermaid": "stateDiagram-v2\n  [*] --> PROVISIONING\n  PROVISIONING --> INITIALIZING: workspace + credentials prepared\n  INITIALIZING --> READY: init committed / ingress enabled\n  INITIALIZING --> FAILED: init error\n  READY --> DRAINING: deploy or revoke\n  DRAINING --> PROVISIONING: replace worker\n  FAILED --> PROVISIONING: bounded retry\n  note right of INITIALIZING\n    API returns 503; WebSocket rejected\n    Auth follows readiness, not vice versa\n  end note\n  note right of READY\n    Only ready instances accept new tasks\n    Task journal is a separate concern\n  end note"
       }
     ]
   },
@@ -2139,6 +2193,54 @@
             "权限扩散",
             "Scoped verdict 与 header 约束",
             "日志脱敏与授权有效期"
+          ]
+        ]
+      },
+      {
+        "id": "vsock-egress-boundary-matrix-1011",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Linux VM Socket Egress 与 Seccomp Coverage Matrix",
+        "summary": "以 SRT #691 代码和测试为依据，区分 syscall 创建拦截、配置例外和未覆盖的继承 FD；建议项为本站架构分析。",
+        "evidence": [
+          "source:srt-vsock-20261011"
+        ],
+        "columns": [
+          "路径",
+          "提交覆盖",
+          "剩余风险",
+          "推荐验证"
+        ],
+        "rows": [
+          [
+            "socket(AF_VSOCK)",
+            "Linux seccomp 返回 EPERM",
+            "allowAllUnixSockets=true 可放开",
+            "各 SOCK 类型与 errno"
+          ],
+          [
+            "socket(AF_UNIX)",
+            "既有 seccomp 禁止创建",
+            "同样受配置例外影响",
+            "unix family allow/deny conformance"
+          ],
+          [
+            "AF_INET",
+            "补丁测试保持允许创建",
+            "目的 IP 仍需 proxy 与网络策略",
+            "目标地址和 DNS 解析一致性"
+          ],
+          [
+            "Inherited socket FD",
+            "新建 socket 规则不覆盖",
+            "可继续对已有 FD 操作",
+            "父进程 FD 清理与 SCM_RIGHTS"
+          ],
+          [
+            "io_uring",
+            "代码注释提示另有封堵需求",
+            "绕开 socket syscall 的创建路径",
+            "容器与 seccomp 组合回归"
           ]
         ]
       }

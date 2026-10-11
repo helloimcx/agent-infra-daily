@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-11",
+  "mode": "daily",
+  "note": "Primary commit evidence for DeltaChannel input ancestry, parallel HITL drain, Linux AF_VSOCK enforcement and deferred-init readiness; no new Project/Research without deeper primary support.",
+  "nodes_added": [
+    "source:langgraph-update-state-20261011",
+    "source:adk-parallel-hitl-20261011",
+    "source:srt-vsock-20261011",
+    "source:openhands-ingress-20261011"
+  ],
+  "nodes_updated": [
+    "cap:durable-execution",
+    "project:anthropic-sandbox-runtime",
+    "trend:persistent-agent-runtime"
+  ],
+  "edges_added": [
+    "e:langgraph-input-1011",
+    "e:adk-hitl-1011",
+    "e:srt-vsock-1011",
+    "e:openhands-readiness-1011"
+  ],
+  "edges_updated": []
+}

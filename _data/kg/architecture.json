@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "kind": "analysis",
-  "note": "Architecture layers are curated analysis projections over the evidence graph, never ontology facts. The October 2026 backfill adds Anthropic sandbox-runtime across Policy and Sandbox boundaries based on authored technical analysis.",
+  "note": "Architecture layers remain curated analysis, not ontology facts. 2026-10-11 evidence distinguishes checkpoint ancestry and HITL draining from worker lifecycle, and Linux AF_VSOCK syscall enforcement from proxy authorization. Readiness gating is not proof of durable worker migration.",
   "layers": [
     {
       "id": "experience",
