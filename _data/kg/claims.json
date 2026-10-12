@@ -543,5 +543,65 @@
     ],
     "first_seen": "2026-10-11",
     "last_verified": "2026-10-11"
+  },
+  {
+    "id": "claim:langgraph-exit-fork-1012",
+    "entity": "cap:durable-execution",
+    "text": "LangGraph #9269 仅在从已有后继的非最新持久化 checkpoint 进行 exit-durability 运行时强制 DeltaChannel snapshot，避免历史分支污染较新分支。",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:langgraph-exit-fork-20261012"
+    ],
+    "first_seen": "2026-10-12",
+    "last_verified": "2026-10-12"
+  },
+  {
+    "id": "claim:codex-permission-resume-1012",
+    "entity": "cap:policy-enforcement",
+    "text": "Codex #53150 从 thread-owned 历史恢复基础权限，同时继续执行显式调用覆盖、当前受管要求与权限合法性校验。",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:codex-permission-resume-20261012"
+    ],
+    "first_seen": "2026-10-12",
+    "last_verified": "2026-10-12"
+  },
+  {
+    "id": "claim:codex-reply-handle-1012",
+    "entity": "cap:stateless-tool-protocol",
+    "text": "Codex app-server #53049 的回复 handle 绑定原始连接与 request ID，说明 request ID 不能脱离连接充当全局审批凭证；这不是 MCP 规范变更。",
+    "kind": "analysis",
+    "confidence": 0.93,
+    "evidence": [
+      "source:codex-reply-handle-20261012"
+    ],
+    "first_seen": "2026-10-12",
+    "last_verified": "2026-10-12"
+  },
+  {
+    "id": "claim:openhands-mcp-reconnect-1012",
+    "entity": "standard:mcp",
+    "text": "OpenHands #4838 对已完成的 MCP session task 在锁内清理并重连，测试证明首次 tools/call HTTP 504 后第二次调用可成功。",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openhands-mcp-reconnect-20261012"
+    ],
+    "first_seen": "2026-10-12",
+    "last_verified": "2026-10-12"
+  },
+  {
+    "id": "claim:openhands-descendant-reap-1012",
+    "entity": "trend:persistent-agent-runtime",
+    "text": "OpenHands #5689 修复 Canvas backend 主进程退出后残余后代的回收，支持托管 Agent 需要独立管理执行资源生命周期的分析。",
+    "kind": "analysis",
+    "confidence": 0.93,
+    "evidence": [
+      "source:openhands-descendant-reap-20261012"
+    ],
+    "first_seen": "2026-10-12",
+    "last_verified": "2026-10-12"
   }
 ]

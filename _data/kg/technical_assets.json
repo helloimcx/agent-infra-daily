@@ -193,6 +193,43 @@
             "重试无重复外部副作用"
           ]
         ]
+      },
+      {
+        "id": "checkpoint-exit-fork-1012",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "历史 Checkpoint Exit Fork 写入归属矩阵",
+        "summary": "基于 LangGraph #9269 对最新与旧祖先的 DeltaChannel 写入路径做架构区分；并发建议为本站分析。",
+        "evidence": [
+          "source:langgraph-exit-fork-20261012"
+        ],
+        "columns": [
+          "入口",
+          "风险",
+          "处理或验证"
+        ],
+        "rows": [
+          [
+            "最新 checkpoint",
+            "正常 delta 链",
+            "保持常规增量路径"
+          ],
+          [
+            "旧 checkpoint 已有后继",
+            "污染后继分支",
+            "强制 snapshot"
+          ],
+          [
+            "旧 checkpoint 多次 fork",
+            "历史交错",
+            "1/2 次 fork 对比普通 channel"
+          ],
+          [
+            "跨进程 fork",
+            "事务顺序不确定",
+            "增加 branch generation 与 CAS"
+          ]
+        ]
       }
     ]
   },
@@ -621,6 +658,48 @@
             "无法确定实际生效版本"
           ]
         ]
+      },
+      {
+        "id": "permission-resume-provenance-1012",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Agent 冷恢复权限来源与当前策略矩阵",
+        "summary": "Codex #53150 的 thread-owned 权限恢复与 managed policy 优先级；生产撤权测试为本站建议。",
+        "evidence": [
+          "source:codex-permission-resume-20261012"
+        ],
+        "columns": [
+          "权限来源",
+          "恢复原则",
+          "额外校验"
+        ],
+        "rows": [
+          [
+            "线程自有基础快照",
+            "条件允许",
+            "当前策略仍合法"
+          ],
+          [
+            "外来线程历史",
+            "不作为授权来源",
+            "thread ownership"
+          ],
+          [
+            "显式本次覆盖",
+            "优先于历史",
+            "用户降权"
+          ],
+          [
+            "受管策略",
+            "持续约束",
+            "管理员撤权"
+          ],
+          [
+            "临时展开 grants",
+            "不直接恢复",
+            "workspace 路径迁移"
+          ]
+        ]
       }
     ]
   },
@@ -919,6 +998,43 @@
           "source:openswe-remote-mcp-20261010"
         ],
         "mermaid": "sequenceDiagram\n participant A as External Agent\n participant M as Remote MCP\n participant T as Thread Control\n participant L as Local CLI\n participant S as Transcript Store\n A->>M: upload_session\n M->>T: create private thread\n T-->>A: thread + one-time code\n L->>S: upload code + JSONL\n S->>T: validate owner and code\n T-->>S: accept or reject\n S-->>L: result\n Note over T,S: Retries need dedupe and partial recovery"
+      },
+      {
+        "id": "connection-bound-reply-1012",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "App-Server RPC 回复能力与连接边界矩阵",
+        "summary": "根据 Codex #53049 说明 request ID、原始连接和单次消费的不同保证；不把实现事实冒充 MCP 规范。",
+        "evidence": [
+          "source:codex-reply-handle-20261012"
+        ],
+        "columns": [
+          "情况",
+          "代码保证",
+          "未解决边界"
+        ],
+        "rows": [
+          [
+            "两连接同 request ID",
+            "保留原 worker handle",
+            "全局 ID 唯一性"
+          ],
+          [
+            "UI 切换会话",
+            "回复不改目标连接",
+            "跨服务租户授权"
+          ],
+          [
+            "重复回复",
+            "AtomicBool 阻止本地二次提交",
+            "远端 exactly-once"
+          ],
+          [
+            "连接关闭",
+            "I/O 错误",
+            "unknown outcome 对账"
+          ]
+        ]
       }
     ]
   },
@@ -1474,6 +1590,43 @@
             "长期 memory",
             "非核心",
             "Memory service"
+          ]
+        ]
+      },
+      {
+        "id": "mcp-http-session-recovery-1012",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "MCP HTTP 504 后的会话恢复与业务副作用矩阵",
+        "summary": "OpenHands #4838 证明客户端可在旧 session task 结束后重新连接，但不保证业务写入的 exactly-once。",
+        "evidence": [
+          "source:openhands-mcp-reconnect-20261012"
+        ],
+        "columns": [
+          "故障窗口",
+          "观察到的行为",
+          "仍需保障"
+        ],
+        "rows": [
+          [
+            "第一次 tools/call 返回 504",
+            "调用返回错误",
+            "业务动作可能已执行"
+          ],
+          [
+            "session task 结束",
+            "锁内重置会话状态",
+            "并发连接代际"
+          ],
+          [
+            "第二次调用",
+            "工具对象重连成功",
+            "请求 correlation"
+          ],
+          [
+            "非幂等写操作",
+            "补丁无自动事务保证",
+            "幂等键或结果查询"
           ]
         ]
       }
@@ -2128,6 +2281,17 @@
           "source:openhands-ingress-20261011"
         ],
         "mermaid": "stateDiagram-v2\n  [*] --> PROVISIONING\n  PROVISIONING --> INITIALIZING: workspace + credentials prepared\n  INITIALIZING --> READY: init committed / ingress enabled\n  INITIALIZING --> FAILED: init error\n  READY --> DRAINING: deploy or revoke\n  DRAINING --> PROVISIONING: replace worker\n  FAILED --> PROVISIONING: bounded retry\n  note right of INITIALIZING\n    API returns 503; WebSocket rejected\n    Auth follows readiness, not vice versa\n  end note\n  note right of READY\n    Only ready instances accept new tasks\n    Task journal is a separate concern\n  end note"
+      },
+      {
+        "id": "orphan-worker-cleanup-1012",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "托管 Agent Worker 退出后的进程组清理状态机",
+        "summary": "本站依据 OpenHands Canvas backend 修复提炼执行资源回收流程；租约隔离与凭据撤销是本站架构建议。",
+        "evidence": [
+          "source:openhands-descendant-reap-20261012"
+        ],
+        "mermaid": "flowchart TD\n A[Worker leader exited] --> B[Mark unhealthy and block reuse]\n B --> C[Terminate process group]\n C --> D{Descendants or ports remain?}\n D -->|yes| E[Quarantine sandbox]\n D -->|no| F[Revoke lease and temporary credentials]\n F --> G[Workspace eligible for reuse]"
       }
     ]
   },

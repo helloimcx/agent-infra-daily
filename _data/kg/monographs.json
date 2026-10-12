@@ -557,6 +557,17 @@
           "Stateless MCP 能让 tool endpoint 更好扩展，但不会自动让长任务 durable，也不会决定 tool 是否应该在 sandbox 内执行。Authorization 也不等于完整 Agent policy：一个 token 有权限调用 tool，不代表这次动作符合业务规则或风险策略。",
           "因此更合理的架构是 MCP 负责 capability protocol，Gateway 负责 identity/policy/traffic，Durable Runtime 负责长任务状态，Sandbox 负责执行隔离。把这些层清楚分开，才能避免 MCP 逐渐承担它并不擅长的所有 Agent 基础设施职责。"
         ]
+      },
+      {
+        "id": "oct12-evidence",
+        "title": "MCP HTTP 会话重连与业务幂等责任",
+        "evidence": [
+          "source:openhands-mcp-reconnect-20261012"
+        ],
+        "paragraphs": [
+          "OpenHands #4838 在 connect() 内获取 session state lock，检测旧 session task 已结束时重置会话。集成测试模拟首次 tools/call 返回 HTTP 504，第二次使用同一个工具对象成功。",
+          "此证据只证明传输会话可恢复，不证明失败的工具调用没有产生业务副作用。对非幂等工具应通过请求级幂等键或结果查询处理 unknown outcome，不能将客户端重连误认为事务回滚。"
+        ]
       }
     ]
   },
@@ -896,6 +907,17 @@
         "paragraphs": [
           "Google ADK 的 ParallelWorker 过去在某个分支抛出 NodeInterruptedError 时取消其他在途 worker，导致已经开始的兄弟任务无法完成，甚至造成等待测试挂起。新策略把中断作为特殊控制流：停止调度新 item，但等待 pending tasks settle，再抛出中断并形成 WAITING checkpoint。",
           "在分布式 Agent 中应把 WAITING 转换拆成 DRAINING 和 WAITING 两阶段，并对每个已启动子任务记录稳定 task ID、租约、结果提交状态与副作用幂等键。此处 drain 的一致性并不保证外部工具天然 exactly-once，超时和旧 worker fencing 仍需另行设计。"
+        ]
+      },
+      {
+        "id": "oct12-evidence",
+        "title": "旧 Checkpoint Fork 的 Exit 写入隔离",
+        "evidence": [
+          "source:langgraph-exit-fork-20261012"
+        ],
+        "paragraphs": [
+          "LangGraph #9269 补充 checkpoint lineage 的另一种失败窗口：用户从已有后继的旧 checkpoint 发起 exit-durability 运行时，新的 delta 不应改变后继分支已经依赖的祖先写入。",
+          "补丁只在非最新持久化祖先上强制 snapshot，并通过一次或两次历史 fork 的 state history 比较验证。工程上应持久化 branch generation 与写入归属，并测量 forced snapshot 的 I/O 成本。"
         ]
       }
     ]
@@ -1317,6 +1339,17 @@
           "独立 Policy Engine 只能解决 Agent 不能自己关闭 guardrail 的问题，不能自动保证 Policy 本身被一致解释。OpenShell 的 endpoint selector 案例显示，路由器、Rego 与形式化 Prover 对 glob 的不同处理会使授权集合出现偏差。必须明确区分 endpoint 选择规则与 HTTP REST allow rule 的路径语法，并用 differential test 比较每一层的决定。",
           "人类批准网络例外时看到的摘要也是授权控制链的一环。如果多个 endpoint 只显示第一项，审计记录虽然存在，却不能完整表达批准范围。建议把完整 rule diff、归一化目标集合、规则版本和实际命中结果关联到同一 approval ID；这属于本站工程抽象，不是 NVIDIA 已实现的全部能力。"
         ]
+      },
+      {
+        "id": "oct12-evidence",
+        "title": "冷恢复授权来源的 Provenance 与撤权边界",
+        "evidence": [
+          "source:codex-permission-resume-20261012"
+        ],
+        "paragraphs": [
+          "Codex #53150 使线程自有的权限快照在冷恢复时可被识别，同时不允许从其他线程复制来的历史设置变成当前线程的授权来源。",
+          "当前管理员要求、显式调用覆盖以及对执行器临时 grants 的过滤仍必须优先于历史状态。Agent 身份长期存在不意味着历史权限不可撤销，恢复时需要再次执行授权合法性检查。"
+        ]
       }
     ]
   },
@@ -1670,6 +1703,17 @@
         "paragraphs": [
           "Open SWE #3855 将 private-thread 工具暴露为后端 remote MCP，upload_session 创建 thread 并签发一次性 code，再由本地 CLI 上传 JSONL transcript。这把外部 harness 的工具可达性、远程任务身份和本地文件读取拆成不同职责。",
           "远程 HTTP 工具入口不意味着内部业务线程、上传任务和身份授权都无状态。生产验证必须覆盖上传码单次消费、owner 校验、部分文件失败、重复请求去重和跨副本恢复；这些要求不能被误写成 Open SWE 已完整实现的功能。"
+        ]
+      },
+      {
+        "id": "oct12-evidence",
+        "title": "RPC 连接关联与无状态工具协议的不同责任",
+        "evidence": [
+          "source:codex-reply-handle-20261012"
+        ],
+        "paragraphs": [
+          "Codex app-server #53049 将审批回复能力绑定原始连接，即使两个 WebSocket worker 复用相同 request ID 也不能串线；AtomicBool 只防止本地重复提交。",
+          "这一证据来自 Codex app-server，而非 MCP 规范；无状态协议设计仍需要对 connection generation、任务身份与业务 side effect 分层处理。网络发送失败可能是 unknown outcome，不能把一次性 handle 当作端到端 exactly-once。"
         ]
       }
     ]
@@ -2265,6 +2309,17 @@
         "paragraphs": [
           "OpenHands 的改动给出了多路由门禁顺序、并发初始化与真实 WebSocket 测试证据，却没有展示跨机器迁移、task journal 或 workspace snapshot。它支持“Agent Server 生命周期需要独立治理”的局部判断，不足以单独证明整个 Persistent Agent Runtime 趋势已经成熟。",
           "对于百万用户 Cloud Agent，应另外测量 deferred-init P95、错误恢复、未就绪误接流量、旧连接 drain 和冷启动成本。只有再结合可替换 worker、持久 workspace 与 side-effect-safe task replay 的数据，才能对趋势置信度作更强判断。"
+        ]
+      },
+      {
+        "id": "oct12-evidence",
+        "title": "主进程退出后的执行资源回收屏障",
+        "evidence": [
+          "source:openhands-descendant-reap-20261012"
+        ],
+        "paragraphs": [
+          "OpenHands #5689 修复 Canvas backend leader 已退出但 HTTP 后代仍存活的情况，状态查询、停止和重启现在会触发 process-group cleanup，而非只清空主进程引用。",
+          "长期 Agent 的 Task 完成、Worker Lease 释放、凭据撤销和 Workspace 复用应建立清晰顺序。进程组清理失败时应隔离该执行环境，并监控遗留端口和后代存活；该建议不等于 OpenHands 已实现完整跨平台方案。"
         ]
       }
     ]
@@ -4649,6 +4704,201 @@
         "paragraphs": [
           "本次证据证明 OpenHands Agent Server 的入口门禁和测试得到加强，不证明所有部署平台已经实现零停机滚动升级，也不能推导其 checkpoint、workspace snapshot 或跨 worker 恢复能力。",
           "架构上应将 Liveness、Readiness、Initialization、CredentialAvailability 分离：健康探针可以表明进程活着，只有就绪门禁允许业务请求。还需关注启动失败后的重试、旧连接 drain 与配置轮换期间的授权一致性。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:langgraph-exit-fork-20261012",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "checkpoint-lineage",
+        "title": "旧 Checkpoint 的祖先共享问题",
+        "evidence": [
+          "source:langgraph-exit-fork-20261012"
+        ],
+        "paragraphs": [
+          "补丁检查 `_has_persisted_parent` 且 `_loaded_latest` 为 false 的情况，并将本次 exit 写入涉及的 DeltaChannel 加入强制快照集合。旧 checkpoint 已有子节点时不能继续把本次写入混入共享祖先。",
+          "此修复针对特定 checkpoint lineage 与 durability=exit 的组合。最新 checkpoint 的正常增量存储路径并未因此全部改成快照；这种局部处理减少无必要的存储开销。"
+        ]
+      },
+      {
+        "id": "replay-regression",
+        "title": "历史分支多次运行的回归测试",
+        "evidence": [
+          "source:langgraph-exit-fork-20261012"
+        ],
+        "paragraphs": [
+          "测试先完成两个 turn，再从第一个 turn 的 checkpoint 分别运行一次和两次历史 exit run，并逐个比较 DeltaChannel 与普通 channel 的 state history。",
+          "这验证了所测 checkpointer 下的分支可见状态，不证明跨数据库的并发事务隔离、网络分区期间的 exactly-once 或所有历史版本的迁移兼容。"
+        ]
+      },
+      {
+        "id": "operational-tradeoff",
+        "title": "分支归属与持久化成本取舍",
+        "evidence": [
+          "source:langgraph-exit-fork-20261012"
+        ],
+        "paragraphs": [
+          "生产系统需要保存 branch generation、checkpoint ancestry 与写入归属，防止用户从旧任务状态重跑时污染现有任务。恢复测试应覆盖旧分支与最新分支交错读取。",
+          "强制快照会增加某些 fork 场景的 I/O；应测量快照频率、历史读取延迟和空间放大，不能把修复的存在等同于任意负载下的性能承诺。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:codex-permission-resume-20261012",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "thread-owned-history",
+        "title": "线程自有权限快照的恢复条件",
+        "evidence": [
+          "source:codex-permission-resume-20261012"
+        ],
+        "paragraphs": [
+          "Codex 的冷恢复检索只允许当前 thread ID 拥有的 `ThreadSettingsApplied` 快照恢复权限、工作目录与 workspace roots；外来线程引用的历史设置不能覆盖本线程安全配置。",
+          "这一规则把持久化对话历史和安全授权历史区分开：复制的文本可以作为上下文，但不应把另一个会话曾经拥有的权限一起复制过来。"
+        ]
+      },
+      {
+        "id": "managed-policy",
+        "title": "当前策略与显式覆盖的优先级",
+        "evidence": [
+          "source:codex-permission-resume-20261012"
+        ],
+        "paragraphs": [
+          "补丁检查显式 permission override、workspace-write 覆盖和 managed requirements；执行器已展开的 materialized grants、External profile 等也不会被无条件当成可恢复的基础授权。",
+          "旧权限 profile 在当前策略下必须重新校验。即使会话曾经获批，也不能因此绕过管理员收紧策略、用户临时降权或工作区迁移后的新边界。"
+        ]
+      },
+      {
+        "id": "cold-resume-tests",
+        "title": "冷恢复的安全回归范围",
+        "evidence": [
+          "source:codex-permission-resume-20261012"
+        ],
+        "paragraphs": [
+          "新增测试覆盖 owner 与 foreign snapshot、权限 profile、工作目录和 workspace roots，以及显式调用覆盖的优先级。目标是既保留合法的线程连续性，也阻止历史数据扩大权限。",
+          "这些测试不证明所有跨租户导入、全部 OS 沙盒或长期凭据撤销路径已被形式化验证。部署仍需验证撤权传播、受管策略更新与路径变更后的 fail-closed。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:codex-reply-handle-20261012",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "connection-binding",
+        "title": "审批回复绑定发起连接",
+        "evidence": [
+          "source:codex-reply-handle-20261012"
+        ],
+        "paragraphs": [
+          "`AppServerReplyHandle` 保存发起请求的 app-server worker handle 和 request ID，UI 后续选择其他线程或连接不会改变它的目标。测试故意让两个 WebSocket 连接使用同一个 request ID。",
+          "这种绑定防止以数字 ID 在当前连接上重新解释审批对象，属于 Codex app-server 的 RPC 能力设计，而不是 MCP 的协议版本变更。"
+        ]
+      },
+      {
+        "id": "single-use-semantics",
+        "title": "单次使用和未知结果窗口",
+        "evidence": [
+          "source:codex-reply-handle-20261012"
+        ],
+        "paragraphs": [
+          "多个 handle clone 共享 AtomicBool，只有首次 resolve 或 reject 可提交；重复提交返回错误。丢弃 handle 不发送消息，已关闭连接会返回 I/O 错误，也不会隐式重连。",
+          "源代码承认发送失败时结果可能未知：服务端可能已接收请求但客户端没有收到确认。单次本地提交不等于远端 exactly-once，关键审批需要 journal 与对账。"
+        ]
+      },
+      {
+        "id": "cross-session-audit",
+        "title": "跨会话身份与可观测性",
+        "evidence": [
+          "source:codex-reply-handle-20261012"
+        ],
+        "paragraphs": [
+          "同一个 request ID 在不同连接中并不代表同一个用户审批。审计记录至少需要 connection generation、request ID、thread ownership 和动作上下文，避免重连后复用旧关联键。",
+          "测试证明当前实现的 worker-channel 绑定和重复消费控制，不能证明所有多租户代理、跨节点重放或服务器侧审批去重已具备相同保证。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openhands-mcp-reconnect-20261012",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "session-task-lifecycle",
+        "title": "已结束会话任务的状态清理",
+        "evidence": [
+          "source:openhands-mcp-reconnect-20261012"
+        ],
+        "paragraphs": [
+          "`connect()` 在 `_session_state.lock` 内检查旧 session task 是否已完成，若已完成就调用 `_reset_session_state(full=True)`，随后进入正常连接路径。锁保证并发调用不会同时读取半清理的会话。",
+          "这项修复只处理 session task 已经结束的特定路径，不代表任何网络超时都自动触发无限次重试，也不代表每种 MCP transport 都采用相同恢复实现。"
+        ]
+      },
+      {
+        "id": "http-504-regression",
+        "title": "HTTP 504 后复用同一个工具实例",
+        "evidence": [
+          "source:openhands-mcp-reconnect-20261012"
+        ],
+        "paragraphs": [
+          "测试启动 FastMCP HTTP 服务，第一次 `tools/call` 被中间件替换为 504 gateway timeout；第一次工具调用报告错误，第二次同一工具对象的调用恢复并得到 pong。",
+          "这证明了传输层恢复，不证明失败的业务调用一定未执行。对非幂等工具，HTTP 504 可能发生在服务端提交结果之后，不能不经查询就重复写入。"
+        ]
+      },
+      {
+        "id": "business-side-effects",
+        "title": "工具恢复与任务恢复分层",
+        "evidence": [
+          "source:openhands-mcp-reconnect-20261012"
+        ],
+        "paragraphs": [
+          "Cloud Agent 应分别记录 MCP server identity、session generation、request ID、超时阶段和业务幂等键。连接重建可以恢复可用性，但业务 side effect 的状态仍需要独立核验。",
+          "读工具可以根据预算受控重试；发送邮件、修改工单、部署服务等写工具必须使用幂等键或结果查询。否则网络恢复会把一次未知结果扩大成重复执行事故。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openhands-descendant-reap-20261012",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "leader-and-descendants",
+        "title": "主进程死亡不代表进程组消失",
+        "evidence": [
+          "source:openhands-descendant-reap-20261012"
+        ],
+        "paragraphs": [
+          "Canvas backend 的 status 检测到 leader 已退出后，标记 unhealthy 并调用 `_terminate_runtime`，不再仅清空主进程引用。状态输出也不再将已退出 leader 的 PID 和端口当作健康服务信息。",
+          "进程组中的后代仍可能持有监听端口和文件句柄。只有完整回收这些后代，才能避免新的 Agent 工作区实例与旧任务残余进程竞争资源。"
+        ]
+      },
+      {
+        "id": "stop-and-restart",
+        "title": "状态查询、停止与重启三条路径",
+        "evidence": [
+          "source:openhands-descendant-reap-20261012"
+        ],
+        "paragraphs": [
+          "回归测试启动会派生子 HTTP 服务的 Canvas backend，让 leader 主动退出，分别通过 status、stop、restart 路径检查后代回收；启动新 runtime 前也会清理旧进程引用。",
+          "这是特定后端管理器与操作系统进程组语义的修复，不能推广为所有 Docker、Kubernetes、Windows 或微虚拟机都已完成进程树隔离。"
+        ]
+      },
+      {
+        "id": "resource-leases",
+        "title": "云端 Agent 的资源回收门禁",
+        "evidence": [
+          "source:openhands-descendant-reap-20261012"
+        ],
+        "paragraphs": [
+          "对托管 Agent 而言，任务结束、worker 租约释放、凭据撤销和 workspace 复用之间需要明确顺序。建议用 generation 和进程组存活检测防止旧子进程穿透到新任务生命周期。",
+          "清理失败应进入隔离状态，而非简单把 workspace 标记为空闲。运维指标还应覆盖遗留端口、子进程数量、终止耗时和因强制清理造成的任务副作用。"
         ]
       }
     ]

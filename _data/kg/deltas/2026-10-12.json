@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-12",
+  "mode": "daily",
+  "note": "Five primary merged GitHub commits verified; five independently authored Source entities and monographs, five updated core entities and technical assets; no unverified benchmarks.",
+  "nodes_added": [
+    "source:langgraph-exit-fork-20261012",
+    "source:codex-permission-resume-20261012",
+    "source:codex-reply-handle-20261012",
+    "source:openhands-mcp-reconnect-20261012",
+    "source:openhands-descendant-reap-20261012"
+  ],
+  "nodes_updated": [
+    "cap:durable-execution",
+    "cap:policy-enforcement",
+    "cap:stateless-tool-protocol",
+    "standard:mcp",
+    "trend:persistent-agent-runtime"
+  ],
+  "edges_added": [
+    "e:langgraph-exit-fork-1012",
+    "e:codex-permission-resume-1012",
+    "e:codex-reply-handle-1012",
+    "e:openhands-mcp-reconnect-1012",
+    "e:openhands-descendant-reap-1012"
+  ],
+  "edges_updated": []
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "kind": "analysis",
-  "note": "Architecture layers remain curated analysis, not ontology facts. 2026-10-11 evidence distinguishes checkpoint ancestry and HITL draining from worker lifecycle, and Linux AF_VSOCK syscall enforcement from proxy authorization. Readiness gating is not proof of durable worker migration.",
+  "note": "Architecture remains analysis, not ontology fact. 2026-10-12 evidence separates checkpoint fork writes, cold-resume permission provenance, connection-bound RPC replies, MCP transport recovery and worker descendant cleanup; none proves distributed exactly-once.",
   "layers": [
     {
       "id": "experience",
