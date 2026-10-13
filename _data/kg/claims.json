@@ -603,5 +603,77 @@
     ],
     "first_seen": "2026-10-12",
     "last_verified": "2026-10-12"
+  },
+  {
+    "id": "claim:openshell-watchlogs-1013",
+    "entity": "project:nvidia-openshell",
+    "text": "OpenShell TypeScript watchLogs 使用同一 stream 的最大已交付 cursor 恢复 Unavailable 断流；lag warning 不推进游标，OutOfRange 作为终止性缺口而非自动追尾。",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:openshell-watchlogs-20261013"
+    ],
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13"
+  },
+  {
+    "id": "claim:openshell-rejection-audit-1013",
+    "entity": "project:nvidia-openshell",
+    "text": "OpenShell Gateway 在 policy draft chunk 持久拒绝后产生 CONFIG:REJECTED，记录 actor、chunk_id、清洗后的拒绝原因及策略版本上下文。",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:openshell-rejection-audit-20261013"
+    ],
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13"
+  },
+  {
+    "id": "claim:codex-host-cardinality-1013",
+    "entity": "cap:policy-enforcement",
+    "text": "Codex 在普通 HTTP 和 CONNECT 代理授权前拒绝重复 Host 字段，包括相同值重复，返回 400 以防策略与上游对请求目标产生解析差异。",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:codex-host-cardinality-20261013"
+    ],
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13"
+  },
+  {
+    "id": "claim:adk-generation-continuation-1013",
+    "entity": "cap:durable-execution",
+    "text": "Google ADK 以 CONTINUATION token 与已生成 parts 续接 Gemini 输出，重复 token、未完成 function_call 和 256 次上限会停止续接；此功能不是任务级 durable journal。",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:adk-generation-continuation-20261013"
+    ],
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13"
+  },
+  {
+    "id": "claim:openswe-task-context-1013",
+    "entity": "cap:durable-execution",
+    "text": "Open SWE 将 Task Coordination 上下文从临时模型请求注入移至 abefore_model 的可 checkpoint state update，并以当前可见动态内容 hash 判断是否重复。",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:openswe-task-context-20261013"
+    ],
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13"
+  },
+  {
+    "id": "claim:srt-symlink-deny-1013",
+    "entity": "project:anthropic-sandbox-runtime",
+    "text": "Anthropic sandbox-runtime 在 Linux read-deny glob 展开时保留不可检查 symlink 的原路径拼写，避免真实路径及祖先规则折叠误删链接拒绝项。",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:srt-symlink-deny-20261013"
+    ],
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13"
   }
 ]

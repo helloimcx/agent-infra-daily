@@ -1356,5 +1356,89 @@
     "first_seen": "2026-10-12",
     "last_verified": "2026-10-12",
     "note": "Primary merged commit and regression tests verified 2026-10-12; analysis is site synthesis."
+  },
+  {
+    "id": "e:openshell-watchlogs-1013",
+    "source": "project:nvidia-openshell",
+    "target": "source:openshell-watchlogs-20261013",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:openshell-watchlogs-20261013"
+    ],
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13",
+    "note": "Primary merged GitHub commit inspected on 2026-10-13; only the documented code path is claimed."
+  },
+  {
+    "id": "e:openshell-rejection-audit-1013",
+    "source": "project:nvidia-openshell",
+    "target": "source:openshell-rejection-audit-20261013",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:openshell-rejection-audit-20261013"
+    ],
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13",
+    "note": "Primary merged GitHub commit inspected on 2026-10-13; only the documented code path is claimed."
+  },
+  {
+    "id": "e:codex-host-cardinality-1013",
+    "source": "cap:policy-enforcement",
+    "target": "source:codex-host-cardinality-20261013",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:codex-host-cardinality-20261013"
+    ],
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13",
+    "note": "Primary merged GitHub commit inspected on 2026-10-13; only the documented code path is claimed."
+  },
+  {
+    "id": "e:adk-generation-continuation-1013",
+    "source": "cap:durable-execution",
+    "target": "source:adk-generation-continuation-20261013",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:adk-generation-continuation-20261013"
+    ],
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13",
+    "note": "Primary merged GitHub commit inspected on 2026-10-13; only the documented code path is claimed."
+  },
+  {
+    "id": "e:openswe-task-context-1013",
+    "source": "cap:durable-execution",
+    "target": "source:openswe-task-context-20261013",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:openswe-task-context-20261013"
+    ],
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13",
+    "note": "Primary merged GitHub commit inspected on 2026-10-13; only the documented code path is claimed."
+  },
+  {
+    "id": "e:srt-symlink-deny-1013",
+    "source": "project:anthropic-sandbox-runtime",
+    "target": "source:srt-symlink-deny-20261013",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:srt-symlink-deny-20261013"
+    ],
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13",
+    "note": "Primary merged GitHub commit inspected on 2026-10-13; only the documented code path is claimed."
   }
 ]

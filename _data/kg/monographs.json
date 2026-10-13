@@ -413,6 +413,17 @@
           "OpenShell 在 provider credentials 与 secrets 代码中实现 JWT-shaped alias，要求 signature 保留 workload 原始签发的 placeholder suffix；claims 仅用于客户端本地元数据。代理解析时仍应遵守 endpoint、expiry 与 authorization epoch 检查。",
           "新增测试覆盖 access token 过期、稳定 handle 合法刷新、旧授权 epoch 撤权与畸形 alias 拒绝。这说明凭据生命周期语义被纳入回归门禁，但不等于所有外部代理、跨租户部署或网络绕行路径已被穷尽证明。"
         ]
+      },
+      {
+        "id": "loss-aware-audit-1013",
+        "title": "日志游标恢复与拒绝审计的两种一致性",
+        "evidence": [
+          "source:openshell-watchlogs-20261013",
+          "source:openshell-rejection-audit-20261013"
+        ],
+        "paragraphs": [
+          "OpenShell watchLogs 用最大已交付 cursor 恢复暂时断流，对服务器 lag 提示但不推进游标，对 OutOfRange 明确终止。Gateway 的 CONFIG:REJECTED 则在策略 chunk 持久拒绝后记录 actor、chunk_id 和清洗后的原因。前者让日志缺口可见，后者让权限拒绝有证据；但 SDK 重连和事件生成都不能证明日志存储的持久投递，生产应对账策略状态、事件 ID 和消费位置。"
+        ]
       }
     ]
   },
@@ -919,6 +930,17 @@
           "LangGraph #9269 补充 checkpoint lineage 的另一种失败窗口：用户从已有后继的旧 checkpoint 发起 exit-durability 运行时，新的 delta 不应改变后继分支已经依赖的祖先写入。",
           "补丁只在非最新持久化祖先上强制 snapshot，并通过一次或两次历史 fork 的 state history 比较验证。工程上应持久化 branch generation 与写入归属，并测量 forced snapshot 的 I/O 成本。"
         ]
+      },
+      {
+        "id": "continuation-task-context-1013",
+        "title": "模型生成续接和任务上下文持久化的分层边界",
+        "evidence": [
+          "source:adk-generation-continuation-20261013",
+          "source:openswe-task-context-20261013"
+        ],
+        "paragraphs": [
+          "Google ADK 的 CONTINUATION token 让同一次模型生成跨多个请求继续，并限制重复 token、未完成函数调用与最多 256 次续接；它不负责外部工具副作用。Open SWE 把任务协调上下文从临时 model wrapper 移入可 checkpoint 的状态更新，使用可见内容 hash 去重。生产 Cloud Agent 应分别追踪 ModelContinuationToken、TaskContextVersion 和 ToolCallJournal，不能用一个 resume 标志代替三个不同的恢复契约。"
+        ]
       }
     ]
   },
@@ -1350,6 +1372,17 @@
           "Codex #53150 使线程自有的权限快照在冷恢复时可被识别，同时不允许从其他线程复制来的历史设置变成当前线程的授权来源。",
           "当前管理员要求、显式调用覆盖以及对执行器临时 grants 的过滤仍必须优先于历史状态。Agent 身份长期存在不意味着历史权限不可撤销，恢复时需要再次执行授权合法性检查。"
         ]
+      },
+      {
+        "id": "host-and-audit-1013",
+        "title": "策略输入解析唯一性与拒绝决策追踪",
+        "evidence": [
+          "source:codex-host-cardinality-20261013",
+          "source:openshell-rejection-audit-20261013"
+        ],
+        "paragraphs": [
+          "Codex 在普通 HTTP 和 CONNECT 的授权前拒绝重复 Host，避免策略解析器与上游服务器对目标主机作出不同解释。OpenShell 在持久拒绝 Policy Proposal 后生成 CONFIG:REJECTED，提供 actor、chunk_id 与版本上下文。前者解决输入语义歧义，后者解决权限决策审计；两者都是局部代码证据，不能外推为所有协议和日志存储路径都已获得端到端正确性。"
+        ]
       }
     ]
   },
@@ -1621,6 +1654,16 @@
         "paragraphs": [
           "例如 tool retry rate、policy block rate、human takeover rate、steps-to-success、rollback count、state divergence、cost-per-success。",
           "这些指标才真正反映 Agent Harness 与 Runtime 质量。把这些指标按模型、工具、风险等级和任务持续时间切片后，还可以构建失败漏斗：从模型决策、工具执行、策略阻断到环境恢复逐层定位损失，避免全局平均值掩盖真正瓶颈。"
+        ]
+      },
+      {
+        "id": "trace-coverage-1013",
+        "title": "Trace 连续性需要显式的永久缺口状态",
+        "evidence": [
+          "source:openshell-watchlogs-20261013"
+        ],
+        "paragraphs": [
+          "OpenShell TS SDK 将网络 Unavailable、服务器 lag warning 与 OutOfRange 视为不同的恢复状态；合流日志用最大 cursor 防止重连时倒退。Execution Trace 平台应保存 coverage_gap、last_good_cursor 与 sink_commit_id，区分可恢复断线和无法补齐的事件缺口。日志订阅的成功并不能替代任务执行 journal 的状态正确性，也不等于环境回放的可复现性。"
         ]
       }
     ]
@@ -4183,6 +4226,16 @@
           "NetworkConfigSchema 明确 allowAllUnixSockets=true 在 Linux 也会解除 AF_VSOCK 的阻断，因而这不是无条件的系统安全属性。对需要 Unix socket 的工作负载，应尽量用具体 FD 或更窄的授权机制，而不是扩大整个 socket family 的访问权限。",
           "源代码同时提示 inherited socket FD 与 SCM_RIGHTS 传递等不在该 socket() 创建规则的覆盖范围。部署时还要联合验证 io_uring、容器自身 seccomp 和运行时代理配置，避免把单一系统调用过滤当成完整的出站网络证明。"
         ]
+      },
+      {
+        "id": "symlink-deny-1013",
+        "title": "链接名字与真实路径不能共享 Deny 归并规则",
+        "evidence": [
+          "source:srt-symlink-deny-20261013"
+        ],
+        "paragraphs": [
+          "Anthropic sandbox-runtime #690 在 Linux read-deny glob 中单独保留不可检查 symlink 的原路径拼写，避免其被真实目标或祖先目录折叠误消除；链接指向根目录的情况也有专门修复。回归测试覆盖链接和父目录 deny 组合，但不证明 TOCTOU 或跨平台 backend 等价。实际 Agent 沙盒需要在运行进程中测试最终拒绝效果，而不是只检查编译出来的 mount 列表。"
+        ]
       }
     ]
   },
@@ -4899,6 +4952,222 @@
         "paragraphs": [
           "对托管 Agent 而言，任务结束、worker 租约释放、凭据撤销和 workspace 复用之间需要明确顺序。建议用 generation 和进程组存活检测防止旧子进程穿透到新任务生命周期。",
           "清理失败应进入隔离状态，而非简单把 workspace 标记为空闲。运维指标还应覆盖遗留端口、子进程数量、终止耗时和因强制清理造成的任务副作用。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openshell-watchlogs-20261013",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "mechanism",
+        "title": "高水位 Cursor 与多来源日志合流",
+        "evidence": [
+          "source:openshell-watchlogs-20261013"
+        ],
+        "paragraphs": [
+          "OpenShell 的 watchLogs 同时读取 sandbox log 与 platform event，两类事件到达顺序不一定与 cursor 顺序相同。SDK 使用同一 stream 内最大已交付 cursor 作为重连位置，避免最后到达的低游标事件使位置倒退；游标是服务端不透明值，客户端不应自行解析或跨 sandbox 比较。"
+        ]
+      },
+      {
+        "id": "failure-boundary",
+        "title": "断流、Lag 与 OutOfRange 的不同可恢复性",
+        "evidence": [
+          "source:openshell-watchlogs-20261013"
+        ],
+        "paragraphs": [
+          "只有 Connect Unavailable 会触发从 100ms 到最多 2000ms 的退避重连，收到事件后退避重置。服务器 lag 作为 warning item 交给消费者但不推进游标；OutOfRange 则是终止错误，表示数据已裁剪或游标空间丢失，不能自动从尾部重开掩盖永久缺口。"
+        ]
+      },
+      {
+        "id": "evidence-limit",
+        "title": "SDK 证据不能证明日志存储的事务语义",
+        "evidence": [
+          "source:openshell-watchlogs-20261013"
+        ],
+        "paragraphs": [
+          "本提交包含 TS SDK 类型映射、订阅过滤与模拟传输测试，证明客户端处理特定断流和游标的行为；没有证明跨区域日志保存、任意长度保留或消费位置与下游写入的原子提交。Cloud Agent 应把 coverage_gap、last_good_cursor 和 sink_commit_id 作为可观测性数据质量指标。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openshell-rejection-audit-20261013",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "mechanism",
+        "title": "Gateway 持久拒绝后的独立审计事件",
+        "evidence": [
+          "source:openshell-rejection-audit-20261013"
+        ],
+        "paragraphs": [
+          "OpenShell #4281 在 draft policy chunk 被持久拒绝后发 CONFIG:REJECTED，人工 reviewer 与 Gateway 自动拒绝均能触发，不依赖 sandbox /wait 是否有订阅者。事件带 chunk_id、rejection_reason、actor 和策略版本上下文，actor 区分 user、operator、sandbox、peer 与 gateway:auto。"
+        ]
+      },
+      {
+        "id": "failure-boundary",
+        "title": "人工原因进入日志前需要安全清洗",
+        "evidence": [
+          "source:openshell-rejection-audit-20261013"
+        ],
+        "paragraphs": [
+          "sanitize_reason_for_audit 删除控制字符并限制为 200 字符，超长附省略号；shorthand 格式还转义上下文字段。这是防止日志注入与结构化审计被伪造分隔符误读的局部保护，并不意味着原始业务文本在其他出口都已脱敏。"
+        ]
+      },
+      {
+        "id": "evidence-limit",
+        "title": "事件生成不等于端到端持久可查询",
+        "evidence": [
+          "source:openshell-rejection-audit-20261013"
+        ],
+        "paragraphs": [
+          "代码和单元测试能证明拒绝路径构造审计事件，但没有提供日志后端持久确认、跨节点重试去重或不可篡改保留的证据。生产应以 decision_id、chunk_id 和 policy_version 对账实际策略状态，验证拒绝成功而审计存储失败的窗口。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:codex-host-cardinality-20261013",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "mechanism",
+        "title": "普通 HTTP 与 CONNECT 在授权前检查 Host 基数",
+        "evidence": [
+          "source:codex-host-cardinality-20261013"
+        ],
+        "paragraphs": [
+          "Codex #53506 在 http_plain_proxy 与 http_connect_accept 入口检查第二个 Host 字段，一旦存在就返回 400 multiple Host headers，不再进入后续策略判定或上游转发。测试区分 origin-form、absolute-form、CONNECT 以及相同值与冲突值的重复 Host。"
+        ]
+      },
+      {
+        "id": "failure-boundary",
+        "title": "协议解析差异是安全代理的授权歧义",
+        "evidence": [
+          "source:codex-host-cardinality-20261013"
+        ],
+        "paragraphs": [
+          "即使重复的两个 Host 值相同也拒绝，是为了避免安全策略与上游解析器使用不同字段选择逻辑。实际目标还可能出现在 request-target、CONNECT authority、TLS SNI 和 DNS 解析结果中，本补丁只解决重复 Host 的特定窗口。"
+        ]
+      },
+      {
+        "id": "evidence-limit",
+        "title": "不能外推为完整 HTTP 请求走私防护",
+        "evidence": [
+          "source:codex-host-cardinality-20261013"
+        ],
+        "paragraphs": [
+          "一手提交包含入口条件检查与回归测试，但未证明所有 HTTP/2 :authority、HTTP/3、代理链或 DNS rebinding 语义一致。工程复现应使用原始请求字节覆盖大小写、空白、重复字段和绝对 URI，并比较策略目标与真实上游连接。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:adk-generation-continuation-20261013",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "mechanism",
+        "title": "CONTINUATION token 连接多次模型生成请求",
+        "evidence": [
+          "source:adk-generation-continuation-20261013"
+        ],
+        "paragraphs": [
+          "Google ADK 只在候选 finish_reason 为 CONTINUATION 时取 continuation_token，续接请求包含原始 contents、已经生成的 model parts 和 token。实现合并暂停边界的文本与 thought_signature，避免一次逻辑生成跨请求后输出被错误拆段。"
+        ]
+      },
+      {
+        "id": "failure-boundary",
+        "title": "无进展循环、函数调用与计费边界",
+        "evidence": [
+          "source:adk-generation-continuation-20261013"
+        ],
+        "paragraphs": [
+          "如果 token 重复或续接达到 256 次，代码停止续接并返回已生成部分；暂停落在未完成的 function_call 参数中也不继续。续接可设置最多 8 次 HTTP retry，usage 汇总对重复发送的 prompt 只采用首次计数，对生成 token 进行累计。"
+        ]
+      },
+      {
+        "id": "evidence-limit",
+        "title": "生成级续接不是任务 Durable Execution",
+        "evidence": [
+          "source:adk-generation-continuation-20261013"
+        ],
+        "paragraphs": [
+          "提交证明模型生成协议适配和单元测试，未证明 token 跨进程持久、跨版本兼容或长期有效。模型输出连续性不能替代 task checkpoint 与工具 side-effect journal；外部操作已执行而本地没有确认时仍需幂等键和对账。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openswe-task-context-20261013",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "mechanism",
+        "title": "从临时 Model Wrapper 移到 AgentState 更新",
+        "evidence": [
+          "source:openswe-task-context-20261013"
+        ],
+        "paragraphs": [
+          "Open SWE #3988 在 abefore_model 读取 TaskMembership 并渲染 task_id、title 和 coordinator_thread_id，将缺失的任务上下文作为用户消息返回给状态更新。原先 awrap_model_call 每轮临时附加 HumanMessage，现在 wrapper 只维护系统指令，模型依赖的上下文因而可进入 checkpoint。"
+        ]
+      },
+      {
+        "id": "failure-boundary",
+        "title": "可见内容 Hash 的去重范围",
+        "evidence": [
+          "source:openswe-task-context-20261013"
+        ],
+        "paragraphs": [
+          "dynamic_context_hash 与 visible_dynamic_context_hashes(state) 判断是否插入，新的 task-context 消息 ID 带 uuid4。去重针对当前可见消息历史，而不是跨节点全局唯一键；如果摘要或裁剪改变可见集合，是否再次注入应由单独回归测试确认。"
+        ]
+      },
+      {
+        "id": "evidence-limit",
+        "title": "恢复时应能够解释模型实际看到的任务指令",
+        "evidence": [
+          "source:openswe-task-context-20261013"
+        ],
+        "paragraphs": [
+          "测试覆盖 task context checkpoint 一次和摘要中间件交互。将动态任务输入持久化有利于恢复后审计 coordinator 与 worker 的上下文归属，但补丁不证明多副本事务性去重；生产还应记录任务 generation、内容 hash 和来源版本。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:srt-symlink-deny-20261013",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "mechanism",
+        "title": "Linux Deny Glob 中保留链接原路径拼写",
+        "evidence": [
+          "source:srt-symlink-deny-20261013"
+        ],
+        "paragraphs": [
+          "Anthropic sandbox-runtime #690 新增 spelledLinks 列表，对目标不可检查的 symlink 保留其名字而不放进真实位置集合，避免在祖先目录拒绝规则归并时把链接本身的 deny 消除。最终 mounts 同时输出真实位置与这些原拼写链接。"
+        ]
+      },
+      {
+        "id": "failure-boundary",
+        "title": "根目录目标与父目录折叠的不同含义",
+        "evidence": [
+          "source:srt-symlink-deny-20261013"
+        ],
+        "paragraphs": [
+          "补丁还处理 symlink 指向 / 的情况，防止将链接位置的拒绝错误扩大为对整个根目录的拒绝。测试覆盖外部目录、根、嵌套路径和父目录 deny，强调路径名字与真实目标并不是可随意互换的安全对象。"
+        ]
+      },
+      {
+        "id": "evidence-limit",
+        "title": "编译器测试不等于真实访问的完整证明",
+        "evidence": [
+          "source:srt-symlink-deny-20261013"
+        ],
+        "paragraphs": [
+          "本次代码只覆盖 Linux read-deny glob 展开和相关测试，不能证明 macOS、Windows 后端、TOCTOU 或运行中目录替换完全安全。Agent 沙盒应在真实进程中验证文件访问结果，并将 Policy Compiler 输出与内核执行结果进行差分检查。"
         ]
       }
     ]

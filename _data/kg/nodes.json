@@ -184,7 +184,7 @@
     "summary": "Resume work after crashes without repeating completed side effects.",
     "maturity": "production",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-12",
+    "last_verified": "2026-10-13",
     "themes": [
       "runtime",
       "cloud-agent"
@@ -199,7 +199,8 @@
       "幂等与副作用控制：避免重试造成重复写入、支付、部署等",
       "durable timer / promise：支持等待分钟、小时甚至数天后继续",
       "状态与执行解耦：worker 可以是可替换的",
-      "Checkpoint ancestry 与 DeltaChannel 写入归属：输入写入存放于被更新 checkpoint 的祖先；历史 fork 单独 snapshot，避免重播缺失或分支污染。"
+      "Checkpoint ancestry 与 DeltaChannel 写入归属：输入写入存放于被更新 checkpoint 的祖先；历史 fork 单独 snapshot，避免重播缺失或分支污染。",
+      "任务动态上下文以可 checkpoint 的消息保存；模型 continuation token 与任务执行 journal 分层。"
     ],
     "representative_implementations": [
       "project:restate"
@@ -211,7 +212,8 @@
       "恢复后比较 channel 写入顺序与无中断 baseline，验证 task ID、checkpoint fork 和因果重播保持一致",
       "DeltaChannel 写入必须先于依赖它的 checkpoint 保存；后台任务需要捕获每份 checkpoint 独有的 write futures。",
       "Parallel HITL 将 NodeInterruptedError 与 fatal failure 分开；停止新派发、等待在途 sibling settle，再发布 WAITING checkpoint。",
-      "测试从非最新 checkpoint 多次 fork 并交替读取分支历史；根据 LangGraph #9269 对共享祖先的 DeltaChannel 写入强制快照。"
+      "测试从非最新 checkpoint 多次 fork 并交替读取分支历史；根据 LangGraph #9269 对共享祖先的 DeltaChannel 写入强制快照。",
+      "分别管理 TaskContextVersion、ModelContinuationToken、ToolCallJournal 的有效期、恢复与审计。"
     ],
     "failure_modes": [
       "只保存对话/Agent state，但没有记录外部副作用",
@@ -222,7 +224,9 @@
       "增量写入失败后仍发布后继 checkpoint，会导致祖先链 replay 永久缺失状态。",
       "update_state(as_node='__input__') 把增量写入当前 checkpoint 而非祖先，导致 DeltaChannel 恢复读不到输入；旧分支更新还可能污染新分支。",
       "ParallelWorker 把人工输入中断当作致命异常，取消已启动的兄弟任务，丢失本轮输出并使审批等待不一致。",
-      "历史 checkpoint 已存在后继分支时，exit-durability 写入复用祖先 delta，可能让旧分支的状态污染较新的分支。"
+      "历史 checkpoint 已存在后继分支时，exit-durability 写入复用祖先 delta，可能让旧分支的状态污染较新的分支。",
+      "任务上下文仅在临时 model wrapper 中注入，恢复后无法核验模型看到的任务指令。",
+      "把模型 CONTINUATION token 误作任务 checkpoint，忽略工具副作用的幂等和对账。"
     ],
     "intro": "Durable Execution 是长时间运行 Agent 的“可靠执行底座”：任务可以经历进程崩溃、机器替换、部署重启或长时间等待，而不必从头再来。它关注的不是保存一份对话，而是让整个执行历史、已完成结果和外部副作用都具备可恢复语义。",
     "content_mode": "authored",
@@ -553,7 +557,7 @@
     "summary": "Enforce safety outside the harness so the agent cannot control its own guardrail.",
     "maturity": "emerging",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-12",
+    "last_verified": "2026-10-13",
     "themes": [
       "security",
       "sandbox"
@@ -575,14 +579,17 @@
       "policy enforcement 应尽可能靠近真实执行边界",
       "不同 tool action 需要映射到统一 capability model",
       "要支持 fail-closed 与明确的人类审批路径",
-      "冷恢复应验证 thread-owned snapshot、当前 managed requirements、显式调用 override 和临时 materialized grants 的不同优先级。"
+      "冷恢复应验证 thread-owned snapshot、当前 managed requirements、显式调用 override 和临时 materialized grants 的不同优先级。",
+      "普通 HTTP 和 CONNECT 在策略评估前拒绝重复 Host，并单独验证 authority、SNI 与解析 IP 一致性。",
+      "策略拒绝审计记录 actor、chunk_id、policy_version 与清洗后的原因。"
     ],
     "failure_modes": [
       "策略仅存在 system prompt",
       "安全 hook 与 Agent 运行在同一可修改进程",
       "同一 endpoint glob 在路由器、Rego 与形式化 Prover 中解释不同，静态验证无法覆盖实际授权范围",
       "多 endpoint proposal 的审计摘要只显示首项，使操作员误判批准的权限",
-      "从复制的外来线程历史恢复权限，或把执行器临时展开的文件 grants 当成永久基础授权，导致冷恢复后的权限扩大。"
+      "从复制的外来线程历史恢复权限，或把执行器临时展开的文件 grants 当成永久基础授权，导致冷恢复后的权限扩大。",
+      "重复 Host 字段被代理策略与上游解析为不同目标，产生授权目标与实际转发目标不一致。"
     ],
     "intro": "Out-of-band Policy Enforcement 把安全控制放在 Agent 自身控制范围之外。Agent 可以提出动作请求，但是否允许访问网络、文件、凭据或执行高风险操作，由独立 enforcement 层最终决定。",
     "content_mode": "authored",
@@ -789,7 +796,7 @@
     "summary": "Structured action history for observability, replay, eval, skill mining and RSI.",
     "maturity": "emerging",
     "first_seen": "2026-10-02",
-    "last_verified": "2026-10-03",
+    "last_verified": "2026-10-13",
     "themes": [
       "memory",
       "observability",
@@ -804,7 +811,8 @@
       "tool input-output 与状态版本",
       "跨 worker correlation",
       "replay / deterministic reconstruction",
-      "与 eval dataset 对接"
+      "与 eval dataset 对接",
+      "日志/事件高水位 cursor、loss warning 与终止性数据缺口的独立状态"
     ],
     "representative_implementations": [
       "project:restate"
@@ -812,11 +820,13 @@
     "engineering_considerations": [
       "trace 不只是 observability 数据，也是未来 eval、skill mining 和 RSI 的训练原料",
       "敏感内容必须分级存储与脱敏",
-      "要区分 replay-safe 与不可重复 side effect"
+      "要区分 replay-safe 与不可重复 side effect",
+      "消费 cursor 与下游分析提交要关联；网络恢复不等于审计证据完整。"
     ],
     "failure_modes": [
       "只记录 LLM token 和 latency，不记录工具与状态",
-      "trace 不能与具体 workspace / task / artifact 对齐"
+      "trace 不能与具体 workspace / task / artifact 对齐",
+      "cursor 过期后静默从尾部重连，导致回放时间线出现未标记的永久缺口。"
     ],
     "intro": "Execution Trace & Replay 把 Agent 的每一步模型调用、工具执行、状态变化、错误和重试保存成结构化轨迹。它不仅告诉开发者“发生了什么”，还要支持重建“为什么会走到这里”以及同一任务能否重新验证。",
     "content_mode": "authored",
@@ -1165,7 +1175,7 @@
     "summary": "Secure runtime for autonomous agents with sandboxing and external policy enforcement.",
     "maturity": "emerging",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-10",
+    "last_verified": "2026-10-13",
     "themes": [
       "sandbox",
       "security"
@@ -1196,7 +1206,9 @@
       "Gateway pod roll 中应等待 replacement supervisor session 交接并重置 reconnect backoff，避免短暂错误标记 Not Ready",
       "Endpoint selector 的 Rust 路由、Rego enforcement 与形式化 Prover 必须做同输入 parity 测试，REST allow rule 的匹配语义需独立标注",
       "Policy Proposal 审计必须枚举所有 endpoint 和 allow，而不能仅显示首项，避免审批范围被低估",
-      "JWT 兼容凭据别名必须保留 workload 已签发 handle，过期、撤权、畸形 alias 均应 fail closed。"
+      "JWT 兼容凭据别名必须保留 workload 已签发 handle，过期、撤权、畸形 alias 均应 fail closed。",
+      "watchLogs 的高水位 cursor、lag warning 和 OutOfRange 要进入日志完整性 SLO，不能把自动重连当作可靠审计。",
+      "Policy Proposal 的持久拒绝要产生带 actor、chunk_id 和原因的审计事件，审计自由文本应过滤控制字符。"
     ],
     "what_to_watch": [
       "policy language 和 capability model",
@@ -1204,7 +1216,9 @@
       "审计、回放和 incident response 能力",
       "0.1.5 之后 preparation/admission deadline、pending operation ownership 与多 replica fencing 是否稳定进入正式 release",
       "sandbox create/start/delete 在 gateway crash、driver late result 和 caller cancellation 下的恢复语义",
-      "Endpoint path matcher 的多解释器回归测试与审计展示是否成为 release gate"
+      "Endpoint path matcher 的多解释器回归测试与审计展示是否成为 release gate",
+      "Gateway 日志 retention 与 watchLogs cursor 过期后的恢复证据。",
+      "CONFIG:REJECTED 审计事件与持久策略状态的对账和可靠送达。"
     ],
     "intro": "NVIDIA OpenShell 是 Open Agent Safety Platform 中的安全运行边界，强调把 Agent 的权限与 policy enforcement 放在 Harness 之外。它不是单纯的 sandbox，而是在执行环境之外再建立一个 Agent 无法自行关闭的控制面。",
     "content_mode": "authored",
@@ -2296,7 +2310,7 @@
     "summary": "OS-level filesystem and network sandbox with typed path policy and standalone external-decider HTTP proxy.",
     "maturity": "active-development",
     "first_seen": "2026-10-05",
-    "last_verified": "2026-10-11",
+    "last_verified": "2026-10-13",
     "themes": [
       "sandbox",
       "security"
@@ -2325,7 +2339,8 @@
       "HTTP Proxy 无法天然拦截一切网络协议，Host/SNI、opaque tunnel 和地址解析需要单独建模",
       "外部 decider 可能带来延迟与单点可用性风险，fail-closed 应与高可用部署配合",
       "当前合入功能并不证明完整生产 SLA、形式化安全性或不存在绕行路径",
-      "Linux network namespace 不能隔离 AF_VSOCK；显式 allowAllUnixSockets 会同时放开 VM socket，已继承 FD 与其他协议仍需额外防护"
+      "Linux network namespace 不能隔离 AF_VSOCK；显式 allowAllUnixSockets 会同时放开 VM socket，已继承 FD 与其他协议仍需额外防护",
+      "本次链接修复不证明 TOCTOU、所有 OS backend 或运行时实际访问都无绕过。"
     ],
     "maturity_notes": "2026-10-05 开始明确 literal path marker 并修改相关平台实现，10 月 8 日增加外部 decider 独立代理并扩展 per-request policy 选项；仍处于快速演进的安全基础设施路线。",
     "engineering_takeaways": [
@@ -2333,14 +2348,16 @@
       "Policy 解析不确定时拒绝，而不是把无匹配的 deny 当作允许",
       "为 Host/SNI/解析后的目标 IP、请求 header 与凭据 scope 定义一致性检查",
       "外部 decider 必须具备失联拒绝、超时、可观察拒绝原因及独立高可用",
-      "对 AF_UNIX、AF_VSOCK、io_uring 与 inherited FD 建立 syscall-family 边界测试；配置例外必须进入审计和回归"
+      "对 AF_UNIX、AF_VSOCK、io_uring 与 inherited FD 建立 syscall-family 边界测试；配置例外必须进入审计和回归",
+      "Linux read-deny glob 的不可检查 symlink 应保留原拼写，不可被真实路径的祖先规则折叠。"
     ],
     "what_to_watch": [
       "跨操作系统的 literal/glob conformance regression",
       "外部 decider 协议兼容性、请求授权缓存及多租户隔离",
       "TLS CONNECT、opaque tunnel 与私有地址防护是否全部受配置约束",
       "高频网络判定下的延迟、授权审计与运营成本",
-      "AF_VSOCK 规则在 rootless、嵌套容器及允许 Unix socket 的特殊配置中的生效与回退"
+      "AF_VSOCK 规则在 rootless、嵌套容器及允许 Unix socket 的特殊配置中的生效与回退",
+      "symlink 指向根目录、不可检查目标与父目录 deny 的真实进程访问 conformance。"
     ],
     "content_mode": "authored",
     "content_version": "v9"
@@ -2738,6 +2755,121 @@
     "page": "/entities/source--openhands-descendant-reap-20261012/",
     "intro": "OpenHands 在 2026 年 10 月 12 日清晨修复了 Canvas 扩展后端的残留进程问题。主进程退出后，仍可能有 HTTP 子进程运行并占用端口，原有状态清理路径没有完整回收它们。",
     "why_it_matters": "云端 Agent 经常启动子服务、浏览器和构建进程。只跟踪主 PID 不能证明任务结束时执行资源已释放，可能在工作区复用时留下资源和权限风险。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openshell-watchlogs-20261013",
+    "label": "OpenShell loss-aware watchLogs",
+    "type": "Source",
+    "summary": "OpenShell TS SDK 的 watchLogs 通过高水位 cursor 重连 Unavailable，lag warning 不推进游标，OutOfRange 作为不可恢复缺口终止。",
+    "maturity": "source",
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13",
+    "themes": [
+      "observability",
+      "sandbox"
+    ],
+    "url": "https://github.com/NVIDIA/OpenShell/commit/fe316067dc2503062235106b886c206e9d8ca079",
+    "page": "/entities/source--openshell-watchlogs-20261013/",
+    "intro": "OpenShell 在 2026 年 10 月 13 日新增 TypeScript SDK 日志与平台事件合流订阅，明确区分短暂断流、可恢复服务器 lag 与游标永久失效。其核心是高水位恢复，而不是简单地保持 WebSocket 连接。",
+    "why_it_matters": "Agent 的长任务审计不能把日志连接恢复等同于时间线完整。若过期 cursor 被静默忽略，故障排查和安全事件分析会失去重要证据。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openshell-rejection-audit-20261013",
+    "label": "OpenShell policy rejection audit",
+    "type": "Source",
+    "summary": "OpenShell 在策略 draft chunk 被持久拒绝后发出 CONFIG:REJECTED，记录 actor、chunk_id、原因与版本，并清洗审计自由文本。",
+    "maturity": "source",
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13",
+    "themes": [
+      "security",
+      "observability"
+    ],
+    "url": "https://github.com/NVIDIA/OpenShell/commit/3f12bdc63f4daf7752647bc0acb1d71c6f32ae0b",
+    "page": "/entities/source--openshell-rejection-audit-20261013/",
+    "intro": "OpenShell 2026 年 10 月 13 日为 Policy Proposal 拒绝路径补充结构化 Gateway 审计事件，覆盖人工拒绝和自动拒绝，且不依赖沙盒 /wait 订阅者。",
+    "why_it_matters": "策略批准与拒绝都属于可追溯的授权历史；只记录生效规则而不记录被拒绝的变更，会削弱事故响应时对权限演变的解释能力。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:codex-host-cardinality-20261013",
+    "label": "Codex duplicate Host rejection",
+    "type": "Source",
+    "summary": "Codex 网络代理在普通 HTTP 和 CONNECT 的授权前拒绝重复 Host header，即使值相同也返回 400，避免策略与上游解析不一致。",
+    "maturity": "source",
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13",
+    "themes": [
+      "security",
+      "sandbox"
+    ],
+    "url": "https://github.com/openai/codex/commit/12cca49c81c8aa6a37a5cc4e39964ee3b70f9458",
+    "page": "/entities/source--codex-host-cardinality-20261013/",
+    "intro": "Codex 2026 年 10 月 13 日修复 HTTP Host 多值歧义，在代理授权之前拒绝第二个 Host 字段，并为不同请求目标形式增加回归测试。",
+    "why_it_matters": "Agent 可以构造 HTTP 请求，若网络 Policy 和上游 HTTP 服务器对目标主机的解析不同，独立安全代理也可能被协议歧义绕过。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:adk-generation-continuation-20261013",
+    "label": "Google ADK Gemini generation continuation",
+    "type": "Source",
+    "summary": "Google ADK 使用 CONTINUATION token 和已生成 parts 续接 Gemini 输出，限制重复 token、未完成函数调用及最多 256 次续接。",
+    "maturity": "source",
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13",
+    "themes": [
+      "runtime",
+      "harness"
+    ],
+    "url": "https://github.com/google/adk-python/commit/b3cbb4727727f5bc60e0161e850ce6c105cca952",
+    "page": "/entities/source--adk-generation-continuation-20261013/",
+    "intro": "Google ADK 2026 年 10 月 13 日新增模型生成级续接：在 CONTINUATION 结束原因下传递 continuation_token、已生成内容并聚合 usage。该机制并非任务级 checkpoint。",
+    "why_it_matters": "长任务 Agent 的恢复分为模型输出连续性、任务状态持久化与外部工具副作用对账；混淆这些边界容易制造重复执行或错误恢复。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openswe-task-context-20261013",
+    "label": "Open SWE checkpointed task context",
+    "type": "Source",
+    "summary": "Open SWE 将 Task Coordination 动态上下文从每轮模型请求的临时注入改为 abefore_model state update，以可见内容 hash 去重。",
+    "maturity": "source",
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13",
+    "themes": [
+      "runtime",
+      "harness",
+      "memory"
+    ],
+    "url": "https://github.com/langchain-ai/open-swe/commit/cd4f8143c4eb9b680a54580521f72202d34f1777",
+    "page": "/entities/source--openswe-task-context-20261013/",
+    "intro": "Open SWE 2026 年 10 月 13 日让 task context 作为可 checkpoint 的用户消息进入 AgentState，减少每轮临时重注入导致的上下文归属不明。",
+    "why_it_matters": "Coding Agent 的 worker 和 coordinator 指令必须能在恢复后解释模型实际看到的输入；仅存放在临时 middleware 中的消息无法承担这一审计责任。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:srt-symlink-deny-20261013",
+    "label": "Anthropic Linux symlink read-deny preservation",
+    "type": "Source",
+    "summary": "Anthropic sandbox-runtime 保留 Linux read-deny glob 中不可检查 symlink 的原路径拼写，防止真实路径归并误消除拒绝规则。",
+    "maturity": "source",
+    "first_seen": "2026-10-13",
+    "last_verified": "2026-10-13",
+    "themes": [
+      "sandbox",
+      "security"
+    ],
+    "url": "https://github.com/anthropics/sandbox-runtime/commit/b59244abe629036ac43e1c868d63b28e5c5646fa",
+    "page": "/entities/source--srt-symlink-deny-20261013/",
+    "intro": "Anthropic sandbox-runtime 2026 年 10 月 12 日修复 Linux deny glob 的链接路径折叠：不可检查目标的 symlink 单独按原拼写保留，而非混入真实目标位置集合。",
+    "why_it_matters": "文件沙盒的安全策略必须区分链接名字和目标真实路径；错误的父目录归并可能让声明的拒绝项从实际执行规则中消失。",
     "content_mode": "authored",
     "content_version": "v9"
   }

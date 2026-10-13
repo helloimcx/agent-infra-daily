@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-13",
+  "mode": "daily",
+  "note": "Six verified merged primary-source commits; six authored Source monographs, five updated core monographs, six new technical assets, six claims and six evidence edges; no unverified benchmarks.",
+  "nodes_added": [
+    "source:openshell-watchlogs-20261013",
+    "source:openshell-rejection-audit-20261013",
+    "source:codex-host-cardinality-20261013",
+    "source:adk-generation-continuation-20261013",
+    "source:openswe-task-context-20261013",
+    "source:srt-symlink-deny-20261013"
+  ],
+  "nodes_updated": [
+    "project:nvidia-openshell",
+    "cap:execution-trace",
+    "cap:policy-enforcement",
+    "cap:durable-execution",
+    "project:anthropic-sandbox-runtime"
+  ],
+  "edges_added": [
+    "e:openshell-watchlogs-1013",
+    "e:openshell-rejection-audit-1013",
+    "e:codex-host-cardinality-1013",
+    "e:adk-generation-continuation-1013",
+    "e:openswe-task-context-1013",
+    "e:srt-symlink-deny-1013"
+  ],
+  "edges_updated": []
+}

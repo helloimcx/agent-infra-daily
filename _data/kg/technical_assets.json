@@ -230,6 +230,49 @@
             "增加 branch generation 与 CAS"
           ]
         ]
+      },
+      {
+        "id": "generation-vs-task-checkpoint-1013",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "模型生成续接与任务恢复的状态平面矩阵",
+        "summary": "本站综合 Google ADK 和 Open SWE 的一手提交，明确 generation continuation、任务输入和外部工具副作用的不同恢复边界。",
+        "evidence": [
+          "source:adk-generation-continuation-20261013",
+          "source:openswe-task-context-20261013"
+        ],
+        "columns": [
+          "状态",
+          "代码增量",
+          "恢复范围",
+          "剩余风险"
+        ],
+        "rows": [
+          [
+            "模型输出",
+            "ADK token + parts",
+            "同一逻辑生成续接",
+            "重复 token、未完成函数调用"
+          ],
+          [
+            "任务上下文",
+            "Open SWE state update + visible hash",
+            "checkpoint 后可见输入",
+            "摘要裁剪与并发插入"
+          ],
+          [
+            "工具副作用",
+            "两提交均无完整保证",
+            "需要独立 journal",
+            "已执行未确认时重复执行"
+          ],
+          [
+            "跨版本 Worker",
+            "本轮未提供迁移证明",
+            "需要状态 schema 升级",
+            "token 和任务版本不兼容"
+          ]
+        ]
       }
     ]
   },
@@ -700,6 +743,43 @@
             "workspace 路径迁移"
           ]
         ]
+      },
+      {
+        "id": "http-host-prepolicy-1013",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "HTTP 网络授权前的 Host 唯一性矩阵",
+        "summary": "Codex #53506 证明两种代理入口拒绝重复 Host；其他 authority、SNI 和 DNS/IP 检查是本站后续测试建议。",
+        "evidence": [
+          "source:codex-host-cardinality-20261013"
+        ],
+        "columns": [
+          "输入",
+          "补丁行为",
+          "仍需验证"
+        ],
+        "rows": [
+          [
+            "普通 HTTP 两个 Host",
+            "返回 400",
+            "代理链 Header 规范化"
+          ],
+          [
+            "相同值重复 Host",
+            "返回 400",
+            "多层代理字段选择"
+          ],
+          [
+            "CONNECT 冲突 Host",
+            "返回 400",
+            "CONNECT authority 与 TLS SNI"
+          ],
+          [
+            "单 Host 与 IP 不一致",
+            "本提交未覆盖",
+            "DNS rebinding 和私网阻断"
+          ]
+        ]
       }
     ]
   },
@@ -926,6 +1006,43 @@
             "还原 workspace/browser 后重走 trajectory",
             "最接近真实事故复现",
             "昂贵且状态恢复困难"
+          ]
+        ]
+      },
+      {
+        "id": "trace-coverage-1013",
+        "type": "matrix",
+        "kind": "analysis",
+        "title": "Trace 消费连续性与恢复状态矩阵",
+        "summary": "本站根据 OpenShell watchLogs 的 loss-aware 语义提出 Trace 消费数据质量门禁，不把订阅 cursor 误作任务 journal。",
+        "evidence": [
+          "source:openshell-watchlogs-20261013"
+        ],
+        "columns": [
+          "恢复情况",
+          "可见信号",
+          "应持久化字段"
+        ],
+        "rows": [
+          [
+            "网络暂时断流",
+            "Unavailable 后自动重连",
+            "sandbox、stream、last_good_cursor"
+          ],
+          [
+            "服务器拥塞",
+            "warning item",
+            "gap_start、warning、retention_epoch"
+          ],
+          [
+            "历史已裁剪",
+            "OutOfRange 终止",
+            "coverage_gap、operator_decision"
+          ],
+          [
+            "Sink 提交前崩溃",
+            "SDK 可能重放",
+            "sink_commit_id、dedup_key"
           ]
         ]
       }
@@ -1526,6 +1643,90 @@
             "无签发身份或畸形 revision",
             "fail closed",
             "malformed 测试"
+          ]
+        ]
+      },
+      {
+        "id": "watchlogs-loss-boundary-1013",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "OpenShell Sandbox 日志恢复与缺口矩阵",
+        "summary": "依据 OpenShell #3778 的 SDK 实现区分暂时断流、乱序、服务器 lag 与永久游标失效；消费端措施是本站分析。",
+        "evidence": [
+          "source:openshell-watchlogs-20261013"
+        ],
+        "columns": [
+          "事件",
+          "SDK 行为",
+          "风险",
+          "消费端措施"
+        ],
+        "rows": [
+          [
+            "Unavailable",
+            "退避重连，最大 2 秒",
+            "重复或丢失事件",
+            "保留高水位 cursor 并对下游去重"
+          ],
+          [
+            "多来源乱序",
+            "最大 cursor 不倒退",
+            "低游标事件使重放倒退",
+            "只在同一 stream 比较"
+          ],
+          [
+            "Lag warning",
+            "不推进 cursor",
+            "缺口被当作正常",
+            "标记 coverage_gap 并监控保留窗口"
+          ],
+          [
+            "OutOfRange",
+            "终止而非自动追尾",
+            "永久缺口静默隐藏",
+            "显式决定是否从新起点重建"
+          ]
+        ]
+      },
+      {
+        "id": "policy-rejection-audit-1013",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Gateway 策略拒绝的审计证据矩阵",
+        "summary": "OpenShell #4281 增加拒绝后事件字段；事件投递、持久存储和重复拒绝的对账是本站建议。",
+        "evidence": [
+          "source:openshell-rejection-audit-20261013"
+        ],
+        "columns": [
+          "决策入口",
+          "一手字段",
+          "已验证",
+          "剩余验证"
+        ],
+        "rows": [
+          [
+            "人工拒绝",
+            "actor、chunk_id、reason",
+            "CONFIG:REJECTED 构造",
+            "日志后端可靠送达"
+          ],
+          [
+            "自动拒绝",
+            "gateway:auto",
+            "无需 /wait 订阅",
+            "多副本事件去重"
+          ],
+          [
+            "自由文本原因",
+            "清洗控制字符、200 字符限制",
+            "单元测试过滤与截断",
+            "其他原始数据出口"
+          ],
+          [
+            "策略上下文",
+            "version/hash",
+            "审计展示关联",
+            "与真实生效状态对账"
           ]
         ]
       }
@@ -2405,6 +2606,48 @@
             "代码注释提示另有封堵需求",
             "绕开 socket syscall 的创建路径",
             "容器与 seccomp 组合回归"
+          ]
+        ]
+      },
+      {
+        "id": "linux-symlink-deny-folding-1013",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Linux Read-deny 符号链接路径归并矩阵",
+        "summary": "依据 sandbox-runtime #690 的 Linux glob 展开修复区分链接原拼写与真实路径；真实进程测试属于本站建议。",
+        "evidence": [
+          "source:srt-symlink-deny-20261013"
+        ],
+        "columns": [
+          "路径关系",
+          "补丁行为",
+          "风险",
+          "验证"
+        ],
+        "rows": [
+          [
+            "不可检查 symlink",
+            "保留原拼写",
+            "祖先折叠误消除 deny",
+            "链接名字仍被拒绝"
+          ],
+          [
+            "链接指向根目录",
+            "保留匹配位置",
+            "误扩大为拒绝整个根",
+            "根目录与链接区分"
+          ],
+          [
+            "链接目标在父目录外",
+            "不与 realpath 混合归并",
+            "错误认为父目录覆盖",
+            "目标访问不被隐式替代"
+          ],
+          [
+            "运行时目录替换",
+            "未覆盖 TOCTOU",
+            "编译时与执行时不一致",
+            "真实访问压力测试"
           ]
         ]
       }
