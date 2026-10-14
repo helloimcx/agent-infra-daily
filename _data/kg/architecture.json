@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "kind": "analysis",
-  "note": "Architecture is analysis, not ontology fact. 2026-10-13 evidence distinguishes loss-aware log cursor recovery, policy rejection audit, pre-policy HTTP Host cardinality, generation continuation versus task checkpoint, and symlink spelling versus realpath deny folding. None proves distributed exactly-once, complete audit retention or universal sandbox security.",
+  "note": "Architecture is analysis, not ontology fact. 2026-10-14 evidence adds scoped global/workspace/sandbox mutation guards with bounded lock waits, Error sandbox stop/start recovery, version-checked asynchronous compaction with pending approval protection, per-tool-call sandbox resource binding, OpenSandboxEnvironment lifecycle, and instance-wide MCP gateway configuration distinct from user grants. These commits do not prove exactly-once tool effects, production HA, universal tenant isolation, or lossless memory summaries.",
   "layers": [
     {
       "id": "experience",

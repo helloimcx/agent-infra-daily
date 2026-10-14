@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-14",
+  "mode": "daily",
+  "note": "Seven verified merged GitHub commits: scoped mutation locks, Error sandbox recovery, background compaction, pending MCP approval safety, per-tool-call sandbox binding, OpenSandbox environment and managed MCP gateway. Seven authored Source monographs, four updated core monographs and five new technical assets; no unverified benchmark.",
+  "nodes_added": [
+    "source:openshell-mutation-locks-20261014",
+    "source:openshell-error-recovery-20261014",
+    "source:codex-async-compaction-20261014",
+    "source:agents-approval-compaction-20261014",
+    "source:adk-toolcall-sandbox-binding-20261014",
+    "source:adk-opensandbox-environment-20261014",
+    "source:openswe-instance-mcp-gateway-20261014"
+  ],
+  "nodes_updated": [
+    "project:nvidia-openshell",
+    "cap:durable-execution",
+    "cap:cloud-computer",
+    "standard:mcp"
+  ],
+  "edges_added": [
+    "e:openshell-mutation-locks-1014",
+    "e:openshell-error-recovery-1014",
+    "e:codex-async-compaction-1014",
+    "e:agents-approval-compaction-1014",
+    "e:adk-toolcall-sandbox-binding-1014",
+    "e:adk-opensandbox-environment-1014",
+    "e:openswe-instance-mcp-gateway-1014"
+  ],
+  "edges_updated": []
+}

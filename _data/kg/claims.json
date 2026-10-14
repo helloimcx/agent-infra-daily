@@ -675,5 +675,89 @@
     ],
     "first_seen": "2026-10-13",
     "last_verified": "2026-10-13"
+  },
+  {
+    "id": "claim:openshell-mutation-locks-1014",
+    "entity": "project:nvidia-openshell",
+    "text": "OpenShell #4147 将跨对象变更从全局串行化调整为 global/workspace/sandbox 分层意向锁，隔离 PostgreSQL advisory lock 连接池并限定等待时限。 证据范围仅限本次提交的实现与测试，不构成全平台正确性或生产性能证明。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:openshell-mutation-locks-20261014"
+    ],
+    "first_seen": "2026-10-14",
+    "last_verified": "2026-10-14"
+  },
+  {
+    "id": "claim:openshell-error-recovery-1014",
+    "entity": "project:nvidia-openshell",
+    "text": "OpenShell #4231 允许对部分基础设施 Error 状态的 sandbox 显式 stop 再 start，保留持久工作区并避免跳过底层资源回收。 证据范围仅限本次提交的实现与测试，不构成全平台正确性或生产性能证明。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:openshell-error-recovery-20261014"
+    ],
+    "first_seen": "2026-10-14",
+    "last_verified": "2026-10-14"
+  },
+  {
+    "id": "claim:codex-async-compaction-1014",
+    "entity": "cap:durable-execution",
+    "text": "Codex #53800 将后台上下文压缩接入 turn 前、中、后的检查点，并对候选结果做历史前缀和模型路由状态校验后再采纳。 证据范围仅限本次提交的实现与测试，不构成全平台正确性或生产性能证明。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:codex-async-compaction-20261014"
+    ],
+    "first_seen": "2026-10-14",
+    "last_verified": "2026-10-14"
+  },
+  {
+    "id": "claim:agents-approval-compaction-1014",
+    "entity": "cap:durable-execution",
+    "text": "OpenAI Agents SDK #5363 延后有待处理审批的自动历史压缩，并保留 hosted MCP approval request/response 的成对关联。 证据范围仅限本次提交的实现与测试，不构成全平台正确性或生产性能证明。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:agents-approval-compaction-20261014"
+    ],
+    "first_seen": "2026-10-14",
+    "last_verified": "2026-10-14"
+  },
+  {
+    "id": "claim:adk-toolcall-sandbox-binding-1014",
+    "entity": "cap:cloud-computer",
+    "text": "Google ADK 修复 AgentEngineSandboxComputer 共享实例在并发 session 间覆盖 sandbox resource 绑定的问题，改为 asyncio task 范围的 contextvars。 证据范围仅限本次提交的实现与测试，不构成全平台正确性或生产性能证明。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:adk-toolcall-sandbox-binding-20261014"
+    ],
+    "first_seen": "2026-10-14",
+    "last_verified": "2026-10-14"
+  },
+  {
+    "id": "claim:adk-opensandbox-environment-1014",
+    "entity": "cap:cloud-computer",
+    "text": "Google ADK 合入 OpenSandboxEnvironment，向 EnvironmentToolset 提供远端命令执行、文件 I/O 和生命周期管理的环境适配。 证据范围仅限本次提交的实现与测试，不构成全平台正确性或生产性能证明。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:adk-opensandbox-environment-20261014"
+    ],
+    "first_seen": "2026-10-14",
+    "last_verified": "2026-10-14"
+  },
+  {
+    "id": "claim:openswe-instance-mcp-gateway-1014",
+    "entity": "standard:mcp",
+    "text": "Open SWE #4050 将 LangSmith Managed Tools gateway 选型上移至 instance 默认配置，保留用户级连接授权，并用共享 generation 缓存跨副本同步。 证据范围仅限本次提交的实现与测试，不构成全平台正确性或生产性能证明。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:openswe-instance-mcp-gateway-20261014"
+    ],
+    "first_seen": "2026-10-14",
+    "last_verified": "2026-10-14"
   }
 ]

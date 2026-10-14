@@ -273,6 +273,55 @@
             "token 和任务版本不兼容"
           ]
         ]
+      },
+      {
+        "id": "compaction-approval-lifecycle-1014",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Agent Context Compaction 与审批恢复冲突矩阵",
+        "summary": "对照 Codex 后台压缩与 Agents SDK 待决审批门禁，区分历史版本、候选采纳、取消和授权身份；外部副作用核验为本站建议。",
+        "evidence": [
+          "source:codex-async-compaction-20261014",
+          "source:agents-approval-compaction-20261014"
+        ],
+        "columns": [
+          "并发窗口",
+          "一手代码中的控制",
+          "不能推出的保证",
+          "生产验证"
+        ],
+        "rows": [
+          [
+            "候选生成后新消息到达",
+            "Codex 校验前缀并保留较新消息",
+            "摘要语义绝对等价",
+            "前缀冲突与工具输出回归"
+          ],
+          [
+            "模型账号/路由变化",
+            "Codex 过期候选拒绝/回退",
+            "所有模型版本可重放",
+            "路由 generation 与 token 对账"
+          ],
+          [
+            "前台 turn 被取消",
+            "阻止新推测任务，保留已运行候选",
+            "候选永不泄漏资源",
+            "session shutdown 资源回收"
+          ],
+          [
+            "Hosted MCP 审批待决",
+            "Agents SDK 暂缓自动压缩",
+            "审批永不过期或可跨用户复用",
+            "Approval ID 和 grant epoch"
+          ],
+          [
+            "审批回复恢复",
+            "保留 request/response pair",
+            "外部调用 exactly-once",
+            "ToolCall 幂等键与结果对账"
+          ]
+        ]
       }
     ]
   },
@@ -390,6 +439,18 @@
             "长期办公/遗留软件"
           ]
         ]
+      },
+      {
+        "id": "adk-toolcall-sandbox-isolation-1014",
+        "type": "diagram",
+        "kind": "mixed",
+        "title": "并发 Agent 会话的 Sandbox 资源绑定边界",
+        "summary": "依据 ADK ContextVar 修复和 OpenSandboxEnvironment 适配器绘制调用链；服务端身份复核是本站建议，不代表 ADK 已实现。",
+        "evidence": [
+          "source:adk-toolcall-sandbox-binding-20261014",
+          "source:adk-opensandbox-environment-20261014"
+        ],
+        "mermaid": "sequenceDiagram\n  participant A as Session A\n  participant B as Session B\n  participant C as Shared Computer\n  participant X as ContextVar per Task\n  participant S as Sandbox Backend\n  A->>C: prepare A resources\n  C->>X: bind A in task A\n  B->>C: prepare B resources\n  C->>X: bind B in task B\n  A->>C: tool call A\n  C->>X: read task A binding\n  X-->>C: sandbox A\n  C->>S: execute on A\n  B->>C: tool call B\n  C->>X: read task B binding\n  X-->>C: sandbox B\n  C->>S: execute on B\n  Note over C,S: server must independently verify tenant and lease"
       }
     ]
   },
@@ -1729,6 +1790,65 @@
             "与真实生效状态对账"
           ]
         ]
+      },
+      {
+        "id": "scoped-mutation-guard-matrix-1014",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "OpenShell 分层变更锁的冲突域与故障预算",
+        "summary": "依据 #4147 区分锁粒度、旧副本兼容、连接池容量和超时分类；容量规划与告警项为本站工程分析。",
+        "evidence": [
+          "source:openshell-mutation-locks-20261014"
+        ],
+        "columns": [
+          "操作范围",
+          "锁/并发语义",
+          "主要失败窗口",
+          "工程核验"
+        ],
+        "rows": [
+          [
+            "全局策略与设置",
+            "global exclusive，阻断下层写入",
+            "长事务拖慢全租户",
+            "全局锁持有时间 P95"
+          ],
+          [
+            "Workspace Provider",
+            "shared global + workspace exclusive",
+            "删除与 sandbox 引用竞态",
+            "删除前在 guard 内复核"
+          ],
+          [
+            "单 Sandbox 写入",
+            "shared 上层 + sandbox exclusive",
+            "旧会话报告覆盖新状态",
+            "代际/CAS 与幂等检查"
+          ],
+          [
+            "锁池等待",
+            "独立 4 连接池，约 10 秒预算",
+            "连接池饥饿与锁竞争混淆",
+            "UNAVAILABLE 与数据库故障分离"
+          ],
+          [
+            "滚动升级",
+            "旧 replica legacy global exclusive",
+            "新旧锁体系互不排斥",
+            "混合版本互斥集成测试"
+          ]
+        ]
+      },
+      {
+        "id": "errored-sandbox-stop-start-1014",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "错误 Sandbox 的受控回收与重启状态机",
+        "summary": "本站基于 #4231 设计的恢复状态机；标注 timeout cleanup 所有权和持久 workspace，不代表 NVIDIA 公布了全部状态枚举。",
+        "evidence": [
+          "source:openshell-error-recovery-20261014"
+        ],
+        "mermaid": "stateDiagram-v2\n  [*] --> READY\n  READY --> ERROR: infrastructure failure\n  ERROR --> RECOVERY_CHECK: operator requests stop\n  RECOVERY_CHECK --> CLEANUP_OWNER: timeout cleanup owns reclamation\n  CLEANUP_OWNER --> ERROR: wait for cleanup settlement\n  RECOVERY_CHECK --> STOPPING: supported backend and no owner conflict\n  STOPPING --> STOPPED: old compute released\n  STOPPED --> STARTING: explicit start\n  STARTING --> READY: new compute generation\n  STARTING --> ERROR: launch failure\n  note right of STOPPED: persistent workspace retained; old SSH sessions invalid"
       }
     ]
   },
@@ -1828,6 +1948,54 @@
             "非幂等写操作",
             "补丁无自动事务保证",
             "幂等键或结果查询"
+          ]
+        ]
+      },
+      {
+        "id": "managed-mcp-gateway-scope-1014",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Managed MCP Gateway 的 Catalog、Grant 与 Cache 边界",
+        "summary": "依据 Open SWE #4050 区分实例配置、工作区继承、个人凭据和跨副本缓存；补充的审计指标为本站架构建议。",
+        "evidence": [
+          "source:openswe-instance-mcp-gateway-20261014"
+        ],
+        "columns": [
+          "控制平面",
+          "Open SWE 实现",
+          "典型错误",
+          "建议指标"
+        ],
+        "rows": [
+          [
+            "Instance Gateway",
+            "管理员统一选择",
+            "workspace 漂移",
+            "配置 generation 传播延迟"
+          ],
+          [
+            "Workspace",
+            "不再覆写 Managed Tools Gateway",
+            "旧覆盖缓存残留",
+            "override 清理核验"
+          ],
+          [
+            "User Grants",
+            "每人独立连接和缺失服务提示",
+            "跨用户凭据复用",
+            "grant owner 与 expiry 审计"
+          ],
+          [
+            "Shared Cache",
+            "generation key；失败 fallback 不缓存",
+            "一个副本缓存污染所有 worker",
+            "cache miss/loader failure"
+          ],
+          [
+            "Service Identity",
+            "credential slug 优先匹配",
+            "展示名和凭据名误配",
+            "缺失/已连接状态一致性"
           ]
         ]
       }

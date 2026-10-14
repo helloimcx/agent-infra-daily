@@ -1440,5 +1440,103 @@
     "first_seen": "2026-10-13",
     "last_verified": "2026-10-13",
     "note": "Primary merged GitHub commit inspected on 2026-10-13; only the documented code path is claimed."
+  },
+  {
+    "id": "e:openshell-mutation-locks-1014",
+    "source": "project:nvidia-openshell",
+    "target": "source:openshell-mutation-locks-20261014",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:openshell-mutation-locks-20261014"
+    ],
+    "first_seen": "2026-10-14",
+    "last_verified": "2026-10-14",
+    "note": "Verified merged primary GitHub commit; claim scoped to the changed implementation and tests."
+  },
+  {
+    "id": "e:openshell-error-recovery-1014",
+    "source": "project:nvidia-openshell",
+    "target": "source:openshell-error-recovery-20261014",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:openshell-error-recovery-20261014"
+    ],
+    "first_seen": "2026-10-14",
+    "last_verified": "2026-10-14",
+    "note": "Verified merged primary GitHub commit; claim scoped to the changed implementation and tests."
+  },
+  {
+    "id": "e:codex-async-compaction-1014",
+    "source": "cap:durable-execution",
+    "target": "source:codex-async-compaction-20261014",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:codex-async-compaction-20261014"
+    ],
+    "first_seen": "2026-10-14",
+    "last_verified": "2026-10-14",
+    "note": "Verified merged primary GitHub commit; claim scoped to the changed implementation and tests."
+  },
+  {
+    "id": "e:agents-approval-compaction-1014",
+    "source": "cap:durable-execution",
+    "target": "source:agents-approval-compaction-20261014",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:agents-approval-compaction-20261014"
+    ],
+    "first_seen": "2026-10-14",
+    "last_verified": "2026-10-14",
+    "note": "Verified merged primary GitHub commit; claim scoped to the changed implementation and tests."
+  },
+  {
+    "id": "e:adk-toolcall-sandbox-binding-1014",
+    "source": "cap:cloud-computer",
+    "target": "source:adk-toolcall-sandbox-binding-20261014",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:adk-toolcall-sandbox-binding-20261014"
+    ],
+    "first_seen": "2026-10-14",
+    "last_verified": "2026-10-14",
+    "note": "Verified merged primary GitHub commit; claim scoped to the changed implementation and tests."
+  },
+  {
+    "id": "e:adk-opensandbox-environment-1014",
+    "source": "cap:cloud-computer",
+    "target": "source:adk-opensandbox-environment-20261014",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:adk-opensandbox-environment-20261014"
+    ],
+    "first_seen": "2026-10-14",
+    "last_verified": "2026-10-14",
+    "note": "Verified merged primary GitHub commit; claim scoped to the changed implementation and tests."
+  },
+  {
+    "id": "e:openswe-instance-mcp-gateway-1014",
+    "source": "standard:mcp",
+    "target": "source:openswe-instance-mcp-gateway-20261014",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:openswe-instance-mcp-gateway-20261014"
+    ],
+    "first_seen": "2026-10-14",
+    "last_verified": "2026-10-14",
+    "note": "Verified merged primary GitHub commit; claim scoped to the changed implementation and tests."
   }
 ]
