@@ -1538,5 +1538,61 @@
     "first_seen": "2026-10-14",
     "last_verified": "2026-10-14",
     "note": "Verified merged primary GitHub commit; claim scoped to the changed implementation and tests."
+  },
+  {
+    "id": "e:langgraph-prune-1015",
+    "source": "cap:durable-execution",
+    "target": "source:langgraph-prune-20261015",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:langgraph-prune-20261015"
+    ],
+    "first_seen": "2026-10-15",
+    "last_verified": "2026-10-15",
+    "note": "Verified merged GitHub commit; conclusions restricted to implementation and tests."
+  },
+  {
+    "id": "e:openshell-ocsf-otlp-1015",
+    "source": "project:nvidia-openshell",
+    "target": "source:openshell-ocsf-otlp-20261015",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:openshell-ocsf-otlp-20261015"
+    ],
+    "first_seen": "2026-10-15",
+    "last_verified": "2026-10-15",
+    "note": "Verified merged GitHub commit; conclusions restricted to implementation and tests."
+  },
+  {
+    "id": "e:codex-mcp-oauth-reject-1015",
+    "source": "standard:mcp",
+    "target": "source:codex-mcp-oauth-reject-20261015",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:codex-mcp-oauth-reject-20261015"
+    ],
+    "first_seen": "2026-10-15",
+    "last_verified": "2026-10-15",
+    "note": "Verified merged GitHub commit; conclusions restricted to implementation and tests."
+  },
+  {
+    "id": "e:openswe-mda-loop-1015",
+    "source": "trend:persistent-agent-runtime",
+    "target": "source:openswe-mda-loop-20261015",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.99,
+    "evidence": [
+      "source:openswe-mda-loop-20261015"
+    ],
+    "first_seen": "2026-10-15",
+    "last_verified": "2026-10-15",
+    "note": "Verified merged GitHub commit; conclusions restricted to implementation and tests."
   }
 ]

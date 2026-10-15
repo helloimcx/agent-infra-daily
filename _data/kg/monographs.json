@@ -446,6 +446,17 @@
           "OpenShell #4231 对支持恢复的后端开放 Error sandbox 的显式 stop，再等待成功后 start；修复基础设施故障是前提，timeout cleanup 持有回收所有权时不能与人工 stop 冲突。持久 workspace 可以保留，但旧 SSH session 随计算代际更新而失效。",
           "对云端 Agent 的参考状态机应区分 compute generation、workspace identity、cleanup owner 与操作员恢复请求。错误恢复不能直接把状态从 ERROR 改成 READY；必须先验证旧执行资源已释放，防止双实例、旧凭据和新任务并存。"
         ]
+      },
+      {
+        "id": "supervisor-ocsf-otlp-1015",
+        "title": "Supervisor OCSF OTLP 导出与安全证据完整性",
+        "evidence": [
+          "source:openshell-ocsf-otlp-20261015"
+        ],
+        "paragraphs": [
+          "OpenShell 将 Supervisor 的 OCSF 事件导出为 OTLP LogRecord，配置由 Gateway 经 driver 传递，适配 Docker、Podman 和 Kubernetes。相比仅在 Gateway 记录策略变更，这条链路更靠近 Sandbox 执行面；但是跨边界关联仍需要 sandbox identity、gateway name 与 policy version，而不是只依赖一个可读名称。",
+          "Collector 认证头通过 SecretOtlpHeaders 脱敏并清零，降低误写诊断日志的风险。OCSF schema 降级和 Collector 网络故障仍可能影响审计完整性，代码级 exporter 不能替代持久队列、缺口告警或端到端事件数对账。"
+        ]
       }
     ]
   },
@@ -611,6 +622,17 @@
         "paragraphs": [
           "Open SWE #4050 使 instance admin 统一选择 LangSmith Managed Tools gateway，workspace 不能各自覆盖；私有线程仍以用户自身的连接访问服务。连接页面列出已连接与缺失服务及 tool 数量，解决“网关存在”与“用户实际可调用”混为一谈的问题。",
           "缓存改为跨副本共享并以 generation 失效；读取失败的默认值不写入缓存，以免一个 worker 的短暂存储故障污染整个实例。Missing service 根据 credential slug 而非仅展示名匹配。此处是应用层治理与缓存实现，并未改变 MCP 协议 revision。"
+        ]
+      },
+      {
+        "id": "oauth-rejection-1015",
+        "title": "MCP OAuth 的永久拒绝与并发凭据版本",
+        "evidence": [
+          "source:codex-mcp-oauth-reject-20261015"
+        ],
+        "paragraphs": [
+          "Codex 在服务端明确拒绝 refresh 后移除旧 refresh 能力，同时保留必要的 access token 记录结构。文件存储通过匹配 key 与锁保护退休操作，避免旧刷新失败覆盖另一登录产生的新凭据；异步取消也不能使已启动的存储事务失去保护。",
+          "即使凭据退休写入失败，运行时仍需要拒绝旧快照继续刷新。该机制是 Codex 的客户端实现，不是 MCP 服务器全体遵循的统一协议语义。生产应分别记录授权版本、永久拒绝、暂时网络错误和重新登录结果。"
         ]
       }
     ]
@@ -985,6 +1007,17 @@
         "paragraphs": [
           "Codex #53800 把 AsyncCompaction 候选在 turn 前、中、后检查点异步生成，并在采纳时检查历史前缀、路由状态和新增工具输出。取消 turn 不再等于取消已经启动的 session-owned 候选；被拒绝的可选摘要不应中断执行。这里的关键是压缩输出必须绑定它基于哪个历史版本，而不是“摘要内容看起来合理”。",
           "OpenAI Agents SDK #5363 则在 Hosted MCP approval 待决时延后自动压缩，并保持 approval request 与 response 的对应。两份提交共同说明 memory compaction 不是纯 token 成本优化，而是影响恢复语义的并发写操作；不过两者都没有证明外部 tool side-effect 已具备 exactly-once。"
+        ]
+      },
+      {
+        "id": "postgres-prune-1015",
+        "title": "持久化历史的安全清理与 DeltaChannel 回放依赖",
+        "evidence": [
+          "source:langgraph-prune-20261015"
+        ],
+        "paragraphs": [
+          "LangGraph PostgresSaver 的 keep_latest 只保留各 namespace 最新头部及相关 writes/blobs，不再保证完整祖先历史可遍历。DeltaChannel 依赖祖先增量，当前实现明确拒绝这种裁剪。对于长任务系统，应把 checkpoint 的在线恢复、历史审计和成本控制拆成不同保留层级，不能把一个最新快照等同完整 execution journal。",
+          "delete 策略事务化清理线程记录，keep_latest 使用针对大线程优化的 SQL。并发更新时需要处理数据库序列化冲突，但重试不能修复语义上不可裁剪的历史。应在清理前校验活跃 run、子图 namespace、pending writes 和外部工具副作用的独立记录。"
         ]
       }
     ]
@@ -2420,6 +2453,17 @@
         "paragraphs": [
           "OpenHands #5689 修复 Canvas backend leader 已退出但 HTTP 后代仍存活的情况，状态查询、停止和重启现在会触发 process-group cleanup，而非只清空主进程引用。",
           "长期 Agent 的 Task 完成、Worker Lease 释放、凭据撤销和 Workspace 复用应建立清晰顺序。进程组清理失败时应隔离该执行环境，并监控遗留端口和后代存活；该建议不等于 OpenHands 已实现完整跨平台方案。"
+        ]
+      },
+      {
+        "id": "mda-remote-loop-1015",
+        "title": "Managed Model Loop 与本地工具权限分离",
+        "evidence": [
+          "source:openswe-mda-loop-20261015"
+        ],
+        "paragraphs": [
+          "Open SWE 的 MDA 路径让远端服务负责模型循环，原后端保留工具节点、Sandbox 访问与授权。签名 run token 将远端调用绑定到具体 run，跨副本 hook 需要恢复数据库中的 turn 归属。这一架构有利于分别扩容模型执行与工具控制面，但增加了回调重试、身份过期和跨版本状态兼容的成本。",
+          "实验性开关只影响新线程，已有线程继续使用原 runtime，说明该提交并未实现运行中任务的透明热迁移。若要发展为百万用户托管 Agent，还需验证远端失联时的恢复、工具副作用 receipt、Sandbox lease 和用户授权 epoch 的一致性。"
         ]
       }
     ]
@@ -5487,6 +5531,190 @@
         ],
         "paragraphs": [
           "Require-all gateway 的 missing service 判断改为匹配 credential slug（如 mt-<id>、内置 key 或 auth connection slug），展示名仅为回退，修复 Notion MCP 与 Notion credential 被误判成两项的问题。此改动是 Open SWE 产品治理实现，不是 MCP wire protocol revision。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:langgraph-prune-20261015",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "scope",
+        "title": "保留头部不等于保留全部历史",
+        "evidence": [
+          "source:langgraph-prune-20261015"
+        ],
+        "paragraphs": [
+          "keep_latest 按 namespace 保留最新 checkpoint、pending writes 和被引用 blobs；对于旧格式的 pending sends 还要照顾特定父节点。被删除的祖先链可能不再可遍历，因此此策略适用于恢复当前状态，不是保留完整的审计轨迹。"
+        ]
+      },
+      {
+        "id": "delta",
+        "title": "DeltaChannel 的增量依赖是硬约束",
+        "evidence": [
+          "source:langgraph-prune-20261015"
+        ],
+        "paragraphs": [
+          "DeltaChannel 可以从祖先更新重建状态。新实现识别这类线程，在 keep_latest 下抛出 NotImplementedError，而非盲目删掉祖先。这个失败模式不能靠增加重试次数解决；必须先有完整快照或更强的增量压缩算法。"
+        ]
+      },
+      {
+        "id": "transaction",
+        "title": "并发与大线程的存储代价",
+        "evidence": [
+          "source:langgraph-prune-20261015"
+        ],
+        "paragraphs": [
+          "delete 策略在事务中清理 checkpoint、writes 和 blobs；SQL 设计避免对巨大线程做低效的多表连接。并发写入可能导致事务序列化失败，调用方应区分可重试的数据库冲突与不能执行的语义性裁剪，并在业务层明确在线线程的保留窗口。"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "测试覆盖与未知边界",
+        "evidence": [
+          "source:langgraph-prune-20261015"
+        ],
+        "paragraphs": [
+          "提交包括同步和异步 Saver、不同连接模式及子图恢复测试，能证明指定实现已经加入。它没有提供生产环境中大规模 prune 的延迟分布、在线线程零停顿保证或所有自定义 Channel 的兼容证明。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openshell-ocsf-otlp-20261015",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "transport",
+        "title": "从执行边界到 Collector 的数据路径",
+        "evidence": [
+          "source:openshell-ocsf-otlp-20261015"
+        ],
+        "paragraphs": [
+          "Supervisor 通过独立的 OCSF OTLP endpoint 输出 LogRecord；Docker、Podman 和 Kubernetes driver 接收由 Gateway 供应的配置。安全事件与普通 Trace Span 的生命周期不同，不能用 trace 正常上报来证明审计记录完整。"
+        ]
+      },
+      {
+        "id": "auth",
+        "title": "Collector 认证头的信任边界",
+        "evidence": [
+          "source:openshell-ocsf-otlp-20261015"
+        ],
+        "paragraphs": [
+          "补丁使用 SecretOtlpHeaders 包装 Collector headers，Debug 输出脱敏且释放时清零。Gateway 名称也随遥测配置传递，帮助关联控制面与执行面。该机制降低无意暴露风险，但并不证明所有进程内存、转储或第三方采集组件都不会泄漏。"
+        ]
+      },
+      {
+        "id": "schema",
+        "title": "OCSF 兼容与字段损失",
+        "evidence": [
+          "source:openshell-ocsf-otlp-20261015"
+        ],
+        "paragraphs": [
+          "与同日 Gateway 端提交配合，OCSF 事件可以按目标 schema 版本降级。旧版不支持的新字段可能被剥离，审计查询必须记录原始事件版本与 Collector 实际接收字段，不能把可解析当作无损证据。"
+        ]
+      },
+      {
+        "id": "unknown",
+        "title": "可靠投递尚未得到证明",
+        "evidence": [
+          "source:openshell-ocsf-otlp-20261015"
+        ],
+        "paragraphs": [
+          "代码和测试支持事件导出链路已实现，却不能推出 Collector 离线期间的持久队列、跨进程重启无损回放或生产级容量。建议分别对账事件生成、导出失败、接收和最终落库的计数。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:codex-mcp-oauth-reject-20261015",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "classification",
+        "title": "明确拒绝与暂时故障要区分",
+        "evidence": [
+          "source:codex-mcp-oauth-reject-20261015"
+        ],
+        "paragraphs": [
+          "刷新请求遭服务端明确拒绝时应停止复用旧 refresh token，并提示重新授权。网络超时或 Collector 故障不能按同一规则处理；补丁保留 access token 记录格式，但撤销旧 refresh 资格。"
+        ]
+      },
+      {
+        "id": "race",
+        "title": "取消与凭据版本保护",
+        "evidence": [
+          "source:codex-mcp-oauth-reject-20261015"
+        ],
+        "paragraphs": [
+          "文件聚合存储在持锁状态下定位匹配的原始 key，异步取消期间事务 guard 仍保护正在执行的变更。否则旧请求的拒绝回调可能覆盖另一个并发登录刚写入的凭据，导致跨会话的错误撤权。"
+        ]
+      },
+      {
+        "id": "fallback",
+        "title": "存储写入失败仍要阻止旧快照复活",
+        "evidence": [
+          "source:codex-mcp-oauth-reject-20261015"
+        ],
+        "paragraphs": [
+          "持久化退休失败时，运行时还需要记住本地 rejected snapshot，避免下一次读取旧文件再次使用失效 refresh token。错误诊断要脱敏，不应将凭据原文放进日志或 trace。"
+        ]
+      },
+      {
+        "id": "boundary",
+        "title": "本次代码证明的范围",
+        "evidence": [
+          "source:codex-mcp-oauth-reject-20261015"
+        ],
+        "paragraphs": [
+          "提交包含拒绝、并发替换、取消和 keyring 路径的回归测试；不能证明所有第三方 MCP 服务端采用一致的 OAuth 错误分类，也不能证明不同设备上的凭据存储具备全局原子性。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openswe-mda-loop-20261015",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "model",
+        "title": "远端负责模型循环，本地负责工具",
+        "evidence": [
+          "source:openswe-mda-loop-20261015"
+        ],
+        "paragraphs": [
+          "MDA graph 承载 agent/reviewer 编排，后端经签名 run token 验证远端工具回调，并将调用交给原 graph tools node 和中间件。远端并未因此获得直接访问用户工作区和全部凭据的无限权限。"
+        ]
+      },
+      {
+        "id": "identity",
+        "title": "Run 身份不能退化为 Thread 名称",
+        "evidence": [
+          "source:openswe-mda-loop-20261015"
+        ],
+        "paragraphs": [
+          "远端 hook 可能落到不同服务副本，代码测试要求能够从 PostgreSQL 找回 turn 与其已记录事件。平台应保留 thread_id、run_id、tool_call_id 和 token 有效期，避免回调重试把输出关联到错误执行代际。"
+        ]
+      },
+      {
+        "id": "rollout",
+        "title": "实验性开关与迁移边界",
+        "evidence": [
+          "source:openswe-mda-loop-20261015"
+        ],
+        "paragraphs": [
+          "新配置将 MDA 作为实验选项，个人设置只影响之后新建的线程；旧线程保持原运行位置。这是合理的兼容策略，也说明本次提交没有证明已有运行中的任务可无缝跨 runtime 热迁移。"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "需要继续核验的恢复语义",
+        "evidence": [
+          "source:openswe-mda-loop-20261015"
+        ],
+        "paragraphs": [
+          "代码提供远端模型循环与工具代理，但尚不能证明多区域故障切换、远端断连后的 exactly-once 工具副作用或跨版本 checkpoint 完全兼容。需要针对 token 失效、callback retry 和 sandbox lease 做独立故障注入。"
         ]
       }
     ]

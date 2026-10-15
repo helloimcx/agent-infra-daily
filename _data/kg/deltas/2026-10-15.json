@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-15",
+  "mode": "daily",
+  "note": "Four independently authored Source monographs and four core-entity revisions from verified merged commits; additional verified code changes documented in the daily evidence stream.",
+  "nodes_added": [
+    "source:langgraph-prune-20261015",
+    "source:openshell-ocsf-otlp-20261015",
+    "source:codex-mcp-oauth-reject-20261015",
+    "source:openswe-mda-loop-20261015"
+  ],
+  "nodes_updated": [
+    "cap:durable-execution",
+    "project:nvidia-openshell",
+    "standard:mcp",
+    "trend:persistent-agent-runtime"
+  ],
+  "edges_added": [
+    "e:langgraph-prune-1015",
+    "e:openshell-ocsf-otlp-1015",
+    "e:codex-mcp-oauth-reject-1015",
+    "e:openswe-mda-loop-1015"
+  ],
+  "edges_updated": []
+}

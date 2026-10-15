@@ -759,5 +759,53 @@
     ],
     "first_seen": "2026-10-14",
     "last_verified": "2026-10-14"
+  },
+  {
+    "id": "claim:langgraph-prune-1015",
+    "entity": "cap:durable-execution",
+    "text": "LangGraph #9290 增加 PostgresSaver 和 AsyncPostgresSaver 的 prune 接口；keep_latest 保留恢复所需数据，并拒绝不安全的 DeltaChannel 历史裁剪。 本判断只针对该合入提交的实现与测试，不构成跨环境生产 SLA 或 exactly-once 的证明。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:langgraph-prune-20261015"
+    ],
+    "first_seen": "2026-10-15",
+    "last_verified": "2026-10-15"
+  },
+  {
+    "id": "claim:openshell-ocsf-otlp-1015",
+    "entity": "project:nvidia-openshell",
+    "text": "OpenShell #4545 将 Supervisor OCSF 安全事件导出到 OTLP Logs，并由 Gateway 向多种 Sandbox driver 传递受控 Collector 配置。 本判断只针对该合入提交的实现与测试，不构成跨环境生产 SLA 或 exactly-once 的证明。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:openshell-ocsf-otlp-20261015"
+    ],
+    "first_seen": "2026-10-15",
+    "last_verified": "2026-10-15"
+  },
+  {
+    "id": "claim:codex-mcp-oauth-reject-1015",
+    "entity": "standard:mcp",
+    "text": "Codex #54079 在 MCP OAuth refresh 被明确拒绝后退休旧 refresh 能力，并加强文件和 keyring 存储的并发更新保护。 本判断只针对该合入提交的实现与测试，不构成跨环境生产 SLA 或 exactly-once 的证明。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:codex-mcp-oauth-reject-20261015"
+    ],
+    "first_seen": "2026-10-15",
+    "last_verified": "2026-10-15"
+  },
+  {
+    "id": "claim:openswe-mda-loop-1015",
+    "entity": "trend:persistent-agent-runtime",
+    "text": "Open SWE #4053 将 agent 和 reviewer 的模型循环移至 Managed Deep Agents 远端部署，通过签名 run token 调用原后端工具与状态服务。 本判断只针对该合入提交的实现与测试，不构成跨环境生产 SLA 或 exactly-once 的证明。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:openswe-mda-loop-20261015"
+    ],
+    "first_seen": "2026-10-15",
+    "last_verified": "2026-10-15"
   }
 ]

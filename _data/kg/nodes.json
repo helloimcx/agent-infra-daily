@@ -184,7 +184,7 @@
     "summary": "Resume work after crashes without repeating completed side effects.",
     "maturity": "production",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-14",
+    "last_verified": "2026-10-15",
     "themes": [
       "runtime",
       "cloud-agent"
@@ -215,7 +215,8 @@
       "测试从非最新 checkpoint 多次 fork 并交替读取分支历史；根据 LangGraph #9269 对共享祖先的 DeltaChannel 写入强制快照。",
       "分别管理 TaskContextVersion、ModelContinuationToken、ToolCallJournal 的有效期、恢复与审计。",
       "上下文压缩是可并发的历史变换：后台候选必须校验原始历史前缀、模型路由与后续工具输出；取消前台 turn 不应隐式丢弃会话级候选。",
-      "待处理的 Hosted MCP approval 必须在压缩边界保留 request/response identity；审批状态与上下文 token 优化不能互相覆盖。"
+      "待处理的 Hosted MCP approval 必须在压缩边界保留 request/response identity；审批状态与上下文 token 优化不能互相覆盖。",
+      "Checkpoint prune 必须根据 Channel 的祖先依赖决定是否可裁剪；LangGraph 对 DeltaChannel keep_latest 主动拒绝，避免恢复后缺失增量。"
     ],
     "failure_modes": [
       "只保存对话/Agent state，但没有记录外部副作用",
@@ -1184,7 +1185,7 @@
     "summary": "Secure runtime for autonomous agents with sandboxing and external policy enforcement.",
     "maturity": "emerging",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-14",
+    "last_verified": "2026-10-15",
     "themes": [
       "sandbox",
       "security"
@@ -1219,7 +1220,8 @@
       "watchLogs 的高水位 cursor、lag warning 和 OutOfRange 要进入日志完整性 SLO，不能把自动重连当作可靠审计。",
       "Policy Proposal 的持久拒绝要产生带 actor、chunk_id 和原因的审计事件，审计自由文本应过滤控制字符。",
       "跨租户控制面变更按 global/workspace/sandbox 意向锁分层；PostgreSQL advisory lock 使用独立池、统一截止时间和明确的 UNAVAILABLE 重试语义，避免全局串行瓶颈。",
-      "Sandbox 处于可恢复的基础设施 Error 时先 stop 并等待旧计算资源回收，再 start，持久 workspace 与执行代际分别管理。"
+      "Sandbox 处于可恢复的基础设施 Error 时先 stop 并等待旧计算资源回收，再 start，持久 workspace 与执行代际分别管理。",
+      "Supervisor 与 Gateway 的 OCSF 事件应经受控 OTLP Logs 管道上报，Collector 认证头与 Agent 工具环境隔离；事件产生、发送和落库完整性必须分别核验。"
     ],
     "what_to_watch": [
       "policy language 和 capability model",
@@ -1252,7 +1254,7 @@
     "summary": "Protocol connecting AI applications and agents to tools and contextual capabilities.",
     "maturity": "standardizing",
     "first_seen": "2026-10-02",
-    "last_verified": "2026-10-14",
+    "last_verified": "2026-10-15",
     "themes": [
       "protocol",
       "harness"
@@ -1277,7 +1279,8 @@
       "长任务和异步 tool execution 模式",
       "跨组织 capability delegation",
       "OpenHands #4838 的 MCP HTTP session task 失败后清理与重连属于客户端实现修复，不是 MCP 规范 revision 更新。",
-      "Managed MCP gateway 的 instance catalog 与用户 OAuth grant 的权限隔离，以及配置 generation 跨 replica 传播延迟和读取失败时缓存污染。"
+      "Managed MCP gateway 的 instance catalog 与用户 OAuth grant 的权限隔离，以及配置 generation 跨 replica 传播延迟和读取失败时缓存污染。",
+      "MCP OAuth refresh 明确拒绝时的 token 退休、并发新授权保护和存储失败后的本地拒绝快照，不能将网络超时与永久拒绝混为一谈。"
     ],
     "intro": "Model Context Protocol（MCP）是连接 AI 应用与工具、数据源和服务的开放协议。它正在从早期的工具接入格式演进为更完整的 Agent capability 连接层，协议本身也持续强化无状态扩展、授权和多轮交互能力。",
     "content_mode": "authored",
@@ -1795,7 +1798,7 @@
     "summary": "Agents are shifting from short-lived processes to durable state plus persistent workspace.",
     "maturity": "emerging",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-12",
+    "last_verified": "2026-10-15",
     "themes": [
       "runtime",
       "cloud-agent",
@@ -1810,7 +1813,8 @@
       "Docker Cloud Sandboxes 等产品把远程 workspace 生命周期独立出来",
       "Google 2026-10-08 Gemini agent 公告明确跨设备持续上下文、独立 coworker 身份和长期云端执行，但未公开底层恢复机制",
       "OpenHands 2026-10-11 修复 deferred-init 时 API、WebSocket 与 bridge 的 readiness 门禁，显示 Agent Server 的执行入口生命周期需要独立于进程存活管理。",
-      "OpenHands #5689 清理 Canvas backend leader 退出后仍运行的后代进程，显示长期 Agent 执行资源生命周期需要覆盖进程组。"
+      "OpenHands #5689 清理 Canvas backend leader 退出后仍运行的后代进程，显示长期 Agent 执行资源生命周期需要覆盖进程组。",
+      "Open SWE #4053 将 agent/reviewer 模型循环部署到 Managed Deep Agents，工具仍通过签名 run token 回调原后端，展示编排与执行权限的分离。"
     ],
     "counter_signals": [
       "很多平台仍主要依赖长时间存活的 sandbox 或进程",
@@ -3023,6 +3027,84 @@
     "page": "/entities/source--openswe-instance-mcp-gateway-20261014/",
     "intro": "Open SWE 在 2026 年 10 月 14 日将 Managed MCP gateway 从各 workspace 选择调整为 instance admin 统一配置。Gateway 的工具目录统一，但每个用户的服务授权仍通过自己的连接完成。",
     "why_it_matters": "企业级 Agent 的 MCP 管理需要区分管理员可用能力目录与用户实际获权工具，避免 workspace 设置漂移及跨副本缓存污染。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:langgraph-prune-20261015",
+    "label": "LangGraph PostgresSaver prune and checkpoint retention",
+    "type": "Source",
+    "summary": "LangGraph #9290 增加 PostgresSaver 和 AsyncPostgresSaver 的 prune 接口；keep_latest 保留恢复所需数据，并拒绝不安全的 DeltaChannel 历史裁剪。",
+    "maturity": "source",
+    "first_seen": "2026-10-15",
+    "last_verified": "2026-10-15",
+    "themes": [
+      "runtime",
+      "cloud-agent"
+    ],
+    "url": "https://github.com/langchain-ai/langgraph/commit/36bf3887f074f2b05f42409c8a67e3a33ed1d1ba",
+    "page": "/entities/source--langgraph-prune-20261015/",
+    "intro": "2026 年 10 月 15 日凌晨，LangGraph 将 PostgreSQL checkpoint 历史清理提升为明确的 API。提交提供 delete 和 keep_latest 两种策略，并对无法证明安全的增量回放情形主动报错。",
+    "why_it_matters": "长期 Agent 的 checkpoint 会持续增长，但清理祖先记录可能使恢复不可重放。该补丁表明数据保留策略必须了解 Channel 的依赖语义，而不是简单按照时间删除旧记录。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openshell-ocsf-otlp-20261015",
+    "label": "OpenShell Supervisor OCSF security events over OTLP",
+    "type": "Source",
+    "summary": "OpenShell #4545 将 Supervisor OCSF 安全事件导出到 OTLP Logs，并由 Gateway 向多种 Sandbox driver 传递受控 Collector 配置。",
+    "maturity": "source",
+    "first_seen": "2026-10-15",
+    "last_verified": "2026-10-15",
+    "themes": [
+      "observability",
+      "security",
+      "sandbox"
+    ],
+    "url": "https://github.com/NVIDIA/OpenShell/commit/6dbe4adc56e5c7f60b96010b41fe21caba0872a8",
+    "page": "/entities/source--openshell-ocsf-otlp-20261015/",
+    "intro": "2026 年 10 月 15 日凌晨，OpenShell 在此前 Gateway 端 OCSF OTLP 导出基础上，加入 Supervisor 侧事件导出。它把接近真实执行边界的安全记录纳入统一遥测系统。",
+    "why_it_matters": "Gateway 的控制面日志不一定能解释 Sandbox 内真实执行行为。Supervisor 侧安全事件可以补充证据，但也要求 Collector 认证头、导出目标和 schema 版本不被普通 Agent 任意改写。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:codex-mcp-oauth-reject-20261015",
+    "label": "Codex retires rejected MCP OAuth refresh credentials",
+    "type": "Source",
+    "summary": "Codex #54079 在 MCP OAuth refresh 被明确拒绝后退休旧 refresh 能力，并加强文件和 keyring 存储的并发更新保护。",
+    "maturity": "source",
+    "first_seen": "2026-10-15",
+    "last_verified": "2026-10-15",
+    "themes": [
+      "protocol",
+      "security"
+    ],
+    "url": "https://github.com/openai/codex/commit/4ae6016a93880877f8f5f79a64e462c466d6b3f9",
+    "page": "/entities/source--codex-mcp-oauth-reject-20261015/",
+    "intro": "2026 年 10 月 15 日凌晨，Codex 修复了 MCP OAuth refresh token 被服务端拒绝后可能再次使用的路径。补丁涉及存储 key 匹配、事务 guard、异步取消和本地失效快照。",
+    "why_it_matters": "长生命周期 Agent 需要稳定连接外部 MCP 服务。永久拒绝的刷新凭据若被反复复用，会掩盖重新授权需求；若简单删除全部记录，又可能误删并发登录产生的新授权。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openswe-mda-loop-20261015",
+    "label": "Open SWE remote agent loop on Managed Deep Agents",
+    "type": "Source",
+    "summary": "Open SWE #4053 将 agent 和 reviewer 的模型循环移至 Managed Deep Agents 远端部署，通过签名 run token 调用原后端工具与状态服务。",
+    "maturity": "source",
+    "first_seen": "2026-10-15",
+    "last_verified": "2026-10-15",
+    "themes": [
+      "cloud-agent",
+      "harness",
+      "runtime"
+    ],
+    "url": "https://github.com/langchain-ai/open-swe/commit/9dd9fbea0ea06e6c583126d8c5e5176171527830",
+    "page": "/entities/source--openswe-mda-loop-20261015/",
+    "intro": "2026 年 10 月 15 日凌晨，Open SWE 把远端 Managed Deep Agents 从 reviewer 场景扩展到 coding agent 的模型循环。工具仍在原 Open SWE backend 的授权和 Sandbox 上下文内执行。",
+    "why_it_matters": "把模型循环从执行后端拆开，有利于托管扩缩容，却使 run 身份、回调授权、工具副作用和多副本事件归属成为新的分布式一致性问题。该提交展示了可操作的分层路径。",
     "content_mode": "authored",
     "content_version": "v9"
   }

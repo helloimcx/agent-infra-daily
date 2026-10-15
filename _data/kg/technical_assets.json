@@ -322,6 +322,48 @@
             "ToolCall 幂等键与结果对账"
           ]
         ]
+      },
+      {
+        "id": "checkpoint-prune-safety-1015",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Postgres Checkpoint Prune 的安全性与故障矩阵",
+        "summary": "基于 LangGraph #9290 的两种策略、DeltaChannel 拒绝行为与并发事务语义，补充生产回放验证要求。",
+        "evidence": [
+          "source:langgraph-prune-20261015"
+        ],
+        "columns": [
+          "策略/状态",
+          "实现边界",
+          "失败窗口",
+          "工程核验"
+        ],
+        "rows": [
+          [
+            "delete",
+            "事务内删除线程 checkpoint、writes、blobs",
+            "活跃线程仍在写入",
+            "在线线程冻结或版本锁"
+          ],
+          [
+            "keep_latest",
+            "保留各 namespace 最新头部及引用数据",
+            "丢失历史遍历能力",
+            "恢复头部与审计分离"
+          ],
+          [
+            "DeltaChannel",
+            "拒绝 keep_latest",
+            "祖先增量缺失导致不可回放",
+            "完整快照前禁止裁剪"
+          ],
+          [
+            "并发事务",
+            "可能抛出序列化冲突",
+            "重试与语义错误混淆",
+            "冲突分类及重试预算"
+          ]
+        ]
       }
     ]
   },
@@ -1849,6 +1891,17 @@
           "source:openshell-error-recovery-20261014"
         ],
         "mermaid": "stateDiagram-v2\n  [*] --> READY\n  READY --> ERROR: infrastructure failure\n  ERROR --> RECOVERY_CHECK: operator requests stop\n  RECOVERY_CHECK --> CLEANUP_OWNER: timeout cleanup owns reclamation\n  CLEANUP_OWNER --> ERROR: wait for cleanup settlement\n  RECOVERY_CHECK --> STOPPING: supported backend and no owner conflict\n  STOPPING --> STOPPED: old compute released\n  STOPPED --> STARTING: explicit start\n  STARTING --> READY: new compute generation\n  STARTING --> ERROR: launch failure\n  note right of STOPPED: persistent workspace retained; old SSH sessions invalid"
+      },
+      {
+        "id": "supervisor-ocsf-otlp-1015",
+        "type": "diagram",
+        "kind": "mixed",
+        "title": "OpenShell Supervisor 安全事件的受控 OTLP 导出链路",
+        "summary": "依据 #4545 绘制 Gateway 下发配置、Supervisor OCSF 导出和 Collector 关联；事件完整性校验是本站建议。",
+        "evidence": [
+          "source:openshell-ocsf-otlp-20261015"
+        ],
+        "mermaid": "flowchart LR\n  G[Gateway: signed config] --> D[Compute Driver]\n  D --> S[Sandbox Supervisor]\n  S --> O[OCSF Event Encoder]\n  O --> L[OTLP LogRecord Exporter]\n  L --> C[Collector]\n  C --> A[Audit Store]\n  H[Secret collector headers] -. trusted config .-> S\n  A -. analysis: count reconciliation .-> M[Audit Gap Monitor]"
       }
     ]
   },
@@ -1996,6 +2049,48 @@
             "credential slug 优先匹配",
             "展示名和凭据名误配",
             "缺失/已连接状态一致性"
+          ]
+        ]
+      },
+      {
+        "id": "mcp-oauth-refresh-failure-1015",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "MCP OAuth Refresh 拒绝与竞态处理矩阵",
+        "summary": "根据 Codex #54079 区分永久拒绝、网络暂时失败、并发替换和退休写入失败的不同处理边界。",
+        "evidence": [
+          "source:codex-mcp-oauth-reject-20261015"
+        ],
+        "columns": [
+          "事件",
+          "应保留的语义",
+          "主要风险",
+          "核验"
+        ],
+        "rows": [
+          [
+            "refresh 明确拒绝",
+            "退休旧 refresh 资格",
+            "无限重复刷新",
+            "重新授权路径"
+          ],
+          [
+            "网络暂时失败",
+            "不等同撤权",
+            "误删有效授权",
+            "重试分类"
+          ],
+          [
+            "并发新登录",
+            "版本保护新凭据",
+            "旧回调覆盖新授权",
+            "key 与锁一致性"
+          ],
+          [
+            "退休写入失败",
+            "本地拒绝快照",
+            "旧文件复活失效 token",
+            "故障注入"
           ]
         ]
       }
@@ -2661,6 +2756,17 @@
           "source:openhands-descendant-reap-20261012"
         ],
         "mermaid": "flowchart TD\n A[Worker leader exited] --> B[Mark unhealthy and block reuse]\n B --> C[Terminate process group]\n C --> D{Descendants or ports remain?}\n D -->|yes| E[Quarantine sandbox]\n D -->|no| F[Revoke lease and temporary credentials]\n F --> G[Workspace eligible for reuse]"
+      },
+      {
+        "id": "managed-agent-loop-boundary-1015",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "本站架构抽象：远端模型循环与受控工具执行边界",
+        "summary": "基于 Open SWE #4053 提炼的参考部署关系，强调 run 身份、签名回调和工具副作用归属，不代表厂商完整生产架构。",
+        "evidence": [
+          "source:openswe-mda-loop-20261015"
+        ],
+        "mermaid": "sequenceDiagram\n  participant C as Agent Control Plane\n  participant M as Managed Deep Agents\n  participant T as Tool Backend\n  participant S as Sandbox\n  C->>M: start run with signed context\n  M->>T: tool_call with run token\n  T->>C: validate run and grants\n  T->>S: execute scoped tool\n  S-->>T: result and side-effect receipt\n  T-->>M: result and state update\n  Note over C,S: Recovery requires run generation and lease fencing"
       }
     ]
   },
