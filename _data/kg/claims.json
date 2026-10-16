@@ -807,5 +807,29 @@
     ],
     "first_seen": "2026-10-15",
     "last_verified": "2026-10-15"
+  },
+  {
+    "id": "claim:langgraph-resume-20261016",
+    "entity": "cap:durable-execution",
+    "text": "LangGraph #9315 区分普通 checkpoint resume 和历史 time travel，避免已经完成的并行或子图任务被重复执行。 该判断只覆盖所引用的源码与测试，不构成所有部署环境的端到端安全或 exactly-once 保证。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:langgraph-resume-20261016"
+    ],
+    "first_seen": "2026-10-16",
+    "last_verified": "2026-10-16"
+  },
+  {
+    "id": "claim:openshell-dns-20261016",
+    "entity": "cap:network-policy",
+    "text": "OpenShell #4602 将主机名授权绑定到 Supervisor DNS，仅在独立 IP/CIDR 约束下允许 Sandbox hosts 映射参与解析。 该判断只覆盖所引用的源码与测试，不构成所有部署环境的端到端安全或 exactly-once 保证。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:openshell-dns-20261016"
+    ],
+    "first_seen": "2026-10-16",
+    "last_verified": "2026-10-16"
   }
 ]

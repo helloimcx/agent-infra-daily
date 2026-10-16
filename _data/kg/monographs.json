@@ -1019,6 +1019,16 @@
           "LangGraph PostgresSaver 的 keep_latest 只保留各 namespace 最新头部及相关 writes/blobs，不再保证完整祖先历史可遍历。DeltaChannel 依赖祖先增量，当前实现明确拒绝这种裁剪。对于长任务系统，应把 checkpoint 的在线恢复、历史审计和成本控制拆成不同保留层级，不能把一个最新快照等同完整 execution journal。",
           "delete 策略事务化清理线程记录，keep_latest 使用针对大线程优化的 SQL。并发更新时需要处理数据库序列化冲突，但重试不能修复语义上不可裁剪的历史。应在清理前校验活跃 run、子图 namespace、pending writes 和外部工具副作用的独立记录。"
         ]
+      },
+      {
+        "id": "checkpoint-resume-task-identity-1016",
+        "title": "Checkpoint Resume 的任务完成身份与重放边界",
+        "evidence": [
+          "source:langgraph-resume-20261016"
+        ],
+        "paragraphs": [
+          "LangGraph #9315 调整 PregelLoop 对 checkpoint 地址和父级 replay state 的判断，让普通人工恢复不会重复执行已经完成的并行或子图任务。相邻的 #9314 还将 exit 模式的 pending writes 限定为本轮实际写入，避免重复应用历史结果。生产 Agent 应分别测试普通 resume、显式 time travel、旧分支 fork 和外部副作用对账；这些跨平台建议不能写成 LangGraph 已提供的 exactly-once 保证。"
+        ]
       }
     ]
   },
@@ -1284,6 +1294,16 @@
         "paragraphs": [
           "如果 shell egress 被限制，但 Browser-as-a-Service、MCP server 或企业 proxy 可访问任意互联网，Agent 仍能通过其他 capability 外泄。",
           "Network policy 必须覆盖所有执行通道，或者在更上层建立统一 authority model。"
+        ]
+      },
+      {
+        "id": "dns-authorization-authority-1016",
+        "title": "网络策略中名称授权与地址授权的权威分离",
+        "evidence": [
+          "source:openshell-dns-20261016"
+        ],
+        "paragraphs": [
+          "OpenShell #4602 明确区分 NameAuthorized 与 IpConstrained：对 ExactDeclaredHost 和默认公开目的地址，由 Supervisor resolver 决定目标 IP；对有 allowed_ips 的路径，Sandbox hosts 可以参与解析，但每个结果仍要接受独立 CIDR 约束。域名许可不能等价于执行器可以任意选择拨号 IP。本站建议继续对 DNS rebinding、CONNECT、hostAliases、metadata 地址和最终拨号日志做差分验证，这些不是补丁已证明的全部安全边界。"
         ]
       }
     ]
@@ -5715,6 +5735,78 @@
         ],
         "paragraphs": [
           "代码提供远端模型循环与工具代理，但尚不能证明多区域故障切换、远端断连后的 exactly-once 工具副作用或跨版本 checkpoint 完全兼容。需要针对 token 失效、callback retry 和 sandbox lease 做独立故障注入。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:langgraph-resume-20261016",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "analysis-1",
+        "title": "恢复意图的判定",
+        "evidence": [
+          "source:langgraph-resume-20261016"
+        ],
+        "paragraphs": [
+          "旧逻辑容易因为配置中存在 checkpoint_id 键就推断为历史回放，而嵌套任务的配置可能携带空值。补丁改为依据有效 checkpoint 地址和父级 replay state 区分普通 resume 与真正的 time travel，避免错误地把已完成任务重新加入执行队列。"
+        ]
+      },
+      {
+        "id": "analysis-2",
+        "title": "并行任务的完成身份",
+        "evidence": [
+          "source:langgraph-resume-20261016"
+        ],
+        "paragraphs": [
+          "同一 checkpoint 继续人工中断时，已经完成的 sibling task 不应再次运行；新测试检查调用计数、子图中断和完成输出。相邻的 #9314 还限制 exit durability 只重新保存本轮产生的 pending writes，避免旧写入在恢复时被重复应用。"
+        ]
+      },
+      {
+        "id": "analysis-3",
+        "title": "边界与工程判断",
+        "evidence": [
+          "source:langgraph-resume-20261016"
+        ],
+        "paragraphs": [
+          "显式历史 time travel 可以重新提出之前已回答的审批问题，而当前执行的 resume 应保留原结果。这些代码测试只能证明特定 checkpoint 逻辑已修复，不意味着外部支付、部署或远端 shell 已具备 exactly-once；还需要 ToolCall Receipt 和效果对账。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openshell-dns-20261016",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "analysis-1",
+        "title": "主机名授权的权威",
+        "evidence": [
+          "source:openshell-dns-20261016"
+        ],
+        "paragraphs": [
+          "ExactDeclaredHost 与默认公开目标检查改由 Supervisor resolver 解析，而不再优先使用 Sandbox 的 /etc/hosts。否则工作负载可以改写本地映射，把对合法域名的许可转换成对自己选择的 IP 的访问许可，造成策略解释与实际拨号不一致。"
+        ]
+      },
+      {
+        "id": "analysis-2",
+        "title": "受 IP 约束的 hosts 例外",
+        "evidence": [
+          "source:openshell-dns-20261016"
+        ],
+        "paragraphs": [
+          "仅在请求带有独立的 allowed_ips、CIDR 或可信网关 IP pin，并对每个解析结果进行地址检查时，Sandbox hosts 才能参与解析。这样允许受控的 Kubernetes hostAliases 场景，却不把工作负载可修改的名称表提升为授权权威。"
+        ]
+      },
+      {
+        "id": "analysis-3",
+        "title": "覆盖范围与后续验证",
+        "evidence": [
+          "source:openshell-dns-20261016"
+        ],
+        "paragraphs": [
+          "补丁包含 NameAuthorized 忽略 Sandbox hosts 的测试并更新安全文档，但不能证明所有 DNS rebinding、透明代理或已有 socket 都被覆盖。生产验收应检查最终拨号 IP、CONNECT 目标、控制面端口和特殊地址拒绝规则的端到端一致性。"
         ]
       }
     ]

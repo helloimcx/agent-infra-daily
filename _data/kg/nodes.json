@@ -184,7 +184,7 @@
     "summary": "Resume work after crashes without repeating completed side effects.",
     "maturity": "production",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-15",
+    "last_verified": "2026-10-16",
     "themes": [
       "runtime",
       "cloud-agent"
@@ -200,7 +200,8 @@
       "durable timer / promise：支持等待分钟、小时甚至数天后继续",
       "状态与执行解耦：worker 可以是可替换的",
       "Checkpoint ancestry 与 DeltaChannel 写入归属：输入写入存放于被更新 checkpoint 的祖先；历史 fork 单独 snapshot，避免重播缺失或分支污染。",
-      "任务动态上下文以可 checkpoint 的消息保存；模型 continuation token 与任务执行 journal 分层。"
+      "任务动态上下文以可 checkpoint 的消息保存；模型 continuation token 与任务执行 journal 分层。",
+      "区分当前 checkpoint resume 与历史 time travel，按稳定 task completion identity 防止已完成步骤重跑。"
     ],
     "representative_implementations": [
       "project:restate"
@@ -231,7 +232,8 @@
       "任务上下文仅在临时 model wrapper 中注入，恢复后无法核验模型看到的任务指令。",
       "把模型 CONTINUATION token 误作任务 checkpoint，忽略工具副作用的幂等和对账。",
       "后台压缩候选生成期间出现新工具输出或账号切换，过期摘要被直接采纳而抹除更新历史。",
-      "在 Hosted MCP 审批尚未回复时自动压缩掉 approval request 或其配对身份，使恢复后的授权对象不可核验。"
+      "在 Hosted MCP 审批尚未回复时自动压缩掉 approval request 或其配对身份，使恢复后的授权对象不可核验。",
+      "嵌套任务配置中的空 checkpoint_id 被误判为历史回放，导致已完成 sibling task 在人工恢复后再次执行。"
     ],
     "intro": "Durable Execution 是长时间运行 Agent 的“可靠执行底座”：任务可以经历进程崩溃、机器替换、部署重启或长时间等待，而不必从头再来。它关注的不是保存一份对话，而是让整个执行历史、已完成结果和外部副作用都具备可恢复语义。",
     "content_mode": "authored",
@@ -447,7 +449,7 @@
     "summary": "Explicit controls over destinations and network access.",
     "maturity": "production",
     "first_seen": "2026-10-03",
-    "last_verified": "2026-10-03",
+    "last_verified": "2026-10-16",
     "themes": [
       "sandbox",
       "security"
@@ -460,7 +462,8 @@
       "allow / deny 目标规则",
       "域名、IP、端口或服务级控制",
       "出站 egress 审计",
-      "按 Agent / workspace / task 绑定策略"
+      "按 Agent / workspace / task 绑定策略",
+      "名称授权依赖可信 Supervisor DNS，Sandbox hosts 只有在独立 IP/CIDR pin 下才能参与地址解析。"
     ],
     "representative_implementations": [
       "project:docker-sandbox-kit"
@@ -472,7 +475,8 @@
     ],
     "failure_modes": [
       "只控制入站，不控制 Agent 出站",
-      "仅在 prompt 中要求不要访问某些域名"
+      "仅在 prompt 中要求不要访问某些域名",
+      "执行器通过修改可写 /etc/hosts，把已授权主机名映射到策略没有许可的实际 IP。"
     ],
     "intro": "Network Policy 是 Agent 执行环境的出站网络边界，用来精确控制它能访问哪些域名、IP、端口或服务。相比“允许联网/禁止联网”这种二元开关，它把网络访问变成可声明、可审计的 capability。",
     "content_mode": "authored",
@@ -3105,6 +3109,44 @@
     "page": "/entities/source--openswe-mda-loop-20261015/",
     "intro": "2026 年 10 月 15 日凌晨，Open SWE 把远端 Managed Deep Agents 从 reviewer 场景扩展到 coding agent 的模型循环。工具仍在原 Open SWE backend 的授权和 Sandbox 上下文内执行。",
     "why_it_matters": "把模型循环从执行后端拆开，有利于托管扩缩容，却使 run 身份、回调授权、工具副作用和多副本事件归属成为新的分布式一致性问题。该提交展示了可操作的分层路径。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:langgraph-resume-20261016",
+    "label": "LangGraph completed-task resume isolation",
+    "type": "Source",
+    "summary": "LangGraph #9315 区分普通 checkpoint resume 和历史 time travel，避免已经完成的并行或子图任务被重复执行。",
+    "maturity": "source",
+    "first_seen": "2026-10-16",
+    "last_verified": "2026-10-16",
+    "themes": [
+      "runtime",
+      "cloud-agent"
+    ],
+    "url": "https://github.com/langchain-ai/langgraph/commit/b0482d0627ec8fdf7c91fba7ffd17403583c59d0",
+    "page": "/entities/source--langgraph-resume-20261016/",
+    "intro": "2026 年 10 月 16 日凌晨，LangGraph #9315 修复 PregelLoop 的历史回放判断，增加并行 interrupt、子图和已完成任务的回归测试。",
+    "why_it_matters": "持久执行不仅要保存 checkpoint，还要知道哪些任务已经完成。恢复时重复运行已完成的工具可能再次产生不可逆的外部副作用。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openshell-dns-20261016",
+    "label": "OpenShell trusted DNS authorization binding",
+    "type": "Source",
+    "summary": "OpenShell #4602 将主机名授权绑定到 Supervisor DNS，仅在独立 IP/CIDR 约束下允许 Sandbox hosts 映射参与解析。",
+    "maturity": "source",
+    "first_seen": "2026-10-16",
+    "last_verified": "2026-10-16",
+    "themes": [
+      "sandbox",
+      "security"
+    ],
+    "url": "https://github.com/NVIDIA/OpenShell/commit/c5519ea8ba5c2f519f25ff7897ffc1fe62536c22",
+    "page": "/entities/source--openshell-dns-20261016/",
+    "intro": "2026 年 10 月 16 日凌晨，OpenShell #4602 引入 NameAuthorized 与 IpConstrained 两种解析绑定语义，避免把工作负载可控的 hosts 文件作为名称授权的权威。",
+    "why_it_matters": "如果执行器可以修改自己的 /etc/hosts，域名白名单可能被映射到攻击者选择的目的地址。安全策略必须约束实际拨号目标，而非只匹配字符串。",
     "content_mode": "authored",
     "content_version": "v9"
   }

@@ -1594,5 +1594,33 @@
     "first_seen": "2026-10-15",
     "last_verified": "2026-10-15",
     "note": "Verified merged GitHub commit; conclusions restricted to implementation and tests."
+  },
+  {
+    "id": "e:langgraph-resume-20261016",
+    "source": "cap:durable-execution",
+    "target": "source:langgraph-resume-20261016",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:langgraph-resume-20261016"
+    ],
+    "first_seen": "2026-10-16",
+    "last_verified": "2026-10-16",
+    "note": "Verified merged upstream commit; limited to code and tests."
+  },
+  {
+    "id": "e:openshell-dns-20261016",
+    "source": "cap:network-policy",
+    "target": "source:openshell-dns-20261016",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openshell-dns-20261016"
+    ],
+    "first_seen": "2026-10-16",
+    "last_verified": "2026-10-16",
+    "note": "Verified merged upstream commit; limited to code and tests."
   }
 ]

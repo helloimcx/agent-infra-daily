@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-16",
+  "mode": "daily",
+  "note": "Two authored Source monographs and two Capability research/technical-asset revisions; other verified commits remain daily-only evidence.",
+  "nodes_added": [
+    "source:langgraph-resume-20261016",
+    "source:openshell-dns-20261016"
+  ],
+  "nodes_updated": [
+    "cap:durable-execution",
+    "cap:network-policy"
+  ],
+  "edges_added": [
+    "e:langgraph-resume-20261016",
+    "e:openshell-dns-20261016"
+  ],
+  "edges_updated": []
+}

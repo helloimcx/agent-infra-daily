@@ -364,6 +364,48 @@
             "冲突分类及重试预算"
           ]
         ]
+      },
+      {
+        "id": "resume-task-identity-1016",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Checkpoint Resume 与 Time Travel 任务身份矩阵",
+        "summary": "依据 LangGraph #9315 的回放判断修复，区分同一执行恢复与历史分支重放，附带本站工程验证建议。",
+        "columns": [
+          "场景",
+          "任务完成事实",
+          "风险",
+          "应验证"
+        ],
+        "rows": [
+          [
+            "当前头部 resume",
+            "已完成 sibling 保留",
+            "重复执行",
+            "调用计数稳定"
+          ],
+          [
+            "旧 checkpoint time travel",
+            "历史分支新执行",
+            "复用旧审批",
+            "重新确认"
+          ],
+          [
+            "子图 checkpoint",
+            "父子回放标识",
+            "误判普通恢复",
+            "嵌套中断测试"
+          ],
+          [
+            "exit pending writes",
+            "本轮写入",
+            "旧增量重复应用",
+            "与不中断基线一致"
+          ]
+        ],
+        "evidence": [
+          "source:langgraph-resume-20261016"
+        ]
       }
     ]
   },
@@ -602,6 +644,48 @@
             "否",
             "统一 capability / gateway policy"
           ]
+        ]
+      },
+      {
+        "id": "dns-authorization-authority-1016",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Supervisor DNS 与 Sandbox Hosts 授权矩阵",
+        "summary": "依据 OpenShell #4602 的解析绑定语义，展示主机名授权与 IP pin 的不同信任边界。",
+        "columns": [
+          "策略",
+          "Sandbox hosts",
+          "安全条件",
+          "验证"
+        ],
+        "rows": [
+          [
+            "ExactDeclaredHost",
+            "不使用",
+            "Supervisor DNS",
+            "伪造别名"
+          ],
+          [
+            "DefaultPublicOnly",
+            "不使用",
+            "内部 IP 拒绝",
+            "私网/metadata"
+          ],
+          [
+            "allowed_ips",
+            "可使用",
+            "逐 IP CIDR 校验",
+            "混合解析结果"
+          ],
+          [
+            "Trusted gateway",
+            "独立约束",
+            "可信地址 pin",
+            "重连复核"
+          ]
+        ],
+        "evidence": [
+          "source:openshell-dns-20261016"
         ]
       }
     ]
