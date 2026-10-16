@@ -5745,7 +5745,7 @@
     "sections": [
       {
         "id": "analysis-1",
-        "title": "恢复意图的判定",
+        "title": "Checkpoint 恢复意图与任务身份判定",
         "evidence": [
           "source:langgraph-resume-20261016"
         ],
@@ -5765,7 +5765,7 @@
       },
       {
         "id": "analysis-3",
-        "title": "边界与工程判断",
+        "title": "历史回放的证据边界与工程约束",
         "evidence": [
           "source:langgraph-resume-20261016"
         ],
