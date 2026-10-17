@@ -457,6 +457,17 @@
           "OpenShell 将 Supervisor 的 OCSF 事件导出为 OTLP LogRecord，配置由 Gateway 经 driver 传递，适配 Docker、Podman 和 Kubernetes。相比仅在 Gateway 记录策略变更，这条链路更靠近 Sandbox 执行面；但是跨边界关联仍需要 sandbox identity、gateway name 与 policy version，而不是只依赖一个可读名称。",
           "Collector 认证头通过 SecretOtlpHeaders 脱敏并清零，降低误写诊断日志的风险。OCSF schema 降级和 Collector 网络故障仍可能影响审计完整性，代码级 exporter 不能替代持久队列、缺口告警或端到端事件数对账。"
         ]
+      },
+      {
+        "id": "isolation-backend-rpc-1017",
+        "title": "Isolation Backend RPC 与可插拔安全边界的生命周期",
+        "evidence": [
+          "source:openshell-isolation-backend-20261017"
+        ],
+        "paragraphs": [
+          "OpenShell #3898 把后端注册、Compute Driver、Supervisor 和 Isolation Backend RPC 拆成明确的协议参与者。Operator 维护后端注册，driver 交付带受控传输端点的启动信息；内置 Sandbox 和外部实现共享接口而不是共享具体代码。Unix、TCP、VSOCK 分别需要独立的身份、连接与故障语义，不能只检查是否能够成功建立 gRPC 会话。",
+          "这种扩展把信任根问题暴露得更清楚：后端的选择权、证书或连接凭据、Sandbox generation 和 policy version 必须由平台控制并能审计。V8 示例及 conformance tests 证明接口可实现，却不能证明不同 backend 具有相同的内核隔离、可用性或副作用恢复能力。生产验收应覆盖 backend 重启、旧连接滞留、驱动故障和审计丢失。"
+        ]
       }
     ]
   },
@@ -1028,6 +1039,17 @@
         ],
         "paragraphs": [
           "LangGraph #9315 调整 PregelLoop 对 checkpoint 地址和父级 replay state 的判断，让普通人工恢复不会重复执行已经完成的并行或子图任务。相邻的 #9314 还将 exit 模式的 pending writes 限定为本轮实际写入，避免重复应用历史结果。生产 Agent 应分别测试普通 resume、显式 time travel、旧分支 fork 和外部副作用对账；这些跨平台建议不能写成 LangGraph 已提供的 exactly-once 保证。"
+        ]
+      },
+      {
+        "id": "invalid-resume-sibling-1017",
+        "title": "Invalid Resume 期间的并行完成事实与重放不变量",
+        "evidence": [
+          "source:langgraph-invalid-resume-20261017"
+        ],
+        "paragraphs": [
+          "LangGraph #9265 在 Pregel Runner 中把 invalid resume 与致命失败分离，使其他已派发 sibling 可以先完成。否则一个分支收到错误人工输入时，另一个分支可能已执行外部工具，却在写入完成事实前被取消；下一次合法回答又重新运行它。新行为避免这种取消策略直接制造重复执行窗口。",
+          "相邻的 #9322 通过排序特殊写入，避免 Command(resume, update) 的 update 在后续 checkpoint 保存中因位置变化而应用两次。前者保护并行任务的完成边界，后者保护持久化写入的索引语义。两项修复都不是外部 exactly-once 承诺，仍应使用 ToolCall 幂等键、未知结果对账和跨 Saver 故障注入。"
         ]
       }
     ]
@@ -5807,6 +5829,84 @@
         ],
         "paragraphs": [
           "补丁包含 NameAuthorized 忽略 Sandbox hosts 的测试并更新安全文档，但不能证明所有 DNS rebinding、透明代理或已有 socket 都被覆盖。生产验收应检查最终拨号 IP、CONNECT 目标、控制面端口和特殊地址拒绝规则的端到端一致性。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openshell-isolation-backend-20261017",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "registry",
+        "title": "注册与信任根：谁有权选择隔离实现",
+        "evidence": [
+          "source:openshell-isolation-backend-20261017"
+        ],
+        "paragraphs": [
+          "OpenShell 新增 operator-owned backend registration、内置后端保留名称和 Compute extension capability 协商。计算驱动选择后端并交付 Supervisor 的启动参数，避免 Agent 进程自行决定隔离方式。",
+          "这是一种控制面授权边界，而非简单的插件接口。若注册记录与真实连接的 backend 身份不一致，工作负载就可能被错误路由到未授权执行环境。"
+        ]
+      },
+      {
+        "id": "transport",
+        "title": "传输语义：Unix、TCP 与 VSOCK 不能混同",
+        "evidence": [
+          "source:openshell-isolation-backend-20261017"
+        ],
+        "paragraphs": [
+          "SandboxTransport 显式表示 Unix socket、带固定候选地址的 TCP authority 和 VSOCK guest CID/port，注册验证拒绝不合法的组合。独立 Sandbox Protocol 和 Isolation Backend RPC 将执行契约从具体后端中抽离。",
+          "Unix 依赖宿主路径权限，TCP 依赖地址钉扎和连接身份，VSOCK 依赖宿主与来宾边界。生产设计还要验证证书代际、断线后请求结果未知以及传输切换期间旧连接是否失效。"
+        ]
+      },
+      {
+        "id": "evidence",
+        "title": "测试能证明接口，不能证明安全等价",
+        "evidence": [
+          "source:openshell-isolation-backend-20261017"
+        ],
+        "paragraphs": [
+          "补丁包含外部 V8 backend 示例、conformance tests 和多个 compute driver 的代码改动，说明接口已具备真实实现路径。它不能证明不同 backend 对 syscall、文件系统和网络 policy 的覆盖完全相同。",
+          "后续应注入 backend crash、Supervisor reconnect、credential renewal 与 partial stream，核对 Sandbox generation、policy version 和审计身份。未核验的跨区域 HA、严格 exactly-once 和性能数字不能从本提交推导。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:langgraph-invalid-resume-20261017",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "classification",
+        "title": "异常分类：无效恢复输入不是致命执行失败",
+        "evidence": [
+          "source:langgraph-invalid-resume-20261017"
+        ],
+        "paragraphs": [
+          "Pregel Runner 的 _should_stop_others 原本会因普通异常取消其他任务。#9265 将 is_invalid_resume 排除出这种立即取消判定，非法人工输入最终仍报错，但不会立即终止已启动的兄弟任务。",
+          "这种改变保留了输入校验，同时让合法 sibling 的完成状态不再被另一个分支的输入错误意外打断。它不代表所有错误都应该继续执行。"
+        ]
+      },
+      {
+        "id": "settlement",
+        "title": "并行任务完成屏障与外部副作用",
+        "evidence": [
+          "source:langgraph-invalid-resume-20261017"
+        ],
+        "paragraphs": [
+          "提交注释指出，已回答的任务可能先发生副作用，随后被错误取消；下次 resume 时，系统因缺少完成记录而再次运行。新策略等待其他任务结束，再传播 invalid resume 错误。",
+          "这只覆盖 runner 的局部取消语义。外部工具成功但 checkpoint 失败时仍需幂等键、结果查询与补偿；长时间挂起的 sibling 也需要独立的 timeout 和回收策略。"
+        ]
+      },
+      {
+        "id": "boundary",
+        "title": "回归测试范围与恢复身份的不变量",
+        "evidence": [
+          "source:langgraph-invalid-resume-20261017"
+        ],
+        "paragraphs": [
+          "补丁提供多任务中断恢复测试，支持非法输入不会立即取消其他 sibling 的代码级判断；但无法据此证明所有远程 Worker、Saver 或跨版本恢复路径等价。",
+          "建议分别测试 schema invalid、GraphInterrupt、致命 tool error 和调用方取消，记录 interrupt ID、resume attempt、task completion ID 与 tool call ID，确认完成任务不会在合法重答时重复执行。"
         ]
       }
     ]

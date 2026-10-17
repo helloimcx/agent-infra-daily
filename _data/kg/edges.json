@@ -1622,5 +1622,33 @@
     "first_seen": "2026-10-16",
     "last_verified": "2026-10-16",
     "note": "Verified merged upstream commit; limited to code and tests."
+  },
+  {
+    "id": "e:openshell-isolation-backend-20261017",
+    "source": "project:nvidia-openshell",
+    "target": "source:openshell-isolation-backend-20261017",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openshell-isolation-backend-20261017"
+    ],
+    "first_seen": "2026-10-17",
+    "last_verified": "2026-10-17",
+    "note": "Merged source and tests; no claim of production isolation equivalence."
+  },
+  {
+    "id": "e:langgraph-invalid-resume-20261017",
+    "source": "cap:durable-execution",
+    "target": "source:langgraph-invalid-resume-20261017",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:langgraph-invalid-resume-20261017"
+    ],
+    "first_seen": "2026-10-17",
+    "last_verified": "2026-10-17",
+    "note": "Runner cancellation semantics, not exactly-once external effects."
   }
 ]

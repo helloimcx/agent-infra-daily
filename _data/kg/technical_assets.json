@@ -406,6 +406,48 @@
         "evidence": [
           "source:langgraph-resume-20261016"
         ]
+      },
+      {
+        "id": "invalid-resume-failure-matrix-1017",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Invalid Resume 并行完成屏障与重复执行故障矩阵",
+        "summary": "对照 LangGraph #9265 的异常分类与本站生产恢复建议，区分已完成副作用、非法输入、致命错误及未知结果。",
+        "evidence": [
+          "source:langgraph-invalid-resume-20261017"
+        ],
+        "columns": [
+          "事件",
+          "代码行为",
+          "失败窗口",
+          "验证不变量"
+        ],
+        "rows": [
+          [
+            "一条分支 resume 非法",
+            "其他 sibling 不立即取消",
+            "已执行但未记录完成",
+            "等待 sibling settle 再报错"
+          ],
+          [
+            "合法 sibling 有副作用",
+            "保留完成事实",
+            "重答时重复工具调用",
+            "同一 task ID 不重跑"
+          ],
+          [
+            "真正 fatal error",
+            "仍走致命失败路径",
+            "把所有异常视为可等待",
+            "错误类型逐项测试"
+          ],
+          [
+            "Worker crash / 结果未知",
+            "本补丁无 exactly-once 保证",
+            "外部已执行、本地未确认",
+            "幂等键、对账和故障注入"
+          ]
+        ]
       }
     ]
   },
@@ -1986,6 +2028,17 @@
           "source:openshell-ocsf-otlp-20261015"
         ],
         "mermaid": "flowchart LR\n  G[Gateway: signed config] --> D[Compute Driver]\n  D --> S[Sandbox Supervisor]\n  S --> O[OCSF Event Encoder]\n  O --> L[OTLP LogRecord Exporter]\n  L --> C[Collector]\n  C --> A[Audit Store]\n  H[Secret collector headers] -. trusted config .-> S\n  A -. analysis: count reconciliation .-> M[Audit Gap Monitor]"
+      },
+      {
+        "id": "isolation-backend-rpc-1017",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "OpenShell Isolation Backend 注册、执行与信任边界图",
+        "summary": "本站依据 #3898 的代码整理 operator、compute driver、supervisor 与内外隔离后端的关系，不代表厂商公布的完整部署拓扑。",
+        "evidence": [
+          "source:openshell-isolation-backend-20261017"
+        ],
+        "mermaid": "flowchart TD\n  OP[Operator registry] --> DR[Compute Driver]\n  DR --> LM[Launch metadata + generation]\n  LM --> SU[Supervisor]\n  SU --> RPC[Isolation Backend RPC]\n  RPC --> IN[Built-in Sandbox]\n  RPC --> EX[External Backend]\n  RPC --> TR[Unix / pinned TCP / VSOCK]\n  TR --> AU[Auth + audit checks]\n  EX -. conformance .-> AU"
       }
     ]
   },

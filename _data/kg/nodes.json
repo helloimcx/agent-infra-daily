@@ -184,7 +184,7 @@
     "summary": "Resume work after crashes without repeating completed side effects.",
     "maturity": "production",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-16",
+    "last_verified": "2026-10-17",
     "themes": [
       "runtime",
       "cloud-agent"
@@ -201,7 +201,8 @@
       "状态与执行解耦：worker 可以是可替换的",
       "Checkpoint ancestry 与 DeltaChannel 写入归属：输入写入存放于被更新 checkpoint 的祖先；历史 fork 单独 snapshot，避免重播缺失或分支污染。",
       "任务动态上下文以可 checkpoint 的消息保存；模型 continuation token 与任务执行 journal 分层。",
-      "区分当前 checkpoint resume 与历史 time travel，按稳定 task completion identity 防止已完成步骤重跑。"
+      "区分当前 checkpoint resume 与历史 time travel，按稳定 task completion identity 防止已完成步骤重跑。",
+      "Invalid Resume 不再直接取消在途并行 sibling；先等待其他任务完成再报告人工输入错误，避免破坏完成事实。"
     ],
     "representative_implementations": [
       "project:restate"
@@ -217,7 +218,8 @@
       "分别管理 TaskContextVersion、ModelContinuationToken、ToolCallJournal 的有效期、恢复与审计。",
       "上下文压缩是可并发的历史变换：后台候选必须校验原始历史前缀、模型路由与后续工具输出；取消前台 turn 不应隐式丢弃会话级候选。",
       "待处理的 Hosted MCP approval 必须在压缩边界保留 request/response identity；审批状态与上下文 token 优化不能互相覆盖。",
-      "Checkpoint prune 必须根据 Channel 的祖先依赖决定是否可裁剪；LangGraph 对 DeltaChannel keep_latest 主动拒绝，避免恢复后缺失增量。"
+      "Checkpoint prune 必须根据 Channel 的祖先依赖决定是否可裁剪；LangGraph 对 DeltaChannel keep_latest 主动拒绝，避免恢复后缺失增量。",
+      "人工输入错误与致命执行错误分别处理；并行任务已发生外部副作用时，应等待结果持久化，并为未知结果准备幂等与对账。"
     ],
     "failure_modes": [
       "只保存对话/Agent state，但没有记录外部副作用",
@@ -233,7 +235,8 @@
       "把模型 CONTINUATION token 误作任务 checkpoint，忽略工具副作用的幂等和对账。",
       "后台压缩候选生成期间出现新工具输出或账号切换，过期摘要被直接采纳而抹除更新历史。",
       "在 Hosted MCP 审批尚未回复时自动压缩掉 approval request 或其配对身份，使恢复后的授权对象不可核验。",
-      "嵌套任务配置中的空 checkpoint_id 被误判为历史回放，导致已完成 sibling task 在人工恢复后再次执行。"
+      "嵌套任务配置中的空 checkpoint_id 被误判为历史回放，导致已完成 sibling task 在人工恢复后再次执行。",
+      "非法 resume 导致 fail-fast 取消其他任务；已产生外部效果的 sibling 未记录完成，随后合法重答再次执行。"
     ],
     "intro": "Durable Execution 是长时间运行 Agent 的“可靠执行底座”：任务可以经历进程崩溃、机器替换、部署重启或长时间等待，而不必从头再来。它关注的不是保存一份对话，而是让整个执行历史、已完成结果和外部副作用都具备可恢复语义。",
     "content_mode": "authored",
@@ -1189,7 +1192,7 @@
     "summary": "Secure runtime for autonomous agents with sandboxing and external policy enforcement.",
     "maturity": "emerging",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-15",
+    "last_verified": "2026-10-17",
     "themes": [
       "sandbox",
       "security"
@@ -1207,7 +1210,8 @@
       "平台仍在快速演进，生产规模下的 policy authoring、兼容性和运维模型需要更多验证",
       "强制执行层不能替代应用级审批和业务规则",
       "不同 Agent 工具需要被映射到统一 capability / policy 语义",
-      "当前关于 provisioning durability 的证据来自快速迭代中的 gateway 实现与回归测试，不能外推为完整的跨区域 HA 或严格 exactly-once 保证"
+      "当前关于 provisioning durability 的证据来自快速迭代中的 gateway 实现与回归测试，不能外推为完整的跨区域 HA 或严格 exactly-once 保证",
+      "#3898 的 RPC、外部 V8 示例和 conformance tests 不能证明任意第三方后端都具备与内置 Sandbox 等价的安全强度或生产 SLA。"
     ],
     "maturity_notes": "OpenShell 仍属快速演进的新兴运行时，但 2026-10-03 的 gateway 改动已经开始处理多副本 provisioning ownership、跨重启 deadline、late result fencing 与 failed-start recovery。这说明项目正在从“安全 sandbox/policy 概念”进入分布式控制面可靠性细化阶段；尚不能据此推断大规模生产成熟。",
     "engineering_takeaways": [
@@ -1225,7 +1229,8 @@
       "Policy Proposal 的持久拒绝要产生带 actor、chunk_id 和原因的审计事件，审计自由文本应过滤控制字符。",
       "跨租户控制面变更按 global/workspace/sandbox 意向锁分层；PostgreSQL advisory lock 使用独立池、统一截止时间和明确的 UNAVAILABLE 重试语义，避免全局串行瓶颈。",
       "Sandbox 处于可恢复的基础设施 Error 时先 stop 并等待旧计算资源回收，再 start，持久 workspace 与执行代际分别管理。",
-      "Supervisor 与 Gateway 的 OCSF 事件应经受控 OTLP Logs 管道上报，Collector 认证头与 Agent 工具环境隔离；事件产生、发送和落库完整性必须分别核验。"
+      "Supervisor 与 Gateway 的 OCSF 事件应经受控 OTLP Logs 管道上报，Collector 认证头与 Agent 工具环境隔离；事件产生、发送和落库完整性必须分别核验。",
+      "Isolation Backend RPC 将内置和 operator 注册的外部后端置于同一受控接口；driver 必须绑定注册版本、启动代际、传输端点与真实后端身份。"
     ],
     "what_to_watch": [
       "policy language 和 capability model",
@@ -1237,7 +1242,8 @@
       "Gateway 日志 retention 与 watchLogs cursor 过期后的恢复证据。",
       "CONFIG:REJECTED 审计事件与持久策略状态的对账和可靠送达。",
       "每副本 10 条数据连接与 4 条锁连接在不同 replica 数量下的 Postgres max_connections、锁等待 P95 和超时分布。",
-      "错误 sandbox 恢复与 timeout cleanup 的 ownership 竞态、SSH session 失效及 workspace 保留的一致性测试。"
+      "错误 sandbox 恢复与 timeout cleanup 的 ownership 竞态、SSH session 失效及 workspace 保留的一致性测试。",
+      "外部 Isolation Backend 在 Unix/TCP/VSOCK 传输、凭据轮换、后端崩溃和 Supervisor 重连时的认证、审计与旧代际隔离。"
     ],
     "intro": "NVIDIA OpenShell 是 Open Agent Safety Platform 中的安全运行边界，强调把 Agent 的权限与 policy enforcement 放在 Harness 之外。它不是单纯的 sandbox，而是在执行环境之外再建立一个 Agent 无法自行关闭的控制面。",
     "content_mode": "authored",
@@ -1245,6 +1251,7 @@
     "architecture_flow": [
       "Agent / Harness 动作请求",
       "OpenShell Policy Boundary",
+      "Compute Driver 根据受控注册表选择内置或外部 Isolation Backend RPC",
       "Capability / Policy Check",
       "允许的执行与网络访问",
       "结果返回 Agent",
@@ -3147,6 +3154,45 @@
     "page": "/entities/source--openshell-dns-20261016/",
     "intro": "2026 年 10 月 16 日凌晨，OpenShell #4602 引入 NameAuthorized 与 IpConstrained 两种解析绑定语义，避免把工作负载可控的 hosts 文件作为名称授权的权威。",
     "why_it_matters": "如果执行器可以修改自己的 /etc/hosts，域名白名单可能被映射到攻击者选择的目的地址。安全策略必须约束实际拨号目标，而非只匹配字符串。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openshell-isolation-backend-20261017",
+    "label": "OpenShell Isolation Backend RPC protocol",
+    "summary": "OpenShell #3898 引入受控注册的隔离后端 RPC、Sandbox Protocol 和多传输接口，扩展执行边界的可替换性。",
+    "themes": [
+      "sandbox",
+      "security",
+      "runtime"
+    ],
+    "url": "https://github.com/NVIDIA/OpenShell/commit/77929d9c1469068417825768c798dd81bd0e0d08",
+    "intro": "OpenShell 于 2026 年 10 月 17 日凌晨合入 #3898，新增 operator-owned Isolation Backend 注册、RPC contract 与独立 Sandbox Protocol。Compute Driver 负责选择并传递后端连接信息，Supervisor 不再必须直接绑定单一内置隔离实现。",
+    "why_it_matters": "可插拔执行后端扩大了扩展能力，也扩大了信任边界：工作负载不能自行选择安全执行后端，平台必须保证注册身份、启动代际、传输端点和策略执行的一致性。",
+    "type": "Source",
+    "maturity": "source",
+    "first_seen": "2026-10-17",
+    "last_verified": "2026-10-17",
+    "page": "/entities/source--openshell-isolation-backend-20261017/",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:langgraph-invalid-resume-20261017",
+    "label": "LangGraph invalid-resume sibling completion",
+    "summary": "LangGraph #9265 将非法人工恢复输入与致命任务失败分离，允许并行兄弟任务先完成再传播错误。",
+    "themes": [
+      "runtime",
+      "cloud-agent"
+    ],
+    "url": "https://github.com/langchain-ai/langgraph/commit/b0cabd93d05508d246318c92b41b3952fe56f5c3",
+    "intro": "2026 年 10 月 17 日凌晨合入的 LangGraph #9265 调整 Pregel Runner 对非法 resume 值的异常分类：不立即取消其他已启动的 sibling，而是在它们完成后再向调用方报告非法输入。",
+    "why_it_matters": "某条并行分支可能已经调用外部工具，另一条分支才发现人工回答无效。如果此时取消所有 sibling，已执行的副作用可能没有相应的持久完成记录，后续重答会带来重复执行风险。",
+    "type": "Source",
+    "maturity": "source",
+    "first_seen": "2026-10-17",
+    "last_verified": "2026-10-17",
+    "page": "/entities/source--langgraph-invalid-resume-20261017/",
     "content_mode": "authored",
     "content_version": "v9"
   }

@@ -831,5 +831,29 @@
     ],
     "first_seen": "2026-10-16",
     "last_verified": "2026-10-16"
+  },
+  {
+    "id": "claim:openshell-isolation-backend-20261017",
+    "entity": "project:nvidia-openshell",
+    "text": "OpenShell #3898 将隔离后端改为可注册的 RPC 契约，支持内置与外部实现以及受控 Unix/TCP/VSOCK 传输；该事实不证明所有实现的隔离安全等级等价。",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openshell-isolation-backend-20261017"
+    ],
+    "first_seen": "2026-10-17",
+    "last_verified": "2026-10-17"
+  },
+  {
+    "id": "claim:langgraph-invalid-resume-20261017",
+    "entity": "cap:durable-execution",
+    "text": "LangGraph #9265 使无效 resume 值不再立即取消其他并行 sibling，而是等待在途任务完成后传播错误，以降低已产生副作用却因取消而重跑的风险。",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:langgraph-invalid-resume-20261017"
+    ],
+    "first_seen": "2026-10-17",
+    "last_verified": "2026-10-17"
   }
 ]

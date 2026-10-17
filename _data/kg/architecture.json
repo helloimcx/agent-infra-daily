@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "kind": "analysis",
-  "note": "Architecture is analysis, not ontology fact. 2026-10-14 evidence adds scoped global/workspace/sandbox mutation guards with bounded lock waits, Error sandbox stop/start recovery, version-checked asynchronous compaction with pending approval protection, per-tool-call sandbox resource binding, OpenSandboxEnvironment lifecycle, and instance-wide MCP gateway configuration distinct from user grants. These commits do not prove exactly-once tool effects, production HA, universal tenant isolation, or lossless memory summaries.",
+  "note": "Architecture is analysis, not ontology fact. 2026-10-17 source evidence adds operator-registered Isolation Backend RPC (built-in/external backend via explicit transport) and the invalid-resume sibling-settlement barrier. These mechanisms do not establish isolation equivalence, production HA, exactly-once tool effects or lossless checkpoints. Previous analysis of scoped locks, compaction, credential authority and execution ownership remains applicable.",
   "layers": [
     {
       "id": "experience",

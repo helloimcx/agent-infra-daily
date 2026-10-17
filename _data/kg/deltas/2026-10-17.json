@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-17",
+  "mode": "daily",
+  "note": "Two authored Source nodes and monographs, two substantive core entity revisions with technical assets, two evidence-backed Claims and two fact edges; other commits remain daily evidence.",
+  "nodes_added": [
+    "source:openshell-isolation-backend-20261017",
+    "source:langgraph-invalid-resume-20261017"
+  ],
+  "nodes_updated": [
+    "project:nvidia-openshell",
+    "cap:durable-execution"
+  ],
+  "edges_added": [
+    "e:openshell-isolation-backend-20261017",
+    "e:langgraph-invalid-resume-20261017"
+  ],
+  "edges_updated": []
+}
