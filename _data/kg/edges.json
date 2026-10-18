@@ -1650,5 +1650,61 @@
     "first_seen": "2026-10-17",
     "last_verified": "2026-10-17",
     "note": "Runner cancellation semantics, not exactly-once external effects."
+  },
+  {
+    "id": "e:adk-join-iteration-20261018",
+    "source": "cap:durable-execution",
+    "target": "source:adk-join-iteration-20261018",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:adk-join-iteration-20261018"
+    ],
+    "first_seen": "2026-10-18",
+    "last_verified": "2026-10-18",
+    "note": "Verified upstream merged commit and source tests; scoped to implemented behavior."
+  },
+  {
+    "id": "e:openhands-ownership-fence-20261018",
+    "source": "cap:durable-execution",
+    "target": "source:openhands-ownership-fence-20261018",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openhands-ownership-fence-20261018"
+    ],
+    "first_seen": "2026-10-18",
+    "last_verified": "2026-10-18",
+    "note": "Verified upstream merged commit and source tests; scoped to implemented behavior."
+  },
+  {
+    "id": "e:openswe-mcp-provenance-20261018",
+    "source": "cap:credential-isolation",
+    "target": "source:openswe-mcp-provenance-20261018",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openswe-mcp-provenance-20261018"
+    ],
+    "first_seen": "2026-10-18",
+    "last_verified": "2026-10-18",
+    "note": "Verified upstream merged commit and source tests; scoped to implemented behavior."
+  },
+  {
+    "id": "e:adk-tool-error-classification-20261018",
+    "source": "cap:execution-trace",
+    "target": "source:adk-tool-error-classification-20261018",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:adk-tool-error-classification-20261018"
+    ],
+    "first_seen": "2026-10-18",
+    "last_verified": "2026-10-18",
+    "note": "Verified upstream merged commit and source tests; scoped to implemented behavior."
   }
 ]

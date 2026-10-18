@@ -448,6 +448,53 @@
             "幂等键、对账和故障注入"
           ]
         ]
+      },
+      {
+        "id": "join-iteration-state-1018",
+        "type": "diagram",
+        "kind": "mixed",
+        "title": "循环 JoinNode 的消费式依赖栅栏",
+        "summary": "本站根据 ADK 代码抽象每轮 Join 的到达集合，明确上一轮完成记录不能替代下一轮的 predecessor；图不表示跨服务 exactly-once。",
+        "evidence": [
+          "source:adk-join-iteration-20261018"
+        ],
+        "mermaid": "stateDiagram-v2\n  [*] --> Collecting\n  Collecting --> Collecting: predecessor arrives in current iteration\n  Collecting --> FireJoin: all current arrivals satisfied\n  FireJoin --> ClearArrivals: emit joined output\n  ClearArrivals --> Collecting: next loop iteration\n  Collecting --> Interrupted: wait for human input\n  Interrupted --> Collecting: resume with current iteration identity"
+      },
+      {
+        "id": "ownership-fence-matrix-1018",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "失去会话写入权时的状态发布矩阵",
+        "summary": "根据 OpenHands 409 与 save_meta 修复区分持久状态、内存状态及外部副作用，帮助设计 Worker Lease 失效的故障注入。",
+        "evidence": [
+          "source:openhands-ownership-fence-20261018"
+        ],
+        "columns": [
+          "故障窗口",
+          "持久化结果",
+          "内存与客户端可见性",
+          "恢复策略"
+        ],
+        "rows": [
+          [
+            "旧 Owner Lease 已失效",
+            "拒绝写入并返回 409",
+            "不得采纳本次元数据变更",
+            "重新加载有效 Owner 与 Generation"
+          ],
+          [
+            "写入前更新内存，随后落盘失败",
+            "磁盘保持旧值",
+            "可能产生幽灵状态（旧实现风险）",
+            "先落盘后采纳内存"
+          ],
+          [
+            "本地 409 之前已触发远端工具",
+            "元数据写入被拒",
+            "工具副作用仍可能发生",
+            "查询执行回执，不能盲目重试"
+          ]
+        ]
       }
     ]
   },
@@ -826,6 +873,42 @@
             "最终转发目标变化",
             "Codex destination/proxy 测试",
             "重定向与上游代理独立验证"
+          ]
+        ]
+      },
+      {
+        "id": "mcp-provenance-boundary-1018",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "多层 MCP 连接来源与授权边界矩阵",
+        "summary": "以 Open SWE MCP Provenance 接口为证据，区分可公开的连接来源、禁止公开的凭据及执行时必须复核的授权条件。",
+        "evidence": [
+          "source:openswe-mcp-provenance-20261018"
+        ],
+        "columns": [
+          "信息或动作",
+          "目录可见内容",
+          "不应泄露的内容",
+          "执行时要求"
+        ],
+        "rows": [
+          [
+            "同名连接覆盖",
+            "scope 与 overridden_scopes",
+            "被覆盖层的 token",
+            "按最新有效来源路由"
+          ],
+          [
+            "Managed MCP 连接",
+            "connection_name、managed scope",
+            "内部 Gateway ID 与个人 token",
+            "确认线程所有者与授权状态"
+          ],
+          [
+            "用户权限撤销",
+            "更新后的来源或工具不可用",
+            "历史凭据、refresh token",
+            "使旧目录缓存失效并拒绝调用"
           ]
         ]
       }
@@ -1272,6 +1355,48 @@
             "Sink 提交前崩溃",
             "SDK 可能重放",
             "sink_commit_id、dedup_key"
+          ]
+        ]
+      },
+      {
+        "id": "tool-error-taxonomy-1018",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "Agent ToolCall 错误分类与去重口径",
+        "summary": "基于 ADK 共享分类器与插件测试，明确不同失败信号的统计归属；这是本站建议的观测矩阵而非官方完整事件分类规范。",
+        "evidence": [
+          "source:adk-tool-error-classification-20261018"
+        ],
+        "columns": [
+          "输入信号",
+          "建议分类",
+          "重复计数风险",
+          "审计字段"
+        ],
+        "rows": [
+          [
+            "工具抛异常",
+            "ToolCall failure",
+            "error 与 after_tool 两个 callback",
+            "tool_call_id、error_type"
+          ],
+          [
+            "MCP isError=true 或自定义失败结果",
+            "ToolCall failure",
+            "返回值被当成功，或与 callback 重复",
+            "tool_call_id、result_error_flag"
+          ],
+          [
+            "模型 finish/block reason",
+            "Model termination",
+            "误计为 Workflow Node failure",
+            "model_request_id、finish_reason"
+          ],
+          [
+            "插件返回替代结果",
+            "同一 ToolCall 的后续阶段",
+            "二次记录已报错调用",
+            "correlation_id、recorded_error_marker"
           ]
         ]
       }

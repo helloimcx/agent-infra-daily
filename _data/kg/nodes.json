@@ -184,7 +184,7 @@
     "summary": "Resume work after crashes without repeating completed side effects.",
     "maturity": "production",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-17",
+    "last_verified": "2026-10-18",
     "themes": [
       "runtime",
       "cloud-agent"
@@ -202,7 +202,9 @@
       "Checkpoint ancestry 与 DeltaChannel 写入归属：输入写入存放于被更新 checkpoint 的祖先；历史 fork 单独 snapshot，避免重播缺失或分支污染。",
       "任务动态上下文以可 checkpoint 的消息保存；模型 continuation token 与任务执行 journal 分层。",
       "区分当前 checkpoint resume 与历史 time travel，按稳定 task completion identity 防止已完成步骤重跑。",
-      "Invalid Resume 不再直接取消在途并行 sibling；先等待其他任务完成再报告人工输入错误，避免破坏完成事实。"
+      "Invalid Resume 不再直接取消在途并行 sibling；先等待其他任务完成再报告人工输入错误，避免破坏完成事实。",
+      "循环 DAG 的 JoinNode 以每轮消费式 predecessor arrivals 作为依赖栅栏，不能复用上轮完成事实。",
+      "会话 Lease Generation 丢失后，旧 Owner 写入必须被 fencing 拒绝；元数据先成功持久化再更新内存视图。"
     ],
     "representative_implementations": [
       "project:restate"
@@ -219,7 +221,9 @@
       "上下文压缩是可并发的历史变换：后台候选必须校验原始历史前缀、模型路由与后续工具输出；取消前台 turn 不应隐式丢弃会话级候选。",
       "待处理的 Hosted MCP approval 必须在压缩边界保留 request/response identity；审批状态与上下文 token 优化不能互相覆盖。",
       "Checkpoint prune 必须根据 Channel 的祖先依赖决定是否可裁剪；LangGraph 对 DeltaChannel keep_latest 主动拒绝，避免恢复后缺失增量。",
-      "人工输入错误与致命执行错误分别处理；并行任务已发生外部副作用时，应等待结果持久化，并为未知结果准备幂等与对账。"
+      "人工输入错误与致命执行错误分别处理；并行任务已发生外部副作用时，应等待结果持久化，并为未知结果准备幂等与对账。",
+      "Join barrier 的 arrivals 必须与 loop iteration 绑定并在触发后消费；恢复时检查输出值来自同一轮。",
+      "旧 Owner 的 409 拒绝不仅阻止磁盘写入，还应保证本地内存和客户端缓存没有采纳被拒变更。"
     ],
     "failure_modes": [
       "只保存对话/Agent state，但没有记录外部副作用",
@@ -236,7 +240,9 @@
       "后台压缩候选生成期间出现新工具输出或账号切换，过期摘要被直接采纳而抹除更新历史。",
       "在 Hosted MCP 审批尚未回复时自动压缩掉 approval request 或其配对身份，使恢复后的授权对象不可核验。",
       "嵌套任务配置中的空 checkpoint_id 被误判为历史回放，导致已完成 sibling task 在人工恢复后再次执行。",
-      "非法 resume 导致 fail-fast 取消其他任务；已产生外部效果的 sibling 未记录完成，随后合法重答再次执行。"
+      "非法 resume 导致 fail-fast 取消其他任务；已产生外部效果的 sibling 未记录完成，随后合法重答再次执行。",
+      "循环 JoinNode 将前一轮 predecessor 的完成记录拼接到新一轮，形成跨迭代的错误状态快照。",
+      "失去 Lease 的旧 Worker 先修改内存元数据，随后持久化被拒，产生对外可见但不可恢复的幽灵状态。"
     ],
     "intro": "Durable Execution 是长时间运行 Agent 的“可靠执行底座”：任务可以经历进程崩溃、机器替换、部署重启或长时间等待，而不必从头再来。它关注的不是保存一份对话，而是让整个执行历史、已完成结果和外部副作用都具备可恢复语义。",
     "content_mode": "authored",
@@ -509,7 +515,7 @@
     "summary": "Keep secrets outside agent-visible workspace and broker them under policy.",
     "maturity": "emerging",
     "first_seen": "2026-10-03",
-    "last_verified": "2026-10-10",
+    "last_verified": "2026-10-18",
     "themes": [
       "security",
       "sandbox"
@@ -524,7 +530,8 @@
       "按请求注入或签名",
       "权限范围与任务上下文绑定",
       "审计每次凭据使用",
-      "JWT-shaped credential alias 保留 issued placeholder identity，代理联合检查 endpoint、expiry 和 authorization epoch。"
+      "JWT-shaped credential alias 保留 issued placeholder identity，代理联合检查 endpoint、expiry 和 authorization epoch。",
+      "MCP Tool Catalog 对有效连接来源输出 credential-free provenance：connection_name、scope 与 overridden_scopes。"
     ],
     "representative_implementations": [
       "project:docker-cloud-sandboxes",
@@ -534,12 +541,15 @@
     "engineering_considerations": [
       "secret 的生命周期应短于 workspace 生命周期",
       "Agent 能用 credential 不等于 Agent 应该能读取 credential",
-      "需要把第三方 OAuth scope 与内部 capability policy 对齐"
+      "需要把第三方 OAuth scope 与内部 capability policy 对齐",
+      "实例/工作区/用户/托管 MCP 的同名工具覆盖必须可解释，目录只暴露来源而不暴露 token 或内部 Gateway ID。",
+      "目录 provenance 是发现时快照；执行时仍须重新检查权限、凭据有效性和配置 Generation。"
     ],
     "failure_modes": [
       "把 secret 存入 workspace 文件",
       "让 Agent 输出原始 token 供工具使用",
-      "凭据别名丢失签发身份或绕过 MITM hook，导致旧进程权限复活或请求目标策略被旁路。"
+      "凭据别名丢失签发身份或绕过 MITM hook，导致旧进程权限复活或请求目标策略被旁路。",
+      "同名 MCP 工具被更高优先级连接覆盖却无来源可见性，Agent 无法解释实际授权边界；缓存目录在权限撤销后仍显示旧来源。"
     ],
     "intro": "Credential Isolation 的核心目标是让 Agent 可以完成需要身份凭据的操作，却不必直接接触原始 secret。平台通过短期 token、代理签名或 credential broker 将“使用权限”和“读取凭据”拆成两件事。",
     "content_mode": "authored",
@@ -813,7 +823,7 @@
     "summary": "Structured action history for observability, replay, eval, skill mining and RSI.",
     "maturity": "emerging",
     "first_seen": "2026-10-02",
-    "last_verified": "2026-10-13",
+    "last_verified": "2026-10-18",
     "themes": [
       "memory",
       "observability",
@@ -829,7 +839,8 @@
       "跨 worker correlation",
       "replay / deterministic reconstruction",
       "与 eval dataset 对接",
-      "日志/事件高水位 cursor、loss warning 与终止性数据缺口的独立状态"
+      "日志/事件高水位 cursor、loss warning 与终止性数据缺口的独立状态",
+      "共享 ToolResultClassifier 同时识别异常、MCP isError 与自定义失败返回，并区分模型终止与节点故障。"
     ],
     "representative_implementations": [
       "project:restate"
@@ -838,12 +849,14 @@
       "trace 不只是 observability 数据，也是未来 eval、skill mining 和 RSI 的训练原料",
       "敏感内容必须分级存储与脱敏",
       "要区分 replay-safe 与不可重复 side effect",
-      "消费 cursor 与下游分析提交要关联；网络恢复不等于审计证据完整。"
+      "消费 cursor 与下游分析提交要关联；网络恢复不等于审计证据完整。",
+      "工具返回错误对象但没有抛异常时仍应计入失败；on_tool_error 与 after_tool 的同一 ToolCall 不能重复计数。"
     ],
     "failure_modes": [
       "只记录 LLM token 和 latency，不记录工具与状态",
       "trace 不能与具体 workspace / task / artifact 对齐",
-      "cursor 过期后静默从尾部重连，导致回放时间线出现未标记的永久缺口。"
+      "cursor 过期后静默从尾部重连，导致回放时间线出现未标记的永久缺口。",
+      "只根据抛出的异常统计失败，漏报 MCP isError；不同插件将模型 finish reason 误算为节点故障或重复统计同一 ToolCall。"
     ],
     "intro": "Execution Trace & Replay 把 Agent 的每一步模型调用、工具执行、状态变化、错误和重试保存成结构化轨迹。它不仅告诉开发者“发生了什么”，还要支持重建“为什么会走到这里”以及同一任务能否重新验证。",
     "content_mode": "authored",
@@ -3193,6 +3206,82 @@
     "first_seen": "2026-10-17",
     "last_verified": "2026-10-17",
     "page": "/entities/source--langgraph-invalid-resume-20261017/",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:adk-join-iteration-20261018",
+    "label": "Google ADK JoinNode per-iteration predecessor barrier",
+    "type": "Source",
+    "summary": "ADK JoinNode 在循环中改用每次触发后清空的 predecessor arrivals，防止跨迭代拼接结果。",
+    "maturity": "source",
+    "first_seen": "2026-10-18",
+    "last_verified": "2026-10-18",
+    "themes": [
+      "runtime",
+      "cloud-agent"
+    ],
+    "url": "https://github.com/google/adk-python/commit/a6ed85905d4c1d1f285ba9d4f76a9d801b66d17f",
+    "page": "/entities/source--adk-join-iteration-20261018/",
+    "intro": "2026 年 10 月 17 日，Google ADK 修改 Workflow JoinNode 的等待逻辑。新实现为每个 join 保存自上次触发以来到达的前驱集合，触发后消费集合；没有输出的节点也会清除旧输出，避免新循环复用上一轮结果。",
+    "why_it_matters": "在含循环的并行 DAG 中，节点完成记录不能跨迭代充当新一轮的完成证明。否则 JoinNode 可能把 A2 与 B1 拼接成看似有效的输出，后续 Agent 在错误的依赖快照上继续执行。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openhands-ownership-fence-20261018",
+    "label": "OpenHands ownership-loss write fencing",
+    "type": "Source",
+    "summary": "OpenHands 以 HTTP 409 明确报告会话所有权丢失，并让元数据先持久化成功再更新内存状态。",
+    "maturity": "source",
+    "first_seen": "2026-10-18",
+    "last_verified": "2026-10-18",
+    "themes": [
+      "runtime",
+      "cloud-agent"
+    ],
+    "url": "https://github.com/OpenHands/software-agent-sdk/commit/f621dab57be854aaee3a982c83b6bf34b8ce5705",
+    "page": "/entities/source--openhands-ownership-fence-20261018/",
+    "intro": "OpenHands 2026 年 10 月 17 日的修复把 ConversationOwnershipLostError 映射为 HTTP 409，并调整 EventService.save_meta 的状态发布顺序。旧执行者在 Lease Generation 失效后提交写入，必须被拒绝且不能污染自身可见状态。",
+    "why_it_matters": "云端 Agent 经常在 Worker 崩溃或 Lease 到期后发生新旧实例并存。若失去写入权的旧实例仍修改内存元数据，即使磁盘拒绝写入，也会制造对外可见但不可恢复的幽灵状态。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openswe-mcp-provenance-20261018",
+    "label": "Open SWE safe MCP tool connection provenance",
+    "type": "Source",
+    "summary": "Open SWE 在工具目录中暴露不含凭据的 MCP 连接来源、scope 与覆盖层级，支持审查实际授权来源。",
+    "maturity": "source",
+    "first_seen": "2026-10-18",
+    "last_verified": "2026-10-18",
+    "themes": [
+      "protocol",
+      "security"
+    ],
+    "url": "https://github.com/langchain-ai/open-swe/commit/d177a79fbdd33f5f695bbdb38f611f9851b7ed74",
+    "page": "/entities/source--openswe-mcp-provenance-20261018/",
+    "intro": "Open SWE 2026 年 10 月 17 日的提交为 MCP ToolDescription 增加 mcp_provenance，明确记录 connection_name、scope 和 overridden_scopes。Scope 包括 instance、workspace、user 与 managed，元数据随授权后的工具发现返回。",
+    "why_it_matters": "同名 MCP 工具可能来自实例、工作区、个人或托管网关。若目录只显示工具名称而隐藏有效连接来源，管理员和 Agent 难以判断究竟是哪一层授权在起作用，错误覆盖也难以审计。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:adk-tool-error-classification-20261018",
+    "label": "Google ADK shared tool-result error classification",
+    "type": "Source",
+    "summary": "ADK 共享观测回调分类器识别返回值中的工具错误，区分模型终止与节点故障并避免重复计数。",
+    "maturity": "source",
+    "first_seen": "2026-10-18",
+    "last_verified": "2026-10-18",
+    "themes": [
+      "observability",
+      "eval"
+    ],
+    "url": "https://github.com/google/adk-python/commit/a4b8ee94c8dcbcd867fe41567868413ae6b834c1",
+    "page": "/entities/source--adk-tool-error-classification-20261018/",
+    "intro": "Google ADK 2026 年 10 月 17 日增加跨观测插件共用的 ToolResultClassifier 和回调帮助函数。即使工具没有抛异常，MCP CallToolResult 的 isError 或自定义失败结果仍可被标记为错误，同时避免 on_tool_error 与 after_tool 双重计数。",
+    "why_it_matters": "Agent 工具失败不一定表现为 Python 异常，模型的 finish/block 原因也不等同于工作流节点失败。若观测平台只按异常统计，成功率、告警和回放标签会系统性失真。",
     "content_mode": "authored",
     "content_version": "v9"
   }

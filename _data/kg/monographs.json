@@ -1051,6 +1051,28 @@
           "LangGraph #9265 在 Pregel Runner 中把 invalid resume 与致命失败分离，使其他已派发 sibling 可以先完成。否则一个分支收到错误人工输入时，另一个分支可能已执行外部工具，却在写入完成事实前被取消；下一次合法回答又重新运行它。新行为避免这种取消策略直接制造重复执行窗口。",
           "相邻的 #9322 通过排序特殊写入，避免 Command(resume, update) 的 update 在后续 checkpoint 保存中因位置变化而应用两次。前者保护并行任务的完成边界，后者保护持久化写入的索引语义。两项修复都不是外部 exactly-once 承诺，仍应使用 ToolCall 幂等键、未知结果对账和跨 Saver 故障注入。"
         ]
+      },
+      {
+        "id": "join-iteration-barrier-1018",
+        "title": "循环 JoinNode 的代际依赖与消费式完成栅栏",
+        "paragraphs": [
+          "Google ADK #a6ed859 发现，JoinNode 若仅凭某个 predecessor 曾经完成过来决定触发，在带回边的工作流中可能将上一轮 B1 与本轮 A2 拼接。修复使用 join_arrivals 记录自上次 firing 以来的完成集合，并在触发后消费，使每轮 Join 必须等待全部前驱重新到达。",
+          "这与 checkpoint ancestry 是不同维度：前者约束图内迭代的因果归属，后者约束持久化历史的祖先关系。工程测试应交错执行 A/B 分支、重复投递完成事件、模拟中断恢复，并核对 join 输出与同一 iteration 的 input snapshot。"
+        ],
+        "evidence": [
+          "source:adk-join-iteration-20261018"
+        ]
+      },
+      {
+        "id": "owner-fence-1018",
+        "title": "Lease 所有权丢失后的内存与磁盘一致性",
+        "paragraphs": [
+          "OpenHands #f621dab 将 ConversationOwnershipLostError 映射到 409，并调整 save_meta：先在 _write_guard 内成功持久化新 StoredConversation，之后才更新 self.stored。旧 Owner 即使持有过时的内存对象，也不能把被拒写入显示成已生效状态。",
+          "对 Cloud Agent 应将 ownership fencing 与外部 side-effect idempotency 分开验证。409 只能说明该受保护的状态写入没有被当前 Owner 接纳，不能证明同一任务此前没有调用过远端工具；UNKNOWN OUTCOME 仍需凭执行回执与外部系统对账。"
+        ],
+        "evidence": [
+          "source:openhands-ownership-fence-20261018"
+        ]
       }
     ]
   },
@@ -1406,6 +1428,17 @@
         "paragraphs": [
           "OpenShell #4390 允许 JWT-shaped alias 供客户端解析，但要求完整 issued placeholder suffix 保留在 signature 中，claims 不授予注入权限；旧 epoch、过期和伪造句柄仍必须拒绝。凭据轮换不应让旧 Agent 只凭同名环境变量取得新权限。",
           "Codex #52661 修复 brokered alias 绕过 MITM hooks 的路径。平台应在同一请求上下文关联 issuer、workload、authorization epoch、目标 endpoint 和最终转发地址，注入前后都校验网络策略；这一跨产品组合模型属于本站设计抽象。"
+        ]
+      },
+      {
+        "id": "mcp-provenance-1018",
+        "title": "MCP 连接来源透明度与凭据最小暴露",
+        "paragraphs": [
+          "Open SWE #d177a79 在 MCPToolDescription 中增加 mcp_provenance，明确有效 connection_name、scope（instance/workspace/user/managed）和被覆盖的连接层。它提供的是已授权工具发现的解释信息，不是让模型读取凭据或内部网关标识。",
+          "测试检查目录中不存在 LangSmith token 和 Gateway ID，说明开发者明确将来源透明度与秘密值隔离。对于多租户 Agent，仍需在每次执行时核验真实连接授权，并在权限撤销或目录缓存失效后重新解析 provenance；单次发现不能构成永久授权。"
+        ],
+        "evidence": [
+          "source:openswe-mcp-provenance-20261018"
         ]
       }
     ]
@@ -1796,6 +1829,17 @@
         ],
         "paragraphs": [
           "OpenShell TS SDK 将网络 Unavailable、服务器 lag warning 与 OutOfRange 视为不同的恢复状态；合流日志用最大 cursor 防止重连时倒退。Execution Trace 平台应保存 coverage_gap、last_good_cursor 与 sink_commit_id，区分可恢复断线和无法补齐的事件缺口。日志订阅的成功并不能替代任务执行 journal 的状态正确性，也不等于环境回放的可复现性。"
+        ]
+      },
+      {
+        "id": "tool-result-classification-1018",
+        "title": "工具结果错误与模型终止的观测口径分离",
+        "paragraphs": [
+          "Google ADK #a4b8ee9 引入共享回调帮助函数，统一识别异常、MCP CallToolResult.isError 与应用自定义的失败返回。后续日志插件改动把同一分类机制扩展到 DebugLoggingPlugin 与 LoggingPlugin，减少 BigQuery 与日志端的统计分歧。",
+          "一个工具调用可能先进入 on_tool_error_callback，随后插件将错误转换成返回值交给 after_tool_callback。若两个阶段都记一次失败，错误率会虚高；若只记录异常，则返回值错误被漏掉。应以稳定 tool_call_id 去重，并独立存储模型终止原因、节点失败和安全阻断。"
+        ],
+        "evidence": [
+          "source:adk-tool-error-classification-20261018"
         ]
       }
     ]
@@ -5907,6 +5951,162 @@
         "paragraphs": [
           "补丁提供多任务中断恢复测试，支持非法输入不会立即取消其他 sibling 的代码级判断；但无法据此证明所有远程 Worker、Saver 或跨版本恢复路径等价。",
           "建议分别测试 schema invalid、GraphInterrupt、致命 tool error 和调用方取消，记录 interrupt ID、resume attempt、task completion ID 与 tool call ID，确认完成任务不会在合法重答时重复执行。"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:adk-join-iteration-20261018",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "mechanism",
+        "title": "JoinNode 到达集合的消费式栅栏",
+        "paragraphs": [
+          "补丁在 _LoopState 中引入 join_arrivals，以目标 JoinNode 名称记录各前驱自上次 join firing 以来的完成事实。只有当前集合覆盖全部前驱，join 才能派发。",
+          "JoinNode 触发时清空对应集合，使循环回边重新进入后必须等待所有前驱的新完成事件；节点本轮没有输出时删除旧 node_outputs，避免把上一轮的值误认为新数据。"
+        ],
+        "evidence": [
+          "source:adk-join-iteration-20261018"
+        ]
+      },
+      {
+        "id": "failure",
+        "title": "循环依赖重用的失败窗口",
+        "paragraphs": [
+          "旧逻辑检查 predecessor 是否曾经运行过，无法区分第一轮和第二轮。若 A2 先完成、B2 尚未完成，旧 B1 仍可能使 join 过早推进。",
+          "对包含人工中断和并行分支的长任务，错误的 join 可能将不一致的任务上下文写入 checkpoint。修复依赖触发消费，不代表所有外部副作用具备事务隔离。"
+        ],
+        "evidence": [
+          "source:adk-join-iteration-20261018"
+        ]
+      },
+      {
+        "id": "evidence",
+        "title": "回归测试与尚未覆盖的边界",
+        "paragraphs": [
+          "提交新增多轮 JoinNode、循环输出和 HITL 场景测试，并在工作流文档中写明每轮前驱重新到达的要求。可核验的是本实现的 join 语义，不是所有图引擎的通用保证。",
+          "仍需测试节点超时、重复完成事件、Worker 迁移及跨版本恢复时 arrivals 的持久化方式；本提交没有提供大规模吞吐或故障注入 benchmark。"
+        ],
+        "evidence": [
+          "source:adk-join-iteration-20261018"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openhands-ownership-fence-20261018",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "fencing",
+        "title": "会话写入所有权的拒绝语义",
+        "paragraphs": [
+          "补丁在 API 层为 ConversationOwnershipLostError 注册异常处理器，返回冲突状态 409；旧 Owner 不应把失去 Lease 后的写入伪装成一般服务器错误。",
+          "Lease fencing 的价值不仅在于阻止磁盘写入，还在于让调用者区分需要重新加载所有权的冲突与可安全重试的暂时故障。"
+        ],
+        "evidence": [
+          "source:openhands-ownership-fence-20261018"
+        ]
+      },
+      {
+        "id": "ordering",
+        "title": "先落盘再采纳内存元数据",
+        "paragraphs": [
+          "EventService.save_meta 现在接受待提交的 StoredConversation 副本，在 _write_guard 保护下完成 atomic_write_text 后才替换 self.stored。",
+          "会话标题、标签和 Secrets 的更新路径同步调整，避免先改内存后写入被拒时留下不一致的本地状态。该顺序与远端业务副作用的幂等问题仍是不同层次。"
+        ],
+        "evidence": [
+          "source:openhands-ownership-fence-20261018"
+        ]
+      },
+      {
+        "id": "limits",
+        "title": "可证明的范围与故障注入建议",
+        "paragraphs": [
+          "提交包含被拒写入不得留下痕迹的回归测试，能支持会话元数据持久化顺序和 API 409 语义已修复的判断。",
+          "仍需对共享存储可见性、Lease 时钟漂移、跨主机旧进程复活以及外部 ToolCall 的 UNKNOWN OUTCOME 做独立测试；不能由 409 推导全系统 exactly-once。"
+        ],
+        "evidence": [
+          "source:openhands-ownership-fence-20261018"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openswe-mcp-provenance-20261018",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "precedence",
+        "title": "连接来源与覆盖层级的表达",
+        "paragraphs": [
+          "提交定义 MCPToolProvenance，并把来源 scope 与被覆盖的 scopes 关联到最终可见的工具描述。它解释为何同名工具最终来自某个连接层，而不是假设所有层都可同时执行。",
+          "实际目录来自授权后的 connection sources；Managed、Workspace、User、Instance 的来源身份作为元数据输出，而不是将后台连接对象直接序列化给 Agent。"
+        ],
+        "evidence": [
+          "source:openswe-mcp-provenance-20261018"
+        ]
+      },
+      {
+        "id": "security",
+        "title": "安全可见性不等于凭据暴露",
+        "paragraphs": [
+          "测试明确检查工具目录包含 provenance 字段，但不包含 LangSmith token 和内部 Gateway ID。这个边界使调用者能够理解工具权限来源而不需要读取认证材料。",
+          "Provenance 仍不能代替每次 ToolCall 的动态授权检查；连接被撤销、令牌轮换或工作区切换后，缓存目录必须与真实执行策略保持一致。"
+        ],
+        "evidence": [
+          "source:openswe-mcp-provenance-20261018"
+        ]
+      },
+      {
+        "id": "limitations",
+        "title": "代码证据与运营验证",
+        "paragraphs": [
+          "该补丁覆盖 MCPSource、目录模型、序列化及测试。它证明了可见来源元数据的接口存在，不能证明所有第三方 MCP 服务都能安全执行。",
+          "建议在多层同名连接、用户注销、Managed Gateway 切换、配置 Generation 更新和长任务恢复时核验来源是否重新解析，并将连接选择记录进审计轨迹。"
+        ],
+        "evidence": [
+          "source:openswe-mcp-provenance-20261018"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:adk-tool-error-classification-20261018",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "classification",
+        "title": "返回值错误与异常错误的统一语义",
+        "paragraphs": [
+          "共享回调帮助函数为 LoggingPlugin、DebugLoggingPlugin 与 BigQueryAgentAnalyticsPlugin 提供一致的工具结果分类入口。MCP isError 与应用自定义 classifier 可将正常返回的错误对象识别为失败。",
+          "模型 finish/block reason 被单独识别为终止信号，不直接归入 durable workflow node failure；这避免不同插件对同一事件得出矛盾的错误分类。"
+        ],
+        "evidence": [
+          "source:adk-tool-error-classification-20261018"
+        ]
+      },
+      {
+        "id": "dedup",
+        "title": "回调多阶段去重与敏感内容边界",
+        "paragraphs": [
+          "当 on_tool_error_callback 已记录失败，后续 after_tool_callback 收到插件替代结果时，代码通过回调标记避免把同一次工具失败再次计数。",
+          "帮助函数强调不执行返回值对象或其键值的用户代码，以免恶意工具结果在观测回调中抛异常或泄露内容；这是一项防御措施而非全链路脱敏证明。"
+        ],
+        "evidence": [
+          "source:adk-tool-error-classification-20261018"
+        ]
+      },
+      {
+        "id": "verification",
+        "title": "可复现性与指标口径限制",
+        "paragraphs": [
+          "补丁新增针对异常、MCP 错误标志、回调去重和终止事件的单元测试；随后 6a77d48 将分类行为扩展到日志插件。",
+          "目前没有公开跨真实业务任务的错误识别率 benchmark。上线时应按 tool_call_id 校对错误总数、终止原因和用户可见失败，而非只看 callback invocation 次数。"
+        ],
+        "evidence": [
+          "source:adk-tool-error-classification-20261018"
         ]
       }
     ]

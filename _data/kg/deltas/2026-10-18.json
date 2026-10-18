@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-18",
+  "mode": "daily",
+  "note": "Four independently authored upstream Source entities; three substantive Capability monograph and technical-asset revisions; four sourced claims and evidence edges. Other verified commits remain daily-only.",
+  "nodes_added": [
+    "source:adk-join-iteration-20261018",
+    "source:openhands-ownership-fence-20261018",
+    "source:openswe-mcp-provenance-20261018",
+    "source:adk-tool-error-classification-20261018"
+  ],
+  "nodes_updated": [
+    "cap:durable-execution",
+    "cap:credential-isolation",
+    "cap:execution-trace"
+  ],
+  "edges_added": [
+    "e:adk-join-iteration-20261018",
+    "e:openhands-ownership-fence-20261018",
+    "e:openswe-mcp-provenance-20261018",
+    "e:adk-tool-error-classification-20261018"
+  ],
+  "edges_updated": []
+}

@@ -855,5 +855,53 @@
     ],
     "first_seen": "2026-10-17",
     "last_verified": "2026-10-17"
+  },
+  {
+    "id": "claim:adk-join-iteration-20261018",
+    "entity": "cap:durable-execution",
+    "text": "Google ADK 的 JoinNode 循环实现现在按每次 firing 消费 predecessor arrivals，防止上一轮前驱完成记录触发下一轮 Join。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:adk-join-iteration-20261018"
+    ],
+    "first_seen": "2026-10-18",
+    "last_verified": "2026-10-18"
+  },
+  {
+    "id": "claim:openhands-ownership-fence-20261018",
+    "entity": "cap:durable-execution",
+    "text": "OpenHands 在会话所有权丢失时返回 HTTP 409，且新元数据只有在持久化成功后才替换内存中的 StoredConversation。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:openhands-ownership-fence-20261018"
+    ],
+    "first_seen": "2026-10-18",
+    "last_verified": "2026-10-18"
+  },
+  {
+    "id": "claim:openswe-mcp-provenance-20261018",
+    "entity": "cap:credential-isolation",
+    "text": "Open SWE 的 MCP 工具发现会公开不含凭据的连接来源、scope 与覆盖层级，而不会将内部 token 或 Gateway ID 写入工具目录。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:openswe-mcp-provenance-20261018"
+    ],
+    "first_seen": "2026-10-18",
+    "last_verified": "2026-10-18"
+  },
+  {
+    "id": "claim:adk-tool-errors-20261018",
+    "entity": "cap:execution-trace",
+    "text": "Google ADK 的共享回调分类器可识别 MCP isError 和自定义失败返回，并对多阶段 callback 中的同一工具错误进行去重。",
+    "kind": "fact",
+    "confidence": 0.97,
+    "evidence": [
+      "source:adk-tool-error-classification-20261018"
+    ],
+    "first_seen": "2026-10-18",
+    "last_verified": "2026-10-18"
   }
 ]
