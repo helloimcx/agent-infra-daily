@@ -1706,5 +1706,47 @@
     "first_seen": "2026-10-18",
     "last_verified": "2026-10-18",
     "note": "Verified upstream merged commit and source tests; scoped to implemented behavior."
+  },
+  {
+    "id": "e:codex-model-hooks-20261019",
+    "source": "cap:execution-trace",
+    "target": "source:codex-model-hooks-20261019",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:codex-model-hooks-20261019"
+    ],
+    "first_seen": "2026-10-19",
+    "last_verified": "2026-10-19",
+    "note": "Verified upstream merged commit and tests; no production-scale guarantee."
+  },
+  {
+    "id": "e:openswe-monitor-20261019",
+    "source": "cap:execution-trace",
+    "target": "source:openswe-monitor-20261019",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openswe-monitor-20261019"
+    ],
+    "first_seen": "2026-10-19",
+    "last_verified": "2026-10-19",
+    "note": "Verified upstream merged commit and tests; no production-scale guarantee."
+  },
+  {
+    "id": "e:adk-dynamic-retry-20261019",
+    "source": "cap:durable-execution",
+    "target": "source:adk-dynamic-retry-20261019",
+    "type": "EVIDENCED_BY",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:adk-dynamic-retry-20261019"
+    ],
+    "first_seen": "2026-10-19",
+    "last_verified": "2026-10-19",
+    "note": "Verified upstream merged commit and tests; no production-scale guarantee."
   }
 ]

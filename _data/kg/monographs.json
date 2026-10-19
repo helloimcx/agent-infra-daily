@@ -1073,6 +1073,17 @@
         "evidence": [
           "source:openhands-ownership-fence-20261018"
         ]
+      },
+      {
+        "id": "dynamic-child-attempt-1019",
+        "title": "动态子节点 Retry 的尝试快照与已拒绝结果隔离",
+        "evidence": [
+          "source:adk-dynamic-retry-20261019"
+        ],
+        "paragraphs": [
+          "Google ADK 在每次父节点尝试开始时保存子节点计数快照，失败时只回滚本轮，而不回到更早已被拒绝的结果。这解决了动态子节点重试中不同尝试完成事实的归属问题。",
+          "测试需要覆盖连续拒绝、子节点失败和嵌套动态节点；计数快照不是外部副作用 Journal，不能替代幂等键、未知结果对账与恢复。"
+        ]
       }
     ]
   },
@@ -1840,6 +1851,28 @@
         ],
         "evidence": [
           "source:adk-tool-error-classification-20261018"
+        ]
+      },
+      {
+        "id": "model-request-attempts-1019",
+        "title": "模型请求级 Hook 的观测身份与工具派发边界",
+        "evidence": [
+          "source:codex-model-hooks-20261019"
+        ],
+        "paragraphs": [
+          "Codex 为每次模型请求尝试增加前后诊断 Hook，重试、取消和 Token Usage 能够独立于最终 Turn 结果统计。请求级身份不能与任务级身份合并，否则成功率和成本指标会系统性失真。",
+          "同步 PostModelRequest 在工具派发前等待，异步版本允许流式工具继续；Hook 输出不能改变模型上下文或否决请求。需要额外观测 Hook 的延迟与诊断事件投递缺口。"
+        ]
+      },
+      {
+        "id": "sandbox-monitor-events-1019",
+        "title": "Sandbox Monitor 的事件化输出与投递故障窗口",
+        "evidence": [
+          "source:openswe-monitor-20261019"
+        ],
+        "paragraphs": [
+          "Open SWE 将长时命令的原始输出保存为编号日志，再把过滤后的行通过 callback 或周期轮询送入线程。这把后台工作与主模型 Turn 解耦，但事件生产和事件消费仍属于两个生命周期。",
+          "需要用 monitor_id、seq 和 sink acknowledgement 处理重复与缺口，并对 filter Shell 施加与 command 同等级的安全检查。事件能到达模型不等于审计证据无损。"
         ]
       }
     ]
@@ -6107,6 +6140,123 @@
         ],
         "evidence": [
           "source:adk-tool-error-classification-20261018"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:codex-model-hooks-20261019",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "request-attempt",
+        "title": "模型请求尝试与 Agent Turn 的身份边界",
+        "paragraphs": [
+          "PreModelRequest 与 PostModelRequest 围绕模型请求的每一次尝试执行，重试与取消不会被最终成功的 Turn 结果掩盖。事件上下文含模型、会话、Turn 与可选子 Agent 身份。",
+          "一次 Agent Turn 可能发起多个模型请求并继续执行工具，不能用单一 Turn 成功率推断请求级故障。将 request_attempt_id、turn_id 和 tool_call_id 分开才能核算延迟、失败率与 Token 成本。"
+        ],
+        "evidence": [
+          "source:codex-model-hooks-20261019"
+        ]
+      },
+      {
+        "id": "hook-order",
+        "title": "同步后置 Hook 与工具派发的顺序",
+        "paragraphs": [
+          "同步 PostModelRequest Hook 在工具派发前等待执行完成，因此其耗时可能进入用户可感知的关键路径；异步 Hook 允许流式工具派发继续，不具有相同的等待语义。",
+          "补丁把 Hook 输出限定为诊断数据，即使 Hook 产生控制指令，也不能否决请求或修改模型上下文。这一权限隔离避免第三方观测扩展悄悄变成模型执行策略控制器。"
+        ],
+        "evidence": [
+          "source:codex-model-hooks-20261019"
+        ]
+      },
+      {
+        "id": "evidence-limit",
+        "title": "回归测试覆盖与生产未知问题",
+        "paragraphs": [
+          "提交包含失败、重试、取消、Token 统计、内存整理过滤和同步异步派发顺序的集成测试，可证明这些代码路径受到回归保护。",
+          "现有证据不能证明生产中 Hook 事件无损、吞吐没有影响或所有失败都会持久保存。工程上应另设 Hook 延迟、错误、丢弃和事件关联完整性指标。"
+        ],
+        "evidence": [
+          "source:codex-model-hooks-20261019"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:openswe-monitor-20261019",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "command-life",
+        "title": "后台命令与模型循环的独立生命周期",
+        "paragraphs": [
+          "monitor 工具提供 start、output、stop 和 list，Sandbox 内的长时命令将 stdout 与 stderr 保存为编号日志；可选过滤器将匹配行转为可投递的线程事件。",
+          "这与让模型 Turn 阻塞等待长命令不同。Background Work 面板展示 monitor 和 background_execute，使用户能够在主 Agent 继续工作时观察后台作业的状态与输出。"
+        ],
+        "evidence": [
+          "source:openswe-monitor-20261019"
+        ]
+      },
+      {
+        "id": "event-delivery",
+        "title": "Callback 与周期轮询的投递边界",
+        "paragraphs": [
+          "Sandbox 生成的过滤事件经 ThreadMonitorDelivery 同步到线程；开启 background callbacks 可加速通知，未开启时依赖约一分钟的周期轮询。两种模式的延迟与故障窗口不同。",
+          "monitor_id 与事件序号有助于去重，但不能单凭编号证明跨进程崩溃的无损投递。需要测试 callback 重复、轮询任务失败以及事件生成后下游尚未确认的窗口。"
+        ],
+        "evidence": [
+          "source:openswe-monitor-20261019"
+        ]
+      },
+      {
+        "id": "shell-security",
+        "title": "过滤器也是命令的安全检查范围",
+        "paragraphs": [
+          "monitor 的 filter 自身会作为 Shell 命令执行，补丁将 command 和 filter 一并纳入 PR 创建及 Workflow Push 防护，避免只检查主命令留下策略旁路。",
+          "monitor 工具默认关闭，需每用户实验开关；后台面板默认展示，回调加速由另一个开关控制。权限、可见性与事件投递速度不能被混为一谈。"
+        ],
+        "evidence": [
+          "source:openswe-monitor-20261019"
+        ]
+      }
+    ]
+  },
+  {
+    "entity": "source:adk-dynamic-retry-20261019",
+    "version": "v1",
+    "sections": [
+      {
+        "id": "attempt-snapshot",
+        "title": "父节点每次尝试的子运行计数快照",
+        "paragraphs": [
+          "DynamicNodeScheduler 为父路径下的动态子节点分配运行编号；NodeRunner 在父节点每次尝试开始时保存计数映射，失败后只恢复该次尝试的快照。",
+          "这建立了局部的结果重放边界：当前尝试中已完成的子任务可以按语义复用，而此前父节点明确拒绝的旧结果不应被误当成新尝试的成功结果。"
+        ],
+        "evidence": [
+          "source:adk-dynamic-retry-20261019"
+        ]
+      },
+      {
+        "id": "replay-failure",
+        "title": "已拒绝结果跨尝试复用的故障链",
+        "paragraphs": [
+          "回归测试模拟第一次子结果成功却被父节点拒绝、第二次子节点自身失败、第三次必须重新执行的链条。旧算法回滚过远，可能错误复用第一轮的结果。",
+          "如果只按子节点名称或历史编号查询已完成结果，而不保留 parent_attempt_id，就可能把不同尝试的完成事实混淆，导致任务看似成功但实际跳过必要执行。"
+        ],
+        "evidence": [
+          "source:adk-dynamic-retry-20261019"
+        ]
+      },
+      {
+        "id": "scope-limit",
+        "title": "计数回滚不提供外部副作用幂等",
+        "paragraphs": [
+          "提交验证动态节点 Retry 的计数与结果归属，不等于证明跨版本恢复、分布式 Worker 故障或外部工具 exactly-once。",
+          "生产验收应覆盖连续拒绝、嵌套动态节点、间歇失败及中断恢复；支付、部署和文件修改等不可逆操作仍需幂等键、外部结果查询与对账。"
+        ],
+        "evidence": [
+          "source:adk-dynamic-retry-20261019"
         ]
       }
     ]

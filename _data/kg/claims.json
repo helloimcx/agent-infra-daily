@@ -903,5 +903,41 @@
     ],
     "first_seen": "2026-10-18",
     "last_verified": "2026-10-18"
+  },
+  {
+    "id": "claim:codex-model-hooks-20261019",
+    "entity": "cap:execution-trace",
+    "text": "Codex #55144 为每次模型请求尝试增加只读前后诊断 Hook，覆盖重试、取消与 Token 使用量，并明确同步后置 Hook 在工具派发前执行。",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:codex-model-hooks-20261019"
+    ],
+    "first_seen": "2026-10-19",
+    "last_verified": "2026-10-19"
+  },
+  {
+    "id": "claim:openswe-monitor-20261019",
+    "entity": "cap:execution-trace",
+    "text": "Open SWE #4196 将 Sandbox 长时命令的过滤输出通过 callback 或轮询投递到 Agent Thread，Monitor 工具默认需要用户开启实验开关。",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:openswe-monitor-20261019"
+    ],
+    "first_seen": "2026-10-19",
+    "last_verified": "2026-10-19"
+  },
+  {
+    "id": "claim:adk-dynamic-retry-20261019",
+    "entity": "cap:durable-execution",
+    "text": "Google ADK 动态子节点重试按当前父节点尝试的计数快照回滚，避免错误重放此前父节点已经拒绝的子运行结果。",
+    "kind": "fact",
+    "confidence": 0.98,
+    "evidence": [
+      "source:adk-dynamic-retry-20261019"
+    ],
+    "first_seen": "2026-10-19",
+    "last_verified": "2026-10-19"
   }
 ]

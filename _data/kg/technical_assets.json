@@ -495,6 +495,48 @@
             "查询执行回执，不能盲目重试"
           ]
         ]
+      },
+      {
+        "id": "dynamic-child-retry-1019",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "动态子节点 Retry 的尝试归属与重放边界矩阵",
+        "summary": "依据 Google ADK 计数快照修复区分当前父尝试与已拒绝的历史结果，外部副作用处理属于本站补充建议。",
+        "evidence": [
+          "source:adk-dynamic-retry-20261019"
+        ],
+        "columns": [
+          "父节点阶段",
+          "子节点状态",
+          "回滚边界",
+          "正确处理"
+        ],
+        "rows": [
+          [
+            "Attempt 1",
+            "子结果被父拒绝",
+            "第一次尝试归属",
+            "不在后续自动复用"
+          ],
+          [
+            "Attempt 2",
+            "子节点执行失败",
+            "Attempt 2 开始快照",
+            "只回滚本轮计数"
+          ],
+          [
+            "Attempt 3",
+            "需要重新运行",
+            "不得回到 Attempt 1",
+            "分配新运行编号"
+          ],
+          [
+            "外部副作用未知",
+            "工具可能已提交写入",
+            "计数快照不能证明未执行",
+            "幂等键和对账"
+          ]
+        ]
       }
     ]
   },
@@ -1399,6 +1441,65 @@
             "correlation_id、recorded_error_marker"
           ]
         ]
+      },
+      {
+        "id": "model-attempt-observability-1019",
+        "type": "matrix",
+        "kind": "mixed",
+        "title": "模型请求尝试与诊断 Hook 时序矩阵",
+        "summary": "依据 Codex 模型请求级 Hook 机制区分重试、取消和工具派发时序；建议监控指标是本站工程分析。",
+        "evidence": [
+          "source:codex-model-hooks-20261019"
+        ],
+        "columns": [
+          "场景",
+          "事件与身份",
+          "时序边界",
+          "工程建议"
+        ],
+        "rows": [
+          [
+            "单次成功",
+            "Pre/Post + attempt_id",
+            "不等于整个 Turn 结束",
+            "关联 Token Usage"
+          ],
+          [
+            "失败重试",
+            "每次尝试分别触发",
+            "最终成功不覆盖失败",
+            "记录 Retry Ordinal"
+          ],
+          [
+            "同步 Post Hook",
+            "工具派发前等待",
+            "观测插件进入关键路径",
+            "记录 Hook Latency"
+          ],
+          [
+            "异步 Post Hook",
+            "工具派发可继续",
+            "诊断事件可能落后",
+            "记录交付时间差"
+          ],
+          [
+            "取消请求",
+            "Post cancelled",
+            "不能误计为成功",
+            "保存取消原因"
+          ]
+        ]
+      },
+      {
+        "id": "sandbox-monitor-event-delivery-1019",
+        "type": "diagram",
+        "kind": "analysis",
+        "title": "Sandbox Monitor 的输出采集与事件投递状态图",
+        "summary": "本站依据 Open SWE Monitor 机制抽象后台命令、原始日志、过滤事件、回调或轮询及线程投递的分层状态，不代表厂商公布的完整状态机。",
+        "evidence": [
+          "source:openswe-monitor-20261019"
+        ],
+        "mermaid": "flowchart TD\n  A[Start monitor command] --> B[Sandbox stdout and stderr]\n  B --> C[Numbered raw log]\n  C --> D[Shell filter]\n  D --> E[Filtered event with monitor_id and seq]\n  E --> F{Callback enabled}\n  F -->|Yes| G[Callback nudge]\n  F -->|No| H[Periodic poll]\n  G --> I[Thread delivery]\n  H --> I\n  I --> J[Dedup and coverage check]\n  J --> K[Next Agent turn]"
       }
     ]
   },

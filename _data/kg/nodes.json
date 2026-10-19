@@ -184,7 +184,7 @@
     "summary": "Resume work after crashes without repeating completed side effects.",
     "maturity": "production",
     "first_seen": "2026-10-01",
-    "last_verified": "2026-10-18",
+    "last_verified": "2026-10-19",
     "themes": [
       "runtime",
       "cloud-agent"
@@ -204,7 +204,8 @@
       "区分当前 checkpoint resume 与历史 time travel，按稳定 task completion identity 防止已完成步骤重跑。",
       "Invalid Resume 不再直接取消在途并行 sibling；先等待其他任务完成再报告人工输入错误，避免破坏完成事实。",
       "循环 DAG 的 JoinNode 以每轮消费式 predecessor arrivals 作为依赖栅栏，不能复用上轮完成事实。",
-      "会话 Lease Generation 丢失后，旧 Owner 写入必须被 fencing 拒绝；元数据先成功持久化再更新内存视图。"
+      "会话 Lease Generation 丢失后，旧 Owner 写入必须被 fencing 拒绝；元数据先成功持久化再更新内存视图。",
+      "动态子节点 Retry 使用父节点当前尝试起点的计数快照恢复，防止复用先前尝试中被父节点拒绝的结果。"
     ],
     "representative_implementations": [
       "project:restate"
@@ -223,7 +224,8 @@
       "Checkpoint prune 必须根据 Channel 的祖先依赖决定是否可裁剪；LangGraph 对 DeltaChannel keep_latest 主动拒绝，避免恢复后缺失增量。",
       "人工输入错误与致命执行错误分别处理；并行任务已发生外部副作用时，应等待结果持久化，并为未知结果准备幂等与对账。",
       "Join barrier 的 arrivals 必须与 loop iteration 绑定并在触发后消费；恢复时检查输出值来自同一轮。",
-      "旧 Owner 的 409 拒绝不仅阻止磁盘写入，还应保证本地内存和客户端缓存没有采纳被拒变更。"
+      "旧 Owner 的 409 拒绝不仅阻止磁盘写入，还应保证本地内存和客户端缓存没有采纳被拒变更。",
+      "动态工作流需要联合 ParentAttemptId 与 ChildRunId 确认结果归属，不能跨已拒绝尝试重放。"
     ],
     "failure_modes": [
       "只保存对话/Agent state，但没有记录外部副作用",
@@ -242,7 +244,8 @@
       "嵌套任务配置中的空 checkpoint_id 被误判为历史回放，导致已完成 sibling task 在人工恢复后再次执行。",
       "非法 resume 导致 fail-fast 取消其他任务；已产生外部效果的 sibling 未记录完成，随后合法重答再次执行。",
       "循环 JoinNode 将前一轮 predecessor 的完成记录拼接到新一轮，形成跨迭代的错误状态快照。",
-      "失去 Lease 的旧 Worker 先修改内存元数据，随后持久化被拒，产生对外可见但不可恢复的幽灵状态。"
+      "失去 Lease 的旧 Worker 先修改内存元数据，随后持久化被拒，产生对外可见但不可恢复的幽灵状态。",
+      "父节点拒绝过子结果，后续失败却将子运行计数回滚到更早起点，导致误复用已拒绝结果。"
     ],
     "intro": "Durable Execution 是长时间运行 Agent 的“可靠执行底座”：任务可以经历进程崩溃、机器替换、部署重启或长时间等待，而不必从头再来。它关注的不是保存一份对话，而是让整个执行历史、已完成结果和外部副作用都具备可恢复语义。",
     "content_mode": "authored",
@@ -823,7 +826,7 @@
     "summary": "Structured action history for observability, replay, eval, skill mining and RSI.",
     "maturity": "emerging",
     "first_seen": "2026-10-02",
-    "last_verified": "2026-10-18",
+    "last_verified": "2026-10-19",
     "themes": [
       "memory",
       "observability",
@@ -840,7 +843,9 @@
       "replay / deterministic reconstruction",
       "与 eval dataset 对接",
       "日志/事件高水位 cursor、loss warning 与终止性数据缺口的独立状态",
-      "共享 ToolResultClassifier 同时识别异常、MCP isError 与自定义失败返回，并区分模型终止与节点故障。"
+      "共享 ToolResultClassifier 同时识别异常、MCP isError 与自定义失败返回，并区分模型终止与节点故障。",
+      "模型请求级 Pre/Post Hook 按每次 attempt 记录重试、取消与 Token Usage，诊断输出不应改变执行上下文。",
+      "Sandbox 长时 Monitor 将编号原始输出与过滤事件分离，后者经回调或轮询进入线程。"
     ],
     "representative_implementations": [
       "project:restate"
@@ -850,13 +855,17 @@
       "敏感内容必须分级存储与脱敏",
       "要区分 replay-safe 与不可重复 side effect",
       "消费 cursor 与下游分析提交要关联；网络恢复不等于审计证据完整。",
-      "工具返回错误对象但没有抛异常时仍应计入失败；on_tool_error 与 after_tool 的同一 ToolCall 不能重复计数。"
+      "工具返回错误对象但没有抛异常时仍应计入失败；on_tool_error 与 after_tool 的同一 ToolCall 不能重复计数。",
+      "ModelRequestAttemptId 与 TurnId、ToolCallId 分离；同步后置 Hook 的等待时间进入工具派发关键路径。",
+      "Monitor command 与 filter 都属于可执行 Shell，须同时审查并为事件设置序号、去重与投递确认。"
     ],
     "failure_modes": [
       "只记录 LLM token 和 latency，不记录工具与状态",
       "trace 不能与具体 workspace / task / artifact 对齐",
       "cursor 过期后静默从尾部重连，导致回放时间线出现未标记的永久缺口。",
-      "只根据抛出的异常统计失败，漏报 MCP isError；不同插件将模型 finish reason 误算为节点故障或重复统计同一 ToolCall。"
+      "只根据抛出的异常统计失败，漏报 MCP isError；不同插件将模型 finish reason 误算为节点故障或重复统计同一 ToolCall。",
+      "只统计最终 Turn 成功而漏报模型请求失败、重试和取消成本。",
+      "后台 Monitor 回调与轮询交错产生重复事件，或事件已生成但投递任务中断形成静默缺口。"
     ],
     "intro": "Execution Trace & Replay 把 Agent 的每一步模型调用、工具执行、状态变化、错误和重试保存成结构化轨迹。它不仅告诉开发者“发生了什么”，还要支持重建“为什么会走到这里”以及同一任务能否重新验证。",
     "content_mode": "authored",
@@ -3282,6 +3291,64 @@
     "page": "/entities/source--adk-tool-error-classification-20261018/",
     "intro": "Google ADK 2026 年 10 月 17 日增加跨观测插件共用的 ToolResultClassifier 和回调帮助函数。即使工具没有抛异常，MCP CallToolResult 的 isError 或自定义失败结果仍可被标记为错误，同时避免 on_tool_error 与 after_tool 双重计数。",
     "why_it_matters": "Agent 工具失败不一定表现为 Python 异常，模型的 finish/block 原因也不等同于工作流节点失败。若观测平台只按异常统计，成功率、告警和回放标签会系统性失真。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:codex-model-hooks-20261019",
+    "label": "Codex model request lifecycle observation hooks",
+    "type": "Source",
+    "summary": "Codex 为每次模型请求尝试引入只读 Pre/Post Hook，覆盖重试、取消、Token 使用量和同步后置 Hook 的工具派发顺序。",
+    "maturity": "source",
+    "first_seen": "2026-10-19",
+    "last_verified": "2026-10-19",
+    "themes": [
+      "harness",
+      "observability"
+    ],
+    "url": "https://github.com/openai/codex/commit/70b3bb6d8814ab3f2045238b4ae14c43da99783b",
+    "page": "/entities/source--codex-model-hooks-20261019/",
+    "intro": "2026 年 10 月 19 日 06:43（北京时间），Codex #55144 新增 PreModelRequest 与 PostModelRequest 事件，每次模型请求尝试均可独立观测。事件包含模型、会话、Turn、可选子 Agent，以及完成、失败、取消和可得 Token Usage。",
+    "why_it_matters": "Agent Turn 最终成功可能掩盖中途失败重试的模型请求，导致成本和延迟分析不准确。新 Hook 仅用于诊断，不能否决模型请求或修改模型上下文，从而保持观测插件与执行策略的权限边界。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:openswe-monitor-20261019",
+    "label": "Open SWE sandbox monitor and background work delivery",
+    "type": "Source",
+    "summary": "Open SWE 新增可选 Monitor 长时命令与过滤输出事件投递，支持回调提示或周期轮询，Background Work 面板展示运行状态。",
+    "maturity": "source",
+    "first_seen": "2026-10-19",
+    "last_verified": "2026-10-19",
+    "themes": [
+      "cloud-agent",
+      "observability",
+      "runtime"
+    ],
+    "url": "https://github.com/langchain-ai/open-swe/commit/d306285cea768680f0802d7e8b8247825916f377",
+    "page": "/entities/source--openswe-monitor-20261019/",
+    "intro": "2026 年 10 月 18 日 11:55（北京时间），Open SWE #4196 新增 monitor(start/output/stop/list)。Sandbox 保存编号原始输出，过滤器命中的行通过 callback 或轮询成为线程事件，Background Work 面板同时展示 monitor 与 background_execute。",
+    "why_it_matters": "Agent 等待长时构建、测试和日志时，不应反复调用模型进行低效轮询。事件化后台工作将命令执行与主 Agent Turn 解耦，但必须确保 filter 的执行权限受控、事件可去重并能识别投递缺口。",
+    "content_mode": "authored",
+    "content_version": "v9"
+  },
+  {
+    "id": "source:adk-dynamic-retry-20261019",
+    "label": "Google ADK dynamic child retry attempt snapshot",
+    "type": "Source",
+    "summary": "Google ADK 以父节点每次尝试起点的子运行计数快照作为 Retry 回滚边界，避免错误重放此前已被父节点拒绝的子结果。",
+    "maturity": "source",
+    "first_seen": "2026-10-19",
+    "last_verified": "2026-10-19",
+    "themes": [
+      "runtime",
+      "cloud-agent"
+    ],
+    "url": "https://github.com/google/adk-python/commit/e2dbc0f55027372f3a701d41004ee006ee8f9f14",
+    "page": "/entities/source--adk-dynamic-retry-20261019/",
+    "intro": "2026 年 10 月 18 日 15:17（北京时间），Google ADK 修复动态子节点 Retry：每次父节点尝试开始时保存子运行计数快照，失败后只回滚到本次尝试起点，而不是重置整个父节点历史。",
+    "why_it_matters": "动态子节点的运行编号决定哪些完成结果可以被复用。如果第一轮结果已被父节点拒绝，后续重试却恢复到更早的计数，就可能误用过时结果并跳过必须重新执行的子任务。",
     "content_mode": "authored",
     "content_version": "v9"
   }

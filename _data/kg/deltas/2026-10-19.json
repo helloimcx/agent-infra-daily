@@ -1,9 +1,20 @@
 {
   "date": "2026-10-19",
   "mode": "daily",
-  "note": "Research brief published. No canonical graph changes in this commit; knowledge model enrichment pending verification.",
-  "nodes_added": [],
-  "nodes_updated": [],
-  "edges_added": [],
+  "note": "Three independently authored Source entities and monographs; two substantive Capability revisions; three hand-authored technical assets; three sourced claims and evidence edges. OpenHands webhook and other commits remain daily-only.",
+  "nodes_added": [
+    "source:codex-model-hooks-20261019",
+    "source:openswe-monitor-20261019",
+    "source:adk-dynamic-retry-20261019"
+  ],
+  "nodes_updated": [
+    "cap:execution-trace",
+    "cap:durable-execution"
+  ],
+  "edges_added": [
+    "e:codex-model-hooks-20261019",
+    "e:openswe-monitor-20261019",
+    "e:adk-dynamic-retry-20261019"
+  ],
   "edges_updated": []
 }
