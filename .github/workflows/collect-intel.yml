@@ -1,0 +1,99 @@
+name: Collect Agent Infra Signals
+
+on:
+  schedule:
+    - cron: "15 0,6,12,18 * * *"
+    - cron: "30 22 * * *" # Beijing 06:30, compact snapshot for morning report
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: "Also publish Beijing-date snapshot directly to main"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - "intel/**"
+      - ".github/workflows/collect-intel.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: agent-infra-ingestion
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test source collection
+        run: python -m unittest discover -s intel/tests -v
+
+  ingest:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test source collection
+        run: python -m unittest discover -s intel/tests -v
+      - uses: actions/cache/restore@v4
+        with:
+          path: intel/.state
+          key: intel-ingest-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            intel-ingest-
+      - name: Collect primary source candidates
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python intel/collector.py
+      - uses: actions/cache/save@v4
+        if: success()
+        with:
+          path: intel/.state
+          key: intel-ingest-${{ github.run_id }}-${{ github.run_attempt }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: intel-candidates-${{ github.run_id }}-${{ github.run_attempt }}
+          path: intel/output/candidates.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Publish compact Beijing-date snapshot to main
+        if: github.event.schedule == '30 22 * * *' || inputs.publish == true
+        shell: bash
+        run: |
+          set -euo pipefail
+          DATE=$(TZ=Asia/Shanghai date +%F)
+          mkdir -p intel/daily
+          cp intel/output/candidates.json "intel/daily/$DATE.json"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "intel/daily/$DATE.json"
+          if git diff --cached --quiet; then
+            echo "Snapshot already identical"
+            exit 0
+          fi
+          git commit -m "intel: $DATE curated source snapshot"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo "Snapshot published directly to main"
+              exit 0
+            fi
+            echo "Concurrent main update, retry $attempt"
+          done
+          echo "FAILED: could not fast-forward main after retries" >&2
+          exit 1

@@ -127,3 +127,12 @@ These are authored research artifacts, not decorative diagrams:
 - Benchmark tables preserve verified experimental numbers with evidence.
 - Fact/Mixed assets must bind Source nodes; Analysis assets are visibly labeled as our architectural synthesis.
 - Project, Capability, Research, Standard, Pattern and Trend entities must have at least one technical asset and CI enforces this requirement.
+
+## Continuous evidence ingestion (Phase 1)
+
+The independent [Agent Infra Intel collector](intel/README.md) monitors a curated list
+of official RSS/Atom feeds and GitHub Releases, maintains incremental HTTP state,
+and publishes a bounded candidate snapshot under `intel/daily/YYYY-MM-DD.json`
+each Beijing morning. [Source configuration](intel/sources.json) and the
+[scheduled ingestion workflow](.github/workflows/collect-intel.yml) are separate
+from daily authored KG updates. Candidates are not confirmed facts.

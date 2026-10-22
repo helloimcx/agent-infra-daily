@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "description": "Curated first-party signals; candidates are not validated technical facts or trend judgments.",
+  "feeds": [
+    {
+      "id": "aws-ml",
+      "url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+      "topic": "cloud-agent",
+      "priority": "P1"
+    },
+    {
+      "id": "github-ai",
+      "url": "https://github.blog/ai-and-ml/feed/",
+      "topic": "harness",
+      "priority": "P1"
+    },
+    {
+      "id": "langchain-blog",
+      "url": "https://blog.langchain.com/rss/",
+      "topic": "runtime",
+      "priority": "P1"
+    },
+    {
+      "id": "huggingface-blog",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "topic": "research",
+      "priority": "P1"
+    },
+    {
+      "id": "arxiv-cs-ai",
+      "url": "https://rss.arxiv.org/rss/cs.AI",
+      "topic": "research",
+      "priority": "P1"
+    }
+  ],
+  "github_releases": [
+    {
+      "repo": "openai/codex",
+      "topic": "harness",
+      "priority": "P1"
+    },
+    {
+      "repo": "langchain-ai/langgraph",
+      "topic": "runtime",
+      "priority": "P1"
+    },
+    {
+      "repo": "openai/openai-agents-python",
+      "topic": "harness",
+      "priority": "P1"
+    },
+    {
+      "repo": "google/adk-python",
+      "topic": "harness",
+      "priority": "P1"
+    },
+    {
+      "repo": "OpenHands/software-agent-sdk",
+      "topic": "cloud-agent",
+      "priority": "P1"
+    },
+    {
+      "repo": "NVIDIA/OpenShell",
+      "topic": "sandbox",
+      "priority": "P1"
+    },
+    {
+      "repo": "anthropics/sandbox-runtime",
+      "topic": "sandbox",
+      "priority": "P1"
+    },
+    {
+      "repo": "langchain-ai/open-swe",
+      "topic": "cloud-agent",
+      "priority": "P1"
+    },
+    {
+      "repo": "modelcontextprotocol/specification",
+      "topic": "protocol",
+      "priority": "P0"
+    },
+    {
+      "repo": "a2aproject/A2A",
+      "topic": "protocol",
+      "priority": "P0"
+    }
+  ]
+}
