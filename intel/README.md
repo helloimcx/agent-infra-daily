@@ -1,79 +1,80 @@
-# Agent Infra Intel — Phase 1: Primary Source Collection
+# Agent Infra Intelligence — Phase 1 + Phase 2
 
-This independently scheduled layer collects candidate technical signals. It does NOT
-generate final news, verified facts, claims, graph nodes or trend conclusions.
-Existing authored knowledge and validation rules remain untouched.
+This project is an evidence-oriented intelligence pipeline, not a headline summarizer. It is separated from the existing authored Knowledge Graph, Claim/Evidence, Monograph and Technical Assets.
 
-## What runs
+## Architecture
 
-- Curated first-party RSS/Atom sources plus official GitHub REST Releases API,
-  excluding draft and prerelease versions. Do not use unofficial release Atom feeds:
-  GitHub's release Atom view may not correspond to its release objects.
-- Python 3.12 standard-library collector, roughly every six hours, plus
-  a scheduled Beijing 06:30 (22:30 UTC) candidate snapshot.
-- HTTP ETag and Last-Modified conditional requests and stable canonical URL IDs.
-- State kept in GitHub Actions cache (evictable). Snapshots of each run are
-  retained for 30 days as an Actions artifact.
-- A compact, bounded 72-hour JSON snapshot is committed once daily directly
-  to main at intel/daily/YYYY-MM-DD.json. Raw per-run data is NOT committed.
-  The original daily Agent task should read this file first, verify primary
-  evidence and independently search for missing significant news.
+    trusted feeds + official GitHub Releases
+        → collector.py (HTTP, XML, stable URL IDs)
+        → daily/YYYY-MM-DD.json (unverified observations)
+        → intelligence.py (cross-day candidate grouping, metrics)
+        → state/candidates.json + quality/latest.json
+        → editorial review via review.py
+        → events.json (canonical reviewed events)
+        → trends.json (falsifiable hypotheses and revision history)
+        → /intelligence/ website and daily strategic brief
 
-## Output contract
+CRITICAL BOUNDARY: the unattended collector never promotes any candidate to verified fact, trend conclusion, KG Source/Claim/Edge or benchmark. RSS titles and excerpts are untrusted data, not instructions.
 
-intel/output/candidates.json and the published daily file contain:
+## Schedule and ownership
 
-- beijing_date / generated_at / lookback_hours
-- status = ok or partial
-- source_checks = ok, not_modified, errors
-- items[] = id, title, URL, topic, priority, published_at, first_discovered_at,
-  source_id, source_kind, excerpt, evidence_status=unverified_candidate
-- event_candidates[] = conservative title-duplicate groups; never verified events
-- usage_note = reminder about evidence and time verification
+Collect Agent Infra Signals GitHub Actions runs at UTC 00:15, 06:15, 12:15, 18:15 plus 22:30 UTC (Beijing 06:30 next day). GitHub cron is best-effort, not an SLA. Push changes to collector or review code also trigger tests and a live ingestion smoke test.
 
-Event grouping compares near-identical titles in the same topic within 3 days.
-GitHub Releases remain distinct, even when their names are similar. Sources
-mentioning the same news do NOT count as independent corroboration automatically.
+Frequent runs keep source state in Actions cache, and upload JSON artifacts. Only the Beijing 06:30 run (or workflow_dispatch publish=true) publishes daily snapshot, bounded candidate ledger and latest quality metrics directly to main via non-force fast-forward; it rebases if main advances.
 
-The source-state cache retains up to 90 days and 5000 items; the published
-hand-off only includes at most 250 items from the last 72 hours. A missing
-cache restores from a cold start, so fresh source documents are still scanned.
+The Agent Infra Daily scheduled research task reads today's candidate snapshot first, independently verifies originals, and continues searching outside these known sources.
 
-## Run locally
+## Persistent stores
+
+- sources.json: reviewed first-party feeds and official GitHub Releases.
+- daily/YYYY-MM-DD.json: bounded 72-hour unverified observations.
+- state/candidates.json: cross-day candidate ledger, up to 90 days / 2000 groups.
+- quality/latest.json: source health, duplicate proxy, backlog, curated counts.
+- events.json: manually or research-Agent verified canonical events only.
+- trends.json: authored hypotheses, falsification, verified event links, revision history.
+
+Cross-day grouping matches shared canonical item URLs, or conservative title similarity within the same topic/date window. GitHub Release versions cannot be merged by similar name. Source count does not prove independent corroboration.
+
+Curated events start EMPTY. The five initial trends start UNASSESSED with no verified events. No historical claims were invented to populate the interface.
+
+## Editorial review commands
+
+Inspect the official original, identify the actual event date, meaningful technical delta, evidence boundaries and counterexamples. Check candidate ID and source-item IDs in state/candidates.json.
+
+    python -m intel.review verify-event --candidate-id ec-... \
+      --title "Accurate event title" --event-date YYYY-MM-DD \
+      --source-item-id ITEM_SHA24 --reviewer "Research editor" \
+      --notes "More than 35 characters of grounded source review, limitations and date." \
+      --primary-source-checked
+
+Only after the verified event meaningfully changes an existing authored trend judgment:
+
+    python -m intel.review revise-trend \
+      --trend-id trend:cloud-agent-runtime --event-id evt-... \
+      --status strengthening --confidence medium \
+      --reviewer "Research editor" \
+      --rationale "At least 45 characters explaining why this new verified event changes the judgment."
+
+Trend revisions append to immutable history and cannot reuse old event evidence as a new justification. Weakening, contested and refuted status are supported. Existing event IDs cannot silently be overwritten.
+
+The review script verifies candidate/source membership and requires an explicit source-reviewed assertion; it cannot authenticate website authorship or the content of the source. The researcher must actually visit the source.
+
+## Validation and operational metrics
 
     python -m unittest discover -s intel/tests -v
-    python intel/collector.py --config intel/sources.json \
-      --state intel/.state/state.json --output intel/output/candidates.json
+    python -m intel.validate
+    python intel/collector.py
+    python -m intel.intelligence
 
-No pip dependencies. When available, export a GitHub token via GITHUB_TOKEN
-to avoid unauthenticated API rate limits. Never commit credentials.
+The intel validator checks candidate index consistency, unique curated IDs, explicit source URLs, review notes, valid event dates and trend revision evidence. It does NOT replace or reduce scripts/validate_entities.py.
 
-The workflow can also be run with workflow_dispatch. Set publish=true only
-when an immediate main-branch daily snapshot is intended.
+Quality metrics include source fetch successes/errors, snapshot items, strict duplicate proxy, pending candidate groups, reviewed events and evidence-supported hypotheses. THESE ARE NOT major-event recall, market coverage, independent evidence strength or editorial precision. True recall requires a curated gold-event set and missed-event audits; no unsupported recall percentage is claimed.
 
-## What this phase does NOT solve
+## Known limitations and future work
 
-- Does not discover every new feed or crawl articles without RSS.
-- Does not extract complete originals for research; the daily research task
-  still needs independent source retrieval and validation.
-- Does not prove event equivalence, trend maturity or benchmark claims.
-- Does not persist a canonical Event/Trend store (a later phase).
-- Does not give a cloud Agent access to a private Mac mini or Tailscale subnet.
-- Does not guarantee GitHub cron executes on time. Look at run errors and
-  snapshot freshness before reporting coverage.
-- Does not suppress untrusted content instructions by itself. Feed text is
-  untrusted data; ignore embedded instructions.
-
-Failed feeds remain visible under source_checks.errors, and historical items
-survive transient errors. XML responses are bounded and reject DTD/entity
-definitions. The daily snapshot is a research input, not a finished brief.
-
-## Operational checks
-
-1. Check the Collect Agent Infra Signals Actions workflow's unit-test job.
-2. Confirm scheduled ingestion completed and the artifact was uploaded.
-3. Confirm intel/daily/<Beijing-date>.json exists on main after the nightly run.
-4. If source checks are partial, inspect each failing feed and correct the
-   trusted source configuration; do not invent missing coverage.
-5. The separate daily research task must distinguish article publication from
-   the underlying technical event's actual date.
+- First-party feed coverage is narrow. Novel source discovery and original full-text research remain necessary.
+- GitHub Actions cache can expire, but the daily committed candidate ledger preserves the cross-day view.
+- Strict title matching misses semantic duplicates. Broader grouping belongs in a future suggested-only layer, never direct verification.
+- Candidate pruning after 90 days / 2000 records never deletes canonical curated Event/Trend history.
+- Source errors and snapshot staleness must be visible; never treat collection gaps as absence of major events.
+- Future: independently curated gold-set recall tests, safer original content retrieval, human review efficiency and calibrated trend-evidence scoring.

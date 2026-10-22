@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "kind": "analysis",
+  "description": "Authored, falsifiable strategic questions; unassessed means no verified evidence has yet been promoted into this store. These are not automatic facts or assertions about vendor capabilities.",
+  "trends": [
+    {
+      "id": "trend:cloud-agent-runtime",
+      "title": "Always-on Agent 与 Durable Execution 独立控制面",
+      "hypothesis": "长期任务状态逐渐脱离单个模型循环与工作进程，形成可恢复、按事件唤醒的云端执行控制面。",
+      "falsification": "独立部署或规模化案例长期无法实现明确的恢复语义、可接受的空闲成本和可靠的授权撤销。",
+      "status": "unassessed",
+      "confidence": "unassessed",
+      "evidence_event_ids": [],
+      "history": []
+    },
+    {
+      "id": "trend:tool-governance",
+      "title": "MCP Gateway 与 Agent 工具治理层",
+      "hypothesis": "工具能力发现与实际授权调用逐渐分层，形成 Registry、Broker、策略与审计的独立基础设施。",
+      "falsification": "主流实际部署普遍维持点对点授权，独立 Gateway 在权限、延迟或运维上无法形成净收益。",
+      "status": "unassessed",
+      "confidence": "unassessed",
+      "evidence_event_ids": [],
+      "history": []
+    },
+    {
+      "id": "trend:sandbox-portability",
+      "title": "可替换的 Agent Sandbox / Compute Backend",
+      "hypothesis": "Agent 控制面通过可替换执行契约使用容器、微虚机或托管沙盒，隔离与持久 Workspace 解耦。",
+      "falsification": "不同后端的安全、状态恢复与资源语义无法统一，导致接口抽象长期无法落地。",
+      "status": "unassessed",
+      "confidence": "unassessed",
+      "evidence_event_ids": [],
+      "history": []
+    },
+    {
+      "id": "trend:memory-context",
+      "title": "长期记忆与运行时 Context 分层",
+      "hypothesis": "用户长期记忆、任务持久状态、模型上下文和经验学习成为明确分离的数据产品。",
+      "falsification": "多层记忆产生的成本与错误远超增益，跨任务收益在可复现实验中无法验证。",
+      "status": "unassessed",
+      "confidence": "unassessed",
+      "evidence_event_ids": [],
+      "history": []
+    },
+    {
+      "id": "trend:agent-rsi",
+      "title": "可验证 Agent 自我改进闭环",
+      "hypothesis": "代码 Agent 与自主研究系统通过严谨反馈、离线评测和受约束的策略更新形成持续可复验的改善。",
+      "falsification": "仅在受限评估中得到一次性提升，独立任务与长期运行出现回归、污染或 Goodhart 效应。",
+      "status": "unassessed",
+      "confidence": "unassessed",
+      "evidence_event_ids": [],
+      "history": []
+    }
+  ]
+}

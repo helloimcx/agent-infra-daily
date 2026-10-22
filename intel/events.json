@@ -1,0 +1,5 @@
+{
+  "schema_version": "1.0",
+  "description": "Curated events require explicit primary-source editorial review. Never auto-populated from RSS or release title clusters.",
+  "events": []
+}

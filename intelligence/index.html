@@ -1,0 +1,54 @@
+---
+layout: default
+title: Intelligence
+description: Evidence-driven signal health, canonical events and long-term technology hypotheses.
+permalink: /intelligence/
+---
+<style>
+.intel-head{padding:2.9rem 0 1.6rem;max-width:970px}
+.intel-head h1{font-size:clamp(2.25rem,5vw,4.1rem);letter-spacing:-.055em;line-height:1.15;margin:.35rem 0 .9rem}
+.intel-head p{font-size:1.05rem;line-height:1.8;max-width:790px;color:#51626a}
+.intel-eyebrow{font-size:.76rem;letter-spacing:.13em;color:#547e78;font-weight:750}
+.intel-statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:13px;margin:1.3rem 0 2rem}
+.intel-stat{border:1px solid #dce4e1;border-radius:17px;background:#fff;padding:1.2rem}
+.intel-stat strong{display:block;font-size:1.95rem;letter-spacing:-.05em;margin:.3rem 0}
+.intel-stat span,.intel-stat small{color:#5d6c70}
+.intel-section{margin:2rem 0 3rem}
+.intel-section h2{font-size:1.55rem;margin-bottom:.5rem}
+.intel-section>p{color:#627278;line-height:1.75}
+.intel-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px;margin-top:1.2rem}
+.intel-item{padding:1.3rem;border-radius:18px;border:1px solid #dce4e1;background:#fff}
+.intel-item h3{font-size:1.12rem;line-height:1.35;margin:.5rem 0 .75rem}
+.intel-item p{line-height:1.7;font-size:.95rem;color:#526269}
+.intel-item .subline{margin-top:.9rem;font-size:.78rem;color:#617b79}
+.intel-state{background:#f2f7f5;border-radius:999px;display:inline-block;padding:.3rem .65rem;font-size:.75rem;color:#35625a;font-weight:700}
+.intel-falsifier{border-top:1px solid #e1e8e5;margin-top:1rem;padding-top:1rem}
+.intel-falsifier b{font-size:.78rem;color:#6b777c}
+.intel-note{border-left:3px solid #679d90;padding:.8rem 1.1rem;color:#51676b;background:#f3f7f5;border-radius:0 10px 10px 0;margin:1.3rem 0;font-size:.9rem;line-height:1.8}
+.intel-error{color:#a1463e}
+@media(max-width:680px){.intel-head{padding-top:1.7rem}.intel-statgrid{grid-template-columns:repeat(2,1fr)}}
+</style>
+<section class="intel-head">
+  <div class="intel-eyebrow">TECHNOLOGY INTELLIGENCE / EVIDENCE FIRST</div>
+  <h1>看见技术路线如何变化。<br><span>而非只看见今天的新闻。</span></h1>
+  <p>从官方信源到事件候选、独立核验、长期假设和反证。这张面板明确分离<strong>采集指标</strong>与<strong>技术结论</strong>，不把文章数量当技术成熟度。</p>
+</section>
+<div id="intel-dashboard" data-root="{{ '/intel/' | relative_url }}">
+  <div class="intel-statgrid" id="intel-stats" aria-live="polite">
+    <div class="intel-stat"><span>采集运行</span><strong>—</strong><small>等待读取指标</small></div>
+  </div>
+  <div class="intel-note" id="intel-quality-note">原始 RSS 与 Release 仅是未验证候选；趋势分析只允许关联人工或研究 Agent 核验的一手事件。</div>
+  <section class="intel-section">
+    <div class="intel-eyebrow">LONG-RANGE HYPOTHESES</div>
+    <h2>长期技术趋势雷达</h2>
+    <p>每条路线保留原始命题与可能推翻它的证据。没有独立核验事件，就不自动上调趋势或置信度。</p>
+    <div class="intel-list" id="intel-trends"><p>读取趋势库中…</p></div>
+  </section>
+  <section class="intel-section">
+    <div class="intel-eyebrow">CANONICAL EVENT STORE</div>
+    <h2>已验证技术事件</h2>
+    <p>仅展示具备明确技术事件日期、原始来源、审阅者与证据边界的事件。采集到的标题不会自动提升为事实。</p>
+    <div class="intel-list" id="intel-events"><p>读取经过核验的事件…</p></div>
+  </section>
+</div>
+<script src="{{ '/assets/js/intelligence.js' | relative_url }}"></script>

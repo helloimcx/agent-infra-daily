@@ -1,0 +1,5 @@
+{
+  "schema_version": "1.0",
+  "status": "not_yet_generated",
+  "note": "Metrics require a successful primary-source snapshot processing run. No claim of measured coverage until then."
+}

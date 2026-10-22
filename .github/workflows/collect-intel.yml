@@ -14,6 +14,11 @@ on:
     branches: [main]
     paths:
       - "intel/collector.py"
+      - "intel/intelligence.py"
+      - "intel/review.py"
+      - "intel/validate.py"
+      - "intel/events.json"
+      - "intel/trends.json"
       - "intel/sources.json"
       - "intel/tests/**"
       - "intel/README.md"
@@ -37,8 +42,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Test source collection
-        run: python -m unittest discover -s intel/tests -v
+      - name: Test source collection and intelligence stores
+        run: |
+          python -m unittest discover -s intel/tests -v
+          python -m intel.validate
 
   ingest:
     runs-on: ubuntu-latest
@@ -50,8 +57,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Test source collection
-        run: python -m unittest discover -s intel/tests -v
+      - name: Test source collection and intelligence stores
+        run: |
+          python -m unittest discover -s intel/tests -v
+          python -m intel.validate
       - uses: actions/cache/restore@v4
         with:
           path: intel/.state
@@ -62,6 +71,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python intel/collector.py
+      - name: Update cross-day candidate ledger and quality metrics
+        run: |
+          python -m intel.intelligence
+          python -m intel.validate
       - uses: actions/cache/save@v4
         if: success()
         with:
@@ -71,7 +84,9 @@ jobs:
         if: always()
         with:
           name: intel-candidates-${{ github.run_id }}-${{ github.run_attempt }}
-          path: intel/output/candidates.json
+          path: |
+            intel/output/candidates.json
+            intel/quality/latest.json
           if-no-files-found: warn
           retention-days: 30
       - name: Publish compact Beijing-date snapshot to main
@@ -84,7 +99,7 @@ jobs:
           cp intel/output/candidates.json "intel/daily/$DATE.json"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "intel/daily/$DATE.json"
+          git add "intel/daily/$DATE.json" intel/state/candidates.json intel/quality/latest.json
           if git diff --cached --quiet; then
             echo "Snapshot already identical"
             exit 0
