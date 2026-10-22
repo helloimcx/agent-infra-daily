@@ -1,5 +1,58 @@
 {
   "schema_version": "1.0",
-  "description": "Curated events require explicit primary-source editorial review. Never auto-populated from RSS or release title clusters.",
-  "events": []
+  "description": "Canonical events with explicit first-party editorial review. No automatic promotion by RSS/Release processing.",
+  "events": [
+    {
+      "id": "evt-49112bafb0929084",
+      "candidate_id": "ec-e600abfbbfd2fa21",
+      "title": "AWS published an Agent Registry reference architecture for dynamically discovering approved MCP servers and A2A agents",
+      "topic": "cloud-agent",
+      "event_date": "2026-10-21",
+      "status": "verified",
+      "kind": "fact_with_editorial_review",
+      "evidence": [
+        {
+          "item_id": "e600abfbbfd2fa21366c575c",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/discover-tools-at-runtime-with-aws-agent-registry",
+          "published_at": "2026-10-20T16:22:24+00:00",
+          "title": "Discover tools at runtime with AWS Agent Registry",
+          "first_discovered_at": "2026-10-22T02:13:55+00:00",
+          "checked_against_primary": true
+        }
+      ],
+      "verification": {
+        "reviewed_at": "2026-10-22T06:25:58+00:00",
+        "reviewed_by": "Agent Infra research review",
+        "notes": "Read the AWS official technical article and its Discover/Instantiate/Execute design. Registry returns approved descriptors but not invocation credentials. The RSS original timestamp 2026-10-20T16:22:24Z corresponds to 2026-10-21 Beijing. This is a reference implementation, not independent proof of scalability, security completeness, or universal interoperability.",
+        "limitations": "First-party tutorial only; no controlled real-world scale benchmark."
+      }
+    },
+    {
+      "id": "evt-08abf7a11f294609",
+      "candidate_id": "ec-de02c51efff34c4c",
+      "title": "OpenHands software-agent-sdk v1.57.0 published per-conversation runtime selection and key-rotation safeguards",
+      "topic": "cloud-agent",
+      "event_date": "2026-10-21",
+      "status": "verified",
+      "kind": "fact_with_editorial_review",
+      "evidence": [
+        {
+          "item_id": "de02c51efff34c4ca4ad4936",
+          "source_id": "release:OpenHands/software-agent-sdk",
+          "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.57.0",
+          "published_at": "2026-10-21T15:39:56+00:00",
+          "title": "v1.57.0",
+          "first_discovered_at": "2026-10-22T02:13:55+00:00",
+          "checked_against_primary": true
+        }
+      ],
+      "verification": {
+        "reviewed_at": "2026-10-22T06:25:58+00:00",
+        "reviewed_by": "Agent Infra research review",
+        "notes": "Read official GitHub v1.57.0 release notes. The release includes per-conversation runtime choice/settings, base-class lifecycle capabilities and refusal of writes under lost cipher keys. Its published_at 2026-10-21T15:39:56Z is 2026-10-21 Beijing. This confirms version features, not adoption or production reliability.",
+        "limitations": "Release change list only; no independently verified throughput or recovery SLA."
+      }
+    }
+  ]
 }

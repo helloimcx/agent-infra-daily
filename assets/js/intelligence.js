@@ -6,6 +6,7 @@
   const stats = document.getElementById("intel-stats");
   const trends = document.getElementById("intel-trends");
   const events = document.getElementById("intel-events");
+  const audit = document.getElementById("intel-audit");
   const note = document.getElementById("intel-quality-note");
   const element = (tag, text, className) => {
     const el = document.createElement(tag);
@@ -19,8 +20,8 @@
     if (!response.ok) throw new Error(file + " HTTP " + response.status);
     return response.json();
   }
-  Promise.all([getJson("trends.json"), getJson("events.json"), getJson("quality/latest.json")])
-    .then(([tr, ev, q]) => {
+  Promise.all([getJson("trends.json"), getJson("events.json"), getJson("quality/latest.json"), getJson("quality/coverage.json")])
+    .then(([tr, ev, q, coverage]) => {
       const health = q.source_health || {};
       const cm = q.candidate_metrics || {};
       const cards = [
@@ -38,6 +39,30 @@
       note.textContent = "数据更新时间：" + when +
         "。健康率衡量采集可用性，不衡量重大事件发现率；事件候选属于未核验信息，源数不代表独立印证。" +
         (health.failed ? " 存在失败信源，请检查工作流日志。" : "");
+      if (coverage.gold_sample_size_eligible == null) {
+        empty(audit, "已建立编辑核验基准集，首次定时评估尚待运行。");
+      } else {
+        const summary = element("article", undefined, "intel-item");
+        summary.append(element("span", "小样本审计 · 不是行业召回率", "intel-state"),
+          element("h3", "捕获 " + coverage.captured_count + " / " + coverage.gold_sample_size_eligible),
+          element("p", "未监控来源：" + coverage.not_monitored_count +
+            "；监控范围内漏报：" + coverage.in_scope_missed_count +
+            "。来源覆盖缺失与采集错误分开计算。"));
+        const cards = [summary];
+        for (const entry of (coverage.reviewed_gold_items || [])) {
+          const card = element("article", undefined, "intel-item");
+          const labels = {captured:"已采集",source_not_monitored:"信源未覆盖",in_scope_not_observed:"范围内未发现"};
+          card.append(element("span", labels[entry.outcome] || entry.outcome, "intel-state"),
+            element("h3", entry.title),
+            element("p", "真实事件日（北京）： " + entry.event_date_beijing));
+          const source = element("a", "查看已核验原文 ↗");
+          source.href = entry.primary_url;
+          source.target = "_blank"; source.rel = "noopener noreferrer";
+          card.append(source);
+          cards.push(card);
+        }
+        audit.replaceChildren(...cards);
+      }
       if (!(tr.trends || []).length) empty(trends, "暂时没有长期假设。");
       else trends.replaceChildren(...tr.trends.map(t => {
         const card = element("article", undefined, "intel-item");
@@ -65,6 +90,7 @@
       }));
     })
     .catch(error => {
+      empty(audit, "审计数据尚不可用。");
       empty(trends, "尚无法读取趋势数据。");
       empty(events, "尚无法读取已核验事件。");
       note.textContent = "仪表板数据读取失败：" + error.message + "。检查文件是否已部署。";

@@ -1,6 +1,57 @@
 {
   "schema_version": "1.0",
   "last_ingested_snapshot": "",
-  "candidates": {},
-  "item_index": {}
+  "bootstrap_note": "Two independently verified candidates recovered from the successful 2026-10-22 ingestion artifact. This is not the full 54-item ledger; the next scheduled collector will merge all available items.",
+  "candidates": {
+    "ec-e600abfbbfd2fa21": {
+      "id": "ec-e600abfbbfd2fa21",
+      "title": "Discover tools at runtime with AWS Agent Registry",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-10-20T16:22:24+00:00",
+      "first_seen_at": "2026-10-22T02:39:22+00:00",
+      "last_seen_at": "2026-10-22T02:39:22+00:00",
+      "item_ids": [
+        "e600abfbbfd2fa21366c575c"
+      ],
+      "sources": [
+        {
+          "item_id": "e600abfbbfd2fa21366c575c",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/discover-tools-at-runtime-with-aws-agent-registry",
+          "published_at": "2026-10-20T16:22:24+00:00",
+          "title": "Discover tools at runtime with AWS Agent Registry",
+          "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-de02c51efff34c4c": {
+      "id": "ec-de02c51efff34c4c",
+      "title": "v1.57.0",
+      "topic": "cloud-agent",
+      "source_kind": "github_release",
+      "published_at": "2026-10-21T15:39:56+00:00",
+      "first_seen_at": "2026-10-22T02:39:22+00:00",
+      "last_seen_at": "2026-10-22T02:39:22+00:00",
+      "item_ids": [
+        "de02c51efff34c4ca4ad4936"
+      ],
+      "sources": [
+        {
+          "item_id": "de02c51efff34c4ca4ad4936",
+          "source_id": "release:OpenHands/software-agent-sdk",
+          "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.57.0",
+          "published_at": "2026-10-21T15:39:56+00:00",
+          "title": "v1.57.0",
+          "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    }
+  },
+  "item_index": {
+    "e600abfbbfd2fa21366c575c": "ec-e600abfbbfd2fa21",
+    "de02c51efff34c4ca4ad4936": "ec-de02c51efff34c4c"
+  }
 }

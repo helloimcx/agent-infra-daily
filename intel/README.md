@@ -1,4 +1,4 @@
-# Agent Infra Intelligence — Phase 1 + Phase 2
+# Agent Infra Intelligence — Phase 1 + Phase 2 + Phase 3
 
 This project is an evidence-oriented intelligence pipeline, not a headline summarizer. It is separated from the existing authored Knowledge Graph, Claim/Evidence, Monograph and Technical Assets.
 
@@ -78,3 +78,57 @@ Quality metrics include source fetch successes/errors, snapshot items, strict du
 - Candidate pruning after 90 days / 2000 records never deletes canonical curated Event/Trend history.
 - Source errors and snapshot staleness must be visible; never treat collection gaps as absence of major events.
 - Future: independently curated gold-set recall tests, safer original content retrieval, human review efficiency and calibrated trend-evidence scoring.
+
+## Phase 3 — auditable significant-event discovery
+
+The curated `intel/evaluation/gold_events.json` contains first-party
+events explicitly reviewed by the research agent. Each record identifies the
+Beijing event date, upstream primary URL, expected collector source ID,
+importance, review time and substantive evidence limitations. This is a
+SMALL EDITORIAL SAMPLE, not a representative industry census.
+
+On every real collection run, `python -m intel.evaluation` compares these
+gold events to the unverified candidate snapshot via exact canonical official
+URL matching, not semantic title matching or vendor marketing summary.
+
+The output `intel/quality/coverage.json` has three distinct outcomes:
+
+- captured: an eligible gold event's original URL was seen in raw candidates;
+- source_not_monitored: the gold event's originating official source does not
+  exist in the collector configuration (discovery coverage gap);
+- in_scope_not_observed: an eligible event from an enabled official source was
+  not observed (feed/API freshness, item filtering or fetch failure).
+
+The output contains capture fraction for the deliberately hand-picked sample
+and separately for only in-scope events, with an explicit caveat that these
+numbers are not population recall. A gold item's Beijing event date may be
+day-level only. The evaluator uses deliberately broad day eligibility and
+does NOT claim exact hour-level latency.
+
+First reviewed records:
+
+- Anthropic Claude Duet, 2026-10-21: official announcement verified, but
+  Anthropic product announcements are not yet in the collector. This is a
+  real source coverage gap, not a falsely reported within-feed false negative.
+- AWS Agent Registry runtime discovery, 2026-10-21 Beijing (Oct 20 UTC source):
+  the official machine-learning feed already contains this article.
+- OpenHands software-agent-sdk v1.57.0, 2026-10-21: official GitHub Release
+  API observed this version.
+
+Two real candidate records from a successful Actions artifact are explicitly
+bootstrapped into state; they are NOT an assertion that all 54 initial items
+have already been committed. Future daily ingestion merges the full snapshot.
+
+Canonical `events.json` now contains two primary-source reviewed events,
+and one long-term tool-governance hypothesis received its first low-confidence,
+evidence-linked revision. The other hypotheses remain unassessed. The
+collector/evaluator may NOT modify those editorial records.
+
+To validate:
+    python -m unittest discover -s intel/tests -v
+    python -m intel.validate
+    python -m intel.evaluation
+
+The Gold audit must grow by independent human/research-agent reviewed events
+across different vendors, not by duplicating whatever the collector happens
+to see. Regularly sample missed major external news to avoid survivorship bias.

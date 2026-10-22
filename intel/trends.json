@@ -18,10 +18,24 @@
       "title": "MCP Gateway 与 Agent 工具治理层",
       "hypothesis": "工具能力发现与实际授权调用逐渐分层，形成 Registry、Broker、策略与审计的独立基础设施。",
       "falsification": "主流实际部署普遍维持点对点授权，独立 Gateway 在权限、延迟或运维上无法形成净收益。",
-      "status": "unassessed",
-      "confidence": "unassessed",
-      "evidence_event_ids": [],
-      "history": []
+      "status": "strengthening",
+      "confidence": "low",
+      "evidence_event_ids": [
+        "evt-49112bafb0929084"
+      ],
+      "history": [
+        {
+          "reviewed_at": "2026-10-22T06:25:58+00:00",
+          "reviewed_by": "Agent Infra research review",
+          "status": "strengthening",
+          "confidence": "low",
+          "new_evidence_event_ids": [
+            "evt-49112bafb0929084"
+          ],
+          "rationale": "AWS first-party technical guidance demonstrates Registry-based runtime discovery and separation of discovery metadata from credentials, strengthening the design-direction hypothesis. It is a single vendor's reference implementation and does not establish widespread adoption, independent correctness or throughput; confidence remains low."
+        }
+      ],
+      "last_reviewed_at": "2026-10-22T06:25:58+00:00"
     },
     {
       "id": "trend:sandbox-portability",

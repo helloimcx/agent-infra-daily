@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Small, independently reviewed event discovery audit. Hand-picked by editorial research. Never report this ratio as population recall.",
+  "events": [
+    {
+      "id": "gold-anthropic-claude-duet-20261021",
+      "title": "Anthropic introduced Claude Duet as a proactive Always-on Agent research preview",
+      "event_date_beijing": "2026-10-21",
+      "primary_url": "https://claude.com/resources/articles/claude-duet",
+      "expected_source_ids": [
+        "anthropic-announcements"
+      ],
+      "importance": "P0",
+      "reviewed_by": "Agent Infra research review",
+      "reviewed_at": "2026-10-22T06:25:58Z",
+      "verification_notes": "Read the official 21 October Anthropic product announcement and release notes. Claude Duet is a waitlist research preview for US Pro and Max, with cloud VM, connected-app checks and approval gates; the official page does not establish production HA or SLA. No Anthropic feed exists in the current 13-source collector configuration, so this is a known source gap, not a proven defect in an enabled feed."
+    },
+    {
+      "id": "gold-aws-agent-registry-discovery-20261021",
+      "title": "AWS documented runtime discovery of approved MCP and A2A capabilities through Agent Registry",
+      "event_date_beijing": "2026-10-21",
+      "primary_url": "https://aws.amazon.com/blogs/machine-learning/discover-tools-at-runtime-with-aws-agent-registry",
+      "expected_source_ids": [
+        "aws-ml"
+      ],
+      "importance": "P1",
+      "reviewed_by": "Agent Infra research review",
+      "reviewed_at": "2026-10-22T06:25:58Z",
+      "verification_notes": "Opened the first-party AWS technical article dated 20 October in the site timezone; the official RSS item provides 2026-10-20T16:22:24Z, which converts to 21 October Beijing. The post describes Discover/Instantiate/Execute, approved capability descriptors, and separate credential handling. This is a reference architecture and not measured evidence of cross-vendor universal interoperability."
+    },
+    {
+      "id": "gold-openhands-sdk-v157-20261021",
+      "title": "OpenHands released software-agent-sdk v1.57.0 with per-conversation runtime configuration",
+      "event_date_beijing": "2026-10-21",
+      "primary_url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.57.0",
+      "expected_source_ids": [
+        "release:OpenHands/software-agent-sdk"
+      ],
+      "importance": "P1",
+      "reviewed_by": "Agent Infra research review",
+      "reviewed_at": "2026-10-22T06:25:58Z",
+      "verification_notes": "Read the official GitHub release tag v1.57.0, published 2026-10-21T15:39:56Z (21 October Beijing). Release notes list per-conversation runtime choice/settings, SDK lifecycle declarations and cipher-key rotation safety. This verifies release content, not all deployments or production throughput."
+    }
+  ]
+}

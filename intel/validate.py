@@ -9,6 +9,8 @@ import json
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from intel.evaluation import validate_gold
+
 ROOT = Path("intel")
 
 
@@ -19,6 +21,8 @@ def check(root: Path = ROOT) -> list[str]:
     ledger = load("state/candidates.json")
     events_doc = load("events.json")
     trends_doc = load("trends.json")
+    gold = load("evaluation/gold_events.json")
+    errors.extend(validate_gold(gold))
     candidates = ledger.get("candidates", {})
     reverse = ledger.get("item_index", {})
     seen = {}
