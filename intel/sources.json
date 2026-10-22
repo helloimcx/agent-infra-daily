@@ -19,12 +19,6 @@
       "url": "https://rss.arxiv.org/rss/cs.AI",
       "topic": "research",
       "priority": "P1"
-    },
-    {
-      "id": "github-blog",
-      "url": "https://github.blog/feed/",
-      "topic": "harness",
-      "priority": "P1"
     }
   ],
   "github_releases": [
