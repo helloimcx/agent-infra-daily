@@ -93,7 +93,9 @@ def parse_feed(payload: bytes, source: dict, discovered: str) -> list[dict]:
     root = ET.fromstring(payload)
     out = []
     if root.tag.lower() in {"rss", "rdf", "{http://purl.org/rss/1.0/}rdf"}:
-        channel = _node(root, "channel") or root
+        channel = _node(root, "channel")
+        if channel is None:
+            channel = root
         nodes = channel.findall("item") or root.findall("{http://purl.org/rss/1.0/}item")
         for entry in nodes:
             item = make_item(source, "rss", _text(_node(entry, "title")),
@@ -142,9 +144,10 @@ def parse_releases(payload: bytes, source: dict, discovered: str) -> list[dict]:
 def fetch_http(url: str, headers: dict) -> tuple[bytes | None, int, dict]:
     try:
         with urlopen(Request(url, headers=headers), timeout=18) as response:
-            data = response.read(MAX_RESPONSE + 1)
-            if len(data) > MAX_RESPONSE:
-                raise ValueError("response exceeds 2 MB")
+            limit = 8_000_000 if urlsplit(url).hostname == "api.github.com" else MAX_RESPONSE
+            data = response.read(limit + 1)
+            if len(data) > limit:
+                raise ValueError("response exceeds configured safety bound")
             return data, response.status, {k.lower(): v for k, v in response.headers.items()}
     except HTTPError as error:
         if error.code == 304:
@@ -193,7 +196,7 @@ def collect(config: dict, state: dict, now: datetime, fetch=fetch_http,
     checks = {"ok": [], "not_modified": [], "errors": []}
     sources = [dict(x, kind="feed") for x in config.get("feeds", [])]
     sources += [dict(x, id="release:" + x["repo"], kind="github_release",
-                     url="https://api.github.com/repos/" + x["repo"] + "/releases?per_page=25")
+                     url="https://api.github.com/repos/" + x["repo"] + "/releases?per_page=10")
                 for x in config.get("github_releases", [])]
     for source in sources:
         sid = source["id"]
@@ -247,7 +250,17 @@ def collect(config: dict, state: dict, now: datetime, fetch=fetch_http,
             recent.append(item)
     recent.sort(key=lambda item: item.get("published_at") or item["first_discovered_at"],
                 reverse=True)
-    recent = recent[:250]
+    # Prevent high-volume research feeds from crowding out primary product releases.
+    balanced, per_source = [], {}
+    for item in recent:
+        sid = item["source_id"]
+        if per_source.get(sid, 0) >= 20:
+            continue
+        per_source[sid] = per_source.get(sid, 0) + 1
+        balanced.append(item)
+        if len(balanced) >= 180:
+            break
+    recent = balanced
     snapshot = {
         "schema_version": "1.0", "beijing_date": now.astimezone(BEIJING).date().isoformat(),
         "generated_at": discovered, "lookback_hours": max_age_hours,

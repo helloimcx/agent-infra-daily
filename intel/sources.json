@@ -9,18 +9,6 @@
       "priority": "P1"
     },
     {
-      "id": "github-ai",
-      "url": "https://github.blog/ai-and-ml/feed/",
-      "topic": "harness",
-      "priority": "P1"
-    },
-    {
-      "id": "langchain-blog",
-      "url": "https://blog.langchain.com/rss/",
-      "topic": "runtime",
-      "priority": "P1"
-    },
-    {
       "id": "huggingface-blog",
       "url": "https://huggingface.co/blog/feed.xml",
       "topic": "research",
@@ -30,6 +18,12 @@
       "id": "arxiv-cs-ai",
       "url": "https://rss.arxiv.org/rss/cs.AI",
       "topic": "research",
+      "priority": "P1"
+    },
+    {
+      "id": "github-blog",
+      "url": "https://github.blog/feed/",
+      "topic": "harness",
       "priority": "P1"
     }
   ],
