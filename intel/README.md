@@ -335,3 +335,44 @@ an explicit reason, rather than silently changing the frozen original.
 - Neither has an adjudicated outcome; aggregate calibration stays unavailable.
   Future reviewers must open original vendor docs and release histories,
   checking the frozen product/vendor scopes and outcome deadline.
+
+
+## Daily publication watchdog (reliability fix, 2026-10-23)
+
+A ChatGPT automation triggering is NOT proof of a published daily brief.
+The independent GitHub Actions workflow
+`.github/workflows/verify-daily-delivery.yml` now runs daily at
+**11:30 Asia/Shanghai** (03:30 UTC), following the existing `08:00`
+ChatGPT research task and `06:30` candidate snapshot.
+
+It verifies that `_posts/YYYY-MM-DD-agent-infra-daily.md` exists on main,
+has front matter (layout/title/date/summary/tags) and nonempty research
+and sources; `_data/kg/deltas/YYYY-MM-DD.json` must also exist with four
+correctly typed change-list fields and a matching Beijing date.
+
+It also runs the existing, unmodified `scripts/validate_entities.py`
+knowledge content validator and checks that the CURRENT main commit SHA
+has a successful Pages deployment (rather than accepting a prior run).
+A push of the guard code triggers a local/structural smoke test; scheduled
+runs additionally verify Pages so a just-created post isn't mistakenly
+called failed while its deployment is pending.
+
+On a scheduled failure, the workflow attempts to create one deduplicated
+GitHub Issue titled `[Agent Infra Daily] Delivery failed on YYYY-MM-DD`.
+The issue provides the checked commit, failure evidence and repair steps.
+Creation requires GitHub Issues to be enabled and the Actions token to
+have issue-write permission. GitHub Issues are **not ChatGPT push alerts**;
+actual notification delivery depends on the user's GitHub notification
+subscriptions. ChatGPT Tasks notifications must be enabled separately
+in the ChatGPT UI. Failure of issue creation will also leave a failed
+GitHub Actions run; no false notification success should be claimed.
+
+Local smoke test and actual daily acceptance test:
+
+    python -m unittest discover -s tests -p 'test_daily_publish_guard.py' -v
+    python scripts/check_daily_delivery.py --date 2026-10-23
+    python scripts/validate_entities.py
+
+The watchdog does not invent or automatically write a daily brief, and it
+never pushes commits to main. Recovery stays with the research automation
+or an explicitly audited editor.

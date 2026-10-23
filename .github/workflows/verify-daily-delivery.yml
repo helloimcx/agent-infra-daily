@@ -1,0 +1,102 @@
+name: Verify Daily Agent Infra Delivery
+
+on:
+  schedule:
+    - cron: "30 3 * * *" # Beijing 11:30; after ~08:00 ChatGPT daily task
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/check_daily_delivery.py"
+      - "tests/test_daily_publish_guard.py"
+      - ".github/workflows/verify-daily-delivery.yml"
+
+permissions:
+  contents: read
+  actions: read
+  issues: write
+
+concurrency:
+  group: verify-agent-infra-daily
+  cancel-in-progress: false
+
+jobs:
+  delivery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify guard tests and existing KG quality gate
+        run: |
+          python -m unittest discover -s tests -p 'test_daily_publish_guard.py' -v
+          python scripts/validate_entities.py
+      - name: Check today's daily post and KG delta; scheduled runs also check Pages
+        id: delivery
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          DATE=$(TZ=Asia/Shanghai date +%F)
+          if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+            python scripts/check_daily_delivery.py --date "$DATE" \
+              --report-json "$RUNNER_TEMP/daily-delivery.json"
+          else
+            gh api "repos/$GITHUB_REPOSITORY/actions/runs?per_page=75" > "$RUNNER_TEMP/pages-runs.json"
+            python scripts/check_daily_delivery.py --date "$DATE" \
+              --runs-json "$RUNNER_TEMP/pages-runs.json" \
+              --head-sha "$(git rev-parse HEAD)" \
+              --report-json "$RUNNER_TEMP/daily-delivery.json"
+          fi
+      - name: Alert once per date via GitHub Issue on scheduled delivery failure
+        if: failure() && github.event_name == 'schedule'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          DATE=$(TZ=Asia/Shanghai date +%F)
+          TITLE="[Agent Infra Daily] Delivery failed on $DATE"
+          EXISTING=$(gh api "repos/$GITHUB_REPOSITORY/issues?state=all&per_page=100" \
+            --jq ".[] | select(.title == \"$TITLE\") | .number" | head -n1)
+          if [[ -n "$EXISTING" ]]; then
+            echo "Issue #$EXISTING already exists for $DATE; no duplicate."
+            exit 0
+          fi
+          {
+            echo "## Scheduled daily publication verification failed"
+            echo
+            echo "- Beijing date: **$DATE**"
+            echo "- Checked branch: **main**"
+            echo "- Current commit: **$(git rev-parse HEAD)**"
+            echo "- Watchdog run: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            echo
+            echo "The daily post, KG delta, knowledge validator and/or matching Pages deployment did not pass."
+            echo "The ChatGPT reminder trigger is NOT sufficient to establish publication."
+            echo
+            echo "### Evidence"
+            if [[ -f "$RUNNER_TEMP/daily-delivery.json" ]]; then
+              echo '~~~json'
+              cat "$RUNNER_TEMP/daily-delivery.json"
+              echo '~~~'
+            else
+              echo "Validation failed before a report was emitted; inspect workflow logs."
+            fi
+            echo
+            echo "### Recovery"
+            echo "1. Read daily task output and source evidence."
+            echo "2. Publish the missing daily Markdown post and KG delta directly to main without force."
+            echo "3. Confirm authored knowledge validation and Pages success at new main SHA."
+            echo "4. Close this issue after independent verification."
+          } > "$RUNNER_TEMP/delivery-issue.md"
+          gh issue create --repo "$GITHUB_REPOSITORY" \
+            --title "$TITLE" --body-file "$RUNNER_TEMP/delivery-issue.md"
+      - name: Mark failed delivery as failed job
+        if: failure()
+        run: |
+          echo "::error::Daily Agent Infra publication verification failed. Review the report and issue (scheduled runs)."
+          exit 1
