@@ -119,5 +119,16 @@
         "/blog/"
       ]
     }
+  ],
+  "listings": [
+    {
+      "id": "claude-announcements",
+      "url": "https://claude.com/resources/product-announcements",
+      "topic": "cloud-agent",
+      "priority": "P0",
+      "include_prefixes": [
+        "/resources/articles/"
+      ]
+    }
   ]
 }

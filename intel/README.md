@@ -160,3 +160,25 @@ that was configured but did not yield the expected original URL.
 
 Do not automatically add discovered URL titles to the canonical KG; maintain
 the evidence review contract described in the earlier phases.
+
+### Phase 4 source smoke-test findings
+
+A real GitHub Actions run of the initial expanded source list collected 92
+candidates from 19 sources. The OpenAI, DeepMind, Google AI and Mistral feeds
+returned parseable entries, and the Anthropic official sitemap returned 112
+recently modified URL hints. However the Claude product sitemap returned ZERO.
+A successful HTTP request does not imply meaningful event coverage.
+
+The collector therefore also scans the first-party Claude product-announcements
+HTML listing, extracting only approved same-host /resources/articles/ links.
+These are discovery candidates only: published_at stays null, with
+date_basis=official_listing_no_verified_publication_time. No HTML-based
+inferred time may become the actual release date without opening the original.
+
+A zero-result official sitemap/listing is now exposed as a source warning,
+and a partial source health status, even if HTTP returned 200.
+
+The gold evaluation now includes configured official sitemaps and listing IDs
+when classifying source_not_monitored vs in_scope_not_observed. This fixes a
+previous audit misclassification where a monitored sitemap was mistakenly
+not included in the configured-source set.

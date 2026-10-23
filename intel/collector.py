@@ -20,7 +20,7 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 import xml.etree.ElementTree as ET
 
-from intel.site_discovery import sitemap_discovery
+from intel.site_discovery import sitemap_discovery, official_listing_discovery
 
 BEIJING = timezone(timedelta(hours=8))
 ATOM = "{http://www.w3.org/2005/Atom}"
@@ -201,6 +201,7 @@ def collect(config: dict, state: dict, now: datetime, fetch=fetch_http,
                      url="https://api.github.com/repos/" + x["repo"] + "/releases?per_page=10")
                 for x in config.get("github_releases", [])]
     sources += [dict(x, kind="official_sitemap") for x in config.get("sitemaps", [])]
+    sources += [dict(x, kind="official_listing") for x in config.get("listings", [])]
     for source in sources:
         sid = source["id"]
         headers = {"User-Agent": "AgentInfraIntel/1.0 (github.com/helloimcx/agent-infra-daily)",
@@ -225,6 +226,19 @@ def collect(config: dict, state: dict, now: datetime, fetch=fetch_http,
                         item["first_discovered_at"] = old_item["first_discovered_at"]
                     seen[item["id"]] = item
                 checks["ok"].append({"id": sid, "entries": len(incoming)})
+                if not incoming:
+                    checks["warnings"].append({"id": sid, "warning": "no recent sitemap articles matched; this source may be ineffective"})
+                continue
+            if source["kind"] == "official_listing":
+                incoming = official_listing_discovery(source, now, fetch, stamp, make_item)
+                for item in incoming:
+                    old_item = seen.get(item["id"])
+                    if old_item:
+                        item["first_discovered_at"] = old_item["first_discovered_at"]
+                    seen[item["id"]] = item
+                checks["ok"].append({"id": sid, "entries": len(incoming)})
+                if not incoming:
+                    checks["warnings"].append({"id": sid, "warning": "no product links matched the official listing"})
                 continue
             payload, status, response_headers = fetch(source["url"], headers)
             if status == 304:

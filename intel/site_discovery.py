@@ -6,6 +6,7 @@ Only HTTPS links under the configured official hostname and path prefixes pass.
 from __future__ import annotations
 from datetime import timedelta
 import re
+from html.parser import HTMLParser
 from urllib.parse import urlsplit
 import xml.etree.ElementTree as ET
 

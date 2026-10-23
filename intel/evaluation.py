@@ -68,6 +68,8 @@ def evaluate(snapshot: dict, gold: dict, source_config: dict) -> dict:
     }
     configured = {x["id"] for x in source_config.get("feeds", [])}
     configured |= {"release:" + x["repo"] for x in source_config.get("github_releases", [])}
+    configured |= {x["id"] for x in source_config.get("sitemaps", [])}
+    configured |= {x["id"] for x in source_config.get("listings", [])}
     results = []
     for event in gold["events"]:
         # Gold event timestamps are grounded in the cited original; day-only

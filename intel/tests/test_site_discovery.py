@@ -1,6 +1,6 @@
 import unittest
 from datetime import datetime,timezone
-from intel.site_discovery import sitemap_discovery, page_title
+from intel.site_discovery import sitemap_discovery, page_title, official_listing_discovery
 from intel.collector import collect, stamp, make_item
 
 NOW=datetime(2026,10,23,1,0,tzinfo=timezone.utc)
@@ -47,6 +47,31 @@ class SiteDiscoveryTests(unittest.TestCase):
         self.assertFalse(found)
         self.assertEqual(len(calls),1)
         self.assertTrue(any("cross-origin" in x for x in warnings))
+
+    def test_first_party_product_listing(self):
+        source={"id":"claude-announcements",
+                "url":"https://claude.com/resources/product-announcements",
+                "topic":"cloud-agent","priority":"P0",
+                "include_prefixes":["/resources/articles/"]}
+        payload=b'''<html><main>
+          <a href="/resources/articles/claude-duet"><span>Article</span>
+          <strong>Introducing Claude Duet</strong><span>Oct 21, 2026</span></a>
+          <a href="https://outside.example/resources/articles/prompt-injection">Fake</a>
+          <a href="/resources/webinars/something">Unrelated</a>
+        </main></html>'''
+        entries=official_listing_discovery(source,NOW,lambda url,headers:(payload,200,{}),stamp,make_item)
+        self.assertEqual(len(entries),1)
+        self.assertEqual(entries[0]["url"],"https://claude.com/resources/articles/claude-duet")
+        self.assertIsNone(entries[0]["published_at"])
+        self.assertIn("Duet",entries[0]["title"])
+        self.assertEqual(entries[0]["date_basis"],"official_listing_no_verified_publication_time")
+
+    def test_empty_sitemap_is_degraded_not_silent(self):
+        xml=b'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>'
+        state,run=collect({"sitemaps":[SRC]}, {}, NOW, lambda url,headers:(xml,200,{}))
+        self.assertEqual(run["item_count"],0)
+        self.assertEqual(run["status"],"partial")
+        self.assertEqual(len(run["source_checks"]["warnings"]),1)
 
     def test_entity_payload_rejected(self):
         def evil(url,headers):
