@@ -8,6 +8,7 @@
   const events = document.getElementById("intel-events");
   const audit = document.getElementById("intel-audit");
   const note = document.getElementById("intel-quality-note");
+  const triage = document.getElementById("intel-triage");
   const element = (tag, text, className) => {
     const el = document.createElement(tag);
     if (text !== undefined) el.textContent = String(text);
@@ -20,6 +21,26 @@
     if (!response.ok) throw new Error(file + " HTTP " + response.status);
     return response.json();
   }
+  getJson("triage/latest.json").then(q => {
+    const items = (q.items || []).slice(0, 8);
+    if (!items.length) {
+      empty(triage, "今日尚无待审阅候选，或每日快照尚未生成。");
+      return;
+    }
+    triage.replaceChildren(...items.map(item => {
+      const card = element("article", undefined, "intel-item");
+      card.append(element("span", item.topic + " · 未核验候选", "intel-state"));
+      const link = element("a", item.title);
+      link.href = item.url;
+      link.rel = "noopener noreferrer";
+      link.target = "_blank";
+      const heading = element("h3"); heading.append(link);
+      card.append(heading, element("p", "来源：" + item.source_id +
+        "。审阅排序依据：" + (item.review_order_reasons || []).join("、")),
+        element("div", "请打开一手原文核对时间、架构意义和局限性", "subline"));
+      return card;
+    }));
+  }).catch(() => empty(triage, "每日审阅队列尚未发布；待北京时间 06:30 快照入库。"));
   Promise.all([getJson("trends.json"), getJson("events.json"), getJson("quality/latest.json"), getJson("quality/coverage.json")])
     .then(([tr, ev, q, coverage]) => {
       const health = q.source_health || {};

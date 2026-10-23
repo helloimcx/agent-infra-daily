@@ -1,0 +1,79 @@
+name: Weekly Agent Infra Intelligence Audit
+
+on:
+  schedule:
+    - cron: "0 1 * * 0" # Sunday 09:00 Beijing; after daily snapshot
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: "Publish a new weekly worksheet directly to main (never overwrite existing review)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: agent-infra-ingestion
+  cancel-in-progress: false
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test and verify curated evidence
+        run: |
+          python -m unittest discover -s intel/tests -v
+          python -m intel.validate
+      - name: Generate editorial weekly worksheet
+        run: python -m intel.weekly_quality --output intel/output/weekly-audit.json
+      - name: Archive weekly worksheet artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-infra-weekly-audit-${{ github.run_id }}
+          path: intel/output/weekly-audit.json
+          retention-days: 60
+      - name: Publish first worksheet for this ISO week, directly to main
+        if: github.event_name == 'schedule' || inputs.publish == true
+        shell: bash
+        run: |
+          set -euo pipefail
+          WEEK=$(python - <<'PY'
+          import datetime, zoneinfo
+          iso=datetime.datetime.now(zoneinfo.ZoneInfo('Asia/Shanghai')).isocalendar()
+          print(f"{iso.year}-W{iso.week:02d}")
+          PY
+          )
+          DEST="intel/weekly/$WEEK.json"
+          git fetch origin main
+          if git cat-file -e "origin/main:$DEST" 2>/dev/null; then
+            echo "Weekly worksheet already exists; preserve editorial content"
+            exit 0
+          fi
+          mkdir -p intel/weekly
+          cp intel/output/weekly-audit.json "$DEST"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DEST"
+          git commit -m "intel: $WEEK weekly intelligence review worksheet"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if git cat-file -e "origin/main:$DEST" 2>/dev/null; then
+              echo "Concurrent weekly worksheet exists; do not overwrite"
+              exit 0
+            fi
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo "Weekly worksheet published to main"
+              exit 0
+            fi
+          done
+          echo "FAILED: could not safely fast-forward main" >&2
+          exit 1

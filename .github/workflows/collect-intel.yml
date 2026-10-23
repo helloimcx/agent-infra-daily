@@ -18,6 +18,8 @@ on:
       - "intel/review.py"
       - "intel/validate.py"
       - "intel/evaluation.py"
+      - "intel/triage.py"
+      - "intel/weekly_quality.py"
       - "intel/site_discovery.py"
       - "intel/evaluation/gold_events.json"
       - "intel/events.json"
@@ -78,6 +80,8 @@ jobs:
         run: |
           python -m intel.intelligence
           python -m intel.evaluation
+          python -m intel.triage
+          python -m intel.weekly_quality --output intel/output/weekly-preview.json
           python -m intel.validate
       - uses: actions/cache/save@v4
         if: success()
@@ -92,6 +96,8 @@ jobs:
             intel/output/candidates.json
             intel/quality/latest.json
             intel/quality/coverage.json
+            intel/triage/latest.json
+            intel/output/weekly-preview.json
           if-no-files-found: warn
           retention-days: 30
       - name: Publish compact Beijing-date snapshot to main
@@ -104,7 +110,7 @@ jobs:
           cp intel/output/candidates.json "intel/daily/$DATE.json"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "intel/daily/$DATE.json" intel/state/candidates.json intel/quality/latest.json intel/quality/coverage.json
+          git add "intel/daily/$DATE.json" intel/state/candidates.json intel/quality/latest.json intel/quality/coverage.json intel/triage/latest.json
           if git diff --cached --quiet; then
             echo "Snapshot already identical"
             exit 0

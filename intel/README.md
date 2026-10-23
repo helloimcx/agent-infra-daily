@@ -196,3 +196,49 @@ snapshot. This prevents confusing normal RSS window expiry and release
 pagination with a never-detected event. The quality report separates
 snapshot_captured_count and historical_captured_count. Every item still
 requires editorial review before being called a verified technology event.
+
+
+## Phase 5 — transparent review ordering and independent weekly checks
+
+The new `intel/triage.py` produces `intel/triage/latest.json` from the most
+recent snapshot, persistent candidate IDs and curated verified events.
+It DOES NOT classify true significance or make claims. Its deterministic
+reading order uses configured editorial source priority, official Release/Feed
+provenance and claimed timestamps only. Official listing/sitemap discovery
+has no verified publication time and earns no recency bonus. Curated verified
+Events are omitted from the queue. Explanations and per-source/topic caps
+are always recorded. Score is not a probability or confidence estimate.
+
+The daily GitHub Actions job attaches this queue to the workflow artifact;
+only the Beijing 06:30 publication commits it to main. The daily research
+task should use the queue as a reading suggestion, not a source of truth
+or replacement for direct independent discovery.
+
+The `Weekly Agent Infra Intelligence Audit` GitHub Actions workflow runs
+Sundays at 09:00 Beijing, following the daily snapshot. It validates
+everything and writes `intel/weekly/YYYY-Www.json` directly to main if
+the weekly worksheet does not exist. Existing weekly worksheet editorial
+annotations are never overwritten. Manual dispatch defaults to dry run.
+
+A weekly worksheet records source freshness, candidate backlog, sampled
+gold coverage, verified events reviewed in the past seven days, trend
+revision evidence, stale hypotheses, and four independent review tasks:
+model-provider launches, cloud runtime/security, research/standards, and
+counterexample/unknown-source discovery.
+
+IMPORTANT: generating this worksheet does NOT mean independent research
+was performed. Each task initially has status
+`pending_independent_primary_source_search`. The final editorial signoff
+remains `pending` until a researcher reviews original sources beyond
+the queue, records misses, and challenges prior trend judgments.
+No spurious prediction-accuracy metric is calculated; true calibration
+requires registered forecasts and independent outcome checks.
+
+Run with stdlib Python 3.12:
+
+    python -m intel.triage
+    python -m intel.weekly_quality --output intel/output/weekly-preview.json
+    python -m unittest discover -s intel/tests -v
+    python -m intel.validate
+
+These quality modules do not modify the existing curated KG/Claims/Monographs.
