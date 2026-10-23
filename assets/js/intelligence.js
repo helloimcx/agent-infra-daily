@@ -9,6 +9,7 @@
   const audit = document.getElementById("intel-audit");
   const note = document.getElementById("intel-quality-note");
   const triage = document.getElementById("intel-triage");
+  const forecasts = document.getElementById("intel-forecasts");
   const element = (tag, text, className) => {
     const el = document.createElement(tag);
     if (text !== undefined) el.textContent = String(text);
@@ -41,6 +42,29 @@
       return card;
     }));
   }).catch(() => empty(triage, "每日审阅队列尚未发布；待北京时间 06:30 快照入库。"));
+  getJson("quality/forecast_calibration.json").then(report => {
+    const counts=report.counts || {};
+    const cards=[];
+    const intro=element("article",undefined,"intel-item");
+    intro.append(
+      element("span","可核验的预测记录 · 不自动判定","intel-state"),
+      element("h3","登记 "+(counts.registered ?? 0)+" · 到期待审 "+(counts.due_for_review ?? 0)),
+      element("p","经人工证据判定 "+(counts.resolved_binary ?? 0)+" 项；已作废 "+(counts.voided ?? 0)+" 项。"+
+        (report.aggregate_brier_score === null ?
+        "样本尚不足以计算汇总 Brier 评分。":
+        "小样本已判定 Brier 均值："+report.aggregate_brier_score+"；不可外推为预测能力。"))
+    );
+    cards.push(intro);
+    for (const f of (report.unresolved || []).slice(0,6)) {
+      const card=element("article",undefined,"intel-item");
+      card.append(element("span",f.due_for_outcome_review?"已到期 · 待独立复核":"预测尚未到期","intel-state"),
+        element("h3",f.question),element("p","预登记主观 P(YES)："+Math.round(f.predicted_yes*100)+
+          "% · 判定日期："+f.target_date),
+        element("div","必须读取一手证据，不能因超期就自动判定失败","subline"));
+      cards.push(card);
+    }
+    forecasts.replaceChildren(...cards);
+  }).catch(() => empty(forecasts,"预测校准数据尚未生成或发布。"));
   Promise.all([getJson("trends.json"), getJson("events.json"), getJson("quality/latest.json"), getJson("quality/coverage.json")])
     .then(([tr, ev, q, coverage]) => {
       const health = q.source_health || {};

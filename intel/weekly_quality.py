@@ -29,7 +29,8 @@ AUDIT_LANES = [
 ]
 
 def weekly_report(now: datetime, latest: dict, coverage: dict, ledger: dict,
-                  events: dict, trends: dict, triage: dict, gold: dict) -> dict:
+                  events: dict, trends: dict, triage: dict, gold: dict,
+                  forecast_calibration: dict | None = None) -> dict:
     now = now.astimezone(timezone.utc)
     start = now - timedelta(days=7)
     if latest.get("generated_at"):
@@ -106,6 +107,12 @@ def weekly_report(now: datetime, latest: dict, coverage: dict, ledger: dict,
         },
         "verified_events_reviewed_last_7d": recent_events,
         "trend_calibration": topics,
+        "forecast_retrospective": {
+            "counts": (forecast_calibration or {}).get("counts", {}),
+            "aggregate_brier_score": (forecast_calibration or {}).get("aggregate_brier_score"),
+            "score_state": (forecast_calibration or {}).get("score_state", "not_available"),
+            "note": "Overdue predicts need evidence review; no automatic resolution or claimed skill."
+        },
         "independent_review_audit": audit,
         "final_editorial_signoff": {
             "status": "pending",
@@ -141,7 +148,8 @@ def main():
         read(args.latest, {}), read(args.coverage, {}),
         read(args.ledger, {}), read(args.events, {"events": []}),
         read(args.trends, {"trends": []}), read(args.triage, {}),
-        read(args.gold, {"events": []}))
+        read(args.gold, {"events": []}),
+        read("intel/quality/forecast_calibration.json", {}))
     path = args.output or ("intel/weekly/" + result["week_beijing"] + ".json")
     save(path, result)
     print(f"weekly_worksheet={result['week_beijing']}; "

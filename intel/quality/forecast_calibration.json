@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "kind": "editorial_binary_forecast_retrospective",
+  "generated_at": null,
+  "counts": {
+    "registered": 0,
+    "open": 0,
+    "due_for_review": 0,
+    "resolved_binary": 0,
+    "voided": 0
+  },
+  "aggregate_brier_score": null,
+  "score_state": "insufficient_resolved_sample_minimum_5",
+  "unresolved": [],
+  "resolved": [],
+  "voided": [],
+  "limitations": [
+    "Initial empty registry. Do not claim prediction quality without independently adjudicated outcomes.",
+    "Automatic collectors cannot author or resolve forecasts."
+  ]
+}

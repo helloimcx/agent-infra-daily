@@ -32,6 +32,8 @@ jobs:
         run: |
           python -m unittest discover -s intel/tests -v
           python -m intel.validate
+      - name: Calculate reviewed forecast outcomes (no automatic adjudication)
+        run: python -m intel.calibration
       - name: Generate editorial weekly worksheet
         run: python -m intel.weekly_quality --output intel/output/weekly-audit.json
       - name: Archive weekly worksheet artifact

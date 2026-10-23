@@ -10,6 +10,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from intel.evaluation import validate_gold
+from intel.forecasts import validate as validate_forecasts
 
 ROOT = Path("intel")
 
@@ -90,6 +91,9 @@ def check(root: Path = ROOT) -> list[str]:
             observed.update(changes)
         if observed != set(links):
             errors.append("trend evidence not justified by revision history: " + str(tid))
+    forecasts_doc = load("forecasts.json")
+    outcomes_doc = load("forecast_outcomes.json")
+    errors.extend(validate_forecasts(forecasts_doc, outcomes_doc, events_doc, trends_doc))
     return errors
 
 

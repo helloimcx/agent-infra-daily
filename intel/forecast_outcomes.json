@@ -1,0 +1,5 @@
+{
+  "schema_version": "1.0",
+  "description": "Human/research-agent primary-source adjudications of registered forecasts. Append-only and separate from frozen forecast parameters.",
+  "outcomes": []
+}

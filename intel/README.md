@@ -242,3 +242,60 @@ Run with stdlib Python 3.12:
     python -m intel.validate
 
 These quality modules do not modify the existing curated KG/Claims/Monographs.
+
+
+## Phase 6 — pre-registered and falsifiable architecture forecasts
+
+The long-term trend labels strengthening/weakening are NOT calibrated
+predictions. Two editorially owned data stores now exist:
+
+- `intel/forecasts.json` freezes forecast ID, linked Trend, explicit
+  YES/NO criteria, time horizon, subjective P(YES), verified-event baseline,
+  source limitations, reviewer and architecture decision impact.
+- `intel/forecast_outcomes.json` stores separately reviewed YES, NO, or
+  VOID judgments, evidence URLs and applicable verified canonical events.
+
+The collector, RSS triage and unattended weekly audit must NEVER make or
+resolve predictions. Forecast parameters are frozen at registration. An
+overdue prediction simply needs review; it is never automatically wrong.
+YES needs a new first-party verified Event inside the registered interval.
+NO requires reaching the deadline and independent examination of at least
+two official primary-source URLs. VOID must document an invalid criterion;
+it is never counted as a correct prediction. The registration/outcome CLI
+blocks duplicate IDs and overwriting existing outcome reviews.
+
+To register a researched forecast (replace placeholders with substantive
+text and actual verified IDs):
+
+    python -m intel.forecasts register --forecast-id fc-... \
+      --trend-id trend:tool-governance --question "..." \
+      --yes-condition "..." --no-condition "..." \
+      --target-date YYYY-MM-DD --probability-yes 0.55 \
+      --baseline-event-id evt-... --baseline-note "..." \
+      --decision-impact "..." --reviewer "Research editor"
+
+To record an editorial resolution after reading original source material:
+
+    python -m intel.forecasts resolve --forecast-id fc-... \
+      --outcome yes --evidence-event-id evt-... \
+      --reviewed-url https://official.example/original \
+      --rationale "..." --reviewer "Research editor"
+
+Run validation and retrospective report:
+
+    python -m unittest discover -s intel/tests -v
+    python -m intel.validate
+    python -m intel.calibration
+
+`intel/quality/forecast_calibration.json` counts registered, unresolved,
+overdue, and binary editorially resolved forecasts. A Brier mean is shown
+ONLY after at least five binary outcomes are adjudicated. Even a Brier mean
+after five is sample-bound and not evidence of superiority to a baseline.
+VOID outcomes are shown separately, never counted as correct.
+
+Both new permanent editorial stores begin EMPTY. Historical observations
+must not be backdated as forecasts and probabilities must never be chosen
+after observing the outcome. Researchers may add genuine forecasts only
+after independently reviewing the original evidence and freezing an
+unambiguous testable proposition. The weekly audit surfaces overdue work
+but is not proof an independent evidence review happened.
