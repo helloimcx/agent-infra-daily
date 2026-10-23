@@ -110,3 +110,69 @@ def sitemap_discovery(source, now, fetch, stamp, make_item):
 
     walk(source["url"], 0)
     return list(items.values()), failures
+
+
+class _OfficialListingParser(HTMLParser):
+    """Extract anchor hrefs and nested visible text, ignoring script content."""
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.anchors = []
+        self.active = []
+        self.inside_script = 0
+    def handle_starttag(self, tag, attrs):
+        if tag in {"script", "style"}:
+            self.inside_script += 1
+        elif tag == "a" and not self.inside_script:
+            self.active.append([dict(attrs).get("href", ""), []])
+    def handle_data(self, data):
+        if not self.inside_script:
+            for anchor in self.active:
+                anchor[1].append(data)
+    def handle_endtag(self, tag):
+        if tag in {"script", "style"} and self.inside_script:
+            self.inside_script -= 1
+        elif tag == "a" and self.active:
+            href, parts = self.active.pop()
+            self.anchors.append((href, " ".join(parts).strip()))
+
+
+def official_listing_discovery(source, now, fetch, stamp, make_item):
+    """Read an official product-announcements listing for approved article URLs.
+
+    Listing discovery is not publication-date verification. All discovered
+    items keep published_at=None and must be checked against the original.
+    """
+    from urllib.parse import urljoin
+    origin = urlsplit(source["url"])
+    if origin.scheme != "https" or not origin.hostname:
+        raise ValueError("official listing requires HTTPS")
+    if not source.get("include_prefixes"):
+        raise ValueError("official listing requires approved path prefixes")
+    payload, status, _ = fetch(source["url"], {
+        "User-Agent": "AgentInfraIntel/1.0",
+        "Accept": "text/html"
+    })
+    if status != 200 or payload is None:
+        raise ValueError("official listing unexpected HTTP status")
+    if len(payload) > 2_000_000:
+        raise ValueError("official listing HTML exceeds 2 MB")
+    parser = _OfficialListingParser()
+    parser.feed(payload.decode("utf-8", errors="replace"))
+    items = {}
+    for href, label in parser.anchors:
+        full = urljoin(source["url"], href)
+        target = urlsplit(full)
+        if target.scheme != "https" or target.hostname != origin.hostname:
+            continue
+        if not any(target.path.startswith(prefix) for prefix in source["include_prefixes"]):
+            continue
+        title = label if len(label.strip()) >= 5 else page_title(full)
+        result = make_item(source, "official_listing", title, full, None,
+                           "Official website listing. Verify actual publication date and claims on the original.",
+                           now.isoformat(timespec="seconds"))
+        if result:
+            result["date_basis"] = "official_listing_no_verified_publication_time"
+            items[result["id"]] = result
+        if len(items) >= 40:
+            break
+    return list(items.values())
