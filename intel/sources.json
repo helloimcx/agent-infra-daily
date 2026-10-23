@@ -19,6 +19,30 @@
       "url": "https://rss.arxiv.org/rss/cs.AI",
       "topic": "research",
       "priority": "P1"
+    },
+    {
+      "id": "openai-news",
+      "url": "https://openai.com/news/rss.xml",
+      "topic": "harness",
+      "priority": "P0"
+    },
+    {
+      "id": "deepmind-blog",
+      "url": "https://deepmind.google/blog/rss.xml",
+      "topic": "research",
+      "priority": "P0"
+    },
+    {
+      "id": "google-ai",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/rss/",
+      "topic": "harness",
+      "priority": "P1"
+    },
+    {
+      "id": "mistral-news",
+      "url": "https://mistral.ai/news/rss",
+      "topic": "harness",
+      "priority": "P1"
     }
   ],
   "github_releases": [
@@ -71,6 +95,29 @@
       "repo": "a2aproject/A2A",
       "topic": "protocol",
       "priority": "P0"
+    }
+  ],
+  "sitemaps": [
+    {
+      "id": "anthropic-site",
+      "url": "https://www.anthropic.com/sitemap.xml",
+      "topic": "harness",
+      "priority": "P0",
+      "include_prefixes": [
+        "/news/",
+        "/engineering/",
+        "/research/"
+      ]
+    },
+    {
+      "id": "claude-product",
+      "url": "https://claude.com/sitemap.xml",
+      "topic": "cloud-agent",
+      "priority": "P0",
+      "include_prefixes": [
+        "/resources/articles/",
+        "/blog/"
+      ]
     }
   ]
 }

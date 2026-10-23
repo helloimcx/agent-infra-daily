@@ -18,6 +18,7 @@ on:
       - "intel/review.py"
       - "intel/validate.py"
       - "intel/evaluation.py"
+      - "intel/site_discovery.py"
       - "intel/evaluation/gold_events.json"
       - "intel/events.json"
       - "intel/trends.json"

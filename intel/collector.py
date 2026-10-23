@@ -20,6 +20,8 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 import xml.etree.ElementTree as ET
 
+from intel.site_discovery import sitemap_discovery
+
 BEIJING = timezone(timedelta(hours=8))
 ATOM = "{http://www.w3.org/2005/Atom}"
 MAX_RESPONSE = 2_000_000
@@ -193,11 +195,12 @@ def collect(config: dict, state: dict, now: datetime, fetch=fetch_http,
     seen = state.setdefault("items", {})
     validators = state.setdefault("validators", {})
     discovered = now.isoformat(timespec="seconds")
-    checks = {"ok": [], "not_modified": [], "errors": []}
+    checks = {"ok": [], "not_modified": [], "errors": [], "warnings": []}
     sources = [dict(x, kind="feed") for x in config.get("feeds", [])]
     sources += [dict(x, id="release:" + x["repo"], kind="github_release",
                      url="https://api.github.com/repos/" + x["repo"] + "/releases?per_page=10")
                 for x in config.get("github_releases", [])]
+    sources += [dict(x, kind="official_sitemap") for x in config.get("sitemaps", [])]
     for source in sources:
         sid = source["id"]
         headers = {"User-Agent": "AgentInfraIntel/1.0 (github.com/helloimcx/agent-infra-daily)",
@@ -212,6 +215,17 @@ def collect(config: dict, state: dict, now: datetime, fetch=fetch_http,
             if os.environ.get("GITHUB_TOKEN"):
                 headers["Authorization"] = "Bearer " + os.environ["GITHUB_TOKEN"]
         try:
+            if source["kind"] == "official_sitemap":
+                incoming, warnings = sitemap_discovery(source, now, fetch, stamp, make_item)
+                for warning in warnings:
+                    checks["warnings"].append({"id": sid, "warning": warning})
+                for item in incoming:
+                    old_item = seen.get(item["id"])
+                    if old_item:
+                        item["first_discovered_at"] = old_item["first_discovered_at"]
+                    seen[item["id"]] = item
+                checks["ok"].append({"id": sid, "entries": len(incoming)})
+                continue
             payload, status, response_headers = fetch(source["url"], headers)
             if status == 304:
                 checks["not_modified"].append(sid)
@@ -264,7 +278,7 @@ def collect(config: dict, state: dict, now: datetime, fetch=fetch_http,
     snapshot = {
         "schema_version": "1.0", "beijing_date": now.astimezone(BEIJING).date().isoformat(),
         "generated_at": discovered, "lookback_hours": max_age_hours,
-        "status": "partial" if checks["errors"] else "ok",
+        "status": "partial" if checks["errors"] or checks["warnings"] else "ok",
         "source_checks": checks, "item_count": len(recent),
         "items": recent, "event_candidates": candidate_events(recent),
         "usage_note": "Unverified candidates: verify first-party evidence, actual event time and independent sources before any trend/claim update."

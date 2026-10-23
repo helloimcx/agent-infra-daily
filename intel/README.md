@@ -132,3 +132,31 @@ To validate:
 The Gold audit must grow by independent human/research-agent reviewed events
 across different vendors, not by duplicating whatever the collector happens
 to see. Regularly sample missed major external news to avoid survivorship bias.
+
+## Phase 4 — official source discovery and coverage expansion
+
+The collector now reads additional official first-party RSS feeds:
+OpenAI News, Google DeepMind, Google AI Blog and Mistral News.
+Each URL must be live-tested through GitHub Actions; configuration is not
+proof that a feed is healthy or complete.
+
+Anthropic and Claude have no consistently documented official RSS endpoint.
+Instead the pipeline reads a narrowly scoped official XML sitemap from
+anthropic.com and claude.com when available. Only recently modified HTTPS
+article URLs on the configured host and approved path prefixes are admitted.
+Nested sitemap traversal is bounded and same-host only; DTD and entity
+declarations are rejected.
+
+**Sitemap lastmod is not an article publication timestamp.** A sitemap URL is
+a *discovery hint*, and items have published_at=null, date_basis=
+site_lastmod_not_publication. Actual event times and product maturity must
+be verified from the official original before any authored Event/Trend/Claim.
+
+Failure semantics: partial nested sitemap failures are reported as warnings,
+not hidden; unavailable sitemaps are errors. All listed source health and
+candidate totals must be reviewed after the real workflow run. The sample
+coverage audit distinguishes an unmonitored source from an official source
+that was configured but did not yield the expected original URL.
+
+Do not automatically add discovered URL titles to the canonical KG; maintain
+the evidence review contract described in the earlier phases.
