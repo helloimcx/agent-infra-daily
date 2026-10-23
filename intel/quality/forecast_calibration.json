@@ -1,21 +1,43 @@
 {
   "schema_version": "1.0",
   "kind": "editorial_binary_forecast_retrospective",
-  "generated_at": null,
+  "generated_at": "2026-10-23T02:36:59+00:00",
   "counts": {
-    "registered": 0,
-    "open": 0,
+    "registered": 2,
+    "open": 2,
     "due_for_review": 0,
     "resolved_binary": 0,
     "voided": 0
   },
   "aggregate_brier_score": null,
   "score_state": "insufficient_resolved_sample_minimum_5",
-  "unresolved": [],
+  "unresolved": [
+    {
+      "id": "fc-20261023-tool-policy-session",
+      "trend_id": "trend:tool-governance",
+      "question": "到2027-03-31，指定的非AWS工具平台中是否至少有一个正式交付跨步骤会话授权治理契约？",
+      "target_date": "2027-03-31",
+      "predicted_yes": 0.35,
+      "days_remaining": 159,
+      "due_for_outcome_review": false,
+      "status": "registered_not_yet_adjudicated"
+    },
+    {
+      "id": "fc-20261023-agentcore-session-storage",
+      "trend_id": "trend:cloud-agent-runtime",
+      "question": "到2027-03-31，AWS AgentCore microVM托管会话存储会同时正式商用并能跨运行时版本更新保留数据吗？",
+      "target_date": "2027-03-31",
+      "predicted_yes": 0.3,
+      "days_remaining": 159,
+      "due_for_outcome_review": false,
+      "status": "registered_not_yet_adjudicated"
+    }
+  ],
   "resolved": [],
   "voided": [],
   "limitations": [
-    "Initial empty registry. Do not claim prediction quality without independently adjudicated outcomes.",
-    "Automatic collectors cannot author or resolve forecasts."
+    "Only two subjective preregistered forecasts. Neither has an observed outcome, and no calibration estimate is justified.",
+    "Overdue predictions still need primary-source adjudication; no automatic success or failure.",
+    "Forecast evidence and boundaries are analyzed in /research/2026-10-23-cloud-agent-forecast-baselines/."
   ]
 }

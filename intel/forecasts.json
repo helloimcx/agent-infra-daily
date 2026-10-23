@@ -1,5 +1,42 @@
 {
   "schema_version": "1.0",
   "description": "Pre-registered, authored, falsifiable predictions; empty until editorial one-source verification and independent baseline review.",
-  "forecasts": []
+  "forecasts": [
+    {
+      "id": "fc-20261023-tool-policy-session",
+      "trend_id": "trend:tool-governance",
+      "question": "到2027-03-31，指定的非AWS工具平台中是否至少有一个正式交付跨步骤会话授权治理契约？",
+      "yes_condition": "YES only if, on or before 2027-03-31, either Google Cloud API Gateway MCP or OpenAI's official hosted MCP/Agents tool-execution service provides a non-preview first-party documented capability meeting ALL: original authenticated caller bound to a session; a stateful temporal rule evaluated across two or more tool invocations; propagation of that principal across an agent/tool execution hop; and a per-invocation allow/deny audit record. MCP connectivity, ordinary JWT checks, tool approval alone, tutorials, third-party proxies, or preview-only features do not qualify.",
+      "no_condition": "NO if neither of the two frozen provider/product scopes satisfies every required YES criterion by the deadline after reviewing both providers' official product docs, release history and authorization references covering registration through target date; unverified absence in an RSS feed does not suffice.",
+      "target_date": "2027-03-31",
+      "registered_at": "2026-10-23T02:36:59+00:00",
+      "reviewed_by": "Agent Infra research agent",
+      "probability_yes": 0.35,
+      "baseline_verified_event_ids": [
+        "evt-49112bafb0929084"
+      ],
+      "baseline_note": "Existing reviewed AWS Agent Registry event evt-49112bafb0929084 establishes runtime discovery without invocation credentials (2026-10-20 vendor blog, Beijing 10-21). AWS AgentCore Policy Sessions docs show separate principal-bound temporal policy, with same-account/Region propagation limitations (https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/policy-session-based-temporal.html). Google Cloud API Gateway MCP was explicitly Public Preview in the 2026-09-24 first-party post (https://developers.googleblog.com/turn-your-rest-apis-into-mcp-tools-with-google-cloud-api-gateway/). MCP authorization spec alone does not establish equivalent policy enforcement. These observations motivate but cannot prove absence elsewhere.",
+      "decision_impact": "Keep a vendor-neutral policy decision and principal-chain interface now. If YES, assess replacing a custom gateway for routine sessions after fault/tenant isolation tests; if NO, fund first-party gateway policy, revocation checks, and audit retention independently of protocol adoption.",
+      "status": "registered",
+      "kind": "subjective_falsifiable_prediction_not_observed_fact"
+    },
+    {
+      "id": "fc-20261023-agentcore-session-storage",
+      "trend_id": "trend:cloud-agent-runtime",
+      "question": "到2027-03-31，AWS AgentCore microVM托管会话存储会同时正式商用并能跨运行时版本更新保留数据吗？",
+      "yes_condition": "YES only if AWS first-party GA (not Preview/Beta) Runtime microVM managed sessionStorage documentation by 2027-03-31 explicitly states BOTH: general availability of that exact storage class AND retention of the same session's filesystem contents across an Agent Runtime code/version update using the same runtimeSessionId, without importing data from customer-managed EFS/S3 Files, switching to Instances/EBS, or rebuilding files from application checkpoints.",
+      "no_condition": "NO if by 2027-03-31 either the microVM managed sessionStorage is still Preview/non-GA OR the first-party documentation continues to state that a runtime version update resets its data, after source review of AWS Runtime filesystem, release and upgrade migration documentation across the entire interval; durable Instances volumes do not count.",
+      "target_date": "2027-03-31",
+      "registered_at": "2026-10-23T02:36:59+00:00",
+      "reviewed_by": "Agent Infra research agent",
+      "probability_yes": 0.3,
+      "baseline_verified_event_ids": [
+        "evt-08abf7a11f294609"
+      ],
+      "baseline_note": "Existing verified OpenHands software-agent-sdk v1.57.0 event evt-08abf7a11f294609 supports per-conversation runtime selection but does not establish workspace portability. AWS primary filesystem docs (https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-filesystem-configurations.html) separately identify microVM managed sessionStorage as Preview, persistent across stop/resume, reset on Runtime version updates and after 14 days idle. AWS Instances EBS path persists but is outside this forecast. Temporal workflow docs (https://docs.temporal.io/workflows) illustrate orthogonal execution-history replay; neither is a guarantee of version-safe managed workspace.",
+      "decision_impact": "Retain independently versioned WorkspaceStore and restore manifest/hash verification for valuable files. If YES, evaluate managed session storage for more workloads after upgrade fault injection; if NO, budget external storage, migration and snapshots rather than binding durable user data to ephemeral compute sessions.",
+      "status": "registered",
+      "kind": "subjective_falsifiable_prediction_not_observed_fact"
+    }
+  ]
 }

@@ -320,3 +320,18 @@ prove original evidence was genuinely reviewed and is not a substitute
 for human/Agent source verification. Editorial errors in a registered
 forecast must be disclosed in a separate addendum or declared VOID with
 an explicit reason, rather than silently changing the frozen original.
+
+## First preregistered architecture research — 2026-10-23
+
+- Public authored research: [Cloud Agent architecture forecasts](../research/2026-10-23-cloud-agent-forecast-baselines.md)
+- Two initial substantive, falsifiable and explicitly subjective P(YES)
+  predictions were preregistered on 2026-10-23 UTC, both due 2027-03-31:
+  `fc-20261023-tool-policy-session` (0.35) and
+  `fc-20261023-agentcore-session-storage` (0.30).
+- These are forecasts, not assertions about future product launches. Both
+  link to pre-existing genuinely reviewed canonical Event IDs and current
+  official documentation. Their YES and NO criteria are intentionally
+  narrow and mutually exclusive, with an immutable publication record.
+- Neither has an adjudicated outcome; aggregate calibration stays unavailable.
+  Future reviewers must open original vendor docs and release histories,
+  checking the frozen product/vendor scopes and outcome deadline.
