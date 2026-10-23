@@ -8,13 +8,12 @@
       "event_date_beijing": "2026-10-21",
       "primary_url": "https://claude.com/resources/articles/claude-duet",
       "expected_source_ids": [
-        "claude-announcements",
-        "claude-product"
+        "claude-announcements"
       ],
       "importance": "P0",
       "reviewed_by": "Agent Infra research review",
       "reviewed_at": "2026-10-22T06:25:58Z",
-      "verification_notes": "Read the official 21 October Anthropic product announcement and release notes. Claude Duet is a waitlist research preview for US Pro and Max, with cloud VM, connected-app checks and approval gates; the official page does not establish production HA or SLA. No Anthropic feed exists in the current 13-source collector configuration, so this is a known source gap, not a proven defect in an enabled feed. Phase 4 adds an official Claude sitemap monitored source; capture depends on official sitemap lastmod coverage and must be verified by future real fetches. The official Claude product announcements listing is now an explicit monitored source, but capture must be demonstrated in a real ingestion artifact."
+      "verification_notes": "Read the official 21 October Anthropic product announcement and release notes. Claude Duet is a waitlist research preview for US Pro and Max, with cloud VM, connected-app checks and approval gates; the official page does not establish production HA or SLA. No Anthropic feed exists in the current 13-source collector configuration, so this is a known source gap, not a proven defect in an enabled feed. Phase 4 adds an official Claude sitemap monitored source; capture depends on official sitemap lastmod coverage and must be verified by future real fetches. The official Claude product announcements listing is now an explicit monitored source, but capture must be demonstrated in a real ingestion artifact. Live smoke test on 2026-10-23 captured the exact official Claude Duet article URL from the official product-announcements listing. The retired Claude sitemap source yielded no relevant items."
     },
     {
       "id": "gold-aws-agent-registry-discovery-20261021",

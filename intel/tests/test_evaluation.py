@@ -39,6 +39,18 @@ class QualityAuditTests(unittest.TestCase):
         self.assertEqual([x["outcome"] for x in result["reviewed_gold_items"]],
                          ["captured", "source_not_monitored"])
 
+    def test_rolling_window_keeps_historical_discovery(self):
+        # The official feed may no longer include a previously captured article.
+        ledger={"candidates":{"ec-stable":{"sources":[{
+            "item_id":"article-a","url":"https://example.org/official",
+            "source_id":"official-feed"}]}}}
+        result=evaluate({**SNAPSHOT,"items":[]}, GOOD, SOURCES, ledger)
+        self.assertEqual(result["captured_count"],1)
+        self.assertEqual(result["snapshot_captured_count"],0)
+        self.assertEqual(result["historical_captured_count"],1)
+        self.assertEqual(result["in_scope_missed_count"],0)
+        self.assertEqual(result["reviewed_gold_items"][0]["outcome"],"captured_in_history")
+
     def test_enabled_source_missing(self):
         result = evaluate({**SNAPSHOT,"items":[]}, GOOD, SOURCES)
         self.assertEqual(result["in_scope_missed_count"], 1)

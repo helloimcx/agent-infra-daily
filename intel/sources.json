@@ -108,16 +108,6 @@
         "/engineering/",
         "/research/"
       ]
-    },
-    {
-      "id": "claude-product",
-      "url": "https://claude.com/sitemap.xml",
-      "topic": "cloud-agent",
-      "priority": "P0",
-      "include_prefixes": [
-        "/resources/articles/",
-        "/blog/"
-      ]
     }
   ],
   "listings": [

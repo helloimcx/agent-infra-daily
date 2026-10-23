@@ -182,3 +182,17 @@ The gold evaluation now includes configured official sitemaps and listing IDs
 when classifying source_not_monitored vs in_scope_not_observed. This fixes a
 previous audit misclassification where a monitored sitemap was mistakenly
 not included in the configured-source set.
+
+### Source efficacy and rolling-window audit correction
+
+After live testing, the Claude product sitemap source (zero relevant URLs)
+was removed; first-party Claude product-announcements HTML now covers the
+Duet official original. HTML listing records lack verified publication
+timestamps and are never promoted automatically.
+
+A gold item previously observed in the persistent candidate ledger is now
+marked `captured_in_history` if it no longer appears in today's bounded feed
+snapshot. This prevents confusing normal RSS window expiry and release
+pagination with a never-detected event. The quality report separates
+snapshot_captured_count and historical_captured_count. Every item still
+requires editorial review before being called a verified technology event.

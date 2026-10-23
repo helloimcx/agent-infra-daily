@@ -56,7 +56,7 @@ def validate_gold(gold: dict) -> list[str]:
     return errors
 
 
-def evaluate(snapshot: dict, gold: dict, source_config: dict) -> dict:
+def evaluate(snapshot: dict, gold: dict, source_config: dict, ledger: dict | None = None) -> dict:
     problems = validate_gold(gold)
     if problems:
         raise ValueError("; ".join(problems))
@@ -66,6 +66,12 @@ def evaluate(snapshot: dict, gold: dict, source_config: dict) -> dict:
         canonical_url(x.get("url", "")): x for x in snapshot.get("items", [])
         if canonical_url(x.get("url", ""))
     }
+    historic = {}
+    for candidate in (ledger or {}).get("candidates", {}).values():
+        for source in candidate.get("sources", []):
+            normalized = canonical_url(source.get("url", ""))
+            if normalized:
+                historic[normalized] = source
     configured = {x["id"] for x in source_config.get("feeds", [])}
     configured |= {"release:" + x["repo"] for x in source_config.get("github_releases", [])}
     configured |= {x["id"] for x in source_config.get("sitemaps", [])}
@@ -85,6 +91,8 @@ def evaluate(snapshot: dict, gold: dict, source_config: dict) -> dict:
         in_scope = bool(configured.intersection(event["expected_source_ids"]))
         if matched:
             outcome = "captured"
+        elif in_scope and url in historic:
+            outcome = "captured_in_history"
         elif not in_scope:
             outcome = "source_not_monitored"
         else:
@@ -95,12 +103,16 @@ def evaluate(snapshot: dict, gold: dict, source_config: dict) -> dict:
             "importance": event["importance"], "primary_url": url,
             "expected_source_ids": event["expected_source_ids"],
             "in_configured_scope": in_scope, "outcome": outcome,
-            "matched_item_id": matched["id"] if matched else None,
+            "matched_item_id": matched["id"] if matched else
+                               (historic.get(url) or {}).get("item_id"),
             "reviewed_at": event["reviewed_at"],
         })
-    observed = sum(x["outcome"] == "captured" for x in results)
+    snapshot_observed = sum(x["outcome"] == "captured" for x in results)
+    historical_observed = sum(x["outcome"] == "captured_in_history" for x in results)
+    observed = snapshot_observed + historical_observed
     scoped = sum(x["in_configured_scope"] for x in results)
-    scoped_observed = sum(x["in_configured_scope"] and x["outcome"] == "captured" for x in results)
+    scoped_observed = sum(x["in_configured_scope"] and x["outcome"] in
+                          {"captured", "captured_in_history"} for x in results)
     return {
         "schema_version": "1.0",
         "measurement_kind": "small_editorial_gold_sample_not_industry_recall",
@@ -108,6 +120,8 @@ def evaluate(snapshot: dict, gold: dict, source_config: dict) -> dict:
         "beijing_date": snapshot["beijing_date"],
         "gold_sample_size_eligible": len(results),
         "captured_count": observed,
+        "snapshot_captured_count": snapshot_observed,
+        "historical_captured_count": historical_observed,
         "not_monitored_count": sum(x["outcome"] == "source_not_monitored" for x in results),
         "in_scope_missed_count": sum(x["outcome"] == "in_scope_not_observed" for x in results),
         "sample_capture_fraction": round(observed / len(results), 4) if results else None,
@@ -117,7 +131,7 @@ def evaluate(snapshot: dict, gold: dict, source_config: dict) -> dict:
             "These examples were selected editorially and are not a representative sample of all significant Agent Infra events.",
             "Article IDs match exact normalized official URLs, not semantic headlines or syndication.",
             "Gold events have Beijing calendar dates, not always exact timestamps; day-level eligibility is deliberately approximate.",
-            "A configured feed can miss an event even when its category is in scope; missed events need manual feed/API inspection.",
+            "A configured feed may drop a previously captured item from its rolling snapshot. Check the persistent candidate ledger before declaring a miss.",
             "Do not report this value as industry-wide event recall, precision or comprehensive source coverage."
         ],
     }
@@ -129,8 +143,10 @@ def main() -> None:
     parser.add_argument("--gold", default="intel/evaluation/gold_events.json")
     parser.add_argument("--sources", default="intel/sources.json")
     parser.add_argument("--output", default="intel/quality/coverage.json")
+    parser.add_argument("--ledger", default="intel/state/candidates.json")
     args = parser.parse_args()
-    result = evaluate(read(args.snapshot, {}), read(args.gold, {}), read(args.sources, {}))
+    result = evaluate(read(args.snapshot, {}), read(args.gold, {}),
+                      read(args.sources, {}), read(args.ledger, {}))
     save(args.output, result)
     print(f"EDITORIAL GOLD SAMPLE: captured={result['captured_count']}/"
           f"{result['gold_sample_size_eligible']} "
