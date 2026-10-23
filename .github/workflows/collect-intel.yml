@@ -21,6 +21,7 @@ on:
       - "intel/triage.py"
       - "intel/weekly_quality.py"
       - "intel/forecasts.py"
+      - "intel/guard_forecasts.py"
       - "intel/calibration.py"
       - "intel/forecasts.json"
       - "intel/forecast_outcomes.json"
@@ -48,6 +49,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -55,6 +58,7 @@ jobs:
         run: |
           python -m unittest discover -s intel/tests -v
           python -m intel.validate
+          python -m intel.guard_forecasts
 
   ingest:
     runs-on: ubuntu-latest
@@ -70,6 +74,7 @@ jobs:
         run: |
           python -m unittest discover -s intel/tests -v
           python -m intel.validate
+          python -m intel.guard_forecasts
       - uses: actions/cache/restore@v4
         with:
           path: intel/.state

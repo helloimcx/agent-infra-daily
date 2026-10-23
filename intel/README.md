@@ -299,3 +299,24 @@ after observing the outcome. Researchers may add genuine forecasts only
 after independently reviewing the original evidence and freezing an
 unambiguous testable proposition. The weekly audit surfaces overdue work
 but is not proof an independent evidence review happened.
+
+
+### CI immutability and retroactive-registration defense
+
+Running the editorial CLI alone is not sufficient: a raw JSON edit could
+otherwise change a previous predicted probability or rewrite a past review.
+
+`python -m intel.guard_forecasts` now runs in source-collection CI and the
+weekly audit, comparing the new commit with the first parent using Git
+history. It rejects any deletion or modification to previously published
+forecast or resolution records. Newly inserted forecasts must have an
+honest registration timestamp no more than 48 hours before the commit and
+no more than two hours in the future. Github Actions checkout fetches at
+least two commits for this review. Existing records are treated as
+immutable after publication.
+
+This guards against ordinary accidental hindsight edits; it does NOT
+prove original evidence was genuinely reviewed and is not a substitute
+for human/Agent source verification. Editorial errors in a registered
+forecast must be disclosed in a separate addendum or declared VOID with
+an explicit reason, rather than silently changing the frozen original.
