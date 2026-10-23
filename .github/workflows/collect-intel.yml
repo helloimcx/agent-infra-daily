@@ -73,7 +73,7 @@ jobs:
       - name: Collect primary source candidates
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python intel/collector.py
+        run: python -m intel.collector
       - name: Update candidate ledger, audit and source-quality metrics
         run: |
           python -m intel.intelligence

@@ -63,7 +63,7 @@ The review script verifies candidate/source membership and requires an explicit 
 
     python -m unittest discover -s intel/tests -v
     python -m intel.validate
-    python intel/collector.py
+    python -m intel.collector
     python -m intel.intelligence
 
 The intel validator checks candidate index consistency, unique curated IDs, explicit source URLs, review notes, valid event dates and trend revision evidence. It does NOT replace or reduce scripts/validate_entities.py.
