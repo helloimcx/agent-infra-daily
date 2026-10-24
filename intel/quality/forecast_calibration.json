@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "kind": "editorial_binary_forecast_retrospective",
-  "generated_at": "2026-10-23T02:36:59+00:00",
+  "generated_at": "2026-10-24T00:57:48+00:00",
   "counts": {
     "registered": 2,
     "open": 2,
@@ -18,7 +18,7 @@
       "question": "到2027-03-31，指定的非AWS工具平台中是否至少有一个正式交付跨步骤会话授权治理契约？",
       "target_date": "2027-03-31",
       "predicted_yes": 0.35,
-      "days_remaining": 159,
+      "days_remaining": 158,
       "due_for_outcome_review": false,
       "status": "registered_not_yet_adjudicated"
     },
@@ -28,7 +28,7 @@
       "question": "到2027-03-31，AWS AgentCore microVM托管会话存储会同时正式商用并能跨运行时版本更新保留数据吗？",
       "target_date": "2027-03-31",
       "predicted_yes": 0.3,
-      "days_remaining": 159,
+      "days_remaining": 158,
       "due_for_outcome_review": false,
       "status": "registered_not_yet_adjudicated"
     }
@@ -36,8 +36,10 @@
   "resolved": [],
   "voided": [],
   "limitations": [
-    "Only two subjective preregistered forecasts. Neither has an observed outcome, and no calibration estimate is justified.",
-    "Overdue predictions still need primary-source adjudication; no automatic success or failure.",
-    "Forecast evidence and boundaries are analyzed in /research/2026-10-23-cloud-agent-forecast-baselines/."
+    "Predictions and probabilities were subjective and preregistered; never infer success from news titles.",
+    "Overdue forecasts remain open until primary-source adjudication; absence of a captured event is not a negative outcome.",
+    "Brier only includes binary yes/no editorial reviews; VOID predictions are shown separately, never counted as correct.",
+    "A mean Brier score does not establish calibration or forecasting skill without sufficient, diverse forecasts and comparison baselines.",
+    "Zero registered forecasts is an acceptable and truthful initial state."
   ]
 }

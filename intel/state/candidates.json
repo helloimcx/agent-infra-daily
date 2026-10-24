@@ -1,8 +1,31 @@
 {
   "schema_version": "1.0",
-  "last_ingested_snapshot": "2026-10-23T00:50:42+00:00",
+  "last_ingested_snapshot": "2026-10-24T00:57:39+00:00",
   "bootstrap_note": "Two independently verified candidates recovered from the successful 2026-10-22 ingestion artifact. This is not the full 54-item ledger; the next scheduled collector will merge all available items.",
   "candidates": {
+    "ec-047a55d9a381df1f": {
+      "id": "ec-047a55d9a381df1f",
+      "title": "Official site update: AI fluency index",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "047a55d9a381df1fa2e7fddd"
+      ],
+      "sources": [
+        {
+          "item_id": "047a55d9a381df1fa2e7fddd",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/AI-fluency-index",
+          "published_at": null,
+          "title": "Official site update: AI fluency index",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-071ab93645637197": {
       "id": "ec-071ab93645637197",
       "title": "SpecEvo: Speculative Evolution with Large Language Models for Cost-Efficient Scientific Discovery",
@@ -26,6 +49,75 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-09a52776f0528d1a": {
+      "id": "ec-09a52776f0528d1a",
+      "title": "Visualize points and routes with GeoJSON in Amazon Quick Sight layer maps",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T16:24:55+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "09a52776f0528d1ace295af6"
+      ],
+      "sources": [
+        {
+          "item_id": "09a52776f0528d1ace295af6",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/visualize-points-and-routes-with-geojson-in-amazon-quick-sight-layer-maps",
+          "published_at": "2026-10-23T16:24:55+00:00",
+          "title": "Visualize points and routes with GeoJSON in Amazon Quick Sight layer maps",
+          "first_discovered_at": "2026-10-23T17:00:14+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-0b1dcee4cb5d7740": {
+      "id": "ec-0b1dcee4cb5d7740",
+      "title": "Official site update: cyber competitions",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "0b1dcee4cb5d7740eb817283"
+      ],
+      "sources": [
+        {
+          "item_id": "0b1dcee4cb5d7740eb817283",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/cyber-competitions",
+          "published_at": null,
+          "title": "Official site update: cyber competitions",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-0c0b4fb70cfc16f6": {
+      "id": "ec-0c0b4fb70cfc16f6",
+      "title": "Article Oct 23, 2026 Claude Duet Safety, Privacy, and Security Claude Duet is a proactive agent that works for you, even while you’re away. It builds on two layers of protection: safety training in the Claude model itself and the safeguards that exis",
+      "topic": "cloud-agent",
+      "source_kind": "official_listing",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "0c0b4fb70cfc16f629bcf822"
+      ],
+      "sources": [
+        {
+          "item_id": "0c0b4fb70cfc16f629bcf822",
+          "source_id": "claude-announcements",
+          "url": "https://claude.com/resources/articles/claude-duet-safety-privacy-and-security",
+          "published_at": null,
+          "title": "Article Oct 23, 2026 Claude Duet Safety, Privacy, and Security Claude Duet is a proactive agent that works for you, even while you’re away. It builds on two layers of protection: safety training in the Claude model itself and the safeguards that exis",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-0e5fad3ca5f8a881": {
       "id": "ec-0e5fad3ca5f8a881",
       "title": "Ensemble forecasting with IBM Granite time-series models",
@@ -33,7 +125,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T07:51:31+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "0e5fad3ca5f8a881acf7d04b"
       ],
@@ -45,6 +137,29 @@
           "published_at": "2026-10-22T07:51:31+00:00",
           "title": "Ensemble forecasting with IBM Granite time-series models",
           "first_discovered_at": "2026-10-22T11:43:44+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-0f1fe1227ddd86aa": {
+      "id": "ec-0f1fe1227ddd86aa",
+      "title": "Overview of CHIP 2026 Shared Task 1: Patient-Specific Phenotype Concept Recognition in Full-Text Biomedical Literature",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "0f1fe1227ddd86aabba16ba0"
+      ],
+      "sources": [
+        {
+          "item_id": "0f1fe1227ddd86aabba16ba0",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.29606",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "Overview of CHIP 2026 Shared Task 1: Patient-Specific Phenotype Concept Recognition in Full-Text Biomedical Literature",
+          "first_discovered_at": "2026-10-22T06:29:46+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -72,6 +187,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-1274a8235cdb512e": {
+      "id": "ec-1274a8235cdb512e",
+      "title": "Official site update: estimating productivity gains",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "1274a8235cdb512e4bb70303"
+      ],
+      "sources": [
+        {
+          "item_id": "1274a8235cdb512e4bb70303",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/estimating-productivity-gains",
+          "published_at": null,
+          "title": "Official site update: estimating productivity gains",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-15be2ff317bed24c": {
       "id": "ec-15be2ff317bed24c",
       "title": "Sketch2Sim: an end-to-end modular framework for hand-drawn circuit analysis",
@@ -91,6 +229,29 @@
           "published_at": "2026-10-22T04:00:00+00:00",
           "title": "Sketch2Sim: an end-to-end modular framework for hand-drawn circuit analysis",
           "first_discovered_at": "2026-10-22T06:29:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-1767ea3194797808": {
+      "id": "ec-1767ea3194797808",
+      "title": "TorchTPU - A Hybrid Eager/Compiled Architecture for Native PyTorch Execution on TPU",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "1767ea3194797808039e54b5"
+      ],
+      "sources": [
+        {
+          "item_id": "1767ea3194797808039e54b5",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.24161",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "TorchTPU - A Hybrid Eager/Compiled Architecture for Native PyTorch Execution on TPU",
+          "first_discovered_at": "2026-10-22T02:13:55+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -141,6 +302,52 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-1a1408327520a27b": {
+      "id": "ec-1a1408327520a27b",
+      "title": "RSI Control: Can AI Models Perform Covert Sabotage in the Self-Improvement Process?",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "1a1408327520a27be5d4bcf6"
+      ],
+      "sources": [
+        {
+          "item_id": "1a1408327520a27be5d4bcf6",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.27735",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "RSI Control: Can AI Models Perform Covert Sabotage in the Self-Improvement Process?",
+          "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-1a543055a02f9816": {
+      "id": "ec-1a543055a02f9816",
+      "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T00:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "1a543055a02f9816518cc039"
+      ],
+      "sources": [
+        {
+          "item_id": "1a543055a02f9816518cc039",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
+          "published_at": "2026-10-23T00:00:00+00:00",
+          "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
+          "first_discovered_at": "2026-10-23T08:16:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-1da987a218b173eb": {
       "id": "ec-1da987a218b173eb",
       "title": "Workflow context for AI agents with Smartsheet MCP on AWS",
@@ -164,6 +371,75 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-1eabd72a2a9add8e": {
+      "id": "ec-1eabd72a2a9add8e",
+      "title": "Accelerating Wildfire Hazard Mapping Across Canada with an AI Surrogate Modelling Framework",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "1eabd72a2a9add8eaa3c989f"
+      ],
+      "sources": [
+        {
+          "item_id": "1eabd72a2a9add8eaa3c989f",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.30170",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "Accelerating Wildfire Hazard Mapping Across Canada with an AI Surrogate Modelling Framework",
+          "first_discovered_at": "2026-10-23T04:41:06+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-206e1c6bb61d57d5": {
+      "id": "ec-206e1c6bb61d57d5",
+      "title": "AgentMonopoly: Behavioral Patterns and Persona Control in LLM Agents",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "206e1c6bb61d57d55e1f078c"
+      ],
+      "sources": [
+        {
+          "item_id": "206e1c6bb61d57d55e1f078c",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.29330",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "AgentMonopoly: Behavioral Patterns and Persona Control in LLM Agents",
+          "first_discovered_at": "2026-10-22T06:29:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-21e96d4f9b19988e": {
+      "id": "ec-21e96d4f9b19988e",
+      "title": "Official site update: attack navigator",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "21e96d4f9b19988eb59b63a0"
+      ],
+      "sources": [
+        {
+          "item_id": "21e96d4f9b19988eb59b63a0",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/attack-navigator",
+          "published_at": null,
+          "title": "Official site update: attack navigator",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-23aa3d120b551ff0": {
       "id": "ec-23aa3d120b551ff0",
       "title": "How Rescale built an AI triage agent with Strands Agents and AI-DLC",
@@ -171,7 +447,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T16:25:57+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "23aa3d120b551ff011ac2d6d"
       ],
@@ -183,6 +459,52 @@
           "published_at": "2026-10-22T16:25:57+00:00",
           "title": "How Rescale built an AI triage agent with Strands Agents and AI-DLC",
           "first_discovered_at": "2026-10-22T17:05:54+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-24c6e2121b55d285": {
+      "id": "ec-24c6e2121b55d285",
+      "title": "CrystalAR: Autoregressive Modeling for Symmetric Crystal Generation",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "24c6e2121b55d2858d5b21f5"
+      ],
+      "sources": [
+        {
+          "item_id": "24c6e2121b55d2858d5b21f5",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.27762",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "CrystalAR: Autoregressive Modeling for Symmetric Crystal Generation",
+          "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-24d6782bb608a7d9": {
+      "id": "ec-24d6782bb608a7d9",
+      "title": "Official site update: labor market impacts",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "24d6782bb608a7d95d92b481"
+      ],
+      "sources": [
+        {
+          "item_id": "24d6782bb608a7d95d92b481",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/labor-market-impacts",
+          "published_at": null,
+          "title": "Official site update: labor market impacts",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -210,6 +532,52 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-2b3f616d26d343fe": {
+      "id": "ec-2b3f616d26d343fe",
+      "title": "Does Your Model Run on AWS Trainium? Look It Up",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T00:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "2b3f616d26d343fed7789052"
+      ],
+      "sources": [
+        {
+          "item_id": "2b3f616d26d343fed7789052",
+          "source_id": "huggingface-blog",
+          "url": "https://huggingface.co/blog/torch-neuronx-model-support",
+          "published_at": "2026-10-23T00:00:00+00:00",
+          "title": "Does Your Model Run on AWS Trainium? Look It Up",
+          "first_discovered_at": "2026-10-23T17:00:14+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-2eea8542a0bf0fd1": {
+      "id": "ec-2eea8542a0bf0fd1",
+      "title": "Article Oct 8, 2026 Build live dashboards and animate explainers with Claude Claude Dashboards and Claude Motion are now in beta. Docs, Slides, and Design are out of beta and on every Claude plan, including Free. Claude apps Claude Design 2 more : Cl",
+      "topic": "cloud-agent",
+      "source_kind": "official_listing",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "2eea8542a0bf0fd1619f4a1e"
+      ],
+      "sources": [
+        {
+          "item_id": "2eea8542a0bf0fd1619f4a1e",
+          "source_id": "claude-announcements",
+          "url": "https://claude.com/resources/articles/dashboards-and-motion",
+          "published_at": null,
+          "title": "Article Oct 8, 2026 Build live dashboards and animate explainers with Claude Claude Dashboards and Claude Motion are now in beta. Docs, Slides, and Design are out of beta and on every Claude plan, including Free. Claude apps Claude Design 2 more : Cl",
+          "first_discovered_at": "2026-10-23T01:21:48+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-2f74e2ab2f7e1728": {
       "id": "ec-2f74e2ab2f7e1728",
       "title": "v1.58.0",
@@ -217,7 +585,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-22T16:00:18+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "2f74e2ab2f7e1728eaa6806f"
       ],
@@ -233,6 +601,144 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-38e70b683c26da97": {
+      "id": "ec-38e70b683c26da97",
+      "title": "TraceForge: Distilling with Your Own Thinking",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "38e70b683c26da979fcef795"
+      ],
+      "sources": [
+        {
+          "item_id": "38e70b683c26da979fcef795",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.29680",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "TraceForge: Distilling with Your Own Thinking",
+          "first_discovered_at": "2026-10-22T06:29:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-39cad894cdd240fb": {
+      "id": "ec-39cad894cdd240fb",
+      "title": "How AT&T is rethinking in-house legal work with OpenAI",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-21T17:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "39cad894cdd240fbe2dba606"
+      ],
+      "sources": [
+        {
+          "item_id": "39cad894cdd240fbe2dba606",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/att-legal",
+          "published_at": "2026-10-21T17:00:00+00:00",
+          "title": "How AT&T is rethinking in-house legal work with OpenAI",
+          "first_discovered_at": "2026-10-23T01:17:01+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-3c862a18b467640b": {
+      "id": "ec-3c862a18b467640b",
+      "title": "Official site update: collective constitutional ai aligning a language model with public input",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "3c862a18b467640b837437cb"
+      ],
+      "sources": [
+        {
+          "item_id": "3c862a18b467640b837437cb",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/collective-constitutional-ai-aligning-a-language-model-with-public-input",
+          "published_at": null,
+          "title": "Official site update: collective constitutional ai aligning a language model with public input",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-3d8ab047597f9f39": {
+      "id": "ec-3d8ab047597f9f39",
+      "title": "Official site update: cyber toolkits",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "3d8ab047597f9f39543346ac"
+      ],
+      "sources": [
+        {
+          "item_id": "3d8ab047597f9f39543346ac",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/cyber-toolkits",
+          "published_at": null,
+          "title": "Official site update: cyber toolkits",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-3e464efbb0b4dffd": {
+      "id": "ec-3e464efbb0b4dffd",
+      "title": "Official site update: claude personal guidance",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "3e464efbb0b4dffd8b6fbe25"
+      ],
+      "sources": [
+        {
+          "item_id": "3e464efbb0b4dffd8b6fbe25",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/claude-personal-guidance",
+          "published_at": null,
+          "title": "Official site update: claude personal guidance",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-3f1a11956436b167": {
+      "id": "ec-3f1a11956436b167",
+      "title": "Broad access through consistent standards",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-21T21:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "3f1a11956436b167380065dc"
+      ],
+      "sources": [
+        {
+          "item_id": "3f1a11956436b167380065dc",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/broad-access-through-consistent-standards",
+          "published_at": "2026-10-21T21:00:00+00:00",
+          "title": "Broad access through consistent standards",
+          "first_discovered_at": "2026-10-23T01:17:01+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-40a01666d562060b": {
       "id": "ec-40a01666d562060b",
       "title": "How Specializing the Vocabulary of SLMs Can Cut Inference Cost by 77% in Real Applications",
@@ -240,7 +746,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-21T17:35:36+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "40a01666d562060bfdf96e1b"
       ],
@@ -263,7 +769,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T18:06:35+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "463357464b6d7cac1748e834"
       ],
@@ -298,6 +804,75 @@
           "published_at": "2026-10-20T01:01:41+00:00",
           "title": "v0.0.81",
           "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-482b7139a29a7e0d": {
+      "id": "ec-482b7139a29a7e0d",
+      "title": "Official site update: building ai cyber defenders",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "482b7139a29a7e0dc4189bda"
+      ],
+      "sources": [
+        {
+          "item_id": "482b7139a29a7e0dc4189bda",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/building-ai-cyber-defenders",
+          "published_at": null,
+          "title": "Official site update: building ai cyber defenders",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-4e2150af12a97398": {
+      "id": "ec-4e2150af12a97398",
+      "title": "Article Oct 21, 2026 HCLTech joins the Claude Partner Network as a Global Premier partner HCLTech will bring Claude into the solutions it provides for banks, hospitals, telecom companies, and manufacturers.",
+      "topic": "cloud-agent",
+      "source_kind": "official_listing",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "4e2150af12a97398f6e556e6"
+      ],
+      "sources": [
+        {
+          "item_id": "4e2150af12a97398f6e556e6",
+          "source_id": "claude-announcements",
+          "url": "https://claude.com/resources/articles/hcltech-joins-claude-partner-network",
+          "published_at": null,
+          "title": "Article Oct 21, 2026 HCLTech joins the Claude Partner Network as a Global Premier partner HCLTech will bring Claude into the solutions it provides for banks, hospitals, telecom companies, and manufacturers.",
+          "first_discovered_at": "2026-10-23T01:21:48+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-4eb4ba31f0f61004": {
+      "id": "ec-4eb4ba31f0f61004",
+      "title": "Parallelizable Probabilistic Latent Reasoning for Diverse Reasoning Trajectories",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "4eb4ba31f0f610048f294cc9"
+      ],
+      "sources": [
+        {
+          "item_id": "4eb4ba31f0f610048f294cc9",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.29385",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "Parallelizable Probabilistic Latent Reasoning for Diverse Reasoning Trajectories",
+          "first_discovered_at": "2026-10-22T06:29:46+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -355,7 +930,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T22:24:34+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "51888f116f5b083740bce796"
       ],
@@ -378,7 +953,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T18:01:53+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "51a8b9803784fc1a8b355095"
       ],
@@ -417,6 +992,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-527fa4738dcd75e9": {
+      "id": "ec-527fa4738dcd75e9",
+      "title": "Official site update: claude plays robotics",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "527fa4738dcd75e9f00a9a60"
+      ],
+      "sources": [
+        {
+          "item_id": "527fa4738dcd75e9f00a9a60",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/claude-plays-robotics",
+          "published_at": null,
+          "title": "Official site update: claude plays robotics",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-536f23cd94f13984": {
       "id": "ec-536f23cd94f13984",
       "title": "ALTK-Evolve: How learned memory tops the τ²-bench leaderboard on customer service tasks without a frontier model",
@@ -435,6 +1033,29 @@
           "url": "https://huggingface.co/blog/ibm-research/altk-evolve-bc",
           "published_at": "2026-10-20T15:19:48+00:00",
           "title": "ALTK-Evolve: How learned memory tops the τ²-bench leaderboard on customer service tasks without a frontier model",
+          "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-53f9a9bea5bcc5de": {
+      "id": "ec-53f9a9bea5bcc5de",
+      "title": "From Comparison to Selection: Enhancing Cross-Scale Generalization of Pointer Networks Trained with Reinforcement Learning for for Capacitated Vehicle Routing Problem",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "53f9a9bea5bcc5decd948438"
+      ],
+      "sources": [
+        {
+          "item_id": "53f9a9bea5bcc5decd948438",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.27936",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "From Comparison to Selection: Enhancing Cross-Scale Generalization of Pointer Networks Trained with Reinforcement Learning for for Capacitated Vehicle Routing Problem",
           "first_discovered_at": "2026-10-22T02:13:55+00:00"
         }
       ],
@@ -486,6 +1107,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-565b5fa1fe378b99": {
+      "id": "ec-565b5fa1fe378b99",
+      "title": "Article Oct 6, 2026 We’re expanding the Claude Startups program to help founders build",
+      "topic": "cloud-agent",
+      "source_kind": "official_listing",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "565b5fa1fe378b99c96415d1"
+      ],
+      "sources": [
+        {
+          "item_id": "565b5fa1fe378b99c96415d1",
+          "source_id": "claude-announcements",
+          "url": "https://claude.com/resources/articles/were-expanding-the-claude-startups-program-to-help-founders-build",
+          "published_at": null,
+          "title": "Article Oct 6, 2026 We’re expanding the Claude Startups program to help founders build",
+          "first_discovered_at": "2026-10-23T01:21:48+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-57363b60fec23f24": {
       "id": "ec-57363b60fec23f24",
       "title": "How Octave built a secure multi-tenant AI foundation on Amazon Bedrock",
@@ -509,6 +1153,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-59b285913cc2d8dc": {
+      "id": "ec-59b285913cc2d8dc",
+      "title": "How Bayer Crop Science built an agentic decision engine on Amazon Bedrock AgentCore with AWS Unified Operations",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T16:21:36+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "59b285913cc2d8dc1ba7b0c8"
+      ],
+      "sources": [
+        {
+          "item_id": "59b285913cc2d8dc1ba7b0c8",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/how-bayer-crop-science-built-an-agentic-decision-engine-on-amazon-bedrock-agentcore-with-aws-unified-operations",
+          "published_at": "2026-10-23T16:21:36+00:00",
+          "title": "How Bayer Crop Science built an agentic decision engine on Amazon Bedrock AgentCore with AWS Unified Operations",
+          "first_discovered_at": "2026-10-23T17:00:14+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-5b4e08461387ba3b": {
       "id": "ec-5b4e08461387ba3b",
       "title": "Profiling TorchNeuron (Part 1): System-level profiling on AWS Trainium.",
@@ -516,7 +1183,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-21T16:04:43+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "5b4e08461387ba3b44832eb3"
       ],
@@ -532,6 +1199,52 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-5d193cc1f396c8e3": {
+      "id": "ec-5d193cc1f396c8e3",
+      "title": "The Cost of Saying Hello: An Empirical Study of Handshake Overhead in AI Agent Communication Protocols",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "5d193cc1f396c8e39b220f8d"
+      ],
+      "sources": [
+        {
+          "item_id": "5d193cc1f396c8e39b220f8d",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.30151",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "The Cost of Saying Hello: An Empirical Study of Handshake Overhead in AI Agent Communication Protocols",
+          "first_discovered_at": "2026-10-23T04:41:06+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-5d794c3788a3a4be": {
+      "id": "ec-5d794c3788a3a4be",
+      "title": "LitPivot: Developing research ideas through dynamic contextualization within the literature landscape",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T16:15:50+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "5d794c3788a3a4be0d421559"
+      ],
+      "sources": [
+        {
+          "item_id": "5d794c3788a3a4be0d421559",
+          "source_id": "huggingface-blog",
+          "url": "https://huggingface.co/blog/allenai/litpivot",
+          "published_at": "2026-10-23T16:15:50+00:00",
+          "title": "LitPivot: Developing research ideas through dynamic contextualization within the literature landscape",
+          "first_discovered_at": "2026-10-23T17:00:14+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-5e6236f11938be0f": {
       "id": "ec-5e6236f11938be0f",
       "title": "v1.58.1",
@@ -539,7 +1252,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-23T00:44:35+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "5e6236f11938be0fd10b5921"
       ],
@@ -551,6 +1264,75 @@
           "published_at": "2026-10-23T00:44:35+00:00",
           "title": "v1.58.1",
           "first_discovered_at": "2026-10-23T00:50:42+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-5f83f5347c32a35f": {
+      "id": "ec-5f83f5347c32a35f",
+      "title": "Official site update: discovering cryptographic weaknesses",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "5f83f5347c32a35f18a99c26"
+      ],
+      "sources": [
+        {
+          "item_id": "5f83f5347c32a35f18a99c26",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
+          "published_at": null,
+          "title": "Official site update: discovering cryptographic weaknesses",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-6400feb681472530": {
+      "id": "ec-6400feb681472530",
+      "title": "What FDE means at OpenAI",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-22T06:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "6400feb681472530a689e8c5"
+      ],
+      "sources": [
+        {
+          "item_id": "6400feb681472530a689e8c5",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/forward-deployed-engineering-means",
+          "published_at": "2026-10-22T06:00:00+00:00",
+          "title": "What FDE means at OpenAI",
+          "first_discovered_at": "2026-10-23T01:17:01+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-64ddfb139fec8a1c": {
+      "id": "ec-64ddfb139fec8a1c",
+      "title": "Using thousands of AI agents to uncover new leads in biological data",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-21T04:50:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "64ddfb139fec8a1cb4597ec2"
+      ],
+      "sources": [
+        {
+          "item_id": "64ddfb139fec8a1cb4597ec2",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/scaling-ai-research-for-complex-biological-data",
+          "published_at": "2026-10-21T04:50:00+00:00",
+          "title": "Using thousands of AI agents to uncover new leads in biological data",
+          "first_discovered_at": "2026-10-23T01:17:01+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -585,7 +1367,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T16:11:31+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "67297d2df9a3d7f196c35fa6"
       ],
@@ -597,6 +1379,29 @@
           "published_at": "2026-10-22T16:11:31+00:00",
           "title": "OlmoEarth v1.3: State-of-the-art embeddings for the whole planet",
           "first_discovered_at": "2026-10-22T17:05:54+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-67e0e2ca251faa59": {
+      "id": "ec-67e0e2ca251faa59",
+      "title": "Article Oct 15, 2026 Code Review is now generally available Catch more bugs before they reach production. Claude Code",
+      "topic": "cloud-agent",
+      "source_kind": "official_listing",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "67e0e2ca251faa5910ae53f1"
+      ],
+      "sources": [
+        {
+          "item_id": "67e0e2ca251faa5910ae53f1",
+          "source_id": "claude-announcements",
+          "url": "https://claude.com/resources/articles/code-review-is-now-generally-available",
+          "published_at": null,
+          "title": "Article Oct 15, 2026 Code Review is now generally available Catch more bugs before they reach production. Claude Code",
+          "first_discovered_at": "2026-10-23T01:21:48+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -624,6 +1429,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-720764d3a5e8671e": {
+      "id": "ec-720764d3a5e8671e",
+      "title": "Interface-Induced Trajectory Censoring",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "720764d3a5e8671ecf983f96"
+      ],
+      "sources": [
+        {
+          "item_id": "720764d3a5e8671ecf983f96",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2609.03966",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "Interface-Induced Trajectory Censoring",
+          "first_discovered_at": "2026-10-22T06:29:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-737954dac6a79002": {
       "id": "ec-737954dac6a79002",
       "title": "S$^2$-MAS: A Society-Scale Multi-Agent Simulation Framework with 500 Million Household Persona Agents",
@@ -631,7 +1459,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T04:00:00+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "737954dac6a7900275aa5e87"
       ],
@@ -677,7 +1505,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T18:00:01+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "75c7b038c9e562c067f306b3"
       ],
@@ -689,6 +1517,29 @@
           "published_at": "2026-10-22T18:00:01+00:00",
           "title": "Write your own training loop — without managing GPUs — with Amazon SageMaker training session APIs",
           "first_discovered_at": "2026-10-22T21:30:14+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-75d4a9cbafb13c9a": {
+      "id": "ec-75d4a9cbafb13c9a",
+      "title": "Orchestrating SageMaker AI endpoint auto scaling with AWS CDK",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T16:30:10+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "75d4a9cbafb13c9a87e9134f"
+      ],
+      "sources": [
+        {
+          "item_id": "75d4a9cbafb13c9a87e9134f",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/orchestrating-sagemaker-ai-endpoint-auto-scaling-with-aws-cdk",
+          "published_at": "2026-10-23T16:30:10+00:00",
+          "title": "Orchestrating SageMaker AI endpoint auto scaling with AWS CDK",
+          "first_discovered_at": "2026-10-23T17:00:14+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -716,6 +1567,52 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-78cebe09803b5741": {
+      "id": "ec-78cebe09803b5741",
+      "title": "Southeast Asia’s digital economy to hit $368 billion",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-21T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "78cebe09803b57417ff218b1"
+      ],
+      "sources": [
+        {
+          "item_id": "78cebe09803b57417ff218b1",
+          "source_id": "google-ai",
+          "url": "https://blog.google/company-news/inside-google/around-the-globe/google-asia/e-conomy-sea-report-2026",
+          "published_at": "2026-10-21T04:00:00+00:00",
+          "title": "Southeast Asia’s digital economy to hit $368 billion",
+          "first_discovered_at": "2026-10-23T01:17:01+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-7c2cc3d7e8ae53dc": {
+      "id": "ec-7c2cc3d7e8ae53dc",
+      "title": "Official site update: evaluating ai systems",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "7c2cc3d7e8ae53dcce000a0a"
+      ],
+      "sources": [
+        {
+          "item_id": "7c2cc3d7e8ae53dcce000a0a",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/evaluating-ai-systems",
+          "published_at": null,
+          "title": "Official site update: evaluating ai systems",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-835c6a6b04c513f4": {
       "id": "ec-835c6a6b04c513f4",
       "title": "Open SWE Desktop v0.3.9",
@@ -723,7 +1620,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-22T21:20:39+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "835c6a6b04c513f42cd61db7"
       ],
@@ -735,6 +1632,29 @@
           "published_at": "2026-10-22T21:20:39+00:00",
           "title": "Open SWE Desktop v0.3.9",
           "first_discovered_at": "2026-10-22T21:30:14+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-856c26ca4c2d04bc": {
+      "id": "ec-856c26ca4c2d04bc",
+      "title": "Mistral Advances AI for Engineering with NVIDIA",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-21T12:00:20+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "856c26ca4c2d04bcedc9cb9f"
+      ],
+      "sources": [
+        {
+          "item_id": "856c26ca4c2d04bcedc9cb9f",
+          "source_id": "mistral-news",
+          "url": "https://mistral.ai/news/mistral-nvidia-ai-for-industrial-engineering",
+          "published_at": "2026-10-21T12:00:20+00:00",
+          "title": "Mistral Advances AI for Engineering with NVIDIA",
+          "first_discovered_at": "2026-10-23T01:17:01+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -762,6 +1682,144 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-891b7e0bbf66f86d": {
+      "id": "ec-891b7e0bbf66f86d",
+      "title": "Build more responsive apps with the Decisions API",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-22T19:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "891b7e0bbf66f86d27b770f3"
+      ],
+      "sources": [
+        {
+          "item_id": "891b7e0bbf66f86d27b770f3",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/decisions-api",
+          "published_at": "2026-10-22T19:00:00+00:00",
+          "title": "Build more responsive apps with the Decisions API",
+          "first_discovered_at": "2026-10-23T01:17:01+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-8a41e1e41cbecfde": {
+      "id": "ec-8a41e1e41cbecfde",
+      "title": "Multi-Turn Reinforcement Learning on Amazon SageMaker AI: A hands-on guide",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T17:48:54+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "8a41e1e41cbecfde0ac247c2"
+      ],
+      "sources": [
+        {
+          "item_id": "8a41e1e41cbecfde0ac247c2",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/multi-turn-reinforcement-learning-on-amazon-sagemaker-ai-a-hands-on-guide",
+          "published_at": "2026-10-23T17:48:54+00:00",
+          "title": "Multi-Turn Reinforcement Learning on Amazon SageMaker AI: A hands-on guide",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-8a743f361cd25711": {
+      "id": "ec-8a743f361cd25711",
+      "title": "v2.13.0",
+      "topic": "harness",
+      "source_kind": "github_release",
+      "published_at": "2026-10-23T18:08:23+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "8a743f361cd25711b69e4fb6"
+      ],
+      "sources": [
+        {
+          "item_id": "8a743f361cd25711b69e4fb6",
+          "source_id": "release:google/adk-python",
+          "url": "https://github.com/google/adk-python/releases/tag/v2.13.0",
+          "published_at": "2026-10-23T18:08:23+00:00",
+          "title": "v2.13.0",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-8ae5cfb1a46e38db": {
+      "id": "ec-8ae5cfb1a46e38db",
+      "title": "StochIKM: Automated High-Fidelity Reconstruction of Individual Patient Data from Published Kaplan-Meier Curves",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "8ae5cfb1a46e38dbde58c1df"
+      ],
+      "sources": [
+        {
+          "item_id": "8ae5cfb1a46e38dbde58c1df",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.29122",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "StochIKM: Automated High-Fidelity Reconstruction of Individual Patient Data from Published Kaplan-Meier Curves",
+          "first_discovered_at": "2026-10-22T06:29:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-8b353a05b7f98c57": {
+      "id": "ec-8b353a05b7f98c57",
+      "title": "langgraph-sdk==0.4.9",
+      "topic": "runtime",
+      "source_kind": "github_release",
+      "published_at": "2026-10-23T14:19:24+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "8b353a05b7f98c579f54fae1"
+      ],
+      "sources": [
+        {
+          "item_id": "8b353a05b7f98c579f54fae1",
+          "source_id": "release:langchain-ai/langgraph",
+          "url": "https://github.com/langchain-ai/langgraph/releases/tag/sdk%3D%3D0.4.9",
+          "published_at": "2026-10-23T14:19:24+00:00",
+          "title": "langgraph-sdk==0.4.9",
+          "first_discovered_at": "2026-10-23T17:00:14+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-8f93170faf71fda6": {
+      "id": "ec-8f93170faf71fda6",
+      "title": "Beyond tree cover: mapping the world’s forest types",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-22T14:30:24+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "8f93170faf71fda6558b8b2f"
+      ],
+      "sources": [
+        {
+          "item_id": "8f93170faf71fda6558b8b2f",
+          "source_id": "deepmind-blog",
+          "url": "https://deepmind.google/blog/beyond-tree-cover-mapping-the-worlds-forest-types",
+          "published_at": "2026-10-22T14:30:24+00:00",
+          "title": "Beyond tree cover: mapping the world’s forest types",
+          "first_discovered_at": "2026-10-23T01:17:01+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-94a5f6526eada9bc": {
       "id": "ec-94a5f6526eada9bc",
       "title": "NVIDIA Kumo Relational Outperforms Supervised Machine Learning on Relational Data, No Training Required",
@@ -769,7 +1827,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-21T18:26:30+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "94a5f6526eada9bc0f52700e"
       ],
@@ -792,7 +1850,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-21T23:38:38+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "9591b1cd4f512684d53a4a51"
       ],
@@ -808,6 +1866,75 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-95dedf578de78f3e": {
+      "id": "ec-95dedf578de78f3e",
+      "title": "OpenAI models are coming to Google Cloud",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-21T12:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "95dedf578de78f3ec264f66e"
+      ],
+      "sources": [
+        {
+          "item_id": "95dedf578de78f3ec264f66e",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/openai-models-google-cloud",
+          "published_at": "2026-10-21T12:00:00+00:00",
+          "title": "OpenAI models are coming to Google Cloud",
+          "first_discovered_at": "2026-10-23T01:17:01+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-968472e44aae20b1": {
+      "id": "ec-968472e44aae20b1",
+      "title": "Official site update: economic policy responses",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "968472e44aae20b1d33f961e"
+      ],
+      "sources": [
+        {
+          "item_id": "968472e44aae20b1d33f961e",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/economic-policy-responses",
+          "published_at": null,
+          "title": "Official site update: economic policy responses",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-970f67a75a07d0df": {
+      "id": "ec-970f67a75a07d0df",
+      "title": "Article Oct 23, 2026 Claude Cowork and chat come together for Enterprise Claude Enterprise",
+      "topic": "cloud-agent",
+      "source_kind": "official_listing",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "970f67a75a07d0df0726101f"
+      ],
+      "sources": [
+        {
+          "item_id": "970f67a75a07d0df0726101f",
+          "source_id": "claude-announcements",
+          "url": "https://claude.com/resources/articles/unified-claude-enterprise",
+          "published_at": null,
+          "title": "Article Oct 23, 2026 Claude Cowork and chat come together for Enterprise Claude Enterprise",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-986e2ea6ee80b8b5": {
       "id": "ec-986e2ea6ee80b8b5",
       "title": "Stop guessing auto scaling targets for TTS on Amazon SageMaker AI",
@@ -815,7 +1942,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T16:30:06+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "986e2ea6ee80b8b5fafeeccc"
       ],
@@ -831,6 +1958,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-9b8b3808b69b7589": {
+      "id": "ec-9b8b3808b69b7589",
+      "title": "Official site update: claude 4 cyber",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "9b8b3808b69b7589be3668ab"
+      ],
+      "sources": [
+        {
+          "item_id": "9b8b3808b69b7589be3668ab",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/claude-4-cyber",
+          "published_at": null,
+          "title": "Official site update: claude 4 cyber",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-9c25b784b7361102": {
       "id": "ec-9c25b784b7361102",
       "title": "How U.S. Hunger connects leaders and data using Amazon Quick",
@@ -838,7 +1988,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-21T19:19:50+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "9c25b784b73611021a106aff"
       ],
@@ -850,6 +2000,29 @@
           "published_at": "2026-10-21T19:19:50+00:00",
           "title": "How U.S. Hunger connects leaders and data using Amazon Quick",
           "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-9c2e899d12175536": {
+      "id": "ec-9c2e899d12175536",
+      "title": "Article Oct 21, 2026 Claude Security now scans continuously and tracks fixes Claude Security now keeps up with your repositories as code changes, tracks findings until they’re fixed, learns from the context your team adds, and connects to your tools ",
+      "topic": "cloud-agent",
+      "source_kind": "official_listing",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "9c2e899d121755363e2ad475"
+      ],
+      "sources": [
+        {
+          "item_id": "9c2e899d121755363e2ad475",
+          "source_id": "claude-announcements",
+          "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes",
+          "published_at": null,
+          "title": "Article Oct 21, 2026 Claude Security now scans continuously and tracks fixes Claude Security now keeps up with your repositories as code changes, tracks findings until they’re fixed, learns from the context your team adds, and connects to your tools ",
+          "first_discovered_at": "2026-10-23T01:21:48+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -877,6 +2050,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-9ef9858a9a27bcd0": {
+      "id": "ec-9ef9858a9a27bcd0",
+      "title": "Code Comprehensor: Hierarchical Documentation and Cross-Modal Retrieval for Large Repositories",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "9ef9858a9a27bcd027beb07f"
+      ],
+      "sources": [
+        {
+          "item_id": "9ef9858a9a27bcd027beb07f",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.30016",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "Code Comprehensor: Hierarchical Documentation and Cross-Modal Retrieval for Large Repositories",
+          "first_discovered_at": "2026-10-22T06:29:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-a08d8d7f45783686": {
       "id": "ec-a08d8d7f45783686",
       "title": "Evolving Self-tuning Benchmarks for Long-Horizon Tool Use",
@@ -900,6 +2096,144 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-a0db77b024e6281c": {
+      "id": "ec-a0db77b024e6281c",
+      "title": "Official site update: evaluating feature steering",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "a0db77b024e6281c55a17c93"
+      ],
+      "sources": [
+        {
+          "item_id": "a0db77b024e6281c55a17c93",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/evaluating-feature-steering",
+          "published_at": null,
+          "title": "Official site update: evaluating feature steering",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-a6ebb163a6c3bf17": {
+      "id": "ec-a6ebb163a6c3bf17",
+      "title": "Official site update: claude code expertise",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "a6ebb163a6c3bf175c39e54e"
+      ],
+      "sources": [
+        {
+          "item_id": "a6ebb163a6c3bf175c39e54e",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/claude-code-expertise",
+          "published_at": null,
+          "title": "Official site update: claude code expertise",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-ab36928c7a5646cc": {
+      "id": "ec-ab36928c7a5646cc",
+      "title": "MCP vs CLI for AI Agents: A Comparative Analysis of Tool Integration Strategies for Autonomous Systems",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "ab36928c7a5646ccf8955a17"
+      ],
+      "sources": [
+        {
+          "item_id": "ab36928c7a5646ccf8955a17",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.30157",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "MCP vs CLI for AI Agents: A Comparative Analysis of Tool Integration Strategies for Autonomous Systems",
+          "first_discovered_at": "2026-10-23T04:41:06+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-ae3ecf0906056668": {
+      "id": "ec-ae3ecf0906056668",
+      "title": "Dancing Diffusion: Learning Continuous Programs for Image Generation and Editing",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "ae3ecf090605666834ee2d6a"
+      ],
+      "sources": [
+        {
+          "item_id": "ae3ecf090605666834ee2d6a",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.28003",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "Dancing Diffusion: Learning Continuous Programs for Image Generation and Editing",
+          "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-b1215e1aefc04c61": {
+      "id": "ec-b1215e1aefc04c61",
+      "title": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-21T13:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "b1215e1aefc04c61e203617a"
+      ],
+      "sources": [
+        {
+          "item_id": "b1215e1aefc04c61e203617a",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/chatgpt-ads-expands-26-new-countries",
+          "published_at": "2026-10-21T13:00:00+00:00",
+          "title": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform",
+          "first_discovered_at": "2026-10-23T01:17:01+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-b28a06ef950a1f61": {
+      "id": "ec-b28a06ef950a1f61",
+      "title": "0.164.0",
+      "topic": "harness",
+      "source_kind": "github_release",
+      "published_at": "2026-10-23T04:48:10+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "b28a06ef950a1f61dcf4a774"
+      ],
+      "sources": [
+        {
+          "item_id": "b28a06ef950a1f61dcf4a774",
+          "source_id": "release:openai/codex",
+          "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0",
+          "published_at": "2026-10-23T04:48:10+00:00",
+          "title": "0.164.0",
+          "first_discovered_at": "2026-10-23T08:16:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-b39131c17298f111": {
       "id": "ec-b39131c17298f111",
       "title": "Train Qwen3 on AWS Trainium with torchtitan",
@@ -907,7 +2241,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-21T20:00:22+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "b39131c17298f1111bc3a78c"
       ],
@@ -919,6 +2253,29 @@
           "published_at": "2026-10-21T20:00:22+00:00",
           "title": "Train Qwen3 on AWS Trainium with torchtitan",
           "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-b3f7af6ca537a114": {
+      "id": "ec-b3f7af6ca537a114",
+      "title": "OpenMAP-HIE: Pathology Informed Score-based Diffusion Model for Unsupervised Neonatal Hypoxic-Ischemic Encephalopathy Lesion Segmentation",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "b3f7af6ca537a11487f5d476"
+      ],
+      "sources": [
+        {
+          "item_id": "b3f7af6ca537a11487f5d476",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.29322",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "OpenMAP-HIE: Pathology Informed Score-based Diffusion Model for Unsupervised Neonatal Hypoxic-Ischemic Encephalopathy Lesion Segmentation",
+          "first_discovered_at": "2026-10-22T06:29:46+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -946,6 +2303,98 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-b8b49f3884dcb17b": {
+      "id": "ec-b8b49f3884dcb17b",
+      "title": "Robot Generalization Beyond Volume: The Diversity Path via Zero-Shot Capabilities",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "b8b49f3884dcb17b62102e6a"
+      ],
+      "sources": [
+        {
+          "item_id": "b8b49f3884dcb17b62102e6a",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.29829",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "Robot Generalization Beyond Volume: The Diversity Path via Zero-Shot Capabilities",
+          "first_discovered_at": "2026-10-22T06:29:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-b8d85869a2d7f453": {
+      "id": "ec-b8d85869a2d7f453",
+      "title": "Latent Bridges for Multi-Table Question Answering",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "b8d85869a2d7f453db96cc97"
+      ],
+      "sources": [
+        {
+          "item_id": "b8d85869a2d7f453db96cc97",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2606.28916",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "Latent Bridges for Multi-Table Question Answering",
+          "first_discovered_at": "2026-10-22T06:29:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-b9843ad88f05a84c": {
+      "id": "ec-b9843ad88f05a84c",
+      "title": "Article Oct 22, 2026 The full Claude Platform, available on Google Cloud Use Claude Models on Google Cloud (Anthropic managed) to access Claude Platform features with Google Cloud authentication, billing, and commitment retirement. Claude Platform",
+      "topic": "cloud-agent",
+      "source_kind": "official_listing",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "b9843ad88f05a84c240bfc25"
+      ],
+      "sources": [
+        {
+          "item_id": "b9843ad88f05a84c240bfc25",
+          "source_id": "claude-announcements",
+          "url": "https://claude.com/resources/articles/claude-models-on-google-cloud-anthropic-managed",
+          "published_at": null,
+          "title": "Article Oct 22, 2026 The full Claude Platform, available on Google Cloud Use Claude Models on Google Cloud (Anthropic managed) to access Claude Platform features with Google Cloud authentication, billing, and commitment retirement. Claude Platform",
+          "first_discovered_at": "2026-10-23T01:21:48+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-bbf7ca6d9478c92a": {
+      "id": "ec-bbf7ca6d9478c92a",
+      "title": "Official site update: biorisk",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "bbf7ca6d9478c92a7c22c90c"
+      ],
+      "sources": [
+        {
+          "item_id": "bbf7ca6d9478c92a7c22c90c",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/biorisk",
+          "published_at": null,
+          "title": "Official site update: biorisk",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-be319d98e9e87162": {
       "id": "ec-be319d98e9e87162",
       "title": "Announcing new ways to customize models with SageMaker AI, without managing GPUs",
@@ -953,7 +2402,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T18:00:04+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "be319d98e9e8716242c5d155"
       ],
@@ -969,6 +2418,52 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-bfcd4f6589d5560c": {
+      "id": "ec-bfcd4f6589d5560c",
+      "title": "REFLEX: RNA Ensemble Generation via Flexibility-Calibrated Stochastic Bridge",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T04:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "bfcd4f6589d5560c982093e2"
+      ],
+      "sources": [
+        {
+          "item_id": "bfcd4f6589d5560c982093e2",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.26261",
+          "published_at": "2026-10-23T04:00:00+00:00",
+          "title": "REFLEX: RNA Ensemble Generation via Flexibility-Calibrated Stochastic Bridge",
+          "first_discovered_at": "2026-10-22T06:29:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-c115ce57a51e58c9": {
+      "id": "ec-c115ce57a51e58c9",
+      "title": "Article Oct 6, 2026 Claude now works with Google Docs, Sheets, and Slides Teams that run on Google Workspace can now bring Claude into their files or work on their files directly from Claude, with our new add-on and Google Docs, Sheets, and Slides co",
+      "topic": "cloud-agent",
+      "source_kind": "official_listing",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "c115ce57a51e58c9dac68cb3"
+      ],
+      "sources": [
+        {
+          "item_id": "c115ce57a51e58c9dac68cb3",
+          "source_id": "claude-announcements",
+          "url": "https://claude.com/resources/articles/claude-now-works-in-google-docs-sheets-and-slides",
+          "published_at": null,
+          "title": "Article Oct 6, 2026 Claude now works with Google Docs, Sheets, and Slides Teams that run on Google Workspace can now bring Claude into their files or work on their files directly from Claude, with our new add-on and Google Docs, Sheets, and Slides co",
+          "first_discovered_at": "2026-10-23T01:21:48+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-c2ed162a157709f5": {
       "id": "ec-c2ed162a157709f5",
       "title": "Granite Speech 5.0: Transcribe, Translate, and Attribute more Accurately and Faster",
@@ -976,7 +2471,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-21T14:58:18+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "c2ed162a157709f5cb47598d"
       ],
@@ -1011,6 +2506,29 @@
           "published_at": "2026-10-22T04:00:00+00:00",
           "title": "A Small Model Asks Better: Fine-Tuning Query Clarification for Retrieval-Augmented Generation",
           "first_discovered_at": "2026-10-22T06:29:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-ca353886f18b2301": {
+      "id": "ec-ca353886f18b2301",
+      "title": "Official site update: exploit",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "ca353886f18b23010ffcbc15"
+      ],
+      "sources": [
+        {
+          "item_id": "ca353886f18b23010ffcbc15",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/exploit",
+          "published_at": null,
+          "title": "Official site update: exploit",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -1068,7 +2586,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T17:48:22+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "da0587182704033afb595bab"
       ],
@@ -1080,6 +2598,29 @@
           "published_at": "2026-10-22T17:48:22+00:00",
           "title": "Deploy AI in a HIPAA-eligible environment with Amazon Quick",
           "first_discovered_at": "2026-10-22T21:30:14+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-dbe42569b9cac6f1": {
+      "id": "ec-dbe42569b9cac6f1",
+      "title": "Official site update: claude values models languages",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "dbe42569b9cac6f135abdc03"
+      ],
+      "sources": [
+        {
+          "item_id": "dbe42569b9cac6f135abdc03",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/claude-values-models-languages",
+          "published_at": null,
+          "title": "Official site update: claude values models languages",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -1114,7 +2655,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-21T15:39:56+00:00",
       "first_seen_at": "2026-10-22T02:39:22+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "de02c51efff34c4ca4ad4936"
       ],
@@ -1126,6 +2667,52 @@
           "published_at": "2026-10-21T15:39:56+00:00",
           "title": "v1.57.0",
           "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-de9db6f384cbc788": {
+      "id": "ec-de9db6f384cbc788",
+      "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-21T07:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "de9db6f384cbc788775550a9"
+      ],
+      "sources": [
+        {
+          "item_id": "de9db6f384cbc788775550a9",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
+          "published_at": "2026-10-21T07:00:00+00:00",
+          "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities",
+          "first_discovered_at": "2026-10-23T01:17:01+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-e35f1b9db0c287fd": {
+      "id": "ec-e35f1b9db0c287fd",
+      "title": "Official site update: anthropic interviewer",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "e35f1b9db0c287fd526830c7"
+      ],
+      "sources": [
+        {
+          "item_id": "e35f1b9db0c287fd526830c7",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/anthropic-interviewer",
+          "published_at": null,
+          "title": "Official site update: anthropic interviewer",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -1153,6 +2740,75 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-ea92da5c121ecb45": {
+      "id": "ec-ea92da5c121ecb45",
+      "title": "How we built ChatGPT’s novel ad stack for user trust and relevance",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-21T07:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "ea92da5c121ecb4527027c2b"
+      ],
+      "sources": [
+        {
+          "item_id": "ea92da5c121ecb4527027c2b",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/building-chatgpt-ad-stack",
+          "published_at": "2026-10-21T07:00:00+00:00",
+          "title": "How we built ChatGPT’s novel ad stack for user trust and relevance",
+          "first_discovered_at": "2026-10-23T01:17:01+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-eda525050cea8fce": {
+      "id": "ec-eda525050cea8fce",
+      "title": "Uber brings ChatGPT Work to all employees with OpenAI",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-22T00:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "eda525050cea8fce4b138233"
+      ],
+      "sources": [
+        {
+          "item_id": "eda525050cea8fce4b138233",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/uber-chatgpt-work-rollout",
+          "published_at": "2026-10-22T00:00:00+00:00",
+          "title": "Uber brings ChatGPT Work to all employees with OpenAI",
+          "first_discovered_at": "2026-10-23T01:17:01+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-ee4c22366ef7e7ab": {
+      "id": "ec-ee4c22366ef7e7ab",
+      "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T17:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "ee4c22366ef7e7abd786b0a4"
+      ],
+      "sources": [
+        {
+          "item_id": "ee4c22366ef7e7abd786b0a4",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+          "published_at": "2026-10-23T17:00:00+00:00",
+          "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
+          "first_discovered_at": "2026-10-23T17:00:14+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-ef73bf2ace8ac671": {
       "id": "ec-ef73bf2ace8ac671",
       "title": "FairStress: A deeper evaluation of fairness in LLM decision-making",
@@ -1176,6 +2832,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-f325a05cc9ff0690": {
+      "id": "ec-f325a05cc9ff0690",
+      "title": "langgraph-cli==0.4.38",
+      "topic": "runtime",
+      "source_kind": "github_release",
+      "published_at": "2026-10-23T14:22:29+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "f325a05cc9ff06908b95941d"
+      ],
+      "sources": [
+        {
+          "item_id": "f325a05cc9ff06908b95941d",
+          "source_id": "release:langchain-ai/langgraph",
+          "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.38",
+          "published_at": "2026-10-23T14:22:29+00:00",
+          "title": "langgraph-cli==0.4.38",
+          "first_discovered_at": "2026-10-23T17:00:14+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-f4cbbc5a6a498cf5": {
       "id": "ec-f4cbbc5a6a498cf5",
       "title": "5 production challenges in multi-agent systems and how Deep Insight solved them",
@@ -1183,7 +2862,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-21T23:36:47+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "f4cbbc5a6a498cf536c75d35"
       ],
@@ -1195,6 +2874,29 @@
           "published_at": "2026-10-21T23:36:47+00:00",
           "title": "5 production challenges in multi-agent systems and how Deep Insight solved them",
           "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-f5220dab8f55b741": {
+      "id": "ec-f5220dab8f55b741",
+      "title": "Article Oct 21, 2026 Introducing Claude Duet A research preview is available by waitlist today, starting with US Pro and Max subscribers.",
+      "topic": "cloud-agent",
+      "source_kind": "official_listing",
+      "published_at": null,
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "f5220dab8f55b741ff6e0de2"
+      ],
+      "sources": [
+        {
+          "item_id": "f5220dab8f55b741ff6e0de2",
+          "source_id": "claude-announcements",
+          "url": "https://claude.com/resources/articles/claude-duet",
+          "published_at": null,
+          "title": "Article Oct 21, 2026 Introducing Claude Duet A research preview is available by waitlist today, starting with US Pro and Max subscribers.",
+          "first_discovered_at": "2026-10-23T01:21:48+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -1229,7 +2931,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T17:45:58+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "f6cf73b1fedb638ef18cee2b"
       ],
@@ -1245,6 +2947,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-f8c156dba7886826": {
+      "id": "ec-f8c156dba7886826",
+      "title": "Securing our frontier model training environment",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-23T10:00:00+00:00",
+      "first_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "item_ids": [
+        "f8c156dba7886826388b35c0"
+      ],
+      "sources": [
+        {
+          "item_id": "f8c156dba7886826388b35c0",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
+          "published_at": "2026-10-23T10:00:00+00:00",
+          "title": "Securing our frontier model training environment",
+          "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-fb630ea19b93482d": {
       "id": "ec-fb630ea19b93482d",
       "title": "Adaptive agentic intelligence framework using Strands Agents",
@@ -1252,7 +2977,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-21T21:23:26+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-23T00:50:42+00:00",
+      "last_seen_at": "2026-10-24T00:57:39+00:00",
       "item_ids": [
         "fb630ea19b93482d041617e8"
       ],
@@ -1293,60 +3018,135 @@
     }
   },
   "item_index": {
+    "047a55d9a381df1fa2e7fddd": "ec-047a55d9a381df1f",
     "071ab93645637197f5569a5c": "ec-071ab93645637197",
+    "09a52776f0528d1ace295af6": "ec-09a52776f0528d1a",
+    "0b1dcee4cb5d7740eb817283": "ec-0b1dcee4cb5d7740",
+    "0c0b4fb70cfc16f629bcf822": "ec-0c0b4fb70cfc16f6",
     "0e5fad3ca5f8a881acf7d04b": "ec-0e5fad3ca5f8a881",
+    "0f1fe1227ddd86aabba16ba0": "ec-0f1fe1227ddd86aa",
     "10e7631e5ca66af2ce5e95d5": "ec-10e7631e5ca66af2",
+    "1274a8235cdb512e4bb70303": "ec-1274a8235cdb512e",
     "15be2ff317bed24c0dcf7014": "ec-15be2ff317bed24c",
+    "1767ea3194797808039e54b5": "ec-1767ea3194797808",
     "19d564c2b0542953846de266": "ec-19d564c2b0542953",
     "19d9539f3bd0f67fb13b5382": "ec-19d9539f3bd0f67f",
+    "1a1408327520a27be5d4bcf6": "ec-1a1408327520a27b",
+    "1a543055a02f9816518cc039": "ec-1a543055a02f9816",
     "1da987a218b173eb882dffe0": "ec-1da987a218b173eb",
+    "1eabd72a2a9add8eaa3c989f": "ec-1eabd72a2a9add8e",
+    "206e1c6bb61d57d55e1f078c": "ec-206e1c6bb61d57d5",
+    "21e96d4f9b19988eb59b63a0": "ec-21e96d4f9b19988e",
     "23aa3d120b551ff011ac2d6d": "ec-23aa3d120b551ff0",
+    "24c6e2121b55d2858d5b21f5": "ec-24c6e2121b55d285",
+    "24d6782bb608a7d95d92b481": "ec-24d6782bb608a7d9",
     "27a9dd31448e30ea2bdc3f24": "ec-27a9dd31448e30ea",
+    "2b3f616d26d343fed7789052": "ec-2b3f616d26d343fe",
+    "2eea8542a0bf0fd1619f4a1e": "ec-2eea8542a0bf0fd1",
     "2f74e2ab2f7e1728eaa6806f": "ec-2f74e2ab2f7e1728",
+    "38e70b683c26da979fcef795": "ec-38e70b683c26da97",
+    "39cad894cdd240fbe2dba606": "ec-39cad894cdd240fb",
+    "3c862a18b467640b837437cb": "ec-3c862a18b467640b",
+    "3d8ab047597f9f39543346ac": "ec-3d8ab047597f9f39",
+    "3e464efbb0b4dffd8b6fbe25": "ec-3e464efbb0b4dffd",
+    "3f1a11956436b167380065dc": "ec-3f1a11956436b167",
     "40a01666d562060bfdf96e1b": "ec-40a01666d562060b",
     "463357464b6d7cac1748e834": "ec-463357464b6d7cac",
     "464babae9e611e2884811a1a": "ec-464babae9e611e28",
+    "482b7139a29a7e0dc4189bda": "ec-482b7139a29a7e0d",
+    "4e2150af12a97398f6e556e6": "ec-4e2150af12a97398",
+    "4eb4ba31f0f610048f294cc9": "ec-4eb4ba31f0f61004",
     "50b4bc975d890604882b99a1": "ec-50b4bc975d890604",
     "50cf62209b129a401a7b59bc": "ec-50cf62209b129a40",
     "51888f116f5b083740bce796": "ec-51888f116f5b0837",
     "51a8b9803784fc1a8b355095": "ec-51a8b9803784fc1a",
     "51ebab1d094c7d6043171a1f": "ec-51ebab1d094c7d60",
+    "527fa4738dcd75e9f00a9a60": "ec-527fa4738dcd75e9",
     "536f23cd94f139849c62e275": "ec-536f23cd94f13984",
+    "53f9a9bea5bcc5decd948438": "ec-53f9a9bea5bcc5de",
     "542ed0bcb34611a395d9f3fa": "ec-542ed0bcb34611a3",
     "558f2daa7fae0987d8946872": "ec-558f2daa7fae0987",
+    "565b5fa1fe378b99c96415d1": "ec-565b5fa1fe378b99",
     "57363b60fec23f24d81968a1": "ec-57363b60fec23f24",
+    "59b285913cc2d8dc1ba7b0c8": "ec-59b285913cc2d8dc",
     "5b4e08461387ba3b44832eb3": "ec-5b4e08461387ba3b",
+    "5d193cc1f396c8e39b220f8d": "ec-5d193cc1f396c8e3",
+    "5d794c3788a3a4be0d421559": "ec-5d794c3788a3a4be",
     "5e6236f11938be0fd10b5921": "ec-5e6236f11938be0f",
+    "5f83f5347c32a35f18a99c26": "ec-5f83f5347c32a35f",
+    "6400feb681472530a689e8c5": "ec-6400feb681472530",
+    "64ddfb139fec8a1cb4597ec2": "ec-64ddfb139fec8a1c",
     "662faaaeac49f77455d2268b": "ec-662faaaeac49f774",
     "67297d2df9a3d7f196c35fa6": "ec-67297d2df9a3d7f1",
+    "67e0e2ca251faa5910ae53f1": "ec-67e0e2ca251faa59",
     "69a766607353eb4ce62eb537": "ec-69a766607353eb4c",
+    "720764d3a5e8671ecf983f96": "ec-720764d3a5e8671e",
     "737954dac6a7900275aa5e87": "ec-737954dac6a79002",
     "74655899d2c02f414ae48235": "ec-74655899d2c02f41",
     "75c7b038c9e562c067f306b3": "ec-75c7b038c9e562c0",
+    "75d4a9cbafb13c9a87e9134f": "ec-75d4a9cbafb13c9a",
     "76ec00631735d4a60906e376": "ec-76ec00631735d4a6",
+    "78cebe09803b57417ff218b1": "ec-78cebe09803b5741",
+    "7c2cc3d7e8ae53dcce000a0a": "ec-7c2cc3d7e8ae53dc",
     "835c6a6b04c513f42cd61db7": "ec-835c6a6b04c513f4",
+    "856c26ca4c2d04bcedc9cb9f": "ec-856c26ca4c2d04bc",
     "87880261304ab6a6301dbe19": "ec-87880261304ab6a6",
+    "891b7e0bbf66f86d27b770f3": "ec-891b7e0bbf66f86d",
+    "8a41e1e41cbecfde0ac247c2": "ec-8a41e1e41cbecfde",
+    "8a743f361cd25711b69e4fb6": "ec-8a743f361cd25711",
+    "8ae5cfb1a46e38dbde58c1df": "ec-8ae5cfb1a46e38db",
+    "8b353a05b7f98c579f54fae1": "ec-8b353a05b7f98c57",
+    "8f93170faf71fda6558b8b2f": "ec-8f93170faf71fda6",
     "94a5f6526eada9bc0f52700e": "ec-94a5f6526eada9bc",
     "9591b1cd4f512684d53a4a51": "ec-9591b1cd4f512684",
+    "95dedf578de78f3ec264f66e": "ec-95dedf578de78f3e",
+    "968472e44aae20b1d33f961e": "ec-968472e44aae20b1",
+    "970f67a75a07d0df0726101f": "ec-970f67a75a07d0df",
     "986e2ea6ee80b8b5fafeeccc": "ec-986e2ea6ee80b8b5",
+    "9b8b3808b69b7589be3668ab": "ec-9b8b3808b69b7589",
     "9c25b784b73611021a106aff": "ec-9c25b784b7361102",
+    "9c2e899d121755363e2ad475": "ec-9c2e899d12175536",
     "9d21587d5d36cb3b3ef59c8b": "ec-9d21587d5d36cb3b",
+    "9ef9858a9a27bcd027beb07f": "ec-9ef9858a9a27bcd0",
     "a08d8d7f45783686dd5c48c2": "ec-a08d8d7f45783686",
+    "a0db77b024e6281c55a17c93": "ec-a0db77b024e6281c",
+    "a6ebb163a6c3bf175c39e54e": "ec-a6ebb163a6c3bf17",
+    "ab36928c7a5646ccf8955a17": "ec-ab36928c7a5646cc",
+    "ae3ecf090605666834ee2d6a": "ec-ae3ecf0906056668",
+    "b1215e1aefc04c61e203617a": "ec-b1215e1aefc04c61",
+    "b28a06ef950a1f61dcf4a774": "ec-b28a06ef950a1f61",
     "b39131c17298f1111bc3a78c": "ec-b39131c17298f111",
+    "b3f7af6ca537a11487f5d476": "ec-b3f7af6ca537a114",
     "b7839fa2149bfc6438936cfe": "ec-b7839fa2149bfc64",
+    "b8b49f3884dcb17b62102e6a": "ec-b8b49f3884dcb17b",
+    "b8d85869a2d7f453db96cc97": "ec-b8d85869a2d7f453",
+    "b9843ad88f05a84c240bfc25": "ec-b9843ad88f05a84c",
+    "bbf7ca6d9478c92a7c22c90c": "ec-bbf7ca6d9478c92a",
     "be319d98e9e8716242c5d155": "ec-be319d98e9e87162",
+    "bfcd4f6589d5560c982093e2": "ec-bfcd4f6589d5560c",
+    "c115ce57a51e58c9dac68cb3": "ec-c115ce57a51e58c9",
     "c2ed162a157709f5cb47598d": "ec-c2ed162a157709f5",
     "c35b3ef79c92279b18ef069a": "ec-c35b3ef79c92279b",
+    "ca353886f18b23010ffcbc15": "ec-ca353886f18b2301",
     "d03523612a84680b43a1a14d": "ec-d03523612a84680b",
     "d8639c0b4eb9ace31e9d7884": "ec-d8639c0b4eb9ace3",
     "da0587182704033afb595bab": "ec-da0587182704033a",
+    "dbe42569b9cac6f135abdc03": "ec-dbe42569b9cac6f1",
     "dcd4484c0d88ceb8273c6cc2": "ec-dcd4484c0d88ceb8",
     "de02c51efff34c4ca4ad4936": "ec-de02c51efff34c4c",
+    "de9db6f384cbc788775550a9": "ec-de9db6f384cbc788",
+    "e35f1b9db0c287fd526830c7": "ec-e35f1b9db0c287fd",
     "e600abfbbfd2fa21366c575c": "ec-e600abfbbfd2fa21",
+    "ea92da5c121ecb4527027c2b": "ec-ea92da5c121ecb45",
+    "eda525050cea8fce4b138233": "ec-eda525050cea8fce",
+    "ee4c22366ef7e7abd786b0a4": "ec-ee4c22366ef7e7ab",
     "ef73bf2ace8ac67192910f29": "ec-ef73bf2ace8ac671",
+    "f325a05cc9ff06908b95941d": "ec-f325a05cc9ff0690",
     "f4cbbc5a6a498cf536c75d35": "ec-f4cbbc5a6a498cf5",
+    "f5220dab8f55b741ff6e0de2": "ec-f5220dab8f55b741",
     "f5ebfafb83c6121bc98f39f9": "ec-f5ebfafb83c6121b",
     "f6cf73b1fedb638ef18cee2b": "ec-f6cf73b1fedb638e",
+    "f8c156dba7886826388b35c0": "ec-f8c156dba7886826",
     "fb630ea19b93482d041617e8": "ec-fb630ea19b93482d",
     "ff755ea8b40f5ff77cc722f4": "ec-ff755ea8b40f5ff7"
   }

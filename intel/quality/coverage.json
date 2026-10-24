@@ -1,14 +1,16 @@
 {
   "schema_version": "1.0",
   "measurement_kind": "small_editorial_gold_sample_not_industry_recall",
-  "snapshot_generated_at": "2026-10-23T00:50:42+00:00",
-  "beijing_date": "2026-10-23",
+  "snapshot_generated_at": "2026-10-24T00:57:39+00:00",
+  "beijing_date": "2026-10-24",
   "gold_sample_size_eligible": 3,
-  "captured_count": 1,
-  "not_monitored_count": 1,
-  "in_scope_missed_count": 1,
-  "sample_capture_fraction": 0.3333,
-  "in_scope_capture_fraction": 0.5,
+  "captured_count": 3,
+  "snapshot_captured_count": 2,
+  "historical_captured_count": 1,
+  "not_monitored_count": 0,
+  "in_scope_missed_count": 0,
+  "sample_capture_fraction": 1.0,
+  "in_scope_capture_fraction": 1.0,
   "reviewed_gold_items": [
     {
       "gold_event_id": "gold-anthropic-claude-duet-20261021",
@@ -17,11 +19,11 @@
       "importance": "P0",
       "primary_url": "https://claude.com/resources/articles/claude-duet",
       "expected_source_ids": [
-        "anthropic-announcements"
+        "claude-announcements"
       ],
-      "in_configured_scope": false,
-      "outcome": "source_not_monitored",
-      "matched_item_id": null,
+      "in_configured_scope": true,
+      "outcome": "captured",
+      "matched_item_id": "f5220dab8f55b741ff6e0de2",
       "reviewed_at": "2026-10-22T06:25:58Z"
     },
     {
@@ -34,8 +36,8 @@
         "aws-ml"
       ],
       "in_configured_scope": true,
-      "outcome": "in_scope_not_observed",
-      "matched_item_id": null,
+      "outcome": "captured_in_history",
+      "matched_item_id": "e600abfbbfd2fa21366c575c",
       "reviewed_at": "2026-10-22T06:25:58Z"
     },
     {
@@ -57,7 +59,7 @@
     "These examples were selected editorially and are not a representative sample of all significant Agent Infra events.",
     "Article IDs match exact normalized official URLs, not semantic headlines or syndication.",
     "Gold events have Beijing calendar dates, not always exact timestamps; day-level eligibility is deliberately approximate.",
-    "A configured feed can miss an event even when its category is in scope; missed events need manual feed/API inspection.",
+    "A configured feed may drop a previously captured item from its rolling snapshot. Check the persistent candidate ledger before declaring a miss.",
     "Do not report this value as industry-wide event recall, precision or comprehensive source coverage."
   ]
 }
