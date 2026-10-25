@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_ingested_snapshot": "2026-10-24T00:57:39+00:00",
+  "last_ingested_snapshot": "2026-10-25T00:27:19+00:00",
   "bootstrap_note": "Two independently verified candidates recovered from the successful 2026-10-22 ingestion artifact. This is not the full 54-item ledger; the next scheduled collector will merge all available items.",
   "candidates": {
     "ec-047a55d9a381df1f": {
@@ -10,7 +10,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "047a55d9a381df1fa2e7fddd"
       ],
@@ -56,7 +56,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T16:24:55+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "09a52776f0528d1ace295af6"
       ],
@@ -79,7 +79,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "0b1dcee4cb5d7740eb817283"
       ],
@@ -102,7 +102,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "0c0b4fb70cfc16f629bcf822"
       ],
@@ -125,7 +125,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T07:51:31+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "0e5fad3ca5f8a881acf7d04b"
       ],
@@ -148,7 +148,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "0f1fe1227ddd86aabba16ba0"
       ],
@@ -194,7 +194,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "1274a8235cdb512e4bb70303"
       ],
@@ -240,7 +240,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "1767ea3194797808039e54b5"
       ],
@@ -309,7 +309,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "1a1408327520a27be5d4bcf6"
       ],
@@ -332,7 +332,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T00:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "1a543055a02f9816518cc039"
       ],
@@ -378,7 +378,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "1eabd72a2a9add8eaa3c989f"
       ],
@@ -401,7 +401,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "206e1c6bb61d57d55e1f078c"
       ],
@@ -424,7 +424,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "21e96d4f9b19988eb59b63a0"
       ],
@@ -447,7 +447,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T16:25:57+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "23aa3d120b551ff011ac2d6d"
       ],
@@ -470,7 +470,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "24c6e2121b55d2858d5b21f5"
       ],
@@ -539,7 +539,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T00:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "2b3f616d26d343fed7789052"
       ],
@@ -562,7 +562,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "2eea8542a0bf0fd1619f4a1e"
       ],
@@ -585,7 +585,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-22T16:00:18+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "2f74e2ab2f7e1728eaa6806f"
       ],
@@ -608,7 +608,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "38e70b683c26da979fcef795"
       ],
@@ -654,7 +654,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "3c862a18b467640b837437cb"
       ],
@@ -677,7 +677,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "3d8ab047597f9f39543346ac"
       ],
@@ -700,7 +700,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "3e464efbb0b4dffd8b6fbe25"
       ],
@@ -769,7 +769,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T18:06:35+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "463357464b6d7cac1748e834"
       ],
@@ -815,7 +815,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "482b7139a29a7e0dc4189bda"
       ],
@@ -838,7 +838,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "4e2150af12a97398f6e556e6"
       ],
@@ -861,7 +861,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "4eb4ba31f0f610048f294cc9"
       ],
@@ -930,7 +930,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T22:24:34+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "51888f116f5b083740bce796"
       ],
@@ -953,7 +953,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T18:01:53+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "51a8b9803784fc1a8b355095"
       ],
@@ -999,7 +999,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "527fa4738dcd75e9f00a9a60"
       ],
@@ -1045,7 +1045,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "53f9a9bea5bcc5decd948438"
       ],
@@ -1114,7 +1114,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "565b5fa1fe378b99c96415d1"
       ],
@@ -1160,7 +1160,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T16:21:36+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "59b285913cc2d8dc1ba7b0c8"
       ],
@@ -1206,7 +1206,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "5d193cc1f396c8e39b220f8d"
       ],
@@ -1229,7 +1229,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T16:15:50+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "5d794c3788a3a4be0d421559"
       ],
@@ -1252,7 +1252,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-23T00:44:35+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "5e6236f11938be0fd10b5921"
       ],
@@ -1275,7 +1275,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "5f83f5347c32a35f18a99c26"
       ],
@@ -1298,7 +1298,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T06:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "6400feb681472530a689e8c5"
       ],
@@ -1367,7 +1367,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T16:11:31+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "67297d2df9a3d7f196c35fa6"
       ],
@@ -1390,7 +1390,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "67e0e2ca251faa5910ae53f1"
       ],
@@ -1436,7 +1436,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "720764d3a5e8671ecf983f96"
       ],
@@ -1459,7 +1459,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T04:00:00+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "737954dac6a7900275aa5e87"
       ],
@@ -1505,7 +1505,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T18:00:01+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "75c7b038c9e562c067f306b3"
       ],
@@ -1528,7 +1528,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T16:30:10+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "75d4a9cbafb13c9a87e9134f"
       ],
@@ -1597,7 +1597,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "7c2cc3d7e8ae53dcce000a0a"
       ],
@@ -1620,7 +1620,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-22T21:20:39+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "835c6a6b04c513f42cd61db7"
       ],
@@ -1632,6 +1632,29 @@
           "published_at": "2026-10-22T21:20:39+00:00",
           "title": "Open SWE Desktop v0.3.9",
           "first_discovered_at": "2026-10-22T21:30:14+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-853629b69b653c9d": {
+      "id": "ec-853629b69b653c9d",
+      "title": "Official site update: your thoughts on ai",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-25T00:27:19+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
+      "item_ids": [
+        "853629b69b653c9d835ef03a"
+      ],
+      "sources": [
+        {
+          "item_id": "853629b69b653c9d835ef03a",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/your-thoughts-on-ai",
+          "published_at": null,
+          "title": "Official site update: your thoughts on ai",
+          "first_discovered_at": "2026-10-24T04:29:07+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -1689,7 +1712,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T19:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "891b7e0bbf66f86d27b770f3"
       ],
@@ -1712,7 +1735,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T17:48:54+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "8a41e1e41cbecfde0ac247c2"
       ],
@@ -1728,6 +1751,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-8a58c29f390b93e1": {
+      "id": "ec-8a58c29f390b93e1",
+      "title": "langgraph==1.2.17",
+      "topic": "runtime",
+      "source_kind": "github_release",
+      "published_at": "2026-10-24T01:08:05+00:00",
+      "first_seen_at": "2026-10-25T00:27:19+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
+      "item_ids": [
+        "8a58c29f390b93e1d30464b2"
+      ],
+      "sources": [
+        {
+          "item_id": "8a58c29f390b93e1d30464b2",
+          "source_id": "release:langchain-ai/langgraph",
+          "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.17",
+          "published_at": "2026-10-24T01:08:05+00:00",
+          "title": "langgraph==1.2.17",
+          "first_discovered_at": "2026-10-24T04:29:07+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-8a743f361cd25711": {
       "id": "ec-8a743f361cd25711",
       "title": "v2.13.0",
@@ -1735,7 +1781,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-23T18:08:23+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "8a743f361cd25711b69e4fb6"
       ],
@@ -1758,7 +1804,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "8ae5cfb1a46e38dbde58c1df"
       ],
@@ -1781,7 +1827,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-23T14:19:24+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "8b353a05b7f98c579f54fae1"
       ],
@@ -1804,7 +1850,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T14:30:24+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "8f93170faf71fda6558b8b2f"
       ],
@@ -1896,7 +1942,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "968472e44aae20b1d33f961e"
       ],
@@ -1919,7 +1965,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "970f67a75a07d0df0726101f"
       ],
@@ -1942,7 +1988,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T16:30:06+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "986e2ea6ee80b8b5fafeeccc"
       ],
@@ -1965,7 +2011,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "9b8b3808b69b7589be3668ab"
       ],
@@ -2011,7 +2057,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "9c2e899d121755363e2ad475"
       ],
@@ -2057,7 +2103,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "9ef9858a9a27bcd027beb07f"
       ],
@@ -2103,7 +2149,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "a0db77b024e6281c55a17c93"
       ],
@@ -2126,7 +2172,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "a6ebb163a6c3bf175c39e54e"
       ],
@@ -2149,7 +2195,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "ab36928c7a5646ccf8955a17"
       ],
@@ -2172,7 +2218,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "ae3ecf090605666834ee2d6a"
       ],
@@ -2218,7 +2264,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-23T04:48:10+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "b28a06ef950a1f61dcf4a774"
       ],
@@ -2264,7 +2310,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "b3f7af6ca537a11487f5d476"
       ],
@@ -2310,7 +2356,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "b8b49f3884dcb17b62102e6a"
       ],
@@ -2333,7 +2379,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "b8d85869a2d7f453db96cc97"
       ],
@@ -2356,7 +2402,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "b9843ad88f05a84c240bfc25"
       ],
@@ -2379,7 +2425,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "bbf7ca6d9478c92a7c22c90c"
       ],
@@ -2402,7 +2448,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T18:00:04+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "be319d98e9e8716242c5d155"
       ],
@@ -2425,7 +2471,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T04:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "bfcd4f6589d5560c982093e2"
       ],
@@ -2448,7 +2494,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "c115ce57a51e58c9dac68cb3"
       ],
@@ -2517,7 +2563,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "ca353886f18b23010ffcbc15"
       ],
@@ -2586,7 +2632,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T17:48:22+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "da0587182704033afb595bab"
       ],
@@ -2609,7 +2655,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "dbe42569b9cac6f135abdc03"
       ],
@@ -2701,7 +2747,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "e35f1b9db0c287fd526830c7"
       ],
@@ -2793,7 +2839,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T17:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "ee4c22366ef7e7abd786b0a4"
       ],
@@ -2839,7 +2885,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-23T14:22:29+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "f325a05cc9ff06908b95941d"
       ],
@@ -2885,7 +2931,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "f5220dab8f55b741ff6e0de2"
       ],
@@ -2931,7 +2977,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-22T17:45:58+00:00",
       "first_seen_at": "2026-10-23T00:50:42+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "f6cf73b1fedb638ef18cee2b"
       ],
@@ -2954,7 +3000,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-23T10:00:00+00:00",
       "first_seen_at": "2026-10-24T00:57:39+00:00",
-      "last_seen_at": "2026-10-24T00:57:39+00:00",
+      "last_seen_at": "2026-10-25T00:27:19+00:00",
       "item_ids": [
         "f8c156dba7886826388b35c0"
       ],
@@ -3089,10 +3135,12 @@
     "78cebe09803b57417ff218b1": "ec-78cebe09803b5741",
     "7c2cc3d7e8ae53dcce000a0a": "ec-7c2cc3d7e8ae53dc",
     "835c6a6b04c513f42cd61db7": "ec-835c6a6b04c513f4",
+    "853629b69b653c9d835ef03a": "ec-853629b69b653c9d",
     "856c26ca4c2d04bcedc9cb9f": "ec-856c26ca4c2d04bc",
     "87880261304ab6a6301dbe19": "ec-87880261304ab6a6",
     "891b7e0bbf66f86d27b770f3": "ec-891b7e0bbf66f86d",
     "8a41e1e41cbecfde0ac247c2": "ec-8a41e1e41cbecfde",
+    "8a58c29f390b93e1d30464b2": "ec-8a58c29f390b93e1",
     "8a743f361cd25711b69e4fb6": "ec-8a743f361cd25711",
     "8ae5cfb1a46e38dbde58c1df": "ec-8ae5cfb1a46e38db",
     "8b353a05b7f98c579f54fae1": "ec-8b353a05b7f98c57",

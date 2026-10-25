@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0",
   "measurement_kind": "small_editorial_gold_sample_not_industry_recall",
-  "snapshot_generated_at": "2026-10-24T00:57:39+00:00",
-  "beijing_date": "2026-10-24",
+  "snapshot_generated_at": "2026-10-25T00:27:19+00:00",
+  "beijing_date": "2026-10-25",
   "gold_sample_size_eligible": 3,
   "captured_count": 3,
-  "snapshot_captured_count": 2,
-  "historical_captured_count": 1,
+  "snapshot_captured_count": 1,
+  "historical_captured_count": 2,
   "not_monitored_count": 0,
   "in_scope_missed_count": 0,
   "sample_capture_fraction": 1.0,
@@ -50,7 +50,7 @@
         "release:OpenHands/software-agent-sdk"
       ],
       "in_configured_scope": true,
-      "outcome": "captured",
+      "outcome": "captured_in_history",
       "matched_item_id": "de02c51efff34c4ca4ad4936",
       "reviewed_at": "2026-10-22T06:25:58Z"
     }

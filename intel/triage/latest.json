@@ -1,86 +1,31 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-24T00:57:48+00:00",
-  "snapshot_generated_at": "2026-10-24T00:57:39+00:00",
-  "beijing_date": "2026-10-24",
+  "generated_at": "2026-10-25T00:27:28+00:00",
+  "snapshot_generated_at": "2026-10-25T00:27:19+00:00",
+  "beijing_date": "2026-10-25",
   "kind": "unverified_editorial_review_queue",
-  "count": 29,
-  "eligible_item_count": 99,
+  "count": 30,
+  "eligible_item_count": 81,
   "topic_distribution": {
     "cloud-agent": 9,
     "harness": 9,
     "research": 9,
-    "runtime": 2
+    "runtime": 3
   },
   "source_distribution": {
     "anthropic-site": 2,
     "arxiv-cs-ai": 5,
-    "aws-ml": 5,
-    "claude-announcements": 1,
+    "aws-ml": 4,
+    "claude-announcements": 4,
     "deepmind-blog": 1,
     "huggingface-blog": 3,
     "openai-news": 5,
-    "release:OpenHands/software-agent-sdk": 2,
+    "release:OpenHands/software-agent-sdk": 1,
     "release:google/adk-python": 1,
-    "release:langchain-ai/langgraph": 2,
-    "release:langchain-ai/open-swe": 1,
+    "release:langchain-ai/langgraph": 3,
     "release:openai/codex": 1
   },
   "items": [
-    {
-      "item_id": "1a543055a02f9816518cc039",
-      "candidate_id": "ec-1a543055a02f9816",
-      "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
-      "url": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-10-23T00:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "6400feb681472530a689e8c5",
-      "candidate_id": "ec-6400feb681472530",
-      "title": "What FDE means at OpenAI",
-      "url": "https://openai.com/index/forward-deployed-engineering-means",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-10-22T06:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "891b7e0bbf66f86d27b770f3",
-      "candidate_id": "ec-891b7e0bbf66f86d",
-      "title": "Build more responsive apps with the Decisions API",
-      "url": "https://openai.com/index/decisions-api",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-10-22T19:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
     {
       "item_id": "ee4c22366ef7e7abd786b0a4",
       "candidate_id": "ec-ee4c22366ef7e7ab",
@@ -118,6 +63,60 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "1a543055a02f9816518cc039",
+      "candidate_id": "ec-1a543055a02f9816",
+      "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
+      "url": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-10-23T00:00:00+00:00",
+      "review_order_score": 7,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "6400feb681472530a689e8c5",
+      "candidate_id": "ec-6400feb681472530",
+      "title": "What FDE means at OpenAI",
+      "url": "https://openai.com/index/forward-deployed-engineering-means",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-10-22T06:00:00+00:00",
+      "review_order_score": 7,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "891b7e0bbf66f86d27b770f3",
+      "candidate_id": "ec-891b7e0bbf66f86d",
+      "title": "Build more responsive apps with the Decisions API",
+      "url": "https://openai.com/index/decisions-api",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-10-22T19:00:00+00:00",
+      "review_order_score": 7,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "8f93170faf71fda6558b8b2f",
       "candidate_id": "ec-8f93170faf71fda6",
       "title": "Beyond tree cover: mapping the world’s forest types",
@@ -127,29 +126,11 @@
       "topic": "research",
       "source_priority": "P0",
       "claimed_published_at": "2026-10-22T14:30:24+00:00",
-      "review_order_score": 8,
+      "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "2f74e2ab2f7e1728eaa6806f",
-      "candidate_id": "ec-2f74e2ab2f7e1728",
-      "title": "v1.58.0",
-      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.58.0",
-      "source_id": "release:OpenHands/software-agent-sdk",
-      "source_kind": "github_release",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-22T16:00:18+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -163,24 +144,6 @@
       "topic": "cloud-agent",
       "source_priority": "P1",
       "claimed_published_at": "2026-10-23T00:44:35+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "835c6a6b04c513f42cd61db7",
-      "candidate_id": "ec-835c6a6b04c513f4",
-      "title": "Open SWE Desktop v0.3.9",
-      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.9",
-      "source_id": "release:langchain-ai/open-swe",
-      "source_kind": "github_release",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-22T21:20:39+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -217,6 +180,24 @@
       "topic": "harness",
       "source_priority": "P1",
       "claimed_published_at": "2026-10-23T04:48:10+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "8a58c29f390b93e1d30464b2",
+      "candidate_id": "ec-8a58c29f390b93e1",
+      "title": "langgraph==1.2.17",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.17",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-24T01:08:05+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -280,60 +261,6 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "23aa3d120b551ff011ac2d6d",
-      "candidate_id": "ec-23aa3d120b551ff0",
-      "title": "How Rescale built an AI triage agent with Strands Agents and AI-DLC",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-rescale-built-an-ai-triage-agent-with-strands-agents-and-ai-dlc",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-22T16:25:57+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "463357464b6d7cac1748e834",
-      "candidate_id": "ec-463357464b6d7cac",
-      "title": "Amazon Polly delivers a major upgrade to its Generative engine",
-      "url": "https://aws.amazon.com/blogs/machine-learning/amazon-polly-delivers-a-major-upgrade-to-its-generative-engine",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-22T18:06:35+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "51a8b9803784fc1a8b355095",
-      "candidate_id": "ec-51a8b9803784fc1a",
-      "title": "How IskayPet unified corporate knowledge with Amazon Bedrock Managed Knowledge Bases",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-iskaypet-unified-corporate-knowledge-with-amazon-bedrock-managed-knowledge-bases",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-22T18:01:53+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
       "item_id": "59b285913cc2d8dc1ba7b0c8",
       "candidate_id": "ec-59b285913cc2d8dc",
       "title": "How Bayer Crop Science built an agentic decision engine on Amazon Bedrock AgentCore with AWS Unified Operations",
@@ -352,10 +279,100 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "75d4a9cbafb13c9a87e9134f",
+      "candidate_id": "ec-75d4a9cbafb13c9a",
+      "title": "Orchestrating SageMaker AI endpoint auto scaling with AWS CDK",
+      "url": "https://aws.amazon.com/blogs/machine-learning/orchestrating-sagemaker-ai-endpoint-auto-scaling-with-aws-cdk",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-23T16:30:10+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "8a41e1e41cbecfde0ac247c2",
+      "candidate_id": "ec-8a41e1e41cbecfde",
+      "title": "Multi-Turn Reinforcement Learning on Amazon SageMaker AI: A hands-on guide",
+      "url": "https://aws.amazon.com/blogs/machine-learning/multi-turn-reinforcement-learning-on-amazon-sagemaker-ai-a-hands-on-guide",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-23T17:48:54+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "0c0b4fb70cfc16f629bcf822",
       "candidate_id": "ec-0c0b4fb70cfc16f6",
       "title": "Article Oct 23, 2026 Claude Duet Safety, Privacy, and Security Claude Duet is a proactive agent that works for you, even while you’re away. It builds on two layers of protection: safety training in the Claude model itself and the safeguards that exis",
       "url": "https://claude.com/resources/articles/claude-duet-safety-privacy-and-security",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "2eea8542a0bf0fd1619f4a1e",
+      "candidate_id": "ec-2eea8542a0bf0fd1",
+      "title": "Article Oct 8, 2026 Build live dashboards and animate explainers with Claude Claude Dashboards and Claude Motion are now in beta. Docs, Slides, and Design are out of beta and on every Claude plan, including Free. Claude apps Claude Design 2 more : Cl",
+      "url": "https://claude.com/resources/articles/dashboards-and-motion",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "4e2150af12a97398f6e556e6",
+      "candidate_id": "ec-4e2150af12a97398",
+      "title": "Article Oct 21, 2026 HCLTech joins the Claude Partner Network as a Global Premier partner HCLTech will bring Claude into the solutions it provides for banks, hospitals, telecom companies, and manufacturers.",
+      "url": "https://claude.com/resources/articles/hcltech-joins-claude-partner-network",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "565b5fa1fe378b99c96415d1",
+      "candidate_id": "ec-565b5fa1fe378b99",
+      "title": "Article Oct 6, 2026 We’re expanding the Claude Startups program to help founders build",
+      "url": "https://claude.com/resources/articles/were-expanding-the-claude-startups-program-to-help-founders-build",
       "source_id": "claude-announcements",
       "source_kind": "official_listing",
       "topic": "cloud-agent",
@@ -496,6 +513,24 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "5d794c3788a3a4be0d421559",
+      "candidate_id": "ec-5d794c3788a3a4be",
+      "title": "LitPivot: Developing research ideas through dynamic contextualization within the literature landscape",
+      "url": "https://huggingface.co/blog/allenai/litpivot",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-23T16:15:50+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "0e5fad3ca5f8a881acf7d04b",
       "candidate_id": "ec-0e5fad3ca5f8a881",
       "title": "Ensemble forecasting with IBM Granite time-series models",
@@ -505,11 +540,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-10-22T07:51:31+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -523,29 +558,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-10-23T00:00:00+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "51888f116f5b083740bce796",
-      "candidate_id": "ec-51888f116f5b0837",
-      "title": "Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox",
-      "url": "https://huggingface.co/blog/microsoft/thinkingbox-training",
-      "source_id": "huggingface-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-22T22:24:34+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     }
