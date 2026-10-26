@@ -1,60 +1,17 @@
 {
   "schema_version": "1.0",
   "measurement_kind": "small_editorial_gold_sample_not_industry_recall",
-  "snapshot_generated_at": "2026-10-25T00:27:19+00:00",
-  "beijing_date": "2026-10-25",
-  "gold_sample_size_eligible": 3,
-  "captured_count": 3,
-  "snapshot_captured_count": 1,
-  "historical_captured_count": 2,
+  "snapshot_generated_at": "2026-10-26T00:35:31+00:00",
+  "beijing_date": "2026-10-26",
+  "gold_sample_size_eligible": 0,
+  "captured_count": 0,
+  "snapshot_captured_count": 0,
+  "historical_captured_count": 0,
   "not_monitored_count": 0,
   "in_scope_missed_count": 0,
-  "sample_capture_fraction": 1.0,
-  "in_scope_capture_fraction": 1.0,
-  "reviewed_gold_items": [
-    {
-      "gold_event_id": "gold-anthropic-claude-duet-20261021",
-      "title": "Anthropic introduced Claude Duet as a proactive Always-on Agent research preview",
-      "event_date_beijing": "2026-10-21",
-      "importance": "P0",
-      "primary_url": "https://claude.com/resources/articles/claude-duet",
-      "expected_source_ids": [
-        "claude-announcements"
-      ],
-      "in_configured_scope": true,
-      "outcome": "captured",
-      "matched_item_id": "f5220dab8f55b741ff6e0de2",
-      "reviewed_at": "2026-10-22T06:25:58Z"
-    },
-    {
-      "gold_event_id": "gold-aws-agent-registry-discovery-20261021",
-      "title": "AWS documented runtime discovery of approved MCP and A2A capabilities through Agent Registry",
-      "event_date_beijing": "2026-10-21",
-      "importance": "P1",
-      "primary_url": "https://aws.amazon.com/blogs/machine-learning/discover-tools-at-runtime-with-aws-agent-registry",
-      "expected_source_ids": [
-        "aws-ml"
-      ],
-      "in_configured_scope": true,
-      "outcome": "captured_in_history",
-      "matched_item_id": "e600abfbbfd2fa21366c575c",
-      "reviewed_at": "2026-10-22T06:25:58Z"
-    },
-    {
-      "gold_event_id": "gold-openhands-sdk-v157-20261021",
-      "title": "OpenHands released software-agent-sdk v1.57.0 with per-conversation runtime configuration",
-      "event_date_beijing": "2026-10-21",
-      "importance": "P1",
-      "primary_url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.57.0",
-      "expected_source_ids": [
-        "release:OpenHands/software-agent-sdk"
-      ],
-      "in_configured_scope": true,
-      "outcome": "captured_in_history",
-      "matched_item_id": "de02c51efff34c4ca4ad4936",
-      "reviewed_at": "2026-10-22T06:25:58Z"
-    }
-  ],
+  "sample_capture_fraction": null,
+  "in_scope_capture_fraction": null,
+  "reviewed_gold_items": [],
   "notes": [
     "These examples were selected editorially and are not a representative sample of all significant Agent Infra events.",
     "Article IDs match exact normalized official URLs, not semantic headlines or syndication.",
