@@ -1,63 +1,115 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-26T00:35:40+00:00",
-  "snapshot_generated_at": "2026-10-26T00:35:31+00:00",
-  "beijing_date": "2026-10-26",
+  "generated_at": "2026-10-27T01:35:09+00:00",
+  "snapshot_generated_at": "2026-10-27T01:35:02+00:00",
+  "beijing_date": "2026-10-27",
   "kind": "unverified_editorial_review_queue",
-  "count": 27,
-  "eligible_item_count": 64,
+  "count": 23,
+  "eligible_item_count": 40,
   "topic_distribution": {
-    "cloud-agent": 9,
-    "harness": 9,
-    "research": 6,
-    "runtime": 3
+    "cloud-agent": 5,
+    "harness": 8,
+    "research": 5,
+    "runtime": 5
   },
   "source_distribution": {
-    "anthropic-site": 5,
+    "anthropic-site": 2,
     "arxiv-cs-ai": 5,
-    "aws-ml": 2,
-    "claude-announcements": 5,
-    "huggingface-blog": 1,
-    "openai-news": 2,
-    "release:OpenHands/software-agent-sdk": 2,
-    "release:google/adk-python": 1,
-    "release:langchain-ai/langgraph": 3,
-    "release:openai/codex": 1
+    "aws-ml": 3,
+    "claude-announcements": 1,
+    "google-ai": 1,
+    "openai-news": 5,
+    "release:OpenHands/software-agent-sdk": 1,
+    "release:langchain-ai/langgraph": 5
   },
   "items": [
     {
-      "item_id": "ee4c22366ef7e7abd786b0a4",
-      "candidate_id": "ec-ee4c22366ef7e7ab",
-      "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
-      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+      "item_id": "27334100e818b98514ff3198",
+      "candidate_id": "ec-27334100e818b985",
+      "title": "ChatGPT’s expanding world of work",
+      "url": "https://openai.com/index/chatgpt-expanding-world-of-work",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-10-23T17:00:00+00:00",
-      "review_order_score": 7,
+      "claimed_published_at": "2026-10-26T10:00:00+00:00",
+      "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "f8c156dba7886826388b35c0",
-      "candidate_id": "ec-f8c156dba7886826",
-      "title": "Securing our frontier model training environment",
-      "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
+      "item_id": "35e334c198740f7416638922",
+      "candidate_id": "ec-35e334c198740f74",
+      "title": "Introducing GPT-6.1 Terra",
+      "url": "https://openai.com/index/introducing-gpt-6-1-terra",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-10-23T10:00:00+00:00",
-      "review_order_score": 7,
+      "claimed_published_at": "2026-10-26T00:00:00+00:00",
+      "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "742d30efdc4090c11a97794f",
+      "candidate_id": "ec-742d30efdc4090c1",
+      "title": "How Ultrafast cut incident investigation from hours to minutes at OpenAI",
+      "url": "https://openai.com/index/openai-cut-incident-investigation",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-10-26T07:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "7d972df501d01ba1f64ace9f",
+      "candidate_id": "ec-7d972df501d01ba1",
+      "title": "GPT-6.1 Sol helps CodeRabbit strengthen security across complex codebases",
+      "url": "https://openai.com/index/gpt-6-1-sol-coderabbit-code-security",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-10-26T13:45:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "7e73eebe3e909303c4c59a7d",
+      "candidate_id": "ec-7e73eebe3e909303",
+      "title": "How Fanatics and OpenAI streamline the fan experience",
+      "url": "https://openai.com/index/fanatics-streamline-fan-experience",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-10-26T07:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -80,15 +132,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "8a58c29f390b93e1d30464b2",
-      "candidate_id": "ec-8a58c29f390b93e1",
-      "title": "langgraph==1.2.17",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.17",
+      "item_id": "18b25c716d40f2c7a7846e89",
+      "candidate_id": "ec-18b25c716d40f2c7",
+      "title": "langgraph==1.2.18",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.18",
       "source_id": "release:langchain-ai/langgraph",
       "source_kind": "github_release",
       "topic": "runtime",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-24T01:08:05+00:00",
+      "claimed_published_at": "2026-10-26T20:04:45+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -98,362 +150,236 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "0c0b4fb70cfc16f629bcf822",
-      "candidate_id": "ec-0c0b4fb70cfc16f6",
-      "title": "Article Oct 23, 2026 Claude Duet Safety, Privacy, and Security Claude Duet is a proactive agent that works for you, even while you’re away. It builds on two layers of protection: safety training in the Claude model itself and the safeguards that exis",
-      "url": "https://claude.com/resources/articles/claude-duet-safety-privacy-and-security",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "2eea8542a0bf0fd1619f4a1e",
-      "candidate_id": "ec-2eea8542a0bf0fd1",
-      "title": "Article Oct 8, 2026 Build live dashboards and animate explainers with Claude Claude Dashboards and Claude Motion are now in beta. Docs, Slides, and Design are out of beta and on every Claude plan, including Free. Claude apps Claude Design 2 more : Cl",
-      "url": "https://claude.com/resources/articles/dashboards-and-motion",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "4e2150af12a97398f6e556e6",
-      "candidate_id": "ec-4e2150af12a97398",
-      "title": "Article Oct 21, 2026 HCLTech joins the Claude Partner Network as a Global Premier partner HCLTech will bring Claude into the solutions it provides for banks, hospitals, telecom companies, and manufacturers.",
-      "url": "https://claude.com/resources/articles/hcltech-joins-claude-partner-network",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "565b5fa1fe378b99c96415d1",
-      "candidate_id": "ec-565b5fa1fe378b99",
-      "title": "Article Oct 6, 2026 We’re expanding the Claude Startups program to help founders build",
-      "url": "https://claude.com/resources/articles/were-expanding-the-claude-startups-program-to-help-founders-build",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "67e0e2ca251faa5910ae53f1",
-      "candidate_id": "ec-67e0e2ca251faa59",
-      "title": "Article Oct 15, 2026 Code Review is now generally available Catch more bugs before they reach production. Claude Code",
-      "url": "https://claude.com/resources/articles/code-review-is-now-generally-available",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "5e6236f11938be0fd10b5921",
-      "candidate_id": "ec-5e6236f11938be0f",
-      "title": "v1.58.1",
-      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.58.1",
-      "source_id": "release:OpenHands/software-agent-sdk",
-      "source_kind": "github_release",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-23T00:44:35+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "047a55d9a381df1fa2e7fddd",
-      "candidate_id": "ec-047a55d9a381df1f",
-      "title": "Official site update: AI fluency index",
-      "url": "https://www.anthropic.com/research/AI-fluency-index",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "0b1dcee4cb5d7740eb817283",
-      "candidate_id": "ec-0b1dcee4cb5d7740",
-      "title": "Official site update: cyber competitions",
-      "url": "https://www.anthropic.com/research/cyber-competitions",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "1274a8235cdb512e4bb70303",
-      "candidate_id": "ec-1274a8235cdb512e",
-      "title": "Official site update: estimating productivity gains",
-      "url": "https://www.anthropic.com/research/estimating-productivity-gains",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "21e96d4f9b19988eb59b63a0",
-      "candidate_id": "ec-21e96d4f9b19988e",
-      "title": "Official site update: attack navigator",
-      "url": "https://www.anthropic.com/research/attack-navigator",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "3c862a18b467640b837437cb",
-      "candidate_id": "ec-3c862a18b467640b",
-      "title": "Official site update: collective constitutional ai aligning a language model with public input",
-      "url": "https://www.anthropic.com/research/collective-constitutional-ai-aligning-a-language-model-with-public-input",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "8a743f361cd25711b69e4fb6",
-      "candidate_id": "ec-8a743f361cd25711",
-      "title": "v2.13.0",
-      "url": "https://github.com/google/adk-python/releases/tag/v2.13.0",
-      "source_id": "release:google/adk-python",
-      "source_kind": "github_release",
-      "topic": "harness",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-23T18:08:23+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "b28a06ef950a1f61dcf4a774",
-      "candidate_id": "ec-b28a06ef950a1f61",
-      "title": "0.164.0",
-      "url": "https://github.com/openai/codex/releases/tag/rust-v0.164.0",
-      "source_id": "release:openai/codex",
-      "source_kind": "github_release",
-      "topic": "harness",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-23T04:48:10+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "8b353a05b7f98c579f54fae1",
-      "candidate_id": "ec-8b353a05b7f98c57",
-      "title": "langgraph-sdk==0.4.9",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/sdk%3D%3D0.4.9",
+      "item_id": "74abe2b3c5dac38d78b540df",
+      "candidate_id": "ec-74abe2b3c5dac38d",
+      "title": "langgraph-cli==0.4.39",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.39",
       "source_id": "release:langchain-ai/langgraph",
       "source_kind": "github_release",
       "topic": "runtime",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-23T14:19:24+00:00",
-      "review_order_score": 5,
+      "claimed_published_at": "2026-10-26T14:16:53+00:00",
+      "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "official_release_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "f325a05cc9ff06908b95941d",
-      "candidate_id": "ec-f325a05cc9ff0690",
-      "title": "langgraph-cli==0.4.38",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.38",
+      "item_id": "8b3fc23091ee5e7cea80dd90",
+      "candidate_id": "ec-8b3fc23091ee5e7c",
+      "title": "langgraph-sdk==0.4.10",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/sdk%3D%3D0.4.10",
       "source_id": "release:langchain-ai/langgraph",
       "source_kind": "github_release",
       "topic": "runtime",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-23T14:22:29+00:00",
-      "review_order_score": 5,
+      "claimed_published_at": "2026-10-26T19:59:56+00:00",
+      "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "official_release_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "09a52776f0528d1ace295af6",
-      "candidate_id": "ec-09a52776f0528d1a",
-      "title": "Visualize points and routes with GeoJSON in Amazon Quick Sight layer maps",
-      "url": "https://aws.amazon.com/blogs/machine-learning/visualize-points-and-routes-with-geojson-in-amazon-quick-sight-layer-maps",
+      "item_id": "95a06d5f7fcdd2659d52f025",
+      "candidate_id": "ec-95a06d5f7fcdd265",
+      "title": "langgraph-cli==0.4.40",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.40",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-26T16:45:54+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "b144eddcba6073a5615af78d",
+      "candidate_id": "ec-b144eddcba6073a5",
+      "title": "langgraph-checkpoint==4.3.1",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/checkpoint%3D%3D4.3.1",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-26T19:57:41+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "3bb7f581684ef39f682a4639",
+      "candidate_id": "ec-3bb7f581684ef39f",
+      "title": "Groundhog Day for AI agents: Prompt caching patterns for using OpenAI models on Amazon Bedrock",
+      "url": "https://aws.amazon.com/blogs/machine-learning/groundhog-day-for-ai-agents-prompt-caching-patterns-for-using-openai-models-on-amazon-bedrock",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-23T16:24:55+00:00",
-      "review_order_score": 4,
+      "claimed_published_at": "2026-10-26T17:27:20+00:00",
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "59b285913cc2d8dc1ba7b0c8",
-      "candidate_id": "ec-59b285913cc2d8dc",
-      "title": "How Bayer Crop Science built an agentic decision engine on Amazon Bedrock AgentCore with AWS Unified Operations",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-bayer-crop-science-built-an-agentic-decision-engine-on-amazon-bedrock-agentcore-with-aws-unified-operations",
+      "item_id": "4253eb49870be4f8293c5d1a",
+      "candidate_id": "ec-4253eb49870be4f8",
+      "title": "Build agentic retrieval on a Managed Amazon Bedrock Knowledge Base with CDK",
+      "url": "https://aws.amazon.com/blogs/machine-learning/build-agentic-retrieval-on-a-managed-amazon-bedrock-knowledge-base-with-cdk",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-23T16:21:36+00:00",
-      "review_order_score": 4,
+      "claimed_published_at": "2026-10-26T17:15:14+00:00",
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "0f1fe1227ddd86aabba16ba0",
-      "candidate_id": "ec-0f1fe1227ddd86aa",
-      "title": "Overview of CHIP 2026 Shared Task 1: Patient-Specific Phenotype Concept Recognition in Full-Text Biomedical Literature",
-      "url": "https://arxiv.org/abs/2610.29606",
-      "source_id": "arxiv-cs-ai",
+      "item_id": "7c109bf5e7c5155862b1b1b8",
+      "candidate_id": "ec-7c109bf5e7c51558",
+      "title": "Fleet-wide computer vision lifecycle at the edge with SageMaker SDK v3",
+      "url": "https://aws.amazon.com/blogs/machine-learning/fleet-wide-computer-vision-lifecycle-at-the-edge-with-sagemaker-sdk-v3",
+      "source_id": "aws-ml",
       "source_kind": "rss",
-      "topic": "research",
+      "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-23T04:00:00+00:00",
-      "review_order_score": 4,
+      "claimed_published_at": "2026-10-26T17:56:58+00:00",
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1767ea3194797808039e54b5",
-      "candidate_id": "ec-1767ea3194797808",
-      "title": "TorchTPU - A Hybrid Eager/Compiled Architecture for Native PyTorch Execution on TPU",
-      "url": "https://arxiv.org/abs/2610.24161",
-      "source_id": "arxiv-cs-ai",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-23T04:00:00+00:00",
-      "review_order_score": 4,
+      "item_id": "97442d8e30b73df323fc925d",
+      "candidate_id": "ec-97442d8e30b73df3",
+      "title": "Article Oct 26, 2026 Expanding Claude for Nonprofits Our new Claude for Nonprofits plugin brings new skills to every verified nonprofit organization, taking on the operational work that stretches small teams across fundraising, marketing, and hiring.",
+      "url": "https://claude.com/resources/articles/expanding-claude-for-nonprofits",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
       "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1a1408327520a27be5d4bcf6",
-      "candidate_id": "ec-1a1408327520a27b",
-      "title": "RSI Control: Can AI Models Perform Covert Sabotage in the Self-Improvement Process?",
-      "url": "https://arxiv.org/abs/2610.27735",
+      "item_id": "853629b69b653c9d835ef03a",
+      "candidate_id": "ec-853629b69b653c9d",
+      "title": "Official site update: your thoughts on ai",
+      "url": "https://www.anthropic.com/research/your-thoughts-on-ai",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "9a064d95901e645ea065cfa7",
+      "candidate_id": "ec-9a064d95901e645e",
+      "title": "Official site update: s1 sec",
+      "url": "https://www.anthropic.com/news/s1-sec",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "9a15b40232fdbf825a34f1cb",
+      "candidate_id": "ec-9a15b40232fdbf82",
+      "title": "Our newest AI Quest: Mapping the human brain",
+      "url": "https://blog.google/products-and-platforms/products/education/ai-quests-polar-peaks",
+      "source_id": "google-ai",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-26T16:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "0a51578fa0575756342e04a2",
+      "candidate_id": "ec-0a51578fa0575756",
+      "title": "Deep Reasoning in General Purpose Agents via Structured Meta-Cognition",
+      "url": "https://arxiv.org/abs/2605.11388",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-23T04:00:00+00:00",
-      "review_order_score": 4,
+      "claimed_published_at": "2026-10-26T04:00:00+00:00",
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "1d74dce0f0e13e68699ebb85",
+      "candidate_id": "ec-1d74dce0f0e13e68",
+      "title": "Scaling Laws for Safety Probes",
+      "url": "https://arxiv.org/abs/2610.30678",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-26T04:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -466,48 +392,48 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-23T04:00:00+00:00",
-      "review_order_score": 4,
+      "claimed_published_at": "2026-10-26T04:00:00+00:00",
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "206e1c6bb61d57d55e1f078c",
-      "candidate_id": "ec-206e1c6bb61d57d5",
-      "title": "AgentMonopoly: Behavioral Patterns and Persona Control in LLM Agents",
-      "url": "https://arxiv.org/abs/2610.29330",
+      "item_id": "2bb631880a190817b46f3a7d",
+      "candidate_id": "ec-2bb631880a190817",
+      "title": "SANE: Automated Scorer-Specific Metamorphic Testing for LLM Judges",
+      "url": "https://arxiv.org/abs/2610.28886",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-23T04:00:00+00:00",
-      "review_order_score": 4,
+      "claimed_published_at": "2026-10-26T04:00:00+00:00",
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "5d794c3788a3a4be0d421559",
-      "candidate_id": "ec-5d794c3788a3a4be",
-      "title": "LitPivot: Developing research ideas through dynamic contextualization within the literature landscape",
-      "url": "https://huggingface.co/blog/allenai/litpivot",
-      "source_id": "huggingface-blog",
+      "item_id": "2d09cb91206e5f2c6f1466f5",
+      "candidate_id": "ec-2d09cb91206e5f2c",
+      "title": "Muse Glimmer 30B: An On-Device Agentic Model",
+      "url": "https://arxiv.org/abs/2610.24628",
+      "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-23T16:15:50+00:00",
-      "review_order_score": 4,
+      "claimed_published_at": "2026-10-26T04:00:00+00:00",
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     }
