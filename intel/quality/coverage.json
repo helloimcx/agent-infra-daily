@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "measurement_kind": "small_editorial_gold_sample_not_industry_recall",
-  "snapshot_generated_at": "2026-10-27T01:35:02+00:00",
-  "beijing_date": "2026-10-27",
+  "snapshot_generated_at": "2026-10-28T01:33:28+00:00",
+  "beijing_date": "2026-10-28",
   "gold_sample_size_eligible": 0,
   "captured_count": 0,
   "snapshot_captured_count": 0,

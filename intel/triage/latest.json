@@ -1,26 +1,30 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-27T01:35:09+00:00",
-  "snapshot_generated_at": "2026-10-27T01:35:02+00:00",
-  "beijing_date": "2026-10-27",
+  "generated_at": "2026-10-28T01:33:38+00:00",
+  "snapshot_generated_at": "2026-10-28T01:33:28+00:00",
+  "beijing_date": "2026-10-28",
   "kind": "unverified_editorial_review_queue",
-  "count": 23,
-  "eligible_item_count": 40,
+  "count": 31,
+  "eligible_item_count": 55,
   "topic_distribution": {
-    "cloud-agent": 5,
-    "harness": 8,
-    "research": 5,
-    "runtime": 5
+    "cloud-agent": 9,
+    "harness": 9,
+    "research": 7,
+    "runtime": 5,
+    "sandbox": 1
   },
   "source_distribution": {
-    "anthropic-site": 2,
+    "anthropic-site": 3,
     "arxiv-cs-ai": 5,
-    "aws-ml": 3,
-    "claude-announcements": 1,
-    "google-ai": 1,
+    "aws-ml": 5,
+    "claude-announcements": 2,
+    "huggingface-blog": 2,
     "openai-news": 5,
+    "release:NVIDIA/OpenShell": 1,
     "release:OpenHands/software-agent-sdk": 1,
-    "release:langchain-ai/langgraph": 5
+    "release:langchain-ai/langgraph": 5,
+    "release:langchain-ai/open-swe": 1,
+    "release:openai/codex": 1
   },
   "items": [
     {
@@ -33,24 +37,6 @@
       "topic": "harness",
       "source_priority": "P0",
       "claimed_published_at": "2026-10-26T10:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "35e334c198740f7416638922",
-      "candidate_id": "ec-35e334c198740f74",
-      "title": "Introducing GPT-6.1 Terra",
-      "url": "https://openai.com/index/introducing-gpt-6-1-terra",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-10-26T00:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -114,15 +100,51 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "872e5a8f40f4aa51d025dc04",
-      "candidate_id": "ec-872e5a8f40f4aa51",
-      "title": "v1.58.2",
-      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.58.2",
-      "source_id": "release:OpenHands/software-agent-sdk",
+      "item_id": "8eb6001a836a6e50b8fb133e",
+      "candidate_id": "ec-8eb6001a836a6e50",
+      "title": "Working with academic communities to build scientific understanding",
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-10-26T14:30:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "2fcfd7ecc48498d8417073a0",
+      "candidate_id": "ec-2fcfd7ecc48498d8",
+      "title": "Open SWE Desktop v0.3.10",
+      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.10",
+      "source_id": "release:langchain-ai/open-swe",
       "source_kind": "github_release",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-25T03:24:42+00:00",
+      "claimed_published_at": "2026-10-27T17:46:13+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "bd138645120f03ef7bae746b",
+      "candidate_id": "ec-bd138645120f03ef",
+      "title": "0.165.0",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.165.0",
+      "source_id": "release:openai/codex",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-27T20:09:38+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -222,6 +244,60 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "9cc6948c0ab7c943a705a541",
+      "candidate_id": "ec-9cc6948c0ab7c943",
+      "title": "OpenShell v0.1.6",
+      "url": "https://github.com/NVIDIA/OpenShell/releases/tag/v0.1.6",
+      "source_id": "release:NVIDIA/OpenShell",
+      "source_kind": "github_release",
+      "topic": "sandbox",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-27T17:56:58+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "2d6948b5b0022bc88fdce0d8",
+      "candidate_id": "ec-2d6948b5b0022bc8",
+      "title": "AWS named a Leader in the 2026 Gartner Magic Quadrant for Contact Center as a Service",
+      "url": "https://aws.amazon.com/blogs/machine-learning/aws-named-a-leader-in-the-2026-gartner-magic-quadrant-for-contact-center-as-a-service",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-27T18:03:12+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "2eb317e634c166703036d7ea",
+      "candidate_id": "ec-2eb317e634c16670",
+      "title": "Fix evaluation bias to unlock better models on Amazon Bedrock",
+      "url": "https://aws.amazon.com/blogs/machine-learning/fix-evaluation-bias-to-unlock-better-models-on-amazon-bedrock",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-27T16:53:02+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "3bb7f581684ef39f682a4639",
       "candidate_id": "ec-3bb7f581684ef39f",
       "title": "Groundhog Day for AI agents: Prompt caching patterns for using OpenAI models on Amazon Bedrock",
@@ -258,20 +334,38 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "7c109bf5e7c5155862b1b1b8",
-      "candidate_id": "ec-7c109bf5e7c51558",
-      "title": "Fleet-wide computer vision lifecycle at the edge with SageMaker SDK v3",
-      "url": "https://aws.amazon.com/blogs/machine-learning/fleet-wide-computer-vision-lifecycle-at-the-edge-with-sagemaker-sdk-v3",
+      "item_id": "58ff7a6a906611649d17700f",
+      "candidate_id": "ec-58ff7a6a90661164",
+      "title": "Announcing SOCI-indexed images for faster SageMaker AI jobs",
+      "url": "https://aws.amazon.com/blogs/machine-learning/announcing-soci-indexed-images-for-faster-sagemaker-ai-jobs",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-26T17:56:58+00:00",
+      "claimed_published_at": "2026-10-27T17:00:39+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
         "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "65ec4e9c8cacc3f6910f3e7f",
+      "candidate_id": "ec-65ec4e9c8cacc3f6",
+      "title": "Article Oct 27, 2026 Claude for Financial Advisors Financial advisors can now connect Claude to the custodians, portfolio platforms, CRMs, and planning tools they depend on, along with new skills tailored to the daily work of a financial advisor.",
+      "url": "https://claude.com/resources/articles/claude-for-financial-advisors",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -294,56 +388,74 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "853629b69b653c9d835ef03a",
-      "candidate_id": "ec-853629b69b653c9d",
-      "title": "Official site update: your thoughts on ai",
-      "url": "https://www.anthropic.com/research/your-thoughts-on-ai",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "9a064d95901e645ea065cfa7",
-      "candidate_id": "ec-9a064d95901e645e",
-      "title": "Official site update: s1 sec",
-      "url": "https://www.anthropic.com/news/s1-sec",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "9a15b40232fdbf825a34f1cb",
-      "candidate_id": "ec-9a15b40232fdbf82",
-      "title": "Our newest AI Quest: Mapping the human brain",
-      "url": "https://blog.google/products-and-platforms/products/education/ai-quests-polar-peaks",
-      "source_id": "google-ai",
-      "source_kind": "rss",
-      "topic": "harness",
+      "item_id": "872e5a8f40f4aa51d025dc04",
+      "candidate_id": "ec-872e5a8f40f4aa51",
+      "title": "v1.58.2",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.58.2",
+      "source_id": "release:OpenHands/software-agent-sdk",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-26T16:00:00+00:00",
+      "claimed_published_at": "2026-10-25T03:24:42+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "2ef1fbc3458e029d755f0754",
+      "candidate_id": "ec-2ef1fbc3458e029d",
+      "title": "Official site update: discovering vulnerabilities with claude",
+      "url": "https://www.anthropic.com/research/discovering-vulnerabilities-with-claude",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "550f4d88633d42452645fe28",
+      "candidate_id": "ec-550f4d88633d4245",
+      "title": "Official site update: expanding partnership gsa",
+      "url": "https://www.anthropic.com/news/expanding-partnership-gsa",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "723372c8dc681795e858309e",
+      "candidate_id": "ec-723372c8dc681795",
+      "title": "Official site update: agents judgment calls",
+      "url": "https://www.anthropic.com/research/agents-judgment-calls",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -356,7 +468,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-26T04:00:00+00:00",
+      "claimed_published_at": "2026-10-27T04:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -374,7 +486,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-26T04:00:00+00:00",
+      "claimed_published_at": "2026-10-27T04:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -392,7 +504,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-26T04:00:00+00:00",
+      "claimed_published_at": "2026-10-27T04:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -410,7 +522,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-26T04:00:00+00:00",
+      "claimed_published_at": "2026-10-27T04:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -428,7 +540,43 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-26T04:00:00+00:00",
+      "claimed_published_at": "2026-10-27T04:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "1c5b51464767c2ad29498f22",
+      "candidate_id": "ec-1c5b51464767c2ad",
+      "title": "Build specialized multimodal models with LFM3",
+      "url": "https://huggingface.co/blog/LiquidAI/lfm3",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-27T17:16:52+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "1d6c5c59e46e52b936cbc7b9",
+      "candidate_id": "ec-1d6c5c59e46e52b9",
+      "title": "Can we trust LLMs to judge whether a research idea is novel?",
+      "url": "https://huggingface.co/blog/allenai/novelty-bench",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-27T16:12:42+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
