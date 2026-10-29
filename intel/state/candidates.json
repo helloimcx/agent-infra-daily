@@ -1,8 +1,31 @@
 {
   "schema_version": "1.0",
-  "last_ingested_snapshot": "2026-10-28T01:33:28+00:00",
+  "last_ingested_snapshot": "2026-10-29T01:55:02+00:00",
   "bootstrap_note": "Two independently verified candidates recovered from the successful 2026-10-22 ingestion artifact. This is not the full 54-item ledger; the next scheduled collector will merge all available items.",
   "candidates": {
+    "ec-035f71ec0325679b": {
+      "id": "ec-035f71ec0325679b",
+      "title": "MARQ: A Modular, LLM-Agnostic Requirement Quality Assessor Infused with Systems Engineering Knowledge",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "035f71ec0325679b7fbcffec"
+      ],
+      "sources": [
+        {
+          "item_id": "035f71ec0325679b7fbcffec",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.36234",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "MARQ: A Modular, LLM-Agnostic Requirement Quality Assessor Infused with Systems Engineering Knowledge",
+          "first_discovered_at": "2026-10-28T05:31:37+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-047a55d9a381df1f": {
       "id": "ec-047a55d9a381df1f",
       "title": "Official site update: AI fluency index",
@@ -22,6 +45,52 @@
           "published_at": null,
           "title": "Official site update: AI fluency index",
           "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-047d81f60ca5ab87": {
+      "id": "ec-047d81f60ca5ab87",
+      "title": "Article Oct 28, 2026 Introducing artifacts for legal work Claude for Legal now includes ready-to-use artifacts for legal work that teams can adapt with their own data and connectors, and share across the business. Claude Enterprise",
+      "topic": "cloud-agent",
+      "source_kind": "official_listing",
+      "published_at": null,
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "047d81f60ca5ab879683778d"
+      ],
+      "sources": [
+        {
+          "item_id": "047d81f60ca5ab879683778d",
+          "source_id": "claude-announcements",
+          "url": "https://claude.com/resources/articles/introducing-artifacts-for-legal-work",
+          "published_at": null,
+          "title": "Article Oct 28, 2026 Introducing artifacts for legal work Claude for Legal now includes ready-to-use artifacts for legal work that teams can adapt with their own data and connectors, and share across the business. Claude Enterprise",
+          "first_discovered_at": "2026-10-28T22:30:41+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-061263b1ecec8602": {
+      "id": "ec-061263b1ecec8602",
+      "title": "Rethinking Multi-View Fusion for Urban Representation Learning",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "061263b1ecec8602ab824880"
+      ],
+      "sources": [
+        {
+          "item_id": "061263b1ecec8602ab824880",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.31850",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "Rethinking Multi-View Fusion for Urban Representation Learning",
+          "first_discovered_at": "2026-10-26T04:38:41+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -279,6 +348,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-18559cb38b762050": {
+      "id": "ec-18559cb38b762050",
+      "title": "CohortFlow: A Steerable Clinical Cohort Curation Agent with Localized Semantic Correction",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "18559cb38b762050d854f339"
+      ],
+      "sources": [
+        {
+          "item_id": "18559cb38b762050d854f339",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.36100",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "CohortFlow: A Steerable Clinical Cohort Curation Agent with Localized Semantic Correction",
+          "first_discovered_at": "2026-10-28T05:31:37+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-18b25c716d40f2c7": {
       "id": "ec-18b25c716d40f2c7",
       "title": "langgraph==1.2.18",
@@ -286,7 +378,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-26T20:04:45+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "18b25c716d40f2c7a7846e89"
       ],
@@ -401,7 +493,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-27T17:16:52+00:00",
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "1c5b51464767c2ad29498f22"
       ],
@@ -424,7 +516,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-27T16:12:42+00:00",
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "1d6c5c59e46e52b936cbc7b9"
       ],
@@ -532,6 +624,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-2116cd19b4534bd6": {
+      "id": "ec-2116cd19b4534bd6",
+      "title": "The Shape of the DPO Hyperparameter Landscape: What to Measure, How It Moves with Scale, and When Not to Transfer It",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "2116cd19b4534bd63a987e6b"
+      ],
+      "sources": [
+        {
+          "item_id": "2116cd19b4534bd63a987e6b",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.27895",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "The Shape of the DPO Hyperparameter Landscape: What to Measure, How It Moves with Scale, and When Not to Transfer It",
+          "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-21e96d4f9b19988e": {
       "id": "ec-21e96d4f9b19988e",
       "title": "Official site update: attack navigator",
@@ -551,6 +666,29 @@
           "published_at": null,
           "title": "Official site update: attack navigator",
           "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-225fb5a9da194f15": {
+      "id": "ec-225fb5a9da194f15",
+      "title": "Don't Pick a Winner: Knowledge Conflicts Need a Prior, Not a Rule",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "225fb5a9da194f15d1149705"
+      ],
+      "sources": [
+        {
+          "item_id": "225fb5a9da194f15d1149705",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.36169",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "Don't Pick a Winner: Knowledge Conflicts Need a Prior, Not a Rule",
+          "first_discovered_at": "2026-10-28T05:31:37+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -631,7 +769,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-26T10:00:00+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "27334100e818b98514ff3198"
       ],
@@ -746,7 +884,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-27T18:03:12+00:00",
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "2d6948b5b0022bc88fdce0d8"
       ],
@@ -769,7 +907,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-27T16:53:02+00:00",
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "2eb317e634c166703036d7ea"
       ],
@@ -815,7 +953,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "2ef1fbc3458e029d755f0754"
       ],
@@ -861,7 +999,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-27T17:46:13+00:00",
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "2fcfd7ecc48498d8417073a0"
       ],
@@ -896,6 +1034,29 @@
           "published_at": "2026-10-26T04:00:00+00:00",
           "title": "GeoDiv KAN Solver for Time Fractional Navier Stokes Equations on Complex Domains to Realistic CFD Reconstruction",
           "first_discovered_at": "2026-10-23T04:41:06+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-3592c2289faff559": {
+      "id": "ec-3592c2289faff559",
+      "title": "Accelerating software delivery with agentic QA automation using Amazon Nova Act – Part 3",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T18:12:13+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "3592c2289faff55994bbf1d7"
+      ],
+      "sources": [
+        {
+          "item_id": "3592c2289faff55994bbf1d7",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/accelerating-software-delivery-with-agentic-qa-automation-using-amazon-nova-act-part-3",
+          "published_at": "2026-10-28T18:12:13+00:00",
+          "title": "Accelerating software delivery with agentic QA automation using Amazon Nova Act – Part 3",
+          "first_discovered_at": "2026-10-28T22:30:41+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -976,7 +1137,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-26T17:27:20+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "3bb7f581684ef39f682a4639"
       ],
@@ -1034,6 +1195,29 @@
           "published_at": null,
           "title": "Official site update: cyber toolkits",
           "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-3e32bae570ff21ee": {
+      "id": "ec-3e32bae570ff21ee",
+      "title": "Gemini 4 Carbon: Our next frontier model",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T17:00:58+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "3e32bae570ff21ee59e510c6"
+      ],
+      "sources": [
+        {
+          "item_id": "3e32bae570ff21ee59e510c6",
+          "source_id": "deepmind-blog",
+          "url": "https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model",
+          "published_at": "2026-10-28T17:00:58+00:00",
+          "title": "Gemini 4 Carbon: Our next frontier model",
+          "first_discovered_at": "2026-10-28T22:30:41+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -1114,7 +1298,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-26T17:15:14+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "4253eb49870be4f8293c5d1a"
       ],
@@ -1482,7 +1666,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "550f4d88633d42452645fe28"
       ],
@@ -1574,7 +1758,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-27T17:00:39+00:00",
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "58ff7a6a906611649d17700f"
       ],
@@ -1632,6 +1816,29 @@
           "published_at": "2026-10-21T16:04:43+00:00",
           "title": "Profiling TorchNeuron (Part 1): System-level profiling on AWS Trainium.",
           "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-5b54fb74a59ffe3f": {
+      "id": "ec-5b54fb74a59ffe3f",
+      "title": "Distributed training with Ray Train DLCs and EFA on EKS",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T18:19:54+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "5b54fb74a59ffe3f5477d375"
+      ],
+      "sources": [
+        {
+          "item_id": "5b54fb74a59ffe3f5477d375",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/distributed-training-with-ray-train-dlcs-and-efa-on-eks",
+          "published_at": "2026-10-28T18:19:54+00:00",
+          "title": "Distributed training with Ray Train DLCs and EFA on EKS",
+          "first_discovered_at": "2026-10-28T22:30:41+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -1781,7 +1988,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "65ec4e9c8cacc3f6910f3e7f"
       ],
@@ -1839,6 +2046,38 @@
           "published_at": "2026-10-22T16:11:31+00:00",
           "title": "OlmoEarth v1.3: State-of-the-art embeddings for the whole planet",
           "first_discovered_at": "2026-10-22T17:05:54+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-67c6b18b0a76451d": {
+      "id": "ec-67c6b18b0a76451d",
+      "title": "Legora is building the agentic operating system for legal work",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T09:30:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "67c6b18b0a76451db874442c",
+        "709cc8e2bd467b7916899fb3"
+      ],
+      "sources": [
+        {
+          "item_id": "67c6b18b0a76451db874442c",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/legora-agentic-operating-system-for-legal-work",
+          "published_at": "2026-10-28T09:30:00+00:00",
+          "title": "Legora is building the agentic operating system for legal work",
+          "first_discovered_at": "2026-10-28T12:43:54+00:00"
+        },
+        {
+          "item_id": "709cc8e2bd467b7916899fb3",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/legora",
+          "published_at": "2026-10-28T09:30:00+00:00",
+          "title": "Legora is building the agentic operating system for legal work",
+          "first_discovered_at": "2026-10-28T22:30:41+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -1958,6 +2197,75 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-6c5e6a6d85af5893": {
+      "id": "ec-6c5e6a6d85af5893",
+      "title": "From Structural Feedback to Prompt Policies: Learning Faithful Text-to-Image Prompt Editors",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "6c5e6a6d85af5893fe93cf06"
+      ],
+      "sources": [
+        {
+          "item_id": "6c5e6a6d85af5893fe93cf06",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.36146",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "From Structural Feedback to Prompt Policies: Learning Faithful Text-to-Image Prompt Editors",
+          "first_discovered_at": "2026-10-28T05:31:37+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-6d883a1f3620138c": {
+      "id": "ec-6d883a1f3620138c",
+      "title": "Counting the Bandages: On measuring the time that AI saves",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "6d883a1f3620138ca1b27198"
+      ],
+      "sources": [
+        {
+          "item_id": "6d883a1f3620138ca1b27198",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.35942",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "Counting the Bandages: On measuring the time that AI saves",
+          "first_discovered_at": "2026-10-28T05:31:37+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-6e937edb5b0a47f0": {
+      "id": "ec-6e937edb5b0a47f0",
+      "title": "v1.59.0",
+      "topic": "cloud-agent",
+      "source_kind": "github_release",
+      "published_at": "2026-10-28T14:34:44+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "6e937edb5b0a47f0aae59e15"
+      ],
+      "sources": [
+        {
+          "item_id": "6e937edb5b0a47f0aae59e15",
+          "source_id": "release:OpenHands/software-agent-sdk",
+          "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.59.0",
+          "published_at": "2026-10-28T14:34:44+00:00",
+          "title": "v1.59.0",
+          "first_discovered_at": "2026-10-28T22:30:41+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-720764d3a5e8671e": {
       "id": "ec-720764d3a5e8671e",
       "title": "Interface-Induced Trajectory Censoring",
@@ -1988,7 +2296,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "723372c8dc681795e858309e"
       ],
@@ -2000,6 +2308,29 @@
           "published_at": null,
           "title": "Official site update: agents judgment calls",
           "first_discovered_at": "2026-10-27T22:08:09+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-7270457062ab576b": {
+      "id": "ec-7270457062ab576b",
+      "title": "Article Oct 28, 2026 Smart reports, surveys, and pooled group budgets for Claude Enterprise In many organizations, members have identified the unique work that Claude can unlock. The next step is expanding that work to every team. Claude Enterprise",
+      "topic": "cloud-agent",
+      "source_kind": "official_listing",
+      "published_at": null,
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "7270457062ab576b0613e08a"
+      ],
+      "sources": [
+        {
+          "item_id": "7270457062ab576b0613e08a",
+          "source_id": "claude-announcements",
+          "url": "https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets",
+          "published_at": null,
+          "title": "Article Oct 28, 2026 Smart reports, surveys, and pooled group budgets for Claude Enterprise In many organizations, members have identified the unique work that Claude can unlock. The next step is expanding that work to every team. Claude Enterprise",
+          "first_discovered_at": "2026-10-28T22:30:41+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -2034,7 +2365,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-26T07:00:00+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "742d30efdc4090c11a97794f"
       ],
@@ -2080,7 +2411,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-26T14:16:53+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "74abe2b3c5dac38d78b540df"
       ],
@@ -2211,6 +2542,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-7955caaf89147e7b": {
+      "id": "ec-7955caaf89147e7b",
+      "title": "Enhancing Deep Learning Model Performance through Data Generation Strategies: Classification of Olive Tree Diseases",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "7955caaf89147e7bcd6f77b2"
+      ],
+      "sources": [
+        {
+          "item_id": "7955caaf89147e7bcd6f77b2",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.35984",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "Enhancing Deep Learning Model Performance through Data Generation Strategies: Classification of Olive Tree Diseases",
+          "first_discovered_at": "2026-10-28T05:31:37+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-7c109bf5e7c51558": {
       "id": "ec-7c109bf5e7c51558",
       "title": "Fleet-wide computer vision lifecycle at the edge with SageMaker SDK v3",
@@ -2218,7 +2572,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-26T17:56:58+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "7c109bf5e7c5155862b1b1b8"
       ],
@@ -2264,7 +2618,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-26T13:45:00+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "7d972df501d01ba1f64ace9f"
       ],
@@ -2287,7 +2641,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-26T07:00:00+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "7e73eebe3e909303c4c59a7d"
       ],
@@ -2345,6 +2699,29 @@
           "published_at": "2026-10-22T21:20:39+00:00",
           "title": "Open SWE Desktop v0.3.9",
           "first_discovered_at": "2026-10-22T21:30:14+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-84b4c4707efe8f21": {
+      "id": "ec-84b4c4707efe8f21",
+      "title": "Article Oct 28, 2026 IDC brings Quanta into Claude and adopts Claude across the company IDC integrated Claude as part of its Quanta platform, and it has rolled Claude out across its own business Claude Cowork Claude Code 1 more : Claude Enterprise Cl",
+      "topic": "cloud-agent",
+      "source_kind": "official_listing",
+      "published_at": null,
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "84b4c4707efe8f21fc4639d9"
+      ],
+      "sources": [
+        {
+          "item_id": "84b4c4707efe8f21fc4639d9",
+          "source_id": "claude-announcements",
+          "url": "https://claude.com/resources/articles/idc-brings-quanta-into-claude-and-adopts-claude-across-the-company",
+          "published_at": null,
+          "title": "Article Oct 28, 2026 IDC brings Quanta into Claude and adopts Claude across the company IDC integrated Claude as part of its Quanta platform, and it has rolled Claude out across its own business Claude Cowork Claude Code 1 more : Claude Enterprise Cl",
+          "first_discovered_at": "2026-10-28T22:30:41+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -2586,7 +2963,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-26T19:59:56+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "8b3fc23091ee5e7cea80dd90"
       ],
@@ -2602,6 +2979,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-8eb088ec74f3ec5e": {
+      "id": "ec-8eb088ec74f3ec5e",
+      "title": "The Trinity:Capability-Driven Recursive Self-Improvement for Multimodal Agents",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "8eb088ec74f3ec5eb4e6d502"
+      ],
+      "sources": [
+        {
+          "item_id": "8eb088ec74f3ec5eb4e6d502",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.36077",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "The Trinity:Capability-Driven Recursive Self-Improvement for Multimodal Agents",
+          "first_discovered_at": "2026-10-28T05:31:37+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-8eb6001a836a6e50": {
       "id": "ec-8eb6001a836a6e50",
       "title": "Working with academic communities to build scientific understanding",
@@ -2609,7 +3009,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-26T14:30:00+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "8eb6001a836a6e50b8fb133e"
       ],
@@ -2724,7 +3124,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-26T16:45:54+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "95a06d5f7fcdd2659d52f025"
       ],
@@ -2816,7 +3216,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "97442d8e30b73df323fc925d"
       ],
@@ -2862,7 +3262,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "9a064d95901e645ea065cfa7"
       ],
@@ -2885,7 +3285,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-26T16:00:00+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "9a15b40232fdbf825a34f1cb"
       ],
@@ -2897,6 +3297,29 @@
           "published_at": "2026-10-26T16:00:00+00:00",
           "title": "Our newest AI Quest: Mapping the human brain",
           "first_discovered_at": "2026-10-26T22:36:50+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-9a594fd90b594426": {
+      "id": "ec-9a594fd90b594426",
+      "title": "CulturalRiddles: A Multicultural Benchmark of Riddles",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "9a594fd90b594426f24cc97e"
+      ],
+      "sources": [
+        {
+          "item_id": "9a594fd90b594426f24cc97e",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.29968",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "CulturalRiddles: A Multicultural Benchmark of Riddles",
+          "first_discovered_at": "2026-10-22T06:29:46+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -2977,7 +3400,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-27T17:56:58+00:00",
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "9cc6948c0ab7c943a705a541"
       ],
@@ -3085,6 +3508,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-a15f6ab37c7893ad": {
+      "id": "ec-a15f6ab37c7893ad",
+      "title": "Building an Agentic AI Platform on Amazon Bedrock AgentCore",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T18:28:26+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "a15f6ab37c7893ad744089ed"
+      ],
+      "sources": [
+        {
+          "item_id": "a15f6ab37c7893ad744089ed",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/building-an-agentic-ai-platform-on-amazon-bedrock-agentcore",
+          "published_at": "2026-10-28T18:28:26+00:00",
+          "title": "Building an Agentic AI Platform on Amazon Bedrock AgentCore",
+          "first_discovered_at": "2026-10-28T22:30:41+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-a227dc1447c320a0": {
       "id": "ec-a227dc1447c320a0",
       "title": "Learning from Next-Frame Prediction: Towards Unified and Scalable Visual World Modeling",
@@ -3104,6 +3550,52 @@
           "published_at": "2026-10-26T04:00:00+00:00",
           "title": "Learning from Next-Frame Prediction: Towards Unified and Scalable Visual World Modeling",
           "first_discovered_at": "2026-10-23T04:41:06+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-a395c7da350b5086": {
+      "id": "ec-a395c7da350b5086",
+      "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T13:15:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "a395c7da350b5086cc15f6b6"
+      ],
+      "sources": [
+        {
+          "item_id": "a395c7da350b5086cc15f6b6",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/openai-servicenow-partnership-expansion",
+          "published_at": "2026-10-28T13:15:00+00:00",
+          "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
+          "first_discovered_at": "2026-10-28T22:30:41+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-a4362185b5f0fe58": {
+      "id": "ec-a4362185b5f0fe58",
+      "title": "BehaveRec: When Does Long-Term Behavioral History Help Sequential Recommendation? A Study with Session, History, and Community Signals",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "a4362185b5f0fe5835a996c8"
+      ],
+      "sources": [
+        {
+          "item_id": "a4362185b5f0fe5835a996c8",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.36239",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "BehaveRec: When Does Long-Term Behavioral History Help Sequential Recommendation? A Study with Session, History, and Community Signals",
+          "first_discovered_at": "2026-10-28T05:31:37+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -3138,7 +3630,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-26T22:00:00+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "a9c488820a62ac4adcd9d66c"
       ],
@@ -3253,7 +3745,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-26T19:57:41+00:00",
       "first_seen_at": "2026-10-27T01:35:02+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "b144eddcba6073a5615af78d"
       ],
@@ -3345,7 +3837,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-27T16:50:55+00:00",
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "b4af5d547e592189c47807a1"
       ],
@@ -3476,6 +3968,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-bccf7a1d6f297b67": {
+      "id": "ec-bccf7a1d6f297b67",
+      "title": "From Code Generator to Engineering Companion: A Plant-aware Agent for PLC Programming",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "bccf7a1d6f297b674670e354"
+      ],
+      "sources": [
+        {
+          "item_id": "bccf7a1d6f297b674670e354",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.28160",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "From Code Generator to Engineering Companion: A Plant-aware Agent for PLC Programming",
+          "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-bd138645120f03ef": {
       "id": "ec-bd138645120f03ef",
       "title": "0.165.0",
@@ -3483,7 +3998,7 @@
       "source_kind": "github_release",
       "published_at": "2026-10-27T20:09:38+00:00",
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "bd138645120f03ef7bae746b"
       ],
@@ -3541,6 +4056,29 @@
           "published_at": "2026-10-23T04:00:00+00:00",
           "title": "REFLEX: RNA Ensemble Generation via Flexibility-Calibrated Stochastic Bridge",
           "first_discovered_at": "2026-10-22T06:29:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-c08a0a2ef6db74bc": {
+      "id": "ec-c08a0a2ef6db74bc",
+      "title": "Skill Dreaming: Evolving Repository Skills through Pull Request Streams",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "c08a0a2ef6db74bc04a20b68"
+      ],
+      "sources": [
+        {
+          "item_id": "c08a0a2ef6db74bc04a20b68",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.36188",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "Skill Dreaming: Evolving Repository Skills through Pull Request Streams",
+          "first_discovered_at": "2026-10-28T05:31:37+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -3644,7 +4182,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-27T07:00:00+00:00",
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "c417f8e3d39d0b893c07541b"
       ],
@@ -3667,7 +4205,7 @@
       "source_kind": "rss",
       "published_at": "2026-10-27T00:00:00+00:00",
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "c44dc9ed271ff418b14ac5c9"
       ],
@@ -3706,6 +4244,75 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-cc8621241a3a683f": {
+      "id": "ec-cc8621241a3a683f",
+      "title": "Learning Human Sports Motion Feasibility via Quantile Regression on Tracking Data",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "cc8621241a3a683f1e42637d"
+      ],
+      "sources": [
+        {
+          "item_id": "cc8621241a3a683f1e42637d",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.36183",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "Learning Human Sports Motion Feasibility via Quantile Regression on Tracking Data",
+          "first_discovered_at": "2026-10-28T05:31:37+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-cedb0cbac88c02cd": {
+      "id": "ec-cedb0cbac88c02cd",
+      "title": "Fig: Automated Multiagent Behavior Elicitor",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "cedb0cbac88c02cdee48d336"
+      ],
+      "sources": [
+        {
+          "item_id": "cedb0cbac88c02cdee48d336",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.28891",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "Fig: Automated Multiagent Behavior Elicitor",
+          "first_discovered_at": "2026-10-22T06:29:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-cefc48cf69e7d9b7": {
+      "id": "ec-cefc48cf69e7d9b7",
+      "title": "Why and How to Do Science When AI Is Better at It: A Framework Grounded in Human Understanding and Direction",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "cefc48cf69e7d9b72f0db15a"
+      ],
+      "sources": [
+        {
+          "item_id": "cefc48cf69e7d9b72f0db15a",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.36116",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "Why and How to Do Science When AI Is Better at It: A Framework Grounded in Human Understanding and Direction",
+          "first_discovered_at": "2026-10-28T05:31:37+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-d03523612a84680b": {
       "id": "ec-d03523612a84680b",
       "title": "RayCo4D: Ray-Conditioned Continuous Motion Model for Monocular 4D Dynamic Reconstruction",
@@ -3725,6 +4332,29 @@
           "published_at": "2026-10-22T04:00:00+00:00",
           "title": "RayCo4D: Ray-Conditioned Continuous Motion Model for Monocular 4D Dynamic Reconstruction",
           "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-d762df67a1c93fa4": {
+      "id": "ec-d762df67a1c93fa4",
+      "title": "PaperFormalizer: Author-in-the-Loop Autoformalization of Research Papers in Lean",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "d762df67a1c93fa46e127e8b"
+      ],
+      "sources": [
+        {
+          "item_id": "d762df67a1c93fa46e127e8b",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.31810",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "PaperFormalizer: Author-in-the-Loop Autoformalization of Research Papers in Lean",
+          "first_discovered_at": "2026-10-26T04:38:41+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -3828,7 +4458,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-10-28T01:33:28+00:00",
-      "last_seen_at": "2026-10-28T01:33:28+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
       "item_ids": [
         "dcad83d827337ce853e769bf"
       ],
@@ -3863,6 +4493,29 @@
           "published_at": "2026-10-20T17:28:32+00:00",
           "title": "OpenShell v0.1.5",
           "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-dd7b4a3cd784c7e0": {
+      "id": "ec-dd7b4a3cd784c7e0",
+      "title": "AI-guided deep visual proteomics reveals recurrence-associated morpho-molecular signatures within triple-negative breast cancers",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "dd7b4a3cd784c7e0de3b56fd"
+      ],
+      "sources": [
+        {
+          "item_id": "dd7b4a3cd784c7e0de3b56fd",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2608.03145",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "AI-guided deep visual proteomics reveals recurrence-associated morpho-molecular signatures within triple-negative breast cancers",
+          "first_discovered_at": "2026-10-26T04:38:41+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -3909,6 +4562,29 @@
           "published_at": "2026-10-21T07:00:00+00:00",
           "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities",
           "first_discovered_at": "2026-10-23T01:17:01+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-e2ed7680c50ae3f0": {
+      "id": "ec-e2ed7680c50ae3f0",
+      "title": "The future of the firm",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T10:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "e2ed7680c50ae3f074e04f96"
+      ],
+      "sources": [
+        {
+          "item_id": "e2ed7680c50ae3f074e04f96",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/the-future-of-the-firm",
+          "published_at": "2026-10-28T10:00:00+00:00",
+          "title": "The future of the firm",
+          "first_discovered_at": "2026-10-28T22:30:41+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -3982,6 +4658,75 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-e63c44ee253751eb": {
+      "id": "ec-e63c44ee253751eb",
+      "title": "Official site update: ai for science expands foundations research institutions",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "e63c44ee253751eb72aef3f2"
+      ],
+      "sources": [
+        {
+          "item_id": "e63c44ee253751eb72aef3f2",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions",
+          "published_at": null,
+          "title": "Official site update: ai for science expands foundations research institutions",
+          "first_discovered_at": "2026-10-29T01:55:02+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-e664d55834d98649": {
+      "id": "ec-e664d55834d98649",
+      "title": "Knowing When to Stop: The Evidence-Action Gap in Coding Agents",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "e664d55834d9864931c3927e"
+      ],
+      "sources": [
+        {
+          "item_id": "e664d55834d9864931c3927e",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.31895",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "Knowing When to Stop: The Evidence-Action Gap in Coding Agents",
+          "first_discovered_at": "2026-10-26T04:38:41+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-e960e8891f7d7ad8": {
+      "id": "ec-e960e8891f7d7ad8",
+      "title": "Genie 4: A new generation of world simulation",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-27T16:01:38+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "e960e8891f7d7ad86d1b82fb"
+      ],
+      "sources": [
+        {
+          "item_id": "e960e8891f7d7ad86d1b82fb",
+          "source_id": "deepmind-blog",
+          "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation",
+          "published_at": "2026-10-27T16:01:38+00:00",
+          "title": "Genie 4: A new generation of world simulation",
+          "first_discovered_at": "2026-10-28T12:43:54+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-ea92da5c121ecb45": {
       "id": "ec-ea92da5c121ecb45",
       "title": "How we built ChatGPT’s novel ad stack for user trust and relevance",
@@ -4001,6 +4746,29 @@
           "published_at": "2026-10-21T07:00:00+00:00",
           "title": "How we built ChatGPT’s novel ad stack for user trust and relevance",
           "first_discovered_at": "2026-10-23T01:17:01+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-ec733f799e1aaee3": {
+      "id": "ec-ec733f799e1aaee3",
+      "title": "NVIDIA Nemotron 3.5 Transcribe and Granary v2: Intelligent Multilingual Transcription You Can Prompt and Adapt",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T14:58:17+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "ec733f799e1aaee3d1ac15d7"
+      ],
+      "sources": [
+        {
+          "item_id": "ec733f799e1aaee3d1ac15d7",
+          "source_id": "huggingface-blog",
+          "url": "https://huggingface.co/blog/nvidia/nemotron-transcribe-granary",
+          "published_at": "2026-10-28T14:58:17+00:00",
+          "title": "NVIDIA Nemotron 3.5 Transcribe and Granary v2: Intelligent Multilingual Transcription You Can Prompt and Adapt",
+          "first_discovered_at": "2026-10-28T22:30:41+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -4070,6 +4838,29 @@
           "published_at": "2026-10-20T16:09:19+00:00",
           "title": "FairStress: A deeper evaluation of fairness in LLM decision-making",
           "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-efe2b5110c7bf124": {
+      "id": "ec-efe2b5110c7bf124",
+      "title": "Official site update: coding agents social sciences",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "efe2b5110c7bf124752bc5a2"
+      ],
+      "sources": [
+        {
+          "item_id": "efe2b5110c7bf124752bc5a2",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/research/coding-agents-social-sciences",
+          "published_at": null,
+          "title": "Official site update: coding agents social sciences",
+          "first_discovered_at": "2026-10-28T05:31:37+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -4189,6 +4980,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-f88a73bde86676a4": {
+      "id": "ec-f88a73bde86676a4",
+      "title": "ARCANA: A Benchmark for Abstraction and Analogical Reasoning",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-10-28T04:00:00+00:00",
+      "first_seen_at": "2026-10-29T01:55:02+00:00",
+      "last_seen_at": "2026-10-29T01:55:02+00:00",
+      "item_ids": [
+        "f88a73bde86676a413ce87c2"
+      ],
+      "sources": [
+        {
+          "item_id": "f88a73bde86676a413ce87c2",
+          "source_id": "arxiv-cs-ai",
+          "url": "https://arxiv.org/abs/2610.29271",
+          "published_at": "2026-10-28T04:00:00+00:00",
+          "title": "ARCANA: A Benchmark for Abstraction and Analogical Reasoning",
+          "first_discovered_at": "2026-10-22T06:29:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-f8c156dba7886826": {
       "id": "ec-f8c156dba7886826",
       "title": "Securing our frontier model training environment",
@@ -4283,7 +5097,10 @@
     }
   },
   "item_index": {
+    "035f71ec0325679b7fbcffec": "ec-035f71ec0325679b",
     "047a55d9a381df1fa2e7fddd": "ec-047a55d9a381df1f",
+    "047d81f60ca5ab879683778d": "ec-047d81f60ca5ab87",
+    "061263b1ecec8602ab824880": "ec-061263b1ecec8602",
     "071ab93645637197f5569a5c": "ec-071ab93645637197",
     "09a52776f0528d1ace295af6": "ec-09a52776f0528d1a",
     "0a51578fa0575756342e04a2": "ec-0a51578fa0575756",
@@ -4295,6 +5112,7 @@
     "1274a8235cdb512e4bb70303": "ec-1274a8235cdb512e",
     "15be2ff317bed24c0dcf7014": "ec-15be2ff317bed24c",
     "1767ea3194797808039e54b5": "ec-1767ea3194797808",
+    "18559cb38b762050d854f339": "ec-18559cb38b762050",
     "18b25c716d40f2c7a7846e89": "ec-18b25c716d40f2c7",
     "19d564c2b0542953846de266": "ec-19d564c2b0542953",
     "19d9539f3bd0f67fb13b5382": "ec-19d9539f3bd0f67f",
@@ -4306,7 +5124,9 @@
     "1da987a218b173eb882dffe0": "ec-1da987a218b173eb",
     "1eabd72a2a9add8eaa3c989f": "ec-1eabd72a2a9add8e",
     "206e1c6bb61d57d55e1f078c": "ec-206e1c6bb61d57d5",
+    "2116cd19b4534bd63a987e6b": "ec-2116cd19b4534bd6",
     "21e96d4f9b19988eb59b63a0": "ec-21e96d4f9b19988e",
+    "225fb5a9da194f15d1149705": "ec-225fb5a9da194f15",
     "23aa3d120b551ff011ac2d6d": "ec-23aa3d120b551ff0",
     "24c6e2121b55d2858d5b21f5": "ec-24c6e2121b55d285",
     "24d6782bb608a7d95d92b481": "ec-24d6782bb608a7d9",
@@ -4322,12 +5142,14 @@
     "2f74e2ab2f7e1728eaa6806f": "ec-2f74e2ab2f7e1728",
     "2fcfd7ecc48498d8417073a0": "ec-2fcfd7ecc48498d8",
     "300df2fa6ceddd1f264b3e48": "ec-300df2fa6ceddd1f",
+    "3592c2289faff55994bbf1d7": "ec-3592c2289faff559",
     "35e334c198740f7416638922": "ec-35e334c198740f74",
     "38e70b683c26da979fcef795": "ec-38e70b683c26da97",
     "39cad894cdd240fbe2dba606": "ec-39cad894cdd240fb",
     "3bb7f581684ef39f682a4639": "ec-3bb7f581684ef39f",
     "3c862a18b467640b837437cb": "ec-3c862a18b467640b",
     "3d8ab047597f9f39543346ac": "ec-3d8ab047597f9f39",
+    "3e32bae570ff21ee59e510c6": "ec-3e32bae570ff21ee",
     "3e464efbb0b4dffd8b6fbe25": "ec-3e464efbb0b4dffd",
     "3f1a11956436b167380065dc": "ec-3f1a11956436b167",
     "40a01666d562060bfdf96e1b": "ec-40a01666d562060b",
@@ -4354,6 +5176,7 @@
     "58ff7a6a906611649d17700f": "ec-58ff7a6a90661164",
     "59b285913cc2d8dc1ba7b0c8": "ec-59b285913cc2d8dc",
     "5b4e08461387ba3b44832eb3": "ec-5b4e08461387ba3b",
+    "5b54fb74a59ffe3f5477d375": "ec-5b54fb74a59ffe3f",
     "5d193cc1f396c8e39b220f8d": "ec-5d193cc1f396c8e3",
     "5d794c3788a3a4be0d421559": "ec-5d794c3788a3a4be",
     "5e6236f11938be0fd10b5921": "ec-5e6236f11938be0f",
@@ -4363,13 +5186,19 @@
     "65ec4e9c8cacc3f6910f3e7f": "ec-65ec4e9c8cacc3f6",
     "662faaaeac49f77455d2268b": "ec-662faaaeac49f774",
     "67297d2df9a3d7f196c35fa6": "ec-67297d2df9a3d7f1",
+    "67c6b18b0a76451db874442c": "ec-67c6b18b0a76451d",
+    "709cc8e2bd467b7916899fb3": "ec-67c6b18b0a76451d",
     "67e0e2ca251faa5910ae53f1": "ec-67e0e2ca251faa59",
     "6992246778e3c420f9426bda": "ec-6992246778e3c420",
     "69a766607353eb4ce62eb537": "ec-69a766607353eb4c",
     "6a5c4c2bb3978eb01340970c": "ec-6a5c4c2bb3978eb0",
     "6b1c86145dbaac97bc79c9dc": "ec-6b1c86145dbaac97",
+    "6c5e6a6d85af5893fe93cf06": "ec-6c5e6a6d85af5893",
+    "6d883a1f3620138ca1b27198": "ec-6d883a1f3620138c",
+    "6e937edb5b0a47f0aae59e15": "ec-6e937edb5b0a47f0",
     "720764d3a5e8671ecf983f96": "ec-720764d3a5e8671e",
     "723372c8dc681795e858309e": "ec-723372c8dc681795",
+    "7270457062ab576b0613e08a": "ec-7270457062ab576b",
     "737954dac6a7900275aa5e87": "ec-737954dac6a79002",
     "742d30efdc4090c11a97794f": "ec-742d30efdc4090c1",
     "74655899d2c02f414ae48235": "ec-74655899d2c02f41",
@@ -4379,12 +5208,14 @@
     "76ec00631735d4a60906e376": "ec-76ec00631735d4a6",
     "778936db60e7d50d1cb701ef": "ec-778936db60e7d50d",
     "78cebe09803b57417ff218b1": "ec-78cebe09803b5741",
+    "7955caaf89147e7bcd6f77b2": "ec-7955caaf89147e7b",
     "7c109bf5e7c5155862b1b1b8": "ec-7c109bf5e7c51558",
     "7c2cc3d7e8ae53dcce000a0a": "ec-7c2cc3d7e8ae53dc",
     "7d972df501d01ba1f64ace9f": "ec-7d972df501d01ba1",
     "7e73eebe3e909303c4c59a7d": "ec-7e73eebe3e909303",
     "7fabe26ca5c43e1f535806ee": "ec-7fabe26ca5c43e1f",
     "835c6a6b04c513f42cd61db7": "ec-835c6a6b04c513f4",
+    "84b4c4707efe8f21fc4639d9": "ec-84b4c4707efe8f21",
     "853629b69b653c9d835ef03a": "ec-853629b69b653c9d",
     "856c26ca4c2d04bcedc9cb9f": "ec-856c26ca4c2d04bc",
     "872e5a8f40f4aa51d025dc04": "ec-872e5a8f40f4aa51",
@@ -4396,6 +5227,7 @@
     "8ae5cfb1a46e38dbde58c1df": "ec-8ae5cfb1a46e38db",
     "8b353a05b7f98c579f54fae1": "ec-8b353a05b7f98c57",
     "8b3fc23091ee5e7cea80dd90": "ec-8b3fc23091ee5e7c",
+    "8eb088ec74f3ec5eb4e6d502": "ec-8eb088ec74f3ec5e",
     "8eb6001a836a6e50b8fb133e": "ec-8eb6001a836a6e50",
     "8f93170faf71fda6558b8b2f": "ec-8f93170faf71fda6",
     "915fa905d873387d86b0ab59": "ec-915fa905d873387d",
@@ -4409,6 +5241,7 @@
     "986e2ea6ee80b8b5fafeeccc": "ec-986e2ea6ee80b8b5",
     "9a064d95901e645ea065cfa7": "ec-9a064d95901e645e",
     "9a15b40232fdbf825a34f1cb": "ec-9a15b40232fdbf82",
+    "9a594fd90b594426f24cc97e": "ec-9a594fd90b594426",
     "9b8b3808b69b7589be3668ab": "ec-9b8b3808b69b7589",
     "9c25b784b73611021a106aff": "ec-9c25b784b7361102",
     "9c2e899d121755363e2ad475": "ec-9c2e899d12175536",
@@ -4417,7 +5250,10 @@
     "9ef9858a9a27bcd027beb07f": "ec-9ef9858a9a27bcd0",
     "a08d8d7f45783686dd5c48c2": "ec-a08d8d7f45783686",
     "a0db77b024e6281c55a17c93": "ec-a0db77b024e6281c",
+    "a15f6ab37c7893ad744089ed": "ec-a15f6ab37c7893ad",
     "a227dc1447c320a0c7229ab5": "ec-a227dc1447c320a0",
+    "a395c7da350b5086cc15f6b6": "ec-a395c7da350b5086",
+    "a4362185b5f0fe5835a996c8": "ec-a4362185b5f0fe58",
     "a6ebb163a6c3bf175c39e54e": "ec-a6ebb163a6c3bf17",
     "a9c488820a62ac4adcd9d66c": "ec-a9c488820a62ac4a",
     "ab36928c7a5646ccf8955a17": "ec-ab36928c7a5646cc",
@@ -4434,9 +5270,11 @@
     "b8d85869a2d7f453db96cc97": "ec-b8d85869a2d7f453",
     "b9843ad88f05a84c240bfc25": "ec-b9843ad88f05a84c",
     "bbf7ca6d9478c92a7c22c90c": "ec-bbf7ca6d9478c92a",
+    "bccf7a1d6f297b674670e354": "ec-bccf7a1d6f297b67",
     "bd138645120f03ef7bae746b": "ec-bd138645120f03ef",
     "be319d98e9e8716242c5d155": "ec-be319d98e9e87162",
     "bfcd4f6589d5560c982093e2": "ec-bfcd4f6589d5560c",
+    "c08a0a2ef6db74bc04a20b68": "ec-c08a0a2ef6db74bc",
     "c115ce57a51e58c9dac68cb3": "ec-c115ce57a51e58c9",
     "c2ed162a157709f5cb47598d": "ec-c2ed162a157709f5",
     "c35b3ef79c92279b18ef069a": "ec-c35b3ef79c92279b",
@@ -4444,27 +5282,39 @@
     "c417f8e3d39d0b893c07541b": "ec-c417f8e3d39d0b89",
     "c44dc9ed271ff418b14ac5c9": "ec-c44dc9ed271ff418",
     "ca353886f18b23010ffcbc15": "ec-ca353886f18b2301",
+    "cc8621241a3a683f1e42637d": "ec-cc8621241a3a683f",
+    "cedb0cbac88c02cdee48d336": "ec-cedb0cbac88c02cd",
+    "cefc48cf69e7d9b72f0db15a": "ec-cefc48cf69e7d9b7",
     "d03523612a84680b43a1a14d": "ec-d03523612a84680b",
+    "d762df67a1c93fa46e127e8b": "ec-d762df67a1c93fa4",
     "d7c237cc133940eeccf4595e": "ec-d7c237cc133940ee",
     "d8639c0b4eb9ace31e9d7884": "ec-d8639c0b4eb9ace3",
     "da0587182704033afb595bab": "ec-da0587182704033a",
     "dbe42569b9cac6f135abdc03": "ec-dbe42569b9cac6f1",
     "dcad83d827337ce853e769bf": "ec-dcad83d827337ce8",
     "dcd4484c0d88ceb8273c6cc2": "ec-dcd4484c0d88ceb8",
+    "dd7b4a3cd784c7e0de3b56fd": "ec-dd7b4a3cd784c7e0",
     "de02c51efff34c4ca4ad4936": "ec-de02c51efff34c4c",
     "de9db6f384cbc788775550a9": "ec-de9db6f384cbc788",
+    "e2ed7680c50ae3f074e04f96": "ec-e2ed7680c50ae3f0",
     "e35f1b9db0c287fd526830c7": "ec-e35f1b9db0c287fd",
     "e5220d736a5c1487b79fdd1e": "ec-e5220d736a5c1487",
     "e600abfbbfd2fa21366c575c": "ec-e600abfbbfd2fa21",
+    "e63c44ee253751eb72aef3f2": "ec-e63c44ee253751eb",
+    "e664d55834d9864931c3927e": "ec-e664d55834d98649",
+    "e960e8891f7d7ad86d1b82fb": "ec-e960e8891f7d7ad8",
     "ea92da5c121ecb4527027c2b": "ec-ea92da5c121ecb45",
+    "ec733f799e1aaee3d1ac15d7": "ec-ec733f799e1aaee3",
     "eda525050cea8fce4b138233": "ec-eda525050cea8fce",
     "ee4c22366ef7e7abd786b0a4": "ec-ee4c22366ef7e7ab",
     "ef73bf2ace8ac67192910f29": "ec-ef73bf2ace8ac671",
+    "efe2b5110c7bf124752bc5a2": "ec-efe2b5110c7bf124",
     "f325a05cc9ff06908b95941d": "ec-f325a05cc9ff0690",
     "f4cbbc5a6a498cf536c75d35": "ec-f4cbbc5a6a498cf5",
     "f5220dab8f55b741ff6e0de2": "ec-f5220dab8f55b741",
     "f5ebfafb83c6121bc98f39f9": "ec-f5ebfafb83c6121b",
     "f6cf73b1fedb638ef18cee2b": "ec-f6cf73b1fedb638e",
+    "f88a73bde86676a413ce87c2": "ec-f88a73bde86676a4",
     "f8c156dba7886826388b35c0": "ec-f8c156dba7886826",
     "fb630ea19b93482d041617e8": "ec-fb630ea19b93482d",
     "ff02c0290aa26d035595ee64": "ec-ff02c0290aa26d03",
