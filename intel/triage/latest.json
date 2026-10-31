@@ -1,27 +1,27 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-30T02:06:00+00:00",
-  "snapshot_generated_at": "2026-10-30T02:05:50+00:00",
-  "beijing_date": "2026-10-30",
+  "generated_at": "2026-10-31T01:44:11+00:00",
+  "snapshot_generated_at": "2026-10-31T01:44:04+00:00",
+  "beijing_date": "2026-10-31",
   "kind": "unverified_editorial_review_queue",
-  "count": 28,
-  "eligible_item_count": 67,
+  "count": 30,
+  "eligible_item_count": 63,
   "topic_distribution": {
     "cloud-agent": 9,
     "harness": 9,
     "research": 9,
-    "sandbox": 1
+    "runtime": 3
   },
   "source_distribution": {
     "anthropic-site": 3,
     "arxiv-cs-ai": 5,
     "aws-ml": 5,
     "claude-announcements": 3,
-    "deepmind-blog": 2,
-    "huggingface-blog": 2,
+    "deepmind-blog": 1,
+    "huggingface-blog": 3,
     "openai-news": 5,
-    "release:NVIDIA/OpenShell": 1,
     "release:OpenHands/software-agent-sdk": 1,
+    "release:langchain-ai/langgraph": 3,
     "release:openai/codex": 1
   },
   "items": [
@@ -44,15 +44,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "67c6b18b0a76451db874442c",
-      "candidate_id": "ec-67c6b18b0a76451d",
-      "title": "Legora is building the agentic operating system for legal work",
-      "url": "https://openai.com/index/legora-agentic-operating-system-for-legal-work",
+      "item_id": "574dbaf7fc8731e405753fdd",
+      "candidate_id": "ec-574dbaf7fc8731e4",
+      "title": "Fair use benefits everyone",
+      "url": "https://openai.com/index/fair-use-benefits-everyone",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-10-28T09:30:00+00:00",
+      "claimed_published_at": "2026-10-30T00:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -62,15 +62,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "709cc8e2bd467b7916899fb3",
-      "candidate_id": "ec-67c6b18b0a76451d",
-      "title": "Legora is building the agentic operating system for legal work",
-      "url": "https://openai.com/index/legora",
+      "item_id": "84abd1857de5dfd951d90dcf",
+      "candidate_id": "ec-84abd1857de5dfd9",
+      "title": "Making it easier for websites to express AI training preferences",
+      "url": "https://openai.com/index/helping-websites-express-ai-training-preferences",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-10-28T09:30:00+00:00",
+      "claimed_published_at": "2026-10-30T09:30:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -98,15 +98,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "a395c7da350b5086cc15f6b6",
-      "candidate_id": "ec-a395c7da350b5086",
-      "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
-      "url": "https://openai.com/index/openai-servicenow-partnership-expansion",
+      "item_id": "a86d24c59c826150d16deb11",
+      "candidate_id": "ec-a86d24c59c826150",
+      "title": "Community safety report and new protections for teens",
+      "url": "https://openai.com/index/community-safety-report-and-new-protections-for-teens",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-10-28T13:15:00+00:00",
+      "claimed_published_at": "2026-10-30T09:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -125,47 +125,11 @@
       "topic": "research",
       "source_priority": "P0",
       "claimed_published_at": "2026-10-28T17:00:58+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "e960e8891f7d7ad86d1b82fb",
-      "candidate_id": "ec-e960e8891f7d7ad8",
-      "title": "Genie 4: A new generation of world simulation",
-      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation",
-      "source_id": "deepmind-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-10-27T16:01:38+00:00",
       "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
         "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "6e937edb5b0a47f0aae59e15",
-      "candidate_id": "ec-6e937edb5b0a47f0",
-      "title": "v1.59.0",
-      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.59.0",
-      "source_id": "release:OpenHands/software-agent-sdk",
-      "source_kind": "github_release",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-28T14:34:44+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -179,6 +143,60 @@
       "topic": "harness",
       "source_priority": "P1",
       "claimed_published_at": "2026-10-29T19:47:53+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "a355eee0fdeac48046713be6",
+      "candidate_id": "ec-a355eee0fdeac480",
+      "title": "langgraph-sdk==0.4.11",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/sdk%3D%3D0.4.11",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-30T22:17:59+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "c2fd4aed31d0713e4a348884",
+      "candidate_id": "ec-c2fd4aed31d0713e",
+      "title": "langgraph-checkpoint-sqlite==3.1.3",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/checkpointsqlite%3D%3D3.1.3",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-30T22:18:54+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "c8d7e83ca588d28d5329d6e5",
+      "candidate_id": "ec-c8d7e83ca588d28d",
+      "title": "langgraph==1.2.19",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.19",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-30T22:23:43+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -206,15 +224,33 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "3592c2289faff55994bbf1d7",
-      "candidate_id": "ec-3592c2289faff559",
-      "title": "Accelerating software delivery with agentic QA automation using Amazon Nova Act – Part 3",
-      "url": "https://aws.amazon.com/blogs/machine-learning/accelerating-software-delivery-with-agentic-qa-automation-using-amazon-nova-act-part-3",
+      "item_id": "24c1285ad5edaaad29cb254c",
+      "candidate_id": "ec-24c1285ad5edaaad",
+      "title": "Preview web apps live as your coding agent builds them with Amazon Bedrock AgentCore runtime",
+      "url": "https://aws.amazon.com/blogs/machine-learning/preview-web-apps-live-as-your-coding-agent-builds-them-with-amazon-bedrock-agentcore-runtime",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-28T18:12:13+00:00",
+      "claimed_published_at": "2026-10-30T21:40:03+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "30feb7a6b056dc5f2e381edc",
+      "candidate_id": "ec-30feb7a6b056dc5f",
+      "title": "Configure the ChatGPT desktop app with Amazon Bedrock in AWS GovCloud (US)",
+      "url": "https://aws.amazon.com/blogs/machine-learning/configure-the-chatgpt-desktop-app-with-amazon-bedrock-in-aws-govcloud-us",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-30T17:27:45+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -242,33 +278,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "5b54fb74a59ffe3f5477d375",
-      "candidate_id": "ec-5b54fb74a59ffe3f",
-      "title": "Distributed training with Ray Train DLCs and EFA on EKS",
-      "url": "https://aws.amazon.com/blogs/machine-learning/distributed-training-with-ray-train-dlcs-and-efa-on-eks",
+      "item_id": "7dcc9758baf5cb29b36241d1",
+      "candidate_id": "ec-7dcc9758baf5cb29",
+      "title": "How Worldwide Express automated freight exceptions with Amazon Bedrock",
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-worldwide-express-automated-freight-exceptions-with-amazon-bedrock",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-28T18:19:54+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "a15f6ab37c7893ad744089ed",
-      "candidate_id": "ec-a15f6ab37c7893ad",
-      "title": "Building an Agentic AI Platform on Amazon Bedrock AgentCore",
-      "url": "https://aws.amazon.com/blogs/machine-learning/building-an-agentic-ai-platform-on-amazon-bedrock-agentcore",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-28T18:28:26+00:00",
+      "claimed_published_at": "2026-10-30T17:32:20+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -282,24 +300,6 @@
       "candidate_id": "ec-047d81f60ca5ab87",
       "title": "Article Oct 28, 2026 Introducing artifacts for legal work Claude for Legal now includes ready-to-use artifacts for legal work that teams can adapt with their own data and connectors, and share across the business. Claude Enterprise",
       "url": "https://claude.com/resources/articles/introducing-artifacts-for-legal-work",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "65ec4e9c8cacc3f6910f3e7f",
-      "candidate_id": "ec-65ec4e9c8cacc3f6",
-      "title": "Article Oct 27, 2026 Claude for Financial Advisors Financial advisors can now connect Claude to the custodians, portfolio platforms, CRMs, and planning tools they depend on, along with new skills tailored to the daily work of a financial advisor.",
-      "url": "https://claude.com/resources/articles/claude-for-financial-advisors",
       "source_id": "claude-announcements",
       "source_kind": "official_listing",
       "topic": "cloud-agent",
@@ -332,10 +332,46 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "2ef1fbc3458e029d755f0754",
-      "candidate_id": "ec-2ef1fbc3458e029d",
-      "title": "Official site update: discovering vulnerabilities with claude",
-      "url": "https://www.anthropic.com/research/discovering-vulnerabilities-with-claude",
+      "item_id": "84b4c4707efe8f21fc4639d9",
+      "candidate_id": "ec-84b4c4707efe8f21",
+      "title": "Article Oct 28, 2026 IDC brings Quanta into Claude and adopts Claude across the company IDC integrated Claude as part of its Quanta platform, and it has rolled Claude out across its own business Claude Cowork Claude Code 1 more : Claude Enterprise Cl",
+      "url": "https://claude.com/resources/articles/idc-brings-quanta-into-claude-and-adopts-claude-across-the-company",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "6e937edb5b0a47f0aae59e15",
+      "candidate_id": "ec-6e937edb5b0a47f0",
+      "title": "v1.59.0",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.59.0",
+      "source_id": "release:OpenHands/software-agent-sdk",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-28T14:34:44+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "a9914f0c8b63a36e5e703be5",
+      "candidate_id": "ec-a9914f0c8b63a36e",
+      "title": "Official site update: claude code best practices",
+      "url": "https://www.anthropic.com/research/claude-code-best-practices",
       "source_id": "anthropic-site",
       "source_kind": "official_sitemap",
       "topic": "harness",
@@ -350,10 +386,10 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "550f4d88633d42452645fe28",
-      "candidate_id": "ec-550f4d88633d4245",
-      "title": "Official site update: expanding partnership gsa",
-      "url": "https://www.anthropic.com/news/expanding-partnership-gsa",
+      "item_id": "e63c44ee253751eb72aef3f2",
+      "candidate_id": "ec-e63c44ee253751eb",
+      "title": "Official site update: ai for science expands foundations research institutions",
+      "url": "https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions",
       "source_id": "anthropic-site",
       "source_kind": "official_sitemap",
       "topic": "harness",
@@ -368,10 +404,10 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "723372c8dc681795e858309e",
-      "candidate_id": "ec-723372c8dc681795",
-      "title": "Official site update: agents judgment calls",
-      "url": "https://www.anthropic.com/research/agents-judgment-calls",
+      "item_id": "efe2b5110c7bf124752bc5a2",
+      "candidate_id": "ec-efe2b5110c7bf124",
+      "title": "Official site update: coding agents social sciences",
+      "url": "https://www.anthropic.com/research/coding-agents-social-sciences",
       "source_id": "anthropic-site",
       "source_kind": "official_sitemap",
       "topic": "harness",
@@ -386,15 +422,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "035f71ec0325679b7fbcffec",
-      "candidate_id": "ec-035f71ec0325679b",
-      "title": "MARQ: A Modular, LLM-Agnostic Requirement Quality Assessor Infused with Systems Engineering Knowledge",
-      "url": "https://arxiv.org/abs/2610.36234",
+      "item_id": "1767ea3194797808039e54b5",
+      "candidate_id": "ec-1767ea3194797808",
+      "title": "TorchTPU - A Hybrid Eager/Compiled Architecture for Native PyTorch Execution on TPU",
+      "url": "https://arxiv.org/abs/2610.24161",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-29T04:00:00+00:00",
+      "claimed_published_at": "2026-10-30T04:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -404,15 +440,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "061263b1ecec8602ab824880",
-      "candidate_id": "ec-061263b1ecec8602",
-      "title": "Rethinking Multi-View Fusion for Urban Representation Learning",
-      "url": "https://arxiv.org/abs/2610.31850",
+      "item_id": "1b2d3dcd0e26c2e5cfd2a74b",
+      "candidate_id": "ec-1b2d3dcd0e26c2e5",
+      "title": "OpenAttention: One Percent Is Enough with Tail Proxies",
+      "url": "https://arxiv.org/abs/2610.30951",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-29T04:00:00+00:00",
+      "claimed_published_at": "2026-10-30T04:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -422,15 +458,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "18559cb38b762050d854f339",
-      "candidate_id": "ec-18559cb38b762050",
-      "title": "CohortFlow: A Steerable Clinical Cohort Curation Agent with Localized Semantic Correction",
-      "url": "https://arxiv.org/abs/2610.36100",
+      "item_id": "1dd4d564a51bc7a725c10c7a",
+      "candidate_id": "ec-1dd4d564a51bc7a7",
+      "title": "Characterize Then Distill: Mechanistic Reasoning in Large Output Spaces",
+      "url": "https://arxiv.org/abs/2606.06840",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-29T04:00:00+00:00",
+      "claimed_published_at": "2026-10-30T04:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -440,15 +476,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "2116cd19b4534bd63a987e6b",
-      "candidate_id": "ec-2116cd19b4534bd6",
-      "title": "The Shape of the DPO Hyperparameter Landscape: What to Measure, How It Moves with Scale, and When Not to Transfer It",
-      "url": "https://arxiv.org/abs/2610.27895",
+      "item_id": "2b93e99570baedf111098525",
+      "candidate_id": "ec-2b93e99570baedf1",
+      "title": "CauProphet: Teaching Agents to Develop Causal Cognition like Humans",
+      "url": "https://arxiv.org/abs/2610.32477",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-29T04:00:00+00:00",
+      "claimed_published_at": "2026-10-30T04:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -458,15 +494,51 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "225fb5a9da194f15d1149705",
-      "candidate_id": "ec-225fb5a9da194f15",
-      "title": "Don't Pick a Winner: Knowledge Conflicts Need a Prior, Not a Rule",
-      "url": "https://arxiv.org/abs/2610.36169",
+      "item_id": "383cb3c37de3a7342d1d992d",
+      "candidate_id": "ec-383cb3c37de3a734",
+      "title": "Temporal Evidence-Parameter Co-Alignment for LLM Reasoning over Temporal Knowledge Graphs",
+      "url": "https://arxiv.org/abs/2610.28176",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-29T04:00:00+00:00",
+      "claimed_published_at": "2026-10-30T04:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "037154e824aaff256e14aef2",
+      "candidate_id": "ec-037154e824aaff25",
+      "title": "nemotron-halloween",
+      "url": "https://huggingface.co/blog/nvidia/nemotron-halloween",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-30T17:57:24+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "e508e29ae812fe586e8d0493",
+      "candidate_id": "ec-e508e29ae812fe58",
+      "title": "Granite Switch 4.1.1 — Update models like you update software",
+      "url": "https://huggingface.co/blog/ibm-granite/granite-switch-4-1-1",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-29T13:37:07+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -485,46 +557,10 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-10-29T00:00:00+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "718617961cab3abcc8e8a051",
-      "candidate_id": "ec-718617961cab3abc",
-      "title": "Announcing Project ProtoStar: Making Publicly Funded Science AI-Ready",
-      "url": "https://huggingface.co/blog/announcing-project-protostar",
-      "source_id": "huggingface-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-29T00:00:00+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "9cc6948c0ab7c943a705a541",
-      "candidate_id": "ec-9cc6948c0ab7c943",
-      "title": "OpenShell v0.1.6",
-      "url": "https://github.com/NVIDIA/OpenShell/releases/tag/v0.1.6",
-      "source_id": "release:NVIDIA/OpenShell",
-      "source_kind": "github_release",
-      "topic": "sandbox",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-27T17:56:58+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
         "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
