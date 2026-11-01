@@ -1,20 +1,22 @@
 {
   "schema_version": "1.0",
-  "date": "2026-10-31",
-  "generated_at": "2026-10-31T01:44:04+00:00",
-  "collection_status": "ok",
+  "date": "2026-11-01",
+  "generated_at": "2026-11-01T01:23:05+00:00",
+  "collection_status": "partial",
   "source_health": {
-    "healthy": 19,
-    "failed": 0,
+    "healthy": 18,
+    "failed": 1,
     "total": 19,
-    "healthy_fraction": 1.0,
-    "failed_source_ids": []
+    "healthy_fraction": 0.9474,
+    "failed_source_ids": [
+      "deepmind-blog"
+    ]
   },
   "candidate_metrics": {
-    "items_in_snapshot": 63,
-    "clusters_in_snapshot": 62,
-    "duplicate_items_clustered": 1,
-    "clustered_fraction": 0.0159,
+    "items_in_snapshot": 45,
+    "clusters_in_snapshot": 45,
+    "duplicate_items_clustered": 0,
+    "clustered_fraction": 0.0,
     "cross_day_candidates_retained": 266,
     "unverified_backlog": 266
   },

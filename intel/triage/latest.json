@@ -1,66 +1,28 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-31T01:44:11+00:00",
-  "snapshot_generated_at": "2026-10-31T01:44:04+00:00",
-  "beijing_date": "2026-10-31",
+  "generated_at": "2026-11-01T01:23:13+00:00",
+  "snapshot_generated_at": "2026-11-01T01:23:05+00:00",
+  "beijing_date": "2026-11-01",
   "kind": "unverified_editorial_review_queue",
-  "count": 30,
-  "eligible_item_count": 63,
+  "count": 24,
+  "eligible_item_count": 45,
   "topic_distribution": {
-    "cloud-agent": 9,
+    "cloud-agent": 5,
     "harness": 9,
-    "research": 9,
+    "research": 7,
     "runtime": 3
   },
   "source_distribution": {
-    "anthropic-site": 3,
+    "anthropic-site": 2,
     "arxiv-cs-ai": 5,
     "aws-ml": 5,
-    "claude-announcements": 3,
-    "deepmind-blog": 1,
-    "huggingface-blog": 3,
+    "huggingface-blog": 2,
+    "mistral-news": 1,
     "openai-news": 5,
-    "release:OpenHands/software-agent-sdk": 1,
     "release:langchain-ai/langgraph": 3,
     "release:openai/codex": 1
   },
   "items": [
-    {
-      "item_id": "0f01adb2acab0a67ba71c0b0",
-      "candidate_id": "ec-0f01adb2acab0a67",
-      "title": "How we detect frontier model misalignment",
-      "url": "https://openai.com/index/how-we-detect-frontier-model-misalignment",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-10-29T09:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "574dbaf7fc8731e405753fdd",
-      "candidate_id": "ec-574dbaf7fc8731e4",
-      "title": "Fair use benefits everyone",
-      "url": "https://openai.com/index/fair-use-benefits-everyone",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-10-30T00:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
     {
       "item_id": "84abd1857de5dfd951d90dcf",
       "candidate_id": "ec-84abd1857de5dfd9",
@@ -71,24 +33,6 @@
       "topic": "harness",
       "source_priority": "P0",
       "claimed_published_at": "2026-10-30T09:30:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "9349f418e7bc7ab45091d36c",
-      "candidate_id": "ec-9349f418e7bc7ab4",
-      "title": "An updated Model Spec for more capable and beneficial AI",
-      "url": "https://openai.com/index/updated-model-spec",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-10-29T17:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -116,15 +60,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "3e32bae570ff21ee59e510c6",
-      "candidate_id": "ec-3e32bae570ff21ee",
-      "title": "Gemini 4 Carbon: Our next frontier model",
-      "url": "https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model",
-      "source_id": "deepmind-blog",
+      "item_id": "0f01adb2acab0a67ba71c0b0",
+      "candidate_id": "ec-0f01adb2acab0a67",
+      "title": "How we detect frontier model misalignment",
+      "url": "https://openai.com/index/how-we-detect-frontier-model-misalignment",
+      "source_id": "openai-news",
       "source_kind": "rss",
-      "topic": "research",
+      "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-10-28T17:00:58+00:00",
+      "claimed_published_at": "2026-10-29T09:00:00+00:00",
       "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -134,20 +78,38 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "10be109ee0bd01c47a5591a0",
-      "candidate_id": "ec-10be109ee0bd01c4",
-      "title": "0.166.0",
-      "url": "https://github.com/openai/codex/releases/tag/rust-v0.166.0",
-      "source_id": "release:openai/codex",
-      "source_kind": "github_release",
+      "item_id": "574dbaf7fc8731e405753fdd",
+      "candidate_id": "ec-574dbaf7fc8731e4",
+      "title": "Fair use benefits everyone",
+      "url": "https://openai.com/index/fair-use-benefits-everyone",
+      "source_id": "openai-news",
+      "source_kind": "rss",
       "topic": "harness",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-29T19:47:53+00:00",
-      "review_order_score": 6,
+      "source_priority": "P0",
+      "claimed_published_at": "2026-10-30T00:00:00+00:00",
+      "review_order_score": 7,
       "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "9349f418e7bc7ab45091d36c",
+      "candidate_id": "ec-9349f418e7bc7ab4",
+      "title": "An updated Model Spec for more capable and beneficial AI",
+      "url": "https://openai.com/index/updated-model-spec",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-10-29T17:00:00+00:00",
+      "review_order_score": 7,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -206,24 +168,6 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1dda19717c518d488a54cc7f",
-      "candidate_id": "ec-1dda19717c518d48",
-      "title": "How MoEngage turned over 400 APIs into agent tools with AgentCore Gateway",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-moengage-turned-over-400-apis-into-agent-tools-with-agentcore-gateway",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-29T16:54:52+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
       "item_id": "24c1285ad5edaaad29cb254c",
       "candidate_id": "ec-24c1285ad5edaaad",
       "title": "Preview web apps live as your coding agent builds them with Amazon Bedrock AgentCore runtime",
@@ -260,24 +204,6 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "364e712e0335d807c83b2da7",
-      "candidate_id": "ec-364e712e0335d807",
-      "title": "Building intent-driven UI testing with Amazon Nova Act",
-      "url": "https://aws.amazon.com/blogs/machine-learning/building-intent-driven-ui-testing-with-amazon-nova-act",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-29T18:20:27+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
       "item_id": "7dcc9758baf5cb29b36241d1",
       "candidate_id": "ec-7dcc9758baf5cb29",
       "title": "How Worldwide Express automated freight exceptions with Amazon Bedrock",
@@ -296,74 +222,20 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "047d81f60ca5ab879683778d",
-      "candidate_id": "ec-047d81f60ca5ab87",
-      "title": "Article Oct 28, 2026 Introducing artifacts for legal work Claude for Legal now includes ready-to-use artifacts for legal work that teams can adapt with their own data and connectors, and share across the business. Claude Enterprise",
-      "url": "https://claude.com/resources/articles/introducing-artifacts-for-legal-work",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "7270457062ab576b0613e08a",
-      "candidate_id": "ec-7270457062ab576b",
-      "title": "Article Oct 28, 2026 Smart reports, surveys, and pooled group budgets for Claude Enterprise In many organizations, members have identified the unique work that Claude can unlock. The next step is expanding that work to every team. Claude Enterprise",
-      "url": "https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "84b4c4707efe8f21fc4639d9",
-      "candidate_id": "ec-84b4c4707efe8f21",
-      "title": "Article Oct 28, 2026 IDC brings Quanta into Claude and adopts Claude across the company IDC integrated Claude as part of its Quanta platform, and it has rolled Claude out across its own business Claude Cowork Claude Code 1 more : Claude Enterprise Cl",
-      "url": "https://claude.com/resources/articles/idc-brings-quanta-into-claude-and-adopts-claude-across-the-company",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "6e937edb5b0a47f0aae59e15",
-      "candidate_id": "ec-6e937edb5b0a47f0",
-      "title": "v1.59.0",
-      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.59.0",
-      "source_id": "release:OpenHands/software-agent-sdk",
-      "source_kind": "github_release",
+      "item_id": "7f9f135df680a48af008b076",
+      "candidate_id": "ec-7f9f135df680a48a",
+      "title": "Managing Amazon Bedrock costs end to end: A playbook for FinOps and platform teams",
+      "url": "https://aws.amazon.com/blogs/machine-learning/managing-amazon-bedrock-costs-end-to-end-a-playbook-for-finops-and-platform-teams",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-28T14:34:44+00:00",
+      "claimed_published_at": "2026-10-30T22:42:24+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -404,20 +276,20 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "efe2b5110c7bf124752bc5a2",
-      "candidate_id": "ec-efe2b5110c7bf124",
-      "title": "Official site update: coding agents social sciences",
-      "url": "https://www.anthropic.com/research/coding-agents-social-sciences",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
+      "item_id": "10be109ee0bd01c47a5591a0",
+      "candidate_id": "ec-10be109ee0bd01c4",
+      "title": "0.166.0",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.166.0",
+      "source_id": "release:openai/codex",
+      "source_kind": "github_release",
       "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-29T19:47:53+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -430,7 +302,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-30T04:00:00+00:00",
+      "claimed_published_at": "2026-10-31T04:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -448,7 +320,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-30T04:00:00+00:00",
+      "claimed_published_at": "2026-10-31T04:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -466,7 +338,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-30T04:00:00+00:00",
+      "claimed_published_at": "2026-10-31T04:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -484,7 +356,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-30T04:00:00+00:00",
+      "claimed_published_at": "2026-10-31T04:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -502,7 +374,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-10-30T04:00:00+00:00",
+      "claimed_published_at": "2026-10-31T04:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -530,6 +402,42 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "1dda19717c518d488a54cc7f",
+      "candidate_id": "ec-1dda19717c518d48",
+      "title": "How MoEngage turned over 400 APIs into agent tools with AgentCore Gateway",
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-moengage-turned-over-400-apis-into-agent-tools-with-agentcore-gateway",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-29T16:54:52+00:00",
+      "review_order_score": 4,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "5a25565ab71a8d06b3b9b7c2",
+      "candidate_id": "ec-5a25565ab71a8d06",
+      "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
+      "url": "https://mistral.ai/news/mistral-large-4-oss",
+      "source_id": "mistral-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-10-29T12:00:07+00:00",
+      "review_order_score": 4,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "e508e29ae812fe586e8d0493",
       "candidate_id": "ec-e508e29ae812fe58",
       "title": "Granite Switch 4.1.1 — Update models like you update software",
@@ -539,24 +447,6 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-10-29T13:37:07+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "6394645bd5105adc5435eb92",
-      "candidate_id": "ec-6394645bd5105adc",
-      "title": "Introducing AnySpeechRecognizer and AnyDecisionModel: Open Models for Speech and Decisions on Apple Platforms",
-      "url": "https://huggingface.co/blog/anydecisionmodel",
-      "source_id": "huggingface-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-10-29T00:00:00+00:00",
       "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
