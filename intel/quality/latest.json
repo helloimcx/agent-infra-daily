@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-01",
-  "generated_at": "2026-11-01T01:23:05+00:00",
+  "date": "2026-11-02",
+  "generated_at": "2026-11-02T01:42:50+00:00",
   "collection_status": "partial",
   "source_health": {
     "healthy": 18,
@@ -13,8 +13,8 @@
     ]
   },
   "candidate_metrics": {
-    "items_in_snapshot": 45,
-    "clusters_in_snapshot": 45,
+    "items_in_snapshot": 30,
+    "clusters_in_snapshot": 30,
     "duplicate_items_clustered": 0,
     "clustered_fraction": 0.0,
     "cross_day_candidates_retained": 266,
