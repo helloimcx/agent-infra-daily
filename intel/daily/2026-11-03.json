@@ -1,0 +1,1018 @@
+{
+  "schema_version": "1.0",
+  "beijing_date": "2026-11-03",
+  "generated_at": "2026-11-03T03:38:29+00:00",
+  "lookback_hours": 72,
+  "status": "ok",
+  "source_checks": {
+    "ok": [
+      {
+        "id": "openai-news",
+        "entries": 1348
+      },
+      {
+        "id": "deepmind-blog",
+        "entries": 100
+      },
+      {
+        "id": "google-ai",
+        "entries": 20
+      },
+      {
+        "id": "release:openai/codex",
+        "entries": 2
+      },
+      {
+        "id": "release:langchain-ai/langgraph",
+        "entries": 10
+      },
+      {
+        "id": "release:openai/openai-agents-python",
+        "entries": 10
+      },
+      {
+        "id": "release:google/adk-python",
+        "entries": 10
+      },
+      {
+        "id": "release:OpenHands/software-agent-sdk",
+        "entries": 10
+      },
+      {
+        "id": "release:NVIDIA/OpenShell",
+        "entries": 8
+      },
+      {
+        "id": "release:anthropics/sandbox-runtime",
+        "entries": 10
+      },
+      {
+        "id": "release:langchain-ai/open-swe",
+        "entries": 1
+      },
+      {
+        "id": "release:modelcontextprotocol/specification",
+        "entries": 7
+      },
+      {
+        "id": "release:a2aproject/A2A",
+        "entries": 10
+      },
+      {
+        "id": "anthropic-site",
+        "entries": 14
+      },
+      {
+        "id": "claude-announcements",
+        "entries": 11
+      }
+    ],
+    "not_modified": [
+      "aws-ml",
+      "huggingface-blog",
+      "arxiv-cs-ai",
+      "mistral-news"
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "item_count": 37,
+  "items": [
+    {
+      "id": "b22d8c99fffc95fe1ddbbc18",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "priority": "P0",
+      "title": "Article Nov 2, 2026 Make long-running agents faster with message threads New in the Messages API, send your conversation once, and the API receives only what’s new with every turn. Claude Platform",
+      "url": "https://claude.com/resources/articles/message-threads",
+      "published_at": null,
+      "first_discovered_at": "2026-11-03T00:54:55+00:00",
+      "excerpt": "Official website listing. Verify actual publication date and claims on the original.",
+      "evidence_status": "unverified_candidate",
+      "date_basis": "official_listing_no_verified_publication_time"
+    },
+    {
+      "id": "bca108e4c77bd86b238b884f",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Rewarding defenders with bigger bug bounties",
+      "url": "https://openai.com/index/rewarding-defenders-with-bigger-bug-bounties",
+      "published_at": "2026-11-02T18:00:00+00:00",
+      "first_discovered_at": "2026-11-03T03:38:29+00:00",
+      "excerpt": "OpenAI is raising Security Bug Bounty rewards and introducing report quality, loyalty, and priority campaign bonuses for independent security researchers.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "0d297090385ad5a7245151aa",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Preparing our next security sprint to harden OpenAI",
+      "url": "https://openai.com/index/preparing-our-next-security-sprint-to-harden-openai",
+      "published_at": "2026-11-02T18:00:00+00:00",
+      "first_discovered_at": "2026-11-03T03:38:29+00:00",
+      "excerpt": "OpenAI is preparing its next internal security sprint with Cathedral Systems to test and strengthen its defenses using AI.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "996c88dfa31d64c0a9d691ce",
+      "source_id": "google-ai",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P1",
+      "title": "The latest AI news we announced in October 2026",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-october-2026",
+      "published_at": "2026-11-02T17:45:00+00:00",
+      "first_discovered_at": "2026-11-03T00:54:55+00:00",
+      "excerpt": "Here are Google’s latest AI updates from October 2026",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "cb20cf085ba2cd3e4a9283d1",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Prepare web content for Amazon Bedrock Knowledge Bases with Crawl4AI",
+      "url": "https://aws.amazon.com/blogs/machine-learning/prepare-web-content-for-amazon-bedrock-knowledge-bases-with-crawl4ai",
+      "published_at": "2026-11-02T17:11:21+00:00",
+      "first_discovered_at": "2026-11-03T00:54:55+00:00",
+      "excerpt": "This post shows how to use Crawl4AI, an open source web crawler, as a content preparation layer for Amazon Bedrock Knowledge Bases, handling JavaScript rendering, selective extraction, and custom metadata enrichment before web content reaches an Amazon S3 data source.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "7e203c274434cb6cae50971c",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Build efficient agents with knowledge distillation on Amazon SageMaker AI",
+      "url": "https://aws.amazon.com/blogs/machine-learning/build-efficient-agents-with-knowledge-distillation-on-amazon-sagemaker-ai",
+      "published_at": "2026-11-02T17:01:31+00:00",
+      "first_discovered_at": "2026-11-03T00:54:55+00:00",
+      "excerpt": "Agentic assistants built on frontier models run a multi-step tool loop, and paying frontier prices on every step is hard to sustain at production scale. This post shows how to use sequence-level knowledge distillation (SeqKD) to transfer a frontier teacher's agentic behavior into a small, lower-cost student on Amazon SageMaker AI.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "046f31786bb677e608069fe9",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Agentic engineering intelligence with Amazon Nova Multimodal Embeddings and Amazon Bedrock AgentCore",
+      "url": "https://aws.amazon.com/blogs/machine-learning/agentic-engineering-intelligence-with-amazon-nova-multimodal-embeddings-and-amazon-bedrock-agentcore",
+      "published_at": "2026-11-02T17:01:16+00:00",
+      "first_discovered_at": "2026-11-03T00:54:55+00:00",
+      "excerpt": "Learn how to build a multi-agent engineering assistant that compresses aerospace component substitution evaluation from days to minutes, using Amazon Nova Multimodal Embeddings, Amazon Bedrock AgentCore, and the Strands Agents SDK to assemble substitution evidence while keeping the engineer as the decision-maker.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "4cb0c7e800cdcdc0ecc75596",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "How Circle K accelerated DevOps incident triage to under 15 minutes with Amazon Bedrock",
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-circle-k-accelerated-devops-incident-triage-to-under-15-minutes-with-amazon-bedrock",
+      "published_at": "2026-11-02T17:00:58+00:00",
+      "first_discovered_at": "2026-11-03T00:54:55+00:00",
+      "excerpt": "Circle K's DevOps team cut incident triage from 45-60 minutes to under 15 by building an agentic triage system on Amazon Bedrock. This post walks through the architecture, the initial Amazon Bedrock Flows implementation, the migration to Amazon Bedrock AgentCore, and the lessons learned from scaling it.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "a52e9d71e445a46231be182c",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Official site update: Claude accelerates protein design",
+      "url": "https://www.anthropic.com/research/Claude-accelerates-protein-design",
+      "published_at": null,
+      "first_discovered_at": "2026-11-02T15:39:43+00:00",
+      "excerpt": "Official sitemap URL; timestamp reflects site modification, not publication.",
+      "evidence_status": "unverified_candidate",
+      "observed_change_at": "2026-11-02T10:11:06+00:00",
+      "date_basis": "site_lastmod_not_publication"
+    },
+    {
+      "id": "0a1a9915f1bf1a4160432ba0",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Official site update: claude shaped science",
+      "url": "https://www.anthropic.com/research/claude-shaped-science",
+      "published_at": null,
+      "first_discovered_at": "2026-11-02T15:39:43+00:00",
+      "excerpt": "Official sitemap URL; timestamp reflects site modification, not publication.",
+      "evidence_status": "unverified_candidate",
+      "observed_change_at": "2026-11-02T10:11:59+00:00",
+      "date_basis": "site_lastmod_not_publication"
+    },
+    {
+      "id": "a88ccd9cde45b630e32610b6",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Official site update: vibe physics",
+      "url": "https://www.anthropic.com/research/vibe-physics",
+      "published_at": null,
+      "first_discovered_at": "2026-11-02T15:39:43+00:00",
+      "excerpt": "Official sitemap URL; timestamp reflects site modification, not publication.",
+      "evidence_status": "unverified_candidate",
+      "observed_change_at": "2026-11-02T10:12:52+00:00",
+      "date_basis": "site_lastmod_not_publication"
+    },
+    {
+      "id": "277870ffc8d71544c0465c13",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Scaling Git at OpenAI",
+      "url": "https://openai.com/index/scaling-git-at-openai",
+      "published_at": "2026-11-02T15:30:00+00:00",
+      "first_discovered_at": "2026-11-03T00:54:55+00:00",
+      "excerpt": "How OpenAI built Pando, a Git-compatible backend designed for the scale of development that Codex makes possible.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "5d33ed0c66ace544e65f6063",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Introducing the Grid Protectors Program",
+      "url": "https://openai.com/index/grid-protectors-program",
+      "published_at": "2026-11-02T15:00:00+00:00",
+      "first_discovered_at": "2026-11-02T15:39:43+00:00",
+      "excerpt": "OpenAI’s Grid Protectors Program will work with utilities to help future compute campuses support grid reliability and protect consumer electricity costs.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "b555765399fdec21d6701641",
+      "source_id": "release:langchain-ai/open-swe",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Open SWE Desktop v0.3.11",
+      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.11",
+      "published_at": "2026-11-02T14:50:02+00:00",
+      "first_discovered_at": "2026-11-02T15:39:43+00:00",
+      "excerpt": "## What's Changed * chore(desktop): bump version to 0.3.11 by @johannes117 in https://github.com/langchain-ai/open-swe/pull/4932 **Full Changelog**: https://github.com/langchain-ai/open-swe/compare/desktop-ui-8eef01e548653ff8df2d997be2d524b03d65b815...desktop-v0.3.11",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "desktop-v0.3.11"
+    },
+    {
+      "id": "5a014341bc3fc0f1d8b6431c",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "LifeVal",
+      "url": "https://openai.com/index/lifeval",
+      "published_at": "2026-11-02T09:00:00+00:00",
+      "first_discovered_at": "2026-11-03T00:54:55+00:00",
+      "excerpt": "Introducing LifeVal, a benchmark measuring how well AI helps people complete everyday tasks, from finding childcare to managing finances and government paperwork.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "f9d9e17f6f184ea899fdf7e4",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "A Unified Attack Framework against Statistical Generative Watermarks for Large Language Models",
+      "url": "https://arxiv.org/abs/2610.27653",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-22T02:13:55+00:00",
+      "excerpt": "arXiv:2610.27653v2 Announce Type: replace-cross Abstract: Watermarking has emerged as a key tool for identifying text generated by large language models (LLMs), with current schemes embedding statistical signals into the generation process to enable later detection. In this work, we identify a shared weakness across a broad class of popular LLM watermarking methods, including KGW (and its variants), GumbelSoft, DipMa",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "276943b9b965cb7eac642611",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Unified Agentic Video Editing Across Levels of Complexity and Creativity",
+      "url": "https://arxiv.org/abs/2609.12769",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-22T02:13:55+00:00",
+      "excerpt": "arXiv:2609.12769v3 Announce Type: replace Abstract: Editing is a core component of video production, requiring creative planning and decisions under multiple constraints. Here, we report methods for agentic tooling for automated video editing across three tasks varying in editorial goal, complexity and creativity, namely scene previews, video summaries and cinematic trailers. We evaluate the outputs and discuss impli",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "718881c2a92981010463b2de",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "DialFork: Going Beyond Factuality to Evaluate Procedural Hallucination in Conversational Agents",
+      "url": "https://arxiv.org/abs/2610.21561",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-22T06:29:46+00:00",
+      "excerpt": "arXiv:2610.21561v5 Announce Type: replace-cross Abstract: Large language models (LLMs) deployed as conversational agents are increasingly expected to follow procedural logic. While factual hallucination has received extensive attention, a different failure mode has been overlooked: procedural hallucination, in which an agent produces individually fluent and factually plausible utterances while deviating from the inte",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "55e04971ebef7d202725d237",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Model Organisms of Collusion: Corrective Transfer in Untrusted Monitors",
+      "url": "https://arxiv.org/abs/2610.30582",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-23T04:41:06+00:00",
+      "excerpt": "arXiv:2610.30582v2 Announce Type: replace Abstract: AI control protocols aim to get useful work from models that may be misaligned by monitoring their behaviour. One approach uses a second copy of the same model as the monitor. This avoids relying on a weaker reviewer the model could outsmart, but risks collusion: the model, now monitoring itself, may cover up its own misbehaviour. One remedy is to fine-tune the moni",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "5417f2284fdf13a60b18a005",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Superintelligent Software Engineering: Governance That Scales with Capability",
+      "url": "https://arxiv.org/abs/2610.31306",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-23T04:41:06+00:00",
+      "excerpt": "arXiv:2610.31306v2 Announce Type: replace-cross Abstract: Software agents are being trained to exceed human engineers; we argue that capability alone does not produce better software engineering. We define superintelligent software engineering as the discipline of building and evolving software with agents whose capability exceeds that of human engineers, in which governance (gates, contracts, decisions and decay con",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "ae6fea470d7741d6fee9c6d6",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Place-it-R1: Unlocking Environment-aware Reasoning Potential of MLLM for Video Object Insertion",
+      "url": "https://arxiv.org/abs/2603.06140",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-23T04:41:06+00:00",
+      "excerpt": "arXiv:2603.06140v4 Announce Type: replace-cross Abstract: Video object insertion is fundamental to video editing, yet existing diffusion methods often produce visually plausible but physically inconsistent results. We present Place-it-R1, an end-to-end framework for physically plausible video object insertion driven by environment-aware MLLM reasoning. Rather than treating reasoning as a generic text prompt, Place-it",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "003fa87d129d34d7e59f11c8",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Semantic Optimal Transport for Sparse Autoencoder Feature Matching and Circuit Compression",
+      "url": "https://arxiv.org/abs/2605.28567",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-23T04:41:06+00:00",
+      "excerpt": "arXiv:2605.28567v3 Announce Type: replace-cross Abstract: Sparse autoencoders (SAEs) have become a central tool for interpreting language models. However, two key SAE analyses that remain difficult to scale are (1) matching semantically similar features across multi-layers and (2) compressing large feature circuits into interpretable supernodes. Although these have been treated as separate problems, we show that both",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "94ca820f73fd50fd1e182c69",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Reject, Remember, Retry: Why Multi-Turn Attackers Should Remember Their Mistakes",
+      "url": "https://arxiv.org/abs/2610.31937",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-26T04:38:41+00:00",
+      "excerpt": "arXiv:2610.31937v2 Announce Type: replace Abstract: Existing multi-turn jailbreak attackers condition on the same conversation history as the target. We introduce $R^3$ (Reject, Remember, Retry), a black-box multi-LLM framework in which the attacker conditions on a compact state rather than the raw transcript. Turns that fail to raise the attack risk score are removed from the target's context but remembered by the a",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "98c6ce31fd1b92bec45c683c",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "SOPO: Socratic Guided Policy Optimization for Span-Level Hallucination Detection",
+      "url": "https://arxiv.org/abs/2610.32212",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-26T04:38:41+00:00",
+      "excerpt": "arXiv:2610.32212v2 Announce Type: replace-cross Abstract: Large Language Models (LLMs) have gained widespread adoption in various natural language processing tasks, but suffer from hallucination issues where they generate unfaithful or inconsistent content. While Reinforcement Learning with Verifiable Rewards (RLVR) has shown promising applications in reasoning tasks, its application to span-level hallucination detec",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "e9812e81eab5586b58286aba",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "SpectRAG: Weighted Chunk Graphs for Token-Budgeted Context Selection in Multi-Hop Retrieval-Augmented Generation",
+      "url": "https://arxiv.org/abs/2610.36991",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-28T05:31:37+00:00",
+      "excerpt": "arXiv:2610.36991v3 Announce Type: replace Abstract: Retrieval-augmented generation (RAG) systems ground large language models (LLMs) by retrieving external evidence and conditioning generation on the retrieved context. Although dense retrieval is effective for local semantic matching, independently ranked retrieval can return redundant passages, miss cross-chunk dependencies, and provide incomplete evidence for multi",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "aad08e4de914d16755a9036f",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Concordat: Typed Sessions for LLM Agents",
+      "url": "https://arxiv.org/abs/2610.37461",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-28T05:31:37+00:00",
+      "excerpt": "arXiv:2610.37461v2 Announce Type: replace Abstract: Agents built on large language models are increasingly allowed to take consequential actions: cancelling bookings, issuing refunds, changing accounts. The rules that govern those actions, such as \"obtain the customer's explicit confirmation before changing anything\", are usually stated in the prompt and followed only as reliably as the model chooses to follow them. ",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "25cd9abe44c04dc31d198ebb",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "When Is a Relation Worth Trusting? Manipulation Costs, Exposure, and the Trust Trap in Multi-Relational Graph Learning",
+      "url": "https://arxiv.org/abs/2610.37239",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-28T05:31:37+00:00",
+      "excerpt": "arXiv:2610.37239v2 Announce Type: replace-cross Abstract: Multi-relational graph detectors learn from clean data how much to trust each relation, but an adversary pays a different price to manipulate each relation and each action; taking such costs as given, we ask when using a relation is worse than ignoring it. Our first main result proves that degree gating strictly beats every selection or reweighting of a relati",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "5f1d866e0eb3a655e3db3d9f",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "I-HITL: Inalienable Human-in-the-Loop",
+      "url": "https://arxiv.org/abs/2610.35835",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-28T05:31:37+00:00",
+      "excerpt": "arXiv:2610.35835v3 Announce Type: replace-cross Abstract: Human oversight is a pillar of AI safety. It is often exercised by a human in the loop (HITL) who approves critical actions taken by an AI agent. AI agents' increasing ability to bypass guardrails, though, raises the question of how to enforce HITL robustly. We introduce the concept of inalienable human-in-the-loop (I-HITL). An I-HITL protocol ensures that an ",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "938a189eeae54081c5d50b57",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Learning to Reason from Reference Samples Alone: Reinforced Adversarial Learning for Modern LLM Post-Training",
+      "url": "https://arxiv.org/abs/2610.38851",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-30T12:45:58+00:00",
+      "excerpt": "arXiv:2610.38851v2 Announce Type: replace Abstract: In many settings where LLM post-training is desirable, high-quality answers are recognizable but difficult to score with explicit rewards. Reinforcement learning with verifiable rewards (RLVR) is limited to tasks where an explicit correctness signal is available. Prior adversarial approaches to training reasoning LLMs either complement verifiable rewards with co-tra",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "d4a43b36ae7f8df361e38a3e",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "What Breaks When Facts Become Stories? The Distortions Source-Agreement Metrics Miss When Models Retell Real Events",
+      "url": "https://arxiv.org/abs/2610.39500",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-30T12:45:58+00:00",
+      "excerpt": "arXiv:2610.39500v2 Announce Type: replace Abstract: Language models are now widely used to turn recorded facts into media for public consumption, yet evaluation of such output still assumes agreement with the source as its measure of success. In reconstruction, where departing from the source can itself be the goal, this criterion measures the wrong construct: applied as is, it counts intended departures as errors; w",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "15db23f231fe269b30407036",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "MoLRSI: A Recursive Self-Improving AI agent for Molecular Discovery",
+      "url": "https://arxiv.org/abs/2610.39714",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-30T12:45:58+00:00",
+      "excerpt": "arXiv:2610.39714v2 Announce Type: replace Abstract: Molecular discovery requires navigating vast combinatorial search spaces while balancing competing biological objectives. AI agents can automate expert-defined molecular design protocols, but automation alone does not address how to optimize workflows for new tasks or improve their development through experience. Here we introduce MoLRSI, an AI agent that combines s",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "42a182fd255a151d4be870f9",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "EvoTeam: Multi-Agent Collaboration via Evolving Teams",
+      "url": "https://arxiv.org/abs/2610.39813",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-30T12:45:58+00:00",
+      "excerpt": "arXiv:2610.39813v2 Announce Type: replace Abstract: LLM-based multi-agent systems (MAS) rely on collaboration among specialized agents to solve complex tasks. Existing methods improve MAS by refining the prompts, skills, and execution strategies of individual agents based on task feedback. However, improving individual agents does not necessarily lead to better team collaboration. Recent studies have therefore extend",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "f69a2924ccfb907940106e80",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Algebraic World Model: From Exploration to Proofs",
+      "url": "https://arxiv.org/abs/2610.40503",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-30T12:45:58+00:00",
+      "excerpt": "arXiv:2610.40503v2 Announce Type: replace Abstract: AI has made remarkable progress in mathematics, solving challenging problems with machine-checkable proofs in Lean, yet typically relying on predefined mathematical definitions and formal specifications. This raises a natural question: can it reason rigorously about an unknown world? We introduce the Algebraic World Model (AWM), a framework that turns interaction wi",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "406f30760c8b39ebc7376212",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "DeFT-RAG: Decomposing Multi-Hop Questions into Self-Contained Sub-Questions with Reusable Answers",
+      "url": "https://arxiv.org/abs/2610.37826",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-30T12:45:58+00:00",
+      "excerpt": "arXiv:2610.37826v2 Announce Type: replace-cross Abstract: Retrieval-augmented generation (RAG) lets a large language model (LLM) answer questions by retrieving relevant passages from a large corpus. However, RAG struggles with multi-hop questions, which require chaining facts spread across several documents through intermediate entities that the question never mentions. Graph-based RAG methods retrieve once from the ",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "3cdd2cc563413ee09ec8eecd",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Making Sense of Audience Change: Causal Attribution and Boundary Management on Xiaohongshu",
+      "url": "https://arxiv.org/abs/2610.38026",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "first_discovered_at": "2026-10-30T12:45:58+00:00",
+      "excerpt": "arXiv:2610.38026v2 Announce Type: replace-cross Abstract: Recommendation-driven platforms can reshape not only what users see, but also who becomes visible and how community boundaries are negotiated. We examine Xiaohongshu discussions surrounding a perceived World Cup-related audience influx to understand how users attributed community change and how those explanations related to boundary-management strategies. We a",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "4094d4340f9e66f9e2fcbdf5",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Qodo builds context into AI code review with Codex",
+      "url": "https://openai.com/index/qodo-codex-plugin",
+      "published_at": "2026-11-02T00:00:00+00:00",
+      "first_discovered_at": "2026-11-03T00:54:55+00:00",
+      "excerpt": "Qodo brings company knowledge and coding standards into Codex, helping developers catch P0 issues across repositories before opening a pull request.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "945f879ef3a469b4aebe760c",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "OpenAI appoints Dan Driscoll as Senior Counselor for National Security Modernization",
+      "url": "https://openai.com/index/dan-driscoll-joins-openai",
+      "published_at": "2026-11-02T00:00:00+00:00",
+      "first_discovered_at": "2026-11-03T00:54:55+00:00",
+      "excerpt": "OpenAI appoints Dan Driscoll to advise on responsible AI for national security modernization, cyber resilience, and collaboration with U.S. allies.",
+      "evidence_status": "unverified_candidate"
+    }
+  ],
+  "event_candidates": [
+    {
+      "event_candidate_id": "ec-aa06158bedebdcd5",
+      "representative_title": "Article Nov 2, 2026 Make long-running agents faster with message threads New in the Messages API, send your conversation once, and the API receives only what’s new with every turn. Claude Platform",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "b22d8c99fffc95fe1ddbbc18"
+      ],
+      "source_ids": [
+        "claude-announcements"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-5bd7beaa637a6b0e",
+      "representative_title": "Rewarding defenders with bigger bug bounties",
+      "topic": "harness",
+      "item_ids": [
+        "bca108e4c77bd86b238b884f"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-23b6e7d008cf06cb",
+      "representative_title": "Preparing our next security sprint to harden OpenAI",
+      "topic": "harness",
+      "item_ids": [
+        "0d297090385ad5a7245151aa"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-45d0741054935a78",
+      "representative_title": "The latest AI news we announced in October 2026",
+      "topic": "harness",
+      "item_ids": [
+        "996c88dfa31d64c0a9d691ce"
+      ],
+      "source_ids": [
+        "google-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-5ec7db27bcff3207",
+      "representative_title": "Prepare web content for Amazon Bedrock Knowledge Bases with Crawl4AI",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "cb20cf085ba2cd3e4a9283d1"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b8c2e41de2c37b20",
+      "representative_title": "Build efficient agents with knowledge distillation on Amazon SageMaker AI",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "7e203c274434cb6cae50971c"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-c363cf7d89e92ece",
+      "representative_title": "Agentic engineering intelligence with Amazon Nova Multimodal Embeddings and Amazon Bedrock AgentCore",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "046f31786bb677e608069fe9"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-01ebc89a46333d60",
+      "representative_title": "How Circle K accelerated DevOps incident triage to under 15 minutes with Amazon Bedrock",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "4cb0c7e800cdcdc0ecc75596"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-9b1c4e5685c353f2",
+      "representative_title": "Official site update: Claude accelerates protein design",
+      "topic": "harness",
+      "item_ids": [
+        "a52e9d71e445a46231be182c"
+      ],
+      "source_ids": [
+        "anthropic-site"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-eaba4af42492b3f2",
+      "representative_title": "Official site update: claude shaped science",
+      "topic": "harness",
+      "item_ids": [
+        "0a1a9915f1bf1a4160432ba0"
+      ],
+      "source_ids": [
+        "anthropic-site"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-d813e76c281eb299",
+      "representative_title": "Official site update: vibe physics",
+      "topic": "harness",
+      "item_ids": [
+        "a88ccd9cde45b630e32610b6"
+      ],
+      "source_ids": [
+        "anthropic-site"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b3271f72d6b38bbc",
+      "representative_title": "Scaling Git at OpenAI",
+      "topic": "harness",
+      "item_ids": [
+        "277870ffc8d71544c0465c13"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-8e3fe9d2168f8269",
+      "representative_title": "Introducing the Grid Protectors Program",
+      "topic": "harness",
+      "item_ids": [
+        "5d33ed0c66ace544e65f6063"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-ed978ed99b33b46b",
+      "representative_title": "Open SWE Desktop v0.3.11",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "b555765399fdec21d6701641"
+      ],
+      "source_ids": [
+        "release:langchain-ai/open-swe"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-d87957983df3b3f9",
+      "representative_title": "LifeVal",
+      "topic": "harness",
+      "item_ids": [
+        "5a014341bc3fc0f1d8b6431c"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-7b68e07414040766",
+      "representative_title": "A Unified Attack Framework against Statistical Generative Watermarks for Large Language Models",
+      "topic": "research",
+      "item_ids": [
+        "f9d9e17f6f184ea899fdf7e4"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-aab2dd0018a5a539",
+      "representative_title": "Unified Agentic Video Editing Across Levels of Complexity and Creativity",
+      "topic": "research",
+      "item_ids": [
+        "276943b9b965cb7eac642611"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-7bf7a8d9b9780a6a",
+      "representative_title": "DialFork: Going Beyond Factuality to Evaluate Procedural Hallucination in Conversational Agents",
+      "topic": "research",
+      "item_ids": [
+        "718881c2a92981010463b2de"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-46274562d408a93e",
+      "representative_title": "Model Organisms of Collusion: Corrective Transfer in Untrusted Monitors",
+      "topic": "research",
+      "item_ids": [
+        "55e04971ebef7d202725d237"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-2565c598339f448e",
+      "representative_title": "Superintelligent Software Engineering: Governance That Scales with Capability",
+      "topic": "research",
+      "item_ids": [
+        "5417f2284fdf13a60b18a005"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-62c169e9217f09df",
+      "representative_title": "Place-it-R1: Unlocking Environment-aware Reasoning Potential of MLLM for Video Object Insertion",
+      "topic": "research",
+      "item_ids": [
+        "ae6fea470d7741d6fee9c6d6"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-3101c75ed0e6f6b8",
+      "representative_title": "Semantic Optimal Transport for Sparse Autoencoder Feature Matching and Circuit Compression",
+      "topic": "research",
+      "item_ids": [
+        "003fa87d129d34d7e59f11c8"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-2142e0096a3775bd",
+      "representative_title": "Reject, Remember, Retry: Why Multi-Turn Attackers Should Remember Their Mistakes",
+      "topic": "research",
+      "item_ids": [
+        "94ca820f73fd50fd1e182c69"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-62625d5a3d9cfac7",
+      "representative_title": "SOPO: Socratic Guided Policy Optimization for Span-Level Hallucination Detection",
+      "topic": "research",
+      "item_ids": [
+        "98c6ce31fd1b92bec45c683c"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-48128c800a5e81af",
+      "representative_title": "SpectRAG: Weighted Chunk Graphs for Token-Budgeted Context Selection in Multi-Hop Retrieval-Augmented Generation",
+      "topic": "research",
+      "item_ids": [
+        "e9812e81eab5586b58286aba"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-a8dbe8e705d0215c",
+      "representative_title": "Concordat: Typed Sessions for LLM Agents",
+      "topic": "research",
+      "item_ids": [
+        "aad08e4de914d16755a9036f"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-05370d80527055ed",
+      "representative_title": "When Is a Relation Worth Trusting? Manipulation Costs, Exposure, and the Trust Trap in Multi-Relational Graph Learning",
+      "topic": "research",
+      "item_ids": [
+        "25cd9abe44c04dc31d198ebb"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-1d958feb33194b9f",
+      "representative_title": "I-HITL: Inalienable Human-in-the-Loop",
+      "topic": "research",
+      "item_ids": [
+        "5f1d866e0eb3a655e3db3d9f"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-15f655d652f05817",
+      "representative_title": "Learning to Reason from Reference Samples Alone: Reinforced Adversarial Learning for Modern LLM Post-Training",
+      "topic": "research",
+      "item_ids": [
+        "938a189eeae54081c5d50b57"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-0d9d125f96eda85c",
+      "representative_title": "What Breaks When Facts Become Stories? The Distortions Source-Agreement Metrics Miss When Models Retell Real Events",
+      "topic": "research",
+      "item_ids": [
+        "d4a43b36ae7f8df361e38a3e"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-a625e382e97526ca",
+      "representative_title": "MoLRSI: A Recursive Self-Improving AI agent for Molecular Discovery",
+      "topic": "research",
+      "item_ids": [
+        "15db23f231fe269b30407036"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-609f1b311e11a91e",
+      "representative_title": "EvoTeam: Multi-Agent Collaboration via Evolving Teams",
+      "topic": "research",
+      "item_ids": [
+        "42a182fd255a151d4be870f9"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b2f6ccf50659d225",
+      "representative_title": "Algebraic World Model: From Exploration to Proofs",
+      "topic": "research",
+      "item_ids": [
+        "f69a2924ccfb907940106e80"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-ad501d0ba85b6537",
+      "representative_title": "DeFT-RAG: Decomposing Multi-Hop Questions into Self-Contained Sub-Questions with Reusable Answers",
+      "topic": "research",
+      "item_ids": [
+        "406f30760c8b39ebc7376212"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-242244aad31ee154",
+      "representative_title": "Making Sense of Audience Change: Causal Attribution and Boundary Management on Xiaohongshu",
+      "topic": "research",
+      "item_ids": [
+        "3cdd2cc563413ee09ec8eecd"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-39003d8812e668a9",
+      "representative_title": "Qodo builds context into AI code review with Codex",
+      "topic": "harness",
+      "item_ids": [
+        "4094d4340f9e66f9e2fcbdf5"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-6bdb7f7250ca46ae",
+      "representative_title": "OpenAI appoints Dan Driscoll as Senior Counselor for National Security Modernization",
+      "topic": "harness",
+      "item_ids": [
+        "945f879ef3a469b4aebe760c"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    }
+  ],
+  "usage_note": "Unverified candidates: verify first-party evidence, actual event time and independent sources before any trend/claim update."
+}
