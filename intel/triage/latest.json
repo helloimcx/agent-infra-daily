@@ -1,26 +1,49 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-03T03:38:38+00:00",
-  "snapshot_generated_at": "2026-11-03T03:38:29+00:00",
-  "beijing_date": "2026-11-03",
+  "generated_at": "2026-11-04T02:35:27+00:00",
+  "snapshot_generated_at": "2026-11-04T02:35:17+00:00",
+  "beijing_date": "2026-11-04",
   "kind": "unverified_editorial_review_queue",
-  "count": 20,
-  "eligible_item_count": 37,
+  "count": 28,
+  "eligible_item_count": 56,
   "topic_distribution": {
-    "cloud-agent": 6,
+    "cloud-agent": 8,
     "harness": 9,
-    "research": 5
+    "research": 9,
+    "runtime": 1,
+    "sandbox": 1
   },
   "source_distribution": {
-    "anthropic-site": 3,
+    "anthropic-site": 4,
     "arxiv-cs-ai": 5,
-    "aws-ml": 4,
+    "aws-ml": 5,
     "claude-announcements": 1,
-    "google-ai": 1,
+    "deepmind-blog": 1,
+    "huggingface-blog": 3,
     "openai-news": 5,
-    "release:langchain-ai/open-swe": 1
+    "release:NVIDIA/OpenShell": 1,
+    "release:langchain-ai/langgraph": 1,
+    "release:langchain-ai/open-swe": 2
   },
   "items": [
+    {
+      "item_id": "019edb616369c3322f4c44a5",
+      "candidate_id": "ec-019edb616369c332",
+      "title": "OpenAI appoints Jill Hazelbaker as Chief Corporate Affairs Officer",
+      "url": "https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-03T00:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
     {
       "item_id": "0d297090385ad5a7245151aa",
       "candidate_id": "ec-0d297090385ad5a7",
@@ -31,6 +54,24 @@
       "topic": "harness",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-02T18:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "25493a43cba550c7fe81484a",
+      "candidate_id": "ec-25493a43cba550c7",
+      "title": "Accelerating engineering for the physical world",
+      "url": "https://openai.com/index/accelerating-engineering-for-the-physical-world",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-03T12:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -58,15 +99,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "4094d4340f9e66f9e2fcbdf5",
-      "candidate_id": "ec-4094d4340f9e66f9",
-      "title": "Qodo builds context into AI code review with Codex",
-      "url": "https://openai.com/index/qodo-codex-plugin",
+      "item_id": "34e7d62615202d0de65fe802",
+      "candidate_id": "ec-34e7d62615202d0d",
+      "title": "How Cisco defends at machine speed with OpenAI",
+      "url": "https://openai.com/index/cisco-cyber",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-02T00:00:00+00:00",
+      "claimed_published_at": "2026-11-03T08:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -76,15 +117,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "5a014341bc3fc0f1d8b6431c",
-      "candidate_id": "ec-5a014341bc3fc0f1",
-      "title": "LifeVal",
-      "url": "https://openai.com/index/lifeval",
-      "source_id": "openai-news",
+      "item_id": "23c4f130369cb97228de4151",
+      "candidate_id": "ec-23c4f130369cb972",
+      "title": "Agentic cheminformatics with Google Antigravity",
+      "url": "https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity",
+      "source_id": "deepmind-blog",
       "source_kind": "rss",
-      "topic": "harness",
+      "topic": "research",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-02T09:00:00+00:00",
+      "claimed_published_at": "2026-11-03T17:01:49+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -94,19 +135,19 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "5d33ed0c66ace544e65f6063",
-      "candidate_id": "ec-5d33ed0c66ace544",
-      "title": "Introducing the Grid Protectors Program",
-      "url": "https://openai.com/index/grid-protectors-program",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-02T15:00:00+00:00",
-      "review_order_score": 8,
+      "item_id": "557701413c800582a096c302",
+      "candidate_id": "ec-557701413c800582",
+      "title": "Open SWE Desktop v0.3.12",
+      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.12",
+      "source_id": "release:langchain-ai/open-swe",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-03T13:25:04+00:00",
+      "review_order_score": 6,
       "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
+        "source_catalog_priority:P1",
+        "official_release_record",
         "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
@@ -130,6 +171,60 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "be42304b1379f5f60c3f391c",
+      "candidate_id": "ec-be42304b1379f5f6",
+      "title": "langgraph-sdk==0.4.12",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/sdk%3D%3D0.4.12",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-03T18:10:30+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "0463e40d241d7017b7c2375d",
+      "candidate_id": "ec-0463e40d241d7017",
+      "title": "OpenShell v0.1.7",
+      "url": "https://github.com/NVIDIA/OpenShell/releases/tag/v0.1.7",
+      "source_id": "release:NVIDIA/OpenShell",
+      "source_kind": "github_release",
+      "topic": "sandbox",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-03T19:24:39+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "0102caec8d7f80a0c4a39289",
+      "candidate_id": "ec-0102caec8d7f80a0",
+      "title": "Introducing India-based inference for Kimi K3 on Amazon Bedrock",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-india-based-inference-for-kimi-k3-on-amazon-bedrock",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-03T16:32:54+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "046f31786bb677e608069fe9",
       "candidate_id": "ec-046f31786bb677e6",
       "title": "Agentic engineering intelligence with Amazon Nova Multimodal Embeddings and Amazon Bedrock AgentCore",
@@ -148,6 +243,42 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "0f2d755e3513ed127d81cc3b",
+      "candidate_id": "ec-0f2d755e3513ed12",
+      "title": "Bring structured and unstructured data together with Amazon Quick",
+      "url": "https://aws.amazon.com/blogs/machine-learning/bring-structured-and-unstructured-data-together-with-amazon-quick",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-03T16:49:29+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "11cf6983315e03b571df6538",
+      "candidate_id": "ec-11cf6983315e03b5",
+      "title": "Building ultra-low-latency voice AI applications on AWS",
+      "url": "https://aws.amazon.com/blogs/machine-learning/building-ultra-low-latency-voice-ai-applications-on-aws",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-03T16:40:54+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "4cb0c7e800cdcdc0ecc75596",
       "candidate_id": "ec-4cb0c7e800cdcdc0",
       "title": "How Circle K accelerated DevOps incident triage to under 15 minutes with Amazon Bedrock",
@@ -157,42 +288,6 @@
       "topic": "cloud-agent",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-02T17:00:58+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "7e203c274434cb6cae50971c",
-      "candidate_id": "ec-7e203c274434cb6c",
-      "title": "Build efficient agents with knowledge distillation on Amazon SageMaker AI",
-      "url": "https://aws.amazon.com/blogs/machine-learning/build-efficient-agents-with-knowledge-distillation-on-amazon-sagemaker-ai",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-02T17:01:31+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "cb20cf085ba2cd3e4a9283d1",
-      "candidate_id": "ec-cb20cf085ba2cd3e",
-      "title": "Prepare web content for Amazon Bedrock Knowledge Bases with Crawl4AI",
-      "url": "https://aws.amazon.com/blogs/machine-learning/prepare-web-content-for-amazon-bedrock-knowledge-bases-with-crawl4ai",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-02T17:11:21+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -224,6 +319,24 @@
       "candidate_id": "ec-0a1a9915f1bf1a41",
       "title": "Official site update: claude shaped science",
       "url": "https://www.anthropic.com/research/claude-shaped-science",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "43862ef771dfba655e31d47f",
+      "candidate_id": "ec-43862ef771dfba65",
+      "title": "Official site update: provable inference",
+      "url": "https://www.anthropic.com/research/provable-inference",
       "source_id": "anthropic-site",
       "source_kind": "official_sitemap",
       "topic": "harness",
@@ -274,15 +387,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "996c88dfa31d64c0a9d691ce",
-      "candidate_id": "ec-996c88dfa31d64c0",
-      "title": "The latest AI news we announced in October 2026",
-      "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-october-2026",
-      "source_id": "google-ai",
+      "item_id": "0ccd91ea7c82fae6812ee287",
+      "candidate_id": "ec-0ccd91ea7c82fae6",
+      "title": "A Design-Intent-Preserving Agent Harness for Parametric CAD Modeling",
+      "url": "https://arxiv.org/abs/2609.22688",
+      "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
-      "topic": "harness",
+      "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-02T17:45:00+00:00",
+      "claimed_published_at": "2026-11-03T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -292,15 +405,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "003fa87d129d34d7e59f11c8",
-      "candidate_id": "ec-003fa87d129d34d7",
-      "title": "Semantic Optimal Transport for Sparse Autoencoder Feature Matching and Circuit Compression",
-      "url": "https://arxiv.org/abs/2605.28567",
+      "item_id": "1b713de1b5220841f687b935",
+      "candidate_id": "ec-1b713de1b5220841",
+      "title": "Adapting Video Models for Robot Control via Motion-guided Asymmetric Prediction",
+      "url": "https://arxiv.org/abs/2610.36624",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-02T05:00:00+00:00",
+      "claimed_published_at": "2026-11-03T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -310,15 +423,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "15db23f231fe269b30407036",
-      "candidate_id": "ec-15db23f231fe269b",
-      "title": "MoLRSI: A Recursive Self-Improving AI agent for Molecular Discovery",
-      "url": "https://arxiv.org/abs/2610.39714",
+      "item_id": "1fa8b55c3c17a262cd688c6f",
+      "candidate_id": "ec-1fa8b55c3c17a262",
+      "title": "Prototype-Guided Dynamic Domain Modulation and a Large-Scale Multi-SKU Benchmark for Shampoo Bottle Surface Defect Detection",
+      "url": "https://arxiv.org/abs/2610.38194",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-02T05:00:00+00:00",
+      "claimed_published_at": "2026-11-03T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -328,15 +441,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "25cd9abe44c04dc31d198ebb",
-      "candidate_id": "ec-25cd9abe44c04dc3",
-      "title": "When Is a Relation Worth Trusting? Manipulation Costs, Exposure, and the Trust Trap in Multi-Relational Graph Learning",
-      "url": "https://arxiv.org/abs/2610.37239",
+      "item_id": "20fa2465209ba7f736728e24",
+      "candidate_id": "ec-20fa2465209ba7f7",
+      "title": "Accelerating Nonlinear MPC by Behavior Cloning with Separated Timescales: Application to Nuclear Reactor Load-Following",
+      "url": "https://arxiv.org/abs/2610.38496",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-02T05:00:00+00:00",
+      "claimed_published_at": "2026-11-03T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -346,15 +459,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "276943b9b965cb7eac642611",
-      "candidate_id": "ec-276943b9b965cb7e",
-      "title": "Unified Agentic Video Editing Across Levels of Complexity and Creativity",
-      "url": "https://arxiv.org/abs/2609.12769",
+      "item_id": "37c595675411ada891258edc",
+      "candidate_id": "ec-37c595675411ada8",
+      "title": "Poolwise: Evaluating Reward Models for Selection across Prompts",
+      "url": "https://arxiv.org/abs/2610.31090",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-02T05:00:00+00:00",
+      "claimed_published_at": "2026-11-03T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -364,15 +477,51 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "3cdd2cc563413ee09ec8eecd",
-      "candidate_id": "ec-3cdd2cc563413ee0",
-      "title": "Making Sense of Audience Change: Causal Attribution and Boundary Management on Xiaohongshu",
-      "url": "https://arxiv.org/abs/2610.38026",
-      "source_id": "arxiv-cs-ai",
+      "item_id": "4d3938441f216409a8f1b94c",
+      "candidate_id": "ec-4d3938441f216409",
+      "title": "Palette: teaching a small model to build decks in your design language",
+      "url": "https://huggingface.co/blog/ibm-research/palette-deck-building",
+      "source_id": "huggingface-blog",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-02T05:00:00+00:00",
+      "claimed_published_at": "2026-11-03T16:35:36+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "63945bc794809749828fed7a",
+      "candidate_id": "ec-63945bc794809749",
+      "title": "CWE-bench v2: More coverage, quality, and transparency",
+      "url": "https://huggingface.co/blog/cwe-bench",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-03T00:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "8d86676710497099b1091deb",
+      "candidate_id": "ec-8d86676710497099",
+      "title": "StateBench: Testing how language models track state changes over long documents",
+      "url": "https://huggingface.co/blog/allenai/statebench",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-03T17:15:21+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
