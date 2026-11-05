@@ -1,16 +1,16 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-04T02:35:27+00:00",
-  "snapshot_generated_at": "2026-11-04T02:35:17+00:00",
-  "beijing_date": "2026-11-04",
+  "generated_at": "2026-11-05T02:41:14+00:00",
+  "snapshot_generated_at": "2026-11-05T02:41:03+00:00",
+  "beijing_date": "2026-11-05",
   "kind": "unverified_editorial_review_queue",
-  "count": 28,
-  "eligible_item_count": 56,
+  "count": 31,
+  "eligible_item_count": 69,
   "topic_distribution": {
     "cloud-agent": 8,
     "harness": 9,
     "research": 9,
-    "runtime": 1,
+    "runtime": 4,
     "sandbox": 1
   },
   "source_distribution": {
@@ -22,38 +22,20 @@
     "huggingface-blog": 3,
     "openai-news": 5,
     "release:NVIDIA/OpenShell": 1,
-    "release:langchain-ai/langgraph": 1,
+    "release:langchain-ai/langgraph": 4,
     "release:langchain-ai/open-swe": 2
   },
   "items": [
     {
-      "item_id": "019edb616369c3322f4c44a5",
-      "candidate_id": "ec-019edb616369c332",
-      "title": "OpenAI appoints Jill Hazelbaker as Chief Corporate Affairs Officer",
-      "url": "https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer",
+      "item_id": "1be4fdd8e6ca80f0ec012771",
+      "candidate_id": "ec-1be4fdd8e6ca80f0",
+      "title": "OpenAI to acquire Pierre Computer Company, Inc.",
+      "url": "https://openai.com/index/openai-to-acquire-pierre",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-03T00:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "0d297090385ad5a7245151aa",
-      "candidate_id": "ec-0d297090385ad5a7",
-      "title": "Preparing our next security sprint to harden OpenAI",
-      "url": "https://openai.com/index/preparing-our-next-security-sprint-to-harden-openai",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-02T18:00:00+00:00",
+      "claimed_published_at": "2026-11-04T14:30:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -81,15 +63,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "277870ffc8d71544c0465c13",
-      "candidate_id": "ec-277870ffc8d71544",
-      "title": "Scaling Git at OpenAI",
-      "url": "https://openai.com/index/scaling-git-at-openai",
+      "item_id": "295354ff422b0d4db922748e",
+      "candidate_id": "ec-295354ff422b0d4d",
+      "title": "Introducing Images 2.6",
+      "url": "https://openai.com/index/introducing-images-2-6",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-02T15:30:00+00:00",
+      "claimed_published_at": "2026-11-04T00:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -108,6 +90,24 @@
       "topic": "harness",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-03T08:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "981785a01550309d0739d8f0",
+      "candidate_id": "ec-981785a01550309d",
+      "title": "DevRev delivers autonomous self-service with GPT-6.1 Sol",
+      "url": "https://openai.com/index/devrev-enterprise-self-service",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-04T00:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -153,15 +153,51 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "b555765399fdec21d6701641",
-      "candidate_id": "ec-b555765399fdec21",
-      "title": "Open SWE Desktop v0.3.11",
-      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.11",
-      "source_id": "release:langchain-ai/open-swe",
+      "item_id": "0930381b353807195d62cdab",
+      "candidate_id": "ec-0930381b35380719",
+      "title": "langgraph-cli==0.4.41",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.41",
+      "source_id": "release:langchain-ai/langgraph",
       "source_kind": "github_release",
-      "topic": "cloud-agent",
+      "topic": "runtime",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-02T14:50:02+00:00",
+      "claimed_published_at": "2026-11-05T02:30:54+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "09af4ba16f83444e285e3623",
+      "candidate_id": "ec-09af4ba16f83444e",
+      "title": "langgraph==1.2.20",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.20",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-05T02:20:53+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "b04727f084c44ac09d10b18f",
+      "candidate_id": "ec-b04727f084c44ac0",
+      "title": "langgraph-sdk==0.4.13",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/sdk%3D%3D0.4.13",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-05T02:16:06+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -225,24 +261,6 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "046f31786bb677e608069fe9",
-      "candidate_id": "ec-046f31786bb677e6",
-      "title": "Agentic engineering intelligence with Amazon Nova Multimodal Embeddings and Amazon Bedrock AgentCore",
-      "url": "https://aws.amazon.com/blogs/machine-learning/agentic-engineering-intelligence-with-amazon-nova-multimodal-embeddings-and-amazon-bedrock-agentcore",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-02T17:01:16+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
       "item_id": "0f2d755e3513ed127d81cc3b",
       "candidate_id": "ec-0f2d755e3513ed12",
       "title": "Bring structured and unstructured data together with Amazon Quick",
@@ -279,15 +297,33 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "4cb0c7e800cdcdc0ecc75596",
-      "candidate_id": "ec-4cb0c7e800cdcdc0",
-      "title": "How Circle K accelerated DevOps incident triage to under 15 minutes with Amazon Bedrock",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-circle-k-accelerated-devops-incident-triage-to-under-15-minutes-with-amazon-bedrock",
+      "item_id": "20366c4b5aede8776073d7a8",
+      "candidate_id": "ec-20366c4b5aede877",
+      "title": "Four layers of context engineering for production AI agents: How Deep Insight applies them in working code",
+      "url": "https://aws.amazon.com/blogs/machine-learning/four-layers-of-context-engineering-for-production-ai-agents-how-deep-insight-applies-them-in-working-code",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-02T17:00:58+00:00",
+      "claimed_published_at": "2026-11-04T16:30:40+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "3ef6e5218bbc9326f7a57aa1",
+      "candidate_id": "ec-3ef6e5218bbc9326",
+      "title": "How Indegene is modernizing and scaling enterprise data quality in life sciences",
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-indegene-is-modernizing-and-scaling-enterprise-data-quality-in-life-sciences",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-04T16:25:57+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -311,6 +347,24 @@
         "source_catalog_priority:P0",
         "discovery_only_no_verified_publication_time",
         "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "b555765399fdec21d6701641",
+      "candidate_id": "ec-b555765399fdec21",
+      "title": "Open SWE Desktop v0.3.11",
+      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.11",
+      "source_id": "release:langchain-ai/open-swe",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-02T14:50:02+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -351,6 +405,24 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "49b5a8702a50f62ba5fd9de6",
+      "candidate_id": "ec-49b5a8702a50f62b",
+      "title": "Official site update: investigating vault particles with claude",
+      "url": "https://www.anthropic.com/research/investigating-vault-particles-with-claude",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "a52e9d71e445a46231be182c",
       "candidate_id": "ec-a52e9d71e445a462",
       "title": "Official site update: Claude accelerates protein design",
@@ -369,33 +441,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "a88ccd9cde45b630e32610b6",
-      "candidate_id": "ec-a88ccd9cde45b630",
-      "title": "Official site update: vibe physics",
-      "url": "https://www.anthropic.com/research/vibe-physics",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "0ccd91ea7c82fae6812ee287",
-      "candidate_id": "ec-0ccd91ea7c82fae6",
-      "title": "A Design-Intent-Preserving Agent Harness for Parametric CAD Modeling",
-      "url": "https://arxiv.org/abs/2609.22688",
+      "item_id": "073f790e28d708d8031ef12d",
+      "candidate_id": "ec-073f790e28d708d8",
+      "title": "WiMoT: Replay-Free Continual Wi-Fi Sensing via Moment Transport",
+      "url": "https://arxiv.org/abs/2610.32660",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-03T05:00:00+00:00",
+      "claimed_published_at": "2026-11-04T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -405,15 +459,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1b713de1b5220841f687b935",
-      "candidate_id": "ec-1b713de1b5220841",
-      "title": "Adapting Video Models for Robot Control via Motion-guided Asymmetric Prediction",
-      "url": "https://arxiv.org/abs/2610.36624",
+      "item_id": "17ed7cb1736772abafe25094",
+      "candidate_id": "ec-17ed7cb1736772ab",
+      "title": "The Price of Scale in Proactive Memory Recall",
+      "url": "https://arxiv.org/abs/2610.34507",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-03T05:00:00+00:00",
+      "claimed_published_at": "2026-11-04T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -423,15 +477,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1fa8b55c3c17a262cd688c6f",
-      "candidate_id": "ec-1fa8b55c3c17a262",
-      "title": "Prototype-Guided Dynamic Domain Modulation and a Large-Scale Multi-SKU Benchmark for Shampoo Bottle Surface Defect Detection",
-      "url": "https://arxiv.org/abs/2610.38194",
+      "item_id": "1eabd72a2a9add8eaa3c989f",
+      "candidate_id": "ec-1eabd72a2a9add8e",
+      "title": "Accelerating Wildfire Hazard Mapping Across Canada with an AI Surrogate Modelling Framework",
+      "url": "https://arxiv.org/abs/2610.30170",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-03T05:00:00+00:00",
+      "claimed_published_at": "2026-11-04T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -441,15 +495,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "20fa2465209ba7f736728e24",
-      "candidate_id": "ec-20fa2465209ba7f7",
-      "title": "Accelerating Nonlinear MPC by Behavior Cloning with Separated Timescales: Application to Nuclear Reactor Load-Following",
-      "url": "https://arxiv.org/abs/2610.38496",
+      "item_id": "248687c0d7d01c9e238f15a5",
+      "candidate_id": "ec-248687c0d7d01c9e",
+      "title": "Fitting Conventional and Neural Exchange-Correlation Functionals to Accurate Densities without Self-Consistent Fields",
+      "url": "https://arxiv.org/abs/2610.30022",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-03T05:00:00+00:00",
+      "claimed_published_at": "2026-11-04T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -459,15 +513,33 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "37c595675411ada891258edc",
-      "candidate_id": "ec-37c595675411ada8",
-      "title": "Poolwise: Evaluating Reward Models for Selection across Prompts",
-      "url": "https://arxiv.org/abs/2610.31090",
+      "item_id": "2f368a303e9112aaad8d2503",
+      "candidate_id": "ec-2f368a303e9112aa",
+      "title": "BARC-Bench: Benign Asks, Risky Consequences",
+      "url": "https://arxiv.org/abs/2610.32024",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-03T05:00:00+00:00",
+      "claimed_published_at": "2026-11-04T05:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "32d4e91d243ef07f0795379b",
+      "candidate_id": "ec-32d4e91d243ef07f",
+      "title": "Dharma Field Extractor: Any Document In, Structured Fields in JSON Out",
+      "url": "https://huggingface.co/blog/Dharma-AI/dharma-field-extractor",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-04T17:50:10+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -486,24 +558,6 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-03T16:35:36+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "63945bc794809749828fed7a",
-      "candidate_id": "ec-63945bc794809749",
-      "title": "CWE-bench v2: More coverage, quality, and transparency",
-      "url": "https://huggingface.co/blog/cwe-bench",
-      "source_id": "huggingface-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-03T00:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
