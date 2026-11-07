@@ -1,29 +1,28 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-06T02:44:10+00:00",
-  "snapshot_generated_at": "2026-11-06T02:44:03+00:00",
-  "beijing_date": "2026-11-06",
+  "generated_at": "2026-11-07T02:13:04+00:00",
+  "snapshot_generated_at": "2026-11-07T02:12:56+00:00",
+  "beijing_date": "2026-11-07",
   "kind": "unverified_editorial_review_queue",
   "count": 32,
-  "eligible_item_count": 73,
+  "eligible_item_count": 75,
   "topic_distribution": {
     "cloud-agent": 9,
     "harness": 9,
     "research": 9,
-    "runtime": 4,
-    "sandbox": 1
+    "runtime": 5
   },
   "source_distribution": {
-    "anthropic-site": 3,
+    "anthropic-site": 2,
     "arxiv-cs-ai": 5,
     "aws-ml": 5,
-    "claude-announcements": 2,
-    "deepmind-blog": 2,
-    "huggingface-blog": 2,
+    "deepmind-blog": 1,
+    "huggingface-blog": 3,
     "openai-news": 5,
-    "release:NVIDIA/OpenShell": 1,
-    "release:OpenHands/software-agent-sdk": 2,
-    "release:langchain-ai/langgraph": 4,
+    "release:OpenHands/software-agent-sdk": 3,
+    "release:google/adk-python": 1,
+    "release:langchain-ai/langgraph": 5,
+    "release:langchain-ai/open-swe": 1,
     "release:openai/codex": 1
   },
   "items": [
@@ -46,51 +45,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1be4fdd8e6ca80f0ec012771",
-      "candidate_id": "ec-1be4fdd8e6ca80f0",
-      "title": "OpenAI to acquire Pierre Computer Company, Inc.",
-      "url": "https://openai.com/index/openai-to-acquire-pierre",
+      "item_id": "5f721228af3682c2417b4131",
+      "candidate_id": "ec-5f721228af3682c2",
+      "title": "Measuring how AI agents handle everyday wet-lab science",
+      "url": "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-04T14:30:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "25fa4dd18ec78a48a9233cc0",
-      "candidate_id": "ec-25fa4dd18ec78a48",
-      "title": "Setting a new standard for responsible AI infrastructure",
-      "url": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-05T02:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "2d1d326185a62641bed05bf7",
-      "candidate_id": "ec-2d1d326185a62641",
-      "title": "Flipsnack grows product signups with conversion optimization",
-      "url": "https://openai.com/ads/customers/flipsnack",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-05T00:45:15+00:00",
+      "claimed_published_at": "2026-11-06T00:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -118,6 +81,42 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "a0a44ed09dc9a1089b4e099f",
+      "candidate_id": "ec-a0a44ed09dc9a108",
+      "title": "Partnering with Hacktron to find vulnerabilities in OpenAI’s systems",
+      "url": "https://openai.com/index/partnering-with-hacktron",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-06T08:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "bbd492caba72ca544b8bac32",
+      "candidate_id": "ec-bbd492caba72ca54",
+      "title": "Cult.fit builds operational muscle with Codex",
+      "url": "https://openai.com/index/cultfit-builds-with-codex",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-05T20:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "1750855042e8ceec185ecc41",
       "candidate_id": "ec-1750855042e8ceec",
       "title": "Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips",
@@ -136,20 +135,20 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "23c4f130369cb97228de4151",
-      "candidate_id": "ec-23c4f130369cb972",
-      "title": "Agentic cheminformatics with Google Antigravity",
-      "url": "https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity",
-      "source_id": "deepmind-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-03T17:01:49+00:00",
-      "review_order_score": 7,
+      "item_id": "4540c913701005ea3391d598",
+      "candidate_id": "ec-4540c913701005ea",
+      "title": "v1.60.2",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.60.2",
+      "source_id": "release:OpenHands/software-agent-sdk",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-06T18:41:22+00:00",
+      "review_order_score": 6,
       "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -181,6 +180,42 @@
       "topic": "cloud-agent",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-05T16:32:39+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "4f38a333d415d0483a7abceb",
+      "candidate_id": "ec-4f38a333d415d048",
+      "title": "Robin Desktop v0.3.13",
+      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.13",
+      "source_id": "release:langchain-ai/open-swe",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-06T21:18:53+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "02be4a11c1b8f44b2214353a",
+      "candidate_id": "ec-02be4a11c1b8f44b",
+      "title": "v2.14.0",
+      "url": "https://github.com/google/adk-python/releases/tag/v2.14.0",
+      "source_id": "release:google/adk-python",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-07T00:58:18+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -244,6 +279,24 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "66af235e42475984322168dc",
+      "candidate_id": "ec-66af235e42475984",
+      "title": "langgraph-sdk==0.4.14",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/sdk%3D%3D0.4.14",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-06T03:03:34+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "b04727f084c44ac09d10b18f",
       "candidate_id": "ec-b04727f084c44ac0",
       "title": "langgraph-sdk==0.4.13",
@@ -262,15 +315,33 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "20366c4b5aede8776073d7a8",
-      "candidate_id": "ec-20366c4b5aede877",
-      "title": "Four layers of context engineering for production AI agents: How Deep Insight applies them in working code",
-      "url": "https://aws.amazon.com/blogs/machine-learning/four-layers-of-context-engineering-for-production-ai-agents-how-deep-insight-applies-them-in-working-code",
+      "item_id": "d9dbdb581f79f750ac49133b",
+      "candidate_id": "ec-d9dbdb581f79f750",
+      "title": "langgraph-cli==0.4.42",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.42",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-06T03:04:13+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "1109c7dc5eeb22026df6e0e3",
+      "candidate_id": "ec-1109c7dc5eeb2202",
+      "title": "Serverless MCP server for AI agent data lake access on Amazon ECS Fargate",
+      "url": "https://aws.amazon.com/blogs/machine-learning/serverless-mcp-server-for-ai-agent-data-lake-access-on-amazon-ecs-fargate",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-04T16:30:40+00:00",
+      "claimed_published_at": "2026-11-06T17:13:13+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -280,15 +351,51 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "3ef6e5218bbc9326f7a57aa1",
-      "candidate_id": "ec-3ef6e5218bbc9326",
-      "title": "How Indegene is modernizing and scaling enterprise data quality in life sciences",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-indegene-is-modernizing-and-scaling-enterprise-data-quality-in-life-sciences",
+      "item_id": "17e756367fad950697ec2074",
+      "candidate_id": "ec-17e756367fad9506",
+      "title": "Govern AI agent access with Okta Cross App Access and Amazon Bedrock AgentCore – Part 1",
+      "url": "https://aws.amazon.com/blogs/machine-learning/govern-ai-agent-access-with-okta-cross-app-access-and-amazon-bedrock-agentcore-part-1",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-04T16:25:57+00:00",
+      "claimed_published_at": "2026-11-06T17:09:18+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "2e5ff519dea4168bfd3fbf07",
+      "candidate_id": "ec-2e5ff519dea4168b",
+      "title": "Taxonomy of agentic primitives in Amazon Quick",
+      "url": "https://aws.amazon.com/blogs/machine-learning/taxonomy-of-agentic-primitives-in-amazon-quick",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-06T17:34:45+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "39d0fa8ab15570a16f24e441",
+      "candidate_id": "ec-39d0fa8ab15570a1",
+      "title": "How Greenlight Financial built an autonomous SOC solution on Amazon Bedrock AgentCore",
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-greenlight-financial-built-an-autonomous-soc-solution-on-amazon-bedrock-agentcore",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-06T16:55:05+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -312,96 +419,6 @@
         "source_catalog_priority:P1",
         "first_party_feed_record",
         "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "83d7690781e8e88d58126539",
-      "candidate_id": "ec-83d7690781e8e88d",
-      "title": "How U Mobile built agentic telco operations with Amazon Bedrock AgentCore",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-u-mobile-built-agentic-telco-operations-with-amazon-bedrock-agentcore",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-04T16:23:33+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "a87ec7a4b5e96d706fdb35ad",
-      "candidate_id": "ec-a87ec7a4b5e96d70",
-      "title": "Smart Approvals in Amazon Quick: Human oversight where it matters",
-      "url": "https://aws.amazon.com/blogs/machine-learning/smart-approvals-in-amazon-quick-human-oversight-where-it-matters",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-04T16:33:03+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "259ab2eb05b0186eda5bfe18",
-      "candidate_id": "ec-259ab2eb05b0186e",
-      "title": "Article Nov 5, 2026 Introducing Personal Finance in Claude Ask Claude about your money and get straight answers from the accounts you connect.",
-      "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "480dd369b21eec5546d2a10e",
-      "candidate_id": "ec-480dd369b21eec55",
-      "title": "Article Nov 5, 2026 More visibility and control over Claude Enterprise for security teams Claude Enterprise Claude apps",
-      "url": "https://claude.com/resources/articles/claude-enterprise-security-updates",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "43862ef771dfba655e31d47f",
-      "candidate_id": "ec-43862ef771dfba65",
-      "title": "Official site update: provable inference",
-      "url": "https://www.anthropic.com/research/provable-inference",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -442,15 +459,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "07ac0ffad9653f77f544a51a",
-      "candidate_id": "ec-07ac0ffad9653f77",
-      "title": "Reliability Engineering for AI Systems: Challenges, Methods, and Directions",
-      "url": "https://arxiv.org/abs/2609.35316",
+      "item_id": "0b4880e5745fa2d6d855c7a1",
+      "candidate_id": "ec-0b4880e5745fa2d6",
+      "title": "Multi-Estimate Elicitation Does Not Uniformly Debias Language Model Judgments",
+      "url": "https://arxiv.org/abs/2611.00597",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-05T05:00:00+00:00",
+      "claimed_published_at": "2026-11-06T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -460,15 +477,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "0b7de25d626af2fae5638690",
-      "candidate_id": "ec-0b7de25d626af2fa",
-      "title": "GaP: A Graph-as-Policy Multi-Agent Self-Learning Harness For Variational Automation Tasks",
-      "url": "https://arxiv.org/abs/2607.05369",
+      "item_id": "170bf14389b47ac2018e6dd4",
+      "candidate_id": "ec-170bf14389b47ac2",
+      "title": "The Price of Safety: Benign-Case Utility and Token Overhead of Memory-Poisoning Defenses in LLM Agents",
+      "url": "https://arxiv.org/abs/2609.22818",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-05T05:00:00+00:00",
+      "claimed_published_at": "2026-11-06T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -478,15 +495,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1d253f601f265c3fd0de4d92",
-      "candidate_id": "ec-1d253f601f265c3f",
-      "title": "Exploiting Textual Semantics for Robust Cross-View Object Correspondence",
-      "url": "https://arxiv.org/abs/2611.02356",
+      "item_id": "1bbee645176fecfe327cc050",
+      "candidate_id": "ec-1bbee645176fecfe",
+      "title": "GAAC: Lossless KV Compression for Bandwidth-Efficient LLM Inference on Personal Devices",
+      "url": "https://arxiv.org/abs/2610.38210",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-05T05:00:00+00:00",
+      "claimed_published_at": "2026-11-06T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -496,15 +513,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "26b3e231b17f579a62252872",
-      "candidate_id": "ec-26b3e231b17f579a",
-      "title": "MedConstBench: Benchmarking How Constitutions Steer LLMs in Medical Ethics",
-      "url": "https://arxiv.org/abs/2610.36513",
+      "item_id": "1ca2419ee376f343df8dc37f",
+      "candidate_id": "ec-1ca2419ee376f343",
+      "title": "TSBPO: Tree-Structured Branching for Policy Optimization in Interactive Language Agents",
+      "url": "https://arxiv.org/abs/2610.41697",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-05T05:00:00+00:00",
+      "claimed_published_at": "2026-11-06T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -514,15 +531,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "2bb788bfc7de18cfd1bb1118",
-      "candidate_id": "ec-2bb788bfc7de18cf",
-      "title": "When Disclosure Is Compulsory: Evaluating Ride-Hailing Rebalancing Policies with Self-Interested LLM Driver Agents",
-      "url": "https://arxiv.org/abs/2610.41132",
+      "item_id": "2a0eea074486de5dc48b369d",
+      "candidate_id": "ec-2a0eea074486de5d",
+      "title": "Constraining the Commit Boundary: A DIO/ODI-Informed Authorization Guardrail for Agentic Entity Resolution",
+      "url": "https://arxiv.org/abs/2610.37407",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-05T05:00:00+00:00",
+      "claimed_published_at": "2026-11-06T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -532,15 +549,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "32d4e91d243ef07f0795379b",
-      "candidate_id": "ec-32d4e91d243ef07f",
-      "title": "Dharma Field Extractor: Any Document In, Structured Fields in JSON Out",
-      "url": "https://huggingface.co/blog/Dharma-AI/dharma-field-extractor",
+      "item_id": "13e4c95dcbaa6d34090ed25c",
+      "candidate_id": "ec-13e4c95dcbaa6d34",
+      "title": "Egyptian and Nigerian English join the Open ASR Leaderboard",
+      "url": "https://huggingface.co/blog/open-asr-leaderboard-liva",
       "source_id": "huggingface-blog",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-04T17:50:10+00:00",
+      "claimed_published_at": "2026-11-06T00:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -550,15 +567,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "c65c7708e93995ca45416c5e",
-      "candidate_id": "ec-c65c7708e93995ca",
-      "title": "A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.",
-      "url": "https://huggingface.co/blog/phonon-tts",
+      "item_id": "5a90caffb2c87d2e6e8eb5c3",
+      "candidate_id": "ec-5a90caffb2c87d2e",
+      "title": "ToyBlocks: A controlled world for robot learning and evaluation",
+      "url": "https://huggingface.co/blog/allenai/toyblocks",
       "source_id": "huggingface-blog",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-05T00:00:00+00:00",
+      "claimed_published_at": "2026-11-06T14:00:48+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -568,38 +585,20 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "be42304b1379f5f60c3f391c",
-      "candidate_id": "ec-be42304b1379f5f6",
-      "title": "langgraph-sdk==0.4.12",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/sdk%3D%3D0.4.12",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
+      "item_id": "f25b9201ad6bdcc6fc966e82",
+      "candidate_id": "ec-f25b9201ad6bdcc6",
+      "title": "New NVIDIA Cosmos 3 Open Models for Interactive World Simulation",
+      "url": "https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-03T18:10:30+00:00",
+      "claimed_published_at": "2026-11-05T19:35:16+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "0463e40d241d7017b7c2375d",
-      "candidate_id": "ec-0463e40d241d7017",
-      "title": "OpenShell v0.1.7",
-      "url": "https://github.com/NVIDIA/OpenShell/releases/tag/v0.1.7",
-      "source_id": "release:NVIDIA/OpenShell",
-      "source_kind": "github_release",
-      "topic": "sandbox",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-03T19:24:39+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     }
