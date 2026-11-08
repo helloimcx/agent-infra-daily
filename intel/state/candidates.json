@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_ingested_snapshot": "2026-11-07T02:12:56+00:00",
+  "last_ingested_snapshot": "2026-11-08T01:43:09+00:00",
   "bootstrap_note": "Two independently verified candidates recovered from the successful 2026-10-22 ingestion artifact. This is not the full 54-item ledger; the next scheduled collector will merge all available items.",
   "candidates": {
     "ec-003fa87d129d34d7": {
@@ -79,7 +79,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-07T00:58:18+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "02be4a11c1b8f44b2214353a"
       ],
@@ -332,7 +332,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-05T02:30:54+00:00",
       "first_seen_at": "2026-11-05T02:41:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "0930381b353807195d62cdab"
       ],
@@ -378,7 +378,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-05T02:20:53+00:00",
       "first_seen_at": "2026-11-05T02:41:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "09af4ba16f83444e285e3623"
       ],
@@ -470,7 +470,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "0b4880e5745fa2d6d855c7a1"
       ],
@@ -723,7 +723,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T17:13:13+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "1109c7dc5eeb22026df6e0e3"
       ],
@@ -792,7 +792,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T00:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "13e4c95dcbaa6d34090ed25c"
       ],
@@ -815,7 +815,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-05T09:00:00+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "14e90e72d3401ddf817f6448"
       ],
@@ -884,7 +884,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "170bf14389b47ac2018e6dd4"
       ],
@@ -907,7 +907,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-05T17:05:16+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "1750855042e8ceec185ecc41"
       ],
@@ -953,7 +953,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T17:09:18+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "17e756367fad950697ec2074",
         "e22092f79218deeb38201f83"
@@ -1192,7 +1192,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "1bbee645176fecfe327cc050"
       ],
@@ -1261,7 +1261,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "1ca2419ee376f343df8dc37f"
       ],
@@ -1767,7 +1767,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "259ab2eb05b0186eda5bfe18"
       ],
@@ -1813,7 +1813,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-05T02:00:00+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "25fa4dd18ec78a48a9233cc0"
       ],
@@ -1974,7 +1974,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "2a0eea074486de5dc48b369d"
       ],
@@ -2158,7 +2158,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T17:34:45+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "2e5ff519dea4168bfd3fbf07"
       ],
@@ -2480,7 +2480,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "37b410e7f6bfbf9cc96445e7"
       ],
@@ -2641,7 +2641,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "394c1d937d63f8e3d65c9f73"
       ],
@@ -2687,7 +2687,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T16:55:05+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "39d0fa8ab15570a16f24e441"
       ],
@@ -3124,7 +3124,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-06T18:41:22+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "4540c913701005ea3391d598"
       ],
@@ -3193,7 +3193,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "480dd369b21eec5546d2a10e"
       ],
@@ -3239,7 +3239,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-05T17:00:00+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "485654c1f98a7cdcb6064f6e"
       ],
@@ -3262,7 +3262,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-05T02:41:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "49b5a8702a50f62ba5fd9de6"
       ],
@@ -3423,7 +3423,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-06T21:18:53+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "4f38a333d415d0483a7abceb"
       ],
@@ -3906,7 +3906,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "59c49f4b971bfb39e2386edd"
       ],
@@ -3975,7 +3975,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "5a4e5e3f052e70301a4ce857"
       ],
@@ -3998,7 +3998,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T14:00:48+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "5a90caffb2c87d2e6e8eb5c3"
       ],
@@ -4067,7 +4067,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-05T12:00:14+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "5bd02a39074589ea287cbb33"
       ],
@@ -4251,7 +4251,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T00:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "5f721228af3682c2417b4131"
       ],
@@ -4320,7 +4320,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-05T21:04:24+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "614ec411e822a540898f15e5"
       ],
@@ -4343,7 +4343,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-05T17:00:00+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "616c68177b707eae60eb2b7e"
       ],
@@ -4550,7 +4550,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-06T03:03:34+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "66af235e42475984322168dc"
       ],
@@ -5111,7 +5111,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "788914e0b8196ca837f5b8da"
       ],
@@ -5157,7 +5157,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "7951c5b8003d194fd80a2c2a"
       ],
@@ -5387,7 +5387,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-05T05:00:00+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "7dd9677362f1004d2eafdcc7"
       ],
@@ -5617,7 +5617,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T18:01:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "819549b983fd9118af23e6dd"
       ],
@@ -5962,7 +5962,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "8a424d75a52656da5062b8ac"
       ],
@@ -6100,7 +6100,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "8ce7eabf07520571d5611ef7"
       ],
@@ -6169,7 +6169,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T16:49:42+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "8dc1ca775a3702bbbdcddbfa"
       ],
@@ -6376,7 +6376,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "93d8a7d8e1c8aa0eaed0ea12"
       ],
@@ -6951,7 +6951,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T08:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "a0a44ed09dc9a1089b4e099f"
       ],
@@ -7227,7 +7227,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "a63674c5b5430042a5adf75d"
       ],
@@ -7480,7 +7480,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "aa7591d41de664d26a53bfd2"
       ],
@@ -7641,7 +7641,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "afd3f9e57d23c8940a5fb933"
       ],
@@ -7664,7 +7664,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-05T02:16:06+00:00",
       "first_seen_at": "2026-11-05T02:41:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "b04727f084c44ac09d10b18f"
       ],
@@ -7910,6 +7910,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-b705b30fd8c06b53": {
+      "id": "ec-b705b30fd8c06b53",
+      "title": "Robin Desktop v0.3.14",
+      "topic": "cloud-agent",
+      "source_kind": "github_release",
+      "published_at": "2026-11-07T19:13:42+00:00",
+      "first_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "item_ids": [
+        "b705b30fd8c06b530badbea6"
+      ],
+      "sources": [
+        {
+          "item_id": "b705b30fd8c06b530badbea6",
+          "source_id": "release:langchain-ai/open-swe",
+          "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.14",
+          "published_at": "2026-11-07T19:13:42+00:00",
+          "title": "Robin Desktop v0.3.14",
+          "first_discovered_at": "2026-11-07T21:44:33+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-b7839fa2149bfc64": {
       "id": "ec-b7839fa2149bfc64",
       "title": "Access OpenAI GPT models on Amazon Bedrock from Canada with cross-Region inference",
@@ -8032,7 +8055,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-06T01:40:00+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "b8ddb6db7e02a2ca1f760b7c"
       ],
@@ -8055,7 +8078,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "b8ddb7732d95525f9382654d"
       ],
@@ -8147,7 +8170,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-05T20:00:00+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "bbd492caba72ca544b8bac32"
       ],
@@ -8446,7 +8469,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T16:45:58+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "c09ed239791d8febad3d319c"
       ],
@@ -8745,7 +8768,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "c6b91c7aedd133277e547091"
       ],
@@ -9090,7 +9113,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-05T12:42:57+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "d165f2449d5931e672e52218"
       ],
@@ -9113,7 +9136,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-05T16:32:39+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "d19e9e9799424a2bf4429e9f"
       ],
@@ -9182,7 +9205,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "d6c83eff09565929a6c5378a"
       ],
@@ -9251,7 +9274,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "d857ba5874c1d423566f3dac"
       ],
@@ -9320,7 +9343,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-06T03:04:13+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "d9dbdb581f79f750ac49133b"
       ],
@@ -9366,7 +9389,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-05T08:00:00+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "db9792e954d447010915e606"
       ],
@@ -9895,7 +9918,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "eeb92871f1c91dcf31d3a753"
       ],
@@ -9987,7 +10010,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "f0247d2be6d23fda27989bba"
       ],
@@ -10010,7 +10033,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-05T19:35:16+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "f25b9201ad6bdcc6fc966e82"
       ],
@@ -10217,7 +10240,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "f9a06db5981496d8d8b781f1"
       ],
@@ -10263,7 +10286,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-05T18:06:43+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "fad370bb7b6d436415c6f4dd"
       ],
@@ -10332,7 +10355,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-07T02:12:56+00:00",
+      "last_seen_at": "2026-11-08T01:43:09+00:00",
       "item_ids": [
         "fbdcf45317f2ddb1203fe802"
       ],
@@ -10787,6 +10810,7 @@
     "b4af5d547e592189c47807a1": "ec-b4af5d547e592189",
     "b555765399fdec21d6701641": "ec-b555765399fdec21",
     "b6b30743068c26272d898fb0": "ec-b6b30743068c2627",
+    "b705b30fd8c06b530badbea6": "ec-b705b30fd8c06b53",
     "b7839fa2149bfc6438936cfe": "ec-b7839fa2149bfc64",
     "b78df57f70863e5070834376": "ec-b78df57f70863e50",
     "b893963b25899acfe9a611f5": "ec-b893963b25899acf",
