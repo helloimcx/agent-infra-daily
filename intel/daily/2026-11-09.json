@@ -1,0 +1,1140 @@
+{
+  "schema_version": "1.0",
+  "beijing_date": "2026-11-09",
+  "generated_at": "2026-11-09T01:51:02+00:00",
+  "lookback_hours": 72,
+  "status": "partial",
+  "source_checks": {
+    "ok": [
+      {
+        "id": "openai-news",
+        "entries": 1368
+      },
+      {
+        "id": "google-ai",
+        "entries": 20
+      },
+      {
+        "id": "release:openai/codex",
+        "entries": 1
+      },
+      {
+        "id": "release:langchain-ai/langgraph",
+        "entries": 10
+      },
+      {
+        "id": "release:openai/openai-agents-python",
+        "entries": 8
+      },
+      {
+        "id": "release:google/adk-python",
+        "entries": 10
+      },
+      {
+        "id": "release:OpenHands/software-agent-sdk",
+        "entries": 10
+      },
+      {
+        "id": "release:NVIDIA/OpenShell",
+        "entries": 8
+      },
+      {
+        "id": "release:anthropics/sandbox-runtime",
+        "entries": 10
+      },
+      {
+        "id": "release:langchain-ai/open-swe",
+        "entries": 2
+      },
+      {
+        "id": "release:modelcontextprotocol/specification",
+        "entries": 7
+      },
+      {
+        "id": "release:a2aproject/A2A",
+        "entries": 10
+      },
+      {
+        "id": "anthropic-site",
+        "entries": 14
+      },
+      {
+        "id": "claude-announcements",
+        "entries": 11
+      }
+    ],
+    "not_modified": [
+      "aws-ml",
+      "huggingface-blog",
+      "arxiv-cs-ai",
+      "mistral-news"
+    ],
+    "errors": [
+      {
+        "id": "deepmind-blog",
+        "error": "not well-formed (invalid token): line 1, column 0"
+      }
+    ],
+    "warnings": []
+  },
+  "item_count": 42,
+  "items": [
+    {
+      "id": "080ad12a7a559d731b5b0ae4",
+      "source_id": "release:langchain-ai/open-swe",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Robin Desktop v0.3.16",
+      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.16",
+      "published_at": "2026-11-09T00:12:34+00:00",
+      "first_discovered_at": "2026-11-09T01:51:02+00:00",
+      "excerpt": "**Full Changelog**: https://github.com/langchain-ai/open-swe/compare/desktop-ui-7747a83db27dd8b124a9d3868b2424506da35f07...desktop-v0.3.16",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "desktop-v0.3.16"
+    },
+    {
+      "id": "f864a265ed17fbb93de60505",
+      "source_id": "release:langchain-ai/open-swe",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Robin Desktop v0.3.15",
+      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.15",
+      "published_at": "2026-11-08T22:36:29+00:00",
+      "first_discovered_at": "2026-11-09T01:51:02+00:00",
+      "excerpt": "**Full Changelog**: https://github.com/langchain-ai/open-swe/compare/desktop-ui-1c574f924f9e6d5b354707b4f9cc5326cf7d09b8...desktop-v0.3.15",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "desktop-v0.3.15"
+    },
+    {
+      "id": "b705b30fd8c06b530badbea6",
+      "source_id": "release:langchain-ai/open-swe",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Robin Desktop v0.3.14",
+      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.14",
+      "published_at": "2026-11-07T19:13:42+00:00",
+      "first_discovered_at": "2026-11-07T21:44:33+00:00",
+      "excerpt": "**Full Changelog**: https://github.com/langchain-ai/open-swe/compare/desktop-ui-312f5ae3b2993b717739fdecd4928778a5e18195...desktop-v0.3.14",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "desktop-v0.3.14"
+    },
+    {
+      "id": "f0247d2be6d23fda27989bba",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Official site update: components of agent memory",
+      "url": "https://www.anthropic.com/research/components-of-agent-memory",
+      "published_at": null,
+      "first_discovered_at": "2026-11-07T02:12:56+00:00",
+      "excerpt": "Official sitemap URL; timestamp reflects site modification, not publication.",
+      "evidence_status": "unverified_candidate",
+      "observed_change_at": "2026-11-06T21:15:32+00:00",
+      "date_basis": "site_lastmod_not_publication"
+    },
+    {
+      "id": "8a424d75a52656da5062b8ac",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Official site update: teaching ai to build scientific models",
+      "url": "https://www.anthropic.com/research/teaching-ai-to-build-scientific-models",
+      "published_at": null,
+      "first_discovered_at": "2026-11-07T02:12:56+00:00",
+      "excerpt": "Official sitemap URL; timestamp reflects site modification, not publication.",
+      "evidence_status": "unverified_candidate",
+      "observed_change_at": "2026-11-07T23:12:43+00:00",
+      "date_basis": "site_lastmod_not_publication"
+    },
+    {
+      "id": "02be4a11c1b8f44b2214353a",
+      "source_id": "release:google/adk-python",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "priority": "P1",
+      "title": "v2.14.0",
+      "url": "https://github.com/google/adk-python/releases/tag/v2.14.0",
+      "published_at": "2026-11-07T00:58:18+00:00",
+      "first_discovered_at": "2026-11-07T02:12:56+00:00",
+      "excerpt": "## [2.14.0](https://github.com/google/adk-python/compare/v2.13.0...v2.14.0) (2026-11-04) ### Highlights This release graduates execution environments, A2A, evaluation, and core runtime modules from experimental, adds multi-run evaluation and semantic tool argument matching, adds Microsoft Teams and OpenAI Decisions integrations, and makes long multi-turn workflows faster. * **Execution environments and sandboxes**: *",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "v2.14.0"
+    },
+    {
+      "id": "4f38a333d415d0483a7abceb",
+      "source_id": "release:langchain-ai/open-swe",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Robin Desktop v0.3.13",
+      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.13",
+      "published_at": "2026-11-06T21:18:53+00:00",
+      "first_discovered_at": "2026-11-07T02:12:56+00:00",
+      "excerpt": "## Homebrew The `open-swe-desktop` cask now installs `Robin.app` and links both `robin` and `oswe`. `brew upgrade` skips this cask because the app updates itself. Your current install keeps working and `oswe` stays linked. To switch to `Robin.app` and get the `robin` command, run: brew reinstall --cask open-swe-desktop **Full Changelog**: https://github.com/langchain-ai/open-swe/compare/desktop-ui-6c96798b778b4a602cd",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "desktop-v0.3.13"
+    },
+    {
+      "id": "8ce7eabf07520571d5611ef7",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Official site update: project eve claude plays mmorpgs",
+      "url": "https://www.anthropic.com/research/project-eve-claude-plays-mmorpgs",
+      "published_at": null,
+      "first_discovered_at": "2026-11-06T19:18:33+00:00",
+      "excerpt": "Official sitemap URL; timestamp reflects site modification, not publication.",
+      "evidence_status": "unverified_candidate",
+      "observed_change_at": "2026-11-06T17:09:29+00:00",
+      "date_basis": "site_lastmod_not_publication"
+    },
+    {
+      "id": "4540c913701005ea3391d598",
+      "source_id": "release:OpenHands/software-agent-sdk",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "v1.60.2",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.60.2",
+      "published_at": "2026-11-06T18:41:22+00:00",
+      "first_discovered_at": "2026-11-06T19:18:33+00:00",
+      "excerpt": "Hotfix off v1.60.1: cherry-picks #6550 (accept large remote conversation state messages). No other changes.",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "v1.60.2"
+    },
+    {
+      "id": "819549b983fd9118af23e6dd",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "SageMaker Inference now supports Multi-Instance GPU to maximize GPU utilization for model endpoints",
+      "url": "https://aws.amazon.com/blogs/machine-learning/sagemaker-inference-now-supports-multi-instance-gpu-to-maximize-gpu-utilization-for-model-endpoints",
+      "published_at": "2026-11-06T18:01:00+00:00",
+      "first_discovered_at": "2026-11-06T19:18:33+00:00",
+      "excerpt": "Amazon SageMaker Inference now supports GPU partitioning with NVIDIA Multi-Instance GPU (MIG), which divides one GPU into hardware-isolated partitions so you can run a different model in each or take a right-sized fraction of a newer accelerator. This post shows how two optional API fields place one model per partition, and what we measured against a whole older GPU.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "2e5ff519dea4168bfd3fbf07",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Taxonomy of agentic primitives in Amazon Quick",
+      "url": "https://aws.amazon.com/blogs/machine-learning/taxonomy-of-agentic-primitives-in-amazon-quick",
+      "published_at": "2026-11-06T17:34:45+00:00",
+      "first_discovered_at": "2026-11-06T19:18:33+00:00",
+      "excerpt": "As we built Amazon Quick, its agents grew from answering questions to taking actions, and the same primitives kept getting rebuilt under different names. This post shares the taxonomy we converged on — triggers, agents, capabilities, and learned context — found by decomposing agentic work into four plain questions: When, What, Who, and How.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "1109c7dc5eeb22026df6e0e3",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Serverless MCP server for AI agent data lake access on Amazon ECS Fargate",
+      "url": "https://aws.amazon.com/blogs/machine-learning/serverless-mcp-server-for-ai-agent-data-lake-access-on-amazon-ecs-fargate",
+      "published_at": "2026-11-06T17:13:13+00:00",
+      "first_discovered_at": "2026-11-06T19:18:33+00:00",
+      "excerpt": "Learn how to build a serverless Model Context Protocol (MCP) server on Amazon ECS with AWS Fargate that gives AI agents secure, metadata-driven access to an enterprise data lake. Exposing a new dataset requires only a JSON file, with no per-dataset integration code.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "e22092f79218deeb38201f83",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Govern AI agent access with Okta Cross App Access and Amazon Bedrock AgentCore – Part 2",
+      "url": "https://aws.amazon.com/blogs/machine-learning/govern-ai-agent-access-with-okta-cross-app-access-and-amazon-bedrock-agentcore-part-2",
+      "published_at": "2026-11-06T17:09:23+00:00",
+      "first_discovered_at": "2026-11-06T19:18:33+00:00",
+      "excerpt": "In Part 1 you built one governed agent. Part 2 scales the pattern to an enterprise: Amazon Bedrock AgentCore Gateway becomes the single front door and redeems Okta's grant, Cedar policies bind each tool to the agent, a second agent runs on Amazon EKS, and AgentCore Observability traces every allow and deny beside Okta's log in Amazon CloudWatch.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "17e756367fad950697ec2074",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Govern AI agent access with Okta Cross App Access and Amazon Bedrock AgentCore – Part 1",
+      "url": "https://aws.amazon.com/blogs/machine-learning/govern-ai-agent-access-with-okta-cross-app-access-and-amazon-bedrock-agentcore-part-1",
+      "published_at": "2026-11-06T17:09:18+00:00",
+      "first_discovered_at": "2026-11-06T19:18:33+00:00",
+      "excerpt": "An AI agent that acts for a user raises an identity question that per-app OAuth and service accounts leave open: which agent may act for which user, and how you stop it. In this first post of two, you build a task agent on Amazon Bedrock AgentCore that governs access through Okta Cross App Access and AgentCore Identity, and enforces each user's authority.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "39d0fa8ab15570a16f24e441",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "How Greenlight Financial built an autonomous SOC solution on Amazon Bedrock AgentCore",
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-greenlight-financial-built-an-autonomous-soc-solution-on-amazon-bedrock-agentcore",
+      "published_at": "2026-11-06T16:55:05+00:00",
+      "first_discovered_at": "2026-11-06T19:18:33+00:00",
+      "excerpt": "Greenlight Financial resolves more than 90% of up to 4,000 monthly security and risk cases without human intervention using Luna, a tiered multi-agent system on Amazon Bedrock AgentCore. This post covers the architecture, episodic memory for continuous learning, and the expansion from SOC operations into financial risk triage.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "8dc1ca775a3702bbbdcddbfa",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Taxbit Assist: A grounded, role-aware AI agent on Amazon Bedrock AgentCore",
+      "url": "https://aws.amazon.com/blogs/machine-learning/taxbit-assist-a-grounded-role-aware-ai-agent-on-amazon-bedrock-agentcore",
+      "published_at": "2026-11-06T16:49:42+00:00",
+      "first_discovered_at": "2026-11-06T19:18:33+00:00",
+      "excerpt": "Taxbit built Taxbit Assist, a cited, permission-aware AI assistant embedded in its enterprise dashboard, on Amazon Bedrock AgentCore. This post shows how they grounded answers in a curated knowledge base, enforced role-aware and region-compliant safety, and continuously measured answer quality on live production traffic.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "c09ed239791d8febad3d319c",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Extend Claude Code to remote sessions on Amazon Bedrock AgentCore with security controls",
+      "url": "https://aws.amazon.com/blogs/machine-learning/extend-claude-code-to-remote-sessions-on-amazon-bedrock-agentcore-with-security-controls",
+      "published_at": "2026-11-06T16:45:58+00:00",
+      "first_discovered_at": "2026-11-06T19:18:33+00:00",
+      "excerpt": "Run Claude Code as a remote agent on Amazon Bedrock AgentCore. Each coding task runs in its own isolated session in your AWS account, every model call goes through Amazon Bedrock, and the result comes back as a GitHub pull request you review and merge.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "5a90caffb2c87d2e6e8eb5c3",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "ToyBlocks: A controlled world for robot learning and evaluation",
+      "url": "https://huggingface.co/blog/allenai/toyblocks",
+      "published_at": "2026-11-06T14:00:48+00:00",
+      "first_discovered_at": "2026-11-06T19:18:33+00:00",
+      "excerpt": "",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "a0a44ed09dc9a1089b4e099f",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Partnering with Hacktron to find vulnerabilities in OpenAI’s systems",
+      "url": "https://openai.com/index/partnering-with-hacktron",
+      "published_at": "2026-11-06T08:00:00+00:00",
+      "first_discovered_at": "2026-11-06T19:18:33+00:00",
+      "excerpt": "OpenAI is partnering with Hacktron to find vulnerabilities, test connections with third-party services, and strengthen defenses with frontier AI.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "f9a06db5981496d8d8b781f1",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Robustness of Internal Signals for Hallucination Detection in Vision-Language Models",
+      "url": "https://arxiv.org/abs/2610.27041",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-10-22T02:13:55+00:00",
+      "excerpt": "arXiv:2610.27041v2 Announce Type: replace-cross Abstract: When given an image and a text prompt, vision-language models (VLMs) can produce seemingly sophisticated text responses. However, they are also prone to hallucinate objects in their output, which can have detrimental consequences in safety-critical applications. To detect these hallucinations, certain methods interestingly leverage internal signals from the VL",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "59c49f4b971bfb39e2386edd",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "ValuSpec: Plug-and-Play Candidate Valuation before Target Verification for Tree-Based Speculative Decoding",
+      "url": "https://arxiv.org/abs/2610.31338",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-10-23T04:41:06+00:00",
+      "excerpt": "arXiv:2610.31338v2 Announce Type: replace Abstract: Tree-based speculative decoding accelerates large language model inference by verifying multiple candidate branches in parallel. However, in practical serving scenarios, similar requests repeatedly induce overlapping candidate branches. While retrieval-based methods mitigate this by reusing historical drafts, the resulting candidate trees often contain many low-qual",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "37b410e7f6bfbf9cc96445e7",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "PhysTrace: Interpretable Temporal Evaluation of Physical Consistency in Video Generative Models",
+      "url": "https://arxiv.org/abs/2610.31429",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-10-23T04:41:06+00:00",
+      "excerpt": "arXiv:2610.31429v2 Announce Type: replace Abstract: World action models increasingly rely on pretrained diffusion/flow-based video generators assumed to capture physical dynamics for prediction, planning, and action generation. Existing evaluations assess plausibility, probe representations, or measure predictive surprise, yet physical consistency is history-dependent: preceding events constrain what can physically o",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "d857ba5874c1d423566f3dac",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "How to Backdoor Image Knowledge Distillation",
+      "url": "https://arxiv.org/abs/2504.21323",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-10-23T04:41:06+00:00",
+      "excerpt": "arXiv:2504.21323v5 Announce Type: replace-cross Abstract: Knowledge distillation is widely used to transfer behavior from a large teacher model to a smaller student. It is often assumed to be safe when the teacher is clean, because classic backdoor attacks rely on poisoned labels and triggers in supervised training, whereas distillation trains the student to match a teacher's outputs. We show that this assumption can",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "170bf14389b47ac2018e6dd4",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "The Price of Safety: Benign-Case Utility and Token Overhead of Memory-Poisoning Defenses in LLM Agents",
+      "url": "https://arxiv.org/abs/2609.22818",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-10-23T04:41:06+00:00",
+      "excerpt": "arXiv:2609.22818v3 Announce Type: replace-cross Abstract: Memory-poisoning defenses for LLM agents are usually judged by how well they stop attacks, yet almost all the traffic an agent sees is benign. We measure what these defenses cost when no attack is present. Our harness holds the backbone model, memory backend, retrieval, answer prompt, and judge fixed and changes only the defense. Both LLM-based defenses run on",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "fbdcf45317f2ddb1203fe802",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "AutoVend: Benchmarking LLM Agents on Long-Horizon Autonomous Vending Operations",
+      "url": "https://arxiv.org/abs/2610.36980",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-10-28T05:31:37+00:00",
+      "excerpt": "arXiv:2610.36980v2 Announce Type: replace Abstract: Large language model (LLM) agents are extending agent-mediated commerce on the Web from shopping for consumers to operating businesses for sellers. In online-to-offline (O2O) commerce, decisions are issued through Web-based platforms but realized through costly physical execution. Evaluating such agents requires going beyond individual transactions to ask whether de",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "2a0eea074486de5dc48b369d",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Constraining the Commit Boundary: A DIO/ODI-Informed Authorization Guardrail for Agentic Entity Resolution",
+      "url": "https://arxiv.org/abs/2610.37407",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-10-28T05:31:37+00:00",
+      "excerpt": "arXiv:2610.37407v2 Announce Type: replace Abstract: Agentic Entity Resolution (ER) systems iteratively plan actions, retrieve evidence, revise hypotheses, and propose graph mutations. An erroneous identity hypothesis may condition later retrieval and produce apparent confirmation. This paper proposes a Digital Identity Optimization (DIO) and Ontology of Digital Identity (ODI)-informed authorization boundary between e",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "b8ddb7732d95525f9382654d",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "V-LUMEN: Visual Lookup Memory for Embedding Scaling in Vision-Language Models",
+      "url": "https://arxiv.org/abs/2610.37019",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-10-28T05:31:37+00:00",
+      "excerpt": "arXiv:2610.37019v2 Announce Type: replace-cross Abstract: Embedding-level scaling expands the capacity of language models through lookup-based memory rather than by increasing model depth, width, or dense computation. Extending this idea to vision-language models (VLMs) is challenging because visual features are continuous, spatially structured, and query-dependent, unlike discrete text tokens that naturally support ",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "1bbee645176fecfe327cc050",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "GAAC: Lossless KV Compression for Bandwidth-Efficient LLM Inference on Personal Devices",
+      "url": "https://arxiv.org/abs/2610.38210",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-10-30T12:45:58+00:00",
+      "excerpt": "arXiv:2610.38210v2 Announce Type: replace Abstract: Weight-only, lossy quantization substantially reduces the storage and memory requirements for serving large language models (LLMs), but the growing key-value (KV) cache remains a bottleneck for long-context inference on personal devices. We present Group-Adaptive Additive Codec (GAAC), a lossless KV compression and serving system that exploits exponent redundancy to",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "c6b91c7aedd133277e547091",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Merge and Branch: Efficient Tree-Structured Supervised Fine-Tuning of LLMs for Recommendation",
+      "url": "https://arxiv.org/abs/2610.37973",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-10-30T12:45:58+00:00",
+      "excerpt": "arXiv:2610.37973v2 Announce Type: replace-cross Abstract: LLM-based generative recommendation reads long, text-rich interaction histories but generates only short semantic identifiers (SIDs). This asymmetry makes supervised fine-tuning inefficient: encoding the history is expensive, yet each history usually provides supervision for only one target. We present Merge and Branch (M&B) to reduce input cost and learn more",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "afd3f9e57d23c8940a5fb933",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Refined Topology-Pass Scheduling: Damped Trust-Region Compensation for Dynamic k-NN Graphs in SE(3)-Equivariant Structure Prediction",
+      "url": "https://arxiv.org/abs/2610.19246",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-10-30T12:45:58+00:00",
+      "excerpt": "arXiv:2610.19246v4 Announce Type: replace-cross Abstract: Equivariant structure-prediction pipelines alternate coordinate updates with the construction of a k-nearest-neighbour (kNN) graph whose membership is a discrete, piecewise-constant function of the coordinates. Rebuilding that graph at every block boundary (PB) is the expensive part of an epoch, whereas reusing one frozen graph (F) is fast but leaves a topolog",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "1ca2419ee376f343df8dc37f",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "TSBPO: Tree-Structured Branching for Policy Optimization in Interactive Language Agents",
+      "url": "https://arxiv.org/abs/2610.41697",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-11-02T05:54:38+00:00",
+      "excerpt": "arXiv:2610.41697v2 Announce Type: replace Abstract: Terminal feedback in multi-turn agent training leaves both rollout allocation and local credit underdetermined. Dynamics-Predictive Sampling (DPS) [9] provides a task-level predictive sampling reference, but interactive agents also need to choose which visited states merit further continuations. We introduce TSBPO with two method components. A lightweight, fine-grai",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "7dd9677362f1004d2eafdcc7",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "AuroraWorld: Structured 4D World Modeling for Exo-to-Ego Video Generation in Robot Manipulation",
+      "url": "https://arxiv.org/abs/2611.00177",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-11-03T14:03:56+00:00",
+      "excerpt": "arXiv:2611.00177v3 Announce Type: replace Abstract: Egocentric observations provide a robot-centric view of manipulation processes, capturing contact interactions and object-state changes that are important for visuomotor policy learning but difficult to observe from external cameras. However, collecting such data at scale remains expensive due to additional hardware requirements and platform-specific deployment cost",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "93d8a7d8e1c8aa0eaed0ea12",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Taurus: LLM-in-the-Loop CT Annotation Matches Coding Agents at Half the Cost",
+      "url": "https://arxiv.org/abs/2611.00247",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-11-03T14:03:56+00:00",
+      "excerpt": "arXiv:2611.00247v2 Announce Type: replace Abstract: Dense labels of the aorta in CT are slow to draw, and the public aortic CT datasets that could stand in for them each label different structures under their own conventions. Large language model (LLM) agents can now write code and read images. We asked whether such a model labels these scans better as a free-form agent that writes its own segmentation code, or insid",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "0b4880e5745fa2d6d855c7a1",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Multi-Estimate Elicitation Does Not Uniformly Debias Language Model Judgments",
+      "url": "https://arxiv.org/abs/2611.00597",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-11-03T14:03:56+00:00",
+      "excerpt": "arXiv:2611.00597v2 Announce Type: replace-cross Abstract: Does eliciting five weighted estimates within a single response consistently improve numerical judgments? We compare direct and multi-estimate elicitation across anchoring, hindsight, base-rate, conjunction, and status-quo/default tasks in six frozen configurations. Each configuration contributes 618 admitted development units and 3,702 admitted formal units; ",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "788914e0b8196ca837f5b8da",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Vision-Language Models Are Joint Denoisers in Robotic Action Generation",
+      "url": "https://arxiv.org/abs/2611.01215",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-11-03T14:03:56+00:00",
+      "excerpt": "arXiv:2611.01215v2 Announce Type: replace-cross Abstract: Diffusion-based vision-language-action (VLA) models cascade pretrained vision-language models (VLMs) with diffusion action experts, but typically restrict the VLM to providing static conditioning. This separation limits how much pretrained perception and reasoning can guide action generation, especially in out-of-distribution settings. We introduce JADE, a Joi",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "aa7591d41de664d26a53bfd2",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "OpenNWM: A Generalist Navigation World Model with Latent Action Pretraining",
+      "url": "https://arxiv.org/abs/2611.01844",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-11-03T14:03:56+00:00",
+      "excerpt": "arXiv:2611.01844v2 Announce Type: replace-cross Abstract: Navigation world models predict future observations conditioned on navigation actions to support planning, but their generalization across real-world environments remains constrained by the limited coverage of action-labeled data. Action-free navigation videos provide diverse visual experience, yet lack the recorded actions required for action-conditioned trai",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "5a4e5e3f052e70301a4ce857",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Human-Centred, Risk-Constrained Evaluation of Financial Document Recognition: Evidence, Critical Errors, and Selective Automation",
+      "url": "https://arxiv.org/abs/2611.02775",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-11-03T14:03:56+00:00",
+      "excerpt": "arXiv:2611.02775v2 Announce Type: replace-cross Abstract: Financial document recognition is often assessed using character and word error rates, although these metrics do not express whether a system preserves the financial facts on which people and organisations act. This paper develops a human-centred, risk-constrained framework for evaluating financial document recognition as evidence recovery and decision support",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "a63674c5b5430042a5adf75d",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Sonar-MoE: In-Backward Expert Updates for Memory-Efficient Mixture-of-Experts Training",
+      "url": "https://arxiv.org/abs/2611.03577",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-11-03T14:03:56+00:00",
+      "excerpt": "arXiv:2611.03577v2 Announce Type: replace-cross Abstract: Most parameters of a Mixture-of-Experts (MoE) model belong to its experts, and standard training keeps every expert gradient in GPU memory until the optimizer step. This memory grows with the number and size of the experts, so it rises as MoE models scale. We introduce Sonar-MoE, which updates each expert tensor during the backward pass and frees its gradient ",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "394c1d937d63f8e3d65c9f73",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Beyond Equation Search: Conjecture-Guided Discovery with SCOPE and ClosureBench",
+      "url": "https://arxiv.org/abs/2610.18938",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "first_discovered_at": "2026-11-03T14:03:56+00:00",
+      "excerpt": "arXiv:2610.18938v3 Announce Type: replace Abstract: Most symbolic regression methods optimize candidate equations, but improving an equation's fit does not establish whether its underlying scientific conjecture should be retained, revised, or rejected. A conjecture may admit multiple mathematical realizations, and similarly accurate equations may imply different explanations. This motivates a shift from refining indi",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "d9dbdb581f79f750ac49133b",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "priority": "P1",
+      "title": "langgraph-cli==0.4.42",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.42",
+      "published_at": "2026-11-06T03:04:13+00:00",
+      "first_discovered_at": "2026-11-06T06:31:49+00:00",
+      "excerpt": "Changes since cli==0.4.41 * release(cli): 0.4.42 (#9611) * feat(cli): add deploy metrics command (#9479) * chore(deps): bump filelock and langgraph-api for security fixes (#9606)",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "cli==0.4.42"
+    },
+    {
+      "id": "66af235e42475984322168dc",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "priority": "P1",
+      "title": "langgraph-sdk==0.4.14",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/sdk%3D%3D0.4.14",
+      "published_at": "2026-11-06T03:03:34+00:00",
+      "first_discovered_at": "2026-11-06T06:31:49+00:00",
+      "excerpt": "Changes since sdk==0.4.13 * release(sdk-py): 0.4.14 (#9610) * feat(sdk-py): add strict_resume to runs.create, stream and wait (#9599) * feat(sdk-py): add tools and lifecycle to StreamMode (#9601)",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "sdk==0.4.14"
+    },
+    {
+      "id": "eeb92871f1c91dcf31d3a753",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "priority": "P0",
+      "title": "Article Nov 4, 2026 New agents and products for security, productivity, and creative work on Claude Marketplace",
+      "url": "https://claude.com/resources/articles/new-agents-and-products-claude-marketplace",
+      "published_at": null,
+      "first_discovered_at": "2026-11-06T02:44:03+00:00",
+      "excerpt": "Official website listing. Verify actual publication date and claims on the original.",
+      "evidence_status": "unverified_candidate",
+      "date_basis": "official_listing_no_verified_publication_time"
+    }
+  ],
+  "event_candidates": [
+    {
+      "event_candidate_id": "ec-f2e53963097f20f8",
+      "representative_title": "Robin Desktop v0.3.16",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "080ad12a7a559d731b5b0ae4"
+      ],
+      "source_ids": [
+        "release:langchain-ai/open-swe"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-a777ef541b5a9a3f",
+      "representative_title": "Robin Desktop v0.3.15",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "f864a265ed17fbb93de60505"
+      ],
+      "source_ids": [
+        "release:langchain-ai/open-swe"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-47781da4d4001908",
+      "representative_title": "Robin Desktop v0.3.14",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "b705b30fd8c06b530badbea6"
+      ],
+      "source_ids": [
+        "release:langchain-ai/open-swe"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-bd0d195ab5863628",
+      "representative_title": "Official site update: components of agent memory",
+      "topic": "harness",
+      "item_ids": [
+        "f0247d2be6d23fda27989bba"
+      ],
+      "source_ids": [
+        "anthropic-site"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b9af5b27b0e3e003",
+      "representative_title": "Official site update: teaching ai to build scientific models",
+      "topic": "harness",
+      "item_ids": [
+        "8a424d75a52656da5062b8ac"
+      ],
+      "source_ids": [
+        "anthropic-site"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-2c7a3a155a56afd1",
+      "representative_title": "v2.14.0",
+      "topic": "harness",
+      "item_ids": [
+        "02be4a11c1b8f44b2214353a"
+      ],
+      "source_ids": [
+        "release:google/adk-python"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-1ecdc913cbfff513",
+      "representative_title": "Robin Desktop v0.3.13",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "4f38a333d415d0483a7abceb"
+      ],
+      "source_ids": [
+        "release:langchain-ai/open-swe"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-18761913ef961717",
+      "representative_title": "Official site update: project eve claude plays mmorpgs",
+      "topic": "harness",
+      "item_ids": [
+        "8ce7eabf07520571d5611ef7"
+      ],
+      "source_ids": [
+        "anthropic-site"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-8eb69c689942ac83",
+      "representative_title": "v1.60.2",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "4540c913701005ea3391d598"
+      ],
+      "source_ids": [
+        "release:OpenHands/software-agent-sdk"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-4c73bb9d2275dced",
+      "representative_title": "SageMaker Inference now supports Multi-Instance GPU to maximize GPU utilization for model endpoints",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "819549b983fd9118af23e6dd"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-26ac6e62d5315c0e",
+      "representative_title": "Taxonomy of agentic primitives in Amazon Quick",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "2e5ff519dea4168bfd3fbf07"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-3c498c834fabfd15",
+      "representative_title": "Serverless MCP server for AI agent data lake access on Amazon ECS Fargate",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "1109c7dc5eeb22026df6e0e3"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-69bccc9ccf4f6fff",
+      "representative_title": "Govern AI agent access with Okta Cross App Access and Amazon Bedrock AgentCore – Part 2",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "e22092f79218deeb38201f83",
+        "17e756367fad950697ec2074"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-4880601b6449aa22",
+      "representative_title": "How Greenlight Financial built an autonomous SOC solution on Amazon Bedrock AgentCore",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "39d0fa8ab15570a16f24e441"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-59c491cc9a8aff99",
+      "representative_title": "Taxbit Assist: A grounded, role-aware AI agent on Amazon Bedrock AgentCore",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "8dc1ca775a3702bbbdcddbfa"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-8b19684a9a8cc9ac",
+      "representative_title": "Extend Claude Code to remote sessions on Amazon Bedrock AgentCore with security controls",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "c09ed239791d8febad3d319c"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-fbac7b8861018c8a",
+      "representative_title": "ToyBlocks: A controlled world for robot learning and evaluation",
+      "topic": "research",
+      "item_ids": [
+        "5a90caffb2c87d2e6e8eb5c3"
+      ],
+      "source_ids": [
+        "huggingface-blog"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-65329e2c99c4d5d9",
+      "representative_title": "Partnering with Hacktron to find vulnerabilities in OpenAI’s systems",
+      "topic": "harness",
+      "item_ids": [
+        "a0a44ed09dc9a1089b4e099f"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-ba930481558e830a",
+      "representative_title": "Robustness of Internal Signals for Hallucination Detection in Vision-Language Models",
+      "topic": "research",
+      "item_ids": [
+        "f9a06db5981496d8d8b781f1"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-1d3744becf52c7ca",
+      "representative_title": "ValuSpec: Plug-and-Play Candidate Valuation before Target Verification for Tree-Based Speculative Decoding",
+      "topic": "research",
+      "item_ids": [
+        "59c49f4b971bfb39e2386edd"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-edfbcf46554f8ed4",
+      "representative_title": "PhysTrace: Interpretable Temporal Evaluation of Physical Consistency in Video Generative Models",
+      "topic": "research",
+      "item_ids": [
+        "37b410e7f6bfbf9cc96445e7"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-1c33f5654215cf0b",
+      "representative_title": "How to Backdoor Image Knowledge Distillation",
+      "topic": "research",
+      "item_ids": [
+        "d857ba5874c1d423566f3dac"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b30876beec81b774",
+      "representative_title": "The Price of Safety: Benign-Case Utility and Token Overhead of Memory-Poisoning Defenses in LLM Agents",
+      "topic": "research",
+      "item_ids": [
+        "170bf14389b47ac2018e6dd4"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-e3b8ad3770b75d6f",
+      "representative_title": "AutoVend: Benchmarking LLM Agents on Long-Horizon Autonomous Vending Operations",
+      "topic": "research",
+      "item_ids": [
+        "fbdcf45317f2ddb1203fe802"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-fa72337e5a2444c4",
+      "representative_title": "Constraining the Commit Boundary: A DIO/ODI-Informed Authorization Guardrail for Agentic Entity Resolution",
+      "topic": "research",
+      "item_ids": [
+        "2a0eea074486de5dc48b369d"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-39ec3244198fdeb8",
+      "representative_title": "V-LUMEN: Visual Lookup Memory for Embedding Scaling in Vision-Language Models",
+      "topic": "research",
+      "item_ids": [
+        "b8ddb7732d95525f9382654d"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-74f10decda228c9e",
+      "representative_title": "GAAC: Lossless KV Compression for Bandwidth-Efficient LLM Inference on Personal Devices",
+      "topic": "research",
+      "item_ids": [
+        "1bbee645176fecfe327cc050"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-19037848849f000a",
+      "representative_title": "Merge and Branch: Efficient Tree-Structured Supervised Fine-Tuning of LLMs for Recommendation",
+      "topic": "research",
+      "item_ids": [
+        "c6b91c7aedd133277e547091"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-4554eb9f464cd2ca",
+      "representative_title": "Refined Topology-Pass Scheduling: Damped Trust-Region Compensation for Dynamic k-NN Graphs in SE(3)-Equivariant Structure Prediction",
+      "topic": "research",
+      "item_ids": [
+        "afd3f9e57d23c8940a5fb933"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-fd37ab27e26e851a",
+      "representative_title": "TSBPO: Tree-Structured Branching for Policy Optimization in Interactive Language Agents",
+      "topic": "research",
+      "item_ids": [
+        "1ca2419ee376f343df8dc37f"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-f0b787be5b3928d4",
+      "representative_title": "AuroraWorld: Structured 4D World Modeling for Exo-to-Ego Video Generation in Robot Manipulation",
+      "topic": "research",
+      "item_ids": [
+        "7dd9677362f1004d2eafdcc7"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b6e46cbe5d378aed",
+      "representative_title": "Taurus: LLM-in-the-Loop CT Annotation Matches Coding Agents at Half the Cost",
+      "topic": "research",
+      "item_ids": [
+        "93d8a7d8e1c8aa0eaed0ea12"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-76ce8aa3d5e58ae2",
+      "representative_title": "Multi-Estimate Elicitation Does Not Uniformly Debias Language Model Judgments",
+      "topic": "research",
+      "item_ids": [
+        "0b4880e5745fa2d6d855c7a1"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-0f7e02563e7afeb3",
+      "representative_title": "Vision-Language Models Are Joint Denoisers in Robotic Action Generation",
+      "topic": "research",
+      "item_ids": [
+        "788914e0b8196ca837f5b8da"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-ac732f8d2846abf5",
+      "representative_title": "OpenNWM: A Generalist Navigation World Model with Latent Action Pretraining",
+      "topic": "research",
+      "item_ids": [
+        "aa7591d41de664d26a53bfd2"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-c80cfe2df4b0a912",
+      "representative_title": "Human-Centred, Risk-Constrained Evaluation of Financial Document Recognition: Evidence, Critical Errors, and Selective Automation",
+      "topic": "research",
+      "item_ids": [
+        "5a4e5e3f052e70301a4ce857"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-61ecc51569926293",
+      "representative_title": "Sonar-MoE: In-Backward Expert Updates for Memory-Efficient Mixture-of-Experts Training",
+      "topic": "research",
+      "item_ids": [
+        "a63674c5b5430042a5adf75d"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-8a6e0b7b88691319",
+      "representative_title": "Beyond Equation Search: Conjecture-Guided Discovery with SCOPE and ClosureBench",
+      "topic": "research",
+      "item_ids": [
+        "394c1d937d63f8e3d65c9f73"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-e43e9d904d1e8fd3",
+      "representative_title": "langgraph-cli==0.4.42",
+      "topic": "runtime",
+      "item_ids": [
+        "d9dbdb581f79f750ac49133b"
+      ],
+      "source_ids": [
+        "release:langchain-ai/langgraph"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-7704274e86233fdb",
+      "representative_title": "langgraph-sdk==0.4.14",
+      "topic": "runtime",
+      "item_ids": [
+        "66af235e42475984322168dc"
+      ],
+      "source_ids": [
+        "release:langchain-ai/langgraph"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-6df251a4ae73997f",
+      "representative_title": "Article Nov 4, 2026 New agents and products for security, productivity, and creative work on Claude Marketplace",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "eeb92871f1c91dcf31d3a753"
+      ],
+      "source_ids": [
+        "claude-announcements"
+      ],
+      "status": "needs_verification"
+    }
+  ],
+  "usage_note": "Unverified candidates: verify first-party evidence, actual event time and independent sources before any trend/claim update."
+}

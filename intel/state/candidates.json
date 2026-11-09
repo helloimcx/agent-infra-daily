@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_ingested_snapshot": "2026-11-08T01:43:09+00:00",
+  "last_ingested_snapshot": "2026-11-09T01:51:02+00:00",
   "bootstrap_note": "Two independently verified candidates recovered from the successful 2026-10-22 ingestion artifact. This is not the full 54-item ledger; the next scheduled collector will merge all available items.",
   "candidates": {
     "ec-003fa87d129d34d7": {
@@ -79,7 +79,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-07T00:58:18+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "02be4a11c1b8f44b2214353a"
       ],
@@ -325,6 +325,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-080ad12a7a559d73": {
+      "id": "ec-080ad12a7a559d73",
+      "title": "Robin Desktop v0.3.16",
+      "topic": "cloud-agent",
+      "source_kind": "github_release",
+      "published_at": "2026-11-09T00:12:34+00:00",
+      "first_seen_at": "2026-11-09T01:51:02+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
+      "item_ids": [
+        "080ad12a7a559d731b5b0ae4"
+      ],
+      "sources": [
+        {
+          "item_id": "080ad12a7a559d731b5b0ae4",
+          "source_id": "release:langchain-ai/open-swe",
+          "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.16",
+          "published_at": "2026-11-09T00:12:34+00:00",
+          "title": "Robin Desktop v0.3.16",
+          "first_discovered_at": "2026-11-09T01:51:02+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-0930381b35380719": {
       "id": "ec-0930381b35380719",
       "title": "langgraph-cli==0.4.41",
@@ -470,7 +493,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "0b4880e5745fa2d6d855c7a1"
       ],
@@ -723,7 +746,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T17:13:13+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "1109c7dc5eeb22026df6e0e3"
       ],
@@ -884,7 +907,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "170bf14389b47ac2018e6dd4"
       ],
@@ -953,7 +976,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T17:09:18+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "17e756367fad950697ec2074",
         "e22092f79218deeb38201f83"
@@ -1192,7 +1215,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "1bbee645176fecfe327cc050"
       ],
@@ -1261,7 +1284,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "1ca2419ee376f343df8dc37f"
       ],
@@ -1974,7 +1997,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "2a0eea074486de5dc48b369d"
       ],
@@ -2158,7 +2181,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T17:34:45+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "2e5ff519dea4168bfd3fbf07"
       ],
@@ -2480,7 +2503,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "37b410e7f6bfbf9cc96445e7"
       ],
@@ -2641,7 +2664,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "394c1d937d63f8e3d65c9f73"
       ],
@@ -2687,7 +2710,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T16:55:05+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "39d0fa8ab15570a16f24e441"
       ],
@@ -3124,7 +3147,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-06T18:41:22+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "4540c913701005ea3391d598"
       ],
@@ -3423,7 +3446,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-06T21:18:53+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "4f38a333d415d0483a7abceb"
       ],
@@ -3906,7 +3929,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "59c49f4b971bfb39e2386edd"
       ],
@@ -3975,7 +3998,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "5a4e5e3f052e70301a4ce857"
       ],
@@ -3998,7 +4021,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T14:00:48+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "5a90caffb2c87d2e6e8eb5c3"
       ],
@@ -4550,7 +4573,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-06T03:03:34+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "66af235e42475984322168dc"
       ],
@@ -5111,7 +5134,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "788914e0b8196ca837f5b8da"
       ],
@@ -5387,7 +5410,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-05T05:00:00+00:00",
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "7dd9677362f1004d2eafdcc7"
       ],
@@ -5617,7 +5640,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T18:01:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "819549b983fd9118af23e6dd"
       ],
@@ -5962,7 +5985,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "8a424d75a52656da5062b8ac"
       ],
@@ -6100,7 +6123,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "8ce7eabf07520571d5611ef7"
       ],
@@ -6169,7 +6192,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T16:49:42+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "8dc1ca775a3702bbbdcddbfa"
       ],
@@ -6376,7 +6399,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "93d8a7d8e1c8aa0eaed0ea12"
       ],
@@ -6951,7 +6974,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T08:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "a0a44ed09dc9a1089b4e099f"
       ],
@@ -7227,7 +7250,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "a63674c5b5430042a5adf75d"
       ],
@@ -7480,7 +7503,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "aa7591d41de664d26a53bfd2"
       ],
@@ -7641,7 +7664,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "afd3f9e57d23c8940a5fb933"
       ],
@@ -7917,7 +7940,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-07T19:13:42+00:00",
       "first_seen_at": "2026-11-08T01:43:09+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "b705b30fd8c06b530badbea6"
       ],
@@ -8078,7 +8101,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "b8ddb7732d95525f9382654d"
       ],
@@ -8469,7 +8492,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T16:45:58+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "c09ed239791d8febad3d319c"
       ],
@@ -8768,7 +8791,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "c6b91c7aedd133277e547091"
       ],
@@ -9274,7 +9297,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "d857ba5874c1d423566f3dac"
       ],
@@ -9343,7 +9366,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-06T03:04:13+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "d9dbdb581f79f750ac49133b"
       ],
@@ -9918,7 +9941,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-11-06T02:44:03+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "eeb92871f1c91dcf31d3a753"
       ],
@@ -10010,7 +10033,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "f0247d2be6d23fda27989bba"
       ],
@@ -10187,6 +10210,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-f864a265ed17fbb9": {
+      "id": "ec-f864a265ed17fbb9",
+      "title": "Robin Desktop v0.3.15",
+      "topic": "cloud-agent",
+      "source_kind": "github_release",
+      "published_at": "2026-11-08T22:36:29+00:00",
+      "first_seen_at": "2026-11-09T01:51:02+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
+      "item_ids": [
+        "f864a265ed17fbb93de60505"
+      ],
+      "sources": [
+        {
+          "item_id": "f864a265ed17fbb93de60505",
+          "source_id": "release:langchain-ai/open-swe",
+          "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.15",
+          "published_at": "2026-11-08T22:36:29+00:00",
+          "title": "Robin Desktop v0.3.15",
+          "first_discovered_at": "2026-11-09T01:51:02+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-f88a73bde86676a4": {
       "id": "ec-f88a73bde86676a4",
       "title": "ARCANA: A Benchmark for Abstraction and Analogical Reasoning",
@@ -10240,7 +10286,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "f9a06db5981496d8d8b781f1"
       ],
@@ -10355,7 +10401,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-06T05:00:00+00:00",
       "first_seen_at": "2026-11-07T02:12:56+00:00",
-      "last_seen_at": "2026-11-08T01:43:09+00:00",
+      "last_seen_at": "2026-11-09T01:51:02+00:00",
       "item_ids": [
         "fbdcf45317f2ddb1203fe802"
       ],
@@ -10479,6 +10525,7 @@
     "071ab93645637197f5569a5c": "ec-071ab93645637197",
     "073f790e28d708d8031ef12d": "ec-073f790e28d708d8",
     "07ac0ffad9653f77f544a51a": "ec-07ac0ffad9653f77",
+    "080ad12a7a559d731b5b0ae4": "ec-080ad12a7a559d73",
     "0930381b353807195d62cdab": "ec-0930381b35380719",
     "09a52776f0528d1ace295af6": "ec-09a52776f0528d1a",
     "09af4ba16f83444e285e3623": "ec-09af4ba16f83444e",
@@ -10909,6 +10956,7 @@
     "f5ebfafb83c6121bc98f39f9": "ec-f5ebfafb83c6121b",
     "f69a2924ccfb907940106e80": "ec-f69a2924ccfb9079",
     "f6cf73b1fedb638ef18cee2b": "ec-f6cf73b1fedb638e",
+    "f864a265ed17fbb93de60505": "ec-f864a265ed17fbb9",
     "f88a73bde86676a413ce87c2": "ec-f88a73bde86676a4",
     "f8c156dba7886826388b35c0": "ec-f8c156dba7886826",
     "f9a06db5981496d8d8b781f1": "ec-f9a06db5981496d8",
