@@ -1,45 +1,115 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-09T01:51:10+00:00",
-  "snapshot_generated_at": "2026-11-09T01:51:02+00:00",
-  "beijing_date": "2026-11-09",
+  "generated_at": "2026-11-10T04:16:08+00:00",
+  "snapshot_generated_at": "2026-11-10T04:15:58+00:00",
+  "beijing_date": "2026-11-10",
   "kind": "unverified_editorial_review_queue",
   "count": 22,
-  "eligible_item_count": 42,
+  "eligible_item_count": 39,
   "topic_distribution": {
     "cloud-agent": 9,
     "harness": 5,
-    "research": 6,
-    "runtime": 2
+    "research": 7,
+    "sandbox": 1
   },
   "source_distribution": {
-    "anthropic-site": 3,
+    "anthropic-site": 1,
     "arxiv-cs-ai": 5,
-    "aws-ml": 3,
-    "claude-announcements": 1,
-    "huggingface-blog": 1,
-    "openai-news": 1,
+    "aws-ml": 5,
+    "huggingface-blog": 2,
+    "openai-news": 4,
     "release:OpenHands/software-agent-sdk": 1,
-    "release:google/adk-python": 1,
-    "release:langchain-ai/langgraph": 2,
-    "release:langchain-ai/open-swe": 4
+    "release:anthropics/sandbox-runtime": 1,
+    "release:langchain-ai/open-swe": 3
   },
   "items": [
     {
-      "item_id": "a0a44ed09dc9a1089b4e099f",
-      "candidate_id": "ec-a0a44ed09dc9a108",
-      "title": "Partnering with Hacktron to find vulnerabilities in OpenAI’s systems",
-      "url": "https://openai.com/index/partnering-with-hacktron",
+      "item_id": "02e9abf47eaf3fa01f98fe0d",
+      "candidate_id": "ec-02e9abf47eaf3fa0",
+      "title": "CodeRabbit scales agentic software development and ships 20x more",
+      "url": "https://openai.com/index/coderabbit-codex-daybreak",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-06T08:00:00+00:00",
-      "review_order_score": 7,
+      "claimed_published_at": "2026-11-09T08:00:00+00:00",
+      "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "2e34e84f0999c607fcd02663",
+      "candidate_id": "ec-2e34e84f0999c607",
+      "title": "Kuken Industries searches 70 years of drawings in minutes",
+      "url": "https://openai.com/index/kuken",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-09T08:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "952d2516af2e905436adea3b",
+      "candidate_id": "ec-952d2516af2e9054",
+      "title": "Control Room: A central system to track and stop model workloads across our research infrastructure",
+      "url": "https://openai.com/index/control-room",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-09T13:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "caa9073cefb43725f1a58e80",
+      "candidate_id": "ec-caa9073cefb43725",
+      "title": "ChatGPT Enterprise now available in AWS Marketplace",
+      "url": "https://openai.com/index/chatgpt-enterprise-aws-marketplace",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-09T19:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "3665b823581f863c6ce5db46",
+      "candidate_id": "ec-3665b823581f863c",
+      "title": "v1.61.0",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.61.0",
+      "source_id": "release:OpenHands/software-agent-sdk",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-09T19:03:02+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -53,24 +123,6 @@
       "topic": "cloud-agent",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-09T00:12:34+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "b705b30fd8c06b530badbea6",
-      "candidate_id": "ec-b705b30fd8c06b53",
-      "title": "Robin Desktop v0.3.14",
-      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.14",
-      "source_id": "release:langchain-ai/open-swe",
-      "source_kind": "github_release",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-07T19:13:42+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -98,51 +150,123 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "eeb92871f1c91dcf31d3a753",
-      "candidate_id": "ec-eeb92871f1c91dcf",
-      "title": "Article Nov 4, 2026 New agents and products for security, productivity, and creative work on Claude Marketplace",
-      "url": "https://claude.com/resources/articles/new-agents-and-products-claude-marketplace",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "4540c913701005ea3391d598",
-      "candidate_id": "ec-4540c913701005ea",
-      "title": "v1.60.2",
-      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.60.2",
-      "source_id": "release:OpenHands/software-agent-sdk",
+      "item_id": "85df8c68b0d3ca57fbf75baa",
+      "candidate_id": "ec-85df8c68b0d3ca57",
+      "title": "v0.0.82",
+      "url": "https://github.com/anthropics/sandbox-runtime/releases/tag/v0.0.82",
+      "source_id": "release:anthropics/sandbox-runtime",
       "source_kind": "github_release",
-      "topic": "cloud-agent",
+      "topic": "sandbox",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-06T18:41:22+00:00",
-      "review_order_score": 5,
+      "claimed_published_at": "2026-11-09T23:38:47+00:00",
+      "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "official_release_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "4f38a333d415d0483a7abceb",
-      "candidate_id": "ec-4f38a333d415d048",
-      "title": "Robin Desktop v0.3.13",
-      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.13",
+      "item_id": "1cff1239c8922e0328f0923e",
+      "candidate_id": "ec-1cff1239c8922e03",
+      "title": "NVIDIA Nemotron 3.5 Super VL is now available in Amazon SageMaker JumpStart",
+      "url": "https://aws.amazon.com/blogs/machine-learning/nvidia-nemotron-3-5-super-vl-is-now-available-in-amazon-sagemaker-jumpstart",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-09T20:01:20+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "5892c0cb7396af2cb5ccfea1",
+      "candidate_id": "ec-5892c0cb7396af2c",
+      "title": "Introducing Claude Fable 5.2 on AWS",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-claude-fable-5-2-on-aws",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-09T20:04:37+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "7d1e00daeb767a073fac0c06",
+      "candidate_id": "ec-7d1e00daeb767a07",
+      "title": "How CrossnoKaye grounds physical AI with Amazon Bedrock AgentCore",
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-crossnokaye-grounds-physical-ai-with-amazon-bedrock-agentcore",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-09T18:55:43+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "a22fd9bbbe2056925d2578d7",
+      "candidate_id": "ec-a22fd9bbbe205692",
+      "title": "How skills and agents work in AWS Quick",
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-skills-and-agents-work-in-aws-quick",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-10T00:21:34+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "a393a08732124dc48b79299a",
+      "candidate_id": "ec-a393a08732124dc4",
+      "title": "Professional work deserves professional tools. Meet AWS Quick.",
+      "url": "https://aws.amazon.com/blogs/machine-learning/professional-work-deserves-professional-tools-meet-aws-quick",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-09T18:43:30+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "b705b30fd8c06b530badbea6",
+      "candidate_id": "ec-b705b30fd8c06b53",
+      "title": "Robin Desktop v0.3.14",
+      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.14",
       "source_id": "release:langchain-ai/open-swe",
       "source_kind": "github_release",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-06T21:18:53+00:00",
+      "claimed_published_at": "2026-11-07T19:13:42+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -152,10 +276,10 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "8a424d75a52656da5062b8ac",
-      "candidate_id": "ec-8a424d75a52656da",
-      "title": "Official site update: teaching ai to build scientific models",
-      "url": "https://www.anthropic.com/research/teaching-ai-to-build-scientific-models",
+      "item_id": "0c77ff5e2b269a81b0d4b02b",
+      "candidate_id": "ec-0c77ff5e2b269a81",
+      "title": "Official site update: claude electronics design",
+      "url": "https://www.anthropic.com/research/claude-electronics-design",
       "source_id": "anthropic-site",
       "source_kind": "official_sitemap",
       "topic": "harness",
@@ -170,254 +294,128 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "8ce7eabf07520571d5611ef7",
-      "candidate_id": "ec-8ce7eabf07520571",
-      "title": "Official site update: project eve claude plays mmorpgs",
-      "url": "https://www.anthropic.com/research/project-eve-claude-plays-mmorpgs",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "f0247d2be6d23fda27989bba",
-      "candidate_id": "ec-f0247d2be6d23fda",
-      "title": "Official site update: components of agent memory",
-      "url": "https://www.anthropic.com/research/components-of-agent-memory",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "02be4a11c1b8f44b2214353a",
-      "candidate_id": "ec-02be4a11c1b8f44b",
-      "title": "v2.14.0",
-      "url": "https://github.com/google/adk-python/releases/tag/v2.14.0",
-      "source_id": "release:google/adk-python",
-      "source_kind": "github_release",
-      "topic": "harness",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-07T00:58:18+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "66af235e42475984322168dc",
-      "candidate_id": "ec-66af235e42475984",
-      "title": "langgraph-sdk==0.4.14",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/sdk%3D%3D0.4.14",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-06T03:03:34+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "d9dbdb581f79f750ac49133b",
-      "candidate_id": "ec-d9dbdb581f79f750",
-      "title": "langgraph-cli==0.4.42",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.42",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-06T03:04:13+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "1109c7dc5eeb22026df6e0e3",
-      "candidate_id": "ec-1109c7dc5eeb2202",
-      "title": "Serverless MCP server for AI agent data lake access on Amazon ECS Fargate",
-      "url": "https://aws.amazon.com/blogs/machine-learning/serverless-mcp-server-for-ai-agent-data-lake-access-on-amazon-ecs-fargate",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-06T17:13:13+00:00",
-      "review_order_score": 4,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "17e756367fad950697ec2074",
-      "candidate_id": "ec-17e756367fad9506",
-      "title": "Govern AI agent access with Okta Cross App Access and Amazon Bedrock AgentCore – Part 1",
-      "url": "https://aws.amazon.com/blogs/machine-learning/govern-ai-agent-access-with-okta-cross-app-access-and-amazon-bedrock-agentcore-part-1",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-06T17:09:18+00:00",
-      "review_order_score": 4,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "2e5ff519dea4168bfd3fbf07",
-      "candidate_id": "ec-2e5ff519dea4168b",
-      "title": "Taxonomy of agentic primitives in Amazon Quick",
-      "url": "https://aws.amazon.com/blogs/machine-learning/taxonomy-of-agentic-primitives-in-amazon-quick",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-06T17:34:45+00:00",
-      "review_order_score": 4,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "0b4880e5745fa2d6d855c7a1",
-      "candidate_id": "ec-0b4880e5745fa2d6",
-      "title": "Multi-Estimate Elicitation Does Not Uniformly Debias Language Model Judgments",
-      "url": "https://arxiv.org/abs/2611.00597",
+      "item_id": "1083adcbb0910d761f3d0c3f",
+      "candidate_id": "ec-1083adcbb0910d76",
+      "title": "The Standard Interpretable Model: Design interpretable machine learning methods from elementary symmetries",
+      "url": "https://arxiv.org/abs/2606.12289",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-06T05:00:00+00:00",
-      "review_order_score": 4,
+      "claimed_published_at": "2026-11-09T05:00:00+00:00",
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "170bf14389b47ac2018e6dd4",
-      "candidate_id": "ec-170bf14389b47ac2",
-      "title": "The Price of Safety: Benign-Case Utility and Token Overhead of Memory-Poisoning Defenses in LLM Agents",
-      "url": "https://arxiv.org/abs/2609.22818",
+      "item_id": "1172b35cd784282a3596e98b",
+      "candidate_id": "ec-1172b35cd784282a",
+      "title": "Oscillatory Phase Coding Emerges in Adaptive RNNs for Flexible Working Memory",
+      "url": "https://arxiv.org/abs/2611.06932",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-06T05:00:00+00:00",
-      "review_order_score": 4,
+      "claimed_published_at": "2026-11-09T05:00:00+00:00",
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1bbee645176fecfe327cc050",
-      "candidate_id": "ec-1bbee645176fecfe",
-      "title": "GAAC: Lossless KV Compression for Bandwidth-Efficient LLM Inference on Personal Devices",
-      "url": "https://arxiv.org/abs/2610.38210",
+      "item_id": "183ec04de30fb43304b3047c",
+      "candidate_id": "ec-183ec04de30fb433",
+      "title": "Today's Work, Tomorrow's Workforce: Incentivizing Learning in AI-Assisted Work",
+      "url": "https://arxiv.org/abs/2611.06346",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-06T05:00:00+00:00",
-      "review_order_score": 4,
+      "claimed_published_at": "2026-11-09T05:00:00+00:00",
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1ca2419ee376f343df8dc37f",
-      "candidate_id": "ec-1ca2419ee376f343",
-      "title": "TSBPO: Tree-Structured Branching for Policy Optimization in Interactive Language Agents",
-      "url": "https://arxiv.org/abs/2610.41697",
+      "item_id": "2bb788bfc7de18cfd1bb1118",
+      "candidate_id": "ec-2bb788bfc7de18cf",
+      "title": "When Disclosure Is Compulsory: Evaluating Ride-Hailing Rebalancing Policies with Self-Interested LLM Driver Agents",
+      "url": "https://arxiv.org/abs/2610.41132",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-06T05:00:00+00:00",
-      "review_order_score": 4,
+      "claimed_published_at": "2026-11-09T05:00:00+00:00",
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "2a0eea074486de5dc48b369d",
-      "candidate_id": "ec-2a0eea074486de5d",
-      "title": "Constraining the Commit Boundary: A DIO/ODI-Informed Authorization Guardrail for Agentic Entity Resolution",
-      "url": "https://arxiv.org/abs/2610.37407",
+      "item_id": "45c9dfc7c50468a53493859f",
+      "candidate_id": "ec-45c9dfc7c50468a5",
+      "title": "Agentic Abstention: Do Agents Know When to Stop Instead of Act?",
+      "url": "https://arxiv.org/abs/2606.28733",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-06T05:00:00+00:00",
-      "review_order_score": 4,
+      "claimed_published_at": "2026-11-09T05:00:00+00:00",
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "5a90caffb2c87d2e6e8eb5c3",
-      "candidate_id": "ec-5a90caffb2c87d2e",
-      "title": "ToyBlocks: A controlled world for robot learning and evaluation",
-      "url": "https://huggingface.co/blog/allenai/toyblocks",
+      "item_id": "55d059b88c6c576a2f3d9ab4",
+      "candidate_id": "ec-55d059b88c6c576a",
+      "title": "Your Experts Have Partners. There's HOPE for Keeping Them Together",
+      "url": "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
       "source_id": "huggingface-blog",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-06T14:00:48+00:00",
-      "review_order_score": 4,
+      "claimed_published_at": "2026-11-09T12:34:29+00:00",
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "ac8f18750241a65f1eaff594",
+      "candidate_id": "ec-ac8f18750241a65f",
+      "title": "Nemotron-Personas-Finance-Japan: A Synthetic Dataset Capturing Japan's Demographics and Financial Context",
+      "url": "https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-09T15:05:57+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     }
