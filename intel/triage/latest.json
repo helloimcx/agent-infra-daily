@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-11T02:06:34+00:00",
-  "snapshot_generated_at": "2026-11-11T02:06:25+00:00",
-  "beijing_date": "2026-11-11",
+  "generated_at": "2026-11-12T03:16:18+00:00",
+  "snapshot_generated_at": "2026-11-12T03:16:10+00:00",
+  "beijing_date": "2026-11-12",
   "kind": "unverified_editorial_review_queue",
   "count": 29,
-  "eligible_item_count": 64,
+  "eligible_item_count": 83,
   "topic_distribution": {
     "cloud-agent": 9,
     "harness": 9,
@@ -13,37 +13,18 @@
     "sandbox": 2
   },
   "source_distribution": {
-    "anthropic-site": 3,
+    "anthropic-site": 2,
     "arxiv-cs-ai": 5,
     "aws-ml": 5,
     "claude-announcements": 3,
-    "deepmind-blog": 3,
-    "huggingface-blog": 1,
+    "deepmind-blog": 4,
     "openai-news": 5,
     "release:NVIDIA/OpenShell": 1,
     "release:OpenHands/software-agent-sdk": 1,
     "release:anthropics/sandbox-runtime": 1,
-    "release:openai/codex": 1
+    "release:openai/codex": 2
   },
   "items": [
-    {
-      "item_id": "02e9abf47eaf3fa01f98fe0d",
-      "candidate_id": "ec-02e9abf47eaf3fa0",
-      "title": "CodeRabbit scales agentic software development and ships 20x more",
-      "url": "https://openai.com/index/coderabbit-codex-daybreak",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-09T08:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
     {
       "item_id": "0f0020abcf733229d29f4d40",
       "candidate_id": "ec-0f0020abcf733229",
@@ -63,15 +44,33 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "2e34e84f0999c607fcd02663",
-      "candidate_id": "ec-2e34e84f0999c607",
-      "title": "Kuken Industries searches 70 years of drawings in minutes",
-      "url": "https://openai.com/index/kuken",
+      "item_id": "55ff14dc4213127df72a8039",
+      "candidate_id": "ec-55ff14dc4213127d",
+      "title": "JioStar’s chief architect on AI discovery at 500M-user scale",
+      "url": "https://openai.com/index/jiostar-vijay-seshadri",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-09T08:00:00+00:00",
+      "claimed_published_at": "2026-11-11T00:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "65b96c238445cdedc96b3e82",
+      "candidate_id": "ec-65b96c238445cded",
+      "title": "Gilbert + Tobin rethinks the business of law with AI",
+      "url": "https://openai.com/index/gilbert-tobin-sam-nickless",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-12T00:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -99,15 +98,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "952d2516af2e905436adea3b",
-      "candidate_id": "ec-952d2516af2e9054",
-      "title": "Control Room: A central system to track and stop model workloads across our research infrastructure",
-      "url": "https://openai.com/index/control-room",
+      "item_id": "9092d5eb66f29547408d30e0",
+      "candidate_id": "ec-9092d5eb66f29547",
+      "title": "Singapore Airlines elevates travel & work with OpenAI technology",
+      "url": "https://openai.com/index/singapore-airlines-travel-work",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-09T13:00:00+00:00",
+      "claimed_published_at": "2026-11-10T08:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -153,15 +152,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "6b6709b612e5913e3ffca54a",
-      "candidate_id": "ec-6b6709b612e5913e",
-      "title": "Gemini Robotics 2.5 accelerates real-world general dexterity",
-      "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence",
+      "item_id": "ba0fcf4e325b4115c73c9ef8",
+      "candidate_id": "ec-ba0fcf4e325b4115",
+      "title": "AlphaGenome 2: Deciphering how cells read DNA to better understand disease",
+      "url": "https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease",
       "source_id": "deepmind-blog",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-09T19:51:47+00:00",
+      "claimed_published_at": "2026-11-11T15:00:15+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -171,15 +170,33 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "3665b823581f863c6ce5db46",
-      "candidate_id": "ec-3665b823581f863c",
-      "title": "v1.61.0",
-      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.61.0",
+      "item_id": "6b6709b612e5913e3ffca54a",
+      "candidate_id": "ec-6b6709b612e5913e",
+      "title": "Gemini Robotics 2.5 accelerates real-world general dexterity",
+      "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence",
+      "source_id": "deepmind-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-09T19:51:47+00:00",
+      "review_order_score": 7,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "06dbb73b800c20fc2e488a9e",
+      "candidate_id": "ec-06dbb73b800c20fc",
+      "title": "v1.62.0",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.62.0",
       "source_id": "release:OpenHands/software-agent-sdk",
       "source_kind": "github_release",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-09T19:03:02+00:00",
+      "claimed_published_at": "2026-11-11T12:46:25+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -207,6 +224,24 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "917e81f74d6a6479d67199d6",
+      "candidate_id": "ec-917e81f74d6a6479",
+      "title": "0.167.2",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.2",
+      "source_id": "release:openai/codex",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-11T22:44:46+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "4bf16e78658a3e3cb1c0cd3d",
       "candidate_id": "ec-4bf16e78658a3e3c",
       "title": "OpenShell v0.1.8",
@@ -225,19 +260,19 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "85df8c68b0d3ca57fbf75baa",
-      "candidate_id": "ec-85df8c68b0d3ca57",
-      "title": "v0.0.82",
-      "url": "https://github.com/anthropics/sandbox-runtime/releases/tag/v0.0.82",
-      "source_id": "release:anthropics/sandbox-runtime",
-      "source_kind": "github_release",
-      "topic": "sandbox",
+      "item_id": "0b71d9152872afc96953add9",
+      "candidate_id": "ec-0b71d9152872afc9",
+      "title": "ICYMI: What landed for AI builders in October 2026",
+      "url": "https://aws.amazon.com/blogs/machine-learning/icymi-what-landed-for-ai-builders-in-october-2026",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-09T23:38:47+00:00",
-      "review_order_score": 6,
+      "claimed_published_at": "2026-11-11T22:26:40+00:00",
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
-        "official_release_record",
+        "first_party_feed_record",
         "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
@@ -261,15 +296,33 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1cff1239c8922e0328f0923e",
-      "candidate_id": "ec-1cff1239c8922e03",
-      "title": "NVIDIA Nemotron 3.5 Super VL is now available in Amazon SageMaker JumpStart",
-      "url": "https://aws.amazon.com/blogs/machine-learning/nvidia-nemotron-3-5-super-vl-is-now-available-in-amazon-sagemaker-jumpstart",
+      "item_id": "24bc76c8a5ccec322485553c",
+      "candidate_id": "ec-24bc76c8a5ccec32",
+      "title": "Detecting and recovering from silent data corruption on Amazon SageMaker HyperPod",
+      "url": "https://aws.amazon.com/blogs/machine-learning/detecting-and-recovering-from-silent-data-corruption-on-amazon-sagemaker-hyperpod",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-09T20:01:20+00:00",
+      "claimed_published_at": "2026-11-11T23:30:03+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "37a8e4c6f059815446f80c33",
+      "candidate_id": "ec-37a8e4c6f0598154",
+      "title": "Introducing the Web Search API on Amazon Bedrock AgentCore",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-the-web-search-api-on-amazon-bedrock-agentcore",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-11T23:13:16+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -288,42 +341,6 @@
       "topic": "cloud-agent",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-10T16:59:43+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "5892c0cb7396af2cb5ccfea1",
-      "candidate_id": "ec-5892c0cb7396af2c",
-      "title": "Introducing Claude Fable 5.2 on AWS",
-      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-claude-fable-5-2-on-aws",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-09T20:04:37+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "6d77a575f579de9bddf060a1",
-      "candidate_id": "ec-6d77a575f579de9b",
-      "title": "The agent evaluation playbook: Built-in, DeepEval, and AutoEval on Amazon Bedrock AgentCore Evaluations",
-      "url": "https://aws.amazon.com/blogs/machine-learning/the-agent-evaluation-playbook-built-in-deepeval-and-autoeval-on-agentcore",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-10T22:35:03+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -423,33 +440,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "84757a8b6e04ab0dc5be5bc1",
-      "candidate_id": "ec-84757a8b6e04ab0d",
-      "title": "Official site update: roadshow launch",
-      "url": "https://www.anthropic.com/news/roadshow-launch",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "18abffbc67253d87f2de506d",
-      "candidate_id": "ec-18abffbc67253d87",
-      "title": "Equivariant Spherical Transformer for Efficient Molecular Modeling",
-      "url": "https://arxiv.org/abs/2505.23086",
+      "item_id": "0e6aeb512df07c7120719bdd",
+      "candidate_id": "ec-0e6aeb512df07c71",
+      "title": "Seeing Isn't Enough: Unlocking Visual Reasoning by Bridging the Reasoning-Access Gap with TIGER",
+      "url": "https://arxiv.org/abs/2611.10552",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-10T05:00:00+00:00",
+      "claimed_published_at": "2026-11-11T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -459,15 +458,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1b801dd13d74ebe7dafb66c3",
-      "candidate_id": "ec-1b801dd13d74ebe7",
-      "title": "Neural Image Compression with Internal-External Prior Fusion and Alignment",
-      "url": "https://arxiv.org/abs/2611.07644",
+      "item_id": "169aa2f41de4c61f45281d4d",
+      "candidate_id": "ec-169aa2f41de4c61f",
+      "title": "Do Language Models Know Which Constraints Belong Together?",
+      "url": "https://arxiv.org/abs/2611.05726",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-10T05:00:00+00:00",
+      "claimed_published_at": "2026-11-11T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -477,15 +476,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1ef9e7f0384b9fb9634c0812",
-      "candidate_id": "ec-1ef9e7f0384b9fb9",
-      "title": "DelegateEval: Evaluating Platforms for Personal External Service Agents",
-      "url": "https://arxiv.org/abs/2611.07508",
+      "item_id": "1e10ce46b4f62c9bd0d60e25",
+      "candidate_id": "ec-1e10ce46b4f62c9b",
+      "title": "When Should Diffusion Language Models Reconsider Their Commitments?",
+      "url": "https://arxiv.org/abs/2611.11551",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-10T05:00:00+00:00",
+      "claimed_published_at": "2026-11-11T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -495,15 +494,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "222aab3a65a47795108b4dae",
-      "candidate_id": "ec-222aab3a65a47795",
-      "title": "Tiny but Trusted: Efficient Vision-Language Reasoning for Time-Series Anomaly Detection",
-      "url": "https://arxiv.org/abs/2605.30344",
+      "item_id": "1e5c521222ef82e4c6b42b23",
+      "candidate_id": "ec-1e5c521222ef82e4",
+      "title": "A Statistical Framework for Algorithmic Collective Action with Multiple Collectives",
+      "url": "https://arxiv.org/abs/2605.06749",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-10T05:00:00+00:00",
+      "claimed_published_at": "2026-11-11T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -513,15 +512,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "2bb788bfc7de18cfd1bb1118",
-      "candidate_id": "ec-2bb788bfc7de18cf",
-      "title": "When Disclosure Is Compulsory: Evaluating Ride-Hailing Rebalancing Policies with Self-Interested LLM Driver Agents",
-      "url": "https://arxiv.org/abs/2610.41132",
+      "item_id": "2fd8e8bb5d87d3210012832b",
+      "candidate_id": "ec-2fd8e8bb5d87d321",
+      "title": "Agentic discrete-event simulation for manufacturing system design: an open 3D simulator, a benchmark and an industrial case",
+      "url": "https://arxiv.org/abs/2611.10602",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-10T05:00:00+00:00",
+      "claimed_published_at": "2026-11-11T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -531,20 +530,20 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "55d059b88c6c576a2f3d9ab4",
-      "candidate_id": "ec-55d059b88c6c576a",
-      "title": "Your Experts Have Partners. There's HOPE for Keeping Them Together",
-      "url": "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
-      "source_id": "huggingface-blog",
-      "source_kind": "rss",
-      "topic": "research",
+      "item_id": "85df8c68b0d3ca57fbf75baa",
+      "candidate_id": "ec-85df8c68b0d3ca57",
+      "title": "v0.0.82",
+      "url": "https://github.com/anthropics/sandbox-runtime/releases/tag/v0.0.82",
+      "source_id": "release:anthropics/sandbox-runtime",
+      "source_kind": "github_release",
+      "topic": "sandbox",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-09T12:34:29+00:00",
+      "claimed_published_at": "2026-11-09T23:38:47+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     }

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-11",
-  "generated_at": "2026-11-11T02:06:25+00:00",
+  "date": "2026-11-12",
+  "generated_at": "2026-11-12T03:16:10+00:00",
   "collection_status": "ok",
   "source_health": {
     "healthy": 19,
@@ -11,12 +11,12 @@
     "failed_source_ids": []
   },
   "candidate_metrics": {
-    "items_in_snapshot": 64,
-    "clusters_in_snapshot": 64,
+    "items_in_snapshot": 83,
+    "clusters_in_snapshot": 83,
     "duplicate_items_clustered": 0,
     "clustered_fraction": 0.0,
-    "cross_day_candidates_retained": 535,
-    "unverified_backlog": 535
+    "cross_day_candidates_retained": 582,
+    "unverified_backlog": 582
   },
   "curation_metrics": {
     "verified_events": 2,
