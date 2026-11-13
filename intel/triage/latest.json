@@ -1,15 +1,16 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-12T03:16:18+00:00",
-  "snapshot_generated_at": "2026-11-12T03:16:10+00:00",
-  "beijing_date": "2026-11-12",
+  "generated_at": "2026-11-13T02:50:10+00:00",
+  "snapshot_generated_at": "2026-11-13T02:50:01+00:00",
+  "beijing_date": "2026-11-13",
   "kind": "unverified_editorial_review_queue",
-  "count": 29,
-  "eligible_item_count": 83,
+  "count": 31,
+  "eligible_item_count": 88,
   "topic_distribution": {
     "cloud-agent": 9,
     "harness": 9,
     "research": 9,
+    "runtime": 2,
     "sandbox": 2
   },
   "source_distribution": {
@@ -22,37 +23,21 @@
     "release:NVIDIA/OpenShell": 1,
     "release:OpenHands/software-agent-sdk": 1,
     "release:anthropics/sandbox-runtime": 1,
-    "release:openai/codex": 2
+    "release:google/adk-python": 1,
+    "release:langchain-ai/langgraph": 2,
+    "release:openai/codex": 1
   },
   "items": [
     {
-      "item_id": "0f0020abcf733229d29f4d40",
-      "candidate_id": "ec-0f0020abcf733229",
-      "title": "Helping caregivers use AI in everyday life",
-      "url": "https://openai.com/index/helping-caregivers-use-ai-in-everyday-life",
+      "item_id": "4922ca6fb0dd92994c349853",
+      "candidate_id": "ec-4922ca6fb0dd9299",
+      "title": "Holiday Extras is rethinking what it can build with Codex",
+      "url": "https://openai.com/business/customer-stories/holidays-extras-codex",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-10T12:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "55ff14dc4213127df72a8039",
-      "candidate_id": "ec-55ff14dc4213127d",
-      "title": "JioStar’s chief architect on AI discovery at 500M-user scale",
-      "url": "https://openai.com/index/jiostar-vijay-seshadri",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-11T00:00:00+00:00",
+      "claimed_published_at": "2026-11-12T09:30:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -80,15 +65,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "69d4d9d74efa01629a6c751d",
-      "candidate_id": "ec-69d4d9d74efa0162",
-      "title": "Closing the AI guidance gap in education",
-      "url": "https://openai.com/index/closing-ai-guidance-gap-education",
+      "item_id": "67672a694e389b29af5588bf",
+      "candidate_id": "ec-67672a694e389b29",
+      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
+      "url": "https://openai.com/business/customer-stories/amplitude",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-10T09:00:00+00:00",
+      "claimed_published_at": "2026-11-12T20:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -98,15 +83,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "9092d5eb66f29547408d30e0",
-      "candidate_id": "ec-9092d5eb66f29547",
-      "title": "Singapore Airlines elevates travel & work with OpenAI technology",
-      "url": "https://openai.com/index/singapore-airlines-travel-work",
+      "item_id": "a491aa90d650ab2bf91e0a7d",
+      "candidate_id": "ec-67672a694e389b29",
+      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
+      "url": "https://openai.com/index/amplitude",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-10T08:00:00+00:00",
+      "claimed_published_at": "2026-11-12T20:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -116,15 +101,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "0e9fb0eb84f13acffdc59012",
-      "candidate_id": "ec-0e9fb0eb84f13acf",
-      "title": "Introducing AlphaProof Code: a breakthrough in verifying complex software at depth",
-      "url": "https://deepmind.google/blog/introducing-alphaproof-code",
-      "source_id": "deepmind-blog",
+      "item_id": "ac94b61a25ade5edbf713f08",
+      "candidate_id": "ec-ac94b61a25ade5ed",
+      "title": "ChatGPT Plus for veterans and servicemembers",
+      "url": "https://openai.com/index/chatgpt-plus-for-veterans",
+      "source_id": "openai-news",
       "source_kind": "rss",
-      "topic": "research",
+      "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-10T12:02:28+00:00",
+      "claimed_published_at": "2026-11-11T08:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -134,15 +119,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "55cb0588b3e8436e78b20ba9",
-      "candidate_id": "ec-55cb0588b3e8436e",
-      "title": "Gemini 4 Carbon is now available",
-      "url": "https://deepmind.google/blog/gemini-4-carbon-is-now-available",
+      "item_id": "5b69826eead48a963c75ef96",
+      "candidate_id": "ec-5b69826eead48a96",
+      "title": "Introducing Gemini 4 Hydrogen",
+      "url": "https://deepmind.google/blog/introducing-gemini-4-hydrogen",
       "source_id": "deepmind-blog",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-10T16:03:47+00:00",
+      "claimed_published_at": "2026-11-12T18:00:50+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -170,15 +155,33 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "6b6709b612e5913e3ffca54a",
-      "candidate_id": "ec-6b6709b612e5913e",
-      "title": "Gemini Robotics 2.5 accelerates real-world general dexterity",
-      "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence",
+      "item_id": "0e9fb0eb84f13acffdc59012",
+      "candidate_id": "ec-0e9fb0eb84f13acf",
+      "title": "Introducing AlphaProof Code: a breakthrough in verifying complex software at depth",
+      "url": "https://deepmind.google/blog/introducing-alphaproof-code",
       "source_id": "deepmind-blog",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-09T19:51:47+00:00",
+      "claimed_published_at": "2026-11-10T12:02:28+00:00",
+      "review_order_score": 7,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "55cb0588b3e8436e78b20ba9",
+      "candidate_id": "ec-55cb0588b3e8436e",
+      "title": "Gemini 4 Carbon is now available",
+      "url": "https://deepmind.google/blog/gemini-4-carbon-is-now-available",
+      "source_id": "deepmind-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-10T16:03:47+00:00",
       "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -206,15 +209,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "3d3fe24ae54746b997adc962",
-      "candidate_id": "ec-3d3fe24ae54746b9",
-      "title": "0.167.1",
-      "url": "https://github.com/openai/codex/releases/tag/rust-v0.167.1",
-      "source_id": "release:openai/codex",
+      "item_id": "c3059e05e75e3c250c5d63d4",
+      "candidate_id": "ec-c3059e05e75e3c25",
+      "title": "v2.14.1",
+      "url": "https://github.com/google/adk-python/releases/tag/v2.14.1",
+      "source_id": "release:google/adk-python",
       "source_kind": "github_release",
       "topic": "harness",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-10T21:32:01+00:00",
+      "claimed_published_at": "2026-11-12T21:30:11+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -242,15 +245,51 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "4bf16e78658a3e3cb1c0cd3d",
-      "candidate_id": "ec-4bf16e78658a3e3c",
-      "title": "OpenShell v0.1.8",
-      "url": "https://github.com/NVIDIA/OpenShell/releases/tag/v0.1.8",
-      "source_id": "release:NVIDIA/OpenShell",
+      "item_id": "1e949a58eebd48b906b02911",
+      "candidate_id": "ec-1e949a58eebd48b9",
+      "title": "langgraph-cli==0.4.43",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.43",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-12T16:20:16+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "affd8b38317038d7d684361b",
+      "candidate_id": "ec-affd8b38317038d7",
+      "title": "langgraph==1.2.21",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.21",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-12T18:06:43+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "6b230c5731b41cbfb5e06bbf",
+      "candidate_id": "ec-6b230c5731b41cbf",
+      "title": "v0.0.83",
+      "url": "https://github.com/anthropics/sandbox-runtime/releases/tag/v0.0.83",
+      "source_id": "release:anthropics/sandbox-runtime",
       "source_kind": "github_release",
       "topic": "sandbox",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-10T18:14:42+00:00",
+      "claimed_published_at": "2026-11-13T02:21:12+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -278,15 +317,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "13a34de7d52df6b34d60df0f",
-      "candidate_id": "ec-13a34de7d52df6b3",
-      "title": "Autonomous treasury agents: How Trovata built an AI-native solution on Amazon Bedrock and AgentCore",
-      "url": "https://aws.amazon.com/blogs/machine-learning/autonomous-treasury-agents-how-trovata-built-an-ai-native-solution-on-amazon-bedrock-and-agentcore",
+      "item_id": "0ca05117dff37c920736c0c6",
+      "candidate_id": "ec-0ca05117dff37c92",
+      "title": "How Natera designed an agentic AI system for lab ops with Amazon Bedrock AgentCore",
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-natera-designed-an-agentic-ai-system-for-lab-ops-with-amazon-bedrock-agentcore",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-10T18:11:08+00:00",
+      "claimed_published_at": "2026-11-12T21:47:07+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -332,15 +371,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "4895a9783a95645627eec273",
-      "candidate_id": "ec-4895a9783a956456",
-      "title": "How TCS built an agentic test orchestrator with Amazon Bedrock AgentCore",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-tcs-built-an-agentic-test-orchestrator-with-amazon-bedrock-agentcore",
+      "item_id": "3f93c71b9de8f22e7c865dba",
+      "candidate_id": "ec-3f93c71b9de8f22e",
+      "title": "From prototype to production: Engineering agents with Agent DLC",
+      "url": "https://aws.amazon.com/blogs/machine-learning/from-prototype-to-production-engineering-agents-with-agent-dlc",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-10T16:59:43+00:00",
+      "claimed_published_at": "2026-11-12T15:38:47+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -404,10 +443,10 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "0c77ff5e2b269a81b0d4b02b",
-      "candidate_id": "ec-0c77ff5e2b269a81",
-      "title": "Official site update: claude electronics design",
-      "url": "https://www.anthropic.com/research/claude-electronics-design",
+      "item_id": "4ec03078d3169fe59abbc675",
+      "candidate_id": "ec-4ec03078d3169fe5",
+      "title": "Official site update: claude 4",
+      "url": "https://www.anthropic.com/news/claude-4",
       "source_id": "anthropic-site",
       "source_kind": "official_sitemap",
       "topic": "harness",
@@ -530,15 +569,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "85df8c68b0d3ca57fbf75baa",
-      "candidate_id": "ec-85df8c68b0d3ca57",
-      "title": "v0.0.82",
-      "url": "https://github.com/anthropics/sandbox-runtime/releases/tag/v0.0.82",
-      "source_id": "release:anthropics/sandbox-runtime",
+      "item_id": "4bf16e78658a3e3cb1c0cd3d",
+      "candidate_id": "ec-4bf16e78658a3e3c",
+      "title": "OpenShell v0.1.8",
+      "url": "https://github.com/NVIDIA/OpenShell/releases/tag/v0.1.8",
+      "source_id": "release:NVIDIA/OpenShell",
       "source_kind": "github_release",
       "topic": "sandbox",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-09T23:38:47+00:00",
+      "claimed_published_at": "2026-11-10T18:14:42+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
