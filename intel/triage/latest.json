@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-14T02:37:29+00:00",
-  "snapshot_generated_at": "2026-11-14T02:37:23+00:00",
-  "beijing_date": "2026-11-14",
+  "generated_at": "2026-11-15T02:03:55+00:00",
+  "snapshot_generated_at": "2026-11-15T02:03:45+00:00",
+  "beijing_date": "2026-11-15",
   "kind": "unverified_editorial_review_queue",
   "count": 33,
-  "eligible_item_count": 96,
+  "eligible_item_count": 84,
   "topic_distribution": {
     "cloud-agent": 9,
     "harness": 9,
@@ -14,56 +14,19 @@
     "sandbox": 1
   },
   "source_distribution": {
-    "anthropic-site": 1,
+    "anthropic-site": 2,
     "arxiv-cs-ai": 5,
     "aws-ml": 5,
     "claude-announcements": 3,
-    "deepmind-blog": 2,
-    "huggingface-blog": 2,
+    "deepmind-blog": 1,
+    "huggingface-blog": 3,
     "openai-news": 5,
-    "release:OpenHands/software-agent-sdk": 1,
     "release:anthropics/sandbox-runtime": 1,
-    "release:google/adk-python": 1,
     "release:langchain-ai/langgraph": 5,
+    "release:langchain-ai/open-swe": 1,
     "release:openai/codex": 2
   },
   "items": [
-    {
-      "item_id": "4922ca6fb0dd92994c349853",
-      "candidate_id": "ec-4922ca6fb0dd9299",
-      "title": "Holiday Extras is rethinking what it can build with Codex",
-      "url": "https://openai.com/business/customer-stories/holidays-extras-codex",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-12T09:30:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "67672a694e389b29af5588bf",
-      "candidate_id": "ec-67672a694e389b29",
-      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
-      "url": "https://openai.com/business/customer-stories/amplitude",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-12T20:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
     {
       "item_id": "7d4d71d056da02862d0b2ec1",
       "candidate_id": "ec-7d4d71d056da0286",
@@ -74,24 +37,6 @@
       "topic": "harness",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-13T15:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "a491aa90d650ab2bf91e0a7d",
-      "candidate_id": "ec-67672a694e389b29",
-      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
-      "url": "https://openai.com/index/amplitude",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-12T20:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -119,33 +64,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "5b69826eead48a963c75ef96",
-      "candidate_id": "ec-5b69826eead48a96",
-      "title": "Introducing Gemini 4 Hydrogen",
-      "url": "https://deepmind.google/blog/introducing-gemini-4-hydrogen",
-      "source_id": "deepmind-blog",
+      "item_id": "4922ca6fb0dd92994c349853",
+      "candidate_id": "ec-4922ca6fb0dd9299",
+      "title": "Holiday Extras is rethinking what it can build with Codex",
+      "url": "https://openai.com/business/customer-stories/holidays-extras-codex",
+      "source_id": "openai-news",
       "source_kind": "rss",
-      "topic": "research",
+      "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-12T18:00:50+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "ba0fcf4e325b4115c73c9ef8",
-      "candidate_id": "ec-ba0fcf4e325b4115",
-      "title": "AlphaGenome 2: Deciphering how cells read DNA to better understand disease",
-      "url": "https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease",
-      "source_id": "deepmind-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-11T15:00:15+00:00",
+      "claimed_published_at": "2026-11-12T09:30:00+00:00",
       "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -155,15 +82,69 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "c3059e05e75e3c250c5d63d4",
-      "candidate_id": "ec-c3059e05e75e3c25",
-      "title": "v2.14.1",
-      "url": "https://github.com/google/adk-python/releases/tag/v2.14.1",
-      "source_id": "release:google/adk-python",
-      "source_kind": "github_release",
+      "item_id": "67672a694e389b29af5588bf",
+      "candidate_id": "ec-67672a694e389b29",
+      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
+      "url": "https://openai.com/business/customer-stories/amplitude",
+      "source_id": "openai-news",
+      "source_kind": "rss",
       "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-12T20:00:00+00:00",
+      "review_order_score": 7,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "a491aa90d650ab2bf91e0a7d",
+      "candidate_id": "ec-67672a694e389b29",
+      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
+      "url": "https://openai.com/index/amplitude",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-12T20:00:00+00:00",
+      "review_order_score": 7,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "5b69826eead48a963c75ef96",
+      "candidate_id": "ec-5b69826eead48a96",
+      "title": "Introducing Gemini 4 Hydrogen",
+      "url": "https://deepmind.google/blog/introducing-gemini-4-hydrogen",
+      "source_id": "deepmind-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-12T18:00:50+00:00",
+      "review_order_score": 7,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "be7d23b7f88759ed874c22b4",
+      "candidate_id": "ec-be7d23b7f88759ed",
+      "title": "Robin Desktop v0.3.17",
+      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.17",
+      "source_id": "release:langchain-ai/open-swe",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-12T21:30:11+00:00",
+      "claimed_published_at": "2026-11-15T00:07:01+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -245,24 +226,6 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1e949a58eebd48b906b02911",
-      "candidate_id": "ec-1e949a58eebd48b9",
-      "title": "langgraph-cli==0.4.43",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.43",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-12T16:20:16+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
       "item_id": "9f19fc4c652319faf8ae5db2",
       "candidate_id": "ec-9f19fc4c652319fa",
       "title": "langgraph-prebuilt==1.1.2",
@@ -281,15 +244,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "affd8b38317038d7d684361b",
-      "candidate_id": "ec-affd8b38317038d7",
-      "title": "langgraph==1.2.21",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.21",
+      "item_id": "fc2ba48bea4dc06f91e30bab",
+      "candidate_id": "ec-fc2ba48bea4dc06f",
+      "title": "langgraph-checkpoint==4.3.2",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/checkpoint%3D%3D4.3.2",
       "source_id": "release:langchain-ai/langgraph",
       "source_kind": "github_release",
       "topic": "runtime",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-12T18:06:43+00:00",
+      "claimed_published_at": "2026-11-14T01:31:16+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -317,24 +280,6 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "0ca05117dff37c920736c0c6",
-      "candidate_id": "ec-0ca05117dff37c92",
-      "title": "How Natera designed an agentic AI system for lab ops with Amazon Bedrock AgentCore",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-natera-designed-an-agentic-ai-system-for-lab-ops-with-amazon-bedrock-agentcore",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-12T21:47:07+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
       "item_id": "2f429c1a2fc201bc6e9a1536",
       "candidate_id": "ec-2f429c1a2fc201bc",
       "title": "Architecture patterns for fast session startup on Amazon Bedrock AgentCore runtime",
@@ -353,42 +298,6 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "3f93c71b9de8f22e7c865dba",
-      "candidate_id": "ec-3f93c71b9de8f22e",
-      "title": "From prototype to production: Engineering agents with Agent DLC",
-      "url": "https://aws.amazon.com/blogs/machine-learning/from-prototype-to-production-engineering-agents-with-agent-dlc",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-12T15:38:47+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "409a77b0b17a5148c50fa2d3",
-      "candidate_id": "ec-409a77b0b17a5148",
-      "title": "Optimizing cost per task and proving agent ROI on Amazon Bedrock",
-      "url": "https://aws.amazon.com/blogs/machine-learning/optimizing-cost-per-task-and-proving-agent-roi-on-amazon-bedrock",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-12T18:43:19+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
       "item_id": "4536e10993f7030af8c20201",
       "candidate_id": "ec-4536e10993f7030a",
       "title": "Production MLOps at GS Caltex with Amazon SageMaker Canvas, part 1",
@@ -398,6 +307,60 @@
       "topic": "cloud-agent",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-13T23:22:09+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "5e58f673d3a366d25ac9372b",
+      "candidate_id": "ec-5e58f673d3a366d2",
+      "title": "Build a model improvement flywheel with Amazon SageMaker HyperPod Data Capture",
+      "url": "https://aws.amazon.com/blogs/machine-learning/build-a-model-improvement-flywheel-with-amazon-sagemaker-hyperpod-data-capture",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-13T18:01:15+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "5fc66b49260043b9fbe203d0",
+      "candidate_id": "ec-5fc66b49260043b9",
+      "title": "Cost attribution and controls for AI developer and productivity tools on Amazon Bedrock",
+      "url": "https://aws.amazon.com/blogs/machine-learning/cost-attribution-and-controls-for-ai-developer-and-productivity-tools-on-amazon-bedrock",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-13T18:44:02+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "a8cb743586dc52b9f3a44c7d",
+      "candidate_id": "ec-a8cb743586dc52b9",
+      "title": "Cost-optimizing AssemblyAI speech-to-text inference on AWS with Amazon EC2 Spot",
+      "url": "https://aws.amazon.com/blogs/machine-learning/cost-optimizing-assemblyai-speech-to-text-inference-on-aws-with-amazon-ec2-spot",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-13T19:35:35+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -461,28 +424,28 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "06dbb73b800c20fc2e488a9e",
-      "candidate_id": "ec-06dbb73b800c20fc",
-      "title": "v1.62.0",
-      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.62.0",
-      "source_id": "release:OpenHands/software-agent-sdk",
-      "source_kind": "github_release",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-11T12:46:25+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
       "item_id": "0c06755b2d219b8edff48a19",
       "candidate_id": "ec-0c06755b2d219b8e",
       "title": "Official site update: anthropic institute agenda",
       "url": "https://www.anthropic.com/news/anthropic-institute-agenda",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "0d40f97ea619e69da2455c23",
+      "candidate_id": "ec-0d40f97ea619e69d",
+      "title": "Official site update: responsible scaling policy v3",
+      "url": "https://www.anthropic.com/news/responsible-scaling-policy-v3",
       "source_id": "anthropic-site",
       "source_kind": "official_sitemap",
       "topic": "harness",
@@ -605,20 +568,56 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "84ec87286cb35a64f463f064",
-      "candidate_id": "ec-84ec87286cb35a64",
-      "title": "LLMON: An LLM-Native Markup Language, now in Granite 4.1 3B and 8B",
-      "url": "https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite",
+      "item_id": "96c7f67bef86f8316048a87f",
+      "candidate_id": "ec-96c7f67bef86f831",
+      "title": "XYBench: Helping with the problem behind the question",
+      "url": "https://huggingface.co/blog/allenai/xybench",
       "source_id": "huggingface-blog",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-12T19:07:35+00:00",
+      "claimed_published_at": "2026-11-13T17:02:35+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
         "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "cdc8eef67bc55a0d0fa5ca86",
+      "candidate_id": "ec-cdc8eef67bc55a0d",
+      "title": "Build a Robot Pick-and-Place Simulation with SimReady Assets",
+      "url": "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-13T18:00:39+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "1e949a58eebd48b906b02911",
+      "candidate_id": "ec-1e949a58eebd48b9",
+      "title": "langgraph-cli==0.4.43",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.43",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-12T16:20:16+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     }
