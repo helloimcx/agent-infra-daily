@@ -1,32 +1,65 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-15T02:03:55+00:00",
-  "snapshot_generated_at": "2026-11-15T02:03:45+00:00",
-  "beijing_date": "2026-11-15",
+  "generated_at": "2026-11-16T02:20:26+00:00",
+  "snapshot_generated_at": "2026-11-16T02:20:19+00:00",
+  "beijing_date": "2026-11-16",
   "kind": "unverified_editorial_review_queue",
-  "count": 33,
-  "eligible_item_count": 84,
+  "count": 28,
+  "eligible_item_count": 62,
   "topic_distribution": {
-    "cloud-agent": 9,
+    "cloud-agent": 6,
     "harness": 9,
-    "research": 9,
-    "runtime": 5,
+    "research": 8,
+    "runtime": 4,
     "sandbox": 1
   },
   "source_distribution": {
-    "anthropic-site": 2,
+    "anthropic-site": 5,
     "arxiv-cs-ai": 5,
     "aws-ml": 5,
-    "claude-announcements": 3,
-    "deepmind-blog": 1,
     "huggingface-blog": 3,
-    "openai-news": 5,
+    "openai-news": 4,
     "release:anthropics/sandbox-runtime": 1,
-    "release:langchain-ai/langgraph": 5,
-    "release:langchain-ai/open-swe": 1,
-    "release:openai/codex": 2
+    "release:langchain-ai/langgraph": 4,
+    "release:langchain-ai/open-swe": 1
   },
   "items": [
+    {
+      "item_id": "2e8f421d2ee2a3dfd36bfcc5",
+      "candidate_id": "ec-2e8f421d2ee2a3df",
+      "title": "A step toward defining the Standard Model on a lattice",
+      "url": "https://openai.com/index/step-toward-defining-the-standard-model",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-15T22:00:01+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "33b95c2112c46efd09554302",
+      "candidate_id": "ec-33b95c2112c46efd",
+      "title": "Our new blog for science",
+      "url": "https://openai.com/index/our-new-blog-for-science",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-15T22:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
     {
       "item_id": "7d4d71d056da02862d0b2ec1",
       "candidate_id": "ec-7d4d71d056da0286",
@@ -37,11 +70,11 @@
       "topic": "harness",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-13T15:00:00+00:00",
-      "review_order_score": 8,
+      "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -55,78 +88,6 @@
       "topic": "harness",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-13T08:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "4922ca6fb0dd92994c349853",
-      "candidate_id": "ec-4922ca6fb0dd9299",
-      "title": "Holiday Extras is rethinking what it can build with Codex",
-      "url": "https://openai.com/business/customer-stories/holidays-extras-codex",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-12T09:30:00+00:00",
-      "review_order_score": 7,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "67672a694e389b29af5588bf",
-      "candidate_id": "ec-67672a694e389b29",
-      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
-      "url": "https://openai.com/business/customer-stories/amplitude",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-12T20:00:00+00:00",
-      "review_order_score": 7,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "a491aa90d650ab2bf91e0a7d",
-      "candidate_id": "ec-67672a694e389b29",
-      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
-      "url": "https://openai.com/index/amplitude",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-12T20:00:00+00:00",
-      "review_order_score": 7,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "5b69826eead48a963c75ef96",
-      "candidate_id": "ec-5b69826eead48a96",
-      "title": "Introducing Gemini 4 Hydrogen",
-      "url": "https://deepmind.google/blog/introducing-gemini-4-hydrogen",
-      "source_id": "deepmind-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-12T18:00:50+00:00",
       "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -150,276 +111,6 @@
         "source_catalog_priority:P1",
         "official_release_record",
         "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "6cfc942e5da70ee0eba82b72",
-      "candidate_id": "ec-6cfc942e5da70ee0",
-      "title": "0.168.0",
-      "url": "https://github.com/openai/codex/releases/tag/rust-v0.168.0",
-      "source_id": "release:openai/codex",
-      "source_kind": "github_release",
-      "topic": "harness",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-13T03:54:29+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "a0c08c461d827e1c37f0ee00",
-      "candidate_id": "ec-a0c08c461d827e1c",
-      "title": "0.169.0",
-      "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.0",
-      "source_id": "release:openai/codex",
-      "source_kind": "github_release",
-      "topic": "harness",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-13T08:37:05+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "0b1d1845805b77e2c93bf58d",
-      "candidate_id": "ec-0b1d1845805b77e2",
-      "title": "langgraph-checkpoint-postgres==3.2.1",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/checkpointpostgres%3D%3D3.2.1",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-14T01:39:04+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "1b011fa040f80893f7b604b4",
-      "candidate_id": "ec-1b011fa040f80893",
-      "title": "langgraph==1.2.22",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.22",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-14T01:43:55+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "9f19fc4c652319faf8ae5db2",
-      "candidate_id": "ec-9f19fc4c652319fa",
-      "title": "langgraph-prebuilt==1.1.2",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/prebuilt%3D%3D1.1.2",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-14T01:33:52+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "fc2ba48bea4dc06f91e30bab",
-      "candidate_id": "ec-fc2ba48bea4dc06f",
-      "title": "langgraph-checkpoint==4.3.2",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/checkpoint%3D%3D4.3.2",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-14T01:31:16+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "6b230c5731b41cbfb5e06bbf",
-      "candidate_id": "ec-6b230c5731b41cbf",
-      "title": "v0.0.83",
-      "url": "https://github.com/anthropics/sandbox-runtime/releases/tag/v0.0.83",
-      "source_id": "release:anthropics/sandbox-runtime",
-      "source_kind": "github_release",
-      "topic": "sandbox",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-13T02:21:12+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "2f429c1a2fc201bc6e9a1536",
-      "candidate_id": "ec-2f429c1a2fc201bc",
-      "title": "Architecture patterns for fast session startup on Amazon Bedrock AgentCore runtime",
-      "url": "https://aws.amazon.com/blogs/machine-learning/architecture-patterns-for-fast-session-startup-on-amazon-bedrock-agentcore-runtime",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-13T22:02:39+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "4536e10993f7030af8c20201",
-      "candidate_id": "ec-4536e10993f7030a",
-      "title": "Production MLOps at GS Caltex with Amazon SageMaker Canvas, part 1",
-      "url": "https://aws.amazon.com/blogs/machine-learning/production-mlops-at-gs-caltex-with-amazon-sagemaker-canvas-part-1",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-13T23:22:09+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "5e58f673d3a366d25ac9372b",
-      "candidate_id": "ec-5e58f673d3a366d2",
-      "title": "Build a model improvement flywheel with Amazon SageMaker HyperPod Data Capture",
-      "url": "https://aws.amazon.com/blogs/machine-learning/build-a-model-improvement-flywheel-with-amazon-sagemaker-hyperpod-data-capture",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-13T18:01:15+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "5fc66b49260043b9fbe203d0",
-      "candidate_id": "ec-5fc66b49260043b9",
-      "title": "Cost attribution and controls for AI developer and productivity tools on Amazon Bedrock",
-      "url": "https://aws.amazon.com/blogs/machine-learning/cost-attribution-and-controls-for-ai-developer-and-productivity-tools-on-amazon-bedrock",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-13T18:44:02+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "a8cb743586dc52b9f3a44c7d",
-      "candidate_id": "ec-a8cb743586dc52b9",
-      "title": "Cost-optimizing AssemblyAI speech-to-text inference on AWS with Amazon EC2 Spot",
-      "url": "https://aws.amazon.com/blogs/machine-learning/cost-optimizing-assemblyai-speech-to-text-inference-on-aws-with-amazon-ec2-spot",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-13T19:35:35+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "779abe288b1c01daf6b71c32",
-      "candidate_id": "ec-779abe288b1c01da",
-      "title": "Article Nov 12, 2026 Introducing Claude Meetings Add Claude to your video call and get the work started while you talk",
-      "url": "https://claude.com/resources/articles/claude-meetings",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "bc121fc85136463b8bfd272d",
-      "candidate_id": "ec-bc121fc85136463b",
-      "title": "Article Nov 12, 2026 Introducing Claude for Manufacturing A new plugin with 17 skills and four connectors helps manufacturers draft quotes, quality reports, and supplier requests from the systems they already run.",
-      "url": "https://claude.com/resources/articles/claude-for-manufacturing",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "c3d1bbdfab443c53739439f2",
-      "candidate_id": "ec-c3d1bbdfab443c53",
-      "title": "Article Nov 12, 2026 Operate Claude Managed Agents inside your security perimeter Introducing self-hosted Claude Managed Agents. Now you can run agents in your own environment, whether that’s in your own cloud or on-premise. You host the agents, cred",
-      "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
-      "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -460,6 +151,240 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "234faaf001c260cca27728a0",
+      "candidate_id": "ec-234faaf001c260cc",
+      "title": "Official site update: deprecation commitments",
+      "url": "https://www.anthropic.com/news/deprecation-commitments",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "26b4e01c469da5ded83060c3",
+      "candidate_id": "ec-26b4e01c469da5de",
+      "title": "Official site update: economic futures research fund agenda",
+      "url": "https://www.anthropic.com/news/economic-futures-research-fund-agenda",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "2dc4c52f48c69c82b11a1d23",
+      "candidate_id": "ec-2dc4c52f48c69c82",
+      "title": "Official site update: protecting well being of users",
+      "url": "https://www.anthropic.com/news/protecting-well-being-of-users",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "0b1d1845805b77e2c93bf58d",
+      "candidate_id": "ec-0b1d1845805b77e2",
+      "title": "langgraph-checkpoint-postgres==3.2.1",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/checkpointpostgres%3D%3D3.2.1",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-14T01:39:04+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "1b011fa040f80893f7b604b4",
+      "candidate_id": "ec-1b011fa040f80893",
+      "title": "langgraph==1.2.22",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.22",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-14T01:43:55+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "9f19fc4c652319faf8ae5db2",
+      "candidate_id": "ec-9f19fc4c652319fa",
+      "title": "langgraph-prebuilt==1.1.2",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/prebuilt%3D%3D1.1.2",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-14T01:33:52+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "fc2ba48bea4dc06f91e30bab",
+      "candidate_id": "ec-fc2ba48bea4dc06f",
+      "title": "langgraph-checkpoint==4.3.2",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/checkpoint%3D%3D4.3.2",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-14T01:31:16+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "6b230c5731b41cbfb5e06bbf",
+      "candidate_id": "ec-6b230c5731b41cbf",
+      "title": "v0.0.83",
+      "url": "https://github.com/anthropics/sandbox-runtime/releases/tag/v0.0.83",
+      "source_id": "release:anthropics/sandbox-runtime",
+      "source_kind": "github_release",
+      "topic": "sandbox",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-13T02:21:12+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "2f429c1a2fc201bc6e9a1536",
+      "candidate_id": "ec-2f429c1a2fc201bc",
+      "title": "Architecture patterns for fast session startup on Amazon Bedrock AgentCore runtime",
+      "url": "https://aws.amazon.com/blogs/machine-learning/architecture-patterns-for-fast-session-startup-on-amazon-bedrock-agentcore-runtime",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-13T22:02:39+00:00",
+      "review_order_score": 4,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "4536e10993f7030af8c20201",
+      "candidate_id": "ec-4536e10993f7030a",
+      "title": "Production MLOps at GS Caltex with Amazon SageMaker Canvas, part 1",
+      "url": "https://aws.amazon.com/blogs/machine-learning/production-mlops-at-gs-caltex-with-amazon-sagemaker-canvas-part-1",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-13T23:22:09+00:00",
+      "review_order_score": 4,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "5e58f673d3a366d25ac9372b",
+      "candidate_id": "ec-5e58f673d3a366d2",
+      "title": "Build a model improvement flywheel with Amazon SageMaker HyperPod Data Capture",
+      "url": "https://aws.amazon.com/blogs/machine-learning/build-a-model-improvement-flywheel-with-amazon-sagemaker-hyperpod-data-capture",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-13T18:01:15+00:00",
+      "review_order_score": 4,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "5fc66b49260043b9fbe203d0",
+      "candidate_id": "ec-5fc66b49260043b9",
+      "title": "Cost attribution and controls for AI developer and productivity tools on Amazon Bedrock",
+      "url": "https://aws.amazon.com/blogs/machine-learning/cost-attribution-and-controls-for-ai-developer-and-productivity-tools-on-amazon-bedrock",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-13T18:44:02+00:00",
+      "review_order_score": 4,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "a8cb743586dc52b9f3a44c7d",
+      "candidate_id": "ec-a8cb743586dc52b9",
+      "title": "Cost-optimizing AssemblyAI speech-to-text inference on AWS with Amazon EC2 Spot",
+      "url": "https://aws.amazon.com/blogs/machine-learning/cost-optimizing-assemblyai-speech-to-text-inference-on-aws-with-amazon-ec2-spot",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-13T19:35:35+00:00",
+      "review_order_score": 4,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "036a8aedd8fa7bc1e5800f72",
       "candidate_id": "ec-036a8aedd8fa7bc1",
       "title": "Don't Blame The Preferences: Examining The Emergence of Sycophancy in LLM Training",
@@ -469,11 +394,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-13T05:00:00+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -487,11 +412,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-13T05:00:00+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -505,11 +430,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-13T05:00:00+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -523,11 +448,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-13T05:00:00+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -541,11 +466,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-13T05:00:00+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -559,11 +484,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-13T14:05:22+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -577,11 +502,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-13T17:02:35+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -595,28 +520,10 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-13T18:00:39+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "1e949a58eebd48b906b02911",
-      "candidate_id": "ec-1e949a58eebd48b9",
-      "title": "langgraph-cli==0.4.43",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.43",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-12T16:20:16+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
         "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"

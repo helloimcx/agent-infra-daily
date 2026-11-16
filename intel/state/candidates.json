@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_ingested_snapshot": "2026-11-15T02:03:45+00:00",
+  "last_ingested_snapshot": "2026-11-16T02:20:19+00:00",
   "bootstrap_note": "Two independently verified candidates recovered from the successful 2026-10-22 ingestion artifact. This is not the full 54-item ledger; the next scheduled collector will merge all available items.",
   "candidates": {
     "ec-001cd33c965241bc": {
@@ -194,7 +194,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "036a8aedd8fa7bc1e5800f72"
       ],
@@ -332,7 +332,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "05e0692506e6950c029da048"
       ],
@@ -608,7 +608,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-14T01:39:04+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "0b1d1845805b77e2c93bf58d"
       ],
@@ -723,7 +723,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "0c06755b2d219b8edff48a19"
       ],
@@ -861,7 +861,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "0d40f97ea619e69da2455c23"
       ],
@@ -1252,7 +1252,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "13d3d4d4d5d9715ba207e1f7"
       ],
@@ -1744,7 +1744,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-14T01:43:55+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "1b011fa040f80893f7b604b4"
       ],
@@ -2388,7 +2388,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "234faaf001c260cca27728a0"
       ],
@@ -2687,7 +2687,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "26b4e01c469da5ded83060c3"
       ],
@@ -2848,7 +2848,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "2a38e22ca84c5b257fc835d7"
       ],
@@ -3032,7 +3032,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "2dc4c52f48c69c82b11a1d23"
       ],
@@ -3090,6 +3090,29 @@
           "published_at": "2026-11-06T17:34:45+00:00",
           "title": "Taxonomy of agentic primitives in Amazon Quick",
           "first_discovered_at": "2026-11-06T19:18:33+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-2e8f421d2ee2a3df": {
+      "id": "ec-2e8f421d2ee2a3df",
+      "title": "A step toward defining the Standard Model on a lattice",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-11-15T22:00:01+00:00",
+      "first_seen_at": "2026-11-16T02:20:19+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
+      "item_ids": [
+        "2e8f421d2ee2a3dfd36bfcc5"
+      ],
+      "sources": [
+        {
+          "item_id": "2e8f421d2ee2a3dfd36bfcc5",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/step-toward-defining-the-standard-model",
+          "published_at": "2026-11-15T22:00:01+00:00",
+          "title": "A step toward defining the Standard Model on a lattice",
+          "first_discovered_at": "2026-11-16T02:20:19+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -3193,7 +3216,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T22:02:39+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "2f429c1a2fc201bc6e9a1536"
       ],
@@ -3343,6 +3366,29 @@
           "published_at": "2026-11-04T17:50:10+00:00",
           "title": "Dharma Field Extractor: Any Document In, Structured Fields in JSON Out",
           "first_discovered_at": "2026-11-04T23:37:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-33b95c2112c46efd": {
+      "id": "ec-33b95c2112c46efd",
+      "title": "Our new blog for science",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-11-15T22:00:00+00:00",
+      "first_seen_at": "2026-11-16T02:20:19+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
+      "item_ids": [
+        "33b95c2112c46efd09554302"
+      ],
+      "sources": [
+        {
+          "item_id": "33b95c2112c46efd09554302",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/our-new-blog-for-science",
+          "published_at": "2026-11-15T22:00:00+00:00",
+          "title": "Our new blog for science",
+          "first_discovered_at": "2026-11-16T02:20:19+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -4343,7 +4389,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "4307222bc7e5f2e471152174"
       ],
@@ -4389,7 +4435,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "43ccba7ee32295ec4028117d"
       ],
@@ -4412,7 +4458,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T23:22:09+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "4536e10993f7030af8c20201"
       ],
@@ -4481,7 +4527,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "4576da82a67e263ec22282f5"
       ],
@@ -4734,7 +4780,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "4bb8fbf589ece483d14dca5b"
       ],
@@ -5148,7 +5194,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "523ff672174f35cfd0464b6a"
       ],
@@ -5171,7 +5217,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "526cf3679d3f425f325b6e5c"
       ],
@@ -5470,7 +5516,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-11T05:00:00+00:00",
       "first_seen_at": "2026-11-12T03:16:10+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "56237de3bc7a00933c13b10e"
       ],
@@ -5999,7 +6045,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T18:01:15+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "5e58f673d3a366d25ac9372b"
       ],
@@ -6045,7 +6091,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "5ec4e61a2a5169ebbf2e4ee0"
       ],
@@ -6160,7 +6206,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T18:44:02+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "5fc66b49260043b9fbe203d0"
       ],
@@ -6413,7 +6459,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-10T05:00:00+00:00",
       "first_seen_at": "2026-11-11T02:06:25+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "64f0fed010d8e05e954e6580"
       ],
@@ -6661,7 +6707,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T14:05:22+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "6841e619fcd7e8d9370258a2"
       ],
@@ -6799,7 +6845,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "6af0ef81d73230c228bebb9d"
       ],
@@ -6845,7 +6891,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-13T02:21:12+00:00",
       "first_seen_at": "2026-11-13T02:50:01+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "6b230c5731b41cbfb5e06bbf"
       ],
@@ -6914,7 +6960,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-13T03:54:29+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "6cfc942e5da70ee0eba82b72"
       ],
@@ -7397,7 +7443,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "7512ddb574f822497a719ea5"
       ],
@@ -7420,7 +7466,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "753804538177a6fb83ae7f8e"
       ],
@@ -7512,7 +7558,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "76bd0a5c7994a326bd5a4391"
       ],
@@ -7857,7 +7903,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T15:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "7d4d71d056da02862d0b2ec1"
       ],
@@ -8110,7 +8156,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "8085da12751e10d09f1cda51"
       ],
@@ -8846,7 +8892,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "8b96329aed14643e23bf39fb"
       ],
@@ -8869,7 +8915,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "8bb71f78747245503535d879"
       ],
@@ -9030,7 +9076,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "8ed1599eb95bc766b1016579"
       ],
@@ -9122,7 +9168,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "91557381152e57a69321051b"
       ],
@@ -9513,7 +9559,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T17:02:35+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "96c7f67bef86f8316048a87f"
       ],
@@ -9996,7 +10042,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-14T01:33:52+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "9f19fc4c652319faf8ae5db2"
       ],
@@ -10088,7 +10134,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-13T08:37:05+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "a0c08c461d827e1c37f0ee00"
       ],
@@ -10640,7 +10686,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T19:35:35+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "a8cb743586dc52b9f3a44c7d"
       ],
@@ -10732,7 +10778,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T08:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "a99dfdd20d85acbbb850aa77"
       ],
@@ -11376,7 +11422,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "b452070c7a90e2aa1ea2dc00"
       ],
@@ -11399,7 +11445,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T21:53:40+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "b47584a6c89b5823261078d3"
       ],
@@ -12135,7 +12181,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-15T00:07:01+00:00",
       "first_seen_at": "2026-11-15T02:03:45+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "be7d23b7f88759ed874c22b4"
       ],
@@ -12434,7 +12480,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "c3f9aa1e97f35f2465d0af14"
       ],
@@ -12917,7 +12963,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T22:30:12+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "cd8fc130788a632d051e37ef"
       ],
@@ -12940,7 +12986,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T18:00:39+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "cdc8eef67bc55a0d0fa5ca86"
       ],
@@ -13170,7 +13216,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "d2be345df56fc75c48ce3c93"
       ],
@@ -13308,7 +13354,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "d75153884b30e14448434aa3"
       ],
@@ -14044,7 +14090,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "e2fd0a83f06ba4d35b09917d"
       ],
@@ -14113,7 +14159,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "e3ff549785cf9623d5594a2c"
       ],
@@ -14251,7 +14297,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "e80576defc8d36f2eaf1f2f3"
       ],
@@ -14274,7 +14320,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "e91e6f80eaaceb584f233249"
       ],
@@ -14366,7 +14412,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "eb0d7f668c94057b3b1e8cf3"
       ],
@@ -14458,7 +14504,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "ed500889a8ff2381f73bcac7"
       ],
@@ -14688,7 +14734,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "f3105fa45f2f9c0d64484fef"
       ],
@@ -15056,7 +15102,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "fabd8d4ba531638e572b9a63"
       ],
@@ -15194,7 +15240,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-14T01:31:16+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "fc2ba48bea4dc06f91e30bab"
       ],
@@ -15263,7 +15309,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-15T02:03:45+00:00",
+      "last_seen_at": "2026-11-16T02:20:19+00:00",
       "item_ids": [
         "fdcaadbbe674abde249a0b79"
       ],
@@ -15485,6 +15531,7 @@
     "2dc4c52f48c69c82b11a1d23": "ec-2dc4c52f48c69c82",
     "2e34e84f0999c607fcd02663": "ec-2e34e84f0999c607",
     "2e5ff519dea4168bfd3fbf07": "ec-2e5ff519dea4168b",
+    "2e8f421d2ee2a3dfd36bfcc5": "ec-2e8f421d2ee2a3df",
     "2eb317e634c166703036d7ea": "ec-2eb317e634c16670",
     "2eea8542a0bf0fd1619f4a1e": "ec-2eea8542a0bf0fd1",
     "2ef1fbc3458e029d755f0754": "ec-2ef1fbc3458e029d",
@@ -15496,6 +15543,7 @@
     "300df2fa6ceddd1f264b3e48": "ec-300df2fa6ceddd1f",
     "30feb7a6b056dc5f2e381edc": "ec-30feb7a6b056dc5f",
     "32d4e91d243ef07f0795379b": "ec-32d4e91d243ef07f",
+    "33b95c2112c46efd09554302": "ec-33b95c2112c46efd",
     "34e7d62615202d0de65fe802": "ec-34e7d62615202d0d",
     "3592c2289faff55994bbf1d7": "ec-3592c2289faff559",
     "35e334c198740f7416638922": "ec-35e334c198740f74",
