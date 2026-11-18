@@ -1,25 +1,48 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-17T04:42:27+00:00",
-  "snapshot_generated_at": "2026-11-17T04:42:19+00:00",
-  "beijing_date": "2026-11-17",
+  "generated_at": "2026-11-18T03:47:53+00:00",
+  "snapshot_generated_at": "2026-11-18T03:47:45+00:00",
+  "beijing_date": "2026-11-18",
   "kind": "unverified_editorial_review_queue",
-  "count": 23,
-  "eligible_item_count": 53,
+  "count": 24,
+  "eligible_item_count": 77,
   "topic_distribution": {
     "cloud-agent": 8,
     "harness": 9,
-    "research": 6
+    "research": 6,
+    "sandbox": 1
   },
   "source_distribution": {
-    "anthropic-site": 4,
+    "anthropic-site": 1,
     "arxiv-cs-ai": 5,
     "aws-ml": 5,
+    "claude-announcements": 1,
     "huggingface-blog": 1,
     "openai-news": 5,
-    "release:langchain-ai/open-swe": 3
+    "release:NVIDIA/OpenShell": 1,
+    "release:langchain-ai/open-swe": 2,
+    "release:openai/codex": 2,
+    "release:openai/openai-agents-python": 1
   },
   "items": [
+    {
+      "item_id": "0e7f690aa4ff229bd2e8f275",
+      "candidate_id": "ec-0e7f690aa4ff229b",
+      "title": "Strengthening NATO and allied cyber defenses with AI",
+      "url": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-17T00:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
     {
       "item_id": "21b4758ab52123ac78ffa3db",
       "candidate_id": "ec-21b4758ab52123ac",
@@ -75,33 +98,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "2e8f421d2ee2a3dfd36bfcc5",
-      "candidate_id": "ec-2e8f421d2ee2a3df",
-      "title": "A step toward defining the Standard Model on a lattice",
-      "url": "https://openai.com/index/step-toward-defining-the-standard-model",
+      "item_id": "3047d7657748ea760feb4367",
+      "candidate_id": "ec-3047d7657748ea76",
+      "title": "Introducing ChatGPT for Sales",
+      "url": "https://openai.com/index/introducing-chatgpt-for-sales",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-15T22:00:01+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "33b95c2112c46efd09554302",
-      "candidate_id": "ec-33b95c2112c46efd",
-      "title": "Our new blog for science",
-      "url": "https://openai.com/index/our-new-blog-for-science",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-15T22:00:00+00:00",
+      "claimed_published_at": "2026-11-17T08:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -147,15 +152,141 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "13068fccecc1e20bf27e0bbb",
-      "candidate_id": "ec-13068fccecc1e20b",
-      "title": "Customize answers per tenant in Amazon Bedrock Managed Knowledge Base",
-      "url": "https://aws.amazon.com/blogs/machine-learning/customize-answers-per-tenant-in-amazon-bedrock-managed-knowledge-base",
+      "item_id": "ad076a99b8923baf72ed4573",
+      "candidate_id": "ec-ad076a99b8923baf",
+      "title": "0.170.0",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0",
+      "source_id": "release:openai/codex",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-18T03:40:48+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "cf3bd3dc31c3f29b66d46b46",
+      "candidate_id": "ec-cf3bd3dc31c3f29b",
+      "title": "0.169.1",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.1",
+      "source_id": "release:openai/codex",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-17T22:21:10+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "395eb2f50bbc7a2cf6a2187c",
+      "candidate_id": "ec-395eb2f50bbc7a2c",
+      "title": "v0.25.0",
+      "url": "https://github.com/openai/openai-agents-python/releases/tag/v0.25.0",
+      "source_id": "release:openai/openai-agents-python",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-18T00:22:25+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "ededf8f31a424f6f092321cf",
+      "candidate_id": "ec-ededf8f31a424f6f",
+      "title": "OpenShell v0.1.9",
+      "url": "https://github.com/NVIDIA/OpenShell/releases/tag/v0.1.9",
+      "source_id": "release:NVIDIA/OpenShell",
+      "source_kind": "github_release",
+      "topic": "sandbox",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-17T19:12:37+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "03d123f8370c458b94d4cccf",
+      "candidate_id": "ec-03d123f8370c458b",
+      "title": "How ArisGlobal scaled generative AI inference on Amazon Bedrock",
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-arisglobal-scaled-generative-ai-inference-on-amazon-bedrock",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-16T15:46:28+00:00",
+      "claimed_published_at": "2026-11-17T15:57:09+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "1673851a5d77ce2c5516c9f5",
+      "candidate_id": "ec-1673851a5d77ce2c",
+      "title": "Secure OAuth patterns for Snowflake Cortex AI through Amazon Bedrock AgentCore",
+      "url": "https://aws.amazon.com/blogs/machine-learning/secure-oauth-patterns-for-snowflake-cortex-ai-through-amazon-bedrock-agentcore",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-17T20:25:23+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "18c399a19d6b4bb8f52c949b",
+      "candidate_id": "ec-18c399a19d6b4bb8",
+      "title": "Reason over time-series data with OpenTSLM on Amazon SageMaker JumpStart",
+      "url": "https://aws.amazon.com/blogs/machine-learning/reason-over-time-series-data-with-opentslm-on-amazon-sagemaker-jumpstart",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-17T18:06:44+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "1c55d3d1e6c03df7f5510f49",
+      "candidate_id": "ec-1c55d3d1e6c03df7",
+      "title": "Responsible AI for agentic AI: A phased roadmap for platform and application teams",
+      "url": "https://aws.amazon.com/blogs/machine-learning/responsible-ai-for-agentic-ai-a-phased-roadmap-for-platform-and-application-teams",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-17T16:56:31+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -183,74 +314,20 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "38a73038f401258c1101cee1",
-      "candidate_id": "ec-38a73038f401258c",
-      "title": "How MoEngage built agentic customer engagement on Amazon Bedrock AgentCore",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-moengage-built-agentic-customer-engagement-on-amazon-bedrock-agentcore",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
+      "item_id": "9434292048106a1c3b9a9bc9",
+      "candidate_id": "ec-9434292048106a1c",
+      "title": "Article Nov 17, 2026 Linked billing on the Claude Platform Claude Platform",
+      "url": "https://claude.com/resources/articles/linked-billing-on-claude-platform",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
       "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-16T18:16:07+00:00",
+      "source_priority": "P0",
+      "claimed_published_at": null,
       "review_order_score": 5,
       "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "86f7c7c99bd2479f548cfa43",
-      "candidate_id": "ec-86f7c7c99bd2479f",
-      "title": "Taxonomy of multi-agent design patterns, anti-patterns, and lessons from manufacturing",
-      "url": "https://aws.amazon.com/blogs/machine-learning/taxonomy-of-multi-agent-design-patterns-anti-patterns-and-lessons-from-manufacturing",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-16T21:53:46+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "98ebc3310aca9936cd72e729",
-      "candidate_id": "ec-98ebc3310aca9936",
-      "title": "Build memory-aware AI agents with Agentic Retrieve on Amazon Bedrock Managed Knowledge Base",
-      "url": "https://aws.amazon.com/blogs/machine-learning/build-memory-aware-ai-agents-with-agentic-retrieve-on-amazon-bedrock-managed-knowledge-base",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-16T22:43:30+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "be7d23b7f88759ed874c22b4",
-      "candidate_id": "ec-be7d23b7f88759ed",
-      "title": "Robin Desktop v0.3.17",
-      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.17",
-      "source_id": "release:langchain-ai/open-swe",
-      "source_kind": "github_release",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-15T00:07:01+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -273,60 +350,6 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "241a0eb7150b75c2c4dd1c67",
-      "candidate_id": "ec-241a0eb7150b75c2",
-      "title": "Official site update: singapore office opening",
-      "url": "https://www.anthropic.com/news/singapore-office-opening",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "252684366be4bd9dc11d1a78",
-      "candidate_id": "ec-252684366be4bd9d",
-      "title": "Official site update: christopher stubbs joins long term benefit trust",
-      "url": "https://www.anthropic.com/news/christopher-stubbs-joins-long-term-benefit-trust",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "4e6009943a7de781fd196be1",
-      "candidate_id": "ec-4e6009943a7de781",
-      "title": "Official site update: coordinated vulnerability disclosure timelines",
-      "url": "https://www.anthropic.com/research/coordinated-vulnerability-disclosure-timelines",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
       "item_id": "13d3d4d4d5d9715ba207e1f7",
       "candidate_id": "ec-13d3d4d4d5d9715b",
       "title": "Deletion Sensitivity Is a Property of the Model: A Three-Condition Measurement over 72 Valid Experimental Cells",
@@ -335,7 +358,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-16T05:00:00+00:00",
+      "claimed_published_at": "2026-11-17T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -353,7 +376,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-16T05:00:00+00:00",
+      "claimed_published_at": "2026-11-17T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -371,7 +394,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-16T05:00:00+00:00",
+      "claimed_published_at": "2026-11-17T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -389,7 +412,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-16T05:00:00+00:00",
+      "claimed_published_at": "2026-11-17T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -407,7 +430,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-16T05:00:00+00:00",
+      "claimed_published_at": "2026-11-17T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -426,11 +449,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-16T00:00:00+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     }

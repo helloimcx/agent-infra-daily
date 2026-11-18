@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_ingested_snapshot": "2026-11-17T04:42:19+00:00",
+  "last_ingested_snapshot": "2026-11-18T03:47:45+00:00",
   "bootstrap_note": "Two independently verified candidates recovered from the successful 2026-10-22 ingestion artifact. This is not the full 54-item ledger; the next scheduled collector will merge all available items.",
   "candidates": {
     "ec-001cd33c965241bc": {
@@ -102,7 +102,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "0221b1d0649ec5f26c7eb99e"
       ],
@@ -252,6 +252,29 @@
           "published_at": "2026-10-30T17:57:24+00:00",
           "title": "nemotron-halloween",
           "first_discovered_at": "2026-10-30T22:14:19+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-03d123f8370c458b": {
+      "id": "ec-03d123f8370c458b",
+      "title": "How ArisGlobal scaled generative AI inference on Amazon Bedrock",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T15:57:09+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "03d123f8370c458b94d4cccf"
+      ],
+      "sources": [
+        {
+          "item_id": "03d123f8370c458b94d4cccf",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/how-arisglobal-scaled-generative-ai-inference-on-amazon-bedrock",
+          "published_at": "2026-11-17T15:57:09+00:00",
+          "title": "How ArisGlobal scaled generative AI inference on Amazon Bedrock",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -861,7 +884,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-16T05:17:16+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "0cf973f32d48c3c18faad4b7"
       ],
@@ -965,6 +988,29 @@
           "published_at": "2026-11-11T05:00:00+00:00",
           "title": "Seeing Isn't Enough: Unlocking Visual Reasoning by Bridging the Reasoning-Access Gap with TIGER",
           "first_discovered_at": "2026-11-10T14:46:43+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-0e7f690aa4ff229b": {
+      "id": "ec-0e7f690aa4ff229b",
+      "title": "Strengthening NATO and allied cyber defenses with AI",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T00:00:00+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "0e7f690aa4ff229bd2e8f275"
+      ],
+      "sources": [
+        {
+          "item_id": "0e7f690aa4ff229bd2e8f275",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
+          "published_at": "2026-11-17T00:00:00+00:00",
+          "title": "Strengthening NATO and allied cyber defenses with AI",
+          "first_discovered_at": "2026-11-17T07:48:20+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -1206,7 +1252,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T14:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "11608d311d0047796796c8a9"
       ],
@@ -1344,7 +1390,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-13T05:00:00+00:00",
       "first_seen_at": "2026-11-14T02:37:23+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "13d3d4d4d5d9715ba207e1f7"
       ],
@@ -1448,6 +1494,29 @@
           "published_at": "2026-11-02T05:00:00+00:00",
           "title": "MoLRSI: A Recursive Self-Improving AI agent for Molecular Discovery",
           "first_discovered_at": "2026-10-30T12:45:58+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-1673851a5d77ce2c": {
+      "id": "ec-1673851a5d77ce2c",
+      "title": "Secure OAuth patterns for Snowflake Cortex AI through Amazon Bedrock AgentCore",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T20:25:23+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "1673851a5d77ce2c5516c9f5"
+      ],
+      "sources": [
+        {
+          "item_id": "1673851a5d77ce2c5516c9f5",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/secure-oauth-patterns-for-snowflake-cortex-ai-through-amazon-bedrock-agentcore",
+          "published_at": "2026-11-17T20:25:23+00:00",
+          "title": "Secure OAuth patterns for Snowflake Cortex AI through Amazon Bedrock AgentCore",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -1687,6 +1756,29 @@
           "published_at": "2026-10-26T20:04:45+00:00",
           "title": "langgraph==1.2.18",
           "first_discovered_at": "2026-10-26T22:36:50+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-18c399a19d6b4bb8": {
+      "id": "ec-18c399a19d6b4bb8",
+      "title": "Reason over time-series data with OpenTSLM on Amazon SageMaker JumpStart",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T18:06:44+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "18c399a19d6b4bb8f52c949b"
+      ],
+      "sources": [
+        {
+          "item_id": "18c399a19d6b4bb8f52c949b",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/reason-over-time-series-data-with-opentslm-on-amazon-sagemaker-jumpstart",
+          "published_at": "2026-11-17T18:06:44+00:00",
+          "title": "Reason over time-series data with OpenTSLM on Amazon SageMaker JumpStart",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -1963,6 +2055,29 @@
           "published_at": "2026-11-04T14:30:00+00:00",
           "title": "OpenAI to acquire Pierre Computer Company, Inc.",
           "first_discovered_at": "2026-11-04T23:37:46+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-1c55d3d1e6c03df7": {
+      "id": "ec-1c55d3d1e6c03df7",
+      "title": "Responsible AI for agentic AI: A phased roadmap for platform and application teams",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T16:56:31+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "1c55d3d1e6c03df7f5510f49"
+      ],
+      "sources": [
+        {
+          "item_id": "1c55d3d1e6c03df7f5510f49",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/responsible-ai-for-agentic-ai-a-phased-roadmap-for-platform-and-application-teams",
+          "published_at": "2026-11-17T16:56:31+00:00",
+          "title": "Responsible AI for agentic AI: A phased roadmap for platform and application teams",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -2411,7 +2526,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T06:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "21b4758ab52123ac78ffa3db"
       ],
@@ -2434,7 +2549,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T06:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "21e886491b30cfff0403f0b9"
       ],
@@ -2595,7 +2710,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "241a0eb7150b75c2c4dd1c67"
       ],
@@ -2733,7 +2848,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "252684366be4bd9dc11d1a78"
       ],
@@ -3216,7 +3331,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T17:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "2d7a5d6b20fff3cd431e56c6"
       ],
@@ -3308,7 +3423,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-15T22:00:01+00:00",
       "first_seen_at": "2026-11-16T02:20:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "2e8f421d2ee2a3dfd36bfcc5"
       ],
@@ -3354,7 +3469,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "2ee37d5714bee48fcc8d1064"
       ],
@@ -3554,6 +3669,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-3047d7657748ea76": {
+      "id": "ec-3047d7657748ea76",
+      "title": "Introducing ChatGPT for Sales",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T08:00:00+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "3047d7657748ea760feb4367"
+      ],
+      "sources": [
+        {
+          "item_id": "3047d7657748ea760feb4367",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/introducing-chatgpt-for-sales",
+          "published_at": "2026-11-17T08:00:00+00:00",
+          "title": "Introducing ChatGPT for Sales",
+          "first_discovered_at": "2026-11-18T03:47:45+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-30feb7a6b056dc5f": {
       "id": "ec-30feb7a6b056dc5f",
       "title": "Configure the ChatGPT desktop app with Amazon Bedrock in AWS GovCloud (US)",
@@ -3607,7 +3745,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-15T22:00:00+00:00",
       "first_seen_at": "2026-11-16T02:20:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "33b95c2112c46efd09554302"
       ],
@@ -3883,7 +4021,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T17:04:11+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "385d3d55298d3c7fabf6b668"
       ],
@@ -3906,7 +4044,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T18:16:07+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "38a73038f401258c1101cee1"
       ],
@@ -4060,6 +4198,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-395eb2f50bbc7a2c": {
+      "id": "ec-395eb2f50bbc7a2c",
+      "title": "v0.25.0",
+      "topic": "harness",
+      "source_kind": "github_release",
+      "published_at": "2026-11-18T00:22:25+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "395eb2f50bbc7a2cf6a2187c"
+      ],
+      "sources": [
+        {
+          "item_id": "395eb2f50bbc7a2cf6a2187c",
+          "source_id": "release:openai/openai-agents-python",
+          "url": "https://github.com/openai/openai-agents-python/releases/tag/v0.25.0",
+          "published_at": "2026-11-18T00:22:25+00:00",
+          "title": "v0.25.0",
+          "first_discovered_at": "2026-11-18T03:47:45+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-39cad894cdd240fb": {
       "id": "ec-39cad894cdd240fb",
       "title": "How AT&T is rethinking in-house legal work with OpenAI",
@@ -4106,6 +4267,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-3b3be741a87f5e21": {
+      "id": "ec-3b3be741a87f5e21",
+      "title": "Introducing OpenAI for Chile",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T00:00:00+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "3b3be741a87f5e2153e62660"
+      ],
+      "sources": [
+        {
+          "item_id": "3b3be741a87f5e2153e62660",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/introducing-openai-for-chile",
+          "published_at": "2026-11-17T00:00:00+00:00",
+          "title": "Introducing OpenAI for Chile",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-3b62b660efe85c86": {
       "id": "ec-3b62b660efe85c86",
       "title": "Rethinking Agent Trajectory Compression: A Workflow-Aware Perspective",
@@ -4125,6 +4309,29 @@
           "published_at": "2026-11-10T05:00:00+00:00",
           "title": "Rethinking Agent Trajectory Compression: A Workflow-Aware Perspective",
           "first_discovered_at": "2026-11-09T06:13:04+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-3b8bc46555767ca4": {
+      "id": "ec-3b8bc46555767ca4",
+      "title": "Your complete guide to AWS Quick at AWS re:Invent 2026",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T17:08:21+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "3b8bc46555767ca434ffa393"
+      ],
+      "sources": [
+        {
+          "item_id": "3b8bc46555767ca434ffa393",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/your-complete-guide-to-aws-quick-at-aws-reinvent-2026",
+          "published_at": "2026-11-17T17:08:21+00:00",
+          "title": "Your complete guide to AWS Quick at AWS re:Invent 2026",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -4297,7 +4504,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T00:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "3d4aeac88b69acfaa9cd944c"
       ],
@@ -4665,7 +4872,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "4266c9945959565a5246020c"
       ],
@@ -5079,7 +5286,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-17T00:57:41+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "49e9b8857bee4a9472d84e72"
       ],
@@ -5279,6 +5486,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-4df567e64846f786": {
+      "id": "ec-4df567e64846f786",
+      "title": "Managed NVIDIA Dynamo on Amazon SageMaker HyperPod Inference",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T23:33:26+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "4df567e64846f78674c57761"
+      ],
+      "sources": [
+        {
+          "item_id": "4df567e64846f78674c57761",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/managed-nvidia-dynamo-on-amazon-sagemaker-hyperpod-inference",
+          "published_at": "2026-11-17T23:33:26+00:00",
+          "title": "Managed NVIDIA Dynamo on Amazon SageMaker HyperPod Inference",
+          "first_discovered_at": "2026-11-18T03:47:45+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-4e2150af12a97398": {
       "id": "ec-4e2150af12a97398",
       "title": "Article Oct 21, 2026 HCLTech joins the Claude Partner Network as a Global Premier partner HCLTech will bring Claude into the solutions it provides for banks, hospitals, telecom companies, and manufacturers.",
@@ -5309,7 +5539,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "4e6009943a7de781fd196be1"
       ],
@@ -5486,6 +5716,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-5155d276fe9ac7b2": {
+      "id": "ec-5155d276fe9ac7b2",
+      "title": "Getting AI out of the demo and into businesses globally",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T19:05:22+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "5155d276fe9ac7b2f125354e"
+      ],
+      "sources": [
+        {
+          "item_id": "5155d276fe9ac7b2f125354e",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/getting-ai-out-of-the-demo-and-into-businesses-globally",
+          "published_at": "2026-11-17T19:05:22+00:00",
+          "title": "Getting AI out of the demo and into businesses globally",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-51888f116f5b0837": {
       "id": "ec-51888f116f5b0837",
       "title": "Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox",
@@ -5608,7 +5861,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "526d1e9dbad346afcadf5b58"
       ],
@@ -6199,6 +6452,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-5ac5f0f71f9871ae": {
+      "id": "ec-5ac5f0f71f9871ae",
+      "title": "How LoanPro built an agentic AI loan servicing assistant with Amazon Bedrock AgentCore",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T17:01:08+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "5ac5f0f71f9871ae14dffce3"
+      ],
+      "sources": [
+        {
+          "item_id": "5ac5f0f71f9871ae14dffce3",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/how-loanpro-built-an-agentic-ai-loan-servicing-assistant-with-amazon-bedrock-agentcore",
+          "published_at": "2026-11-17T17:01:08+00:00",
+          "title": "How LoanPro built an agentic AI loan servicing assistant with Amazon Bedrock AgentCore",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-5b4e08461387ba3b": {
       "id": "ec-5b4e08461387ba3b",
       "title": "Profiling TorchNeuron (Part 1): System-level profiling on AWS Trainium.",
@@ -6597,7 +6873,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "5f8c65472f86a28bde360d9a"
       ],
@@ -6643,7 +6919,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T00:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "60f3c7381bc61eae5e3d002a"
       ],
@@ -6735,7 +7011,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "61909d91bf97bb47684e9719"
       ],
@@ -6758,7 +7034,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "61972a54d4a98d427bd08733"
       ],
@@ -6839,6 +7115,29 @@
           "published_at": "2026-10-29T00:00:00+00:00",
           "title": "Introducing AnySpeechRecognizer and AnyDecisionModel: Open Models for Speech and Decisions on Apple Platforms",
           "first_discovered_at": "2026-10-29T12:53:27+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-63b2d9f9a60dad3c": {
+      "id": "ec-63b2d9f9a60dad3c",
+      "title": "Announcing AI data preparation capabilities in Amazon SageMaker: Build high-quality datasets for model development workflows",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T19:40:01+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "63b2d9f9a60dad3ce920e92d"
+      ],
+      "sources": [
+        {
+          "item_id": "63b2d9f9a60dad3ce920e92d",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/announcing-ai-data-preparation-capabilities-in-amazon-sagemaker-build-high-quality-datasets-for-model-development-workflows",
+          "published_at": "2026-11-17T19:40:01+00:00",
+          "title": "Announcing AI data preparation capabilities in Amazon SageMaker: Build high-quality datasets for model development workflows",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -6988,7 +7287,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "65473a5e58fa760357656d86"
       ],
@@ -7650,7 +7949,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "7074cf23f684a0aff68f4776"
       ],
@@ -8816,6 +9115,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-830da74434e8505c": {
+      "id": "ec-830da74434e8505c",
+      "title": "Put Gemini to work for you",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T17:00:00+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "830da74434e8505c737e91eb"
+      ],
+      "sources": [
+        {
+          "item_id": "830da74434e8505c737e91eb",
+          "source_id": "google-ai",
+          "url": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features",
+          "published_at": "2026-11-17T17:00:00+00:00",
+          "title": "Put Gemini to work for you",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-835c6a6b04c513f4": {
       "id": "ec-835c6a6b04c513f4",
       "title": "Open SWE Desktop v0.3.9",
@@ -9122,7 +9444,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T21:53:46+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "86f7c7c99bd2479f548cfa43"
       ],
@@ -9214,7 +9536,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "88ea37572033afd7da53c918"
       ],
@@ -9651,7 +9973,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T00:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "8ec21efa2c62273428cb36f4"
       ],
@@ -9686,6 +10008,29 @@
           "published_at": null,
           "title": "Official site update: improving alignment security efforts",
           "first_discovered_at": "2026-11-14T02:37:23+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-8f6af8c44a4a1bfb": {
+      "id": "ec-8f6af8c44a4a1bfb",
+      "title": "Introducing GPT-6.2 Astra and Sol",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T17:45:00+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "8f6af8c44a4a1bfb5de31585"
+      ],
+      "sources": [
+        {
+          "item_id": "8f6af8c44a4a1bfb5de31585",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+          "published_at": "2026-11-17T17:45:00+00:00",
+          "title": "Introducing GPT-6.2 Astra and Sol",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -9966,6 +10311,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-9434292048106a1c": {
+      "id": "ec-9434292048106a1c",
+      "title": "Article Nov 17, 2026 Linked billing on the Claude Platform Claude Platform",
+      "topic": "cloud-agent",
+      "source_kind": "official_listing",
+      "published_at": null,
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "9434292048106a1c3b9a9bc9"
+      ],
+      "sources": [
+        {
+          "item_id": "9434292048106a1c3b9a9bc9",
+          "source_id": "claude-announcements",
+          "url": "https://claude.com/resources/articles/linked-billing-on-claude-platform",
+          "published_at": null,
+          "title": "Article Nov 17, 2026 Linked billing on the Claude Platform Claude Platform",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-945f879ef3a469b4": {
       "id": "ec-945f879ef3a469b4",
       "title": "OpenAI appoints Dan Driscoll as Senior Counselor for National Security Modernization",
@@ -10127,6 +10495,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-96459ac2e66a9472": {
+      "id": "ec-96459ac2e66a9472",
+      "title": "Build WhatsApp AI agents with Amazon Bedrock AgentCore",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T18:48:50+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "96459ac2e66a9472e95402be"
+      ],
+      "sources": [
+        {
+          "item_id": "96459ac2e66a9472e95402be",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/build-whatsapp-ai-agents-with-amazon-bedrock-agentcore",
+          "published_at": "2026-11-17T18:48:50+00:00",
+          "title": "Build WhatsApp AI agents with Amazon Bedrock AgentCore",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-968472e44aae20b1": {
       "id": "ec-968472e44aae20b1",
       "title": "Official site update: economic policy responses",
@@ -10146,6 +10537,29 @@
           "published_at": null,
           "title": "Official site update: economic policy responses",
           "first_discovered_at": "2026-10-23T21:20:47+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-96bb717697d48967": {
+      "id": "ec-96bb717697d48967",
+      "title": "Official site update: advancing claude for financial services",
+      "topic": "harness",
+      "source_kind": "official_sitemap",
+      "published_at": null,
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "96bb717697d4896736e250c7"
+      ],
+      "sources": [
+        {
+          "item_id": "96bb717697d4896736e250c7",
+          "source_id": "anthropic-site",
+          "url": "https://www.anthropic.com/news/advancing-claude-for-financial-services",
+          "published_at": null,
+          "title": "Official site update: advancing claude for financial services",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -10318,7 +10732,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T22:43:30+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "98ebc3310aca9936cd72e729"
       ],
@@ -10472,6 +10886,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-9b44c6a129423e34": {
+      "id": "ec-9b44c6a129423e34",
+      "title": "Reducing token costs and latency in Amazon Bedrock AgentCore JSON workloads",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T22:44:51+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "9b44c6a129423e3479311f4d"
+      ],
+      "sources": [
+        {
+          "item_id": "9b44c6a129423e3479311f4d",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/reducing-token-costs-and-latency-in-amazon-bedrock-agentcore-json-workloads",
+          "published_at": "2026-11-17T22:44:51+00:00",
+          "title": "Reducing token costs and latency in Amazon Bedrock AgentCore JSON workloads",
+          "first_discovered_at": "2026-11-18T03:47:45+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-9b8b3808b69b7589": {
       "id": "ec-9b8b3808b69b7589",
       "title": "Official site update: claude 4 cyber",
@@ -10617,7 +11054,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "9dbad044ea5f7d221db4f8ad"
       ],
@@ -10709,7 +11146,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T08:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "9fe6d2ae73e55f52b8078f18"
       ],
@@ -10755,7 +11192,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "a0595c813318ccae8c08950d"
       ],
@@ -11146,7 +11583,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-03T03:38:29+00:00",
-      "last_seen_at": "2026-11-05T02:41:03+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "a52e9d71e445a46231be182c"
       ],
@@ -11238,7 +11675,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "a6ac9acd77eb6c9f0e1d87be"
       ],
@@ -11353,7 +11790,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-03T03:38:29+00:00",
-      "last_seen_at": "2026-11-05T02:41:03+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "a88ccd9cde45b630e32610b6"
       ],
@@ -11652,7 +12089,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "ab93811a40848d5d77513581"
       ],
@@ -11756,6 +12193,29 @@
           "published_at": "2026-11-12T20:51:55+00:00",
           "title": "Four Amazon Bedrock inference choices that affect cost",
           "first_discovered_at": "2026-11-12T23:31:51+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-ad076a99b8923baf": {
+      "id": "ec-ad076a99b8923baf",
+      "title": "0.170.0",
+      "topic": "harness",
+      "source_kind": "github_release",
+      "published_at": "2026-11-18T03:40:48+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "ad076a99b8923baf72ed4573"
+      ],
+      "sources": [
+        {
+          "item_id": "ad076a99b8923baf72ed4573",
+          "source_id": "release:openai/codex",
+          "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0",
+          "published_at": "2026-11-18T03:40:48+00:00",
+          "title": "0.170.0",
+          "first_discovered_at": "2026-11-18T03:47:45+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -12174,6 +12634,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-b43ef08ac3ed4f7a": {
+      "id": "ec-b43ef08ac3ed4f7a",
+      "title": "Astra for Law leads in legal intelligence",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T00:00:00+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "b43ef08ac3ed4f7af6f4fa4f"
+      ],
+      "sources": [
+        {
+          "item_id": "b43ef08ac3ed4f7af6f4fa4f",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/astra-law-6-2",
+          "published_at": "2026-11-17T00:00:00+00:00",
+          "title": "Astra for Law leads in legal intelligence",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-b452070c7a90e2aa": {
       "id": "ec-b452070c7a90e2aa",
       "title": "Official site update: a new initiative for developing third party model evaluations",
@@ -12250,7 +12733,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "b535062d7605d792cf397126"
       ],
@@ -12469,6 +12952,29 @@
           "published_at": "2026-11-12T19:29:55+00:00",
           "title": "Tokenomics at scale: Track and cap Amazon Bedrock spend per IAM principal with CUR 2.0 and AWS Budgets",
           "first_discovered_at": "2026-11-12T23:31:51+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-b82b64ef90f76e66": {
+      "id": "ec-b82b64ef90f76e66",
+      "title": "How Revolut raises ambition without lowering the bar",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-11-16T09:30:00+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "b82b64ef90f76e66fb0003e7"
+      ],
+      "sources": [
+        {
+          "item_id": "b82b64ef90f76e66fb0003e7",
+          "source_id": "openai-news",
+          "url": "https://openai.com/business/customer-stories/revolut",
+          "published_at": "2026-11-16T09:30:00+00:00",
+          "title": "How Revolut raises ambition without lowering the bar",
+          "first_discovered_at": "2026-11-17T07:48:20+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -13032,7 +13538,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "bfc4355d370530a85bd88314"
       ],
@@ -13078,7 +13584,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "c08402b8f22a4b159df3858c"
       ],
@@ -13308,7 +13814,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "c398bdff9f0162f7911b6b34"
       ],
@@ -13968,6 +14474,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-cf3bd3dc31c3f29b": {
+      "id": "ec-cf3bd3dc31c3f29b",
+      "title": "0.169.1",
+      "topic": "harness",
+      "source_kind": "github_release",
+      "published_at": "2026-11-17T22:21:10+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "cf3bd3dc31c3f29b66d46b46"
+      ],
+      "sources": [
+        {
+          "item_id": "cf3bd3dc31c3f29b66d46b46",
+          "source_id": "release:openai/codex",
+          "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.1",
+          "published_at": "2026-11-17T22:21:10+00:00",
+          "title": "0.169.1",
+          "first_discovered_at": "2026-11-18T03:47:45+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-cf3bd5b790e73918": {
       "id": "ec-cf3bd5b790e73918",
       "title": "Cloud-Edge LLM Collaborative Learning via Accelerating Personalized Bilevel Optimization",
@@ -13975,7 +14504,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "cf3bd5b790e73918d34511e8"
       ],
@@ -14136,7 +14665,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "d267bc5d23f288f7e9ab3c0e"
       ],
@@ -14251,7 +14780,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "d66c070ed939ea372e9fa301"
       ],
@@ -14412,7 +14941,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "d828cd7ef3f3584ac26e3147"
       ],
@@ -14481,7 +15010,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T17:29:29+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "d89fddf149fe8e05c834f619"
       ],
@@ -14504,7 +15033,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T12:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "d91fd06de7b8771ee8ad78bb"
       ],
@@ -14780,7 +15309,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T17:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "dd659f011024f04f24b0b918"
       ],
@@ -15555,6 +16084,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-ecd295cd80fbdb5f": {
+      "id": "ec-ecd295cd80fbdb5f",
+      "title": "Cut generative AI costs: Code for rules, models for judgment",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T21:14:55+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "ecd295cd80fbdb5f0bdd3a60"
+      ],
+      "sources": [
+        {
+          "item_id": "ecd295cd80fbdb5f0bdd3a60",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/cut-generative-ai-costs-code-for-rules-models-for-judgment",
+          "published_at": "2026-11-17T21:14:55+00:00",
+          "title": "Cut generative AI costs: Code for rules, models for judgment",
+          "first_discovered_at": "2026-11-18T03:47:45+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-ed500889a8ff2381": {
       "id": "ec-ed500889a8ff2381",
       "title": "Official site update: challenges in red teaming ai systems",
@@ -15597,6 +16149,29 @@
           "published_at": "2026-10-22T00:00:00+00:00",
           "title": "Uber brings ChatGPT Work to all employees with OpenAI",
           "first_discovered_at": "2026-10-23T01:17:01+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-ededf8f31a424f6f": {
+      "id": "ec-ededf8f31a424f6f",
+      "title": "OpenShell v0.1.9",
+      "topic": "sandbox",
+      "source_kind": "github_release",
+      "published_at": "2026-11-17T19:12:37+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "ededf8f31a424f6f092321cf"
+      ],
+      "sources": [
+        {
+          "item_id": "ededf8f31a424f6f092321cf",
+          "source_id": "release:NVIDIA/OpenShell",
+          "url": "https://github.com/NVIDIA/OpenShell/releases/tag/v0.1.9",
+          "published_at": "2026-11-17T19:12:37+00:00",
+          "title": "OpenShell v0.1.9",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -15689,6 +16264,29 @@
           "published_at": "2026-10-20T16:09:19+00:00",
           "title": "FairStress: A deeper evaluation of fairness in LLM decision-making",
           "first_discovered_at": "2026-10-22T02:13:55+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-ef90af83544e1ea4": {
+      "id": "ec-ef90af83544e1ea4",
+      "title": "Amazon SageMaker AI real-time endpoints now support KV cache aware routing",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T21:11:51+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "ef90af83544e1ea49520c8f0"
+      ],
+      "sources": [
+        {
+          "item_id": "ef90af83544e1ea49520c8f0",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-ai-real-time-endpoints-now-support-kv-cache-aware-routing",
+          "published_at": "2026-11-17T21:11:51+00:00",
+          "title": "Amazon SageMaker AI real-time endpoints now support KV cache aware routing",
+          "first_discovered_at": "2026-11-18T03:47:45+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -15838,7 +16436,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "f3915ff50e8b22949a3514cb"
       ],
@@ -16183,7 +16781,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T22:06:08+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "fa3c1ec1e457a5f68b920319"
       ],
@@ -16333,6 +16931,29 @@
           "published_at": "2026-11-06T05:00:00+00:00",
           "title": "AutoVend: Benchmarking LLM Agents on Long-Horizon Autonomous Vending Operations",
           "first_discovered_at": "2026-10-28T05:31:37+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-fbeca82073091b7e": {
+      "id": "ec-fbeca82073091b7e",
+      "title": "Govern and discover records with common metadata in AWS Agent Registry",
+      "topic": "cloud-agent",
+      "source_kind": "rss",
+      "published_at": "2026-11-17T20:31:04+00:00",
+      "first_seen_at": "2026-11-18T03:47:45+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
+      "item_ids": [
+        "fbeca82073091b7eabe0a1af"
+      ],
+      "sources": [
+        {
+          "item_id": "fbeca82073091b7eabe0a1af",
+          "source_id": "aws-ml",
+          "url": "https://aws.amazon.com/blogs/machine-learning/govern-and-discover-records-with-common-metadata-in-aws-agent-registry",
+          "published_at": "2026-11-17T20:31:04+00:00",
+          "title": "Govern and discover records with common metadata in AWS Agent Registry",
+          "first_discovered_at": "2026-11-17T20:49:12+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -16505,7 +17126,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T09:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-17T04:42:19+00:00",
+      "last_seen_at": "2026-11-18T03:47:45+00:00",
       "item_ids": [
         "ff7833693fa2a06713dc923a"
       ],
@@ -16534,6 +17155,7 @@
     "035f71ec0325679b7fbcffec": "ec-035f71ec0325679b",
     "036a8aedd8fa7bc1e5800f72": "ec-036a8aedd8fa7bc1",
     "037154e824aaff256e14aef2": "ec-037154e824aaff25",
+    "03d123f8370c458b94d4cccf": "ec-03d123f8370c458b",
     "0463e40d241d7017b7c2375d": "ec-0463e40d241d7017",
     "046f31786bb677e608069fe9": "ec-046f31786bb677e6",
     "047a55d9a381df1fa2e7fddd": "ec-047a55d9a381df1f",
@@ -16565,6 +17187,7 @@
     "0d40f97ea619e69da2455c23": "ec-0d40f97ea619e69d",
     "0e5fad3ca5f8a881acf7d04b": "ec-0e5fad3ca5f8a881",
     "0e6aeb512df07c7120719bdd": "ec-0e6aeb512df07c71",
+    "0e7f690aa4ff229bd2e8f275": "ec-0e7f690aa4ff229b",
     "0e9fb0eb84f13acffdc59012": "ec-0e9fb0eb84f13acf",
     "0f0020abcf733229d29f4d40": "ec-0f0020abcf733229",
     "0f01adb2acab0a67ba71c0b0": "ec-0f01adb2acab0a67",
@@ -16586,6 +17209,7 @@
     "14e90e72d3401ddf817f6448": "ec-14e90e72d3401ddf",
     "15be2ff317bed24c0dcf7014": "ec-15be2ff317bed24c",
     "15db23f231fe269b30407036": "ec-15db23f231fe269b",
+    "1673851a5d77ce2c5516c9f5": "ec-1673851a5d77ce2c",
     "169aa2f41de4c61f45281d4d": "ec-169aa2f41de4c61f",
     "170bf14389b47ac2018e6dd4": "ec-170bf14389b47ac2",
     "1750855042e8ceec185ecc41": "ec-1750855042e8ceec",
@@ -16597,6 +17221,7 @@
     "18559cb38b762050d854f339": "ec-18559cb38b762050",
     "18abffbc67253d87f2de506d": "ec-18abffbc67253d87",
     "18b25c716d40f2c7a7846e89": "ec-18b25c716d40f2c7",
+    "18c399a19d6b4bb8f52c949b": "ec-18c399a19d6b4bb8",
     "19b4fcb1faac9c9bdbccd358": "ec-19b4fcb1faac9c9b",
     "19d564c2b0542953846de266": "ec-19d564c2b0542953",
     "19d9539f3bd0f67fb13b5382": "ec-19d9539f3bd0f67f",
@@ -16609,6 +17234,7 @@
     "1b801dd13d74ebe7dafb66c3": "ec-1b801dd13d74ebe7",
     "1bbee645176fecfe327cc050": "ec-1bbee645176fecfe",
     "1be4fdd8e6ca80f0ec012771": "ec-1be4fdd8e6ca80f0",
+    "1c55d3d1e6c03df7f5510f49": "ec-1c55d3d1e6c03df7",
     "1c5b51464767c2ad29498f22": "ec-1c5b51464767c2ad",
     "1ca2419ee376f343df8dc37f": "ec-1ca2419ee376f343",
     "1cff1239c8922e0328f0923e": "ec-1cff1239c8922e03",
@@ -16678,6 +17304,7 @@
     "2fcfd7ecc48498d8417073a0": "ec-2fcfd7ecc48498d8",
     "2fd8e8bb5d87d3210012832b": "ec-2fd8e8bb5d87d321",
     "300df2fa6ceddd1f264b3e48": "ec-300df2fa6ceddd1f",
+    "3047d7657748ea760feb4367": "ec-3047d7657748ea76",
     "30feb7a6b056dc5f2e381edc": "ec-30feb7a6b056dc5f",
     "32d4e91d243ef07f0795379b": "ec-32d4e91d243ef07f",
     "33b95c2112c46efd09554302": "ec-33b95c2112c46efd",
@@ -16700,9 +17327,12 @@
     "391282aa2b0dc677f039719e": "ec-391282aa2b0dc677",
     "39358eeccb703a6614c0864c": "ec-39358eeccb703a66",
     "394c1d937d63f8e3d65c9f73": "ec-394c1d937d63f8e3",
+    "395eb2f50bbc7a2cf6a2187c": "ec-395eb2f50bbc7a2c",
     "39cad894cdd240fbe2dba606": "ec-39cad894cdd240fb",
     "39d0fa8ab15570a16f24e441": "ec-39d0fa8ab15570a1",
+    "3b3be741a87f5e2153e62660": "ec-3b3be741a87f5e21",
     "3b62b660efe85c866eb19d9f": "ec-3b62b660efe85c86",
+    "3b8bc46555767ca434ffa393": "ec-3b8bc46555767ca4",
     "3b9060f638f42ccfe1eba755": "ec-3b9060f638f42ccf",
     "3bb7f581684ef39f682a4639": "ec-3bb7f581684ef39f",
     "3bdb34705de1aaf0013aca63": "ec-3bdb34705de1aaf0",
@@ -16753,6 +17383,7 @@
     "4cb0c7e800cdcdc0ecc75596": "ec-4cb0c7e800cdcdc0",
     "4d3938441f216409a8f1b94c": "ec-4d3938441f216409",
     "4d39bfa44a3053a12b6dc7f0": "ec-4d39bfa44a3053a1",
+    "4df567e64846f78674c57761": "ec-4df567e64846f786",
     "4e2150af12a97398f6e556e6": "ec-4e2150af12a97398",
     "4e6009943a7de781fd196be1": "ec-4e6009943a7de781",
     "4eb4ba31f0f610048f294cc9": "ec-4eb4ba31f0f61004",
@@ -16762,6 +17393,7 @@
     "50653b36e1edda3c81dffa21": "ec-50653b36e1edda3c",
     "50b4bc975d890604882b99a1": "ec-50b4bc975d890604",
     "50cf62209b129a401a7b59bc": "ec-50cf62209b129a40",
+    "5155d276fe9ac7b2f125354e": "ec-5155d276fe9ac7b2",
     "51888f116f5b083740bce796": "ec-51888f116f5b0837",
     "51a8b9803784fc1a8b355095": "ec-51a8b9803784fc1a",
     "51ebab1d094c7d6043171a1f": "ec-51ebab1d094c7d60",
@@ -16793,6 +17425,7 @@
     "5a25565ab71a8d06b3b9b7c2": "ec-5a25565ab71a8d06",
     "5a4e5e3f052e70301a4ce857": "ec-5a4e5e3f052e7030",
     "5a90caffb2c87d2e6e8eb5c3": "ec-5a90caffb2c87d2e",
+    "5ac5f0f71f9871ae14dffce3": "ec-5ac5f0f71f9871ae",
     "5b4e08461387ba3b44832eb3": "ec-5b4e08461387ba3b",
     "5b54fb74a59ffe3f5477d375": "ec-5b54fb74a59ffe3f",
     "5b69826eead48a963c75ef96": "ec-5b69826eead48a96",
@@ -16821,6 +17454,7 @@
     "63700573e0bc1cd63dbd7c19": "ec-63700573e0bc1cd6",
     "63945bc794809749828fed7a": "ec-63945bc794809749",
     "6394645bd5105adc5435eb92": "ec-6394645bd5105adc",
+    "63b2d9f9a60dad3ce920e92d": "ec-63b2d9f9a60dad3c",
     "6400feb681472530a689e8c5": "ec-6400feb681472530",
     "644098a7aa74502fed65cc4b": "ec-644098a7aa74502f",
     "64d5edb3b57e8b40fdf40a56": "ec-64d5edb3b57e8b40",
@@ -16908,6 +17542,7 @@
     "817d0cefc6986b3111d1b329": "ec-817d0cefc6986b31",
     "819549b983fd9118af23e6dd": "ec-819549b983fd9118",
     "82be3972cee0a1dbca0d7e1d": "ec-82be3972cee0a1db",
+    "830da74434e8505c737e91eb": "ec-830da74434e8505c",
     "835c6a6b04c513f42cd61db7": "ec-835c6a6b04c513f4",
     "83d7690781e8e88d58126539": "ec-83d7690781e8e88d",
     "84757a8b6e04ab0dc5be5bc1": "ec-84757a8b6e04ab0d",
@@ -16946,6 +17581,7 @@
     "8eb6001a836a6e50b8fb133e": "ec-8eb6001a836a6e50",
     "8ec21efa2c62273428cb36f4": "ec-8ec21efa2c622734",
     "8ed1599eb95bc766b1016579": "ec-8ed1599eb95bc766",
+    "8f6af8c44a4a1bfb5de31585": "ec-8f6af8c44a4a1bfb",
     "8f93170faf71fda6558b8b2f": "ec-8f93170faf71fda6",
     "9092d5eb66f29547408d30e0": "ec-9092d5eb66f29547",
     "91088bbdbf455c4e169f5836": "ec-91088bbdbf455c4e",
@@ -16958,6 +17594,7 @@
     "938a189eeae54081c5d50b57": "ec-938a189eeae54081",
     "93d8a7d8e1c8aa0eaed0ea12": "ec-93d8a7d8e1c8aa0e",
     "93f9be0d52f782e6ec064711": "ec-93f9be0d52f782e6",
+    "9434292048106a1c3b9a9bc9": "ec-9434292048106a1c",
     "945f879ef3a469b4aebe760c": "ec-945f879ef3a469b4",
     "94a5f6526eada9bc0f52700e": "ec-94a5f6526eada9bc",
     "94ca820f73fd50fd1e182c69": "ec-94ca820f73fd50fd",
@@ -16965,7 +17602,9 @@
     "9591b1cd4f512684d53a4a51": "ec-9591b1cd4f512684",
     "95a06d5f7fcdd2659d52f025": "ec-95a06d5f7fcdd265",
     "95dedf578de78f3ec264f66e": "ec-95dedf578de78f3e",
+    "96459ac2e66a9472e95402be": "ec-96459ac2e66a9472",
     "968472e44aae20b1d33f961e": "ec-968472e44aae20b1",
+    "96bb717697d4896736e250c7": "ec-96bb717697d48967",
     "96c7f67bef86f8316048a87f": "ec-96c7f67bef86f831",
     "970f67a75a07d0df0726101f": "ec-970f67a75a07d0df",
     "97442d8e30b73df323fc925d": "ec-97442d8e30b73df3",
@@ -16980,6 +17619,7 @@
     "9a064d95901e645ea065cfa7": "ec-9a064d95901e645e",
     "9a15b40232fdbf825a34f1cb": "ec-9a15b40232fdbf82",
     "9a594fd90b594426f24cc97e": "ec-9a594fd90b594426",
+    "9b44c6a129423e3479311f4d": "ec-9b44c6a129423e34",
     "9b8b3808b69b7589be3668ab": "ec-9b8b3808b69b7589",
     "9c25b784b73611021a106aff": "ec-9c25b784b7361102",
     "9c2e899d121755363e2ad475": "ec-9c2e899d12175536",
@@ -17036,6 +17676,7 @@
     "ac8f18750241a65f1eaff594": "ec-ac8f18750241a65f",
     "ac94b61a25ade5edbf713f08": "ec-ac94b61a25ade5ed",
     "ace29fcbd859ed1956133b4d": "ec-ace29fcbd859ed19",
+    "ad076a99b8923baf72ed4573": "ec-ad076a99b8923baf",
     "ae3ecf090605666834ee2d6a": "ec-ae3ecf0906056668",
     "ae6fea470d7741d6fee9c6d6": "ec-ae6fea470d7741d6",
     "ae74f10308878dbaadc7737a": "ec-ae74f10308878dba",
@@ -17054,6 +17695,7 @@
     "b39131c17298f1111bc3a78c": "ec-b39131c17298f111",
     "b3a867faa51ab497299bc434": "ec-b3a867faa51ab497",
     "b3f7af6ca537a11487f5d476": "ec-b3f7af6ca537a114",
+    "b43ef08ac3ed4f7af6f4fa4f": "ec-b43ef08ac3ed4f7a",
     "b452070c7a90e2aa1ea2dc00": "ec-b452070c7a90e2aa",
     "b47584a6c89b5823261078d3": "ec-b47584a6c89b5823",
     "b4af5d547e592189c47807a1": "ec-b4af5d547e592189",
@@ -17067,6 +17709,7 @@
     "b7839fa2149bfc6438936cfe": "ec-b7839fa2149bfc64",
     "b78df57f70863e5070834376": "ec-b78df57f70863e50",
     "b8142a42ae71ac2069bdf742": "ec-b8142a42ae71ac20",
+    "b82b64ef90f76e66fb0003e7": "ec-b82b64ef90f76e66",
     "b893963b25899acfe9a611f5": "ec-b893963b25899acf",
     "b8b49f3884dcb17b62102e6a": "ec-b8b49f3884dcb17b",
     "b8d85869a2d7f453db96cc97": "ec-b8d85869a2d7f453",
@@ -17132,6 +17775,7 @@
     "ced2ee2351066a215ac76290": "ec-ced2ee2351066a21",
     "cedb0cbac88c02cdee48d336": "ec-cedb0cbac88c02cd",
     "cefc48cf69e7d9b72f0db15a": "ec-cefc48cf69e7d9b7",
+    "cf3bd3dc31c3f29b66d46b46": "ec-cf3bd3dc31c3f29b",
     "cf3bd5b790e73918d34511e8": "ec-cf3bd5b790e73918",
     "cfd3646d8e93859c304100c9": "ec-cfd3646d8e93859c",
     "d03523612a84680b43a1a14d": "ec-d03523612a84680b",
@@ -17201,12 +17845,15 @@
     "eb3a22dd21641de828691487": "ec-eb3a22dd21641de8",
     "ebb225778ac4d75802c848d9": "ec-ebb225778ac4d758",
     "ec733f799e1aaee3d1ac15d7": "ec-ec733f799e1aaee3",
+    "ecd295cd80fbdb5f0bdd3a60": "ec-ecd295cd80fbdb5f",
     "ed500889a8ff2381f73bcac7": "ec-ed500889a8ff2381",
     "eda525050cea8fce4b138233": "ec-eda525050cea8fce",
+    "ededf8f31a424f6f092321cf": "ec-ededf8f31a424f6f",
     "ee4c22366ef7e7abd786b0a4": "ec-ee4c22366ef7e7ab",
     "eeb92871f1c91dcf31d3a753": "ec-eeb92871f1c91dcf",
     "ef37b1dfd26f981c99863586": "ec-ef37b1dfd26f981c",
     "ef73bf2ace8ac67192910f29": "ec-ef73bf2ace8ac671",
+    "ef90af83544e1ea49520c8f0": "ec-ef90af83544e1ea4",
     "efe2b5110c7bf124752bc5a2": "ec-efe2b5110c7bf124",
     "f0247d2be6d23fda27989bba": "ec-f0247d2be6d23fda",
     "f145415baaf53e506417c0e7": "ec-f145415baaf53e50",
@@ -17235,6 +17882,7 @@
     "fb630ea19b93482d041617e8": "ec-fb630ea19b93482d",
     "fbaa86a829ad59fd10c58d01": "ec-fbaa86a829ad59fd",
     "fbdcf45317f2ddb1203fe802": "ec-fbdcf45317f2ddb1",
+    "fbeca82073091b7eabe0a1af": "ec-fbeca82073091b7e",
     "fc2ba48bea4dc06f91e30bab": "ec-fc2ba48bea4dc06f",
     "fc87a45dcfbf03d417250555": "ec-fc87a45dcfbf03d4",
     "fd6c66a0e11b0365f1aac7cb": "ec-fd6c66a0e11b0365",
