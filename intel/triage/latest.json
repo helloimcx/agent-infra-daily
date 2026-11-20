@@ -1,15 +1,16 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-19T03:45:52+00:00",
-  "snapshot_generated_at": "2026-11-19T03:45:44+00:00",
-  "beijing_date": "2026-11-19",
+  "generated_at": "2026-11-20T03:39:59+00:00",
+  "snapshot_generated_at": "2026-11-20T03:39:51+00:00",
+  "beijing_date": "2026-11-20",
   "kind": "unverified_editorial_review_queue",
-  "count": 27,
-  "eligible_item_count": 93,
+  "count": 29,
+  "eligible_item_count": 86,
   "topic_distribution": {
-    "cloud-agent": 8,
+    "cloud-agent": 7,
     "harness": 9,
     "research": 9,
+    "runtime": 3,
     "sandbox": 1
   },
   "source_distribution": {
@@ -17,15 +18,34 @@
     "arxiv-cs-ai": 5,
     "aws-ml": 5,
     "claude-announcements": 1,
-    "deepmind-blog": 1,
-    "huggingface-blog": 3,
+    "deepmind-blog": 2,
+    "huggingface-blog": 2,
     "openai-news": 5,
     "release:NVIDIA/OpenShell": 1,
-    "release:langchain-ai/open-swe": 2,
-    "release:openai/codex": 2,
-    "release:openai/openai-agents-python": 1
+    "release:OpenHands/software-agent-sdk": 1,
+    "release:google/adk-python": 1,
+    "release:langchain-ai/langgraph": 3,
+    "release:openai/codex": 2
   },
   "items": [
+    {
+      "item_id": "17b7a2b39f098895a2208f48",
+      "candidate_id": "ec-17b7a2b39f098895",
+      "title": "See PR scans in action",
+      "url": "https://openai.com/business/learn/pr-scans-demo",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-19T00:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
     {
       "item_id": "184d931227f2504de1a33beb",
       "candidate_id": "ec-184d931227f2504d",
@@ -36,24 +56,6 @@
       "topic": "harness",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-18T10:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "3047d7657748ea760feb4367",
-      "candidate_id": "ec-3047d7657748ea76",
-      "title": "Introducing ChatGPT for Sales",
-      "url": "https://openai.com/index/introducing-chatgpt-for-sales",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-17T08:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -135,6 +137,78 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "fd9bebbff7e692862dad0cea",
+      "candidate_id": "ec-fd9bebbff7e69286",
+      "title": "Introducing Gemini 4 Neon",
+      "url": "https://deepmind.google/blog/introducing-gemini-4-neon",
+      "source_id": "deepmind-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-18T21:35:43+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "33b7992067ab7c5024b0f972",
+      "candidate_id": "ec-33b7992067ab7c50",
+      "title": "v1.63.0",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.63.0",
+      "source_id": "release:OpenHands/software-agent-sdk",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-19T19:07:57+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "230d7e70e475f7aad0b7693e",
+      "candidate_id": "ec-230d7e70e475f7aa",
+      "title": "v2.15.0",
+      "url": "https://github.com/google/adk-python/releases/tag/v2.15.0",
+      "source_id": "release:google/adk-python",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-19T22:59:36+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "1e02ab9c34ce90d4cc82015b",
+      "candidate_id": "ec-1e02ab9c34ce90d4",
+      "title": "0.171.0",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0",
+      "source_id": "release:openai/codex",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-20T00:44:47+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "ad076a99b8923baf72ed4573",
       "candidate_id": "ec-ad076a99b8923baf",
       "title": "0.170.0",
@@ -153,15 +227,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "cf3bd3dc31c3f29b66d46b46",
-      "candidate_id": "ec-cf3bd3dc31c3f29b",
-      "title": "0.169.1",
-      "url": "https://github.com/openai/codex/releases/tag/rust-v0.169.1",
-      "source_id": "release:openai/codex",
+      "item_id": "5b1f005070cf37dad4539bd5",
+      "candidate_id": "ec-5b1f005070cf37da",
+      "title": "langgraph==1.2.24",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.24",
+      "source_id": "release:langchain-ai/langgraph",
       "source_kind": "github_release",
-      "topic": "harness",
+      "topic": "runtime",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-17T22:21:10+00:00",
+      "claimed_published_at": "2026-11-20T01:10:26+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -171,15 +245,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "395eb2f50bbc7a2cf6a2187c",
-      "candidate_id": "ec-395eb2f50bbc7a2c",
-      "title": "v0.25.0",
-      "url": "https://github.com/openai/openai-agents-python/releases/tag/v0.25.0",
-      "source_id": "release:openai/openai-agents-python",
+      "item_id": "84da27b8e0173e93c6a72c11",
+      "candidate_id": "ec-84da27b8e0173e93",
+      "title": "langgraph==1.2.23",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.23",
+      "source_id": "release:langchain-ai/langgraph",
       "source_kind": "github_release",
-      "topic": "harness",
+      "topic": "runtime",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-18T00:22:25+00:00",
+      "claimed_published_at": "2026-11-19T05:33:06+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -189,15 +263,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "ededf8f31a424f6f092321cf",
-      "candidate_id": "ec-ededf8f31a424f6f",
-      "title": "OpenShell v0.1.9",
-      "url": "https://github.com/NVIDIA/OpenShell/releases/tag/v0.1.9",
-      "source_id": "release:NVIDIA/OpenShell",
+      "item_id": "f5b5db019790445e26262de1",
+      "candidate_id": "ec-f5b5db019790445e",
+      "title": "langgraph-prebuilt==1.1.3",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/prebuilt%3D%3D1.1.3",
+      "source_id": "release:langchain-ai/langgraph",
       "source_kind": "github_release",
-      "topic": "sandbox",
+      "topic": "runtime",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-17T19:12:37+00:00",
+      "claimed_published_at": "2026-11-19T05:26:17+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -225,15 +299,33 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "06f046b534dbdca74d452e2b",
-      "candidate_id": "ec-06f046b534dbdca7",
-      "title": "How Social Department built culture-aware video discovery",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-social-department-built-culture-aware-video-discovery",
+      "item_id": "05d57b678b42398fa1060053",
+      "candidate_id": "ec-05d57b678b42398f",
+      "title": "Using NVIDIA Run:ai GPU Fractioning on Amazon EKS",
+      "url": "https://aws.amazon.com/blogs/machine-learning/using-nvidia-runai-gpu-fractioning-on-amazon-eks",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-18T19:27:56+00:00",
+      "claimed_published_at": "2026-11-19T16:13:51+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "06863d94c187626f5c0040cd",
+      "candidate_id": "ec-06863d94c187626f",
+      "title": "Amazon SageMaker Inference: 2026 launches in review, part 2",
+      "url": "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-inference-2026-launches-in-review-part-2",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-20T00:34:07+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -261,33 +353,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1673851a5d77ce2c5516c9f5",
-      "candidate_id": "ec-1673851a5d77ce2c",
-      "title": "Secure OAuth patterns for Snowflake Cortex AI through Amazon Bedrock AgentCore",
-      "url": "https://aws.amazon.com/blogs/machine-learning/secure-oauth-patterns-for-snowflake-cortex-ai-through-amazon-bedrock-agentcore",
+      "item_id": "1d80e465e65b9589fb749478",
+      "candidate_id": "ec-1d80e465e65b9589",
+      "title": "Use Kimi Code CLI with models on Amazon Bedrock",
+      "url": "https://aws.amazon.com/blogs/machine-learning/use-kimi-code-cli-with-models-on-amazon-bedrock",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-17T20:25:23+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "2f7a78547e9d1e5ca210ad95",
-      "candidate_id": "ec-2f7a78547e9d1e5c",
-      "title": "Private certificate authority support in Amazon Bedrock AgentCore Identity",
-      "url": "https://aws.amazon.com/blogs/machine-learning/private-certificate-authority-support-in-amazon-bedrock-agentcore-identity",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-18T20:53:41+00:00",
+      "claimed_published_at": "2026-11-20T00:33:30+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -315,46 +389,10 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "0cf973f32d48c3c18faad4b7",
-      "candidate_id": "ec-0cf973f32d48c3c1",
-      "title": "Robin Desktop v0.3.18",
-      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.18",
-      "source_id": "release:langchain-ai/open-swe",
-      "source_kind": "github_release",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-16T05:17:16+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "49e9b8857bee4a9472d84e72",
-      "candidate_id": "ec-49e9b8857bee4a94",
-      "title": "Robin Desktop v0.3.19",
-      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.19",
-      "source_id": "release:langchain-ai/open-swe",
-      "source_kind": "github_release",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-17T00:57:41+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "0221b1d0649ec5f26c7eb99e",
-      "candidate_id": "ec-0221b1d0649ec5f2",
-      "title": "Official site update: canadian ai research",
-      "url": "https://www.anthropic.com/news/canadian-ai-research",
+      "item_id": "0fdcee56178e3cbc065f5a1b",
+      "candidate_id": "ec-0fdcee56178e3cbc",
+      "title": "Official site update: AI assistance coding skills",
+      "url": "https://www.anthropic.com/research/AI-assistance-coding-skills",
       "source_id": "anthropic-site",
       "source_kind": "official_sitemap",
       "topic": "harness",
@@ -369,15 +407,51 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "135951a081c493a8dc098a38",
-      "candidate_id": "ec-135951a081c493a8",
-      "title": "What Matters for Cross-Modal Alignment",
-      "url": "https://arxiv.org/abs/2611.20000",
+      "item_id": "03b179946dd0e551984b025c",
+      "candidate_id": "ec-03b179946dd0e551",
+      "title": "Language Models Can Rewrite Their Own Weights",
+      "url": "https://arxiv.org/abs/2611.21885",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-18T05:00:00+00:00",
+      "claimed_published_at": "2026-11-19T05:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "0475d1762200fabfd69bf29b",
+      "candidate_id": "ec-0475d1762200fabf",
+      "title": "MAVE: Reconstructing Editable 3D Blockouts from Film Shots",
+      "url": "https://arxiv.org/abs/2611.22464",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-19T05:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "132a1610954926d47396fad5",
+      "candidate_id": "ec-132a1610954926d4",
+      "title": "Check Your Blind Spots: Decision-Guided Perception by Probing the Planner with Hypothetical Objects",
+      "url": "https://arxiv.org/abs/2611.23030",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-19T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -395,7 +469,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-18T05:00:00+00:00",
+      "claimed_published_at": "2026-11-19T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -405,69 +479,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1b82e3e69c3efb1d28512183",
-      "candidate_id": "ec-1b82e3e69c3efb1d",
-      "title": "Does the Voice Matter? Evaluating Frustration Detection on Deployed Clinical Voice-Agent Calls",
-      "url": "https://arxiv.org/abs/2611.21001",
+      "item_id": "18ebe089f234fac565c079e0",
+      "candidate_id": "ec-18ebe089f234fac5",
+      "title": "Hierarchical Control of Antiphase Synchronization in Biomorphic Spiking Neural Architectures for Locomotor Control",
+      "url": "https://arxiv.org/abs/2611.22639",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-18T05:00:00+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "1ed01652a0b4fa3bf86e1876",
-      "candidate_id": "ec-1ed01652a0b4fa3b",
-      "title": "RACE: Ranking-Uncertainty Aware Capacity-Adaptive Customization for Efficient Sequential Recommendation",
-      "url": "https://arxiv.org/abs/2611.18244",
-      "source_id": "arxiv-cs-ai",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-18T05:00:00+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "399318a9ca783ebcab0d78ad",
-      "candidate_id": "ec-399318a9ca783ebc",
-      "title": "SkillEarth: Teaching General-Purpose Agents to Act on Earth via Skill Evolution",
-      "url": "https://arxiv.org/abs/2611.15481",
-      "source_id": "arxiv-cs-ai",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-18T05:00:00+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "5b89a2db7f60ae9099b72ca7",
-      "candidate_id": "ec-5b89a2db7f60ae90",
-      "title": "Rumble-2-Flash: an open 0.5B speech model for 40+ languages",
-      "url": "https://huggingface.co/blog/rumble-2-flash",
-      "source_id": "huggingface-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-18T00:00:00+00:00",
+      "claimed_published_at": "2026-11-19T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -509,6 +529,24 @@
         "source_catalog_priority:P1",
         "first_party_feed_record",
         "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "ededf8f31a424f6f092321cf",
+      "candidate_id": "ec-ededf8f31a424f6f",
+      "title": "OpenShell v0.1.9",
+      "url": "https://github.com/NVIDIA/OpenShell/releases/tag/v0.1.9",
+      "source_id": "release:NVIDIA/OpenShell",
+      "source_kind": "github_release",
+      "topic": "sandbox",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-17T19:12:37+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     }
