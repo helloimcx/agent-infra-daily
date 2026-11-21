@@ -1,33 +1,102 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-20T03:39:59+00:00",
-  "snapshot_generated_at": "2026-11-20T03:39:51+00:00",
-  "beijing_date": "2026-11-20",
+  "generated_at": "2026-11-21T03:23:10+00:00",
+  "snapshot_generated_at": "2026-11-21T03:23:01+00:00",
+  "beijing_date": "2026-11-21",
   "kind": "unverified_editorial_review_queue",
-  "count": 29,
-  "eligible_item_count": 86,
+  "count": 28,
+  "eligible_item_count": 81,
   "topic_distribution": {
     "cloud-agent": 7,
     "harness": 9,
     "research": 9,
-    "runtime": 3,
-    "sandbox": 1
+    "runtime": 3
   },
   "source_distribution": {
-    "anthropic-site": 1,
+    "anthropic-site": 2,
     "arxiv-cs-ai": 5,
     "aws-ml": 5,
-    "claude-announcements": 1,
     "deepmind-blog": 2,
     "huggingface-blog": 2,
     "openai-news": 5,
-    "release:NVIDIA/OpenShell": 1,
-    "release:OpenHands/software-agent-sdk": 1,
+    "release:OpenHands/software-agent-sdk": 2,
     "release:google/adk-python": 1,
     "release:langchain-ai/langgraph": 3,
-    "release:openai/codex": 2
+    "release:openai/codex": 1
   },
   "items": [
+    {
+      "item_id": "7ad44f990f0c53ef2e2a5377",
+      "candidate_id": "ec-7ad44f990f0c53ef",
+      "title": "Combatting adversarial distillation",
+      "url": "https://openai.com/index/combatting-adversarial-distillation",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-20T10:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "8145fefb47ff1ca9fa5560e6",
+      "candidate_id": "ec-8145fefb47ff1ca9",
+      "title": "Hebbia sees improvements in financial research with GPT-6 Astra",
+      "url": "https://openai.com/business/customer-stories/hebbia",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-20T00:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "9342dbf934e428aa00c16520",
+      "candidate_id": "ec-9342dbf934e428aa",
+      "title": "How OpenAI’s Performance Factory keeps ChatGPT fast",
+      "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-19T08:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "c1a2af93db54bfcf7c217cb7",
+      "candidate_id": "ec-c1a2af93db54bfcf",
+      "title": "Can AI help scientists identify promising drug candidates?",
+      "url": "https://openai.com/index/introducing-medchembench",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-20T00:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
     {
       "item_id": "17b7a2b39f098895a2208f48",
       "candidate_id": "ec-17b7a2b39f098895",
@@ -38,83 +107,11 @@
       "topic": "harness",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-19T00:00:00+00:00",
-      "review_order_score": 8,
+      "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "184d931227f2504de1a33beb",
-      "candidate_id": "ec-184d931227f2504d",
-      "title": "The Silent Consensus",
-      "url": "https://openai.com/index/the-silent-consensus",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-18T10:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "53d809d7420a3923e8bad7c3",
-      "candidate_id": "ec-53d809d7420a3923",
-      "title": "How Sumitomo Life’s leaders helped teams adopt ChatGPT Enterprise",
-      "url": "https://openai.com/business/customer-stories/sumitomo-life",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-18T08:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "58da586369f33999eb920dc2",
-      "candidate_id": "ec-58da586369f33999",
-      "title": "Research acceleration: The jagged frontier",
-      "url": "https://openai.com/index/research-acceleration-jagged-frontier",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-18T08:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "67952d9a918d2536a7bf3b37",
-      "candidate_id": "ec-67952d9a918d2536",
-      "title": "Inside the Codex sandbox",
-      "url": "https://openai.com/index/inside-the-codex-sandbox",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-18T08:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -128,11 +125,11 @@
       "topic": "research",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-18T18:13:42+00:00",
-      "review_order_score": 8,
+      "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -146,11 +143,11 @@
       "topic": "research",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-18T21:35:43+00:00",
-      "review_order_score": 8,
+      "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -164,6 +161,24 @@
       "topic": "cloud-agent",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-19T19:07:57+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "77d7d214153f1c797415a3c2",
+      "candidate_id": "ec-77d7d214153f1c79",
+      "title": "v1.63.1",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.63.1",
+      "source_id": "release:OpenHands/software-agent-sdk",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-20T08:17:22+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -200,24 +215,6 @@
       "topic": "harness",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-20T00:44:47+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "ad076a99b8923baf72ed4573",
-      "candidate_id": "ec-ad076a99b8923baf",
-      "title": "0.170.0",
-      "url": "https://github.com/openai/codex/releases/tag/rust-v0.170.0",
-      "source_id": "release:openai/codex",
-      "source_kind": "github_release",
-      "topic": "harness",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-18T03:40:48+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -281,42 +278,6 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "02a9f081f7220770d133b592",
-      "candidate_id": "ec-02a9f081f7220770",
-      "title": "How Airbnb uses cost per task to operate coding agents on Amazon Bedrock",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-airbnb-uses-cost-per-task-to-operate-coding-agents-on-amazon-bedrock",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-18T21:48:19+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "05d57b678b42398fa1060053",
-      "candidate_id": "ec-05d57b678b42398f",
-      "title": "Using NVIDIA Run:ai GPU Fractioning on Amazon EKS",
-      "url": "https://aws.amazon.com/blogs/machine-learning/using-nvidia-runai-gpu-fractioning-on-amazon-eks",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T16:13:51+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
       "item_id": "06863d94c187626f5c0040cd",
       "candidate_id": "ec-06863d94c187626f",
       "title": "Amazon SageMaker Inference: 2026 launches in review, part 2",
@@ -326,24 +287,6 @@
       "topic": "cloud-agent",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-20T00:34:07+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "1471104375f835f45826c338",
-      "candidate_id": "ec-1471104375f835f4",
-      "title": "Full Fine-Tuning (FFT) on SageMaker AI Serverless Model Customization",
-      "url": "https://aws.amazon.com/blogs/machine-learning/full-fine-tuning-fft-on-sagemaker-ai-serverless-model-customization",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T00:15:58+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -371,20 +314,56 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "9434292048106a1c3b9a9bc9",
-      "candidate_id": "ec-9434292048106a1c",
-      "title": "Article Nov 17, 2026 Linked billing on the Claude Platform Claude Platform",
-      "url": "https://claude.com/resources/articles/linked-billing-on-claude-platform",
-      "source_id": "claude-announcements",
-      "source_kind": "official_listing",
+      "item_id": "24a3a35b947b3236755beb76",
+      "candidate_id": "ec-24a3a35b947b3236",
+      "title": "Introducing managed cluster extensions for observability and user management in Amazon SageMaker HyperPod Slurm",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-managed-cluster-extensions-for-observability-and-user-management-in-amazon-sagemaker-hyperpod-slurm",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
       "topic": "cloud-agent",
-      "source_priority": "P0",
-      "claimed_published_at": null,
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-20T23:07:03+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "2f6854a60f3bdf7510e4f93a",
+      "candidate_id": "ec-2f6854a60f3bdf75",
+      "title": "Run your whole selling business in AWS Quick",
+      "url": "https://aws.amazon.com/blogs/machine-learning/run-your-whole-selling-business-in-aws-quick",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-19T22:16:22+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "39ef67dcebcbe731d115c0c7",
+      "candidate_id": "ec-39ef67dcebcbe731",
+      "title": "Enable AI agents to pay for AWS Marketplace x402 products with Amazon Bedrock AgentCore payments",
+      "url": "https://aws.amazon.com/blogs/machine-learning/enable-ai-agents-to-pay-for-aws-marketplace-x402-products-with-amazon-bedrock-agentcore-payments",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-19T23:02:16+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -407,15 +386,33 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "03b179946dd0e551984b025c",
-      "candidate_id": "ec-03b179946dd0e551",
-      "title": "Language Models Can Rewrite Their Own Weights",
-      "url": "https://arxiv.org/abs/2611.21885",
+      "item_id": "2bd8707fdab8226a9f675f85",
+      "candidate_id": "ec-2bd8707fdab8226a",
+      "title": "Official site update: cyber verification program",
+      "url": "https://www.anthropic.com/news/cyber-verification-program",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "1331f06b08843914d32c96f5",
+      "candidate_id": "ec-1331f06b08843914",
+      "title": "ReflectScene:MLLM-Guided Closed-Loop Diffusion for 3D Indoor Scene Generation",
+      "url": "https://arxiv.org/abs/2611.23845",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T05:00:00+00:00",
+      "claimed_published_at": "2026-11-20T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -425,51 +422,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "0475d1762200fabfd69bf29b",
-      "candidate_id": "ec-0475d1762200fabf",
-      "title": "MAVE: Reconstructing Editable 3D Blockouts from Film Shots",
-      "url": "https://arxiv.org/abs/2611.22464",
+      "item_id": "135951a081c493a8dc098a38",
+      "candidate_id": "ec-135951a081c493a8",
+      "title": "What Matters for Cross-Modal Alignment",
+      "url": "https://arxiv.org/abs/2611.20000",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T05:00:00+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "132a1610954926d47396fad5",
-      "candidate_id": "ec-132a1610954926d4",
-      "title": "Check Your Blind Spots: Decision-Guided Perception by Probing the Planner with Hypothetical Objects",
-      "url": "https://arxiv.org/abs/2611.23030",
-      "source_id": "arxiv-cs-ai",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T05:00:00+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "18a53f46bb41bc2cd2f4be68",
-      "candidate_id": "ec-18a53f46bb41bc2c",
-      "title": "Regularizing Treatment Leakage for LLM-based Uplift Estimation",
-      "url": "https://arxiv.org/abs/2611.20794",
-      "source_id": "arxiv-cs-ai",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T05:00:00+00:00",
+      "claimed_published_at": "2026-11-20T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -487,7 +448,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T05:00:00+00:00",
+      "claimed_published_at": "2026-11-20T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -497,15 +458,51 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "aef632472a5e3af7f91b4cd9",
-      "candidate_id": "ec-aef632472a5e3af7",
-      "title": "Time-Series Models in the Streamhouse: A New Frontier and Use Cases",
-      "url": "https://huggingface.co/blog/ibm-research/time-series-powered-streamhouse",
+      "item_id": "2ce81d0e61aacc2865b59512",
+      "candidate_id": "ec-2ce81d0e61aacc28",
+      "title": "WorldRuler: Interactive World Modeling under Configurable Rules",
+      "url": "https://arxiv.org/abs/2611.24869",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-20T05:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "3391e44ba854893b5e7a7221",
+      "candidate_id": "ec-3391e44ba854893b",
+      "title": "Where Global Context and Weight Sharing Work in Compact Vision Backbones",
+      "url": "https://arxiv.org/abs/2611.23446",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-20T05:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "701a571706ec6c00de8bbc6a",
+      "candidate_id": "ec-701a571706ec6c00",
+      "title": "Introducing harness adapters: adapt your favorite model to your harness to improve performance and cost",
+      "url": "https://huggingface.co/blog/harness-adapters-at-scale",
       "source_id": "huggingface-blog",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-18T15:00:23+00:00",
+      "claimed_published_at": "2026-11-20T00:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -515,38 +512,20 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "e55c8f2df06c07ffc92b5ea2",
-      "candidate_id": "ec-e55c8f2df06c07ff",
-      "title": "Why your fine-tuning job takes longer than the FLOPs say",
-      "url": "https://huggingface.co/blog/Dharma-AI/predicting-fine-tuning-time",
+      "item_id": "824c03b970f1dc58cad67633",
+      "candidate_id": "ec-824c03b970f1dc58",
+      "title": "Welcome Inkling 2 Mini, Cutting-edge Performance for your Local Setup",
+      "url": "https://huggingface.co/blog/inkling2mini",
       "source_id": "huggingface-blog",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-18T18:53:43+00:00",
+      "claimed_published_at": "2026-11-20T00:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
         "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "ededf8f31a424f6f092321cf",
-      "candidate_id": "ec-ededf8f31a424f6f",
-      "title": "OpenShell v0.1.9",
-      "url": "https://github.com/NVIDIA/OpenShell/releases/tag/v0.1.9",
-      "source_id": "release:NVIDIA/OpenShell",
-      "source_kind": "github_release",
-      "topic": "sandbox",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-17T19:12:37+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     }
