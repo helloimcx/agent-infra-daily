@@ -1,27 +1,27 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-21T03:23:10+00:00",
-  "snapshot_generated_at": "2026-11-21T03:23:01+00:00",
-  "beijing_date": "2026-11-21",
+  "generated_at": "2026-11-22T02:31:54+00:00",
+  "snapshot_generated_at": "2026-11-22T02:31:47+00:00",
+  "beijing_date": "2026-11-22",
   "kind": "unverified_editorial_review_queue",
-  "count": 28,
-  "eligible_item_count": 81,
+  "count": 27,
+  "eligible_item_count": 59,
   "topic_distribution": {
-    "cloud-agent": 7,
+    "cloud-agent": 8,
     "harness": 9,
-    "research": 9,
+    "research": 7,
     "runtime": 3
   },
   "source_distribution": {
-    "anthropic-site": 2,
+    "anthropic-site": 3,
     "arxiv-cs-ai": 5,
     "aws-ml": 5,
-    "deepmind-blog": 2,
     "huggingface-blog": 2,
-    "openai-news": 5,
+    "openai-news": 4,
     "release:OpenHands/software-agent-sdk": 2,
     "release:google/adk-python": 1,
     "release:langchain-ai/langgraph": 3,
+    "release:langchain-ai/open-swe": 1,
     "release:openai/codex": 1
   },
   "items": [
@@ -53,11 +53,11 @@
       "topic": "harness",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-20T00:00:00+00:00",
-      "review_order_score": 8,
+      "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -71,11 +71,11 @@
       "topic": "harness",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-19T08:00:00+00:00",
-      "review_order_score": 8,
+      "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -89,83 +89,11 @@
       "topic": "harness",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-20T00:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "17b7a2b39f098895a2208f48",
-      "candidate_id": "ec-17b7a2b39f098895",
-      "title": "See PR scans in action",
-      "url": "https://openai.com/business/learn/pr-scans-demo",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-19T00:00:00+00:00",
       "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
         "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "ca9ca0837de1673fe7157c5a",
-      "candidate_id": "ec-ca9ca0837de1673f",
-      "title": "Genie 4 is now available",
-      "url": "https://deepmind.google/blog/genie-4-is-now-available",
-      "source_id": "deepmind-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-18T18:13:42+00:00",
-      "review_order_score": 7,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "fd9bebbff7e692862dad0cea",
-      "candidate_id": "ec-fd9bebbff7e69286",
-      "title": "Introducing Gemini 4 Neon",
-      "url": "https://deepmind.google/blog/introducing-gemini-4-neon",
-      "source_id": "deepmind-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-18T21:35:43+00:00",
-      "review_order_score": 7,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "33b7992067ab7c5024b0f972",
-      "candidate_id": "ec-33b7992067ab7c50",
-      "title": "v1.63.0",
-      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.63.0",
-      "source_id": "release:OpenHands/software-agent-sdk",
-      "source_kind": "github_release",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T19:07:57+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -188,127 +116,19 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "230d7e70e475f7aad0b7693e",
-      "candidate_id": "ec-230d7e70e475f7aa",
-      "title": "v2.15.0",
-      "url": "https://github.com/google/adk-python/releases/tag/v2.15.0",
-      "source_id": "release:google/adk-python",
+      "item_id": "06bcc2a1accbf96c798ff749",
+      "candidate_id": "ec-06bcc2a1accbf96c",
+      "title": "Robin Desktop v0.3.20",
+      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.20",
+      "source_id": "release:langchain-ai/open-swe",
       "source_kind": "github_release",
-      "topic": "harness",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T22:59:36+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "1e02ab9c34ce90d4cc82015b",
-      "candidate_id": "ec-1e02ab9c34ce90d4",
-      "title": "0.171.0",
-      "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0",
-      "source_id": "release:openai/codex",
-      "source_kind": "github_release",
-      "topic": "harness",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T00:44:47+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "5b1f005070cf37dad4539bd5",
-      "candidate_id": "ec-5b1f005070cf37da",
-      "title": "langgraph==1.2.24",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.24",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T01:10:26+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "84da27b8e0173e93c6a72c11",
-      "candidate_id": "ec-84da27b8e0173e93",
-      "title": "langgraph==1.2.23",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.23",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T05:33:06+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "f5b5db019790445e26262de1",
-      "candidate_id": "ec-f5b5db019790445e",
-      "title": "langgraph-prebuilt==1.1.3",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/prebuilt%3D%3D1.1.3",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T05:26:17+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "06863d94c187626f5c0040cd",
-      "candidate_id": "ec-06863d94c187626f",
-      "title": "Amazon SageMaker Inference: 2026 launches in review, part 2",
-      "url": "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-inference-2026-launches-in-review-part-2",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T00:34:07+00:00",
-      "review_order_score": 5,
+      "claimed_published_at": "2026-11-21T23:23:19+00:00",
+      "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "1d80e465e65b9589fb749478",
-      "candidate_id": "ec-1d80e465e65b9589",
-      "title": "Use Kimi Code CLI with models on Amazon Bedrock",
-      "url": "https://aws.amazon.com/blogs/machine-learning/use-kimi-code-cli-with-models-on-amazon-bedrock",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T00:33:30+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
+        "official_release_record",
         "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
@@ -332,15 +152,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "2f6854a60f3bdf7510e4f93a",
-      "candidate_id": "ec-2f6854a60f3bdf75",
-      "title": "Run your whole selling business in AWS Quick",
-      "url": "https://aws.amazon.com/blogs/machine-learning/run-your-whole-selling-business-in-aws-quick",
+      "item_id": "4867bfdeb843196c6aa57b0d",
+      "candidate_id": "ec-4867bfdeb843196c",
+      "title": "New in AWS Quick: More capable flows, an updated web experience, and agents that work together",
+      "url": "https://aws.amazon.com/blogs/machine-learning/new-in-aws-quick-more-capable-flows-an-updated-web-experience-and-agents-that-work-together",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T22:16:22+00:00",
+      "claimed_published_at": "2026-11-21T01:06:42+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -350,15 +170,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "39ef67dcebcbe731d115c0c7",
-      "candidate_id": "ec-39ef67dcebcbe731",
-      "title": "Enable AI agents to pay for AWS Marketplace x402 products with Amazon Bedrock AgentCore payments",
-      "url": "https://aws.amazon.com/blogs/machine-learning/enable-ai-agents-to-pay-for-aws-marketplace-x402-products-with-amazon-bedrock-agentcore-payments",
+      "item_id": "6728ab5448c93c9a0f6731c2",
+      "candidate_id": "ec-6728ab5448c93c9a",
+      "title": "Announcing Amazon Textract Insights: Verifiable generative AI for documents",
+      "url": "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T23:02:16+00:00",
+      "claimed_published_at": "2026-11-20T20:22:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -368,20 +188,56 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "0fdcee56178e3cbc065f5a1b",
-      "candidate_id": "ec-0fdcee56178e3cbc",
-      "title": "Official site update: AI assistance coding skills",
-      "url": "https://www.anthropic.com/research/AI-assistance-coding-skills",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
+      "item_id": "7cedfd958b6d7a17aac27279",
+      "candidate_id": "ec-7cedfd958b6d7a17",
+      "title": "Meta ads is now available in AWS Quick",
+      "url": "https://aws.amazon.com/blogs/machine-learning/meta-ads-is-now-available-in-aws-quick",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-22T01:59:13+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "b91e0d0a1a224c11a62d1e0f",
+      "candidate_id": "ec-b91e0d0a1a224c11",
+      "title": "Introducing enhanced infrastructure observability in Amazon SageMaker HyperPod",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-20T18:24:06+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "33b7992067ab7c5024b0f972",
+      "candidate_id": "ec-33b7992067ab7c50",
+      "title": "v1.63.0",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.63.0",
+      "source_id": "release:OpenHands/software-agent-sdk",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-19T19:07:57+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -400,6 +256,78 @@
         "source_catalog_priority:P0",
         "discovery_only_no_verified_publication_time",
         "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "e308a84a77ae00d83193b951",
+      "candidate_id": "ec-e308a84a77ae00d8",
+      "title": "Official site update: anthropic prices initial public offering",
+      "url": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "fd109fdc361c3cd3d5827b79",
+      "candidate_id": "ec-fd109fdc361c3cd3",
+      "title": "Official site update: ipo close",
+      "url": "https://www.anthropic.com/news/ipo-close",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "230d7e70e475f7aad0b7693e",
+      "candidate_id": "ec-230d7e70e475f7aa",
+      "title": "v2.15.0",
+      "url": "https://github.com/google/adk-python/releases/tag/v2.15.0",
+      "source_id": "release:google/adk-python",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-19T22:59:36+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "1e02ab9c34ce90d4cc82015b",
+      "candidate_id": "ec-1e02ab9c34ce90d4",
+      "title": "0.171.0",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0",
+      "source_id": "release:openai/codex",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-20T00:44:47+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -494,6 +422,60 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "5b1f005070cf37dad4539bd5",
+      "candidate_id": "ec-5b1f005070cf37da",
+      "title": "langgraph==1.2.24",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.24",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-20T01:10:26+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "84da27b8e0173e93c6a72c11",
+      "candidate_id": "ec-84da27b8e0173e93",
+      "title": "langgraph==1.2.23",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.23",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-19T05:33:06+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "f5b5db019790445e26262de1",
+      "candidate_id": "ec-f5b5db019790445e",
+      "title": "langgraph-prebuilt==1.1.3",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/prebuilt%3D%3D1.1.3",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-19T05:26:17+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "701a571706ec6c00de8bbc6a",
       "candidate_id": "ec-701a571706ec6c00",
       "title": "Introducing harness adapters: adapt your favorite model to your harness to improve performance and cost",
@@ -503,11 +485,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-20T00:00:00+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -521,11 +503,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-20T00:00:00+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     }
