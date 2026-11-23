@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_ingested_snapshot": "2026-11-22T02:31:47+00:00",
+  "last_ingested_snapshot": "2026-11-23T02:58:40+00:00",
   "bootstrap_note": "Two independently verified candidates recovered from the successful 2026-10-22 ingestion artifact. This is not the full 54-item ledger; the next scheduled collector will merge all available items.",
   "candidates": {
     "ec-001cd33c965241bc": {
@@ -585,7 +585,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-21T23:23:19+00:00",
       "first_seen_at": "2026-11-22T02:31:47+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "06bcc2a1accbf96c798ff749"
       ],
@@ -1620,7 +1620,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "1331f06b08843914d32c96f5"
       ],
@@ -1643,7 +1643,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-18T05:00:00+00:00",
       "first_seen_at": "2026-11-19T03:45:44+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "135951a081c493a8dc098a38"
       ],
@@ -2181,7 +2181,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-19T05:00:00+00:00",
       "first_seen_at": "2026-11-20T03:39:51+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "18ebe089f234fac565c079e0"
       ],
@@ -2285,6 +2285,29 @@
           "published_at": null,
           "title": "Article Nov 10, 2026 Your apps can now open in Claude, and Claude can work in them Our partners can now embed their apps directly in Claude, so you and Claude can work in the same tool, on the same screen, without switching tabs. Claude apps MCP",
           "first_discovered_at": "2026-11-10T23:13:56+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
+    "ec-1a10f1676d46fc01": {
+      "id": "ec-1a10f1676d46fc01",
+      "title": "Perplexity and Intelligence",
+      "topic": "harness",
+      "source_kind": "rss",
+      "published_at": "2026-11-22T00:00:00+00:00",
+      "first_seen_at": "2026-11-23T02:58:40+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
+      "item_ids": [
+        "1a10f1676d46fc01a909d8ea"
+      ],
+      "sources": [
+        {
+          "item_id": "1a10f1676d46fc01a909d8ea",
+          "source_id": "openai-news",
+          "url": "https://openai.com/index/perplexity-and-intelligence",
+          "published_at": "2026-11-22T00:00:00+00:00",
+          "title": "Perplexity and Intelligence",
+          "first_discovered_at": "2026-11-22T19:30:43+00:00"
         }
       ],
       "status": "unverified_candidate"
@@ -3285,7 +3308,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T23:07:03+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "24a3a35b947b3236755beb76"
       ],
@@ -3860,7 +3883,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "2ce81d0e61aacc2865b59512"
       ],
@@ -4458,7 +4481,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "3391e44ba854893b5e7a7221"
       ],
@@ -6068,7 +6091,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-21T01:06:42+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "4867bfdeb843196c6aa57b0d"
       ],
@@ -6689,7 +6712,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-19T05:00:00+00:00",
       "first_seen_at": "2026-11-20T03:39:51+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "51bd3c871dfe3a9275515f30"
       ],
@@ -8023,7 +8046,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "60c77550730c569822835465"
       ],
@@ -8621,7 +8644,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T20:22:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "6728ab5448c93c9a0f6731c2"
       ],
@@ -9145,7 +9168,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "6ed05805c40d1357349c637d"
       ],
@@ -9881,7 +9904,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-20T08:17:22+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "77d7d214153f1c797415a3c2"
       ],
@@ -10088,7 +10111,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T10:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "7ad44f990f0c53ef2e2a5377"
       ],
@@ -10203,7 +10226,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-22T01:59:13+00:00",
       "first_seen_at": "2026-11-22T02:31:47+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "7cedfd958b6d7a17aac27279"
       ],
@@ -10226,7 +10249,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "7d1cf62765c510eb83e45f46"
       ],
@@ -10663,7 +10686,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "8235444c0a303bdb66ee9a1a"
       ],
@@ -11744,7 +11767,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "8fcb7b866a977b4d94a43d22"
       ],
@@ -13009,7 +13032,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "9e72a8f52075eb5aea242fcd"
       ],
@@ -14159,7 +14182,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-16T05:00:00+00:00",
       "first_seen_at": "2026-11-17T04:42:19+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "ab93811a40848d5d77513581"
       ],
@@ -15125,7 +15148,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "b86f222d774a432b6c151bd7"
       ],
@@ -15263,7 +15286,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T18:24:06+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "b91e0d0a1a224c11a62d1e0f"
       ],
@@ -15953,7 +15976,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "c100b733fd0b2c2a3c4473a8"
       ],
@@ -16367,7 +16390,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "c60bbdbf2963b32b5840d528"
       ],
@@ -16505,7 +16528,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "c8c8baa73ce5df18141d031c"
       ],
@@ -17241,7 +17264,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T22:35:24+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "d5bec1fa3b07f6176fa03190"
       ],
@@ -17724,7 +17747,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "dc98aec89c40389c1b749d32"
       ],
@@ -19150,7 +19173,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T05:00:00+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "f3911223d1f9b3a8edc1bb30"
       ],
@@ -19357,7 +19380,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-21T00:14:26+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "f6e744ab21c05cebfa08d379"
       ],
@@ -19679,7 +19702,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-20T20:37:31+00:00",
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "fb0117cbcf0e24c7c7764b83"
       ],
@@ -19886,7 +19909,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-21T03:23:01+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "fd109fdc361c3cd3d5827b79"
       ],
@@ -20047,7 +20070,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-19T05:00:00+00:00",
       "first_seen_at": "2026-11-20T03:39:51+00:00",
-      "last_seen_at": "2026-11-22T02:31:47+00:00",
+      "last_seen_at": "2026-11-23T02:58:40+00:00",
       "item_ids": [
         "ff272b7a882418a40b2d832e"
       ],
@@ -20211,6 +20234,7 @@
     "19d564c2b0542953846de266": "ec-19d564c2b0542953",
     "19d9539f3bd0f67fb13b5382": "ec-19d9539f3bd0f67f",
     "19f8bc589a9b194da0da0575": "ec-19f8bc589a9b194d",
+    "1a10f1676d46fc01a909d8ea": "ec-1a10f1676d46fc01",
     "1a1408327520a27be5d4bcf6": "ec-1a1408327520a27b",
     "1a543055a02f9816518cc039": "ec-1a543055a02f9816",
     "1b011fa040f80893f7b604b4": "ec-1b011fa040f80893",

@@ -1,0 +1,914 @@
+{
+  "schema_version": "1.0",
+  "beijing_date": "2026-11-23",
+  "generated_at": "2026-11-23T02:58:40+00:00",
+  "lookback_hours": 72,
+  "status": "ok",
+  "source_checks": {
+    "ok": [
+      {
+        "id": "openai-news",
+        "entries": 1422
+      },
+      {
+        "id": "deepmind-blog",
+        "entries": 100
+      },
+      {
+        "id": "google-ai",
+        "entries": 20
+      },
+      {
+        "id": "release:openai/codex",
+        "entries": 2
+      },
+      {
+        "id": "release:langchain-ai/langgraph",
+        "entries": 10
+      },
+      {
+        "id": "release:openai/openai-agents-python",
+        "entries": 6
+      },
+      {
+        "id": "release:google/adk-python",
+        "entries": 10
+      },
+      {
+        "id": "release:OpenHands/software-agent-sdk",
+        "entries": 10
+      },
+      {
+        "id": "release:NVIDIA/OpenShell",
+        "entries": 9
+      },
+      {
+        "id": "release:anthropics/sandbox-runtime",
+        "entries": 10
+      },
+      {
+        "id": "release:langchain-ai/open-swe",
+        "entries": 0
+      },
+      {
+        "id": "release:modelcontextprotocol/specification",
+        "entries": 7
+      },
+      {
+        "id": "release:a2aproject/A2A",
+        "entries": 10
+      },
+      {
+        "id": "anthropic-site",
+        "entries": 23
+      },
+      {
+        "id": "claude-announcements",
+        "entries": 10
+      }
+    ],
+    "not_modified": [
+      "aws-ml",
+      "huggingface-blog",
+      "arxiv-cs-ai",
+      "mistral-news"
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "item_count": 33,
+  "items": [
+    {
+      "id": "7cedfd958b6d7a17aac27279",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Meta ads is now available in AWS Quick",
+      "url": "https://aws.amazon.com/blogs/machine-learning/meta-ads-is-now-available-in-aws-quick",
+      "published_at": "2026-11-22T01:59:13+00:00",
+      "first_discovered_at": "2026-11-22T02:31:47+00:00",
+      "excerpt": "AWS Quick now has a Meta ads AI connector. Meta advertisers can use natural language in Quick to create, manage, and analyze campaigns while staying connected to the Meta ad management network, and combine Meta ad data with first- and third-party sources to build dashboards, documents, slide decks, and automated workflows.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "1a10f1676d46fc01a909d8ea",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Perplexity and Intelligence",
+      "url": "https://openai.com/index/perplexity-and-intelligence",
+      "published_at": "2026-11-22T00:00:00+00:00",
+      "first_discovered_at": "2026-11-22T19:30:43+00:00",
+      "excerpt": "How perplexity measures progress in AI models, and why it could help developers establish a shared approach to evaluating emerging capabilities.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "06bcc2a1accbf96c798ff749",
+      "source_id": "release:langchain-ai/open-swe",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Robin Desktop v0.3.20",
+      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.20",
+      "published_at": "2026-11-21T23:23:19+00:00",
+      "first_discovered_at": "2026-11-22T02:31:47+00:00",
+      "excerpt": "**Full Changelog**: https://github.com/langchain-ai/open-swe/compare/desktop-ui-3c41ba856817eac5530cf2b2486a5e3c33c0a610...desktop-v0.3.20",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "desktop-v0.3.20"
+    },
+    {
+      "id": "4867bfdeb843196c6aa57b0d",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "New in AWS Quick: More capable flows, an updated web experience, and agents that work together",
+      "url": "https://aws.amazon.com/blogs/machine-learning/new-in-aws-quick-more-capable-flows-an-updated-web-experience-and-agents-that-work-together",
+      "published_at": "2026-11-21T01:06:42+00:00",
+      "first_discovered_at": "2026-11-21T03:23:01+00:00",
+      "excerpt": "AWS Quick is the AI workspace built only for work. Today we're releasing updates that help your team get more done: build and run business-process flows in chat, triage your day in the updated web app, get more complete answers from multiple agents at once, and connect new data sources like Meta ads and Amplitude.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "f6e744ab21c05cebfa08d379",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Cut self-hosted LLM cost and latency with the distributed KV caching agent skill",
+      "url": "https://aws.amazon.com/blogs/machine-learning/cut-self-hosted-llm-cost-and-latency-with-the-distributed-kv-caching-agent-skill",
+      "published_at": "2026-11-21T00:14:26+00:00",
+      "first_discovered_at": "2026-11-21T03:23:01+00:00",
+      "excerpt": "Self-hosting LLMs on GPUs means paying to recompute the same context on every turn. Distributed KV caching with Amazon ElastiCache can cut inference cost by up to 40% and time to first token by up to 80%. This post walks through the distributed KV caching skill in the Agent Toolkit for AWS, which evaluates and sets up the cache from your coding agent.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "24a3a35b947b3236755beb76",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Introducing managed cluster extensions for observability and user management in Amazon SageMaker HyperPod Slurm",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-managed-cluster-extensions-for-observability-and-user-management-in-amazon-sagemaker-hyperpod-slurm",
+      "published_at": "2026-11-20T23:07:03+00:00",
+      "first_discovered_at": "2026-11-21T03:23:01+00:00",
+      "excerpt": "Amazon SageMaker HyperPod now offers managed cluster extensions for observability and user management, bringing declarative, API- and console-driven configuration to the software running on Slurm cluster nodes. This post explains how the extensions work and follows a platform team through a quarter of running a shared Slurm cluster with them.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "d5bec1fa3b07f6176fa03190",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Introducing Amazon SageMaker HyperPod Global Inference Gateway: One endpoint across Regions and clusters",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-amazon-sagemaker-hyperpod-global-inference-gateway-one-endpoint-across-regions-and-clusters",
+      "published_at": "2026-11-20T22:35:24+00:00",
+      "first_discovered_at": "2026-11-21T03:23:01+00:00",
+      "excerpt": "Amazon SageMaker HyperPod introduces the Global Inference Gateway, one managed endpoint that routes inference requests across your HyperPod clusters in one Region or across Regions. It picks the best cluster, fails over automatically, and authenticates every request with SigV4 and IAM over AWS PrivateLink.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "fb0117cbcf0e24c7c7764b83",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "How Standard Bank Group automates AI risk assessment for generative AI",
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-standard-bank-group-automates-ai-risk-assessment-for-generative-ai",
+      "published_at": "2026-11-20T20:37:31+00:00",
+      "first_discovered_at": "2026-11-21T03:23:01+00:00",
+      "excerpt": "Standard Bank Group automated the evidence behind its generative AI approval gates. Working with AWS Professional Services, the bank built an assessment in its own AWS account that scores each use case against international AI standards and its own policies using LLM-as-a-judge on Amazon Bedrock, giving risk committees consistent, traceable evidence.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "6728ab5448c93c9a0f6731c2",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Announcing Amazon Textract Insights: Verifiable generative AI for documents",
+      "url": "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents",
+      "published_at": "2026-11-20T20:22:00+00:00",
+      "first_discovered_at": "2026-11-21T03:23:01+00:00",
+      "excerpt": "Announcing the general availability of Amazon Textract Insights, a new generative AI feature of Amazon Textract. Describe the fields you need in natural language, submit a document or a mixed packet, and receive structured results with a confidence score and page-level grounding for each value, with no model training required.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "fd109fdc361c3cd3d5827b79",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Official site update: ipo close",
+      "url": "https://www.anthropic.com/news/ipo-close",
+      "published_at": null,
+      "first_discovered_at": "2026-11-20T20:04:30+00:00",
+      "excerpt": "Official sitemap URL; timestamp reflects site modification, not publication.",
+      "evidence_status": "unverified_candidate",
+      "observed_change_at": "2026-11-20T12:41:01+00:00",
+      "date_basis": "site_lastmod_not_publication"
+    },
+    {
+      "id": "b91e0d0a1a224c11a62d1e0f",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Introducing enhanced infrastructure observability in Amazon SageMaker HyperPod",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues",
+      "published_at": "2026-11-20T18:24:06+00:00",
+      "first_discovered_at": "2026-11-20T20:04:30+00:00",
+      "excerpt": "Amazon SageMaker HyperPod now offers enhanced observability to help you diagnose GPU training issues faster. It brings together diagnostic and profiling capabilities for training workloads on both Amazon EKS and Slurm orchestrators, pinpointing issues across GPU, network, and host layers.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "7ad44f990f0c53ef2e2a5377",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Combatting adversarial distillation",
+      "url": "https://openai.com/index/combatting-adversarial-distillation",
+      "published_at": "2026-11-20T10:00:00+00:00",
+      "first_discovered_at": "2026-11-20T20:04:30+00:00",
+      "excerpt": "OpenAI’s layered approach to adversarial distillation combines model training, safeguards, detection, and enforcement to protect against capability extraction.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "77d7d214153f1c797415a3c2",
+      "source_id": "release:OpenHands/software-agent-sdk",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "v1.63.1",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.63.1",
+      "published_at": "2026-11-20T08:17:22+00:00",
+      "first_discovered_at": "2026-11-20T20:04:30+00:00",
+      "excerpt": "## What's Changed * Add newly released LLM models to verified lists by @all-hands-bot in https://github.com/OpenHands/software-agent-sdk/pull/6846 * fix(sdk): keep openhands-sdk importable on a fresh litellm install by @enyst in https://github.com/OpenHands/software-agent-sdk/pull/7015 * docs(verify): map maintenance 2026-11-19 by @enyst in https://github.com/OpenHands/software-agent-sdk/pull/7006 * fix(browser): ret",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "v1.63.1"
+    },
+    {
+      "id": "51bd3c871dfe3a9275515f30",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Think Once, Act Fast: Cost-Effective Recursive Self-Improvement for Decision Model Harness",
+      "url": "https://arxiv.org/abs/2611.22432",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-18T07:16:27+00:00",
+      "excerpt": "arXiv:2611.22432v3 Announce Type: replace Abstract: Fast System-1 models enable responsive actions but struggle with complex or unfamiliar tasks. Large language model (LLM)-based System-2 provides strong reasoning capabilities, yet repeated invocation incurs substantial latency and computational costs. To bridge this gap, we propose JevRSI, a System-1/System-2 collaboration framework that transforms LLM reasoning int",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "ff272b7a882418a40b2d832e",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Born for the Task: Rethinking Quantum Chemistry with Foresighted Agentic Computing",
+      "url": "https://arxiv.org/abs/2611.22897",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-18T07:16:27+00:00",
+      "excerpt": "arXiv:2611.22897v3 Announce Type: replace Abstract: Quantum chemistry relies on general-purpose software, whose generality leaves many large-scale calculations beyond practical resource budgets. Coding agents make task-specific programs cheap to write, but not efficient ones easy to find: whether a computational strategy is accurate and fast enough becomes clear only after it actually runs at the target scale. We int",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "18ebe089f234fac565c079e0",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Hierarchical Control of Antiphase Synchronization in Biomorphic Spiking Neural Architectures for Locomotor Control",
+      "url": "https://arxiv.org/abs/2611.22639",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-18T07:16:27+00:00",
+      "excerpt": "arXiv:2611.22639v3 Announce Type: replace-cross Abstract: Central pattern generators (CPGs) provide a biologically inspired foundation for adaptive locomotor control, yet systematically characterizing their dynamic regimes in spiking neural networks remains challenging. This study introduces a framework for identifying and stabilizing antiphase synchronization in a biomorphic spiking CPG model embedded in a closed ne",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "c100b733fd0b2c2a3c4473a8",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "2D Gum-Net: Unsupervised Dense Elastic Image Registration via Symmetric Correlation and Spectral Pooling",
+      "url": "https://arxiv.org/abs/2611.12805",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-10T14:46:43+00:00",
+      "excerpt": "arXiv:2611.12805v3 Announce Type: replace-cross Abstract: Dense non-rigid registration, the recovery of a pixel-wise deformation field that warps one image into geometric agreement with another, is fundamental across medical imaging, structural biology, and correspondence estimation, yet learning-based approaches face a severe bottleneck: ground-truth deformation fields are notoriously difficult to obtain for real da",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "c8c8baa73ce5df18141d031c",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "On Agentic Manipulation Policies",
+      "url": "https://arxiv.org/abs/2611.09892",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-09T06:13:04+00:00",
+      "excerpt": "arXiv:2611.09892v3 Announce Type: replace-cross Abstract: Recent work on robot manipulation has focused on specialist policies trained on demonstrations. We show that generalist AI models can control manipulators more reliably than specialist policies such as vision-language-action models (VLAs) and world-action models (WAMs). We systematically analyze agentic manipulation policies (AMPs), in which a generalist AI mo",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "7d1cf62765c510eb83e45f46",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Why Sub-4-Bit Vision CNNs Collapse and Where Mixed-Precision Recovery Stops",
+      "url": "https://arxiv.org/abs/2611.23445",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-19T07:15:40+00:00",
+      "excerpt": "arXiv:2611.23445v2 Announce Type: replace Abstract: Deep vision models operating in resource-constrained environments depend heavily on low-bit quantization, yet compressing weights below 4 bits frequently induces catastrophic accuracy collapse. While mixed-precision recovery strategies aim to rescue accuracy by selectively retaining high-precision parameters, the fundamental mechanics of where and why these models c",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "8fcb7b866a977b4d94a43d22",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "FedE2E: One-Shot Federated Learning for End-to-End Autonomous Driving with Closed-Loop Evaluation",
+      "url": "https://arxiv.org/abs/2611.24254",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-19T07:15:40+00:00",
+      "excerpt": "arXiv:2611.24254v2 Announce Type: replace Abstract: Federated learning enables collaborative model training without sharing datasets. However, existing federated learning methods for autonomous driving typically require multi-round communication and lack closed-loop evaluation, while one-shot methods mainly focus on perception tasks. To address these limitations, we propose \\method, a one-shot federated learning meth",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "8235444c0a303bdb66ee9a1a",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Self-Rewarded Reinforcement Learning for Better-Structured Medical Explanations in Small Language Models",
+      "url": "https://arxiv.org/abs/2611.24650",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-19T07:15:40+00:00",
+      "excerpt": "arXiv:2611.24650v2 Announce Type: replace Abstract: Small language models (SLMs) can run on commodity hardware and support privacy-preserving, on-premises clinical deployment, but their medical explanations are often short and poorly structured compared with large language models. Recent supervised approaches such as Meerkat transfer chain-of-thought reasoning into 7B-8B backbones, yet their training objective does n",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "2ce81d0e61aacc2865b59512",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "WorldRuler: Interactive World Modeling under Configurable Rules",
+      "url": "https://arxiv.org/abs/2611.24869",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-19T07:15:40+00:00",
+      "excerpt": "arXiv:2611.24869v2 Announce Type: replace Abstract: Rules govern how player actions change interactive worlds. Different rules create distinct gameplay experiences within similar scenes and action spaces. For customizable gameplay, generative world models must follow user-defined rules beyond real-world behaviors. However, realizing user-defined rules presents two challenges: Rule-State Persistence and Rule-to-Visual",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "3391e44ba854893b5e7a7221",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Where Global Context and Weight Sharing Work in Compact Vision Backbones",
+      "url": "https://arxiv.org/abs/2611.23446",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-19T07:15:40+00:00",
+      "excerpt": "arXiv:2611.23446v2 Announce Type: replace-cross Abstract: Compact convolutional backbones such as EfficientNet achieve strong parameter efficiency through local depthwise separable convolutions, yet two structural questions remain central to hybrid design: where does global self-attention improve recognition over pure convolution, and can repeated blocks share weights without losing representational capacity? We inve",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "9e72a8f52075eb5aea242fcd",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Weight Space Programming for Vision Language Model Repair",
+      "url": "https://arxiv.org/abs/2611.23615",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-19T07:15:40+00:00",
+      "excerpt": "arXiv:2611.23615v2 Announce Type: replace-cross Abstract: In weight-space programming, a language model edits a network's weights directly, without gradients. We ask what a successful repair of this kind relies on. We plant faults in the weights of two vision-language models, SmolVLM-256M and LFM2-VL-450M, and check each edit made by a coding agent against the original weights. Without being told where to look, the a",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "1331f06b08843914d32c96f5",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "ReflectScene:MLLM-Guided Closed-Loop Diffusion for 3D Indoor Scene Generation",
+      "url": "https://arxiv.org/abs/2611.23845",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-19T07:15:40+00:00",
+      "excerpt": "arXiv:2611.23845v2 Announce Type: replace-cross Abstract: Text-conditioned 3D indoor scene generation requires layouts satisfying geometric, functional, and semantic constraints. However, existing diffusion methods rely primarily on static textual conditions, limiting their ability to assess evolving scenes and translate semantic discrepancies into executable object-level corrections. MLLM-based post-hoc refinement p",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "dc98aec89c40389c1b749d32",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Rational Sparse Autoencoder",
+      "url": "https://arxiv.org/abs/2606.14990",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-19T07:15:40+00:00",
+      "excerpt": "arXiv:2606.14990v4 Announce Type: replace-cross Abstract: Sparse autoencoders (SAEs) are standard tools for mechanistic interpretability, but current SAE families are constrained by fixed encoder nonlinearities such as ReLU, JumpReLU, and TopK. This hard-codes a particular sparsity mechanism into the model and can distort the reconstruction-versus-sparsity trade-off. We introduce the Rational Sparse Autoencoder (RSAE",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "135951a081c493a8dc098a38",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "What Matters for Cross-Modal Alignment",
+      "url": "https://arxiv.org/abs/2611.20000",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-17T20:49:12+00:00",
+      "excerpt": "arXiv:2611.20000v3 Announce Type: replace-cross Abstract: The Platonic Representation Hypothesis posits that models trained on different modalities converge toward a shared representation. Related work aligns frozen image and text encoders on natural images without paired data. We test zero-pair alignment on five datasets across four modalities: natural images, environmental audio, chest radiographs, and 3D computed ",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "6ed05805c40d1357349c637d",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Attention at Absolute Zero",
+      "url": "https://arxiv.org/abs/2611.11937",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-10T14:46:43+00:00",
+      "excerpt": "arXiv:2611.11937v3 Announce Type: replace-cross Abstract: Attention scores candidate supports of an answer, which we call witnesses, and reads the scores at a temperature. We build a higher-order attention layer whose state lives on pairs of items: for a pair (a, b), each third item k is a witness judged through its legs (a, k) and (k, b). It reads witnesses at zero temperature, keeping the best and the number tied w",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "b86f222d774a432b6c151bd7",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Controllable Chains of Thought Can Reveal Less, Even Without Evasion Training",
+      "url": "https://arxiv.org/abs/2611.21799",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-18T07:16:27+00:00",
+      "excerpt": "arXiv:2611.21799v2 Announce Type: replace Abstract: Chain-of-thought (CoT) monitoring is a promising tool for detecting hidden goals, off-task behavior, and other failures in AI agents. One risk is that models could deliberately shape their reasoning to make it opaque to monitors. We stress-test this risk through persona-control training: supervised fine-tuning on mathematical reasoning traces rewritten in the voices",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "c60bbdbf2963b32b5840d528",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Auditors Struggle to Catch Sabotage In End-to-End Transcripts of AI Safety Research",
+      "url": "https://arxiv.org/abs/2611.21832",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-18T07:16:27+00:00",
+      "excerpt": "arXiv:2611.21832v2 Announce Type: replace Abstract: As AI systems are increasingly used to automate AI R&D, misaligned systems could sabotage research intended to improve model safety and alignment. To stress-test defenses against such sabotage, we use a human expert as a proxy saboteur on AI safety research. We conduct a red-team/blue-team game where a human researcher runs AI safety experiments from scratch and aud",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "f3911223d1f9b3a8edc1bb30",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "PhysScope: Agentic Multimodal Physics Reasoning with Grounded Visual Memory",
+      "url": "https://arxiv.org/abs/2611.23010",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-18T07:16:27+00:00",
+      "excerpt": "arXiv:2611.23010v2 Announce Type: replace Abstract: Vision-language models (VLMs) can correctly interpret physics diagrams yet apply constraints outside the states or conditions in which they hold, causing premise errors to propagate through subsequent calculations. We introduce PhysScope, an inference-time visual harness that supports self-correction of these scope mismatches without updating model weights. PhysScop",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "60c77550730c569822835465",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Revisiting the Survival of Agent-Attributed Code: How Measurement Choices Decide the Verdict",
+      "url": "https://arxiv.org/abs/2611.21784",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-18T07:16:27+00:00",
+      "excerpt": "arXiv:2611.21784v2 Announce Type: replace-cross Abstract: Studies of how long code from AI coding agents survives after it is merged reach conflicting verdicts: agent code is reported to be retained longer than human code, about as long, or modified sooner. Each study makes defensible measurement choices, but how much these choices decide the verdict is unknown. We revisit the survival of agent-attributed code in our",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "ab93811a40848d5d77513581",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Small Heads, Strong Decisions: A Controlled Study of Typed-Decision Models",
+      "url": "https://arxiv.org/abs/2611.15592",
+      "published_at": "2026-11-20T05:00:00+00:00",
+      "first_discovered_at": "2026-11-13T19:36:21+00:00",
+      "excerpt": "arXiv:2611.15592v4 Announce Type: replace Abstract: In September 2026, TypeSafe announced Jev as the first model in its System One category: unstructured state goes in, and typed, calibrated decisions that software can use directly come out. Jev's architecture and training data are unpublished, but many open typed-decision models have followed. They answer structured questions about a piece of text, such as a yes/no ",
+      "evidence_status": "unverified_candidate"
+    }
+  ],
+  "event_candidates": [
+    {
+      "event_candidate_id": "ec-f5aef69645e33a43",
+      "representative_title": "Meta ads is now available in AWS Quick",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "7cedfd958b6d7a17aac27279"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-0104da996284c52e",
+      "representative_title": "Perplexity and Intelligence",
+      "topic": "harness",
+      "item_ids": [
+        "1a10f1676d46fc01a909d8ea"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-8dcc5c7ce444c019",
+      "representative_title": "Robin Desktop v0.3.20",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "06bcc2a1accbf96c798ff749"
+      ],
+      "source_ids": [
+        "release:langchain-ai/open-swe"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-74a32a534ac6d3e9",
+      "representative_title": "New in AWS Quick: More capable flows, an updated web experience, and agents that work together",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "4867bfdeb843196c6aa57b0d"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-2f7265bb6575a45c",
+      "representative_title": "Cut self-hosted LLM cost and latency with the distributed KV caching agent skill",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "f6e744ab21c05cebfa08d379"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-8c88728a20fa09a6",
+      "representative_title": "Introducing managed cluster extensions for observability and user management in Amazon SageMaker HyperPod Slurm",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "24a3a35b947b3236755beb76"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-498a96494988fad8",
+      "representative_title": "Introducing Amazon SageMaker HyperPod Global Inference Gateway: One endpoint across Regions and clusters",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "d5bec1fa3b07f6176fa03190"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-652c2c212835a70b",
+      "representative_title": "How Standard Bank Group automates AI risk assessment for generative AI",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "fb0117cbcf0e24c7c7764b83"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b384c05cc8684364",
+      "representative_title": "Announcing Amazon Textract Insights: Verifiable generative AI for documents",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "6728ab5448c93c9a0f6731c2"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-864fa26e0ec5c3fd",
+      "representative_title": "Official site update: ipo close",
+      "topic": "harness",
+      "item_ids": [
+        "fd109fdc361c3cd3d5827b79"
+      ],
+      "source_ids": [
+        "anthropic-site"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-eebcc1a924d44649",
+      "representative_title": "Introducing enhanced infrastructure observability in Amazon SageMaker HyperPod",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "b91e0d0a1a224c11a62d1e0f"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b86381ef95bf088d",
+      "representative_title": "Combatting adversarial distillation",
+      "topic": "harness",
+      "item_ids": [
+        "7ad44f990f0c53ef2e2a5377"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-0bcd537bbf47ee19",
+      "representative_title": "v1.63.1",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "77d7d214153f1c797415a3c2"
+      ],
+      "source_ids": [
+        "release:OpenHands/software-agent-sdk"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-d521a152ff54d45f",
+      "representative_title": "Think Once, Act Fast: Cost-Effective Recursive Self-Improvement for Decision Model Harness",
+      "topic": "research",
+      "item_ids": [
+        "51bd3c871dfe3a9275515f30"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-29bb0dda0900e1a5",
+      "representative_title": "Born for the Task: Rethinking Quantum Chemistry with Foresighted Agentic Computing",
+      "topic": "research",
+      "item_ids": [
+        "ff272b7a882418a40b2d832e"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-77bb40d6ab81a79b",
+      "representative_title": "Hierarchical Control of Antiphase Synchronization in Biomorphic Spiking Neural Architectures for Locomotor Control",
+      "topic": "research",
+      "item_ids": [
+        "18ebe089f234fac565c079e0"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-6ad1bedb84c103fe",
+      "representative_title": "2D Gum-Net: Unsupervised Dense Elastic Image Registration via Symmetric Correlation and Spectral Pooling",
+      "topic": "research",
+      "item_ids": [
+        "c100b733fd0b2c2a3c4473a8"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-559bb7266dbcae1f",
+      "representative_title": "On Agentic Manipulation Policies",
+      "topic": "research",
+      "item_ids": [
+        "c8c8baa73ce5df18141d031c"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-7c3fe6cffd140a4f",
+      "representative_title": "Why Sub-4-Bit Vision CNNs Collapse and Where Mixed-Precision Recovery Stops",
+      "topic": "research",
+      "item_ids": [
+        "7d1cf62765c510eb83e45f46"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-2d8c2725eada30c4",
+      "representative_title": "FedE2E: One-Shot Federated Learning for End-to-End Autonomous Driving with Closed-Loop Evaluation",
+      "topic": "research",
+      "item_ids": [
+        "8fcb7b866a977b4d94a43d22"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-7f287d3807ad9e32",
+      "representative_title": "Self-Rewarded Reinforcement Learning for Better-Structured Medical Explanations in Small Language Models",
+      "topic": "research",
+      "item_ids": [
+        "8235444c0a303bdb66ee9a1a"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-1258c438b6d20c93",
+      "representative_title": "WorldRuler: Interactive World Modeling under Configurable Rules",
+      "topic": "research",
+      "item_ids": [
+        "2ce81d0e61aacc2865b59512"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-a14fea0f37529d52",
+      "representative_title": "Where Global Context and Weight Sharing Work in Compact Vision Backbones",
+      "topic": "research",
+      "item_ids": [
+        "3391e44ba854893b5e7a7221"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-0671dfe1fb02b875",
+      "representative_title": "Weight Space Programming for Vision Language Model Repair",
+      "topic": "research",
+      "item_ids": [
+        "9e72a8f52075eb5aea242fcd"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-82d3a477a13fbc94",
+      "representative_title": "ReflectScene:MLLM-Guided Closed-Loop Diffusion for 3D Indoor Scene Generation",
+      "topic": "research",
+      "item_ids": [
+        "1331f06b08843914d32c96f5"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-3a4d18726a06e5a1",
+      "representative_title": "Rational Sparse Autoencoder",
+      "topic": "research",
+      "item_ids": [
+        "dc98aec89c40389c1b749d32"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-96950557483389be",
+      "representative_title": "What Matters for Cross-Modal Alignment",
+      "topic": "research",
+      "item_ids": [
+        "135951a081c493a8dc098a38"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-f5431203527f2688",
+      "representative_title": "Attention at Absolute Zero",
+      "topic": "research",
+      "item_ids": [
+        "6ed05805c40d1357349c637d"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-72faa76285a893f3",
+      "representative_title": "Controllable Chains of Thought Can Reveal Less, Even Without Evasion Training",
+      "topic": "research",
+      "item_ids": [
+        "b86f222d774a432b6c151bd7"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-64376c92eebb5989",
+      "representative_title": "Auditors Struggle to Catch Sabotage In End-to-End Transcripts of AI Safety Research",
+      "topic": "research",
+      "item_ids": [
+        "c60bbdbf2963b32b5840d528"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-99cd2e1c020f215d",
+      "representative_title": "PhysScope: Agentic Multimodal Physics Reasoning with Grounded Visual Memory",
+      "topic": "research",
+      "item_ids": [
+        "f3911223d1f9b3a8edc1bb30"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-f8f1a58e56bfa1cf",
+      "representative_title": "Revisiting the Survival of Agent-Attributed Code: How Measurement Choices Decide the Verdict",
+      "topic": "research",
+      "item_ids": [
+        "60c77550730c569822835465"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b3565ba4897d0b00",
+      "representative_title": "Small Heads, Strong Decisions: A Controlled Study of Typed-Decision Models",
+      "topic": "research",
+      "item_ids": [
+        "ab93811a40848d5d77513581"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    }
+  ],
+  "usage_note": "Unverified candidates: verify first-party evidence, actual event time and independent sources before any trend/claim update."
+}

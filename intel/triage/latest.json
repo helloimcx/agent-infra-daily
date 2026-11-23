@@ -1,30 +1,43 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-22T02:31:54+00:00",
-  "snapshot_generated_at": "2026-11-22T02:31:47+00:00",
-  "beijing_date": "2026-11-22",
+  "generated_at": "2026-11-23T02:58:50+00:00",
+  "snapshot_generated_at": "2026-11-23T02:58:40+00:00",
+  "beijing_date": "2026-11-23",
   "kind": "unverified_editorial_review_queue",
-  "count": 27,
-  "eligible_item_count": 59,
+  "count": 15,
+  "eligible_item_count": 33,
   "topic_distribution": {
-    "cloud-agent": 8,
-    "harness": 9,
-    "research": 7,
-    "runtime": 3
+    "cloud-agent": 7,
+    "harness": 3,
+    "research": 5
   },
   "source_distribution": {
-    "anthropic-site": 3,
+    "anthropic-site": 1,
     "arxiv-cs-ai": 5,
     "aws-ml": 5,
-    "huggingface-blog": 2,
-    "openai-news": 4,
-    "release:OpenHands/software-agent-sdk": 2,
-    "release:google/adk-python": 1,
-    "release:langchain-ai/langgraph": 3,
-    "release:langchain-ai/open-swe": 1,
-    "release:openai/codex": 1
+    "openai-news": 2,
+    "release:OpenHands/software-agent-sdk": 1,
+    "release:langchain-ai/open-swe": 1
   },
   "items": [
+    {
+      "item_id": "1a10f1676d46fc01a909d8ea",
+      "candidate_id": "ec-1a10f1676d46fc01",
+      "title": "Perplexity and Intelligence",
+      "url": "https://openai.com/index/perplexity-and-intelligence",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-22T00:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
     {
       "item_id": "7ad44f990f0c53ef2e2a5377",
       "candidate_id": "ec-7ad44f990f0c53ef",
@@ -35,83 +48,11 @@
       "topic": "harness",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-20T10:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "8145fefb47ff1ca9fa5560e6",
-      "candidate_id": "ec-8145fefb47ff1ca9",
-      "title": "Hebbia sees improvements in financial research with GPT-6 Astra",
-      "url": "https://openai.com/business/customer-stories/hebbia",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-20T00:00:00+00:00",
       "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
         "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "9342dbf934e428aa00c16520",
-      "candidate_id": "ec-9342dbf934e428aa",
-      "title": "How OpenAI’s Performance Factory keeps ChatGPT fast",
-      "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-19T08:00:00+00:00",
-      "review_order_score": 7,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "c1a2af93db54bfcf7c217cb7",
-      "candidate_id": "ec-c1a2af93db54bfcf",
-      "title": "Can AI help scientists identify promising drug candidates?",
-      "url": "https://openai.com/index/introducing-medchembench",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-20T00:00:00+00:00",
-      "review_order_score": 7,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "77d7d214153f1c797415a3c2",
-      "candidate_id": "ec-77d7d214153f1c79",
-      "title": "v1.63.1",
-      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.63.1",
-      "source_id": "release:OpenHands/software-agent-sdk",
-      "source_kind": "github_release",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T08:17:22+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -129,60 +70,6 @@
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "24a3a35b947b3236755beb76",
-      "candidate_id": "ec-24a3a35b947b3236",
-      "title": "Introducing managed cluster extensions for observability and user management in Amazon SageMaker HyperPod Slurm",
-      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-managed-cluster-extensions-for-observability-and-user-management-in-amazon-sagemaker-hyperpod-slurm",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T23:07:03+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "4867bfdeb843196c6aa57b0d",
-      "candidate_id": "ec-4867bfdeb843196c",
-      "title": "New in AWS Quick: More capable flows, an updated web experience, and agents that work together",
-      "url": "https://aws.amazon.com/blogs/machine-learning/new-in-aws-quick-more-capable-flows-an-updated-web-experience-and-agents-that-work-together",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-21T01:06:42+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "6728ab5448c93c9a0f6731c2",
-      "candidate_id": "ec-6728ab5448c93c9a",
-      "title": "Announcing Amazon Textract Insights: Verifiable generative AI for documents",
-      "url": "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T20:22:00+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
         "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
@@ -206,74 +93,20 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "b91e0d0a1a224c11a62d1e0f",
-      "candidate_id": "ec-b91e0d0a1a224c11",
-      "title": "Introducing enhanced infrastructure observability in Amazon SageMaker HyperPod",
-      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T18:24:06+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "33b7992067ab7c5024b0f972",
-      "candidate_id": "ec-33b7992067ab7c50",
-      "title": "v1.63.0",
-      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.63.0",
+      "item_id": "77d7d214153f1c797415a3c2",
+      "candidate_id": "ec-77d7d214153f1c79",
+      "title": "v1.63.1",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.63.1",
       "source_id": "release:OpenHands/software-agent-sdk",
       "source_kind": "github_release",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T19:07:57+00:00",
+      "claimed_published_at": "2026-11-20T08:17:22+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "official_release_record",
         "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "2bd8707fdab8226a9f675f85",
-      "candidate_id": "ec-2bd8707fdab8226a",
-      "title": "Official site update: cyber verification program",
-      "url": "https://www.anthropic.com/news/cyber-verification-program",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "e308a84a77ae00d83193b951",
-      "candidate_id": "ec-e308a84a77ae00d8",
-      "title": "Official site update: anthropic prices initial public offering",
-      "url": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering",
-      "source_id": "anthropic-site",
-      "source_kind": "official_sitemap",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": null,
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "discovery_only_no_verified_publication_time",
-        "publication_time_not_verified"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -296,37 +129,73 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "230d7e70e475f7aad0b7693e",
-      "candidate_id": "ec-230d7e70e475f7aa",
-      "title": "v2.15.0",
-      "url": "https://github.com/google/adk-python/releases/tag/v2.15.0",
-      "source_id": "release:google/adk-python",
-      "source_kind": "github_release",
-      "topic": "harness",
+      "item_id": "24a3a35b947b3236755beb76",
+      "candidate_id": "ec-24a3a35b947b3236",
+      "title": "Introducing managed cluster extensions for observability and user management in Amazon SageMaker HyperPod Slurm",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-managed-cluster-extensions-for-observability-and-user-management-in-amazon-sagemaker-hyperpod-slurm",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T22:59:36+00:00",
-      "review_order_score": 5,
+      "claimed_published_at": "2026-11-20T23:07:03+00:00",
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
-        "official_release_record",
+        "first_party_feed_record",
         "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1e02ab9c34ce90d4cc82015b",
-      "candidate_id": "ec-1e02ab9c34ce90d4",
-      "title": "0.171.0",
-      "url": "https://github.com/openai/codex/releases/tag/rust-v0.171.0",
-      "source_id": "release:openai/codex",
-      "source_kind": "github_release",
-      "topic": "harness",
+      "item_id": "4867bfdeb843196c6aa57b0d",
+      "candidate_id": "ec-4867bfdeb843196c",
+      "title": "New in AWS Quick: More capable flows, an updated web experience, and agents that work together",
+      "url": "https://aws.amazon.com/blogs/machine-learning/new-in-aws-quick-more-capable-flows-an-updated-web-experience-and-agents-that-work-together",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T00:44:47+00:00",
-      "review_order_score": 5,
+      "claimed_published_at": "2026-11-21T01:06:42+00:00",
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
-        "official_release_record",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "6728ab5448c93c9a0f6731c2",
+      "candidate_id": "ec-6728ab5448c93c9a",
+      "title": "Announcing Amazon Textract Insights: Verifiable generative AI for documents",
+      "url": "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-20T20:22:00+00:00",
+      "review_order_score": 4,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "b91e0d0a1a224c11a62d1e0f",
+      "candidate_id": "ec-b91e0d0a1a224c11",
+      "title": "Introducing enhanced infrastructure observability in Amazon SageMaker HyperPod",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-20T18:24:06+00:00",
+      "review_order_score": 4,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
         "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
@@ -341,11 +210,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-20T05:00:00+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -359,11 +228,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-20T05:00:00+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -377,11 +246,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-20T05:00:00+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -395,11 +264,11 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-20T05:00:00+00:00",
-      "review_order_score": 5,
+      "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -413,96 +282,6 @@
       "topic": "research",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-20T05:00:00+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "5b1f005070cf37dad4539bd5",
-      "candidate_id": "ec-5b1f005070cf37da",
-      "title": "langgraph==1.2.24",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.24",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T01:10:26+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "84da27b8e0173e93c6a72c11",
-      "candidate_id": "ec-84da27b8e0173e93",
-      "title": "langgraph==1.2.23",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.23",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T05:33:06+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "f5b5db019790445e26262de1",
-      "candidate_id": "ec-f5b5db019790445e",
-      "title": "langgraph-prebuilt==1.1.3",
-      "url": "https://github.com/langchain-ai/langgraph/releases/tag/prebuilt%3D%3D1.1.3",
-      "source_id": "release:langchain-ai/langgraph",
-      "source_kind": "github_release",
-      "topic": "runtime",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-19T05:26:17+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "701a571706ec6c00de8bbc6a",
-      "candidate_id": "ec-701a571706ec6c00",
-      "title": "Introducing harness adapters: adapt your favorite model to your harness to improve performance and cost",
-      "url": "https://huggingface.co/blog/harness-adapters-at-scale",
-      "source_id": "huggingface-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T00:00:00+00:00",
-      "review_order_score": 4,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "824c03b970f1dc58cad67633",
-      "candidate_id": "ec-824c03b970f1dc58",
-      "title": "Welcome Inkling 2 Mini, Cutting-edge Performance for your Local Setup",
-      "url": "https://huggingface.co/blog/inkling2mini",
-      "source_id": "huggingface-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T00:00:00+00:00",
       "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
