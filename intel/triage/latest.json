@@ -1,25 +1,102 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-23T02:58:50+00:00",
-  "snapshot_generated_at": "2026-11-23T02:58:40+00:00",
-  "beijing_date": "2026-11-23",
+  "generated_at": "2026-11-24T06:17:08+00:00",
+  "snapshot_generated_at": "2026-11-24T06:16:58+00:00",
+  "beijing_date": "2026-11-24",
   "kind": "unverified_editorial_review_queue",
-  "count": 15,
-  "eligible_item_count": 33,
+  "count": 20,
+  "eligible_item_count": 35,
   "topic_distribution": {
-    "cloud-agent": 7,
-    "harness": 3,
-    "research": 5
+    "cloud-agent": 4,
+    "harness": 8,
+    "research": 8
   },
   "source_distribution": {
     "anthropic-site": 1,
     "arxiv-cs-ai": 5,
-    "aws-ml": 5,
-    "openai-news": 2,
-    "release:OpenHands/software-agent-sdk": 1,
-    "release:langchain-ai/open-swe": 1
+    "aws-ml": 2,
+    "claude-announcements": 1,
+    "deepmind-blog": 1,
+    "google-ai": 1,
+    "huggingface-blog": 2,
+    "openai-news": 4,
+    "release:langchain-ai/open-swe": 1,
+    "release:openai/codex": 1,
+    "release:openai/openai-agents-python": 1
   },
   "items": [
+    {
+      "item_id": "10878202550bbbf922d1872a",
+      "candidate_id": "ec-10878202550bbbf9",
+      "title": "Connected intelligence for in-house legal",
+      "url": "https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-23T08:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "1259b534687dd8b3171199ff",
+      "candidate_id": "ec-1259b534687dd8b3",
+      "title": "Richpanel helps companies automate 50% of support in 30 days",
+      "url": "https://openai.com/business/customer-stories/richpanel-ai-customer-support",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-23T08:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "b0689cf87ab570a441c88635",
+      "candidate_id": "ec-b0689cf87ab570a4",
+      "title": "OpenAI and Cisco introduce Shirudo",
+      "url": "https://openai.com/index/introducing-shirudo",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-23T21:20:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "895b540db6a8889e694ca9f9",
+      "candidate_id": "ec-895b540db6a8889e",
+      "title": "Finding faster quantum algorithms with agents and formal verification",
+      "url": "https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification",
+      "source_id": "deepmind-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-23T16:59:40+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
     {
       "item_id": "1a10f1676d46fc01a909d8ea",
       "candidate_id": "ec-1a10f1676d46fc01",
@@ -30,29 +107,83 @@
       "topic": "harness",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-22T00:00:00+00:00",
-      "review_order_score": 8,
+      "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "824283cf95f0a1c656bb60f3",
+      "candidate_id": "ec-824283cf95f0a1c6",
+      "title": "0.172.0",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.172.0",
+      "source_id": "release:openai/codex",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-24T00:03:55+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "9566e4a73e7bad1a8e1af887",
+      "candidate_id": "ec-9566e4a73e7bad1a",
+      "title": "v0.26.0",
+      "url": "https://github.com/openai/openai-agents-python/releases/tag/v0.26.0",
+      "source_id": "release:openai/openai-agents-python",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-24T03:15:47+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "b24333cc89f9425e4c7b7f37",
+      "candidate_id": "ec-b24333cc89f9425e",
+      "title": "Introducing the Amazon Bedrock Trusted Access API with Anthropic’s Enterprise Frontier Safeguards and Enterprise Data Controls",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-the-amazon-bedrock-trusted-access-api-with-anthropics-enterprise-frontier-safeguards-and-enterprise-data-controls",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-24T05:01:14+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
         "first_party_feed_record",
         "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "7ad44f990f0c53ef2e2a5377",
-      "candidate_id": "ec-7ad44f990f0c53ef",
-      "title": "Combatting adversarial distillation",
-      "url": "https://openai.com/index/combatting-adversarial-distillation",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
+      "item_id": "b53558d620676ec22ad88050",
+      "candidate_id": "ec-b53558d620676ec2",
+      "title": "Article Nov 23, 2026 Zero data retention with Enterprise Frontier Safeguards is now in beta Claude Platform",
+      "url": "https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-20T10:00:00+00:00",
-      "review_order_score": 7,
+      "claimed_published_at": null,
+      "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -66,42 +197,6 @@
       "topic": "cloud-agent",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-21T23:23:19+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "7cedfd958b6d7a17aac27279",
-      "candidate_id": "ec-7cedfd958b6d7a17",
-      "title": "Meta ads is now available in AWS Quick",
-      "url": "https://aws.amazon.com/blogs/machine-learning/meta-ads-is-now-available-in-aws-quick",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-22T01:59:13+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "77d7d214153f1c797415a3c2",
-      "candidate_id": "ec-77d7d214153f1c79",
-      "title": "v1.63.1",
-      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.63.1",
-      "source_id": "release:OpenHands/software-agent-sdk",
-      "source_kind": "github_release",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T08:17:22+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -111,10 +206,10 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "fd109fdc361c3cd3d5827b79",
-      "candidate_id": "ec-fd109fdc361c3cd3",
-      "title": "Official site update: ipo close",
-      "url": "https://www.anthropic.com/news/ipo-close",
+      "item_id": "36fb5b1c7a9ff4c850f964ed",
+      "candidate_id": "ec-36fb5b1c7a9ff4c8",
+      "title": "Official site update: working with ai",
+      "url": "https://www.anthropic.com/research/working-with-ai",
       "source_id": "anthropic-site",
       "source_kind": "official_sitemap",
       "topic": "harness",
@@ -129,159 +224,159 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "24a3a35b947b3236755beb76",
-      "candidate_id": "ec-24a3a35b947b3236",
-      "title": "Introducing managed cluster extensions for observability and user management in Amazon SageMaker HyperPod Slurm",
-      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-managed-cluster-extensions-for-observability-and-user-management-in-amazon-sagemaker-hyperpod-slurm",
+      "item_id": "4f5fe20de68e9dfdec37bc31",
+      "candidate_id": "ec-4f5fe20de68e9dfd",
+      "title": "A more tailored Google Search that’s uniquely yours",
+      "url": "https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps",
+      "source_id": "google-ai",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-23T17:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "0c9895d94f8da7851fc74544",
+      "candidate_id": "ec-0c9895d94f8da785",
+      "title": "Fool's Gold: Defensive Deception Against Safety-Removal Attacks on Open-Weight Models",
+      "url": "https://arxiv.org/abs/2608.17202",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-23T05:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "18a53f46bb41bc2cd2f4be68",
+      "candidate_id": "ec-18a53f46bb41bc2c",
+      "title": "Regularizing Treatment Leakage for LLM-based Uplift Estimation",
+      "url": "https://arxiv.org/abs/2611.20794",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-23T05:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "3a968da5f0e2403790f1376f",
+      "candidate_id": "ec-3a968da5f0e24037",
+      "title": "Idempotency Is Not Recovery: A Fault-Injection Study of Language-Model Agent Tool Actions",
+      "url": "https://arxiv.org/abs/2611.23353",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-23T05:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "3bd12417e22046f3819cd3c1",
+      "candidate_id": "ec-3bd12417e22046f3",
+      "title": "MAWAM: A Multi-Agent World-Action Model for Coordinated Manipulation",
+      "url": "https://arxiv.org/abs/2611.25105",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-23T05:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "3bdb34705de1aaf0013aca63",
+      "candidate_id": "ec-3bdb34705de1aaf0",
+      "title": "Zero-Shot Weight-Space Programming Across a Difficulty-Graded Ladder of Two-Player Games",
+      "url": "https://arxiv.org/abs/2611.09271",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-23T05:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "00d52199bef25f9eda98fa79",
+      "candidate_id": "ec-00d52199bef25f9e",
+      "title": "How to build and maintain an agentic evaluation",
+      "url": "https://huggingface.co/blog/agentic-evals",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-23T00:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "eb2701ff66febea272938825",
+      "candidate_id": "ec-eb2701ff66febea2",
+      "title": "RoboTrack: Point tracking for real-world robotic manipulation",
+      "url": "https://huggingface.co/blog/allenai/robotrack",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-23T17:20:37+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "7cedfd958b6d7a17aac27279",
+      "candidate_id": "ec-7cedfd958b6d7a17",
+      "title": "Meta ads is now available in AWS Quick",
+      "url": "https://aws.amazon.com/blogs/machine-learning/meta-ads-is-now-available-in-aws-quick",
       "source_id": "aws-ml",
       "source_kind": "rss",
       "topic": "cloud-agent",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T23:07:03+00:00",
-      "review_order_score": 4,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "4867bfdeb843196c6aa57b0d",
-      "candidate_id": "ec-4867bfdeb843196c",
-      "title": "New in AWS Quick: More capable flows, an updated web experience, and agents that work together",
-      "url": "https://aws.amazon.com/blogs/machine-learning/new-in-aws-quick-more-capable-flows-an-updated-web-experience-and-agents-that-work-together",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-21T01:06:42+00:00",
-      "review_order_score": 4,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "6728ab5448c93c9a0f6731c2",
-      "candidate_id": "ec-6728ab5448c93c9a",
-      "title": "Announcing Amazon Textract Insights: Verifiable generative AI for documents",
-      "url": "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T20:22:00+00:00",
-      "review_order_score": 4,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "b91e0d0a1a224c11a62d1e0f",
-      "candidate_id": "ec-b91e0d0a1a224c11",
-      "title": "Introducing enhanced infrastructure observability in Amazon SageMaker HyperPod",
-      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-enhanced-observability-in-amazon-sagemaker-hyperpod-to-diagnose-gpu-training-issues",
-      "source_id": "aws-ml",
-      "source_kind": "rss",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T18:24:06+00:00",
-      "review_order_score": 4,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "1331f06b08843914d32c96f5",
-      "candidate_id": "ec-1331f06b08843914",
-      "title": "ReflectScene:MLLM-Guided Closed-Loop Diffusion for 3D Indoor Scene Generation",
-      "url": "https://arxiv.org/abs/2611.23845",
-      "source_id": "arxiv-cs-ai",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T05:00:00+00:00",
-      "review_order_score": 4,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "135951a081c493a8dc098a38",
-      "candidate_id": "ec-135951a081c493a8",
-      "title": "What Matters for Cross-Modal Alignment",
-      "url": "https://arxiv.org/abs/2611.20000",
-      "source_id": "arxiv-cs-ai",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T05:00:00+00:00",
-      "review_order_score": 4,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "18ebe089f234fac565c079e0",
-      "candidate_id": "ec-18ebe089f234fac5",
-      "title": "Hierarchical Control of Antiphase Synchronization in Biomorphic Spiking Neural Architectures for Locomotor Control",
-      "url": "https://arxiv.org/abs/2611.22639",
-      "source_id": "arxiv-cs-ai",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T05:00:00+00:00",
-      "review_order_score": 4,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "2ce81d0e61aacc2865b59512",
-      "candidate_id": "ec-2ce81d0e61aacc28",
-      "title": "WorldRuler: Interactive World Modeling under Configurable Rules",
-      "url": "https://arxiv.org/abs/2611.24869",
-      "source_id": "arxiv-cs-ai",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T05:00:00+00:00",
-      "review_order_score": 4,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "3391e44ba854893b5e7a7221",
-      "candidate_id": "ec-3391e44ba854893b",
-      "title": "Where Global Context and Weight Sharing Work in Compact Vision Backbones",
-      "url": "https://arxiv.org/abs/2611.23446",
-      "source_id": "arxiv-cs-ai",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-20T05:00:00+00:00",
+      "claimed_published_at": "2026-11-22T01:59:13+00:00",
       "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
