@@ -1,26 +1,28 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-24T06:17:08+00:00",
-  "snapshot_generated_at": "2026-11-24T06:16:58+00:00",
-  "beijing_date": "2026-11-24",
+  "generated_at": "2026-11-25T04:59:12+00:00",
+  "snapshot_generated_at": "2026-11-25T04:59:02+00:00",
+  "beijing_date": "2026-11-25",
   "kind": "unverified_editorial_review_queue",
-  "count": 20,
-  "eligible_item_count": 35,
+  "count": 25,
+  "eligible_item_count": 47,
   "topic_distribution": {
-    "cloud-agent": 4,
-    "harness": 8,
-    "research": 8
+    "cloud-agent": 6,
+    "harness": 9,
+    "research": 9,
+    "sandbox": 1
   },
   "source_distribution": {
     "anthropic-site": 1,
     "arxiv-cs-ai": 5,
-    "aws-ml": 2,
-    "claude-announcements": 1,
+    "aws-ml": 1,
+    "claude-announcements": 4,
     "deepmind-blog": 1,
-    "google-ai": 1,
-    "huggingface-blog": 2,
-    "openai-news": 4,
-    "release:langchain-ai/open-swe": 1,
+    "huggingface-blog": 3,
+    "openai-news": 5,
+    "release:NVIDIA/OpenShell": 1,
+    "release:OpenHands/software-agent-sdk": 1,
+    "release:google/adk-python": 1,
     "release:openai/codex": 1,
     "release:openai/openai-agents-python": 1
   },
@@ -62,15 +64,51 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "b0689cf87ab570a441c88635",
-      "candidate_id": "ec-b0689cf87ab570a4",
-      "title": "OpenAI and Cisco introduce Shirudo",
-      "url": "https://openai.com/index/introducing-shirudo",
+      "item_id": "7758c04a629331bf96383fb7",
+      "candidate_id": "ec-7758c04a629331bf",
+      "title": "Searching for distant planets with Astra",
+      "url": "https://openai.com/index/searching-for-distant-planets-with-astra",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-23T21:20:00+00:00",
+      "claimed_published_at": "2026-11-24T11:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "7e14b56be674430859075a7f",
+      "candidate_id": "ec-7e14b56be6744308",
+      "title": "How Intentful uses dots to make more time for growth",
+      "url": "https://openai.com/business/customer-stories/intentful-dots",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-24T00:00:00+00:00",
+      "review_order_score": 8,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "89a905d5eae9fa3ef5a8af6c",
+      "candidate_id": "ec-89a905d5eae9fa3e",
+      "title": "How iFood scales coding agents across 15,000 repositories",
+      "url": "https://openai.com/business/customer-stories/ifood",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-24T00:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -98,20 +136,38 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "1a10f1676d46fc01a909d8ea",
-      "candidate_id": "ec-1a10f1676d46fc01",
-      "title": "Perplexity and Intelligence",
-      "url": "https://openai.com/index/perplexity-and-intelligence",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-22T00:00:00+00:00",
-      "review_order_score": 7,
+      "item_id": "4347719159f6259a2fb2b8ee",
+      "candidate_id": "ec-4347719159f6259a",
+      "title": "v1.64.0",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.64.0",
+      "source_id": "release:OpenHands/software-agent-sdk",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-24T16:41:28+00:00",
+      "review_order_score": 6,
       "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "16f11be211a4bdda5000b290",
+      "candidate_id": "ec-16f11be211a4bdda",
+      "title": "v2.15.1",
+      "url": "https://github.com/google/adk-python/releases/tag/v2.15.1",
+      "source_id": "release:google/adk-python",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-25T01:01:43+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -152,9 +208,27 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
+      "item_id": "779b812b27a55ade0d1aa6e8",
+      "candidate_id": "ec-779b812b27a55ade",
+      "title": "OpenShell v0.1.10",
+      "url": "https://github.com/ai-openshell/openshell/releases/tag/v0.1.10",
+      "source_id": "release:NVIDIA/OpenShell",
+      "source_kind": "github_release",
+      "topic": "sandbox",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-24T15:12:52+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
       "item_id": "b24333cc89f9425e4c7b7f37",
       "candidate_id": "ec-b24333cc89f9425e",
-      "title": "Introducing the Amazon Bedrock Trusted Access API with Anthropic’s Enterprise Frontier Safeguards and Enterprise Data Controls",
+      "title": "Introducing the Amazon Bedrock Trusted Access API, with Enterprise Frontier Safeguards and Enterprise Data Controls for Claude models",
       "url": "https://aws.amazon.com/blogs/machine-learning/introducing-the-amazon-bedrock-trusted-access-api-with-anthropics-enterprise-frontier-safeguards-and-enterprise-data-controls",
       "source_id": "aws-ml",
       "source_kind": "rss",
@@ -166,6 +240,60 @@
         "source_catalog_priority:P1",
         "first_party_feed_record",
         "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "8befc30ac765ba8adae65db9",
+      "candidate_id": "ec-8befc30ac765ba8a",
+      "title": "Article Nov 24, 2026 MCP servers can now ship skills, run tasks, and more with Claude Claude apps Claude Platform",
+      "url": "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "b3db646d86cce70fafc8b4dd",
+      "candidate_id": "ec-b3db646d86cce70f",
+      "title": "Article Nov 24, 2026 Turn artifacts into Mac and Windows apps Open the artifacts you use every day like any other app, and let them do more on your computer Claude apps",
+      "url": "https://claude.com/resources/articles/install-as-app",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "b5129d6fc89af52dbb221093",
+      "candidate_id": "ec-b5129d6fc89af52d",
+      "title": "Article Nov 23, 2026 Introducing Claude Ship Open a pull request and get back to building. Claude can now review pull requests, fix them, and approve the ones that a team's policy allows. Claude Ship",
+      "url": "https://claude.com/resources/articles/introducing-claude-ship",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -188,24 +316,6 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "06bcc2a1accbf96c798ff749",
-      "candidate_id": "ec-06bcc2a1accbf96c",
-      "title": "Robin Desktop v0.3.20",
-      "url": "https://github.com/langchain-ai/open-swe/releases/tag/desktop-v0.3.20",
-      "source_id": "release:langchain-ai/open-swe",
-      "source_kind": "github_release",
-      "topic": "cloud-agent",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-21T23:23:19+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_7_days"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
       "item_id": "36fb5b1c7a9ff4c850f964ed",
       "candidate_id": "ec-36fb5b1c7a9ff4c8",
       "title": "Official site update: working with ai",
@@ -224,33 +334,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "4f5fe20de68e9dfdec37bc31",
-      "candidate_id": "ec-4f5fe20de68e9dfd",
-      "title": "A more tailored Google Search that’s uniquely yours",
-      "url": "https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps",
-      "source_id": "google-ai",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-23T17:00:00+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "0c9895d94f8da7851fc74544",
-      "candidate_id": "ec-0c9895d94f8da785",
-      "title": "Fool's Gold: Defensive Deception Against Safety-Removal Attacks on Open-Weight Models",
-      "url": "https://arxiv.org/abs/2608.17202",
+      "item_id": "0a41cc9530e6a2257efe9a14",
+      "candidate_id": "ec-0a41cc9530e6a225",
+      "title": "Auditing Reward Hackability in Code RL Training Environments",
+      "url": "https://arxiv.org/abs/2606.16062",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-23T05:00:00+00:00",
+      "claimed_published_at": "2026-11-24T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -260,15 +352,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "18a53f46bb41bc2cd2f4be68",
-      "candidate_id": "ec-18a53f46bb41bc2c",
-      "title": "Regularizing Treatment Leakage for LLM-based Uplift Estimation",
-      "url": "https://arxiv.org/abs/2611.20794",
+      "item_id": "135951a081c493a8dc098a38",
+      "candidate_id": "ec-135951a081c493a8",
+      "title": "What Matters for Cross-Modal Alignment",
+      "url": "https://arxiv.org/abs/2611.20000",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-23T05:00:00+00:00",
+      "claimed_published_at": "2026-11-24T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -278,15 +370,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "3a968da5f0e2403790f1376f",
-      "candidate_id": "ec-3a968da5f0e24037",
-      "title": "Idempotency Is Not Recovery: A Fault-Injection Study of Language-Model Agent Tool Actions",
-      "url": "https://arxiv.org/abs/2611.23353",
+      "item_id": "14a959238623f243b1beca31",
+      "candidate_id": "ec-14a959238623f243",
+      "title": "MixFold: Sub-4-Bit Mixed-Precision LLM Inference via Output-Channel Grouping on Mobile NPUs",
+      "url": "https://arxiv.org/abs/2611.26976",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-23T05:00:00+00:00",
+      "claimed_published_at": "2026-11-24T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -296,15 +388,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "3bd12417e22046f3819cd3c1",
-      "candidate_id": "ec-3bd12417e22046f3",
-      "title": "MAWAM: A Multi-Agent World-Action Model for Coordinated Manipulation",
-      "url": "https://arxiv.org/abs/2611.25105",
+      "item_id": "17de8e63438109924a7f5686",
+      "candidate_id": "ec-17de8e6343810992",
+      "title": "SLICR: Strategy Logic-Guided Multi-Agent Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2611.27865",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-23T05:00:00+00:00",
+      "claimed_published_at": "2026-11-24T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -314,15 +406,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "3bdb34705de1aaf0013aca63",
-      "candidate_id": "ec-3bdb34705de1aaf0",
-      "title": "Zero-Shot Weight-Space Programming Across a Difficulty-Graded Ladder of Two-Player Games",
-      "url": "https://arxiv.org/abs/2611.09271",
+      "item_id": "21aa5c7b801f417baddf9b2a",
+      "candidate_id": "ec-21aa5c7b801f417b",
+      "title": "PaMuk-Bench: A Parallel Multilingual Multitask Benchmark for Vision-Language Tasks",
+      "url": "https://arxiv.org/abs/2611.27521",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-23T05:00:00+00:00",
+      "claimed_published_at": "2026-11-24T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -332,15 +424,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "00d52199bef25f9eda98fa79",
-      "candidate_id": "ec-00d52199bef25f9e",
-      "title": "How to build and maintain an agentic evaluation",
-      "url": "https://huggingface.co/blog/agentic-evals",
+      "item_id": "6a28e842b3bf4bfd8400220e",
+      "candidate_id": "ec-6a28e842b3bf4bfd",
+      "title": "Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton",
+      "url": "https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance",
       "source_id": "huggingface-blog",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-23T00:00:00+00:00",
+      "claimed_published_at": "2026-11-24T16:34:13+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -368,15 +460,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "7cedfd958b6d7a17aac27279",
-      "candidate_id": "ec-7cedfd958b6d7a17",
-      "title": "Meta ads is now available in AWS Quick",
-      "url": "https://aws.amazon.com/blogs/machine-learning/meta-ads-is-now-available-in-aws-quick",
-      "source_id": "aws-ml",
+      "item_id": "00d52199bef25f9eda98fa79",
+      "candidate_id": "ec-00d52199bef25f9e",
+      "title": "How to build and maintain an agentic evaluation",
+      "url": "https://huggingface.co/blog/agentic-evals",
+      "source_id": "huggingface-blog",
       "source_kind": "rss",
-      "topic": "cloud-agent",
+      "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-22T01:59:13+00:00",
+      "claimed_published_at": "2026-11-23T00:00:00+00:00",
       "review_order_score": 4,
       "review_order_reasons": [
         "source_catalog_priority:P1",
