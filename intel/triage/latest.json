@@ -1,68 +1,32 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-25T04:59:12+00:00",
-  "snapshot_generated_at": "2026-11-25T04:59:02+00:00",
-  "beijing_date": "2026-11-25",
+  "generated_at": "2026-11-26T04:17:41+00:00",
+  "snapshot_generated_at": "2026-11-26T04:17:35+00:00",
+  "beijing_date": "2026-11-26",
   "kind": "unverified_editorial_review_queue",
-  "count": 25,
-  "eligible_item_count": 47,
+  "count": 27,
+  "eligible_item_count": 53,
   "topic_distribution": {
-    "cloud-agent": 6,
+    "cloud-agent": 7,
     "harness": 9,
     "research": 9,
+    "runtime": 1,
     "sandbox": 1
   },
   "source_distribution": {
-    "anthropic-site": 1,
+    "anthropic-site": 3,
     "arxiv-cs-ai": 5,
     "aws-ml": 1,
     "claude-announcements": 4,
-    "deepmind-blog": 1,
-    "huggingface-blog": 3,
+    "deepmind-blog": 2,
+    "huggingface-blog": 2,
     "openai-news": 5,
     "release:NVIDIA/OpenShell": 1,
-    "release:OpenHands/software-agent-sdk": 1,
+    "release:OpenHands/software-agent-sdk": 2,
     "release:google/adk-python": 1,
-    "release:openai/codex": 1,
-    "release:openai/openai-agents-python": 1
+    "release:langchain-ai/langgraph": 1
   },
   "items": [
-    {
-      "item_id": "10878202550bbbf922d1872a",
-      "candidate_id": "ec-10878202550bbbf9",
-      "title": "Connected intelligence for in-house legal",
-      "url": "https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-23T08:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "1259b534687dd8b3171199ff",
-      "candidate_id": "ec-1259b534687dd8b3",
-      "title": "Richpanel helps companies automate 50% of support in 30 days",
-      "url": "https://openai.com/business/customer-stories/richpanel-ai-customer-support",
-      "source_id": "openai-news",
-      "source_kind": "rss",
-      "topic": "harness",
-      "source_priority": "P0",
-      "claimed_published_at": "2026-11-23T08:00:00+00:00",
-      "review_order_score": 8,
-      "review_order_reasons": [
-        "source_catalog_priority:P0",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
     {
       "item_id": "7758c04a629331bf96383fb7",
       "candidate_id": "ec-7758c04a629331bf",
@@ -82,15 +46,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "7e14b56be674430859075a7f",
-      "candidate_id": "ec-7e14b56be6744308",
-      "title": "How Intentful uses dots to make more time for growth",
-      "url": "https://openai.com/business/customer-stories/intentful-dots",
+      "item_id": "ac2f786b30f6d45772c42167",
+      "candidate_id": "ec-ac2f786b30f6d457",
+      "title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
+      "url": "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities",
       "source_id": "openai-news",
       "source_kind": "rss",
       "topic": "harness",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-24T00:00:00+00:00",
+      "claimed_published_at": "2026-11-24T13:00:00+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
@@ -100,20 +64,74 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "89a905d5eae9fa3ef5a8af6c",
-      "candidate_id": "ec-89a905d5eae9fa3e",
-      "title": "How iFood scales coding agents across 15,000 repositories",
-      "url": "https://openai.com/business/customer-stories/ifood",
-      "source_id": "openai-news",
+      "item_id": "616293296550946fa78f0e19",
+      "candidate_id": "ec-616293296550946f",
+      "title": "From spectrum to structure: Identifying molecules with Mass Spec Skills for Google Antigravity",
+      "url": "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity",
+      "source_id": "deepmind-blog",
       "source_kind": "rss",
-      "topic": "harness",
+      "topic": "research",
       "source_priority": "P0",
-      "claimed_published_at": "2026-11-24T00:00:00+00:00",
+      "claimed_published_at": "2026-11-24T13:07:53+00:00",
       "review_order_score": 8,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
         "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "10878202550bbbf922d1872a",
+      "candidate_id": "ec-10878202550bbbf9",
+      "title": "Connected intelligence for in-house legal",
+      "url": "https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-23T08:00:00+00:00",
+      "review_order_score": 7,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "1259b534687dd8b3171199ff",
+      "candidate_id": "ec-1259b534687dd8b3",
+      "title": "Richpanel helps companies automate 50% of support in 30 days",
+      "url": "https://openai.com/business/customer-stories/richpanel-ai-customer-support",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-23T08:00:00+00:00",
+      "review_order_score": 7,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "7e14b56be674430859075a7f",
+      "candidate_id": "ec-7e14b56be6744308",
+      "title": "How Intentful uses dots to make more time for growth",
+      "url": "https://openai.com/business/customer-stories/intentful-dots",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": "2026-11-24T00:00:00+00:00",
+      "review_order_score": 7,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -127,11 +145,11 @@
       "topic": "research",
       "source_priority": "P0",
       "claimed_published_at": "2026-11-23T16:59:40+00:00",
-      "review_order_score": 8,
+      "review_order_score": 7,
       "review_order_reasons": [
         "source_catalog_priority:P0",
         "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
@@ -145,6 +163,24 @@
       "topic": "cloud-agent",
       "source_priority": "P1",
       "claimed_published_at": "2026-11-24T16:41:28+00:00",
+      "review_order_score": 6,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "official_release_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "4fcb943e480737661bf51d52",
+      "candidate_id": "ec-4fcb943e48073766",
+      "title": "v1.64.1",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.64.1",
+      "source_id": "release:OpenHands/software-agent-sdk",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-25T12:18:45+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -172,33 +208,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "824283cf95f0a1c656bb60f3",
-      "candidate_id": "ec-824283cf95f0a1c6",
-      "title": "0.172.0",
-      "url": "https://github.com/openai/codex/releases/tag/rust-v0.172.0",
-      "source_id": "release:openai/codex",
+      "item_id": "b5192911b2bfdbd383b0433e",
+      "candidate_id": "ec-b5192911b2bfdbd3",
+      "title": "langgraph-cli==0.4.44",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.44",
+      "source_id": "release:langchain-ai/langgraph",
       "source_kind": "github_release",
-      "topic": "harness",
+      "topic": "runtime",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-24T00:03:55+00:00",
-      "review_order_score": 6,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "official_release_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "9566e4a73e7bad1a8e1af887",
-      "candidate_id": "ec-9566e4a73e7bad1a",
-      "title": "v0.26.0",
-      "url": "https://github.com/openai/openai-agents-python/releases/tag/v0.26.0",
-      "source_id": "release:openai/openai-agents-python",
-      "source_kind": "github_release",
-      "topic": "harness",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-24T03:15:47+00:00",
+      "claimed_published_at": "2026-11-25T20:52:34+00:00",
       "review_order_score": 6,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -334,33 +352,51 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "0a41cc9530e6a2257efe9a14",
-      "candidate_id": "ec-0a41cc9530e6a225",
-      "title": "Auditing Reward Hackability in Code RL Training Environments",
-      "url": "https://arxiv.org/abs/2606.16062",
-      "source_id": "arxiv-cs-ai",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-24T05:00:00+00:00",
+      "item_id": "43e19cac5ca4688d79146efe",
+      "candidate_id": "ec-43e19cac5ca4688d",
+      "title": "Official site update: alignment",
+      "url": "https://www.anthropic.com/research/team/alignment",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
       "review_order_score": 5,
       "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
       ],
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "135951a081c493a8dc098a38",
-      "candidate_id": "ec-135951a081c493a8",
-      "title": "What Matters for Cross-Modal Alignment",
-      "url": "https://arxiv.org/abs/2611.20000",
+      "item_id": "69fbec9981f84b435a9deadb",
+      "candidate_id": "ec-69fbec9981f84b43",
+      "title": "Official site update: migrating api to rust",
+      "url": "https://www.anthropic.com/research/migrating-api-to-rust",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "source_priority": "P0",
+      "claimed_published_at": null,
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P0",
+        "discovery_only_no_verified_publication_time",
+        "publication_time_not_verified"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "0744badbb33cb571d620c5bc",
+      "candidate_id": "ec-0744badbb33cb571",
+      "title": "Reinforcing Diffusion Models by Instantaneous Trajectory Distribution Matching",
+      "url": "https://arxiv.org/abs/2611.30986",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-24T05:00:00+00:00",
+      "claimed_published_at": "2026-11-25T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -378,7 +414,7 @@
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-24T05:00:00+00:00",
+      "claimed_published_at": "2026-11-25T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -388,15 +424,15 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "17de8e63438109924a7f5686",
-      "candidate_id": "ec-17de8e6343810992",
-      "title": "SLICR: Strategy Logic-Guided Multi-Agent Reinforcement Learning",
-      "url": "https://arxiv.org/abs/2611.27865",
+      "item_id": "19e9ca7cc65eca9a78bb2e10",
+      "candidate_id": "ec-19e9ca7cc65eca9a",
+      "title": "Grammar-as-a-Drafter: More Tokens per Speculative Decoding Step on Grammar-Constrained Structured Outputs",
+      "url": "https://arxiv.org/abs/2611.28349",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-24T05:00:00+00:00",
+      "claimed_published_at": "2026-11-25T05:00:00+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -406,15 +442,51 @@
       "review_state": "primary_source_not_yet_verified"
     },
     {
-      "item_id": "21aa5c7b801f417baddf9b2a",
-      "candidate_id": "ec-21aa5c7b801f417b",
-      "title": "PaMuk-Bench: A Parallel Multilingual Multitask Benchmark for Vision-Language Tasks",
-      "url": "https://arxiv.org/abs/2611.27521",
+      "item_id": "1a09c8fe834fce26e5255423",
+      "candidate_id": "ec-1a09c8fe834fce26",
+      "title": "Social sycophancy differs across access modes of large language models",
+      "url": "https://arxiv.org/abs/2611.28012",
       "source_id": "arxiv-cs-ai",
       "source_kind": "rss",
       "topic": "research",
       "source_priority": "P1",
-      "claimed_published_at": "2026-11-24T05:00:00+00:00",
+      "claimed_published_at": "2026-11-25T05:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "296d8db5865e469855901e0e",
+      "candidate_id": "ec-296d8db5865e4698",
+      "title": "mini-psych-agent: Evaluating Human-Like Behavior in LLM Agents through Interactive Psychological Environments",
+      "url": "https://arxiv.org/abs/2611.30365",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-25T05:00:00+00:00",
+      "review_order_score": 5,
+      "review_order_reasons": [
+        "source_catalog_priority:P1",
+        "first_party_feed_record",
+        "source_claimed_pubdate_within_48_hours"
+      ],
+      "review_state": "primary_source_not_yet_verified"
+    },
+    {
+      "item_id": "0077e07924e43bf73f6b214e",
+      "candidate_id": "ec-0077e07924e43bf7",
+      "title": "An Indic Voice Agent with CUGA",
+      "url": "https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "source_priority": "P1",
+      "claimed_published_at": "2026-11-25T10:22:09+00:00",
       "review_order_score": 5,
       "review_order_reasons": [
         "source_catalog_priority:P1",
@@ -438,42 +510,6 @@
         "source_catalog_priority:P1",
         "first_party_feed_record",
         "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "eb2701ff66febea272938825",
-      "candidate_id": "ec-eb2701ff66febea2",
-      "title": "RoboTrack: Point tracking for real-world robotic manipulation",
-      "url": "https://huggingface.co/blog/allenai/robotrack",
-      "source_id": "huggingface-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-23T17:20:37+00:00",
-      "review_order_score": 5,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_48_hours"
-      ],
-      "review_state": "primary_source_not_yet_verified"
-    },
-    {
-      "item_id": "00d52199bef25f9eda98fa79",
-      "candidate_id": "ec-00d52199bef25f9e",
-      "title": "How to build and maintain an agentic evaluation",
-      "url": "https://huggingface.co/blog/agentic-evals",
-      "source_id": "huggingface-blog",
-      "source_kind": "rss",
-      "topic": "research",
-      "source_priority": "P1",
-      "claimed_published_at": "2026-11-23T00:00:00+00:00",
-      "review_order_score": 4,
-      "review_order_reasons": [
-        "source_catalog_priority:P1",
-        "first_party_feed_record",
-        "source_claimed_pubdate_within_7_days"
       ],
       "review_state": "primary_source_not_yet_verified"
     }

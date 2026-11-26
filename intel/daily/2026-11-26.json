@@ -1,0 +1,1429 @@
+{
+  "schema_version": "1.0",
+  "beijing_date": "2026-11-26",
+  "generated_at": "2026-11-26T04:17:35+00:00",
+  "lookback_hours": 72,
+  "status": "ok",
+  "source_checks": {
+    "ok": [
+      {
+        "id": "openai-news",
+        "entries": 1430
+      },
+      {
+        "id": "deepmind-blog",
+        "entries": 100
+      },
+      {
+        "id": "google-ai",
+        "entries": 20
+      },
+      {
+        "id": "release:openai/codex",
+        "entries": 1
+      },
+      {
+        "id": "release:langchain-ai/langgraph",
+        "entries": 10
+      },
+      {
+        "id": "release:openai/openai-agents-python",
+        "entries": 5
+      },
+      {
+        "id": "release:google/adk-python",
+        "entries": 10
+      },
+      {
+        "id": "release:OpenHands/software-agent-sdk",
+        "entries": 10
+      },
+      {
+        "id": "release:NVIDIA/OpenShell",
+        "entries": 9
+      },
+      {
+        "id": "release:anthropics/sandbox-runtime",
+        "entries": 10
+      },
+      {
+        "id": "release:langchain-ai/open-swe",
+        "entries": 0
+      },
+      {
+        "id": "release:modelcontextprotocol/specification",
+        "entries": 7
+      },
+      {
+        "id": "release:a2aproject/A2A",
+        "entries": 10
+      },
+      {
+        "id": "anthropic-site",
+        "entries": 6
+      },
+      {
+        "id": "claude-announcements",
+        "entries": 9
+      }
+    ],
+    "not_modified": [
+      "aws-ml",
+      "huggingface-blog",
+      "arxiv-cs-ai",
+      "mistral-news"
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "item_count": 53,
+  "items": [
+    {
+      "id": "69fbec9981f84b435a9deadb",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Official site update: migrating api to rust",
+      "url": "https://www.anthropic.com/research/migrating-api-to-rust",
+      "published_at": null,
+      "first_discovered_at": "2026-11-25T21:36:57+00:00",
+      "excerpt": "Official sitemap URL; timestamp reflects site modification, not publication.",
+      "evidence_status": "unverified_candidate",
+      "observed_change_at": "2026-11-25T16:27:43+00:00",
+      "date_basis": "site_lastmod_not_publication"
+    },
+    {
+      "id": "b5192911b2bfdbd383b0433e",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "priority": "P1",
+      "title": "langgraph-cli==0.4.44",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.44",
+      "published_at": "2026-11-25T20:52:34+00:00",
+      "first_discovered_at": "2026-11-25T21:36:57+00:00",
+      "excerpt": "Changes since cli==0.4.43 * feat(cli): add url to deploy list --json (#9793) * release(cli): 0.4.44 (#9794) * fix(cli): omit an empty secrets list when updating a deployment (#9737) * chore(deps): bump opentelemetry-api from 1.45.1 to 1.45.2 in /libs/cli (#9695) * feat(cli): deploy to BYOC data planes with only an API key (#9692)",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "cli==0.4.44"
+    },
+    {
+      "id": "88bd06d7e0e9b82f43a3c7b4",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Where scientists draw the line on AI agents",
+      "url": "https://huggingface.co/blog/allenai/where-scientists-draw-the-line-on-ai-agents",
+      "published_at": "2026-11-25T18:52:55+00:00",
+      "first_discovered_at": "2026-11-25T21:36:57+00:00",
+      "excerpt": "",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "4fcb943e480737661bf51d52",
+      "source_id": "release:OpenHands/software-agent-sdk",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "v1.64.1",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.64.1",
+      "published_at": "2026-11-25T12:18:45+00:00",
+      "first_discovered_at": "2026-11-25T21:36:57+00:00",
+      "excerpt": "## What's Changed * fix(agent-server): advance Debian snapshot to 20261124 for chromium, krb5 and linux-libc-dev security fixes by @openhands-agent in https://github.com/OpenHands/software-agent-sdk/pull/7078 * Keep the agent-server idle timer fresh during active runs by @rajshah4 in https://github.com/OpenHands/software-agent-sdk/pull/7105 * fix(agent-server): post full webhook batches off the event's publish by @en",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "v1.64.1"
+    },
+    {
+      "id": "0077e07924e43bf73f6b214e",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "An Indic Voice Agent with CUGA",
+      "url": "https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga",
+      "published_at": "2026-11-25T10:22:09+00:00",
+      "first_discovered_at": "2026-11-25T21:36:57+00:00",
+      "excerpt": "",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "14a959238623f243b1beca31",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "MixFold: Sub-4-Bit Mixed-Precision LLM Inference via Output-Channel Grouping on Mobile NPUs",
+      "url": "https://arxiv.org/abs/2611.26976",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-23T07:26:10+00:00",
+      "excerpt": "arXiv:2611.26976v3 Announce Type: replace Abstract: Sub-4-bit quantization allows mobile devices to run larger LLMs, but its memory savings do not always translate into faster decoding on mobile NPUs. Their matrix units support only a few native integer datatypes, and converting unsupported weight formats on the vector unit can erase the gains from fewer bits. Mixed precision faces an additional constraint: each matr",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "36b8e7a378495a802139614b",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Hypnos: A Dual-Phase End-to-End Platform for Scalable Continual Learning at the Edge",
+      "url": "https://arxiv.org/abs/2611.24637",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-19T07:15:40+00:00",
+      "excerpt": "arXiv:2611.24637v3 Announce Type: replace-cross Abstract: Continual learning (CL) enables neural networks to adapt to non-stationary data streams by mitigating catastrophic forgetting, offering a path to robust, private, and adaptable edge devices. Yet, porting CL to real-world edge devices remains challenging for two reasons: (i) online operation, where sensor data arrives one sample at a time and the device must ad",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "97c3aaf50409b580f9b22f36",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "As Student Rollouts Continue, Visual Backdoors Keep Growing",
+      "url": "https://arxiv.org/abs/2611.22446",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-18T07:16:27+00:00",
+      "excerpt": "arXiv:2611.22446v3 Announce Type: replace-cross Abstract: Conventional knowledge distillation can facilitate the propagation of backdoors from teacher models to student models. However, how this risk manifests in On-Policy Distillation (OPD) remains insufficiently studied. OPD has recently emerged as an important post-training paradigm for Vision-Language Models (VLMs). Unlike traditional offline distillation, OPD do",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "5eea20a9144c738a8d90f4d7",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "On-policy distillation as a Backdoor Propagation Channel",
+      "url": "https://arxiv.org/abs/2611.19207",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-17T20:49:12+00:00",
+      "excerpt": "arXiv:2611.19207v3 Announce Type: replace-cross Abstract: On-policy distillation (OPD) is emerging as an important paradigm for the post training of large language models, improving student models by leveraging supervision generated online by teacher models. However, whether this process also transfers latent security risks from teacher models to student models remains insufficiently studied. In this work, we reveal ",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "7b90e2f19cbc5f00b18ecf57",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "EvoViM: Recursively Self-Evolving Visual Agents for Exploration with Deferred Queries",
+      "url": "https://arxiv.org/abs/2611.28574",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.28574v2 Announce Type: replace Abstract: Multimodal large language model (MLLM) agents have shown promising capabilities in task-oriented environments. However, they still struggle when queries are deferred until after exploration, requiring them to retain visual evidence before knowing which details will matter. We introduce EvoViM, a recursively self-evolving framework in which a frozen multimodal model ",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "d70410584b905d172f229e27",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Improving the Improver: Semantic PID Control for Medical Agent Self-Improvement",
+      "url": "https://arxiv.org/abs/2611.28680",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.28680v2 Announce Type: replace Abstract: High-stakes vertical medical tasks, such as postoperative pathological staging and long-term survival prediction, demand multi-step clinical reasoning over heterogeneous evidence under weak supervision and high outcome uncertainty. While we first orchestrate CliAgent, a domain-tailored clinical agent workflow that systematically grounds predictions in multi-modal pa",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "320b1a5d5b94db83508f28b7",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Differential Proteomics to Symbolic Rules: An Audit of SHAP Guidance in Lung Adenocarcinoma",
+      "url": "https://arxiv.org/abs/2611.29989",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.29989v2 Announce Type: replace Abstract: We tested whether SHAP improves protein-based Horn rules for distinguishing lung adenocarcinoma from adjacent-normal tissue. CPTAC supplied 213 samples (111 tumour, 102 adjacent-normal) from 111 patients, including 102 matched pairs. Per-protein effects and tests used the same complete pairs with Benjamini-Hochberg correction. Sparse logistic regression used five st",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "296d8db5865e469855901e0e",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "mini-psych-agent: Evaluating Human-Like Behavior in LLM Agents through Interactive Psychological Environments",
+      "url": "https://arxiv.org/abs/2611.30365",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.30365v2 Announce Type: replace Abstract: A Large Language Model (LLM), its harness, and the test-time compute budget jointly determine its behavior. Consequently, the same underlying model, embedded in different agentic workflows or allocated different amounts of test-time compute, can exhibit markedly different performance. Psychologists face an analogous challenge when evaluating human performance: the s",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "97581073257c0d2dbe8da088",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Learning Multimodal Representations from Partially Paired, Small-Scale Data",
+      "url": "https://arxiv.org/abs/2611.30601",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.30601v2 Announce Type: replace Abstract: Modeling multimodal data from partially paired samples is critical for advancing domains like biomedicine, where vast unimodal datasets and foundation models exist but paired data remains scarce. Existing fusion methods rely on large-scale paired datasets, limiting their use in scenarios with incomplete pairing. We introduce CAMEO, an adversarial learning-based moda",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "1a09c8fe834fce26e5255423",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Social sycophancy differs across access modes of large language models",
+      "url": "https://arxiv.org/abs/2611.28012",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.28012v2 Announce Type: replace-cross Abstract: Large language models (LLMs) can display sycophancy, a tendency to excessively praise, agree with, or validate a user. Existing studies have tested LLMs for sycophancy primarily through application programming interfaces (APIs) rather than the consumer user interfaces (UIs) through which the public commonly interacts with LLMs. Access mode (API vs. UI) may aff",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "19e9ca7cc65eca9a78bb2e10",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Grammar-as-a-Drafter: More Tokens per Speculative Decoding Step on Grammar-Constrained Structured Outputs",
+      "url": "https://arxiv.org/abs/2611.28349",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.28349v2 Announce Type: replace-cross Abstract: Speculative decoding speeds up generation by letting a lightweight drafter propose tokens that the target model verifies in one forward pass. Under structured outputs (JSON schemas, regular expressions, tool-call formats), the drafter works against a constraint it does not know, so its proposals for keys, delimiters, and indentation are often rejected or inval",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "e2412023002bec3137bab9f7",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Seeing vs. Knowing: Counterfactual Supervision and Correction for 3D-Aware Object Editing",
+      "url": "https://arxiv.org/abs/2611.29542",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.29542v2 Announce Type: replace-cross Abstract: Rotating, translating, or rescaling an object in a photograph requires revealing unseen surfaces, preserving visible appearance, and updating shadows and reflections. Reconstructed 3D assets, rendered at the target pose as a 3D state, provide explicit geometric guidance, but their imperfect textures may conflict with the photograph, while standard paired train",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "9f1adfb5cd2bfd82514a4ec4",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "PixelOne: From Options to Pixels in a Single Forward for GUI Grounding",
+      "url": "https://arxiv.org/abs/2611.30235",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.30235v2 Announce Type: replace-cross Abstract: GUI grounding requires precise clicks at low latency. Recent models such as GUI-Decisions and GUI-Swift predict coordinates in one forward pass using fixed global bins with local refinement. However, screenshot downsampling removes detail needed to locate small controls, while fixed bins cover larger pixel ranges at higher resolutions. We introduce PixelOne, w",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "ed41c4b5aae94c0dfbc58181",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "De Novo Generation of Odorant Molecules with Targeted Olfactory Receptor Activation Patterns",
+      "url": "https://arxiv.org/abs/2611.30509",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.30509v2 Announce Type: replace-cross Abstract: Odor perception arises from a combinatorial code in which each molecule activates a specific subset of olfactory receptors (ORs), and the resulting activation pattern determines the perceived smell. We present a framework for de novo generation of molecules predicted to match target multi-receptor activation profiles. We first construct a panoramic binding mat",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "6d649055d47b41b6fb8de1e7",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "RoboInF: A Benchmark for Instruction Fidelity in Robotic Manipulation",
+      "url": "https://arxiv.org/abs/2611.30555",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.30555v2 Announce Type: replace-cross Abstract: Precise language control requires embodied models to follow instructions governing both task outcomes and execution. Although recent methods train policies to follow increasingly detailed commands, existing benchmarks often assess instruction following alongside perception, planning, and generalization to unfamiliar scenes. Higher task success therefore offers",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "0744badbb33cb571d620c5bc",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Reinforcing Diffusion Models by Instantaneous Trajectory Distribution Matching",
+      "url": "https://arxiv.org/abs/2611.30986",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.30986v2 Announce Type: replace-cross Abstract: Forward diffusion reinforcement learning (RL)---enabling deterministic ODE sampling without trajectory backpropagation---has grown increasingly popular for efficiently aligning diffusion models. However, we reveal that existing methods essentially rely on signed reward-weighted regression (RWR), regressing the trainable policy velocity onto rollouts from a beh",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "ce2930bd0c06d1d48e919a63",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Mamba-3D as Masked Autoencoders for Accurate and Data-Efficient Analysis of Medical Ultrasound Videos",
+      "url": "https://arxiv.org/abs/2503.20258",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2503.20258v3 Announce Type: replace-cross Abstract: Ultrasound videos are an important form of clinical imaging data, and deep learning-based automated analysis can improve diagnostic accuracy and clinical efficiency. However, the scarcity of labeled data and the inherent challenges of video analysis have impeded the advancement of related methods. In this work, we introduce E-ViM$^3$, a data-efficient Vision M",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "37483060b67540d7d3dfafad",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "PointEvent: Polarity-Conditioned Motion Evidence Accumulation for Event-Based Tiny Object Detection",
+      "url": "https://arxiv.org/abs/2609.20066",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2609.20066v3 Announce Type: replace-cross Abstract: Event cameras offer high temporal resolution and motion sensitivity for tiny UAV detection, but distant targets produce sparse, fragmented events easily overwhelmed by clutter and noise. Dense aggregation mixes weak target responses with background activity, while local spatiotemporal modeling may fail to connect distant observations. Polarity encodes the sign",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "b3fd9f46a901fe4bc4df91cb",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "FlashReFocus: Interactive Image Refocusing in Seconds",
+      "url": "https://arxiv.org/abs/2610.23297",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-19T07:15:40+00:00",
+      "excerpt": "arXiv:2610.23297v4 Announce Type: replace-cross Abstract: Single-image refocusing changes the focal plane and depth of field of a photograph after capture. Users compare focal choices on one photograph, so content stability across edits matters alongside quality and speed. Recent generative methods rerun large diffusion models for every edit, even when they first restore an all-in-focus image, so content can change i",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "7e648ae5ea5ce53aaa8f6998",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "RegimeCouncil: Paired-Evidence Routing For Memory Conflict Governance In LLM Agents",
+      "url": "https://arxiv.org/abs/2611.22113",
+      "published_at": "2026-11-25T05:00:00+00:00",
+      "first_discovered_at": "2026-11-18T07:16:27+00:00",
+      "excerpt": "arXiv:2611.22113v3 Announce Type: replace Abstract: Alongside memory storage and retrieval, a fundamental challenge in long-term LLM agent systems is how the agent should act when stored memories conflict with an evolving world. Facts often go stale without explicit deletion, so the conflict surfaces before the store is refreshed: delayed feedback shows that acting on one outdated record hurt, but not whether suppres",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "16f11be211a4bdda5000b290",
+      "source_id": "release:google/adk-python",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "priority": "P1",
+      "title": "v2.15.1",
+      "url": "https://github.com/google/adk-python/releases/tag/v2.15.1",
+      "published_at": "2026-11-25T01:01:43+00:00",
+      "first_discovered_at": "2026-11-25T04:59:02+00:00",
+      "excerpt": "## [2.15.1](https://github.com/google/adk-python/compare/v2.15.0...v2.15.1) (2026-11-24) ### Highlights This release focuses on stability and integration bug fixes across model sampling, agent-to-agent streaming, tool call validation, and instruction routing. * **Models**: Maintain compatibility across Anthropic SDK versions 1.x and 2.x when configuring Claude sampling settings. ([debf43d](https://github.com/google/a",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "v2.15.1"
+    },
+    {
+      "id": "df3be113c8aed13fbadf7f5f",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Hill-climbing Inkling 2 Mini inference on one RTX PRO 6000",
+      "url": "https://huggingface.co/blog/inkling-2-mini-inference-hillclimb",
+      "published_at": "2026-11-25T00:00:00+00:00",
+      "first_discovered_at": "2026-11-25T21:36:57+00:00",
+      "excerpt": "",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "b3db646d86cce70fafc8b4dd",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "priority": "P0",
+      "title": "Article Nov 24, 2026 Turn artifacts into Mac and Windows apps Open the artifacts you use every day like any other app, and let them do more on your computer Claude apps",
+      "url": "https://claude.com/resources/articles/install-as-app",
+      "published_at": null,
+      "first_discovered_at": "2026-11-24T22:20:25+00:00",
+      "excerpt": "Official website listing. Verify actual publication date and claims on the original.",
+      "evidence_status": "unverified_candidate",
+      "date_basis": "official_listing_no_verified_publication_time"
+    },
+    {
+      "id": "8befc30ac765ba8adae65db9",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "priority": "P0",
+      "title": "Article Nov 24, 2026 MCP servers can now ship skills, run tasks, and more with Claude Claude apps Claude Platform",
+      "url": "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more",
+      "published_at": null,
+      "first_discovered_at": "2026-11-24T22:20:25+00:00",
+      "excerpt": "Official website listing. Verify actual publication date and claims on the original.",
+      "evidence_status": "unverified_candidate",
+      "date_basis": "official_listing_no_verified_publication_time"
+    },
+    {
+      "id": "b5129d6fc89af52dbb221093",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "priority": "P0",
+      "title": "Article Nov 23, 2026 Introducing Claude Ship Open a pull request and get back to building. Claude can now review pull requests, fix them, and approve the ones that a team's policy allows. Claude Ship",
+      "url": "https://claude.com/resources/articles/introducing-claude-ship",
+      "published_at": null,
+      "first_discovered_at": "2026-11-24T22:20:25+00:00",
+      "excerpt": "Official website listing. Verify actual publication date and claims on the original.",
+      "evidence_status": "unverified_candidate",
+      "date_basis": "official_listing_no_verified_publication_time"
+    },
+    {
+      "id": "4347719159f6259a2fb2b8ee",
+      "source_id": "release:OpenHands/software-agent-sdk",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "v1.64.0",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.64.0",
+      "published_at": "2026-11-24T16:41:28+00:00",
+      "first_discovered_at": "2026-11-24T22:20:25+00:00",
+      "excerpt": "## What's Changed * chore(deps): bump ruff from 0.17.4 to 0.17.5 by @dependabot[bot] in https://github.com/OpenHands/software-agent-sdk/pull/7018 * Route task classifier through RouterLLM routes by @malhotra5 in https://github.com/OpenHands/software-agent-sdk/pull/6943 * feat(agent-server): projects API, coordinator tools, board groups and artifacts by @enyst in https://github.com/OpenHands/software-agent-sdk/pull/66",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "v1.64.0"
+    },
+    {
+      "id": "6a28e842b3bf4bfd8400220e",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton",
+      "url": "https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance",
+      "published_at": "2026-11-24T16:34:13+00:00",
+      "first_discovered_at": "2026-11-24T22:20:25+00:00",
+      "excerpt": "",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "a7a0adf7d6c734e350c9ea11",
+      "source_id": "google-ai",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P1",
+      "title": "How Gemini is changing the game for Golden State's organization and fans.",
+      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-golden-state",
+      "published_at": "2026-11-24T16:00:00+00:00",
+      "first_discovered_at": "2026-11-24T22:20:25+00:00",
+      "excerpt": "Google Gemini partners with Golden State to power fan experiences and business operations for the Warriors, Valkyries, and Chase Center. See the news.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "779b812b27a55ade0d1aa6e8",
+      "source_id": "release:NVIDIA/OpenShell",
+      "source_kind": "github_release",
+      "topic": "sandbox",
+      "priority": "P1",
+      "title": "OpenShell v0.1.10",
+      "url": "https://github.com/ai-openshell/openshell/releases/tag/v0.1.10",
+      "published_at": "2026-11-24T15:12:52+00:00",
+      "first_discovered_at": "2026-11-24T22:20:25+00:00",
+      "excerpt": "## OpenShell v0.1.10 ### Quick install ```bash curl -LsSf https://raw.githubusercontent.com/ai-openshell/openshell/main/install.sh | OPENSHELL_VERSION=v0.1.10 sh ``` ### Upgrade notes - OpenShell images now publish to `quay.io/ai-openshell`, and the gateway's default supervisor and sandbox images and the Helm chart's image values point there. If you set `global.image.registry` to a mirror, the chart now pulls ` /ai-o",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "v0.1.10"
+    },
+    {
+      "id": "616293296550946fa78f0e19",
+      "source_id": "deepmind-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P0",
+      "title": "From spectrum to structure: Identifying molecules with Mass Spec Skills for Google Antigravity",
+      "url": "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity",
+      "published_at": "2026-11-24T13:07:53+00:00",
+      "first_discovered_at": "2026-11-25T21:36:57+00:00",
+      "excerpt": "Mass Spec Skills empowers scientists using Google Antigravity to interpret tandem mass spectra.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "ac2f786b30f6d45772c42167",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
+      "url": "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities",
+      "published_at": "2026-11-24T13:00:00+00:00",
+      "first_discovered_at": "2026-11-24T22:20:25+00:00",
+      "excerpt": "GPT-6 models design protein structures and sequences using reasoning and code. Lab tests found evidence of binding across five targets.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "7758c04a629331bf96383fb7",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Searching for distant planets with Astra",
+      "url": "https://openai.com/index/searching-for-distant-planets-with-astra",
+      "published_at": "2026-11-24T11:00:00+00:00",
+      "first_discovered_at": "2026-11-24T22:20:25+00:00",
+      "excerpt": "See how two amateur astronomers used Codex and Astra to find potential exoplanets in public data from NASA’s Kepler and TESS space telescopes.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "43e19cac5ca4688d79146efe",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Official site update: alignment",
+      "url": "https://www.anthropic.com/research/team/alignment",
+      "published_at": null,
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "Official sitemap URL; timestamp reflects site modification, not publication.",
+      "evidence_status": "unverified_candidate",
+      "observed_change_at": "2026-11-24T17:02:51+00:00",
+      "date_basis": "site_lastmod_not_publication"
+    },
+    {
+      "id": "dfc21a319f95a75d28f0d17a",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Official site update: interpretability",
+      "url": "https://www.anthropic.com/research/team/interpretability",
+      "published_at": null,
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "Official sitemap URL; timestamp reflects site modification, not publication.",
+      "evidence_status": "unverified_candidate",
+      "observed_change_at": "2026-11-24T06:56:52+00:00",
+      "date_basis": "site_lastmod_not_publication"
+    },
+    {
+      "id": "b24333cc89f9425e4c7b7f37",
+      "source_id": "aws-ml",
+      "source_kind": "rss",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "Introducing the Amazon Bedrock Trusted Access API, with Enterprise Frontier Safeguards and Enterprise Data Controls for Claude models",
+      "url": "https://aws.amazon.com/blogs/machine-learning/introducing-the-amazon-bedrock-trusted-access-api-with-anthropics-enterprise-frontier-safeguards-and-enterprise-data-controls",
+      "published_at": "2026-11-24T05:01:14+00:00",
+      "first_discovered_at": "2026-11-24T06:16:58+00:00",
+      "excerpt": "Amazon Bedrock now offers a trusted access program API: one place to discover, request, and enroll in model provider programs. The first two offerings, in public preview, are Anthropic's Enterprise Frontier Safeguards (EFS) and Enterprise Data Controls (EDC), which give you control over your data when you use Claude Fable models.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "9566e4a73e7bad1a8e1af887",
+      "source_id": "release:openai/openai-agents-python",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "priority": "P1",
+      "title": "v0.26.0",
+      "url": "https://github.com/openai/openai-agents-python/releases/tag/v0.26.0",
+      "published_at": "2026-11-24T03:15:47+00:00",
+      "first_discovered_at": "2026-11-24T06:16:58+00:00",
+      "excerpt": "## [0.26.0](https://github.com/openai/openai-agents-python/compare/v0.25.0...v0.26.0) (2026-11-24) ### Features * Upgrade the GPT-Live demo to 1.1 ([6c4e4a2](https://github.com/openai/openai-agents-python/commit/6c4e4a29cd08eef454db6980d74da6afc8939d24)) ### Bug Fixes * allow SDK 0.25 in the external provider example ([#6068](https://github.com/openai/openai-agents-python/issues/6068)) ([9b17858](https://github.com/o",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "v0.26.0"
+    },
+    {
+      "id": "824283cf95f0a1c656bb60f3",
+      "source_id": "release:openai/codex",
+      "source_kind": "github_release",
+      "topic": "harness",
+      "priority": "P1",
+      "title": "0.172.0",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.172.0",
+      "published_at": "2026-11-24T00:03:55+00:00",
+      "first_discovered_at": "2026-11-24T06:16:58+00:00",
+      "excerpt": "## New Features - Follow thread links from search results and transcripts to open saved conversations and nested agents in the terminal. (#62332) - Press `Tab` to complete arguments for supported slash commands. For example, `/mcp lo` completes to `/mcp login`. (#62343) - Jump between task groups in the agent command center with `Shift+Up` and `Shift+Down`. (#62200) - Optional stdio MCP servers with cached tool lists",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "rust-v0.172.0"
+    },
+    {
+      "id": "7e14b56be674430859075a7f",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "How Intentful uses dots to make more time for growth",
+      "url": "https://openai.com/business/customer-stories/intentful-dots",
+      "published_at": "2026-11-24T00:00:00+00:00",
+      "first_discovered_at": "2026-11-24T22:20:25+00:00",
+      "excerpt": "Marina Petrova’s dot Aria helps research websites and build proposals, while proactively flagging messages and resolving issues.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "89a905d5eae9fa3ef5a8af6c",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "How iFood scales coding agents across 15,000 repositories",
+      "url": "https://openai.com/business/customer-stories/ifood",
+      "published_at": "2026-11-24T00:00:00+00:00",
+      "first_discovered_at": "2026-11-24T22:20:25+00:00",
+      "excerpt": "",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "a3c9028eefd69cfd15ff27f4",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Clay helps sales teams win with Codex and ChatGPT",
+      "url": "https://openai.com/business/customer-stories/clay-plugins-openai",
+      "published_at": "2026-11-24T00:00:00+00:00",
+      "first_discovered_at": "2026-11-25T04:59:02+00:00",
+      "excerpt": "ChatGPT and Codex integrations help Clay’s users research deals and turn data into go-to-market plays, with GPT-6 models handling the reasoning.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "36fb5b1c7a9ff4c850f964ed",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Official site update: working with ai",
+      "url": "https://www.anthropic.com/research/working-with-ai",
+      "published_at": null,
+      "first_discovered_at": "2026-11-23T23:48:13+00:00",
+      "excerpt": "Official sitemap URL; timestamp reflects site modification, not publication.",
+      "evidence_status": "unverified_candidate",
+      "observed_change_at": "2026-11-23T22:13:27+00:00",
+      "date_basis": "site_lastmod_not_publication"
+    },
+    {
+      "id": "b53558d620676ec22ad88050",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "priority": "P0",
+      "title": "Article Nov 23, 2026 Zero data retention with Enterprise Frontier Safeguards is now in beta Claude Platform",
+      "url": "https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards",
+      "published_at": null,
+      "first_discovered_at": "2026-11-23T23:48:13+00:00",
+      "excerpt": "Official website listing. Verify actual publication date and claims on the original.",
+      "evidence_status": "unverified_candidate",
+      "date_basis": "official_listing_no_verified_publication_time"
+    },
+    {
+      "id": "b0689cf87ab570a441c88635",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "OpenAI and Cisco introduce Shirudo",
+      "url": "https://openai.com/index/introducing-shirudo",
+      "published_at": "2026-11-23T21:20:00+00:00",
+      "first_discovered_at": "2026-11-23T23:48:13+00:00",
+      "excerpt": "OpenAI and Cisco introduce Shirudo, an open-source runtime for Linux. It helps teams protect running systems while they roll out patches.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "eb2701ff66febea272938825",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "RoboTrack: Point tracking for real-world robotic manipulation",
+      "url": "https://huggingface.co/blog/allenai/robotrack",
+      "published_at": "2026-11-23T17:20:37+00:00",
+      "first_discovered_at": "2026-11-23T23:48:13+00:00",
+      "excerpt": "",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "4f5fe20de68e9dfdec37bc31",
+      "source_id": "google-ai",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P1",
+      "title": "A more tailored Google Search that’s uniquely yours",
+      "url": "https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps",
+      "published_at": "2026-11-23T17:00:00+00:00",
+      "first_discovered_at": "2026-11-23T23:48:13+00:00",
+      "excerpt": "Get more helpful Search responses by securely opting in to connect Google Wallet, Drive, and the Gemini app to Personal Intelligence in AI Mode.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "895b540db6a8889e694ca9f9",
+      "source_id": "deepmind-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P0",
+      "title": "Finding faster quantum algorithms with agents and formal verification",
+      "url": "https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification",
+      "published_at": "2026-11-23T16:59:40+00:00",
+      "first_discovered_at": "2026-11-24T06:16:58+00:00",
+      "excerpt": "Using agent teams and formal verification to improve quantum algorithms for fusion and chemistry.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "10878202550bbbf922d1872a",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Connected intelligence for in-house legal",
+      "url": "https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
+      "published_at": "2026-11-23T08:00:00+00:00",
+      "first_discovered_at": "2026-11-23T23:48:13+00:00",
+      "excerpt": "Watch OpenAI’s Stacey Wang and Craig Bruney, Mary O’Carroll of LECG, and Cooley’s Richard Segal explore how AI can help in-house legal teams connect business context, build reusable workflows and get more from outside counsel.",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "1259b534687dd8b3171199ff",
+      "source_id": "openai-news",
+      "source_kind": "rss",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Richpanel helps companies automate 50% of support in 30 days",
+      "url": "https://openai.com/business/customer-stories/richpanel-ai-customer-support",
+      "published_at": "2026-11-23T08:00:00+00:00",
+      "first_discovered_at": "2026-11-23T23:48:13+00:00",
+      "excerpt": "Richpanel uses GPT-6 Astra and GPT-6.1 Sol to equip its AI support agents with tools and procedures, and GPT-6 Luna for their conversations.",
+      "evidence_status": "unverified_candidate"
+    }
+  ],
+  "event_candidates": [
+    {
+      "event_candidate_id": "ec-f771d839ae763adf",
+      "representative_title": "Official site update: migrating api to rust",
+      "topic": "harness",
+      "item_ids": [
+        "69fbec9981f84b435a9deadb"
+      ],
+      "source_ids": [
+        "anthropic-site"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-dd246dfbf9a7a904",
+      "representative_title": "langgraph-cli==0.4.44",
+      "topic": "runtime",
+      "item_ids": [
+        "b5192911b2bfdbd383b0433e"
+      ],
+      "source_ids": [
+        "release:langchain-ai/langgraph"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-48b85f12cfea2c83",
+      "representative_title": "Where scientists draw the line on AI agents",
+      "topic": "research",
+      "item_ids": [
+        "88bd06d7e0e9b82f43a3c7b4"
+      ],
+      "source_ids": [
+        "huggingface-blog"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-4bc578d0991fb459",
+      "representative_title": "v1.64.1",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "4fcb943e480737661bf51d52"
+      ],
+      "source_ids": [
+        "release:OpenHands/software-agent-sdk"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-22d88b5e9d35754f",
+      "representative_title": "An Indic Voice Agent with CUGA",
+      "topic": "research",
+      "item_ids": [
+        "0077e07924e43bf73f6b214e"
+      ],
+      "source_ids": [
+        "huggingface-blog"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-86f5dc577680b97d",
+      "representative_title": "MixFold: Sub-4-Bit Mixed-Precision LLM Inference via Output-Channel Grouping on Mobile NPUs",
+      "topic": "research",
+      "item_ids": [
+        "14a959238623f243b1beca31"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-f9a66fc629cf3564",
+      "representative_title": "Hypnos: A Dual-Phase End-to-End Platform for Scalable Continual Learning at the Edge",
+      "topic": "research",
+      "item_ids": [
+        "36b8e7a378495a802139614b"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-6e28beced18b8e0c",
+      "representative_title": "As Student Rollouts Continue, Visual Backdoors Keep Growing",
+      "topic": "research",
+      "item_ids": [
+        "97c3aaf50409b580f9b22f36"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-e8073113850f7c47",
+      "representative_title": "On-policy distillation as a Backdoor Propagation Channel",
+      "topic": "research",
+      "item_ids": [
+        "5eea20a9144c738a8d90f4d7"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-4ce6810772492593",
+      "representative_title": "EvoViM: Recursively Self-Evolving Visual Agents for Exploration with Deferred Queries",
+      "topic": "research",
+      "item_ids": [
+        "7b90e2f19cbc5f00b18ecf57"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-654ef1d2fc2aca12",
+      "representative_title": "Improving the Improver: Semantic PID Control for Medical Agent Self-Improvement",
+      "topic": "research",
+      "item_ids": [
+        "d70410584b905d172f229e27"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-4d450dbf53eebaac",
+      "representative_title": "Differential Proteomics to Symbolic Rules: An Audit of SHAP Guidance in Lung Adenocarcinoma",
+      "topic": "research",
+      "item_ids": [
+        "320b1a5d5b94db83508f28b7"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-391ddca2c2d1f1ed",
+      "representative_title": "mini-psych-agent: Evaluating Human-Like Behavior in LLM Agents through Interactive Psychological Environments",
+      "topic": "research",
+      "item_ids": [
+        "296d8db5865e469855901e0e"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-399ad2fa2ea02c7d",
+      "representative_title": "Learning Multimodal Representations from Partially Paired, Small-Scale Data",
+      "topic": "research",
+      "item_ids": [
+        "97581073257c0d2dbe8da088"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-1a629b25553f82b2",
+      "representative_title": "Social sycophancy differs across access modes of large language models",
+      "topic": "research",
+      "item_ids": [
+        "1a09c8fe834fce26e5255423"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-a6185e00fad66eaa",
+      "representative_title": "Grammar-as-a-Drafter: More Tokens per Speculative Decoding Step on Grammar-Constrained Structured Outputs",
+      "topic": "research",
+      "item_ids": [
+        "19e9ca7cc65eca9a78bb2e10"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-24d220df724b7577",
+      "representative_title": "Seeing vs. Knowing: Counterfactual Supervision and Correction for 3D-Aware Object Editing",
+      "topic": "research",
+      "item_ids": [
+        "e2412023002bec3137bab9f7"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b8572c56b0cb1879",
+      "representative_title": "PixelOne: From Options to Pixels in a Single Forward for GUI Grounding",
+      "topic": "research",
+      "item_ids": [
+        "9f1adfb5cd2bfd82514a4ec4"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-915e3c52f8c76b70",
+      "representative_title": "De Novo Generation of Odorant Molecules with Targeted Olfactory Receptor Activation Patterns",
+      "topic": "research",
+      "item_ids": [
+        "ed41c4b5aae94c0dfbc58181"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-fba6c55460b712db",
+      "representative_title": "RoboInF: A Benchmark for Instruction Fidelity in Robotic Manipulation",
+      "topic": "research",
+      "item_ids": [
+        "6d649055d47b41b6fb8de1e7"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-aa449005ee5d5e43",
+      "representative_title": "Reinforcing Diffusion Models by Instantaneous Trajectory Distribution Matching",
+      "topic": "research",
+      "item_ids": [
+        "0744badbb33cb571d620c5bc"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-e66bfb9e1f18d7a9",
+      "representative_title": "Mamba-3D as Masked Autoencoders for Accurate and Data-Efficient Analysis of Medical Ultrasound Videos",
+      "topic": "research",
+      "item_ids": [
+        "ce2930bd0c06d1d48e919a63"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-fe629edbb56d3781",
+      "representative_title": "PointEvent: Polarity-Conditioned Motion Evidence Accumulation for Event-Based Tiny Object Detection",
+      "topic": "research",
+      "item_ids": [
+        "37483060b67540d7d3dfafad"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-7ab936afddc60639",
+      "representative_title": "FlashReFocus: Interactive Image Refocusing in Seconds",
+      "topic": "research",
+      "item_ids": [
+        "b3fd9f46a901fe4bc4df91cb"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b3801197005c4768",
+      "representative_title": "RegimeCouncil: Paired-Evidence Routing For Memory Conflict Governance In LLM Agents",
+      "topic": "research",
+      "item_ids": [
+        "7e648ae5ea5ce53aaa8f6998"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-dd8565146f56c9d6",
+      "representative_title": "v2.15.1",
+      "topic": "harness",
+      "item_ids": [
+        "16f11be211a4bdda5000b290"
+      ],
+      "source_ids": [
+        "release:google/adk-python"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-c79691b31bfe53c6",
+      "representative_title": "Hill-climbing Inkling 2 Mini inference on one RTX PRO 6000",
+      "topic": "research",
+      "item_ids": [
+        "df3be113c8aed13fbadf7f5f"
+      ],
+      "source_ids": [
+        "huggingface-blog"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-0b02fa540508a905",
+      "representative_title": "Article Nov 24, 2026 Turn artifacts into Mac and Windows apps Open the artifacts you use every day like any other app, and let them do more on your computer Claude apps",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "b3db646d86cce70fafc8b4dd"
+      ],
+      "source_ids": [
+        "claude-announcements"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-350d6a45812f402a",
+      "representative_title": "Article Nov 24, 2026 MCP servers can now ship skills, run tasks, and more with Claude Claude apps Claude Platform",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "8befc30ac765ba8adae65db9"
+      ],
+      "source_ids": [
+        "claude-announcements"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-4bba6d7a897411cc",
+      "representative_title": "Article Nov 23, 2026 Introducing Claude Ship Open a pull request and get back to building. Claude can now review pull requests, fix them, and approve the ones that a team's policy allows. Claude Ship",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "b5129d6fc89af52dbb221093"
+      ],
+      "source_ids": [
+        "claude-announcements"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-5e581c742ef961d3",
+      "representative_title": "v1.64.0",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "4347719159f6259a2fb2b8ee"
+      ],
+      "source_ids": [
+        "release:OpenHands/software-agent-sdk"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b1552d1da857ef81",
+      "representative_title": "Microduck Obstacle Avoidance: A Sim2Real Workflow with Isaac Lab and Newton",
+      "topic": "research",
+      "item_ids": [
+        "6a28e842b3bf4bfd8400220e"
+      ],
+      "source_ids": [
+        "huggingface-blog"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b0b55e4f7832c57a",
+      "representative_title": "How Gemini is changing the game for Golden State's organization and fans.",
+      "topic": "harness",
+      "item_ids": [
+        "a7a0adf7d6c734e350c9ea11"
+      ],
+      "source_ids": [
+        "google-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-44708e637e6c185f",
+      "representative_title": "OpenShell v0.1.10",
+      "topic": "sandbox",
+      "item_ids": [
+        "779b812b27a55ade0d1aa6e8"
+      ],
+      "source_ids": [
+        "release:NVIDIA/OpenShell"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-12076d0df6fd0ede",
+      "representative_title": "From spectrum to structure: Identifying molecules with Mass Spec Skills for Google Antigravity",
+      "topic": "research",
+      "item_ids": [
+        "616293296550946fa78f0e19"
+      ],
+      "source_ids": [
+        "deepmind-blog"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-d3e38befceda01df",
+      "representative_title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
+      "topic": "harness",
+      "item_ids": [
+        "ac2f786b30f6d45772c42167"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-2b99fb40a24d22b6",
+      "representative_title": "Searching for distant planets with Astra",
+      "topic": "harness",
+      "item_ids": [
+        "7758c04a629331bf96383fb7"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-991b64af0b79de49",
+      "representative_title": "Official site update: alignment",
+      "topic": "harness",
+      "item_ids": [
+        "43e19cac5ca4688d79146efe"
+      ],
+      "source_ids": [
+        "anthropic-site"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-6e393807ad6f35cb",
+      "representative_title": "Official site update: interpretability",
+      "topic": "harness",
+      "item_ids": [
+        "dfc21a319f95a75d28f0d17a"
+      ],
+      "source_ids": [
+        "anthropic-site"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-4a8aac9190573eb3",
+      "representative_title": "Introducing the Amazon Bedrock Trusted Access API, with Enterprise Frontier Safeguards and Enterprise Data Controls for Claude models",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "b24333cc89f9425e4c7b7f37"
+      ],
+      "source_ids": [
+        "aws-ml"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-c5529d8b7a257dac",
+      "representative_title": "v0.26.0",
+      "topic": "harness",
+      "item_ids": [
+        "9566e4a73e7bad1a8e1af887"
+      ],
+      "source_ids": [
+        "release:openai/openai-agents-python"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-8cdc2b4ff1dee860",
+      "representative_title": "0.172.0",
+      "topic": "harness",
+      "item_ids": [
+        "824283cf95f0a1c656bb60f3"
+      ],
+      "source_ids": [
+        "release:openai/codex"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-394b277a87a05e13",
+      "representative_title": "How Intentful uses dots to make more time for growth",
+      "topic": "harness",
+      "item_ids": [
+        "7e14b56be674430859075a7f"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-f6bbeb10bed6affc",
+      "representative_title": "How iFood scales coding agents across 15,000 repositories",
+      "topic": "harness",
+      "item_ids": [
+        "89a905d5eae9fa3ef5a8af6c"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-08e0c929aa799e37",
+      "representative_title": "Clay helps sales teams win with Codex and ChatGPT",
+      "topic": "harness",
+      "item_ids": [
+        "a3c9028eefd69cfd15ff27f4"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-53dc0be1083842f2",
+      "representative_title": "Official site update: working with ai",
+      "topic": "harness",
+      "item_ids": [
+        "36fb5b1c7a9ff4c850f964ed"
+      ],
+      "source_ids": [
+        "anthropic-site"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-6a8c208eecfb56e8",
+      "representative_title": "Article Nov 23, 2026 Zero data retention with Enterprise Frontier Safeguards is now in beta Claude Platform",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "b53558d620676ec22ad88050"
+      ],
+      "source_ids": [
+        "claude-announcements"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-a9c611d65066b1b2",
+      "representative_title": "OpenAI and Cisco introduce Shirudo",
+      "topic": "harness",
+      "item_ids": [
+        "b0689cf87ab570a441c88635"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-530f5b74ad1b4a24",
+      "representative_title": "RoboTrack: Point tracking for real-world robotic manipulation",
+      "topic": "research",
+      "item_ids": [
+        "eb2701ff66febea272938825"
+      ],
+      "source_ids": [
+        "huggingface-blog"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-0f976b448cc96f86",
+      "representative_title": "A more tailored Google Search that’s uniquely yours",
+      "topic": "harness",
+      "item_ids": [
+        "4f5fe20de68e9dfdec37bc31"
+      ],
+      "source_ids": [
+        "google-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-9d57880ee89d08c2",
+      "representative_title": "Finding faster quantum algorithms with agents and formal verification",
+      "topic": "research",
+      "item_ids": [
+        "895b540db6a8889e694ca9f9"
+      ],
+      "source_ids": [
+        "deepmind-blog"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-27d9fb1355dd7988",
+      "representative_title": "Connected intelligence for in-house legal",
+      "topic": "harness",
+      "item_ids": [
+        "10878202550bbbf922d1872a"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-2d7a4b298ea4f709",
+      "representative_title": "Richpanel helps companies automate 50% of support in 30 days",
+      "topic": "harness",
+      "item_ids": [
+        "1259b534687dd8b3171199ff"
+      ],
+      "source_ids": [
+        "openai-news"
+      ],
+      "status": "needs_verification"
+    }
+  ],
+  "usage_note": "Unverified candidates: verify first-party evidence, actual event time and independent sources before any trend/claim update."
+}
