@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_ingested_snapshot": "2026-11-27T04:26:07+00:00",
+  "last_ingested_snapshot": "2026-11-28T04:06:59+00:00",
   "bootstrap_note": "Two independently verified candidates recovered from the successful 2026-10-22 ingestion artifact. This is not the full 54-item ledger; the next scheduled collector will merge all available items.",
   "candidates": {
     "ec-001cd33c965241bc": {
@@ -56,7 +56,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-25T10:22:09+00:00",
       "first_seen_at": "2026-11-26T04:17:35+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "0077e07924e43bf73f6b214e"
       ],
@@ -125,7 +125,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "017641e3c5bc186163568c62"
       ],
@@ -815,7 +815,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "07faf2fc1a583cf3c2b7e32e"
       ],
@@ -2572,7 +2572,7 @@
       "source_kind": "official_listing",
       "published_at": null,
       "first_seen_at": "2026-11-11T02:06:25+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "19f8bc589a9b194da0da0575"
       ],
@@ -3929,7 +3929,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "26ec0c2b091305efd935c920"
       ],
@@ -4872,7 +4872,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "32921a09d12a4cf945a2dfae"
       ],
@@ -5907,7 +5907,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:05:36+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "3d2697b636d74b834fc0e734"
       ],
@@ -6298,7 +6298,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "40e915e682512e3c5dad48e9"
       ],
@@ -6689,7 +6689,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "4747bab75f16491b47b0142a"
       ],
@@ -6896,7 +6896,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "4a7944a6b20a53a7738df543"
       ],
@@ -7310,7 +7310,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-25T12:18:45+00:00",
       "first_seen_at": "2026-11-26T04:17:35+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "4fcb943e480737661bf51d52"
       ],
@@ -7747,7 +7747,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "538f5b2db8963f76b8783234"
       ],
@@ -8621,7 +8621,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "5d7ee02fc83a0026acd096cd"
       ],
@@ -9288,7 +9288,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "639715636b1771bd9cc870a6"
       ],
@@ -9472,7 +9472,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "651273c9af5bc4aaf29b477f"
       ],
@@ -9950,7 +9950,7 @@
       "source_kind": "official_sitemap",
       "published_at": null,
       "first_seen_at": "2026-11-26T04:17:35+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "69fbec9981f84b435a9deadb"
       ],
@@ -11951,7 +11951,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T00:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "819f2bb8e324e5e7f3ab174f"
       ],
@@ -12342,7 +12342,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "856a7a48580d88b987199d22"
       ],
@@ -12595,7 +12595,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-25T18:52:55+00:00",
       "first_seen_at": "2026-11-26T04:17:35+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "88bd06d7e0e9b82f43a3c7b4"
       ],
@@ -14136,7 +14136,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "9919842f8d32cc2ee3e0308f"
       ],
@@ -14297,7 +14297,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "9a16c4f9f4c37588cb6233e7"
       ],
@@ -15493,7 +15493,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T11:37:17+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "a734da9d3a1d876054f86e6e"
       ],
@@ -16804,7 +16804,7 @@
       "source_kind": "github_release",
       "published_at": "2026-11-25T20:52:34+00:00",
       "first_seen_at": "2026-11-26T04:17:35+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "b5192911b2bfdbd383b0433e"
       ],
@@ -18108,6 +18108,29 @@
       ],
       "status": "unverified_candidate"
     },
+    "ec-c2bd7953104652e4": {
+      "id": "ec-c2bd7953104652e4",
+      "title": "Taking Trainium3 to the Track: Generating Videos with LTX-2.5",
+      "topic": "research",
+      "source_kind": "rss",
+      "published_at": "2026-11-27T00:00:00+00:00",
+      "first_seen_at": "2026-11-28T04:06:59+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
+      "item_ids": [
+        "c2bd7953104652e48b060cb8"
+      ],
+      "sources": [
+        {
+          "item_id": "c2bd7953104652e48b060cb8",
+          "source_id": "huggingface-blog",
+          "url": "https://huggingface.co/blog/video-trainium3",
+          "published_at": "2026-11-27T00:00:00+00:00",
+          "title": "Taking Trainium3 to the Track: Generating Videos with LTX-2.5",
+          "first_discovered_at": "2026-11-27T21:08:28+00:00"
+        }
+      ],
+      "status": "unverified_candidate"
+    },
     "ec-c2ed162a157709f5": {
       "id": "ec-c2ed162a157709f5",
       "title": "Granite Speech 5.0: Transcribe, Translate, and Attribute more Accurately and Faster",
@@ -18506,7 +18529,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "c66635c1f6ffa527e0ee74b1"
       ],
@@ -19012,7 +19035,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "cdf2de01c967a98e85e140a7"
       ],
@@ -20438,7 +20461,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "e07ac3c4387dc83ada7af375"
       ],
@@ -20484,7 +20507,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "e13baf63be0f70162c030e81"
       ],
@@ -21542,7 +21565,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "f24d5a544b3cea6518ab3769"
       ],
@@ -22416,7 +22439,7 @@
       "source_kind": "rss",
       "published_at": "2026-11-26T05:00:00+00:00",
       "first_seen_at": "2026-11-27T04:26:07+00:00",
-      "last_seen_at": "2026-11-27T04:26:07+00:00",
+      "last_seen_at": "2026-11-28T04:06:59+00:00",
       "item_ids": [
         "fd56d4b2e51d0164708371c9"
       ],
@@ -23453,6 +23476,7 @@
     "c12a28930b15bc03ec51385c": "ec-c12a28930b15bc03",
     "c1a2af93db54bfcf7c217cb7": "ec-c1a2af93db54bfcf",
     "c1fa9a148915cb0cb39fb69b": "ec-c1fa9a148915cb0c",
+    "c2bd7953104652e48b060cb8": "ec-c2bd7953104652e4",
     "c2ed162a157709f5cb47598d": "ec-c2ed162a157709f5",
     "c2fd4aed31d0713e4a348884": "ec-c2fd4aed31d0713e",
     "c3059e05e75e3c250c5d63d4": "ec-c3059e05e75e3c25",

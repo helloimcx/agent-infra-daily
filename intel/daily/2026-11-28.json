@@ -1,0 +1,843 @@
+{
+  "schema_version": "1.0",
+  "beijing_date": "2026-11-28",
+  "generated_at": "2026-11-28T04:06:59+00:00",
+  "lookback_hours": 72,
+  "status": "ok",
+  "source_checks": {
+    "ok": [
+      {
+        "id": "aws-ml",
+        "entries": 20
+      },
+      {
+        "id": "openai-news",
+        "entries": 1430
+      },
+      {
+        "id": "deepmind-blog",
+        "entries": 100
+      },
+      {
+        "id": "google-ai",
+        "entries": 20
+      },
+      {
+        "id": "release:openai/codex",
+        "entries": 1
+      },
+      {
+        "id": "release:langchain-ai/langgraph",
+        "entries": 10
+      },
+      {
+        "id": "release:openai/openai-agents-python",
+        "entries": 5
+      },
+      {
+        "id": "release:google/adk-python",
+        "entries": 10
+      },
+      {
+        "id": "release:OpenHands/software-agent-sdk",
+        "entries": 10
+      },
+      {
+        "id": "release:NVIDIA/OpenShell",
+        "entries": 9
+      },
+      {
+        "id": "release:anthropics/sandbox-runtime",
+        "entries": 10
+      },
+      {
+        "id": "release:langchain-ai/open-swe",
+        "entries": 0
+      },
+      {
+        "id": "release:modelcontextprotocol/specification",
+        "entries": 7
+      },
+      {
+        "id": "release:a2aproject/A2A",
+        "entries": 10
+      },
+      {
+        "id": "anthropic-site",
+        "entries": 4
+      },
+      {
+        "id": "claude-announcements",
+        "entries": 9
+      }
+    ],
+    "not_modified": [
+      "huggingface-blog",
+      "arxiv-cs-ai",
+      "mistral-news"
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "item_count": 30,
+  "items": [
+    {
+      "id": "651273c9af5bc4aaf29b477f",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "MOZAIC: An Audio-Video Deepfake Benchmark for Telling What Is Fake",
+      "url": "https://arxiv.org/abs/2611.31301",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-25T08:21:12+00:00",
+      "excerpt": "arXiv:2611.31301v2 Announce Type: replace Abstract: Audio-video (AV) deepfakes can fake the face, the voice, or both. Most benchmarks only ask whether a clip is real or fake, so they cannot show whether a detector relies on the picture, the voice, or encoding traces. We present MOZAIC, a paired benchmark with a 4-way label in which every source clip is released in all four combinations of real or fake video and real ",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "40e915e682512e3c5dad48e9",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "GaokaoMathGen: Chinese Gaokao Mathematics Finale Problem Generation Controlled by Latent Reasoning Structures",
+      "url": "https://arxiv.org/abs/2611.31823",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-25T08:21:12+00:00",
+      "excerpt": "arXiv:2611.31823v2 Announce Type: replace Abstract: Generating Chinese Gaokao mathematics finale problems requires controlling not only the included skills, but also the underlying mathematical kernel and solution path. Existing LLM-based methods mainly rely on surface-level specifications, while the realized difficulty of generated problems cannot be determined directly from prompted targets. Therefore, we propose G",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "017641e3c5bc186163568c62",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "EffectWAM: Learning Action-Grounded Effects for Robot Manipulation",
+      "url": "https://arxiv.org/abs/2611.32053",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-25T08:21:12+00:00",
+      "excerpt": "arXiv:2611.32053v2 Announce Type: replace Abstract: World-action models connect visual prediction with executable robot control. We present EffectWAM, which develops this connection through three complementary components: Effect, camera positional encoding (CaPE), and Action Grounding. Effect represents visual change as the difference between independently encoded future observations and a shared current-observation ",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "5d7ee02fc83a0026acd096cd",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Learning World Models through Contrastive Identification of Actions",
+      "url": "https://arxiv.org/abs/2611.32776",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-25T08:21:12+00:00",
+      "excerpt": "arXiv:2611.32776v2 Announce Type: replace Abstract: Latent world models enable goal-directed planning from offline visual data, but prediction alone does not specify which action-related distinctions their representations should preserve. Inverse dynamics provides auxiliary supervision, yet squared-error action regression rewards additional information only through changes in the conditional action mean. We propose C",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "c66635c1f6ffa527e0ee74b1",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Reading Decisions Before Spans: Efficient Generative Verification",
+      "url": "https://arxiv.org/abs/2611.32931",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-25T08:21:12+00:00",
+      "excerpt": "arXiv:2611.32931v2 Announce Type: replace Abstract: A generative verifier can flag an unsupported claim before it finishes describing the error. For applications that only screen an assistant's report, the remaining generation may be unnecessary. We examine this possibility in a frozen 2B span verifier whose output chooses between an empty error list and its first object before producing any locations. Native8 stops ",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "e07ac3c4387dc83ada7af375",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Actionwave: A Systematic Benchmark for Waveform-Centric Clinical Prediction Across Care Scenarios",
+      "url": "https://arxiv.org/abs/2611.31249",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-25T08:21:12+00:00",
+      "excerpt": "arXiv:2611.31249v2 Announce Type: replace-cross Abstract: Continuous bedside waveforms record rapid physiological changes that can inform clinical decisions. Existing benchmarks examine selected prediction conditions, but it remains unclear how model advantages depend on signal duration, warning time, and available inputs across care settings. We introduce Actionwave, a benchmark for waveform-centric clinical predict",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "4747bab75f16491b47b0142a",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "The algorithmic behavioral sink: Modeling the transition to irreversible demographic collapse",
+      "url": "https://arxiv.org/abs/2611.32084",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-25T08:21:12+00:00",
+      "excerpt": "arXiv:2611.32084v2 Announce Type: replace-cross Abstract: In 2025, the vast majority of major global economies reported a Total Fertility Rate below the replacement level of 2.1. This synchronized collapse has persisted despite extensive pro-natalist financial interventions, revealing a structural limitation in conventional linear demographic models. This paper proposes that the ubiquity of mobile internet and Artifi",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "07faf2fc1a583cf3c2b7e32e",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "ASTERISM: Do Multimodal LLMs Actually Look at All the Images?",
+      "url": "https://arxiv.org/abs/2611.32316",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-25T08:21:12+00:00",
+      "excerpt": "arXiv:2611.32316v2 Announce Type: replace-cross Abstract: Multi-image benchmarks aim to test whether a multimodal large language model (MLLM) combines evidence across images, but many of their items can be answered from a single image. Across about 33k items from 19 public benchmarks, our audit and a two-stage single-image filter find that one image or the question alone settles 24.2% of them. On these items, MLLMs r",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "538f5b2db8963f76b8783234",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "C3H: Compression-to-Consensus Criteria Hijacking in Multimodal LLM Recommender Systems",
+      "url": "https://arxiv.org/abs/2611.32780",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-25T08:21:12+00:00",
+      "excerpt": "arXiv:2611.32780v2 Announce Type: replace-cross Abstract: Multimodal large language models (MLLMs) are transforming recommender systems into content-aware decision systems. In these systems, multimodal compression and cross-modal fusion are often viewed as robustness-enhancing mechanisms against content manipulation, as compression can filter noisy signals and cross-modal consensus can suppress inconsistent anomalies",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "26ec0c2b091305efd935c920",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "LEGOSpec: A Composable and Efficient Framework for Speculative Draft Design and Training",
+      "url": "https://arxiv.org/abs/2611.33004",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-25T08:21:12+00:00",
+      "excerpt": "arXiv:2611.33004v2 Announce Type: replace-cross Abstract: Speculative decoding accelerates large language model (LLM) generation using a lightweight draft. Existing methods evaluate complete recipes under different training configurations, leaving component effects, interactions, and composition benefits unclear. Therefore, we present LEGOSpec, a composable framework for speculative draft design and training. LEGOSpe",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "856a7a48580d88b987199d22",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "OmniAct: One Policy, One Million Embodiments",
+      "url": "https://arxiv.org/abs/2611.33158",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-25T08:21:12+00:00",
+      "excerpt": "arXiv:2611.33158v2 Announce Type: replace-cross Abstract: A single policy that controls diverse robots must not only transfer task knowledge across embodiments, but also adapt its behavior to each robot's capabilities. Existing approaches facilitate transfer through shared action representations, but these representations do not necessarily capture how differences in robot morphology should shape manipulation strateg",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "fd56d4b2e51d0164708371c9",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Auditable Clinical Support with Decision Agents",
+      "url": "https://arxiv.org/abs/2611.23700",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-19T07:15:40+00:00",
+      "excerpt": "arXiv:2611.23700v3 Announce Type: replace Abstract: Emergency care requires auditable decisions, but a language-model agent just outputs text. We introduce Decision2Care, a decision agent that generates a probability for every option at each step. It diagnosed 546 emergency admissions across 12 diseases with 86.5% accuracy in a median of 2.2 s; language-model agents reached 86.1 to 91.7% but took more than 90 s. Its ",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "9919842f8d32cc2ee3e0308f",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "KnowMe Paper Radar: Lightweight Discovery of Promising Papers in the Age of Autoresearch",
+      "url": "https://arxiv.org/abs/2611.23702",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-19T07:15:40+00:00",
+      "excerpt": "arXiv:2611.23702v3 Announce Type: replace Abstract: Large language models (LLMs) are pushing research toward semi-automation: ideas turn into preprints ever faster, and autoresearch pipelines add papers of uneven rigor. When a technique can be overtaken within months, citations arrive too late to tell which new papers deserve reading, so strong work goes unnoticed and newcomers lose their bearings. Yet from the day i",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "f24d5a544b3cea6518ab3769",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "The Silent Cost of Conversation History in LLM Reasoning",
+      "url": "https://arxiv.org/abs/2611.20071",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-17T20:49:12+00:00",
+      "excerpt": "arXiv:2611.20071v3 Announce Type: replace-cross Abstract: Large language models (LLMs) in multi-turn information systems accumulate their own earlier replies and a growing task state. We asked whether this conversation history lowers accuracy, and whether process-level quality metrics warn before it does. Each analysis was fixed before its outcomes were computed. In Study 1, on 48 sharded math tasks, retaining its re",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "9a16c4f9f4c37588cb6233e7",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "DuoJEPA: Cross-Modal Translation Between Unaligned Self-Supervised Embedding Spaces",
+      "url": "https://arxiv.org/abs/2611.15968",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-13T19:36:21+00:00",
+      "excerpt": "arXiv:2611.15968v3 Announce Type: replace-cross Abstract: Learning from paired modalities is commonly equated with aligning them: two encoders are trained until the embeddings of a pair coincide in a shared space. We study whether cross-modal retrieval and classification can instead be obtained while the two encoders' own embedding spaces remain directly unaligned. DuoJEPA trains one encoder per modality with the sel",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "4a7944a6b20a53a7738df543",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "AutoPILOT: A Visual Agent Harness for Real-Time Gameplay",
+      "url": "https://arxiv.org/abs/2611.28202",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.28202v2 Announce Type: replace Abstract: Multimodal foundation models can play video games well when the game waits for them, but often fail when it keeps running. We find that much of this gap lies in the harness, which decides what the model sees, what it remembers, and how its outputs become actions over time. Existing harnesses such as VISTA improve the first two, yet turn each model call into at most ",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "cdf2de01c967a98e85e140a7",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Engram: Multi-Stage Memory for Agentic Tuning of Heterogeneous Models",
+      "url": "https://arxiv.org/abs/2611.28356",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.28356v2 Announce Type: replace Abstract: Large language model (LLM) agents can now tune neural networks, yet without cross-session memory they spend costly trials rediscovering known lessons. Reuse is difficult because production models differ in architecture, training setup and inference budget. We present Engram, a memory system that links past trial outcomes with the hypotheses and rationale behind them",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "32921a09d12a4cf945a2dfae",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Learning Heterogeneous Reasoning in Large Language Models: From Mode Compatibility to Local Bottlenecks",
+      "url": "https://arxiv.org/abs/2611.30281",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.30281v2 Announce Type: replace Abstract: Post-training large language models routinely pools reasoning trajectories from diverse teachers or algorithms, yet it remains unclear whether standard supervised fine-tuning (SFT) can learn such heterogeneous strategies without explicit mode conditioning. We study the learnability and local bottlenecks of heterogeneous reasoning through a formal mixture formulation",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "e13baf63be0f70162c030e81",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Reproducible by Seed? Not on GPUs: Batch-Dependent Non-Determinism in Text-to-Image Models",
+      "url": "https://arxiv.org/abs/2611.30545",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.30545v2 Announce Type: replace Abstract: In text to image AI models, fixing the prompt and the random seed is widely assumed to fix the image. We show that it does not on GPUs. We evaluate six text-to-image models (diffusion and autoregressive) under four numerical precisions and quantizations on three GPU types (RTX A6000, RTX 6000 Ada, and H100 NVL), across up to 100 prompts per set for all six models. F",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "639715636b1771bd9cc870a6",
+      "source_id": "arxiv-cs-ai",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Direct Conditioning of Audio Diffusion Transformers on fMRI Reveals Cortical Contributions to Sound Reconstruction",
+      "url": "https://arxiv.org/abs/2611.12603",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "first_discovered_at": "2026-11-24T09:45:39+00:00",
+      "excerpt": "arXiv:2611.12603v2 Announce Type: replace-cross Abstract: Reconstructing audio from brain activity remains challenging. Existing brain-to-audio pipelines typically map neural responses to predefined stimulus representations before synthesis. While recent work in the visual domain has explored direct conditioning on brain activity, this approach has not yet been extended to audio diffusion models. We introduce MAAS (M",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "c2bd7953104652e48b060cb8",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Taking Trainium3 to the Track: Generating Videos with LTX-2.5",
+      "url": "https://huggingface.co/blog/video-trainium3",
+      "published_at": "2026-11-27T00:00:00+00:00",
+      "first_discovered_at": "2026-11-27T21:08:28+00:00",
+      "excerpt": "",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "19f8bc589a9b194da0da0575",
+      "source_id": "claude-announcements",
+      "source_kind": "official_listing",
+      "topic": "cloud-agent",
+      "priority": "P0",
+      "title": "Article Nov 10, 2026 Your apps can now open in Claude, and Claude can work in them Our partners can now embed their apps directly in Claude, so you and Claude can work in the same tool, on the same screen, without switching tabs. Claude apps MCP",
+      "url": "https://claude.com/resources/articles/interactive-connectors-full-tool",
+      "published_at": null,
+      "first_discovered_at": "2026-11-26T21:25:45+00:00",
+      "excerpt": "Official website listing. Verify actual publication date and claims on the original.",
+      "evidence_status": "unverified_candidate",
+      "date_basis": "official_listing_no_verified_publication_time"
+    },
+    {
+      "id": "a734da9d3a1d876054f86e6e",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Introducing the llama.cpp benchmark dashboard for AMD Ryzen and Radeon",
+      "url": "https://huggingface.co/blog/ggml-org/llamacpp-amd-bench",
+      "published_at": "2026-11-26T11:37:17+00:00",
+      "first_discovered_at": "2026-11-26T21:25:45+00:00",
+      "excerpt": "",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "3d2697b636d74b834fc0e734",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Building on Nemotron 3.5 Parse: Open Data, Fine-Tuning, and Faster Inference",
+      "url": "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
+      "published_at": "2026-11-26T05:05:36+00:00",
+      "first_discovered_at": "2026-11-26T08:06:19+00:00",
+      "excerpt": "",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "819f2bb8e324e5e7f3ab174f",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Swarms, Flocks, Gangs: How to build, train, and evaluate multi-agent systems",
+      "url": "https://huggingface.co/blog/training-swarms",
+      "published_at": "2026-11-26T00:00:00+00:00",
+      "first_discovered_at": "2026-11-26T21:25:45+00:00",
+      "excerpt": "",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "69fbec9981f84b435a9deadb",
+      "source_id": "anthropic-site",
+      "source_kind": "official_sitemap",
+      "topic": "harness",
+      "priority": "P0",
+      "title": "Official site update: migrating api to rust",
+      "url": "https://www.anthropic.com/research/migrating-api-to-rust",
+      "published_at": null,
+      "first_discovered_at": "2026-11-25T21:36:57+00:00",
+      "excerpt": "Official sitemap URL; timestamp reflects site modification, not publication.",
+      "evidence_status": "unverified_candidate",
+      "observed_change_at": "2026-11-25T16:27:43+00:00",
+      "date_basis": "site_lastmod_not_publication"
+    },
+    {
+      "id": "b5192911b2bfdbd383b0433e",
+      "source_id": "release:langchain-ai/langgraph",
+      "source_kind": "github_release",
+      "topic": "runtime",
+      "priority": "P1",
+      "title": "langgraph-cli==0.4.44",
+      "url": "https://github.com/langchain-ai/langgraph/releases/tag/cli%3D%3D0.4.44",
+      "published_at": "2026-11-25T20:52:34+00:00",
+      "first_discovered_at": "2026-11-25T21:36:57+00:00",
+      "excerpt": "Changes since cli==0.4.43 * feat(cli): add url to deploy list --json (#9793) * release(cli): 0.4.44 (#9794) * fix(cli): omit an empty secrets list when updating a deployment (#9737) * chore(deps): bump opentelemetry-api from 1.45.1 to 1.45.2 in /libs/cli (#9695) * feat(cli): deploy to BYOC data planes with only an API key (#9692)",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "cli==0.4.44"
+    },
+    {
+      "id": "88bd06d7e0e9b82f43a3c7b4",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "Where scientists draw the line on AI agents",
+      "url": "https://huggingface.co/blog/allenai/where-scientists-draw-the-line-on-ai-agents",
+      "published_at": "2026-11-25T18:52:55+00:00",
+      "first_discovered_at": "2026-11-25T21:36:57+00:00",
+      "excerpt": "",
+      "evidence_status": "unverified_candidate"
+    },
+    {
+      "id": "4fcb943e480737661bf51d52",
+      "source_id": "release:OpenHands/software-agent-sdk",
+      "source_kind": "github_release",
+      "topic": "cloud-agent",
+      "priority": "P1",
+      "title": "v1.64.1",
+      "url": "https://github.com/OpenHands/software-agent-sdk/releases/tag/v1.64.1",
+      "published_at": "2026-11-25T12:18:45+00:00",
+      "first_discovered_at": "2026-11-25T21:36:57+00:00",
+      "excerpt": "## What's Changed * fix(agent-server): advance Debian snapshot to 20261124 for chromium, krb5 and linux-libc-dev security fixes by @openhands-agent in https://github.com/OpenHands/software-agent-sdk/pull/7078 * Keep the agent-server idle timer fresh during active runs by @rajshah4 in https://github.com/OpenHands/software-agent-sdk/pull/7105 * fix(agent-server): post full webhook batches off the event's publish by @en",
+      "evidence_status": "unverified_candidate",
+      "release_tag": "v1.64.1"
+    },
+    {
+      "id": "0077e07924e43bf73f6b214e",
+      "source_id": "huggingface-blog",
+      "source_kind": "rss",
+      "topic": "research",
+      "priority": "P1",
+      "title": "An Indic Voice Agent with CUGA",
+      "url": "https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga",
+      "published_at": "2026-11-25T10:22:09+00:00",
+      "first_discovered_at": "2026-11-25T21:36:57+00:00",
+      "excerpt": "",
+      "evidence_status": "unverified_candidate"
+    }
+  ],
+  "event_candidates": [
+    {
+      "event_candidate_id": "ec-d67f236008741537",
+      "representative_title": "MOZAIC: An Audio-Video Deepfake Benchmark for Telling What Is Fake",
+      "topic": "research",
+      "item_ids": [
+        "651273c9af5bc4aaf29b477f"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b4620eef53d60f1f",
+      "representative_title": "GaokaoMathGen: Chinese Gaokao Mathematics Finale Problem Generation Controlled by Latent Reasoning Structures",
+      "topic": "research",
+      "item_ids": [
+        "40e915e682512e3c5dad48e9"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-691828e4ec85b0d7",
+      "representative_title": "EffectWAM: Learning Action-Grounded Effects for Robot Manipulation",
+      "topic": "research",
+      "item_ids": [
+        "017641e3c5bc186163568c62"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-0c237c85fbcef532",
+      "representative_title": "Learning World Models through Contrastive Identification of Actions",
+      "topic": "research",
+      "item_ids": [
+        "5d7ee02fc83a0026acd096cd"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-51348db131848310",
+      "representative_title": "Reading Decisions Before Spans: Efficient Generative Verification",
+      "topic": "research",
+      "item_ids": [
+        "c66635c1f6ffa527e0ee74b1"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-a0dd5d7bf7c07cc9",
+      "representative_title": "Actionwave: A Systematic Benchmark for Waveform-Centric Clinical Prediction Across Care Scenarios",
+      "topic": "research",
+      "item_ids": [
+        "e07ac3c4387dc83ada7af375"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-58924e03721a85d5",
+      "representative_title": "The algorithmic behavioral sink: Modeling the transition to irreversible demographic collapse",
+      "topic": "research",
+      "item_ids": [
+        "4747bab75f16491b47b0142a"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-95d7da3a6d9a1eb4",
+      "representative_title": "ASTERISM: Do Multimodal LLMs Actually Look at All the Images?",
+      "topic": "research",
+      "item_ids": [
+        "07faf2fc1a583cf3c2b7e32e"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-0c49d8cfa24a950a",
+      "representative_title": "C3H: Compression-to-Consensus Criteria Hijacking in Multimodal LLM Recommender Systems",
+      "topic": "research",
+      "item_ids": [
+        "538f5b2db8963f76b8783234"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-50b1c12ea4d9e132",
+      "representative_title": "LEGOSpec: A Composable and Efficient Framework for Speculative Draft Design and Training",
+      "topic": "research",
+      "item_ids": [
+        "26ec0c2b091305efd935c920"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-17eb8c7f1b0cceef",
+      "representative_title": "OmniAct: One Policy, One Million Embodiments",
+      "topic": "research",
+      "item_ids": [
+        "856a7a48580d88b987199d22"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-a78a78303f7c8369",
+      "representative_title": "Auditable Clinical Support with Decision Agents",
+      "topic": "research",
+      "item_ids": [
+        "fd56d4b2e51d0164708371c9"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-866d45fe63de5277",
+      "representative_title": "KnowMe Paper Radar: Lightweight Discovery of Promising Papers in the Age of Autoresearch",
+      "topic": "research",
+      "item_ids": [
+        "9919842f8d32cc2ee3e0308f"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-4d8f6048b9a401d5",
+      "representative_title": "The Silent Cost of Conversation History in LLM Reasoning",
+      "topic": "research",
+      "item_ids": [
+        "f24d5a544b3cea6518ab3769"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-81e4b48c33dbd654",
+      "representative_title": "DuoJEPA: Cross-Modal Translation Between Unaligned Self-Supervised Embedding Spaces",
+      "topic": "research",
+      "item_ids": [
+        "9a16c4f9f4c37588cb6233e7"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-9afccf023b5db24c",
+      "representative_title": "AutoPILOT: A Visual Agent Harness for Real-Time Gameplay",
+      "topic": "research",
+      "item_ids": [
+        "4a7944a6b20a53a7738df543"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-727f7e88b80dc4de",
+      "representative_title": "Engram: Multi-Stage Memory for Agentic Tuning of Heterogeneous Models",
+      "topic": "research",
+      "item_ids": [
+        "cdf2de01c967a98e85e140a7"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-9dfe4e272c2b50b1",
+      "representative_title": "Learning Heterogeneous Reasoning in Large Language Models: From Mode Compatibility to Local Bottlenecks",
+      "topic": "research",
+      "item_ids": [
+        "32921a09d12a4cf945a2dfae"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-dfc28dc253f515e3",
+      "representative_title": "Reproducible by Seed? Not on GPUs: Batch-Dependent Non-Determinism in Text-to-Image Models",
+      "topic": "research",
+      "item_ids": [
+        "e13baf63be0f70162c030e81"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-8357c92625b01ff4",
+      "representative_title": "Direct Conditioning of Audio Diffusion Transformers on fMRI Reveals Cortical Contributions to Sound Reconstruction",
+      "topic": "research",
+      "item_ids": [
+        "639715636b1771bd9cc870a6"
+      ],
+      "source_ids": [
+        "arxiv-cs-ai"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-94c9cbe89713a32a",
+      "representative_title": "Taking Trainium3 to the Track: Generating Videos with LTX-2.5",
+      "topic": "research",
+      "item_ids": [
+        "c2bd7953104652e48b060cb8"
+      ],
+      "source_ids": [
+        "huggingface-blog"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-ae1ed06bb5c428dd",
+      "representative_title": "Article Nov 10, 2026 Your apps can now open in Claude, and Claude can work in them Our partners can now embed their apps directly in Claude, so you and Claude can work in the same tool, on the same screen, without switching tabs. Claude apps MCP",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "19f8bc589a9b194da0da0575"
+      ],
+      "source_ids": [
+        "claude-announcements"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-0b1fe4e06724a8f8",
+      "representative_title": "Introducing the llama.cpp benchmark dashboard for AMD Ryzen and Radeon",
+      "topic": "research",
+      "item_ids": [
+        "a734da9d3a1d876054f86e6e"
+      ],
+      "source_ids": [
+        "huggingface-blog"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-b7b42ee3386764fc",
+      "representative_title": "Building on Nemotron 3.5 Parse: Open Data, Fine-Tuning, and Faster Inference",
+      "topic": "research",
+      "item_ids": [
+        "3d2697b636d74b834fc0e734"
+      ],
+      "source_ids": [
+        "huggingface-blog"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-063e3b915109e354",
+      "representative_title": "Swarms, Flocks, Gangs: How to build, train, and evaluate multi-agent systems",
+      "topic": "research",
+      "item_ids": [
+        "819f2bb8e324e5e7f3ab174f"
+      ],
+      "source_ids": [
+        "huggingface-blog"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-f771d839ae763adf",
+      "representative_title": "Official site update: migrating api to rust",
+      "topic": "harness",
+      "item_ids": [
+        "69fbec9981f84b435a9deadb"
+      ],
+      "source_ids": [
+        "anthropic-site"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-dd246dfbf9a7a904",
+      "representative_title": "langgraph-cli==0.4.44",
+      "topic": "runtime",
+      "item_ids": [
+        "b5192911b2bfdbd383b0433e"
+      ],
+      "source_ids": [
+        "release:langchain-ai/langgraph"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-48b85f12cfea2c83",
+      "representative_title": "Where scientists draw the line on AI agents",
+      "topic": "research",
+      "item_ids": [
+        "88bd06d7e0e9b82f43a3c7b4"
+      ],
+      "source_ids": [
+        "huggingface-blog"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-4bc578d0991fb459",
+      "representative_title": "v1.64.1",
+      "topic": "cloud-agent",
+      "item_ids": [
+        "4fcb943e480737661bf51d52"
+      ],
+      "source_ids": [
+        "release:OpenHands/software-agent-sdk"
+      ],
+      "status": "needs_verification"
+    },
+    {
+      "event_candidate_id": "ec-22d88b5e9d35754f",
+      "representative_title": "An Indic Voice Agent with CUGA",
+      "topic": "research",
+      "item_ids": [
+        "0077e07924e43bf73f6b214e"
+      ],
+      "source_ids": [
+        "huggingface-blog"
+      ],
+      "status": "needs_verification"
+    }
+  ],
+  "usage_note": "Unverified candidates: verify first-party evidence, actual event time and independent sources before any trend/claim update."
+}
